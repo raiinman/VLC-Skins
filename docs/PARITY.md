@@ -40,8 +40,8 @@ The user decides whether the initial review reaches 80%. Preserve working button
 ## Observed checks, 2026-10-15
 
 - Both 1x and 2x builds pass the official VLC 3.0.x DTD, unique-ID, resource-existence, layout-owner, slider-coverage and animation-frame checks.
-- VLC 3.0.23 loaded a 1x test build without unknown action, unknown variable, invalid tooltip-font or resize-policy warnings after repairs. An earlier build exposed DTD catalog and resize-anchor errors which were corrected.
-- A generated MPEG-4/AAC test clip opened successfully. VLC's loopback RC interface reported play state 3, time 15 seconds, duration 60 seconds. This verifies the player engine with the skin loaded; it does not prove clicks or on-screen video placement.
+- VLC 3.0.23 loaded both a 1x test build and the final 2x package without unknown action, unknown variable, invalid tooltip-font or resize-policy warnings after repairs. An earlier build exposed DTD catalog and resize-anchor errors which were corrected.
+- A generated MPEG-4/AAC test clip opened successfully. VLC's loopback RC interface reported play state 3, time 15 seconds for 1x and 8 seconds for the final 2x package, duration 60 seconds. This verifies the player engine with the skin loaded; it does not prove clicks or on-screen video placement.
 - The Computer Use plugin listed VLC as running but exposed no owned skin windows. No GUI clicks, captured runtime screenshot, EQ listening test, fullscreen/resize interaction or visual animation timing was verified.
 - Asset-rendered comparison inspected after removing a transient grayscale startup overlay and correcting a composite EQ button group into its individual switch.
 

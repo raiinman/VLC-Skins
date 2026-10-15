@@ -2,7 +2,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2 by **Dead Signal Interactive**.
 
-**Status: first review build. User acceptance of the 80% milestone is pending.** XML, resources, action targets and control coverage pass automated checks. VLC loaded a test package and played a generated 60-second video. Native window capture did not expose VLC's owned skin windows, so mouse interaction, animation timing and video placement still require a real visual review. This is not a claim of complete parity.
+**Status: first review build. User acceptance of the 80% milestone is pending.** XML, resources, action targets and control coverage pass automated checks. VLC loaded both scales and played a generated 60-second video, including with the final 2x package. Native window capture did not expose VLC's owned skin windows, so mouse interaction, animation timing and video placement still require a real visual review. This is not a claim of complete parity.
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
