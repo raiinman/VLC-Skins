@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-15",
+  "vlc_version": "3.0.23",
+  "clip": {
+    "duration_seconds": 90,
+    "width": 640,
+    "height": 360,
+    "fps": 15,
+    "silent": true
+  },
+  "scales": {
+    "1": {
+      "sha256": "e2479f8c8fe80c4e70e41b97ca6e2bf13825df2d2c1e96cca87da151fc733317",
+      "bytes": 11134159,
+      "theme_configuration_loaded": true,
+      "play_state": 3,
+      "rc_time_seconds": 82,
+      "statistics": {
+        "demux corrupted": 0,
+        "discontinuities": 2,
+        "video decoded": 2568,
+        "frames displayed": 1286,
+        "frames lost": 0,
+        "audio decoded": 7385,
+        "buffers played": 3692,
+        "buffers lost": 0
+      },
+      "theme_errors": []
+    },
+    "2": {
+      "sha256": "429f80fa06205b3fd3ffc3c3bdd162c4b44bd506d5918a53683f5bada94f92f0",
+      "bytes": 40480954,
+      "theme_configuration_loaded": true,
+      "play_state": 3,
+      "rc_time_seconds": 88,
+      "statistics": {
+        "demux corrupted": 0,
+        "discontinuities": 2,
+        "video decoded": 48,
+        "frames displayed": 27,
+        "frames lost": 0,
+        "audio decoded": 149,
+        "buffers played": 74,
+        "buffers lost": 0
+      },
+      "theme_errors": []
+    }
+  },
+  "native_mouse_verified": false,
+  "fullscreen_keyboard_verified_on_prior_parity_build": true
+}

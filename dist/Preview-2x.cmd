@@ -7,4 +7,4 @@ if not exist "%VLC%" (
   pause
   exit /b 1
 )
-start "" "%VLC%" --no-one-instance --no-media-library --no-metadata-network-access --no-qt-privacy-ask --config="%~dp0review-vlcrc.ini" --intf=skins2 --skins2-last="%~dp0Need-for-Speed-Underground-2x.vlt" --skins2-config=
+start "" "%VLC%" --no-one-instance --no-media-library --no-metadata-network-access --no-qt-privacy-ask --config="%~dp0parity-2x-vlcrc.ini" --intf=skins2 --skins2-last="%~dp0Need-for-Speed-Underground-2x.vlt" --skins2-config=

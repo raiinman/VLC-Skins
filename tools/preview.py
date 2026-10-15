@@ -3,23 +3,22 @@ from pathlib import Path
 from lxml import etree as E
 from PIL import Image, ImageDraw, ImageFont
 from build import ROOT, SKIN, rgba
+from assets import ThemeAssets, visible
 
 OUT=ROOT/'docs/preview.png'
 base=SKIN/'vlc-2x'
-tree=E.parse(str(base/'theme.xml'))
-resources={e.get('id'):e for e in tree.getroot() if e.tag in ('Bitmap','Font')}
+assets=ThemeAssets(base);tree=assets.tree;resources=assets.resources
 
 
 def bitmap(key,frame=0,count=None):
-    e=resources[key];im=Image.open(base/e.get('file')).convert('RGBA')
-    n=count or int(e.get('nbframes','1'));h=im.height//n
-    return im.crop((0,frame*h,im.width,(frame+1)*h))
+    return assets.frame(key,frame,count)
 
 
 def render(lid):
     layout=tree.find(f'.//Layout[@id="{lid}"]')
     out=Image.new('RGBA',(int(layout.get('width')),int(layout.get('height'))))
     for e in layout:
+        if not visible(e.get('visible'),active='main_1'):continue
         x=int(e.get('x',0));y=int(e.get('y',0));im=None
         if e.tag=='Image':
             im=bitmap(e.get('image'))
@@ -40,7 +39,7 @@ def render(lid):
             else:
                 im=bitmap(e.get('up'));y+=60 if 'band' in e.get('value','') else 0
         elif e.tag=='Text':
-            text=e.get('text').replace('$N','Need for Speed Underground').replace('$t','00:00')
+            text=e.get('text').replace('$N','Need for Speed Underground').replace('$t','00:00').replace('$l','-04:00')
             f=resources[e.get('font')];font=ImageFont.truetype(str(base/f.get('file')),int(f.get('size')))
             d=ImageDraw.Draw(out);d.text((x+int(e.get('width'))/2,y),text,font=font,fill=e.get('color'),anchor='mt')
         elif e.tag in ('Video','Playtree'):

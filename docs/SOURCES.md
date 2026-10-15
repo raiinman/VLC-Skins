@@ -13,4 +13,10 @@
 - [Reverse engineering tools](https://github.com/raiinman/reverse-engineering-tools), commit `e8fc87abbf46ef4a1086f389c3de1063c4a6f762`: followed provenance and evidence separation guidance; no executable reverse engineering was necessary for this resource archive.
 - FreeSans.ttf from the installed VLC skin resources. Embedded metadata credits Free Software Foundation, 2002/2003, under the GNU GPL. `vendor/GPL-2.0.txt` contains VLC's GPL text; the font's original metadata is retained.
 
-Context7 was not available among the session's callable tools. VLC-specific implementation details were checked against the official authoring reference and upstream source instead.
+Context7 resolved `/videolan/vlc` during the parity pass, but its returned skin examples described legacy Skins1. Skins2 implementation details were checked against the official authoring reference and VLC 3.0.x source above.
+
+- Source `nfs.js` supplies the 50 ms shutter interval and startup timer/fade sequence; source `volume_map.png` and `seek_map.png` encode horizontal grayscale ramps.
+- [VLC generated control IDs](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/parser/skin_parser.cpp): the fixed-size generated-ID buffer truncates four-digit counters. Every generated control receives an explicit unique ID to avoid collisions in large themes.
+- [VLC animation bitmap](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/utils/anim_bitmap.cpp): frame timing and loop behavior.
+
+- [VLC time formatting](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/vars/time.cpp): remaining-time tokens omit a leading minus; the conversion restores the original `time_dash.png` indicator.

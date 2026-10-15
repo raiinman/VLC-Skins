@@ -1,8 +1,8 @@
 # VLC Skins
 
-Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2 by **Dead Signal Interactive**.
+Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: first review build. User acceptance of the 80% milestone is pending.** XML, resources, action targets and control coverage pass automated checks. VLC loaded both scales and played a generated 60-second video, including with the final 2x package. Native window capture did not expose VLC's owned skin windows, so mouse interaction, animation timing and video placement still require a real visual review. This is not a claim of complete parity.
+**Status: complete-parity implementation pass, awaiting hands-on acceptance.** Both scales pass XML, pixel-preservation, state-transition and input-layer regression checks. VLC 3.0.23 loads and plays with both scales. Native fullscreen video and Escape were exercised. Owned skin windows are visible to the user but unavailable to the automation tool; skin clicks, dragging and visual animation review remain unverified. See [verification](docs/VERIFICATION.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -21,9 +21,11 @@ The star/visualization button opens the rectangular video window; the list butto
 
 Original player artwork, hover/pressed buttons, seven palettes, information menu, game description, story pages, screenshots, startup animation and shutter frames are retained. The source is a WMZ/WMS package rather than a Winamp skin.
 
-The video panel is rectangular and clear of the NFS logo. VLC uses curved seek and volume sliders with the original needle sprites. The ten-band equalizer and preamp use VLC variables; obsolete WMP SRS/WOW, speaker-size, balance, crossfade, sound-effects and WMP visualization-preset controls are removed. VLC owns native context and settings dialogs; Skins2 cannot restyle their interiors. The skin's own information menu retains its original images.
+The video panel is rectangular and clear of the NFS logo. The seek and volume gauges keep the original needle sprites and horizontal drag mapping recovered from the source position maps. Click the clock to toggle elapsed and remaining time. The ten-band equalizer and preamp use VLC variables; obsolete WMP SRS/WOW, speaker-size, balance, crossfade, sound-effects and WMP visualization-preset controls are removed. VLC owns native context and settings dialogs; Skins2 cannot restyle their interiors. The skin's own information menu retains its original images.
 
-The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. [Control mapping and review limits](docs/PARITY.md).
+Palette changes preserve the clock mode, shutter state and open panels. The information frame also follows the selected palette. Startup and shutter playback follow the original script timing.
+
+The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. Its full-quality animation strips make cold loading expensive: the observed 2x load took about two minutes on the test machine; 1x loaded in about twenty seconds. Separate `Preview-1x.cmd` and `Preview-2x.cmd` launchers use isolated settings files. [Control mapping and review limits](docs/PARITY.md).
 
 ## Build and verify
 
@@ -33,6 +35,7 @@ Requires Python 3.11+, Pillow and lxml. Original extracted inputs and the font a
 python -m pip install -r requirements.txt
 python tools/build.py
 python tools/check_contracts.py
+python tools/check_hits.py
 python tools/preview.py
 ```
 

@@ -1,15 +1,19 @@
-Review build: Need for Speed Underground for VLC
+Need for Speed Underground / VLC parity pass
 
-Double-click Preview-2x.cmd to open the 2x skin in a separate VLC instance.
-Keep the launcher and VLT together. It saves its own review-vlcrc.ini here;
-it does not replace your normal VLC preferences.
-
-For permanent use: VLC > Tools > Preferences > Interface > Use custom skin,
-select the VLT, save, restart VLC. The 1x VLT retains the original size.
-
-Original skin: The Skins Factory / Electronic Arts, 2003.
+Original: The Skins Factory / Electronic Arts (2003).
 VLC conversion: Dead Signal Interactive.
 
-The PNG is an asset-rendered comparison, not a runtime screenshot.
-Read Review-notes.md for remaining interaction and animation checks.
-The 80% acceptance milestone awaits your review.
+Install VLC, extract this bundle, then run Preview-1x.cmd or Preview-2x.cmd.
+The launchers use separate settings files. 1x matches the source 300x298 size.
+2x is 600x596 with independently resampled sprite frames. Its full-quality
+animations can take about two minutes to cold-load; 1x is much quicker.
+
+For your regular VLC profile: Tools > Preferences > Interface > Use custom
+skin, choose a VLT, save and restart VLC.
+
+Clock toggles elapsed/remaining. Color cycles seven palettes. The star opens
+the video panel. List/bars open playlist/EQ. Information opens the original
+menu; its footer includes conversion credits.
+
+Read PARITY.md and VERIFICATION.md for supported behavior and pending checks.
+This bundle is ready for hands-on review; 100% acceptance is not yet certified.
