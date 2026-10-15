@@ -5,30 +5,34 @@ The current target is complete parity within the user's permitted VLC adaptation
 | Source behavior | Conversion | Evidence |
 | --- | --- | --- |
 | Main artwork and controls | Original coordinates, seven palettes, original hover/pressed images | Pixel/coordinate contracts at both scales |
-| Open, transport, minimize, close | Native VLC actions | XML/action checks; skin mouse clicks pending |
-| Volume and seek gauges | All 29/33 original frames; source horizontal position mapping; seek frames reversed | Exact per-frame pixel tests; native dragging pending |
-| Elapsed/remaining clock | Clickable toggle; retained across palette/shutter changes | State-transition contracts; click pending |
-| Palette cycling | All frame palettes, including information; preserves panel widgets and clock/shutter state | Layout/visibility contracts; visual switching pending |
-| Shutter | Eleven travel frames at 20 fps, separate timed lighting, open/closed endpoints | Source script and frame contracts; mouse/timing review pending |
-| Startup | Source 59-frame GIF, initial hold, lighting and final fade at source timings | 81-frame 10 fps sequence with lossless bands; saved-layout limit below; visual review pending |
-| Playlist | One Playtree, scrolling, add, shuffle, loop | DTD/action checks; native selection/scroll pending |
-| Equalizer | One ten-band EQ, preamp, enable | Native variable bindings; audible/drag review pending |
+| Open, transport, minimize, close | Native VLC actions | Native 1x play/pause/next/previous/Open/Close; minimize and skin fullscreen click pending |
+| Volume and seek gauges | All 29/33 original frames; source horizontal position mapping; both strips reversed | Exact per-frame pixels; both-scale native volume endpoints and seeking |
+| Elapsed/remaining clock | Clickable toggle; retained across palette/shutter changes | Both-scale native toggles; paused-seek and interrupted-travel limits below |
+| Palette cycling | All frame palettes, including information; preserves panel widgets and clock/shutter state | Layout/visibility contracts; blue/green and closed-state native switching |
+| Shutter | Eleven travel frames at 20 fps, separate timed lighting, open/closed endpoints | Native travel and endpoints at both scales; exact wall-clock timing review pending |
+| Startup | Source 59-frame GIF, initial hold, lighting and final fade at source timings | 81-frame 10 fps sequence with lossless bands; native startup/replay observed, precise timing review pending |
+| Playlist | One Playtree, scrolling, add, shuffle, loop | Both-scale native selection/scroll; shuffle/repeat at 1x; resize at 2x |
+| Equalizer | One ten-band EQ, preamp, enable | Native enable, band and preamp changes at both scales; listening pending |
 | Video | One rectangular resizable viewport inside original framing | Native decoding/playback and fullscreen/Escape; embedded placement/resize pending |
-| Information | Original game/menu/story/screenshot artwork, navigation and disabled endpoint assets | Resource/endpoint contracts and asset-rendered preview |
-| Credit | Unobtrusive separate conversion page | Preview inspected |
+| Information | Original game/menu/story/screenshot artwork, navigation and disabled endpoint assets | Native 1x Story and 2x Screenshots navigation; exact resource/endpoint checks |
+| Credit | Unobtrusive separate conversion page | Native 1x credits observed; preview inspected |
 
 ## Permitted adaptations and limits
 
 - Video is rectangular; the NFS logo remains on the audio controller. Original panel frames omit their unused transparent bottom margins.
 - Original images remain lossless at 1x. Each animation/needle frame is independently resampled with Lanczos at 2x to avoid bleeding from adjacent frames.
 - Equalizer frequencies follow VLC; removed WMP-only controls include preset/reset, SRS/WOW/TruBass, speaker size, balance, crossfade, skin sounds and visualization presets. Their source assets remain archived. The removed right-side EQ rails use the original carbon texture and VLC preamp.
-- Clock/metadata use a TTF font over the original backing.
+- Clock/metadata use a TTF font over the original backing. The clock uses 14 source-scale pixels for legibility. Metadata retains the source palette colors.
 - Palette switching is immediate. The source JavaScript color crossfade has no direct Skins2 layout-action equivalent.
 - Regular VLC launches restore the saved layout, which can bypass the intro after switching away from `main_start`. Skins2 has no source-script on-load timer equivalent. Review launchers clear saved layout state; the conversion credit page provides Replay intro in the blue theme, including when `main_start` is already selected.
 - VLC owns native context/preferences dialogs. Its skin API cannot style those interiors. The skin's own information menu retains its original artwork.
 - Old marketing links remain as source artwork; obsolete outbound actions are omitted.
 - Decorative WMP overlays were pass-through. Functional outer buttons are layered above the equivalent Skins2 decorative hit masks to keep the controls reachable.
 
+- Paused seeking works, but VLC's native time variable can notify text before the seek completes; the clock may retain its previous value until playback resumes. This was reproduced at 2x and traced to upstream source.
+- Changing the clock token activates another layout. During shutter opening this can finish travel early; during closing it restarts travel while preserving the closing destination.
+- Transparent WMP resize rectangles become alpha 1 VLC hit masks over the original corner artwork. Native 2x resize was verified; 1x recheck was interrupted by the desktop tool.
+
 ## Acceptance still needed
 
-Review actual hover/pressed feedback, startup/shutter timing, color cycling, clock toggle, transport, volume/seek endpoints, playlist selection/scroll, EQ response, menu navigation, panel resize and embedded video. The offline hit model and RC playback checks do not substitute for those native mouse and visual checks. See [verification evidence](VERIFICATION.md).
+Review exhaustive hover/pressed feedback, exact startup/shutter wall-clock timing, all seven palettes, audible EQ response, 1x resize and embedded video placement/resize. Native mouse QA now covers substantial controls at both scales; it does not certify complete parity. Exact package scope and passing observations are in [native-gui-review.json](native-gui-review.json). See [verification evidence](VERIFICATION.md).

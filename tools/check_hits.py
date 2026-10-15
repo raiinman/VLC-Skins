@@ -64,6 +64,11 @@ for scale in (1,2):
             points=[(x,y) for y in range(im.height) for x in range(im.width) if mask.getpixel((x,y))>100]
             if not points:  # Clock click surface has an intentionally invisible alpha mask.
                 points=[(im.width//2,im.height//2)]
+            if '_closing' in active and (node.get('id','').startswith('clock_') or key=='m_logo_no_png'):
+                for x,y in points:
+                    hit,_,_=pick(layers,x+int(node.get('x',0)),y+int(node.get('y',0)))
+                    assert hit is not None and hit.get('id','').startswith('decorative_endpoint_'),(active,key,'closed interior remains interactive')
+                continue
             correct=0;painted=0
             for x,y in points:
                 hit,opacity,paint=pick(layers,x+int(node.get('x',0)),y+int(node.get('y',0)))

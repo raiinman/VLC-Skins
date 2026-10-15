@@ -2,7 +2,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: complete-parity implementation pass, awaiting hands-on acceptance.** Both scales pass XML, pixel-preservation, state-transition and input-layer regression checks. VLC 3.0.23 loads and plays with both scales. Native fullscreen video and Escape were exercised. Owned skin windows are visible to the user but unavailable to the automation tool; skin clicks, dragging and visual animation review remain unverified. See [verification](docs/VERIFICATION.md).
+**Status: native control and animation review in progress; user acceptance pending.** Both scales pass XML, pixel-preservation, state-transition and input-layer checks. Native mouse tests now cover transport, volume/seek, playlist selection/scrolling, equalizer controls and original information navigation. The pass corrected volume direction, shutter interiors, playlist scrolling and resize hit areas. See [verification](docs/VERIFICATION.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -25,7 +25,7 @@ The video panel is rectangular and clear of the NFS logo. The seek and volume ga
 
 Palette changes preserve the clock mode, shutter state and open panels. The information frame also follows the selected palette. Startup and shutter playback follow the original script timing.
 
-The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. Lossless horizontal animation bands reduce Windows initialization to approximately 4 seconds at 1x and 14 seconds at 2x on the test machine, followed by the roughly 8-second original intro. Separate `Preview-1x.cmd` and `Preview-2x.cmd` launchers use isolated settings and start the intro. Regular VLC launches may restore another saved layout and skip it; Information → conversion credits → Replay intro runs it again in the blue theme. [Control mapping and review limits](docs/PARITY.md).
+The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. Lossless horizontal animation bands reduce Windows initialization to the measured times in [load-benchmark.json](docs/load-benchmark.json) on the test machine, followed by the roughly 8-second original intro. Separate `Preview-1x.cmd` and `Preview-2x.cmd` launchers use isolated settings and start the intro. Regular VLC launches may restore another saved layout and skip it; Information → conversion credits → Replay intro runs it again in the blue theme. [Control mapping and review limits](docs/PARITY.md).
 
 ## Build and verify
 

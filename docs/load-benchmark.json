@@ -1,16 +1,16 @@
 [
   {
     "scale": 1,
-    "autoplay_after_interface_ready_seconds": 4.39,
+    "autoplay_after_interface_ready_seconds": 3.45,
     "process_alive_after_animation": true,
     "theme_errors": [],
-    "sha256": "0fe974c3025636e7814beb498f3eff487e93b316b57d66ec0ea117cd475032c2"
+    "sha256": "6d4eca36f815ad99400b1bafd03bf6afc0203d9df85ce74b392ab8a4ae31020b"
   },
   {
     "scale": 2,
-    "autoplay_after_interface_ready_seconds": 13.42,
+    "autoplay_after_interface_ready_seconds": 17.84,
     "process_alive_after_animation": true,
     "theme_errors": [],
-    "sha256": "8840bb81be90bdf826a75d607e56c442c93a3d3bff7f23258e8a3e5cfa646134"
+    "sha256": "be7bce48ac0bd4ac66b9ca9e73992621480431fc22fc02de038562100f70cc1c"
   }
 ]

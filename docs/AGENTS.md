@@ -22,3 +22,5 @@ None.
 PARITY.md owns acceptance and deviations; SOURCES.md owns provenance; VERIFICATION.md owns check evidence and limits. preview.png is an asset-rendered comparison, not a native screenshot. Keep native RC playback, fullscreen keyboard checks, offline hit modeling and actual skin mouse review distinct.
 
 load-benchmark.json records final package initialization measurements. runtime-summary.json records earlier video playback tests and their exact package hashes; keep the versions distinct. Record saved-layout intro limits and replay access in PARITY.md.
+
+native-gui-review.json records sanitized mouse/visual observations and package scope. Keep failed/intercepted attempts out of passing evidence. Native testing uses an isolated profile and a floating video output as an automation anchor; it does not establish embedded video placement. Record paused-clock seek staleness and interrupted-transition behavior as explicit Skins2 limits. Never include desktop captures, loopback passwords or user media in review artifacts.

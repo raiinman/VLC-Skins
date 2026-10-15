@@ -1,0 +1,531 @@
+{
+  "date": "2026-10-15",
+  "vlc_version": "3.0.23",
+  "final_package_sha256": {
+    "1": "6d4eca36f815ad99400b1bafd03bf6afc0203d9df85ce74b392ab8a4ae31020b",
+    "2": "be7bce48ac0bd4ac66b9ca9e73992621480431fc22fc02de038562100f70cc1c"
+  },
+  "method": "Native mouse input through Computer Use; independent read-only localhost HTTP state observations. Isolated profiles, generated silent 90-second test video and 30 hardlinked tracks. Floating --no-skinned-video output used as capture anchor. No desktop captures or credentials retained here.",
+  "scope": {
+    "1x": "Broad control review used an intermediate candidate before final clock-transition, inactive-text and resize changes. Exact hash was not retained. Final package was loaded and clock visually observed, but foreground-process binding failed before final resize recheck.",
+    "2x": "Volume/pause/seek first tested on 1bc5fbc2685526063b258fe8b68b1d835c0b545de8bc9ef11d243900ce82a6f8. EQ/playlist and information navigation repeated after performance changes on d9127848205128a7d8c520724742e5c75306b8161c9de6d6c583c864e4ff5e15. Final package loaded and playlist resize verified from 640 to 665 pixels height; screenshot width was desktop-cropped."
+  },
+  "visual_observations": {
+    "1x": [
+      "Needle agrees with minimum/maximum volume",
+      "Clock switches to remaining time",
+      "Blue and green palettes",
+      "Shutter intermediate travel, fully closed interior and reopened endpoint",
+      "Original Story page navigation and Menu return",
+      "Conversion credits and replay button",
+      "Open Media dialog opened and cancelled",
+      "Skin Close quit isolated test"
+    ],
+    "2x": [
+      "Needle agrees with minimum/maximum volume",
+      "Clock switches to remaining; refreshes after resume",
+      "Shutter intermediate travel and clean closed endpoint; reopening",
+      "Palette switch preserves closed shutter",
+      "Original Screenshots page navigation",
+      "Playlist scroll reaches Track 30 and double-click plays Track 10",
+      "Final alpha 1 resize handle changes panel height 640 to 665"
+    ]
+  },
+  "http_observations": [
+    {
+      "state": "paused",
+      "volume": 512,
+      "time": 80,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "1",
+      "tag": "seek_near_end_confirmed",
+      "at": "2026-10-15T17:00:09.785240+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 0,
+      "time": 87,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "1",
+      "tag": "volume_min_native_verified",
+      "at": "2026-10-15T17:06:49.760248+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 2,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "1",
+      "tag": "volume_max_native_verified",
+      "at": "2026-10-15T17:06:55.006588+00:00"
+    },
+    {
+      "state": "paused",
+      "volume": 512,
+      "time": 9,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "1",
+      "tag": "pause_final_native",
+      "at": "2026-10-15T17:07:02.697557+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 1,
+      "length": 90,
+      "currentplid": 12,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "1",
+      "tag": "playlist_row_native_confirmed",
+      "at": "2026-10-15T17:09:31.727381+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 9,
+      "length": 90,
+      "currentplid": 12,
+      "random": true,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "1",
+      "tag": "shuffle_native",
+      "at": "2026-10-15T17:09:39.265685+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 15,
+      "length": 90,
+      "currentplid": 12,
+      "random": true,
+      "loop": false,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "1",
+      "tag": "repeat_native",
+      "at": "2026-10-15T17:09:45.893611+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 28,
+      "length": 90,
+      "currentplid": 12,
+      "random": true,
+      "loop": false,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": "equalizer"
+      },
+      "equalizer": {
+        "bands": {
+          "band id=\"0\"": 0,
+          "band id=\"5\"": 0,
+          "band id=\"6\"": 0,
+          "band id=\"9\"": 0,
+          "band id=\"1\"": 0,
+          "band id=\"3\"": 0,
+          "band id=\"8\"": 0,
+          "band id=\"2\"": 0,
+          "band id=\"7\"": 0,
+          "band id=\"4\"": 0
+        },
+        "preamp": 12
+      },
+      "scale": "1",
+      "tag": "eq_enable_native",
+      "at": "2026-10-15T17:09:59.056558+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 34,
+      "length": 90,
+      "currentplid": 12,
+      "random": true,
+      "loop": false,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": "equalizer"
+      },
+      "equalizer": {
+        "bands": {
+          "band id=\"0\"": 15,
+          "band id=\"5\"": 0,
+          "band id=\"6\"": 0,
+          "band id=\"9\"": 0,
+          "band id=\"1\"": 0,
+          "band id=\"3\"": 0,
+          "band id=\"8\"": 0,
+          "band id=\"2\"": 0,
+          "band id=\"7\"": 0,
+          "band id=\"4\"": 0
+        },
+        "preamp": 12
+      },
+      "scale": "1",
+      "tag": "eq_band_native",
+      "at": "2026-10-15T17:10:04.485805+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 42,
+      "length": 90,
+      "currentplid": 12,
+      "random": true,
+      "loop": false,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": "equalizer"
+      },
+      "equalizer": {
+        "bands": {
+          "band id=\"0\"": 15,
+          "band id=\"5\"": 0,
+          "band id=\"6\"": 0,
+          "band id=\"9\"": 0,
+          "band id=\"1\"": 0,
+          "band id=\"3\"": 0,
+          "band id=\"8\"": 0,
+          "band id=\"2\"": 0,
+          "band id=\"7\"": 0,
+          "band id=\"4\"": 0
+        },
+        "preamp": -17.65
+      },
+      "scale": "1",
+      "tag": "eq_preamp_native",
+      "at": "2026-10-15T17:10:12.355622+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 4,
+      "length": 90,
+      "currentplid": 13,
+      "random": true,
+      "loop": false,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": "equalizer"
+      },
+      "equalizer": {
+        "bands": {
+          "band id=\"0\"": 15,
+          "band id=\"5\"": 0,
+          "band id=\"6\"": 0,
+          "band id=\"9\"": 0,
+          "band id=\"1\"": 0,
+          "band id=\"3\"": 0,
+          "band id=\"8\"": 0,
+          "band id=\"2\"": 0,
+          "band id=\"7\"": 0,
+          "band id=\"4\"": 0
+        },
+        "preamp": -17.65
+      },
+      "scale": "1",
+      "tag": "next_native",
+      "at": "2026-10-15T17:11:51.331403+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 2,
+      "length": 90,
+      "currentplid": 28,
+      "random": true,
+      "loop": false,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": "equalizer"
+      },
+      "equalizer": {
+        "bands": {
+          "band id=\"0\"": 15,
+          "band id=\"5\"": 0,
+          "band id=\"6\"": 0,
+          "band id=\"9\"": 0,
+          "band id=\"1\"": 0,
+          "band id=\"3\"": 0,
+          "band id=\"8\"": 0,
+          "band id=\"2\"": 0,
+          "band id=\"7\"": 0,
+          "band id=\"4\"": 0
+        },
+        "preamp": -17.65
+      },
+      "scale": "1",
+      "tag": "previous_native",
+      "at": "2026-10-15T17:12:00.825324+00:00"
+    },
+    {
+      "state": "paused",
+      "volume": 256,
+      "time": 29,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "2",
+      "tag": "pause_native",
+      "at": "2026-10-15T17:13:24.196541+00:00"
+    },
+    {
+      "state": "paused",
+      "volume": 0,
+      "time": 29,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "2",
+      "tag": "volume_min_native",
+      "at": "2026-10-15T17:13:29.938714+00:00"
+    },
+    {
+      "state": "paused",
+      "volume": 512,
+      "time": 29,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "2",
+      "tag": "volume_max_native",
+      "at": "2026-10-15T17:13:36.811167+00:00"
+    },
+    {
+      "state": "paused",
+      "volume": 512,
+      "time": 81,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "2",
+      "tag": "seek_near_end_native",
+      "at": "2026-10-15T17:13:42.584195+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 512,
+      "time": 81,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": ""
+      },
+      "equalizer": [],
+      "scale": "2",
+      "tag": "resume_after_seek_native",
+      "at": "2026-10-15T17:14:12.468488+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 256,
+      "time": 25,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": "equalizer"
+      },
+      "equalizer": {
+        "bands": {
+          "band id=\"0\"": 0,
+          "band id=\"5\"": 0,
+          "band id=\"6\"": 0,
+          "band id=\"9\"": 0,
+          "band id=\"1\"": 0,
+          "band id=\"3\"": 0,
+          "band id=\"8\"": 0,
+          "band id=\"2\"": 0,
+          "band id=\"7\"": 0,
+          "band id=\"4\"": 0
+        },
+        "preamp": 12
+      },
+      "scale": "2",
+      "tag": "eq_enable_confirmed",
+      "at": "2026-10-15T17:22:44.883517+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 256,
+      "time": 37,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": "equalizer"
+      },
+      "equalizer": {
+        "bands": {
+          "band id=\"0\"": 0,
+          "band id=\"5\"": 0,
+          "band id=\"6\"": 0,
+          "band id=\"9\"": 15.2,
+          "band id=\"1\"": 0,
+          "band id=\"3\"": 0,
+          "band id=\"8\"": 0,
+          "band id=\"2\"": 0,
+          "band id=\"7\"": 0,
+          "band id=\"4\"": 0
+        },
+        "preamp": 12
+      },
+      "scale": "2",
+      "tag": "eq_band9_native",
+      "at": "2026-10-15T17:22:57.026433+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 256,
+      "time": 43,
+      "length": 90,
+      "currentplid": 2,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": "equalizer"
+      },
+      "equalizer": {
+        "bands": {
+          "band id=\"0\"": 0,
+          "band id=\"5\"": 0,
+          "band id=\"6\"": 0,
+          "band id=\"9\"": 15.2,
+          "band id=\"1\"": 0,
+          "band id=\"3\"": 0,
+          "band id=\"8\"": 0,
+          "band id=\"2\"": 0,
+          "band id=\"7\"": 0,
+          "band id=\"4\"": 0
+        },
+        "preamp": -17.5
+      },
+      "scale": "2",
+      "tag": "eq_preamp_native",
+      "at": "2026-10-15T17:23:03.493280+00:00"
+    },
+    {
+      "state": "playing",
+      "volume": 256,
+      "time": 1,
+      "length": 90,
+      "currentplid": 11,
+      "random": false,
+      "loop": true,
+      "repeat": false,
+      "audiofilters": {
+        "filter_0": "equalizer"
+      },
+      "equalizer": {
+        "bands": {
+          "band id=\"0\"": 0,
+          "band id=\"5\"": 0,
+          "band id=\"6\"": 0,
+          "band id=\"9\"": 15.2,
+          "band id=\"1\"": 0,
+          "band id=\"3\"": 0,
+          "band id=\"8\"": 0,
+          "band id=\"2\"": 0,
+          "band id=\"7\"": 0,
+          "band id=\"4\"": 0
+        },
+        "preamp": -17.5
+      },
+      "scale": "2",
+      "tag": "playlist_selection_native",
+      "at": "2026-10-15T17:24:03.179103+00:00"
+    }
+  ],
+  "pending": [
+    "Final 1x resize mouse recheck",
+    "Embedded video placement and resize",
+    "Audible EQ listening with user-selected media",
+    "Exhaustive every-button hover/pressed and wall-clock animation timing review",
+    "Minimize and skin fullscreen button mouse tests"
+  ],
+  "native_limitations": [
+    "Paused seek can leave clock text at old time until resume; native StreamTime notifies before the input seek.",
+    "Clock-token changes require layout activation: clicking during opening can finish it early; clicking during closing restarts travel while preserving the closed destination.",
+    "Automation failed with foreground window did not report a process id, including one recovery attempt. Mouse actions stopped."
+  ]
+}

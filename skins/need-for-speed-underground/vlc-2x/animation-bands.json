@@ -12,82 +12,12 @@
       {
         "id": "shutter_open_light_band_0",
         "y": 0,
-        "height": 28
+        "height": 231
       },
       {
         "id": "shutter_open_light_band_1",
-        "y": 28,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_2",
-        "y": 57,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_3",
-        "y": 86,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_4",
-        "y": 115,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_5",
-        "y": 144,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_6",
-        "y": 173,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_7",
-        "y": 202,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_8",
         "y": 231,
-        "height": 28
-      },
-      {
-        "id": "shutter_open_light_band_9",
-        "y": 259,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_10",
-        "y": 288,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_11",
-        "y": 317,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_12",
-        "y": 346,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_13",
-        "y": 375,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_14",
-        "y": 404,
-        "height": 29
-      },
-      {
-        "id": "shutter_open_light_band_15",
-        "y": 433,
-        "height": 29
+        "height": 231
       }
     ]
   },
@@ -104,82 +34,12 @@
       {
         "id": "shutter_open_band_0",
         "y": 0,
-        "height": 24
+        "height": 193
       },
       {
         "id": "shutter_open_band_1",
-        "y": 24,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_2",
-        "y": 48,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_3",
-        "y": 72,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_4",
-        "y": 96,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_5",
-        "y": 120,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_6",
-        "y": 144,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_7",
-        "y": 168,
-        "height": 25
-      },
-      {
-        "id": "shutter_open_band_8",
         "y": 193,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_9",
-        "y": 217,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_10",
-        "y": 241,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_11",
-        "y": 265,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_12",
-        "y": 289,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_13",
-        "y": 313,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_14",
-        "y": 337,
-        "height": 24
-      },
-      {
-        "id": "shutter_open_band_15",
-        "y": 361,
-        "height": 25
+        "height": 193
       }
     ]
   },
@@ -196,82 +56,12 @@
       {
         "id": "shutter_close_light_band_0",
         "y": 0,
-        "height": 28
+        "height": 231
       },
       {
         "id": "shutter_close_light_band_1",
-        "y": 28,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_2",
-        "y": 57,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_3",
-        "y": 86,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_4",
-        "y": 115,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_5",
-        "y": 144,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_6",
-        "y": 173,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_7",
-        "y": 202,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_8",
         "y": 231,
-        "height": 28
-      },
-      {
-        "id": "shutter_close_light_band_9",
-        "y": 259,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_10",
-        "y": 288,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_11",
-        "y": 317,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_12",
-        "y": 346,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_13",
-        "y": 375,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_14",
-        "y": 404,
-        "height": 29
-      },
-      {
-        "id": "shutter_close_light_band_15",
-        "y": 433,
-        "height": 29
+        "height": 231
       }
     ]
   },
@@ -288,82 +78,166 @@
       {
         "id": "shutter_close_band_0",
         "y": 0,
-        "height": 24
+        "height": 193
       },
       {
         "id": "shutter_close_band_1",
-        "y": 24,
-        "height": 24
-      },
-      {
-        "id": "shutter_close_band_2",
-        "y": 48,
-        "height": 24
-      },
-      {
-        "id": "shutter_close_band_3",
-        "y": 72,
-        "height": 24
-      },
-      {
-        "id": "shutter_close_band_4",
-        "y": 96,
-        "height": 24
-      },
-      {
-        "id": "shutter_close_band_5",
-        "y": 120,
-        "height": 24
-      },
-      {
-        "id": "shutter_close_band_6",
-        "y": 144,
-        "height": 24
-      },
-      {
-        "id": "shutter_close_band_7",
-        "y": 168,
-        "height": 25
-      },
-      {
-        "id": "shutter_close_band_8",
         "y": 193,
-        "height": 24
+        "height": 193
+      }
+    ]
+  },
+  "shutter_endpoint_1": {
+    "bitmap": {
+      "id": "shutter_endpoint_1",
+      "file": "assets/shutter_endpoint_1.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_endpoint_1_band_0",
+        "y": 0,
+        "height": 193
       },
       {
-        "id": "shutter_close_band_9",
-        "y": 217,
-        "height": 24
+        "id": "shutter_endpoint_1_band_1",
+        "y": 193,
+        "height": 193
+      }
+    ]
+  },
+  "shutter_endpoint_2": {
+    "bitmap": {
+      "id": "shutter_endpoint_2",
+      "file": "assets/shutter_endpoint_2.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_endpoint_2_band_0",
+        "y": 0,
+        "height": 193
       },
       {
-        "id": "shutter_close_band_10",
-        "y": 241,
-        "height": 24
+        "id": "shutter_endpoint_2_band_1",
+        "y": 193,
+        "height": 193
+      }
+    ]
+  },
+  "shutter_endpoint_3": {
+    "bitmap": {
+      "id": "shutter_endpoint_3",
+      "file": "assets/shutter_endpoint_3.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_endpoint_3_band_0",
+        "y": 0,
+        "height": 193
       },
       {
-        "id": "shutter_close_band_11",
-        "y": 265,
-        "height": 24
+        "id": "shutter_endpoint_3_band_1",
+        "y": 193,
+        "height": 193
+      }
+    ]
+  },
+  "shutter_endpoint_4": {
+    "bitmap": {
+      "id": "shutter_endpoint_4",
+      "file": "assets/shutter_endpoint_4.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_endpoint_4_band_0",
+        "y": 0,
+        "height": 193
       },
       {
-        "id": "shutter_close_band_12",
-        "y": 289,
-        "height": 24
+        "id": "shutter_endpoint_4_band_1",
+        "y": 193,
+        "height": 193
+      }
+    ]
+  },
+  "shutter_endpoint_5": {
+    "bitmap": {
+      "id": "shutter_endpoint_5",
+      "file": "assets/shutter_endpoint_5.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_endpoint_5_band_0",
+        "y": 0,
+        "height": 193
       },
       {
-        "id": "shutter_close_band_13",
-        "y": 313,
-        "height": 24
+        "id": "shutter_endpoint_5_band_1",
+        "y": 193,
+        "height": 193
+      }
+    ]
+  },
+  "shutter_endpoint_6": {
+    "bitmap": {
+      "id": "shutter_endpoint_6",
+      "file": "assets/shutter_endpoint_6.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_endpoint_6_band_0",
+        "y": 0,
+        "height": 193
       },
       {
-        "id": "shutter_close_band_14",
-        "y": 337,
-        "height": 24
+        "id": "shutter_endpoint_6_band_1",
+        "y": 193,
+        "height": 193
+      }
+    ]
+  },
+  "shutter_endpoint_7": {
+    "bitmap": {
+      "id": "shutter_endpoint_7",
+      "file": "assets/shutter_endpoint_7.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_endpoint_7_band_0",
+        "y": 0,
+        "height": 193
       },
       {
-        "id": "shutter_close_band_15",
-        "y": 361,
-        "height": 25
+        "id": "shutter_endpoint_7_band_1",
+        "y": 193,
+        "height": 193
       }
     ]
   },

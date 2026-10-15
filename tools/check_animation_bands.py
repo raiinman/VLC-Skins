@@ -14,6 +14,7 @@ for scale in (1,2):
     for key,item in manifest.items():
         original=Image.open(root/item['bitmap']['file']).convert('RGBA')
         frames=int(item['bitmap']['nbframes']);height=original.height//frames
+        assert len(item['bands'])==(2 if frames<=11 else 16),'Excess animation timers'
         rebuilt=Image.new('RGBA',original.size)
         for band in item['bands']:
             node=a.resources[band['id']]

@@ -14,7 +14,9 @@
 
 Both scales of the prior parity candidate loaded and played a generated silent 640×360 MPEG-4/AAC clip through VLC's loopback RC interface. The reference is 90 seconds long. Native playback statistics and exact candidate hashes are recorded in `runtime-summary.json`; they prove theme load and player operation, not skin button interaction. The current banded packages have separate exact hashes and native silent-WAV initialization checks in `load-benchmark.json`.
 
-An earlier parity test exercised native fullscreen output and Escape through Computer Use. Its capture showed the complete 16:9 reference video. The automation tool does not enumerate VLC's owned skin windows, although the user confirmed the skin is visible. No native skin screenshot or mouse-control certification is claimed. No desktop captures are included in this repository or bundle.
+Native Computer Use now reaches skin controls through an isolated floating Direct3D output window. Mouse clicks and drags were checked against independent read-only HTTP values: play/pause, volume endpoints, seeking, playlist selection/scrolling and EQ enable/band/preamp at both scales; next/previous, shuffle/repeat and Open Media at 1x. Native views showed shutter travel/endpoints, selected palettes, clock-mode changes, original Story/Screenshots navigation and credits. The final 2x resize grip increased playlist height from 640 to 665 pixels. The final 1x package loaded and displayed its clock; the tool then failed with `foreground window did not report a process id`, including recovery, before the final resize recheck.
+
+[native-gui-review.json](native-gui-review.json) separates intermediate functional reviews from final-package checks and records sanitized observations. These tests use `--no-skinned-video` as an automation anchor, so they do not establish embedded video placement. Earlier fullscreen/Escape testing showed the complete 16:9 reference. No desktop captures or credentials are included in this repository or bundle.
 
 The expanded theme originally exposed a VLC 3.0.x generated-ID truncation defect after the counter exceeded 999. Source and test crash-dump evidence traced the pure-virtual-call crash to colliding control IDs. Explicit unique IDs on every generated control resolved the load crash; repeat native loads succeeded.
 
@@ -28,6 +30,14 @@ A separate read-only reviewer found two defects. Shutter hover/pressed states re
 
 The user confirmed that 2x eventually appeared after minutes. Upstream Win32Graphics builds masks by repeatedly combining opaque pixel runs. Horizontal bands retain animation pixels/timing while reducing that work. The native benchmark now measures CLI autoplay after interface initialization, using a silent WAV; RC commands never start playback. Windows file-log buffering made the first log-poll timing unreliable. The corrected benchmark checks flushed theme diagnostics after shutdown and requires both scales to initialize within 30 seconds and remain alive through startup. Final timings and package hashes are in `load-benchmark.json`. Cross-machine performance remains unverified.
 
-Native clicks, dial dragging, playlist scroll/selection, EQ listening, embedded video placement/resize, visual hover feedback and animation timing still need hands-on review. WMP-only feature removals and other permitted adaptations are listed in PARITY.md. Complete parity remains a user acceptance decision.
+Exhaustive hover/pressed coverage, exact wall-clock animation timing, final 1x resize, EQ listening and embedded video placement/resize still need hands-on review. WMP-only feature removals and other permitted adaptations are listed in PARITY.md. Complete parity remains a user acceptance decision.
 
 Regular VLC launches can restore a layout without the intro. Review launchers reset it; the conversion credit page provides Replay intro. The automatic WMP on-load timer has no direct skin-only equivalent.
+
+## Native parity fixes in this pass
+
+Reversed volume sprites now agree with native minimum/maximum values. Playlist scrollbar points match VLC's descending scroll variable. The EQ uses its smooth original corner, metadata uses all original palette colors, and the clock is more legible. Closing preserves the interior during travel and covers it only at the endpoint; a clock click preserves the closing destination. Transparent source resize rectangles now receive input through alpha 1 hit masks. Pixel and binding contracts guard both scales.
+
+At 2x, 16 bands per short shutter sequence created up to 49 active timers and 980 callbacks/second. Two bands reduce closing to seven timers while retaining every pixel. Dynamic text is visible only in its owning main layout; inactive copies no longer rasterize on each time update. Final initialization timings and hashes are in load-benchmark.json. The animation sequence is preserved; precise wall-clock pacing remains a review item.
+
+Native paused seeking can leave clock text stale until resume. Upstream StreamTime notifies before setting the input position, and an identical subsequent percentage suppresses another notification. Changing clock mode during shutter travel also activates a layout, which can finish opening early or restart closing. These limits are recorded rather than claimed fixed.

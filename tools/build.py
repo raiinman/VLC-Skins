@@ -59,17 +59,18 @@ class Builder:
         shutil.copyfile(font, self.out / 'assets/FreeSans.ttf')
         E.SubElement(self.theme, 'Font', id='ui', file='assets/FreeSans.ttf', size=str(10 * scale))
         E.SubElement(self.theme, 'Font', id='small', file='assets/FreeSans.ttf', size=str(8 * scale))
+        E.SubElement(self.theme, 'Font', id='clock', file='assets/FreeSans.ttf', size=str(14 * scale))
 
     def n(self, v):
         return str(round(v * self.scale))
 
-    def bitmap(self, name, im=None, frames=1, fps=0, loop=0, gridframes=1):
+    def bitmap(self, name, im=None, frames=1, fps=0, loop=0, gridframes=1, prescaled=False):
         key = name.replace('.', '_')
         if key in self.ids:
             return key
         if im is None:
             im = rgba(name)
-        if self.scale != 1:
+        if self.scale != 1 and not prescaled:
             # Scale each frame separately so filtering cannot bleed between states.
             count = max(frames, gridframes)
             h = im.height // count
@@ -154,11 +155,10 @@ class Builder:
         thumb=self.bitmap('invisible_cursor',Image.new('RGBA',(1,1)))
         slider=E.SubElement(layout,'Slider',x=self.n(x),y=self.n(y+sprite_y),up=thumb,points=','.join(f'({self.n(a)},{self.n(b)})' for a,b in points),value=variable,tooltiptext='Volume: $V%' if variable=='volume' else 'Seek: $T / $D')
         # Register frames as a static grid; VLC chooses its frame from the value.
-        if variable=='time':
-            original=rgba(name+'.png');seq=Image.new('RGBA',original.size)
-            for i in range(frames):seq.paste(original.crop((0,(frames-1-i)*frame_h,size,(frames-i)*frame_h)),(0,i*frame_h))
-            key=self.bitmap('seek_forward',seq,gridframes=frames)
-        else:key=self.bitmap(name+'.png',gridframes=frames)
+        # Both source strips start at their maximum needle position.
+        original=rgba(name+'.png');seq=Image.new('RGBA',original.size)
+        for i in range(frames):seq.paste(original.crop((0,(frames-1-i)*frame_h,size,(frames-i)*frame_h)),(0,i*frame_h))
+        key=self.bitmap(name+'_forward',seq,gridframes=frames)
         E.SubElement(slider,'SliderBackground',image=key,nbvert=str(frames))
 
     def main(self):
@@ -179,16 +179,18 @@ class Builder:
                     self.button(l,'m_open',64,52,'dialogs.fileSimple()','Open media')
                     for p,x,y,w in [('m_vis',37,86,'video'),('m_pl',27,126,'tracks'),('m_eq',32,168,'equalizer')]:
                         self.check(l,p,x,y,w+'.isVisible',w+'.show()',w+'.hide()','Show / hide '+w)
-                    if not shut:
+                    if state!='closed':
                         self.dial(l,c,'volume',81,65,138,0,52,29,0,0,'volume')
                         self.dial(l,c,'seek',71,56,156,108,68,33,0,0,'time')
                         self.image(l,'vol_seek_mat.png',108,102)
-                        self.text(l,'$N',62,117,177,small=True)
+                        self.text(l,'$N',62,117,177,color=['#00AEEF','#00AEEF','#C4DF9B','#A864A8','#F26D7D','#F69679','#FFF568'][c-1],small=True)
                         E.SubElement(l,'Button',x=self.n(58),y=self.n(134),up=self.bitmap('m_logo_no.png'),over=self.bitmap('m_logo_hov.png'),down=self.bitmap('m_logo_no.png'),action='info.show()',tooltiptext='Need for Speed information')
-                        self.text(l,'$l' if remaining else '$t',129,168,60,small=True)
+                        clocktext=self.text(l,'$l' if remaining else '$t',129,165,60)
+                        clocktext.set('font','clock')
                         if remaining:self.image(l,'time_dash.png',120,168)
                         hit=self.bitmap('clock_hit',Image.new('RGBA',(69,16),(0,0,0,1)))
-                        E.SubElement(l,'Button',id=f'clock_{c}_{state}_{int(remaining)}',x=self.n(120),y=self.n(167),up=hit,action=f'main.setLayout({self.main_id(c,"open",not remaining)})',tooltiptext='Show elapsed time' if remaining else 'Show remaining time')
+                        clock_state='closing' if state=='closing' else 'open'
+                        E.SubElement(l,'Button',id=f'clock_{c}_{state}_{int(remaining)}',x=self.n(120),y=self.n(167),up=hit,action=f'main.setLayout({self.main_id(c,clock_state,not remaining)})',tooltiptext='Show elapsed time' if remaining else 'Show remaining time')
                     self.button(l,'m_next',240,100,'playlist.next()','Next track')
                     self.button(l,'m_stop',244,142,'vlc.stop()','Stop')
                     self.check(l,'m_play',234,182,'vlc.isPlaying','vlc.play()','vlc.pause()','Play / pause',prefix2='m_pause')
@@ -215,6 +217,8 @@ class Builder:
                         self.button(l,prefix,237,242,action,'Open shutter' if shut else 'Close shutter')
                         key=self.shutter_sequence(shut)
                         E.SubElement(l,'Button',id=f'decorative_shutter_{c}_{state}_{int(remaining)}',up=key,x=self.n(54),y=self.n(52),action='none',help='Decorative shutter animation')
+                        if state=='closing':
+                            E.SubElement(l,'Button',id=f'decorative_endpoint_{c}_{int(remaining)}',up=self.shutter_endpoint(c),x=self.n(54),y=self.n(52),action='none',help='Hide source interior at closed endpoint')
                     else:
                         button=self.button(l,'m_shutter',237,242,action,'Open shutter' if shut else 'Close shutter')
                         if shut:button.set('up',self.bitmap('m_shutter_do.png'))
@@ -249,6 +253,27 @@ class Builder:
             else:im=rgba(f'shutter_f0{frame}.png')
             seq.paste(im,(0,i*height))
         return self.bitmap(name,seq,11,20,1)
+
+    def shutter_endpoint(self,color):
+        key=f'shutter_endpoint_{color}'
+        if key in self.ids:return key
+        def native(name):
+            resource=self.bitmap(name)
+            return Image.open(self.out/'assets'/f'{resource}.png').convert('RGBA')
+        closed=native(f'main_back_{color}.png')
+        closed.alpha_composite(native('shutter_light.png'),(21*self.scale,32*self.scale))
+        closed.alpha_composite(native('shutter_f01.png'),(54*self.scale,52*self.scale))
+        size=193*self.scale;last=Image.new('RGBA',(size,size))
+        # These source interior bounds are opaque in the closed composition.
+        # Painting only them avoids double-blending the shutter's soft edges.
+        for x,y,w,h in [(81,65,138,52),(71,164,156,68),(108,102,85,93),
+                        (58,134,182,31),(62,117,177,18),(120,167,69,18)]:
+            box=tuple(v*self.scale for v in (x,y,x+w,y+h))
+            patch=closed.crop(box)
+            assert patch.getchannel('A').getextrema()==(255,255)
+            last.paste(patch,((x-54)*self.scale,(y-52)*self.scale))
+        strip=Image.new('RGBA',(size,size*11));strip.paste(last,(0,size*10))
+        return self.bitmap(key,strip,11,20,1,prescaled=True)
 
     def startup_sequence(self):
         with Image.open(SOURCE/'intro_anim.gif') as gif:
@@ -285,7 +310,7 @@ class Builder:
             for c in (1,):
                 resize=kind!='equalizer'
                 l=self.layout(win,f'{kind}_{c}',w,h,resize)
-                self.frame(l,None,w,h,top=top,resizable=resize)
+                self.frame(l,None,w,h,top=top,bottom='info_bot_right' if kind=='equalizer' else 'f_bot_right',resizable=resize)
                 self.button(l,'m_close',w-68,6,kind+'.hide()','Close '+kind,**({'lefttop':'righttop'} if resize else {}))
                 if kind in ('tracks','video'):
                     self.bitmap('screen_black',Image.new('RGBA',(1,1),'black'))
@@ -294,7 +319,7 @@ class Builder:
                     self.check(l,'pl_shuffle',w-110,6,'playlist.isRandom','playlist.setRandom(true)','playlist.setRandom(false)','Shuffle',lefttop='righttop')
                     self.check(l,'pl_repeat',w-89,6,'playlist.isLoop','playlist.setLoop(true)','playlist.setLoop(false)','Repeat playlist',lefttop='righttop')
                     tree=E.SubElement(l,'Playtree',id='track_list',x=self.n(34),y=self.n(37),width=self.n(w-86),height=self.n(h-67),font='ui',fgcolor='#9FA2B0',playcolor='#FFFFFF',bgcolor1='#000000',bgcolor2='#000000',selcolor='#A01A1A',flat='true',rightbottom='rightbottom')
-                    E.SubElement(tree,'Slider',x=self.n(w-44),y=self.n(43),up=self.bitmap('eq_thumb2.png'),down=self.bitmap('eq_thumb2_do.png'),points=f'(0,0),(0,{self.n(h-90)})',lefttop='righttop',rightbottom='rightbottom')
+                    E.SubElement(tree,'Slider',x=self.n(w-44),y=self.n(43),up=self.bitmap('eq_thumb2.png'),down=self.bitmap('eq_thumb2_do.png'),points=f'(0,{self.n(h-90)}),(0,0)',lefttop='righttop',rightbottom='rightbottom')
                     self.button(l,'m_open',32,h-31,'playlist.add()','Add media',lefttop='leftbottom')
                 elif kind=='video':
                     E.SubElement(l,'Video',x=self.n(34),y=self.n(37),width=self.n(w-68),height=self.n(h-67),rightbottom='rightbottom')
@@ -309,7 +334,10 @@ class Builder:
                     E.SubElement(l,'Slider',x=self.n(232),y=self.n(71),up=self.bitmap('eq_thumb2.png'),down=self.bitmap('eq_thumb2_do.png'),points=f'(0,0),({self.n(60)},0)',value='equalizer.preamp',tooltiptext='Equalizer preamplification')
                     self.text(l,'Dead Signal Interactive',60,174,235,color='#9FA2B0',small=True)
                 if resize:
-                    self.image(l,'f_resize.png',w-36,h-24,action='resizeSE',lefttop='rightbottom')
+                    # WMP used a fully magenta image as a rectangular hit area.
+                    # VLC ignores transparent pixels, so retain a minimal alpha.
+                    self.bitmap('resize_hit',Image.new('RGBA',(23,24),(0,0,0,1)))
+                    self.image(l,'resize_hit',w-36,h-24,action='resizeSE',lefttop='rightbottom')
             win.append(win[0])
 
     def information(self):
@@ -359,6 +387,11 @@ class Builder:
         win.append(win[0])
 
     def save(self):
+        # Hidden layouts still observe time changes in VLC. Gate their text
+        # before rasterization; activation refreshes the current value.
+        for layout in self.theme.findall('./Window[@id="main"]/Layout'):
+            for node in layout.findall('Text'):
+                node.set('visible',layout.get('id')+'.isActive')
         # VLC 3's generateId() uses snprintf(..., 4, ...), truncating at 999.
         # Explicit IDs prevent its control owner map from deleting live controls.
         for i,node in enumerate(self.theme.iter()):
@@ -396,8 +429,11 @@ class Builder:
             im=Image.open(self.out/node.get('file')).convert('RGBA')
             if im.height<=4096:continue
             height=im.height//frames;bands=[]
-            for index in range(16):
-                y0=height*index//16;y1=height*(index+1)//16
+            # Short shutter strips need only two bands. Excess bands add
+            # independent timers and synchronous Win32 paints per frame.
+            count=2 if frames<=11 else 16
+            for index in range(count):
+                y0=height*index//count;y1=height*(index+1)//count
                 strip=Image.new('RGBA',(im.width,(y1-y0)*frames))
                 for frame in range(frames):
                     strip.paste(im.crop((0,frame*height+y0,im.width,frame*height+y1)),(0,frame*(y1-y0)))
