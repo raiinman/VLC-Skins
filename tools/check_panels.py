@@ -26,16 +26,28 @@ def geometry(node, original, size, image_size):
     return left, top, right-left, bottom-top
 
 
+def slider_geometry(node, original, size):
+    points = [(int(x), int(y)) for x, y in re.findall(r'\((-?\d+),(-?\d+)\)', node.get('points'))]
+    # VLC Bezier::getWidth/getHeight use the maximum coordinate plus one.
+    curve = max(x for x, y in points)+1, max(y for x, y in points)+1
+    return points, curve, geometry(node, original, size, curve)
+
+
 def layers(assets, layout, palette, size, checked):
     original = int(layout.get('width')), int(layout.get('height'))
     result = []
+    controls = []
     for node in layout:
+        controls.append(node)
+        # Native parsing assigns the nested scrollbar the next layout layer;
+        # its coordinates remain relative to the layout, not the Playtree.
+        if node.tag == 'Playtree':
+            controls.extend(node.findall('Slider'))
+    for node in controls:
         if not visible(node.get('visible'), f'main_{palette}'):
             continue
         if node.tag == 'Slider':
-            points = [(int(x), int(y)) for x, y in re.findall(r'\((-?\d+),(-?\d+)\)', node.get('points'))]
-            rail_size = max(x for x, y in points)+1, max(y for x, y in points)+1
-            x, y, w, h = geometry(node, original, size, rail_size)
+            _, _, (x, y, w, h) = slider_geometry(node, original, size)
             thumb = assets.image(node.get('up'))
             radius = max(int(node.get('thickness', 10)), (max(thumb.size)+1)//2)
             # Conservative rectangle: no retained button may intersect any rail.
@@ -78,11 +90,25 @@ def ownership(items, size):
     return canvas
 
 
-def verify(assets, layout, palette, size, checked, scale):
+def verify(assets, layout, palette, size, checked, scale, stats=None):
     items = layers(assets, layout, palette, size, checked)
     canvas = ownership(items, size)
     count = 0
     for index, (node, (x, y, w, h), alpha) in enumerate(items, 1):
+        if node.tag == 'Slider':
+            original = int(layout.get('width')), int(layout.get('height'))
+            points, curve, (sx, sy, sw, sh) = slider_geometry(node, original, size)
+            assert len(points) == 2, 'Panel slider check currently models straight rails'
+            tw, th = assets.image(node.get('up')).size
+            for t in (0, .25, .5, .75, 1):
+                px = round(points[0][0]*(1-t)+points[1][0]*t)
+                py = round(points[0][1]*(1-t)+points[1][1]*t)
+                cx, cy = sx+int(px*sw/curve[0]), sy+int(py*sh/curve[1])
+                assert tw//2 <= cx < size[0]-(tw+1)//2 and th//2 <= cy < size[1]-(th+1)//2, (layout.get('id'), node.get('id'), t, 'slider thumb outside window')
+                assert canvas.getpixel((cx, cy)) == index, (layout.get('id'), node.get('id'), t, 'slider access obstructed')
+                if stats is not None:
+                    stats['slider_samples'] += 1
+            continue
         if node.tag not in ('Button', 'Checkbox'):
             continue
         actual = canvas.crop((x, y, x+w, y+h))
@@ -121,9 +147,9 @@ def main():
             for size in sizes:
                 for palette in range(1, 8):
                     for checked in (False, True):
-                        counts['buttons'] += verify(assets, layout, palette, size, checked, scale)
+                        counts['buttons'] += verify(assets, layout, palette, size, checked, scale, counts)
                         counts['states'] += 1
-        print(f'PASS {scale}x: {counts["states"]} panel palette/size/check states, {counts["buttons"]} button ownership checks; resize handles and viewport margins')
+        print(f'PASS {scale}x: {counts["states"]} panel palette/size/check states, {counts["buttons"]} button ownership checks, {counts["slider_samples"]} slider access samples; resize handles and viewport margins')
 
 
 if __name__ == '__main__':

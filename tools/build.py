@@ -120,7 +120,13 @@ class Builder:
         return ' or '.join(lid+'.isActive' for lid in ids)
 
     def window(self, name, x, y, visible=False):
-        return E.SubElement(self.theme, 'Window', id=name, x=self.n(x), y=self.n(y), visible=str(visible).lower())
+        # Desktop positions are independent of asset scale. Keep every fresh
+        # 2x panel reachable within a 1920x1040 desktop work area.
+        if self.scale == 2:
+            x,y={'main':(60,60),'tracks':(700,60),'equalizer':(700,600),
+                 'info':(1090,60),'video':(480,100)}[name]
+        elif name=='video':y=100
+        return E.SubElement(self.theme, 'Window', id=name, x=str(x), y=str(y), visible=str(visible).lower())
 
     def layout(self, window, name, width, height, resizable=False):
         attrs = dict(id=name, width=self.n(width), height=self.n(height))
@@ -203,22 +209,30 @@ class Builder:
                     self.button(l,'m_color',194,269,f'main.setLayout({target})','Cycle seven original color schemes')
                     self.check(l,'m_info',215,257,'info.isVisible','info.show()','info.hide()','Information / About')
                     action=f'main.setLayout({self.main_id(c,"opening" if shut else "closing",remaining)})'
+                    shutter_blocker=None
                     if state in ('opening','closing'):
-                        # A transparent lead-in prevents repeated clicks during travel.
-                        self.image(l,'m_shutter_do.png' if shut else 'm_shutter_no.png',237,242)
                         prefix='shutter_locked_closed' if shut else 'shutter_locked'
                         for suffix,source in [('no','no'),('hov','hov'),('do','do')]:
                             if shut and suffix=='no':source='do'
                             im=rgba('m_shutter_'+source+'.png')
-                            if suffix=='no':
-                                seq=Image.new('RGBA',(im.width,im.height*11))
-                                seq.paste(im,(0,im.height*10))
-                                self.bitmap(prefix+'_'+suffix+'.png',seq,11,20,1)
-                            else:
-                                # VLC restarts animation on hover/press. Those masks
-                                # must remain solid so a quick release still clicks.
-                                self.bitmap(prefix+'_'+suffix+'.png',im)
+                            self.bitmap(prefix+'_'+suffix+'.png',im)
                         self.button(l,prefix,237,242,action,'Open shutter' if shut else 'Close shutter')
+                        # Keep feedback static: returning from hover to an animated
+                        # idle image would restart its input lock after every leave.
+                        # A separate gate consumes clicks only during shutter travel.
+                        masks=[]
+                        for s in ('no','hov','do'):
+                            im=rgba('m_shutter_'+s+'.png')
+                            if self.scale!=1:
+                                im=im.resize((im.width*self.scale,im.height*self.scale),Image.Resampling.LANCZOS)
+                            masks.append(im.getchannel('A'))
+                        mask=ImageChops.lighter(ImageChops.lighter(masks[0],masks[1]),masks[2])
+                        gate=Image.new('RGBA',mask.size)
+                        gate.putalpha(mask.point(lambda a:1 if a else 0))
+                        seq=Image.new('RGBA',(gate.width,gate.height*2));seq.paste(gate,(0,0))
+                        key=self.bitmap('shutter_transition_blocker',seq,2,2,1,prescaled=True)
+                        shutter_blocker=E.SubElement(l,'Button',id=f'decorative_shutter_lock_{c}_{state}_{int(remaining)}',
+                            up=key,x=self.n(237),y=self.n(242),action='none')
                         key=self.shutter_sequence(shut)
                         E.SubElement(l,'Button',id=f'decorative_shutter_{c}_{state}_{int(remaining)}',up=key,x=self.n(54),y=self.n(52),action='none',help='Decorative shutter animation')
                         if state=='closing':
@@ -234,6 +248,7 @@ class Builder:
                         key=node.get('up') or node.get('up1') or ''
                         if node.tag in ('Button','Checkbox') and (key.startswith('m_') and key!='m_logo_no_png' or key.startswith('shutter_locked')):
                             l.append(node)
+                    if shutter_blocker is not None:l.append(shutter_blocker)
         # VLC chooses the last layout declared as its initial layout.
         startup=copy.deepcopy(win[0]);startup.set('id','main_start')
         for e in startup.iter():

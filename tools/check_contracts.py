@@ -102,10 +102,11 @@ for scale in (1,2):
             closed=expected.crop(tuple(v*scale for v in (x,y,x+w,y+h)))
             assert actual.tobytes()==closed.tobytes(),(c,'closed endpoint pixels')
     for prefix in ('shutter_locked','shutter_locked_closed'):
-        for suffix in ('hov','do'):
+        for suffix in ('no','hov','do'):
             key=prefix+'_'+suffix+'_png'
             assert assets.resources[key].get('nbframes','1')=='1'
-            expected=rgba('m_shutter_'+suffix+'.png')
+            source='do' if prefix=='shutter_locked_closed' and suffix=='no' else suffix
+            expected=rgba('m_shutter_'+source+'.png')
             if scale==2:expected=expected.resize((expected.width*2,expected.height*2),Image.Resampling.LANCZOS)
             assert assets.image(key).tobytes()==expected.tobytes(),key
     assert assets.resources['intro_sequence'].get('nbframes')=='81'

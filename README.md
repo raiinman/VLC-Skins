@@ -2,7 +2,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: latest candidate verified offline; native recheck and user acceptance pending.** Both scales pass XML, pixel-preservation, state-transition and input-layer checks. Earlier native mouse tests cover transport, volume/seek, playlist selection/scrolling, equalizer controls and original information navigation. The native pass corrected volume direction, shutter interiors, playlist scrolling and resize hit areas. The subsequent offline pass fixes intro transparency before enlargement and checks source artwork, button states and panel geometry. See [verification](docs/VERIFICATION.md).
+**Status: latest candidate verified offline; native recheck and user acceptance pending.** Both scales pass XML, pixel-preservation, state-transition and input-layer checks. Earlier native mouse tests cover transport, volume/seek, playlist selection/scrolling, equalizer controls and original information navigation. The native pass corrected volume direction, shutter interiors, playlist scrolling and resize hit areas. Offline checks now cover corrected intro transparency, shutter input gating, resized sliders and default panel placement. Both preview launchers reset their isolated layout settings before launch. See [verification](docs/VERIFICATION.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -25,7 +25,7 @@ The video panel is rectangular and clear of the NFS logo. The seek and volume ga
 
 Palette changes preserve the clock mode, shutter state and open panels. The information frame also follows the selected palette. Startup and shutter playback follow the original script timing.
 
-The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. Lossless horizontal animation bands reduced Windows initialization to the times recorded for the earlier native-tested package in [load-benchmark.json](docs/load-benchmark.json), followed by the roughly 8-second original intro. Separate `Preview-1x.cmd` and `Preview-2x.cmd` launchers use isolated settings and start the intro. Regular VLC launches may restore another saved layout and skip it; Information → conversion credits → Replay intro runs it again in the blue theme. [Control mapping and review limits](docs/PARITY.md).
+The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. Lossless horizontal animation bands reduced Windows initialization to the times recorded for the earlier native-tested package in [load-benchmark.json](docs/load-benchmark.json), followed by the roughly 8-second original intro. Separate `Preview-1x.cmd` and `Preview-2x.cmd` launchers rewrite their adjacent isolated INI files to select the bundled skin and clear saved layouts before starting the intro. Fresh window positions fit a 1280×720 work area at 1x and 1920×1040 at 2x; existing saved positions can override them. Regular VLC launches may restore another saved layout and skip it; Information → conversion credits → Replay intro runs it again in the blue theme. [Control mapping and review limits](docs/PARITY.md).
 
 ## Build and verify
 
@@ -40,6 +40,9 @@ python tools/check_animation_bands.py
 python tools/check_startup.py
 python tools/check_source_art.py
 python tools/check_panels.py
+python tools/check_transitions.py
+python tools/check_placement.py
+python tools/check_launchers.py
 python tools/preview.py
 # Native initialization check (launches VLC; run when desktop testing is available):
 python tools/benchmark_load.py

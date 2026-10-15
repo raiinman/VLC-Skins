@@ -5,12 +5,12 @@ Latest candidate: offline verified only. No VLC launches, desktop input, install
 ## Automated checks
 
 - `python tools/build.py --check`: both scales validate against the official VLC 3.0.x DTD; IDs, resource references and functional button actions pass.
-- `python tools/check_contracts.py`: both scales pass exact atlas-versus-unpacked pixels, original main-button coordinates, 56 clock/shutter/palette states plus startup, layout action ownership, single video/playlist/EQ instances, independent 2x needle-frame resampling, animation metadata, endpoint assets, remaining-time dash and static shutter hover/pressed masks.
+- `python tools/check_contracts.py`: both scales pass exact atlas-versus-unpacked pixels, original main-button coordinates, 56 clock/shutter/palette states plus startup, layout action ownership, single video/playlist/EQ instances, independent 2x needle-frame resampling, animation metadata, endpoint assets, remaining-time dash and static shutter idle/hover/pressed masks.
 - `python tools/check_hits.py`: both scales pass 856 functional main-control instances. Coverage is 490,995 pixels at 1x and 1,957,753 at 2x, after excluding only physical overlaps between verified source outer buttons. Invisible hit rectangles remain potential obstructions. This is an offline model of the final XML/pixels, not native mouse QA.
 - Mutation checks: a deliberately incorrect elapsed/remaining clock transition failed the contract suite; a painted black obstruction over Next failed the hit suite. XML was restored after each mutation; delivered VLTs were not modified by these tests.
 - A displaced animation-band manifest entry failed the exact reconstruction guard; the manifest was restored afterward.
 - `python tools/check_animation_bands.py`: native animation masks stay within 4,096 pixels in height. Reassembling their bands reproduces every canonical RGBA frame exactly, with matching fps/loops, source placement and actions. The guard failed before band generation existed.
-- Python compilation and `git diff --check` passed. The preview was regenerated and inspected; it is an asset rendering.
+- Python compilation and `git diff --check` passed. The existing preview is an asset rendering; it is not evidence of the new native behavior.
 
 ## Native VLC 3.0.23
 
@@ -34,7 +34,7 @@ The user confirmed that 2x eventually appeared after minutes. Upstream Win32Grap
 
 Exhaustive hover/pressed coverage, exact wall-clock animation timing, final 1x resize, EQ listening and embedded video placement/resize still need hands-on review. WMP-only feature removals and other permitted adaptations are listed in PARITY.md. Complete parity remains a user acceptance decision.
 
-Regular VLC launches can restore a layout without the intro. Review launchers reset it; the conversion credit page provides Replay intro. The automatic WMP on-load timer has no direct skin-only equivalent.
+Regular VLC launches can restore a layout without the intro. Review launchers now reset it through their isolated INI (native end-to-end confirmation pending); the conversion credit page provides Replay intro. The automatic WMP on-load timer has no direct skin-only equivalent.
 
 ## Native parity fixes in this pass
 
@@ -50,6 +50,15 @@ The original GIF has opaque magenta pixels but its WMS container declares magent
 
 - `check_startup.py`: all 81 intro and 81 lighting frames at each scale match independently decoded, keyed source pixels and source fade timing. The test failed at the first GIF frame on the previous assets and passes after correction.
 - `check_source_art.py`: 176 used source images, 920 original hover/pressed bindings, 12 menu-state crops and three EQ power crops per scale pass. In-memory pixel and wrong-hover-binding mutations were rejected.
-- `check_panels.py`: 336 palette/size/checkbox combinations and 1,134 panel button-ownership checks per scale pass. Resize handles remain attached and viewport margins remain constant at base, enlarged and maximum sizes. Obstruction and detached-anchor mutations were rejected. This is an offline geometry model.
+- `check_panels.py`: 336 palette/size/checkbox combinations and 1,134 panel button-ownership checks and 980 slider-access samples per scale pass. Resize handles remain attached and viewport margins remain constant at base, enlarged and maximum sizes. Obstruction and detached-anchor mutations were rejected. This is an offline geometry model.
 
 The startup contact sheet renders corrected assets over a neutral background. It does not establish native playback, wall-clock timing or visual acceptance. Native load/performance and final desktop checks remain pending for this candidate.
+
+## Offline transition, placement and launcher audit
+
+- `check_transitions.py`: 44 source door/light frames and 56 main states per scale pass. Static shutter feedback sits below a two-frame 2 fps gate whose first frame has an alpha-1 mask and whose final frame is empty. Identical hover/down fallbacks prevent mouse-leave animation resets. The gate releases after 500 ms; it does not replace the original travel animation. An in-memory animated-idle mutation was rejected.
+- `check_placement.py`: five fresh windows and 971 critical control instances per scale pass. Defaults fit 1280×720 at 1x and 1920×1040 at 2x, including the video window and information close control. An in-memory offscreen-window mutation was rejected. These checks allow overlap and do not modify saved layouts.
+- `check_panels.py`: resized slider access includes the nested playlist scrollbar and native Bezier endpoint scaling at minimum, enlarged and maximum sizes. This supplements button ownership and anchor checks.
+- `check_launchers.py`: both isolated INI writers pass exact UTF-8 reset-content checks using Unicode, ampersand and apostrophe paths, and report write failure. Static checks require missing-skin and write-error guards before `start`. Only extracted writers ran against private fixtures; neither CMD launcher nor VLC ran. Upstream ThemeRepository bridges `--skins2-last` into configuration, so historical benchmark skin selection remains valid. The corrected reset concerns `skins2-config`, which Theme reads from configuration.
+
+Independent read-only review found no concrete regressions in the final gate, placement or launcher changes. Installed skins, user profiles and running VLC instances were left untouched. Native end-to-end launch, hover/input timing, embedded video and final visual acceptance remain pending. Closest DOX contracts were updated; existing ownership and child indexes remain valid.

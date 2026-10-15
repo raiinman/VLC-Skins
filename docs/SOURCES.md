@@ -29,3 +29,6 @@ Context7 resolved `/videolan/vlc` during the parity pass, but its returned skin 
 - [Native time variable](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/vars/time.cpp): the slider notifies before seeking the input. A paused clock can retain the pre-seek value until playback resumes.
 
 - Source `nfs.wms` introAnim declares `transparencyColor="#ff00ff"`; the GIF itself has no transparency metadata. Apply that key before scaling and fading. Source `nfs.js` htcpPl changes the playing-row background; the vendored Skins2 DTD exposes `playcolor` and `selcolor`, with no separate playing-row background field.
+
+- [VLC 3.0.23 ThemeRepository](https://github.com/videolan/vlc/blob/3.0.23/modules/gui/skins2/src/theme_repository.cpp): explicitly copies inherited `skins2-last` into configuration. Existing CLI skin-selection benchmarks therefore remain valid. [Theme configuration](https://github.com/videolan/vlc/blob/3.0.23/modules/gui/skins2/src/theme.cpp) reads saved layouts from configuration; review launchers clear that field in their isolated INI.
+- Button `setImage` stops the previous animation when its bitmap changes; AnimBitmap stop resets the frame. The separate shutter gate supplies identical state fallbacks, and actual shutter feedback remains static. Original `nfs.js` disables shutter input during travel and re-enables it at the endpoint.

@@ -2,15 +2,15 @@
   "date": "2026-10-15",
   "prior_native_review_commit": "49a3daee7bb0ac5824f2aaf9bc247f9c4f9ff591",
   "scope": "Background-only source and artifact verification. No VLC launches, desktop input, installed-skin changes or profile edits.",
-  "change": "Apply WMS exact magenta key to GIF frames before fading and per-frame resampling.",
+  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers.",
   "native_verified": false,
   "native_initialization_seconds": null,
   "packages": {
     "1": {
-      "sha256": "226d398f8cc00ab5e4402b1511a053a0f2f1530890db08902e864758801eea87"
+      "sha256": "e64a6b129bb96f103cfdfa4051126d39b3979e9ba1f97c2649e0242a8b102561"
     },
     "2": {
-      "sha256": "c6c4f9eb70227168e05ea19a31cb40844537a01071cd0bf02be3317bfeee08d1"
+      "sha256": "d782b6c9cc4eaf363acf25db63169b64c615e9f781ca0032e6b730d284c681b4"
     }
   },
   "offline_checks": {
@@ -22,17 +22,23 @@
     "original_images": "176 per scale; pass",
     "source_hover_pressed_bindings": "920 per scale; pass",
     "menu_and_EQ_crops": "12 menu and 3 EQ states per scale; pass",
-    "panel_geometry": "336 states and 1134 button checks per scale; pass",
+    "panel_geometry": "336 states, 1134 button checks and 980 slider-access samples per scale; pass",
     "python_compilation": "pass",
-    "diff_whitespace": "pass"
+    "diff_whitespace": "pass",
+    "shutter_transitions": "44 source door/light frames and 56 main states per scale; pass",
+    "default_placement": "5 windows and 971 critical controls per scale; 1x 1280x720 and 2x 1920x1040; pass",
+    "isolated_launchers": "both UTF-8 INI writers and write-failure checks; VLC not launched; pass",
+    "independent_review": "no concrete regressions found"
   },
-  "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations.",
+  "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets.",
   "remaining": [
     "Native recheck of the latest candidate",
     "Exact wall-clock animation pacing",
     "Final 1x resize interaction",
     "Embedded video placement and resize",
-    "Audible EQ response"
+    "Audible EQ response",
+    "Native end-to-end preview launcher validation",
+    "Native hover/leave input-gate timing"
   ],
   "contact_sheet": "startup-frames.png is asset-rendered, not a native capture."
 }

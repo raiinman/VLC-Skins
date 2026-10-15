@@ -89,3 +89,5 @@ Convert the supplied Need for Speed Underground WMP skin to VLC Skins2 using ori
 - `docs/AGENTS.md`: parity records, runtime evidence, review limits.
 - Root owns README.md, requirements.txt, .gitignore, vendor dependencies/licenses, and dist review packages.
 - dist contains both VLT scales and isolated Windows review launchers. Regenerate packages with tools/build.py; keep launcher filenames aligned with them.
+
+Background audits must not launch VLC, take desktop input, alter installed skins or edit user profiles. Review launchers reset only their adjacent isolated INI files before starting VLC; launcher-writer tests execute the writer against private fixtures without launching VLC.

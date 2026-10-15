@@ -13,7 +13,7 @@ Separate static verification, runtime observation and pending checks. Record uns
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py and python tools/check_panels.py after conversion changes.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py and python tools/check_launchers.py after conversion changes.
 
 ## Child DOX Index
 None.
@@ -26,3 +26,5 @@ load-benchmark.json records final package initialization measurements. runtime-s
 native-gui-review.json records sanitized mouse/visual observations and package scope. Keep failed/intercepted attempts out of passing evidence. Native testing uses an isolated profile and a floating video output as an automation anchor; it does not establish embedded video placement. Record paused-clock seek staleness and interrupted-transition behavior as explicit Skins2 limits. Never include desktop captures, loopback passwords or user media in review artifacts.
 
 offline-review.json identifies the latest background-only candidate and its exact hashes. Native GUI and load-benchmark records retain the earlier package hashes they actually tested. Keep offline candidates separate from installed/user-reviewed builds; the asset-rendered startup contact sheet is not a native capture.
+
+Record default placement, transition gating and isolated launcher-writer checks as offline evidence. Work-area checks allow overlapping windows and do not prove native display or saved-layout migration.

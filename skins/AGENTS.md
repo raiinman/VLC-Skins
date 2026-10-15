@@ -13,7 +13,7 @@ Preserve original asset pixels and author attribution; record intentional change
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py and python tools/check_panels.py after conversion changes.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py and python tools/check_launchers.py after conversion changes.
 
 ## Child DOX Index
 None.
@@ -26,3 +26,5 @@ Generated themes contain explicit control IDs and lossless atlases. Canonical an
 Keep the credit-page intro replay action and reset-layout review launchers: VLC may restore another layout on normal launch and bypass the initial intro.
 
 Preserve source metadata palette colors and the smooth EQ bottom corner. Closing endpoint patches are composed at the output scale, contain no translucent replacement pixels, and leave the source shutter edges intact. The 14-pixel source-scale clock font is an allowed readability adaptation.
+
+Keep default desktop positions inside the declared work areas without scaling them blindly with artwork. Existing saved VLC positions are not migrated. Shutter travel uses a separate 500 ms input gate over static original button feedback.

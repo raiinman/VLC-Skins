@@ -1,6 +1,6 @@
 # Parity and acceptance
 
-The latest candidate has an offline intro-transparency correction; native evidence below belongs to the earlier review candidate. See `offline-review.json` for exact scope.
+The latest candidate includes offline intro-transparency, shutter-gate, default-placement and isolated preview-reset fixes; native evidence below belongs to the earlier review candidate. See `offline-review.json` for exact scope.
 
 The current target is complete parity within the user's permitted VLC adaptations. Acceptance belongs to the user. This build is not certified as 100% visually or interactively identical.
 
@@ -39,3 +39,11 @@ The current target is complete parity within the user's permitted VLC adaptation
 ## Acceptance still needed
 
 Review exhaustive hover/pressed feedback, exact startup/shutter wall-clock timing, all seven palettes, audible EQ response, 1x resize and embedded video placement/resize. Native mouse QA now covers substantial controls at both scales; it does not certify complete parity. Exact package scope and passing observations are in [native-gui-review.json](native-gui-review.json). See [verification evidence](VERIFICATION.md).
+
+## Offline audit changes
+
+Shutter idle, hover and pressed feedback now retain static original pixels. A separate two-frame hit mask releases after 500 ms, so leaving hover cannot restart the input delay. Every door/light frame still matches the source. Native timing and input recheck remain pending.
+
+Fresh defaults fit 1280×720 at 1x and 1920×1040 at 2x. The 1x video window moves upward; 2x desktop positions are independent of artwork scale. Window overlap is allowed and existing saved positions are untouched. Smaller work areas remain outside this placement contract.
+
+Review launchers rewrite only their adjacent isolated INI: bundled skin path plus empty saved layout. The writer passes UTF-8 path and failure checks offline; native end-to-end launcher validation remains pending.
