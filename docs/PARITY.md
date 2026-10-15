@@ -22,6 +22,7 @@ The current target is complete parity within the user's permitted VLC adaptation
 ## Permitted adaptations and limits
 
 - Video is rectangular; the NFS logo remains on the audio controller. Original panel frames omit their unused transparent bottom margins.
+- Media dimensions no longer resize the video panel automatically. The frame follows the user's manual size; native playback and aspect-fit behavior still require review. See [video sizing audit](VIDEO-SIZING.md).
 - Original images remain lossless at 1x. Each animation/needle frame is independently resampled with Lanczos at 2x to avoid bleeding from adjacent frames.
 - Equalizer frequencies follow VLC; removed WMP-only controls include preset/reset, SRS/WOW/TruBass, speaker size, balance, crossfade, skin sounds and visualization presets. Their source assets remain archived. The removed right-side EQ rails use the original carbon texture and VLC preamp.
 - Clock/metadata use a TTF font over the original backing. The clock uses 14 source-scale pixels for legibility. Metadata retains the source palette colors.
@@ -47,3 +48,9 @@ Shutter idle, hover and pressed feedback now retain static original pixels. A se
 Fresh defaults fit 1280×720 at 1x and 1920×1040 at 2x. The 1x video window moves upward; 2x desktop positions are independent of artwork scale. Window overlap is allowed and existing saved positions are untouched. Smaller work areas remain outside this placement contract.
 
 Review launchers rewrite only their adjacent isolated INI: bundled skin path plus empty saved layout. The writer passes UTF-8 path and failure checks offline; native end-to-end launcher validation remains pending.
+
+## Combined-layer findings
+
+The offline comparison restores the original parent button backings, the video's two-button header and the Web Destinations static link artwork. Obsolete outbound actions remain omitted. At 2x, menu artwork is resampled before clipping to the original mapping regions, removing filtering seams without drawing outside those regions. Microsoft's original API specifies that BUTTONGROUP.showBackground defaults to false.
+
+Of 756 reconstructed main/information compositions, 714 match exactly. The remaining 42 closed-main cases differ along shutter/outer-control overlaps; they match exactly when the source reference applies the documented outer-control layer raise needed for VLC input access. This is a localized rendering deviation, not 100% pixel identity. Dynamic text/font changes and conversion-credit additions are excluded explicitly. Playlist/EQ/video full composites, live state changes and native display remain outside this comparison's scope.

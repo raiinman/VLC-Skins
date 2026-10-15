@@ -26,3 +26,7 @@ This bundle is ready for hands-on review; 100% acceptance is not yet certified.
 Fresh positions fit work areas of 1280x720 at 1x and 1920x1040 at 2x.
 Existing saved VLC positions may override them. The shutter uses static
 original feedback with a separate 500 ms gate to prevent hover-delay restarts.
+
+Video sizing audit: media dimensions no longer enlarge the framed panel;
+manual resizing remains available. VIDEO-SIZING.md and visual-comparison.json
+separate offline source/render evidence from the remaining native checks.

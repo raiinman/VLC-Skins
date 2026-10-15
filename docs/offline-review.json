@@ -2,15 +2,15 @@
   "date": "2026-10-15",
   "prior_native_review_commit": "49a3daee7bb0ac5824f2aaf9bc247f9c4f9ff591",
   "scope": "Background-only source and artifact verification. No VLC launches, desktop input, installed-skin changes or profile edits.",
-  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers.",
+  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams.",
   "native_verified": false,
   "native_initialization_seconds": null,
   "packages": {
     "1": {
-      "sha256": "e64a6b129bb96f103cfdfa4051126d39b3979e9ba1f97c2649e0242a8b102561"
+      "sha256": "a64b8cb3a5b694fbb8e876e55b54aaa19246c13239355833d2d2da167161b103"
     },
     "2": {
-      "sha256": "d782b6c9cc4eaf363acf25db63169b64c615e9f781ca0032e6b730d284c681b4"
+      "sha256": "4af0d5ee7003ecd64283e894119801dcb7a7ed15c91fad5ec0fb4b25f0d26592"
     }
   },
   "offline_checks": {
@@ -19,7 +19,7 @@
     "main_hit_model": "856 controls per scale; pass",
     "animation_band_reconstruction": "every frame; pass",
     "startup_source_frames": "162 per scale; pass",
-    "original_images": "176 per scale; pass",
+    "original_images": "177 per scale; pass",
     "source_hover_pressed_bindings": "920 per scale; pass",
     "menu_and_EQ_crops": "12 menu and 3 EQ states per scale; pass",
     "panel_geometry": "336 states, 1134 button checks and 980 slider-access samples per scale; pass",
@@ -28,9 +28,11 @@
     "shutter_transitions": "44 source door/light frames and 56 main states per scale; pass",
     "default_placement": "5 windows and 971 critical controls per scale; 1x 1280x720 and 2x 1920x1040; pass",
     "isolated_launchers": "both UTF-8 INI writers and write-failure checks; VLC not launched; pass",
-    "independent_review": "no concrete regressions found"
+    "independent_review": "no concrete regressions found",
+    "video_sizing": "explicit media-autoresize off, exact packaged XML, five manual sizes per scale, button clearance and mutation rejection; pass",
+    "combined_layer_visuals": "756 cases: 714 exact; 42 closed-main cases exactly explained by documented functional layer raise; no native rendering claim"
   },
-  "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets.",
+  "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets. Video omission/true autoresize mutations rejected; visual residual self-checks detect visible-pixel and shifted-layer mutations while ignoring zero-alpha RGB.",
   "remaining": [
     "Native recheck of the latest candidate",
     "Exact wall-clock animation pacing",
@@ -38,7 +40,9 @@
     "Embedded video placement and resize",
     "Audible EQ response",
     "Native end-to-end preview launcher validation",
-    "Native hover/leave input-gate timing"
+    "Native hover/leave input-gate timing",
+    "Closed-main outer-control layer raise produces localized source-order pixel differences"
   ],
-  "contact_sheet": "startup-frames.png is asset-rendered, not a native capture."
+  "contact_sheet": "startup-frames.png and visual-*.png are offline asset renders, not native captures.",
+  "visual_comparison": "visual-comparison.json plus source/converted/residual sheets; fonts/credits excluded, default-size main/information compositions only"
 }

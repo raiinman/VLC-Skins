@@ -13,7 +13,7 @@ Accept only safe archive paths. Validate CRC after the documented four-byte head
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py and python tools/check_launchers.py after conversion changes.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py python tools/check_launchers.py and python tools/check_video.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
 
 ## Child DOX Index
 None.
@@ -30,3 +30,7 @@ Short 11-frame sequences use two bands when splitting is required; the 81-frame 
 Apply the WMS exact magenta transparency key before resampling or fading GIF frames. check_startup.py independently compares every startup/light frame to source pixels and timings; check_source_art.py checks original artwork and hover/pressed bindings; check_panels.py checks panel button ownership, resize attachment and viewport margins offline. Native benchmarking launches VLC and is excluded from background-only work.
 
 check_transitions.py compares source shutter/light frames and non-restarting transition gates. check_placement.py checks fresh defaults against 1280x720 at 1x and 1920x1040 at 2x; desktop placement is independent of artwork scale. check_panels.py includes resized slider access. check_launchers.py executes only the extracted isolated INI writer against private fixtures; never run review launchers during offline work.
+
+check_video.py requires explicit Video.autoresize=false, compares packaged XML with audited geometry, and checks manual resize extremes. compare_layers.py composes retained WMS and VLC layers independently, writes source/converted/residual sheets and visual-comparison.json; disclose omitted dynamic text, conversion additions and renderer limitations.
+
+Information-menu sprites resample full source artwork before clipping with a nearest-neighbor output-scale mapping mask. WMP BUTTONGROUP.showBackground defaults false: retain only mapped regions. Preserve original parent close/zoom image backings and the static Web Destinations overlay; its obsolete outbound actions remain omitted.

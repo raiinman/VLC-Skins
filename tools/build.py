@@ -324,12 +324,13 @@ class Builder:
         for state in ('no','hov','do'):
             im=rgba('eq_set_'+state+'.png').crop(box);im.putalpha(mask.crop(box))
             self.bitmap('eq_power_'+state+'.png',im)
-        for kind,w,h,x,y,top in [('tracks',420,320,380,60,'pl_top_right'),('equalizer',353,210,60,380,'eq_top_right'),('video',708,440,380,410,'f_top_right')]:
+        for kind,w,h,x,y,top in [('tracks',420,320,380,60,'pl_top_right'),('equalizer',353,210,60,380,'eq_top_right'),('video',708,440,380,410,'eq_top_right')]:
             win=self.window(kind,x,y)
             for c in (1,):
                 resize=kind!='equalizer'
                 l=self.layout(win,f'{kind}_{c}',w,h,resize)
                 self.frame(l,None,w,h,top=top,bottom='info_bot_right' if kind=='equalizer' else 'f_bot_right',resizable=resize)
+                self.image(l,'m_close_no.png',w-68,6,**({'lefttop':'righttop'} if resize else {}))
                 self.button(l,'m_close',w-68,6,kind+'.hide()','Close '+kind,**({'lefttop':'righttop'} if resize else {}))
                 if kind in ('tracks','video'):
                     self.bitmap('screen_black',Image.new('RGBA',(1,1),'black'))
@@ -341,7 +342,9 @@ class Builder:
                     E.SubElement(tree,'Slider',x=self.n(w-44),y=self.n(43),up=self.bitmap('eq_thumb2.png'),down=self.bitmap('eq_thumb2_do.png'),points=f'(0,{self.n(h-90)}),(0,0)',lefttop='righttop',rightbottom='rightbottom')
                     self.button(l,'m_open',32,h-31,'playlist.add()','Add media',lefttop='leftbottom')
                 elif kind=='video':
-                    E.SubElement(l,'Video',x=self.n(34),y=self.n(37),width=self.n(w-68),height=self.n(h-67),rightbottom='rightbottom')
+                    # Media dimensions must not enlarge the framed user-sized panel.
+                    E.SubElement(l,'Video',x=self.n(34),y=self.n(37),width=self.n(w-68),height=self.n(h-67),rightbottom='rightbottom',autoresize='false')
+                    self.image(l,'vid_zoom_no.png',w-89,6,lefttop='righttop')
                     self.button(l,'vid_zoom',w-89,6,'vlc.fullscreen()','Fullscreen',lefttop='righttop')
                 else:
                     self.image(l,'eq_vlc_back',33,35)
@@ -365,6 +368,7 @@ class Builder:
         for page in pages:
             l=self.layout(win,'info_'+page,413,282)
             self.frame(l,None,413,282,bottom='info_bot_right')
+            self.image(l,'m_close_no.png',345,6)
             self.button(l,'m_close',345,6,'info.hide()','Close information')
             self.image(l,'c_back.png',14,34)
             if page=='about':
@@ -385,12 +389,21 @@ class Builder:
                     box=mask.getbbox()
                     ids=[]
                     for state in ('no','hov','do'):
-                        im=rgba('c_menu_'+state+'.jpg').crop(box)
-                        im.putalpha(mask.crop(box))
-                        ids.append(self.bitmap(f'menu_{i}_{state}',im))
+                        # Resample the full artwork before clipping to the native
+                        # map; cropped filtering introduced soft seams at 2x.
+                        im=rgba('c_menu_'+state+'.jpg')
+                        native_mask=mask
+                        if self.scale!=1:
+                            size=(im.width*self.scale,im.height*self.scale)
+                            im=im.resize(size,Image.Resampling.LANCZOS)
+                            native_mask=mask.resize(size,Image.Resampling.NEAREST)
+                        im.putalpha(native_mask)
+                        native_box=tuple(v*self.scale for v in box)
+                        ids.append(self.bitmap(f'menu_{i}_{state}',im.crop(native_box),prescaled=True))
                     E.SubElement(l,'Button',x=self.n(171+box[0]),y=self.n(103+box[1]),up=ids[0],over=ids[1],down=ids[2],action=f'info.setLayout(info_{target})',tooltiptext=['About the game','Story','Screenshots','Web destinations'][i])
             else:
                 self.image(l,page+'.jpg',37,35)
+                if page=='c_sub_4_1':self.image(l,'c_link_no.jpg',127,118)
             if page!='menu':
                 self.button(l,'c_menu_return',47,226,'info.setLayout(info_menu)','Return to original menu')
                 if page.startswith(('c_sub_2_','c_sub_3_')):

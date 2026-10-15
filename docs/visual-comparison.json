@@ -1,0 +1,4901 @@
+{
+  "method": "Offline source-WMS and generated-XML asset composition; no native renderer or desktop use.",
+  "residual": "Maximum channel difference over black and white composites, plus alpha difference; ignores RGB under zero alpha.",
+  "self_checks": "Invisible RGB ignored; opaque pixel and one-pixel layer displacement mutations detected.",
+  "menu_semantics": "WMP BUTTONGROUP.showBackground defaults false; no source override exists. Only mapped regions are composed.",
+  "menu_semantics_source": "https://learn.microsoft.com/en-us/previous-versions/windows/desktop/wmp/buttongroup-showbackground",
+  "omissions": [
+    "Dynamic metadata and clock text/font adaptation, including alpha-1 clock input mask",
+    "Conversion credit footer/button",
+    "Hover/pressed behavior of removed obsolete outbound links; their original idle overlay remains compared"
+  ],
+  "limits": [
+    "Source z-order and tiled frame geometry are reconstructed, not executed in WMP.",
+    "All controls use a uniform feedback state for comparison; this does not simulate simultaneous hover.",
+    "Midpoint gauges, stopped playback and closed auxiliary panels; no native video/EQ rendering."
+  ],
+  "cases": [
+    {
+      "scale": 1,
+      "name": "main palette 1 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 1 / closed / idle",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 1 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 1 / closed / hover",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 1 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 1 / closed / pressed",
+      "differing_composite_pixels": 134,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 2 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 2 / closed / idle",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 2 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 2 / closed / hover",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 2 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 2 / closed / pressed",
+      "differing_composite_pixels": 134,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 3 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 3 / closed / idle",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 3 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 3 / closed / hover",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 3 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 3 / closed / pressed",
+      "differing_composite_pixels": 134,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 4 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 4 / closed / idle",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 4 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 4 / closed / hover",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 4 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 4 / closed / pressed",
+      "differing_composite_pixels": 134,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 5 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 5 / closed / idle",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 5 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 5 / closed / hover",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 5 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 5 / closed / pressed",
+      "differing_composite_pixels": 134,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 6 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 6 / closed / idle",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 6 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 6 / closed / hover",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 6 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 6 / closed / pressed",
+      "differing_composite_pixels": 134,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 7 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 7 / closed / idle",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 7 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 7 / closed / hover",
+      "differing_composite_pixels": 135,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 7 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "main palette 7 / closed / pressed",
+      "differing_composite_pixels": 134,
+      "bounds": [
+        54,
+        72,
+        247,
+        225
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 1,
+      "name": "menu / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_1_1 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_1 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_2 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_3 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_2_4 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_1 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_2 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_3 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_4 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_5 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_6 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_7 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_8 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_3_9 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 1,
+      "name": "c_sub_4_1 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 1 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 1 / closed / idle",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 1 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 1 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 1 / closed / hover",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 1 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 1 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 1 / closed / pressed",
+      "differing_composite_pixels": 634,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 1 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 2 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 2 / closed / idle",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 2 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 2 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 2 / closed / hover",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 2 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 2 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 2 / closed / pressed",
+      "differing_composite_pixels": 634,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 2 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 3 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 3 / closed / idle",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 3 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 3 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 3 / closed / hover",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 3 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 3 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 3 / closed / pressed",
+      "differing_composite_pixels": 634,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 3 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 4 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 4 / closed / idle",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 4 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 4 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 4 / closed / hover",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 4 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 4 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 4 / closed / pressed",
+      "differing_composite_pixels": 634,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 4 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 5 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 5 / closed / idle",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 5 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 5 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 5 / closed / hover",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 5 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 5 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 5 / closed / pressed",
+      "differing_composite_pixels": 634,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 5 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 6 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 6 / closed / idle",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 6 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 6 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 6 / closed / hover",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 6 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 6 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 6 / closed / pressed",
+      "differing_composite_pixels": 634,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 6 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 7 / open / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 7 / closed / idle",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 7 / idle",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 7 / open / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 7 / closed / hover",
+      "differing_composite_pixels": 631,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 7 / hover",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 7 / open / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "main palette 7 / closed / pressed",
+      "differing_composite_pixels": 634,
+      "bounds": [
+        108,
+        142,
+        494,
+        450
+      ],
+      "maximum_raw_channel_delta": 4,
+      "outer_controls_raised_residual_pixels": 0,
+      "classification": "Only the documented outer-button layer raise needed for functional hit access."
+    },
+    {
+      "scale": 2,
+      "name": "menu / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_1_1 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_1 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_2 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_3 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_2_4 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_1 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_2 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_3 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_4 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_5 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_6 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_7 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_8 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_3_9 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    },
+    {
+      "scale": 2,
+      "name": "c_sub_4_1 / palette 7 / pressed",
+      "differing_composite_pixels": 0,
+      "bounds": null
+    }
+  ],
+  "package_sha256": {
+    "1": "a64b8cb3a5b694fbb8e876e55b54aaa19246c13239355833d2d2da167161b103",
+    "2": "4af0d5ee7003ecd64283e894119801dcb7a7ed15c91fad5ec0fb4b25f0d26592"
+  },
+  "summary": {
+    "cases": 756,
+    "exact_cases": 714,
+    "residual_cases": 42,
+    "unexplained_residual_cases": 0
+  }
+}

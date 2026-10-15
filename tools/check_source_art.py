@@ -1,5 +1,6 @@
 """Compare delivered static artwork against independently decoded source pixels."""
 from pathlib import Path
+import re
 
 from lxml import etree as E
 from PIL import Image
@@ -43,9 +44,22 @@ def mapped_crop(source, mapping, color):
     return crop, bounds
 
 
-def compare(assets, resource, expected, scale):
+def native_menu_crop(source, mapping, color, scale):
+    """Scale the full source artwork before selecting its hard mapped region."""
+    mask = Image.new('L', mapping.size)
+    mask.putdata([255 if pixel == color else 0 for pixel in pixels(mapping)])
+    bounds = mask.getbbox()
+    assert bounds is not None, ('Missing source mapping color', color)
+    native = scaled(source, scale).copy()
+    if scale != 1:
+        mask = mask.resize(native.size, Image.Resampling.NEAREST)
+    native.putalpha(mask)
+    return native.crop(tuple(value*scale for value in bounds)), bounds
+
+
+def compare(assets, resource, expected, scale, prescaled=False):
     actual = assets.image(resource)
-    expected = scaled(expected, scale)
+    expected = expected if prescaled else scaled(expected, scale)
     assert actual.size == expected.size, (scale, resource, 'dimensions')
     assert actual.tobytes() == expected.tobytes(), (scale, resource, 'source pixels')
 
@@ -85,23 +99,59 @@ def main():
                 state_bindings += 1
 
         # A renamed or dropped source resource must not silently reduce coverage.
-        assert original_count >= 176, ('Original source coverage shrank', original_count)
+        assert original_count >= 177, ('Original source coverage shrank', original_count)
         assert state_bindings >= 920, ('Source state coverage shrank', state_bindings)
+
+        # WMS subview backings and child feedback both draw; a partially alpha
+        # idle bitmap is not redundant behind its child button.
+        backing_count = 0
+        for target_id, source_id in [('tracks', 'plView'), ('equalizer', 'eqView'),
+                                     ('video', 'videoView'), ('info', 'infoView')]:
+            source_view = original.find(f'view[@id="{source_id}"]')
+            for parent in source_view.findall('subview'):
+                name = parent.get('backgroundImage')
+                if name not in ('m_close_no.png', 'vid_zoom_no.png'):
+                    continue
+                for layout in assets.tree.findall(f'./Window[@id="{target_id}"]/Layout'):
+                    expression = parent.get('left')
+                    match = re.fullmatch(r'jscript:view.width-(\d+)', expression)
+                    x = int(layout.get('width'))-int(match.group(1))*scale if match else int(expression)*scale
+                    y = int(parent.get('top', 0))*scale
+                    key = name.replace('.', '_')
+                    image = next((node for node in layout.findall('Image')
+                                  if node.get('image') == key and
+                                  (int(node.get('x', 0)), int(node.get('y', 0))) == (x, y)), None)
+                    button = next((node for node in layout.findall('Button')
+                                   if node.get('up') == key and
+                                   (int(node.get('x', 0)), int(node.get('y', 0))) == (x, y)), None)
+                    assert image is not None and button is not None, (layout.get('id'), 'Source button backing missing')
+                    assert layout.index(image) < layout.index(button), (layout.get('id'), 'Backing covers button feedback')
+                    backing_count += 1
+
+        source_link = original.find('.//subview[@id="link1"]')
+        source_menu = original.find('.//subview[@id="menuBack"]')
+        expected = tuple((int(source_menu.get(axis)) + int(source_link.get(axis).rsplit('+', 1)[1]))*scale
+                         for axis in ('left', 'top'))
+        link = assets.tree.find('.//Layout[@id="info_c_sub_4_1"]/Image[@image="c_link_no_jpg"]')
+        assert link is not None, 'Settled Web Destinations source overlay missing'
+        assert (int(link.get('x')), int(link.get('y'))) == expected, 'Web Destinations overlay moved'
 
         menu = assets.tree.find('.//Layout[@id="info_menu"]')
         mapping = Image.open(SOURCE / 'c_menu_map.png').convert('RGB')
         for index, green in enumerate((0, 51, 102, 153)):
             for state in ('no', 'hov', 'do'):
-                expected, bounds = mapped_crop(
+                expected, bounds = native_menu_crop(
                     source_pixels(SOURCE / f'c_menu_{state}.jpg'), mapping,
-                    (0, green, 255))
+                    (0, green, 255), scale)
                 resource = f'menu_{index}_{state}'
-                compare(assets, resource, expected, scale)
+                compare(assets, resource, expected, scale, prescaled=True)
                 if state == 'no':
                     button = menu.find(f'Button[@up="{resource}"]')
                     assert button is not None, resource
                     assert (int(button.get('x')), int(button.get('y'))) == (
                         (171 + bounds[0]) * scale, (103 + bounds[1]) * scale), resource
+                    assert button.get('over') == f'menu_{index}_hov'
+                    assert button.get('down') == f'menu_{index}_do'
 
         mapping = Image.open(SOURCE / 'eq_set_map.png').convert('RGB')
         for state in ('no', 'hov', 'do'):
@@ -111,7 +161,7 @@ def main():
             compare(assets, f'eq_power_{state}_png', expected, scale)
         print(f'PASS {scale}x: {original_count} source images, {state_bindings} '
               'source control state bindings, 12 menu states, 3 EQ power states '
-              'and source menu positions')
+              f'and source menu positions; {backing_count} source button backings and web overlay')
 
 
 if __name__ == '__main__':
