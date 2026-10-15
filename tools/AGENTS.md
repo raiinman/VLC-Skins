@@ -13,7 +13,7 @@ Accept only safe archive paths. Validate CRC after the documented four-byte head
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py python tools/check_launchers.py and python tools/check_video.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py, python tools/check_launchers.py python tools/check_video.py and python tools/check_corners.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
 
 ## Child DOX Index
 None.
@@ -25,7 +25,7 @@ Assign explicit unique IDs to every control: VLC 3.0.x synthetic IDs collide pas
 
 Native animation strips taller than 4096 pixels become horizontal bands. Canonical PNGs and animation-bands.json are offline references; VLC loads only physical bands. check_animation_bands.py checks exact reconstruction, timing, placement and actions. benchmark_load.py measures CLI autoplay after the skins2 interface is ready; both scales must initialize within 30 seconds on the test machine. RC-triggered playback and buffered file-log timing cannot establish initialization time.
 
-Short 11-frame sequences use two bands when splitting is required; the 81-frame intro uses 16. Each band adds a native timer and repaint, so do not increase the count without runtime evidence. Main dynamic Text visibility follows its owning layout.isActive, including startup after cloning. Both volume and seek sprite order runs minimum to maximum. Resize handles use alpha 1 because the source magenta rectangle is entirely transparent to VLC. Closing layouts retain the interior during travel, then cover it with exact native-scale closed pixels; clock toggles must retain the closing destination.
+Short 11-frame sequences use two bands when splitting is required; the 81-frame intro uses 16. Each band adds a native timer and repaint, so do not increase the count without runtime evidence. Main dynamic Text visibility follows its owning layout.isActive, including startup after cloning. Both volume and seek sprite order runs minimum to maximum. Resize handles repeat exact output-scale palette corner pixels; never use faint black hit masks, because Windows CtrlImage copies cached RGB onto the layout. Closing layouts retain the interior during travel, then cover it with exact native-scale closed pixels; clock toggles must retain the closing destination.
 
 Apply the WMS exact magenta transparency key before resampling or fading GIF frames. check_startup.py independently compares every startup/light frame to source pixels and timings; check_source_art.py checks original artwork and hover/pressed bindings; check_panels.py checks panel button ownership, resize attachment and viewport margins offline. Native benchmarking launches VLC and is excluded from background-only work.
 
@@ -34,3 +34,5 @@ check_transitions.py compares source shutter/light frames and non-restarting tra
 check_video.py requires explicit Video.autoresize=false, compares packaged XML with audited geometry, and checks manual resize extremes. compare_layers.py composes retained WMS and VLC layers independently, writes source/converted/residual sheets and visual-comparison.json; disclose omitted dynamic text, conversion additions and renderer limitations.
 
 Information-menu sprites resample full source artwork before clipping with a nearest-neighbor output-scale mapping mask. WMP BUTTONGROUP.showBackground defaults false: retain only mapped regions. Preserve original parent close/zoom image backings and the static Web Destinations overlay; its obsolete outbound actions remain omitted.
+
+check_corners.py compares real-art resize patches with independently decoded native-scale source crops and models Windows cached RGB copy. Alpha-based hit checks do not establish paint transparency. Keep the resize_hit resource as a blue-corner compatibility alias for existing derived panes; other palettes use their matching conditional images.

@@ -77,10 +77,14 @@ def verify_geometry(assets, scale):
     minimum = int(layout.get('minwidth')), int(layout.get('minheight'))
     maximum = int(layout.get('maxwidth')), int(layout.get('maxheight'))
     assert minimum[0] <= original[0] <= maximum[0] and minimum[1] <= original[1] <= maximum[1]
-    handle = layout.find('Image[@action="resizeSE"]')
-    assert handle is not None, 'Manual resizing must remain available'
-    assert handle.get('lefttop') == handle.get('rightbottom') == 'rightbottom'
-    assert assets.image(handle.get('image')).getchannel('A').getextrema()[0] > 0
+    handles = layout.findall('Image[@action="resizeSE"]')
+    assert len(handles) == 7, 'Manual resizing must remain available in every palette'
+    for handle in handles:
+        assert handle.get('lefttop') == handle.get('rightbottom') == 'rightbottom'
+        alpha = assets.image(handle.get('image')).getchannel('A')
+        assert alpha.getpixel((alpha.width//2, alpha.height//2)) == 255
+    for color in range(1, 8):
+        assert sum(visible(handle.get('visible'), f'main_{color}') for handle in handles) == 1
     assert not any((n.get('up') or '').startswith('m_logo') for n in layout), 'Source logo belongs on the controller, away from video'
     sizes = [minimum, (original[0]+173*scale, original[1]+91*scale), maximum,
              (minimum[0], maximum[1]), (maximum[0], minimum[1])]
@@ -92,7 +96,7 @@ def verify_geometry(assets, scale):
         for node in layout:
             if node.tag == 'Button':
                 keys = [node.get(attr) for attr in ('up', 'over', 'down') if node.get(attr)]
-            elif node is handle or node in backings:
+            elif node in handles or node in backings:
                 keys = [node.get('image')]
             else:
                 continue

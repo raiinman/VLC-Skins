@@ -13,9 +13,9 @@ for scale in (1,2):
     assert windows['info'][-1].get('id')=='info_menu'
     assert assets.resources['clock'].get('size')==str(14*scale)
     for panel in ('tracks','video'):
-        handle=windows[panel].find('.//Image[@action="resizeSE"]')
-        assert handle is not None and handle.get('image')=='resize_hit'
-        assert assets.image('resize_hit').getchannel('A').getextrema()==(1,1),'Transparent resize handle cannot receive VLC input'
+        handles=windows[panel].findall('.//Image[@action="resizeSE"]')
+        assert len(handles)==7 and handles[0].get('image')=='resize_hit'
+        assert assets.image('resize_hit').getchannel('A').getextrema()[1]==255,'Resize handle must retain visible source corner pixels'
     for layout in windows['main']:
         for node in layout.findall('Text'):
             assert node.get('visible')==layout.get('id')+'.isActive','Inactive clock rasterization'

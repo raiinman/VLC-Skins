@@ -116,8 +116,11 @@ def verify(assets, layout, palette, size, checked, scale, stats=None):
         assert points and all(owner == index for a, owner in points), (layout.get('id'), palette, size, node.get('id'), 'button obscured')
         count += 1
     # A functional corner must follow the lower-right edge at every size.
-    handle = layout.find('Image[@action="resizeSE"]')
-    if handle is not None:
+    handles = layout.findall('Image[@action="resizeSE"]')
+    if handles:
+        active_handles = [node for node in handles if visible(node.get('visible'), f'main_{palette}')]
+        assert len(active_handles) == 1, (layout.get('id'), palette, 'Resize handle palette selection')
+        handle = active_handles[0]
         original = int(layout.get('width')), int(layout.get('height'))
         im = assets.image(handle.get('image'))
         x, y, w, h = geometry(handle, original, size, im.size)

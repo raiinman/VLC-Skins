@@ -13,7 +13,7 @@ Preserve original asset pixels and author attribution; record intentional change
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py python tools/check_launchers.py and python tools/check_video.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py, python tools/check_launchers.py python tools/check_video.py and python tools/check_corners.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
 
 ## Child DOX Index
 None.
@@ -32,3 +32,5 @@ Keep default desktop positions inside the declared work areas without scaling th
 The video viewport uses autoresize=false: media dimensions cannot enlarge the parent layout. Retain rightbottom stretch anchors and the manual resize corner. Do not infer native aspect fit or automatic window display from this policy.
 
 Panel close buttons and video zoom retain their original parent idle-image backings. Video uses the original eq_top_right two-button header. Web Destinations keeps c_link_no.jpg at (127,118) source coordinates, without obsolete outbound actions. Menu-region masks stay crisp at output scale; full artwork is filtered before cropping.
+
+Resizable panes use seven conditional corner patches at (width-36,height-24), with rightbottom anchors. Crop (128,33)-(151,57) from each complete f_bot_right bitmap after output scaling. Preserve the source alpha shape and visible grip; fully transparent pixels remain outside the hit region.

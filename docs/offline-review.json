@@ -2,15 +2,15 @@
   "date": "2026-10-15",
   "prior_native_review_commit": "49a3daee7bb0ac5824f2aaf9bc247f9c4f9ff591",
   "scope": "Background-only source and artifact verification. No VLC launches, desktop input, installed-skin changes or profile edits.",
-  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams.",
+  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams. Replace lower-right alpha-1 black resize images with exact native-scale original corner crops for all seven palettes.",
   "native_verified": false,
   "native_initialization_seconds": null,
   "packages": {
     "1": {
-      "sha256": "a64b8cb3a5b694fbb8e876e55b54aaa19246c13239355833d2d2da167161b103"
+      "sha256": "c58b6232ad4621b00fb3680d1f0a3954cf686f5b4f6cbfa91832bf61d82eb58b"
     },
     "2": {
-      "sha256": "4af0d5ee7003ecd64283e894119801dcb7a7ed15c91fad5ec0fb4b25f0d26592"
+      "sha256": "d209057a1b0013d4364b4fe25b585650fe334ba06dd6d916783b7f0263cc39f4"
     }
   },
   "offline_checks": {
@@ -26,13 +26,14 @@
     "python_compilation": "pass",
     "diff_whitespace": "pass",
     "shutter_transitions": "44 source door/light frames and 56 main states per scale; pass",
-    "default_placement": "5 windows and 971 critical controls per scale; 1x 1280x720 and 2x 1920x1040; pass",
+    "default_placement": "5 windows and 983 critical controls per scale; 1x 1280x720 and 2x 1920x1040; pass",
     "isolated_launchers": "both UTF-8 INI writers and write-failure checks; VLC not launched; pass",
     "independent_review": "no concrete regressions found",
     "video_sizing": "explicit media-autoresize off, exact packaged XML, five manual sizes per scale, button clearance and mutation rejection; pass",
-    "combined_layer_visuals": "756 cases: 714 exact; 42 closed-main cases exactly explained by documented functional layer raise; no native rendering claim"
+    "combined_layer_visuals": "756 cases: 714 exact; 42 closed-main cases exactly explained by documented functional layer raise; no native rendering claim",
+    "resize_corner": "70 palette/pane/size combinations per scale; exact source RGBA, packaged assets and bounded cached-copy model; old black mask rejected"
   },
-  "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets. Video omission/true autoresize mutations rejected; visual residual self-checks detect visible-pixel and shifted-layer mutations while ignoring zero-alpha RGB.",
+  "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets. Video omission/true autoresize mutations rejected; visual residual self-checks detect visible-pixel and shifted-layer mutations while ignoring zero-alpha RGB. The old alpha-1 corner bitmap fails the new source-pixel guard and reproduces a black rectangle in the cached-copy model.",
   "remaining": [
     "Native recheck of the latest candidate",
     "Exact wall-clock animation pacing",
@@ -41,7 +42,8 @@
     "Audible EQ response",
     "Native end-to-end preview launcher validation",
     "Native hover/leave input-gate timing",
-    "Closed-main outer-control layer raise produces localized source-order pixel differences"
+    "Closed-main outer-control layer raise produces localized source-order pixel differences",
+    "Native lower-right appearance/resize recheck; regenerate existing derived pane copies"
   ],
   "contact_sheet": "startup-frames.png and visual-*.png are offline asset renders, not native captures.",
   "visual_comparison": "visual-comparison.json plus source/converted/residual sheets; fonts/credits excluded, default-size main/information compositions only"

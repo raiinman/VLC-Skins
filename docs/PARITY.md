@@ -35,7 +35,7 @@ The current target is complete parity within the user's permitted VLC adaptation
 
 - Paused seeking works, but VLC's native time variable can notify text before the seek completes; the clock may retain its previous value until playback resumes. This was reproduced at 2x and traced to upstream source.
 - Changing the clock token activates another layout. During shutter opening this can finish travel early; during closing it restarts travel while preserving the closing destination.
-- Transparent WMP resize rectangles become alpha 1 VLC hit masks over the original corner artwork. Native 2x resize was verified; 1x recheck was interrupted by the desktop tool.
+- Resize controls use exact palette corner artwork. The previous alpha-1 black masks allowed resizing but painted black rectangles through Windows cached-image copies. Native 2x resize was verified on the earlier package; the corrected corner appearance and final 1x resize need native recheck. See CORNER-FIX.md.
 
 ## Acceptance still needed
 

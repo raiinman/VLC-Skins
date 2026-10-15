@@ -356,10 +356,16 @@ class Builder:
                     E.SubElement(l,'Slider',x=self.n(232),y=self.n(71),up=self.bitmap('eq_thumb2.png'),down=self.bitmap('eq_thumb2_do.png'),points=f'(0,0),({self.n(60)},0)',value='equalizer.preamp',tooltiptext='Equalizer preamplification')
                     self.text(l,'Dead Signal Interactive',60,174,235,color='#9FA2B0',small=True)
                 if resize:
-                    # WMP used a fully magenta image as a rectangular hit area.
-                    # VLC ignores transparent pixels, so retain a minimal alpha.
-                    self.bitmap('resize_hit',Image.new('RGBA',(23,24),(0,0,0,1)))
-                    self.image(l,'resize_hit',w-36,h-24,action='resizeSE',lefttop='rightbottom')
+                    # CtrlImage copies cached RGB on Windows: a faint black hit
+                    # mask paints black. Repeat the matching native corner pixels.
+                    for color in range(1,8):
+                        corner=rgba(f'f_bot_right_{color}.png')
+                        if self.scale!=1:
+                            corner=corner.resize((corner.width*self.scale,corner.height*self.scale),Image.Resampling.LANCZOS)
+                        crop=corner.crop(tuple(v*self.scale for v in (128,33,151,57)))
+                        # Keep the blue key compatible with existing derived panes.
+                        key=self.bitmap('resize_hit' if color==1 else f'resize_hit_{color}',crop,prescaled=True)
+                        E.SubElement(l,'Image',image=key,x=self.n(w-36),y=self.n(h-24),action='resizeSE',lefttop='rightbottom',visible=self.palette_visible(color))
             win.append(win[0])
 
     def information(self):
