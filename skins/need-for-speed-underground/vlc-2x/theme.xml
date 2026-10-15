@@ -1,0 +1,1310 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Theme PUBLIC "-//VideoLAN//DTD VLC Skins V2.0//EN" "skin.dtd">
+<Theme version="2.0" tooltipfont="defaultfont">
+  <ThemeInfo name="Need for Speed Underground" author="The Skins Factory / VLC conversion: Dead Signal Interactive"/>
+  <Font id="ui" file="assets/FreeSans.ttf" size="20"/>
+  <Font id="small" file="assets/FreeSans.ttf" size="16"/>
+  <Bitmap id="main_back_1_png" file="assets/main_back_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_min_no_png" file="assets/m_min_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_min_hov_png" file="assets/m_min_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_min_do_png" file="assets/m_min_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_full_no_png" file="assets/m_full_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_full_hov_png" file="assets/m_full_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_full_do_png" file="assets/m_full_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_close_no_png" file="assets/m_close_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_close_hov_png" file="assets/m_close_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_close_do_png" file="assets/m_close_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_open_no_png" file="assets/m_open_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_open_hov_png" file="assets/m_open_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_open_do_png" file="assets/m_open_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_vis_no_png" file="assets/m_vis_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_vis_hov_png" file="assets/m_vis_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_vis_do_png" file="assets/m_vis_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_pl_no_png" file="assets/m_pl_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_pl_hov_png" file="assets/m_pl_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_pl_do_png" file="assets/m_pl_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_eq_no_png" file="assets/m_eq_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_eq_hov_png" file="assets/m_eq_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_eq_do_png" file="assets/m_eq_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="invisible_cursor" file="assets/invisible_cursor.png" alphacolor="#FF00FF"/>
+  <Bitmap id="volume_png" file="assets/volume_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="seek_forward" file="assets/seek_forward.png" alphacolor="#FF00FF"/>
+  <Bitmap id="vol_seek_mat_png" file="assets/vol_seek_mat_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_logo_no_png" file="assets/m_logo_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_logo_hov_png" file="assets/m_logo_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_next_no_png" file="assets/m_next_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_next_hov_png" file="assets/m_next_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_next_do_png" file="assets/m_next_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_stop_no_png" file="assets/m_stop_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_stop_hov_png" file="assets/m_stop_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_stop_do_png" file="assets/m_stop_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_play_no_png" file="assets/m_play_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_play_hov_png" file="assets/m_play_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_play_do_png" file="assets/m_play_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_pause_no_png" file="assets/m_pause_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_pause_hov_png" file="assets/m_pause_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_pause_do_png" file="assets/m_pause_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_prev_no_png" file="assets/m_prev_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_prev_hov_png" file="assets/m_prev_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_prev_do_png" file="assets/m_prev_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_color_no_png" file="assets/m_color_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_color_hov_png" file="assets/m_color_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_color_do_png" file="assets/m_color_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_info_no_png" file="assets/m_info_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_info_hov_png" file="assets/m_info_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_info_do_png" file="assets/m_info_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_shutter_no_png" file="assets/m_shutter_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_shutter_hov_png" file="assets/m_shutter_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="m_shutter_do_png" file="assets/m_shutter_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="shutter_open" file="assets/shutter_open.png" alphacolor="#FF00FF" nbframes="12" fps="30" loop="1"/>
+  <Bitmap id="shutter_close" file="assets/shutter_close.png" alphacolor="#FF00FF" nbframes="12" fps="30" loop="1"/>
+  <Bitmap id="main_back_2_png" file="assets/main_back_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="main_back_3_png" file="assets/main_back_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="main_back_4_png" file="assets/main_back_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="main_back_5_png" file="assets/main_back_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="main_back_6_png" file="assets/main_back_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="main_back_7_png" file="assets/main_back_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="intro_sequence" file="assets/intro_sequence.png" alphacolor="#FF00FF" nbframes="60" fps="10" loop="1"/>
+  <Bitmap id="eq_vlc_back" file="assets/eq_vlc_back.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_power_no_png" file="assets/eq_power_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_power_hov_png" file="assets/eq_power_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_power_do_png" file="assets/eq_power_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_s_1_png" file="assets/f_top_s_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_s_1_png" file="assets/f_bot_s_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_left_s_1_png" file="assets/f_left_s_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_right_s_1_png" file="assets/f_right_s_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_left_1_png" file="assets/f_top_left_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_top_right_1_png" file="assets/pl_top_right_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_left_1_png" file="assets/f_bot_left_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_right_1_png" file="assets/f_bot_right_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_shuffle_no_png" file="assets/pl_shuffle_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_shuffle_hov_png" file="assets/pl_shuffle_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_shuffle_do_png" file="assets/pl_shuffle_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_repeat_no_png" file="assets/pl_repeat_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_repeat_hov_png" file="assets/pl_repeat_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_repeat_do_png" file="assets/pl_repeat_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_thumb2_png" file="assets/eq_thumb2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_thumb2_do_png" file="assets/eq_thumb2_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_resize_png" file="assets/f_resize_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_s_2_png" file="assets/f_top_s_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_s_2_png" file="assets/f_bot_s_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_left_s_2_png" file="assets/f_left_s_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_right_s_2_png" file="assets/f_right_s_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_left_2_png" file="assets/f_top_left_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_top_right_2_png" file="assets/pl_top_right_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_left_2_png" file="assets/f_bot_left_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_right_2_png" file="assets/f_bot_right_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_s_3_png" file="assets/f_top_s_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_s_3_png" file="assets/f_bot_s_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_left_s_3_png" file="assets/f_left_s_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_right_s_3_png" file="assets/f_right_s_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_left_3_png" file="assets/f_top_left_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_top_right_3_png" file="assets/pl_top_right_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_left_3_png" file="assets/f_bot_left_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_right_3_png" file="assets/f_bot_right_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_s_4_png" file="assets/f_top_s_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_s_4_png" file="assets/f_bot_s_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_left_s_4_png" file="assets/f_left_s_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_right_s_4_png" file="assets/f_right_s_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_left_4_png" file="assets/f_top_left_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_top_right_4_png" file="assets/pl_top_right_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_left_4_png" file="assets/f_bot_left_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_right_4_png" file="assets/f_bot_right_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_s_5_png" file="assets/f_top_s_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_s_5_png" file="assets/f_bot_s_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_left_s_5_png" file="assets/f_left_s_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_right_s_5_png" file="assets/f_right_s_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_left_5_png" file="assets/f_top_left_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_top_right_5_png" file="assets/pl_top_right_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_left_5_png" file="assets/f_bot_left_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_right_5_png" file="assets/f_bot_right_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_s_6_png" file="assets/f_top_s_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_s_6_png" file="assets/f_bot_s_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_left_s_6_png" file="assets/f_left_s_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_right_s_6_png" file="assets/f_right_s_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_left_6_png" file="assets/f_top_left_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_top_right_6_png" file="assets/pl_top_right_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_left_6_png" file="assets/f_bot_left_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_right_6_png" file="assets/f_bot_right_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_s_7_png" file="assets/f_top_s_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_s_7_png" file="assets/f_bot_s_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_left_s_7_png" file="assets/f_left_s_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_right_s_7_png" file="assets/f_right_s_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_left_7_png" file="assets/f_top_left_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="pl_top_right_7_png" file="assets/pl_top_right_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_left_7_png" file="assets/f_bot_left_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_bot_right_7_png" file="assets/f_bot_right_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_top_right_1_png" file="assets/eq_top_right_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_thumb_png" file="assets/eq_thumb_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_thumb_do_png" file="assets/eq_thumb_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_top_right_2_png" file="assets/eq_top_right_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_top_right_3_png" file="assets/eq_top_right_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_top_right_4_png" file="assets/eq_top_right_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_top_right_5_png" file="assets/eq_top_right_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_top_right_6_png" file="assets/eq_top_right_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="eq_top_right_7_png" file="assets/eq_top_right_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_right_1_png" file="assets/f_top_right_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="vid_zoom_no_png" file="assets/vid_zoom_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="vid_zoom_hov_png" file="assets/vid_zoom_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="vid_zoom_do_png" file="assets/vid_zoom_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_right_2_png" file="assets/f_top_right_2_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_right_3_png" file="assets/f_top_right_3_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_right_4_png" file="assets/f_top_right_4_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_right_5_png" file="assets/f_top_right_5_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_right_6_png" file="assets/f_top_right_6_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="f_top_right_7_png" file="assets/f_top_right_7_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="info_bot_right_1_png" file="assets/info_bot_right_1_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_back_png" file="assets/c_back_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_back_jpg" file="assets/c_back_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_0_no" file="assets/menu_0_no.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_0_hov" file="assets/menu_0_hov.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_0_do" file="assets/menu_0_do.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_1_no" file="assets/menu_1_no.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_1_hov" file="assets/menu_1_hov.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_1_do" file="assets/menu_1_do.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_2_no" file="assets/menu_2_no.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_2_hov" file="assets/menu_2_hov.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_2_do" file="assets/menu_2_do.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_3_no" file="assets/menu_3_no.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_3_hov" file="assets/menu_3_hov.png" alphacolor="#FF00FF"/>
+  <Bitmap id="menu_3_do" file="assets/menu_3_do.png" alphacolor="#FF00FF"/>
+  <Bitmap id="about_carbon" file="assets/about_carbon.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_menu_return_no_png" file="assets/c_menu_return_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_menu_return_hov_png" file="assets/c_menu_return_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_menu_return_do_png" file="assets/c_menu_return_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_1_1_jpg" file="assets/c_sub_1_1_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_2_1_jpg" file="assets/c_sub_2_1_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_nav_next_no_png" file="assets/c_nav_next_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_nav_next_hov_png" file="assets/c_nav_next_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_nav_next_do_png" file="assets/c_nav_next_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_2_2_jpg" file="assets/c_sub_2_2_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_nav_prev_no_png" file="assets/c_nav_prev_no_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_nav_prev_hov_png" file="assets/c_nav_prev_hov_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_nav_prev_do_png" file="assets/c_nav_prev_do_png.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_2_3_jpg" file="assets/c_sub_2_3_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_2_4_jpg" file="assets/c_sub_2_4_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_3_1_jpg" file="assets/c_sub_3_1_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_3_2_jpg" file="assets/c_sub_3_2_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_3_3_jpg" file="assets/c_sub_3_3_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_3_4_jpg" file="assets/c_sub_3_4_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_3_5_jpg" file="assets/c_sub_3_5_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_3_6_jpg" file="assets/c_sub_3_6_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_3_7_jpg" file="assets/c_sub_3_7_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_3_8_jpg" file="assets/c_sub_3_8_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_3_9_jpg" file="assets/c_sub_3_9_jpg.png" alphacolor="#FF00FF"/>
+  <Bitmap id="c_sub_4_1_jpg" file="assets/c_sub_4_1_jpg.png" alphacolor="#FF00FF"/>
+  <Window id="main" x="120" y="120" visible="true">
+    <Layout id="main_1" width="600" height="596">
+      <Image image="main_back_1_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_2);tracks.setLayout(tracks_2);equalizer.setLayout(equalizer_2);video.setLayout(video_2)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_1_closed)" tooltiptext="Close shutter"/>
+      <Button up="shutter_open" x="108" y="104" action="main.setLayout(main_1_closed)" tooltiptext="Close shutter"/>
+    </Layout>
+    <Layout id="main_1_closed" width="600" height="596">
+      <Image image="main_back_1_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_2);tracks.setLayout(tracks_2);equalizer.setLayout(equalizer_2);video.setLayout(video_2)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_1)" tooltiptext="Open shutter"/>
+      <Button up="shutter_close" x="108" y="104" action="main.setLayout(main_1)" tooltiptext="Open shutter"/>
+    </Layout>
+    <Layout id="main_2" width="600" height="596">
+      <Image image="main_back_2_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_3);tracks.setLayout(tracks_3);equalizer.setLayout(equalizer_3);video.setLayout(video_3)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_2_closed)" tooltiptext="Close shutter"/>
+      <Button up="shutter_open" x="108" y="104" action="main.setLayout(main_2_closed)" tooltiptext="Close shutter"/>
+    </Layout>
+    <Layout id="main_2_closed" width="600" height="596">
+      <Image image="main_back_2_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_3);tracks.setLayout(tracks_3);equalizer.setLayout(equalizer_3);video.setLayout(video_3)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_2)" tooltiptext="Open shutter"/>
+      <Button up="shutter_close" x="108" y="104" action="main.setLayout(main_2)" tooltiptext="Open shutter"/>
+    </Layout>
+    <Layout id="main_3" width="600" height="596">
+      <Image image="main_back_3_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_4);tracks.setLayout(tracks_4);equalizer.setLayout(equalizer_4);video.setLayout(video_4)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_3_closed)" tooltiptext="Close shutter"/>
+      <Button up="shutter_open" x="108" y="104" action="main.setLayout(main_3_closed)" tooltiptext="Close shutter"/>
+    </Layout>
+    <Layout id="main_3_closed" width="600" height="596">
+      <Image image="main_back_3_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_4);tracks.setLayout(tracks_4);equalizer.setLayout(equalizer_4);video.setLayout(video_4)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_3)" tooltiptext="Open shutter"/>
+      <Button up="shutter_close" x="108" y="104" action="main.setLayout(main_3)" tooltiptext="Open shutter"/>
+    </Layout>
+    <Layout id="main_4" width="600" height="596">
+      <Image image="main_back_4_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_5);tracks.setLayout(tracks_5);equalizer.setLayout(equalizer_5);video.setLayout(video_5)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_4_closed)" tooltiptext="Close shutter"/>
+      <Button up="shutter_open" x="108" y="104" action="main.setLayout(main_4_closed)" tooltiptext="Close shutter"/>
+    </Layout>
+    <Layout id="main_4_closed" width="600" height="596">
+      <Image image="main_back_4_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_5);tracks.setLayout(tracks_5);equalizer.setLayout(equalizer_5);video.setLayout(video_5)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_4)" tooltiptext="Open shutter"/>
+      <Button up="shutter_close" x="108" y="104" action="main.setLayout(main_4)" tooltiptext="Open shutter"/>
+    </Layout>
+    <Layout id="main_5" width="600" height="596">
+      <Image image="main_back_5_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_6);tracks.setLayout(tracks_6);equalizer.setLayout(equalizer_6);video.setLayout(video_6)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_5_closed)" tooltiptext="Close shutter"/>
+      <Button up="shutter_open" x="108" y="104" action="main.setLayout(main_5_closed)" tooltiptext="Close shutter"/>
+    </Layout>
+    <Layout id="main_5_closed" width="600" height="596">
+      <Image image="main_back_5_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_6);tracks.setLayout(tracks_6);equalizer.setLayout(equalizer_6);video.setLayout(video_6)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_5)" tooltiptext="Open shutter"/>
+      <Button up="shutter_close" x="108" y="104" action="main.setLayout(main_5)" tooltiptext="Open shutter"/>
+    </Layout>
+    <Layout id="main_6" width="600" height="596">
+      <Image image="main_back_6_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_7);tracks.setLayout(tracks_7);equalizer.setLayout(equalizer_7);video.setLayout(video_7)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_6_closed)" tooltiptext="Close shutter"/>
+      <Button up="shutter_open" x="108" y="104" action="main.setLayout(main_6_closed)" tooltiptext="Close shutter"/>
+    </Layout>
+    <Layout id="main_6_closed" width="600" height="596">
+      <Image image="main_back_6_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_7);tracks.setLayout(tracks_7);equalizer.setLayout(equalizer_7);video.setLayout(video_7)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_6)" tooltiptext="Open shutter"/>
+      <Button up="shutter_close" x="108" y="104" action="main.setLayout(main_6)" tooltiptext="Open shutter"/>
+    </Layout>
+    <Layout id="main_7" width="600" height="596">
+      <Image image="main_back_7_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_1);tracks.setLayout(tracks_1);equalizer.setLayout(equalizer_1);video.setLayout(video_1)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_7_closed)" tooltiptext="Close shutter"/>
+      <Button up="shutter_open" x="108" y="104" action="main.setLayout(main_7_closed)" tooltiptext="Close shutter"/>
+    </Layout>
+    <Layout id="main_7_closed" width="600" height="596">
+      <Image image="main_back_7_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_1);tracks.setLayout(tracks_1);equalizer.setLayout(equalizer_1);video.setLayout(video_1)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_7)" tooltiptext="Open shutter"/>
+      <Button up="shutter_close" x="108" y="104" action="main.setLayout(main_7)" tooltiptext="Open shutter"/>
+    </Layout>
+    <Layout id="main_start" width="600" height="596">
+      <Image image="main_back_1_png" x="0" y="0" action="move"/>
+      <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize"/>
+      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video"/>
+      <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC"/>
+      <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media"/>
+      <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video"/>
+      <Checkbox x="54" y="252" state="tracks.isVisible" up1="m_pl_no_png" over1="m_pl_hov_png" down1="m_pl_do_png" up2="m_pl_do_png" over2="m_pl_hov_png" down2="m_pl_do_png" action1="tracks.show()" action2="tracks.hide()" tooltiptext1="Show / hide tracks" tooltiptext2="Show / hide tracks"/>
+      <Checkbox x="64" y="336" state="equalizer.isVisible" up1="m_eq_no_png" over1="m_eq_hov_png" down1="m_eq_do_png" up2="m_eq_do_png" over2="m_eq_hov_png" down2="m_eq_do_png" action1="equalizer.show()" action2="equalizer.hide()" tooltiptext1="Show / hide equalizer" tooltiptext2="Show / hide equalizer"/>
+      <Slider x="162" y="130" up="invisible_cursor" points="(8,96),(18,54),(48,18),(92,0),(138,0),(184,0),(228,18),(258,54),(268,96)" value="volume" tooltiptext="Volume: $V%">
+        <SliderBackground image="volume_png" nbvert="29"/>
+      </Slider>
+      <Slider x="142" y="328" up="invisible_cursor" points="(8,2),(18,58),(50,106),(100,134),(156,136),(212,134),(262,106),(294,58),(304,2)" value="time" tooltiptext="Seek: $T / $D">
+        <SliderBackground image="seek_forward" nbvert="33"/>
+      </Slider>
+      <Image image="vol_seek_mat_png" x="216" y="204"/>
+      <Text text="$N" x="124" y="234" width="354" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="116" y="268" up="m_logo_no_png" over="m_logo_hov_png" down="m_logo_no_png" action="info.show()" tooltiptext="Need for Speed information"/>
+      <Text text="$t" x="240" y="336" width="136" font="small" color="#00AEEF" alignment="center"/>
+      <Button x="480" y="200" up="m_next_no_png" over="m_next_hov_png" down="m_next_do_png" action="playlist.next()" tooltiptext="Next track"/>
+      <Button x="488" y="284" up="m_stop_no_png" over="m_stop_hov_png" down="m_stop_do_png" action="vlc.stop()" tooltiptext="Stop"/>
+      <Checkbox x="468" y="364" state="vlc.isPlaying" up1="m_play_no_png" over1="m_play_hov_png" down1="m_play_do_png" up2="m_pause_no_png" over2="m_pause_hov_png" down2="m_pause_do_png" action1="vlc.play()" action2="vlc.pause()" tooltiptext1="Play / pause" tooltiptext2="Play / pause"/>
+      <Button x="416" y="434" up="m_prev_no_png" over="m_prev_hov_png" down="m_prev_do_png" action="playlist.previous()" tooltiptext="Previous track"/>
+      <Button x="388" y="538" up="m_color_no_png" over="m_color_hov_png" down="m_color_do_png" action="main.setLayout(main_2);tracks.setLayout(tracks_2);equalizer.setLayout(equalizer_2);video.setLayout(video_2)" tooltiptext="Cycle seven original color schemes"/>
+      <Checkbox x="430" y="514" state="info.isVisible" up1="m_info_no_png" over1="m_info_hov_png" down1="m_info_do_png" up2="m_info_do_png" over2="m_info_hov_png" down2="m_info_do_png" action1="info.show()" action2="info.hide()" tooltiptext1="Information / About" tooltiptext2="Information / About"/>
+      <Button x="474" y="484" up="m_shutter_no_png" over="m_shutter_hov_png" down="m_shutter_do_png" action="main.setLayout(main_1_closed)" tooltiptext="Close shutter"/>
+      <Button up="shutter_open" x="108" y="104" action="main.setLayout(main_1_closed)" tooltiptext="Close shutter"/>
+      <Button up="intro_sequence" x="106" y="104" action="main.setLayout(main_1)" tooltiptext="Skip original startup animation"/>
+    </Layout>
+  </Window>
+  <Window id="tracks" x="760" y="120" visible="false">
+    <Layout id="tracks_2" width="840" height="640" minwidth="840" minheight="640" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_2_png" x="354" y="0" action="move" rightbottom="righttop" width="158" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_2_png" x="354" y="520" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="158" height="120" resize="mosaic"/>
+      <Image image="f_left_s_2_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="404" resize="mosaic"/>
+      <Image image="f_right_s_2_png" x="512" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="404" resize="mosaic"/>
+      <Image image="f_top_left_2_png" x="0" y="0" action="move"/>
+      <Image image="pl_top_right_2_png" x="512" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_2_png" x="0" y="526" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_2_png" x="512" y="526" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="704" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="tracks.hide()" tooltiptext="Close tracks" lefttop="righttop" rightbottom="righttop"/>
+      <Checkbox x="620" y="12" state="playlist.isRandom" up1="pl_shuffle_no_png" over1="pl_shuffle_hov_png" down1="pl_shuffle_do_png" up2="pl_shuffle_do_png" over2="pl_shuffle_hov_png" down2="pl_shuffle_do_png" action1="playlist.setRandom(true)" action2="playlist.setRandom(false)" tooltiptext1="Shuffle" tooltiptext2="Shuffle"/>
+      <Checkbox x="662" y="12" state="playlist.isLoop" up1="pl_repeat_no_png" over1="pl_repeat_hov_png" down1="pl_repeat_do_png" up2="pl_repeat_do_png" over2="pl_repeat_hov_png" down2="pl_repeat_do_png" action1="playlist.setLoop(true)" action2="playlist.setLoop(false)" tooltiptext1="Repeat playlist" tooltiptext2="Repeat playlist"/>
+      <Playtree id="tree_2" x="68" y="74" width="704" height="506" font="ui" fgcolor="#9FA2B0" playcolor="#FFFFFF" bgcolor1="#000000" bgcolor2="#000000" selcolor="#A01A1A" flat="true" rightbottom="rightbottom">
+        <Slider x="682" y="86" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(0,460)" value="tree_2.slider" lefttop="righttop" rightbottom="rightbottom"/>
+      </Playtree>
+      <Button x="64" y="578" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="playlist.add()" tooltiptext="Add media" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_resize_png" x="768" y="592" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="tracks_3" width="840" height="640" minwidth="840" minheight="640" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_3_png" x="354" y="0" action="move" rightbottom="righttop" width="158" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_3_png" x="354" y="520" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="158" height="120" resize="mosaic"/>
+      <Image image="f_left_s_3_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="404" resize="mosaic"/>
+      <Image image="f_right_s_3_png" x="512" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="404" resize="mosaic"/>
+      <Image image="f_top_left_3_png" x="0" y="0" action="move"/>
+      <Image image="pl_top_right_3_png" x="512" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_3_png" x="0" y="526" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_3_png" x="512" y="526" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="704" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="tracks.hide()" tooltiptext="Close tracks" lefttop="righttop" rightbottom="righttop"/>
+      <Checkbox x="620" y="12" state="playlist.isRandom" up1="pl_shuffle_no_png" over1="pl_shuffle_hov_png" down1="pl_shuffle_do_png" up2="pl_shuffle_do_png" over2="pl_shuffle_hov_png" down2="pl_shuffle_do_png" action1="playlist.setRandom(true)" action2="playlist.setRandom(false)" tooltiptext1="Shuffle" tooltiptext2="Shuffle"/>
+      <Checkbox x="662" y="12" state="playlist.isLoop" up1="pl_repeat_no_png" over1="pl_repeat_hov_png" down1="pl_repeat_do_png" up2="pl_repeat_do_png" over2="pl_repeat_hov_png" down2="pl_repeat_do_png" action1="playlist.setLoop(true)" action2="playlist.setLoop(false)" tooltiptext1="Repeat playlist" tooltiptext2="Repeat playlist"/>
+      <Playtree id="tree_3" x="68" y="74" width="704" height="506" font="ui" fgcolor="#9FA2B0" playcolor="#FFFFFF" bgcolor1="#000000" bgcolor2="#000000" selcolor="#A01A1A" flat="true" rightbottom="rightbottom">
+        <Slider x="682" y="86" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(0,460)" value="tree_3.slider" lefttop="righttop" rightbottom="rightbottom"/>
+      </Playtree>
+      <Button x="64" y="578" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="playlist.add()" tooltiptext="Add media" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_resize_png" x="768" y="592" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="tracks_4" width="840" height="640" minwidth="840" minheight="640" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_4_png" x="354" y="0" action="move" rightbottom="righttop" width="158" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_4_png" x="354" y="520" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="158" height="120" resize="mosaic"/>
+      <Image image="f_left_s_4_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="404" resize="mosaic"/>
+      <Image image="f_right_s_4_png" x="512" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="404" resize="mosaic"/>
+      <Image image="f_top_left_4_png" x="0" y="0" action="move"/>
+      <Image image="pl_top_right_4_png" x="512" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_4_png" x="0" y="526" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_4_png" x="512" y="526" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="704" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="tracks.hide()" tooltiptext="Close tracks" lefttop="righttop" rightbottom="righttop"/>
+      <Checkbox x="620" y="12" state="playlist.isRandom" up1="pl_shuffle_no_png" over1="pl_shuffle_hov_png" down1="pl_shuffle_do_png" up2="pl_shuffle_do_png" over2="pl_shuffle_hov_png" down2="pl_shuffle_do_png" action1="playlist.setRandom(true)" action2="playlist.setRandom(false)" tooltiptext1="Shuffle" tooltiptext2="Shuffle"/>
+      <Checkbox x="662" y="12" state="playlist.isLoop" up1="pl_repeat_no_png" over1="pl_repeat_hov_png" down1="pl_repeat_do_png" up2="pl_repeat_do_png" over2="pl_repeat_hov_png" down2="pl_repeat_do_png" action1="playlist.setLoop(true)" action2="playlist.setLoop(false)" tooltiptext1="Repeat playlist" tooltiptext2="Repeat playlist"/>
+      <Playtree id="tree_4" x="68" y="74" width="704" height="506" font="ui" fgcolor="#9FA2B0" playcolor="#FFFFFF" bgcolor1="#000000" bgcolor2="#000000" selcolor="#A01A1A" flat="true" rightbottom="rightbottom">
+        <Slider x="682" y="86" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(0,460)" value="tree_4.slider" lefttop="righttop" rightbottom="rightbottom"/>
+      </Playtree>
+      <Button x="64" y="578" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="playlist.add()" tooltiptext="Add media" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_resize_png" x="768" y="592" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="tracks_5" width="840" height="640" minwidth="840" minheight="640" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_5_png" x="354" y="0" action="move" rightbottom="righttop" width="158" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_5_png" x="354" y="520" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="158" height="120" resize="mosaic"/>
+      <Image image="f_left_s_5_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="404" resize="mosaic"/>
+      <Image image="f_right_s_5_png" x="512" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="404" resize="mosaic"/>
+      <Image image="f_top_left_5_png" x="0" y="0" action="move"/>
+      <Image image="pl_top_right_5_png" x="512" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_5_png" x="0" y="526" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_5_png" x="512" y="526" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="704" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="tracks.hide()" tooltiptext="Close tracks" lefttop="righttop" rightbottom="righttop"/>
+      <Checkbox x="620" y="12" state="playlist.isRandom" up1="pl_shuffle_no_png" over1="pl_shuffle_hov_png" down1="pl_shuffle_do_png" up2="pl_shuffle_do_png" over2="pl_shuffle_hov_png" down2="pl_shuffle_do_png" action1="playlist.setRandom(true)" action2="playlist.setRandom(false)" tooltiptext1="Shuffle" tooltiptext2="Shuffle"/>
+      <Checkbox x="662" y="12" state="playlist.isLoop" up1="pl_repeat_no_png" over1="pl_repeat_hov_png" down1="pl_repeat_do_png" up2="pl_repeat_do_png" over2="pl_repeat_hov_png" down2="pl_repeat_do_png" action1="playlist.setLoop(true)" action2="playlist.setLoop(false)" tooltiptext1="Repeat playlist" tooltiptext2="Repeat playlist"/>
+      <Playtree id="tree_5" x="68" y="74" width="704" height="506" font="ui" fgcolor="#9FA2B0" playcolor="#FFFFFF" bgcolor1="#000000" bgcolor2="#000000" selcolor="#A01A1A" flat="true" rightbottom="rightbottom">
+        <Slider x="682" y="86" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(0,460)" value="tree_5.slider" lefttop="righttop" rightbottom="rightbottom"/>
+      </Playtree>
+      <Button x="64" y="578" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="playlist.add()" tooltiptext="Add media" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_resize_png" x="768" y="592" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="tracks_6" width="840" height="640" minwidth="840" minheight="640" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_6_png" x="354" y="0" action="move" rightbottom="righttop" width="158" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_6_png" x="354" y="520" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="158" height="120" resize="mosaic"/>
+      <Image image="f_left_s_6_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="404" resize="mosaic"/>
+      <Image image="f_right_s_6_png" x="512" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="404" resize="mosaic"/>
+      <Image image="f_top_left_6_png" x="0" y="0" action="move"/>
+      <Image image="pl_top_right_6_png" x="512" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_6_png" x="0" y="526" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_6_png" x="512" y="526" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="704" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="tracks.hide()" tooltiptext="Close tracks" lefttop="righttop" rightbottom="righttop"/>
+      <Checkbox x="620" y="12" state="playlist.isRandom" up1="pl_shuffle_no_png" over1="pl_shuffle_hov_png" down1="pl_shuffle_do_png" up2="pl_shuffle_do_png" over2="pl_shuffle_hov_png" down2="pl_shuffle_do_png" action1="playlist.setRandom(true)" action2="playlist.setRandom(false)" tooltiptext1="Shuffle" tooltiptext2="Shuffle"/>
+      <Checkbox x="662" y="12" state="playlist.isLoop" up1="pl_repeat_no_png" over1="pl_repeat_hov_png" down1="pl_repeat_do_png" up2="pl_repeat_do_png" over2="pl_repeat_hov_png" down2="pl_repeat_do_png" action1="playlist.setLoop(true)" action2="playlist.setLoop(false)" tooltiptext1="Repeat playlist" tooltiptext2="Repeat playlist"/>
+      <Playtree id="tree_6" x="68" y="74" width="704" height="506" font="ui" fgcolor="#9FA2B0" playcolor="#FFFFFF" bgcolor1="#000000" bgcolor2="#000000" selcolor="#A01A1A" flat="true" rightbottom="rightbottom">
+        <Slider x="682" y="86" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(0,460)" value="tree_6.slider" lefttop="righttop" rightbottom="rightbottom"/>
+      </Playtree>
+      <Button x="64" y="578" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="playlist.add()" tooltiptext="Add media" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_resize_png" x="768" y="592" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="tracks_7" width="840" height="640" minwidth="840" minheight="640" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_7_png" x="354" y="0" action="move" rightbottom="righttop" width="158" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_7_png" x="354" y="520" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="158" height="120" resize="mosaic"/>
+      <Image image="f_left_s_7_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="404" resize="mosaic"/>
+      <Image image="f_right_s_7_png" x="512" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="404" resize="mosaic"/>
+      <Image image="f_top_left_7_png" x="0" y="0" action="move"/>
+      <Image image="pl_top_right_7_png" x="512" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_7_png" x="0" y="526" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_7_png" x="512" y="526" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="704" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="tracks.hide()" tooltiptext="Close tracks" lefttop="righttop" rightbottom="righttop"/>
+      <Checkbox x="620" y="12" state="playlist.isRandom" up1="pl_shuffle_no_png" over1="pl_shuffle_hov_png" down1="pl_shuffle_do_png" up2="pl_shuffle_do_png" over2="pl_shuffle_hov_png" down2="pl_shuffle_do_png" action1="playlist.setRandom(true)" action2="playlist.setRandom(false)" tooltiptext1="Shuffle" tooltiptext2="Shuffle"/>
+      <Checkbox x="662" y="12" state="playlist.isLoop" up1="pl_repeat_no_png" over1="pl_repeat_hov_png" down1="pl_repeat_do_png" up2="pl_repeat_do_png" over2="pl_repeat_hov_png" down2="pl_repeat_do_png" action1="playlist.setLoop(true)" action2="playlist.setLoop(false)" tooltiptext1="Repeat playlist" tooltiptext2="Repeat playlist"/>
+      <Playtree id="tree_7" x="68" y="74" width="704" height="506" font="ui" fgcolor="#9FA2B0" playcolor="#FFFFFF" bgcolor1="#000000" bgcolor2="#000000" selcolor="#A01A1A" flat="true" rightbottom="rightbottom">
+        <Slider x="682" y="86" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(0,460)" value="tree_7.slider" lefttop="righttop" rightbottom="rightbottom"/>
+      </Playtree>
+      <Button x="64" y="578" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="playlist.add()" tooltiptext="Add media" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_resize_png" x="768" y="592" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="tracks_1" width="840" height="640" minwidth="840" minheight="640" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" rightbottom="righttop" width="158" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="520" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="158" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="404" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="512" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="404" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="pl_top_right_1_png" x="512" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_1_png" x="0" y="526" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_1_png" x="512" y="526" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="704" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="tracks.hide()" tooltiptext="Close tracks" lefttop="righttop" rightbottom="righttop"/>
+      <Checkbox x="620" y="12" state="playlist.isRandom" up1="pl_shuffle_no_png" over1="pl_shuffle_hov_png" down1="pl_shuffle_do_png" up2="pl_shuffle_do_png" over2="pl_shuffle_hov_png" down2="pl_shuffle_do_png" action1="playlist.setRandom(true)" action2="playlist.setRandom(false)" tooltiptext1="Shuffle" tooltiptext2="Shuffle"/>
+      <Checkbox x="662" y="12" state="playlist.isLoop" up1="pl_repeat_no_png" over1="pl_repeat_hov_png" down1="pl_repeat_do_png" up2="pl_repeat_do_png" over2="pl_repeat_hov_png" down2="pl_repeat_do_png" action1="playlist.setLoop(true)" action2="playlist.setLoop(false)" tooltiptext1="Repeat playlist" tooltiptext2="Repeat playlist"/>
+      <Playtree id="tree_1" x="68" y="74" width="704" height="506" font="ui" fgcolor="#9FA2B0" playcolor="#FFFFFF" bgcolor1="#000000" bgcolor2="#000000" selcolor="#A01A1A" flat="true" rightbottom="rightbottom">
+        <Slider x="682" y="86" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(0,460)" value="tree_1.slider" lefttop="righttop" rightbottom="rightbottom"/>
+      </Playtree>
+      <Button x="64" y="578" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="playlist.add()" tooltiptext="Add media" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_resize_png" x="768" y="592" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+  </Window>
+  <Window id="equalizer" x="120" y="760" visible="false">
+    <Layout id="equalizer_2" width="706" height="420">
+      <Image image="f_top_s_2_png" x="354" y="0" action="move" width="24" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_2_png" x="354" y="300" action="move" width="24" height="120" resize="mosaic"/>
+      <Image image="f_left_s_2_png" x="0" y="122" action="move" width="354" height="184" resize="mosaic"/>
+      <Image image="f_right_s_2_png" x="378" y="122" action="move" width="328" height="184" resize="mosaic"/>
+      <Image image="f_top_left_2_png" x="0" y="0" action="move"/>
+      <Image image="eq_top_right_2_png" x="378" y="0" action="move"/>
+      <Image image="f_bot_left_2_png" x="0" y="306" action="move"/>
+      <Image image="f_bot_right_2_png" x="378" y="306" action="move"/>
+      <Button x="570" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="equalizer.hide()" tooltiptext="Close equalizer"/>
+      <Image image="eq_vlc_back" x="66" y="70"/>
+      <Slider x="110" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(0)" tooltiptext="VLC equalizer band 1"/>
+      <Slider x="136" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(1)" tooltiptext="VLC equalizer band 2"/>
+      <Slider x="160" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(2)" tooltiptext="VLC equalizer band 3"/>
+      <Slider x="186" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(3)" tooltiptext="VLC equalizer band 4"/>
+      <Slider x="210" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(4)" tooltiptext="VLC equalizer band 5"/>
+      <Slider x="236" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(5)" tooltiptext="VLC equalizer band 6"/>
+      <Slider x="262" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(6)" tooltiptext="VLC equalizer band 7"/>
+      <Slider x="286" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(7)" tooltiptext="VLC equalizer band 8"/>
+      <Slider x="312" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(8)" tooltiptext="VLC equalizer band 9"/>
+      <Slider x="338" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(9)" tooltiptext="VLC equalizer band 10"/>
+      <Checkbox x="466" y="284" state="equalizer.isEnabled" up1="eq_power_no_png" over1="eq_power_hov_png" down1="eq_power_do_png" up2="eq_power_do_png" over2="eq_power_hov_png" down2="eq_power_do_png" action1="equalizer.enable()" action2="equalizer.disable()" tooltiptext1="Enable / disable equalizer" tooltiptext2="Enable / disable equalizer"/>
+      <Text text="VLC EQUALIZER" x="134" y="288" width="220" font="small" color="#F8F8F8" alignment="center"/>
+      <Text text="PREAMP" x="382" y="96" width="226" font="small" color="#D1D1D1" alignment="center"/>
+      <Slider x="464" y="142" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(120,0)" value="equalizer.preamp" tooltiptext="Equalizer preamplification"/>
+      <Text text="Dead Signal Interactive" x="120" y="348" width="470" font="small" color="#9FA2B0" alignment="center"/>
+    </Layout>
+    <Layout id="equalizer_3" width="706" height="420">
+      <Image image="f_top_s_3_png" x="354" y="0" action="move" width="24" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_3_png" x="354" y="300" action="move" width="24" height="120" resize="mosaic"/>
+      <Image image="f_left_s_3_png" x="0" y="122" action="move" width="354" height="184" resize="mosaic"/>
+      <Image image="f_right_s_3_png" x="378" y="122" action="move" width="328" height="184" resize="mosaic"/>
+      <Image image="f_top_left_3_png" x="0" y="0" action="move"/>
+      <Image image="eq_top_right_3_png" x="378" y="0" action="move"/>
+      <Image image="f_bot_left_3_png" x="0" y="306" action="move"/>
+      <Image image="f_bot_right_3_png" x="378" y="306" action="move"/>
+      <Button x="570" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="equalizer.hide()" tooltiptext="Close equalizer"/>
+      <Image image="eq_vlc_back" x="66" y="70"/>
+      <Slider x="110" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(0)" tooltiptext="VLC equalizer band 1"/>
+      <Slider x="136" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(1)" tooltiptext="VLC equalizer band 2"/>
+      <Slider x="160" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(2)" tooltiptext="VLC equalizer band 3"/>
+      <Slider x="186" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(3)" tooltiptext="VLC equalizer band 4"/>
+      <Slider x="210" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(4)" tooltiptext="VLC equalizer band 5"/>
+      <Slider x="236" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(5)" tooltiptext="VLC equalizer band 6"/>
+      <Slider x="262" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(6)" tooltiptext="VLC equalizer band 7"/>
+      <Slider x="286" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(7)" tooltiptext="VLC equalizer band 8"/>
+      <Slider x="312" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(8)" tooltiptext="VLC equalizer band 9"/>
+      <Slider x="338" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(9)" tooltiptext="VLC equalizer band 10"/>
+      <Checkbox x="466" y="284" state="equalizer.isEnabled" up1="eq_power_no_png" over1="eq_power_hov_png" down1="eq_power_do_png" up2="eq_power_do_png" over2="eq_power_hov_png" down2="eq_power_do_png" action1="equalizer.enable()" action2="equalizer.disable()" tooltiptext1="Enable / disable equalizer" tooltiptext2="Enable / disable equalizer"/>
+      <Text text="VLC EQUALIZER" x="134" y="288" width="220" font="small" color="#F8F8F8" alignment="center"/>
+      <Text text="PREAMP" x="382" y="96" width="226" font="small" color="#D1D1D1" alignment="center"/>
+      <Slider x="464" y="142" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(120,0)" value="equalizer.preamp" tooltiptext="Equalizer preamplification"/>
+      <Text text="Dead Signal Interactive" x="120" y="348" width="470" font="small" color="#9FA2B0" alignment="center"/>
+    </Layout>
+    <Layout id="equalizer_4" width="706" height="420">
+      <Image image="f_top_s_4_png" x="354" y="0" action="move" width="24" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_4_png" x="354" y="300" action="move" width="24" height="120" resize="mosaic"/>
+      <Image image="f_left_s_4_png" x="0" y="122" action="move" width="354" height="184" resize="mosaic"/>
+      <Image image="f_right_s_4_png" x="378" y="122" action="move" width="328" height="184" resize="mosaic"/>
+      <Image image="f_top_left_4_png" x="0" y="0" action="move"/>
+      <Image image="eq_top_right_4_png" x="378" y="0" action="move"/>
+      <Image image="f_bot_left_4_png" x="0" y="306" action="move"/>
+      <Image image="f_bot_right_4_png" x="378" y="306" action="move"/>
+      <Button x="570" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="equalizer.hide()" tooltiptext="Close equalizer"/>
+      <Image image="eq_vlc_back" x="66" y="70"/>
+      <Slider x="110" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(0)" tooltiptext="VLC equalizer band 1"/>
+      <Slider x="136" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(1)" tooltiptext="VLC equalizer band 2"/>
+      <Slider x="160" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(2)" tooltiptext="VLC equalizer band 3"/>
+      <Slider x="186" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(3)" tooltiptext="VLC equalizer band 4"/>
+      <Slider x="210" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(4)" tooltiptext="VLC equalizer band 5"/>
+      <Slider x="236" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(5)" tooltiptext="VLC equalizer band 6"/>
+      <Slider x="262" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(6)" tooltiptext="VLC equalizer band 7"/>
+      <Slider x="286" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(7)" tooltiptext="VLC equalizer band 8"/>
+      <Slider x="312" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(8)" tooltiptext="VLC equalizer band 9"/>
+      <Slider x="338" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(9)" tooltiptext="VLC equalizer band 10"/>
+      <Checkbox x="466" y="284" state="equalizer.isEnabled" up1="eq_power_no_png" over1="eq_power_hov_png" down1="eq_power_do_png" up2="eq_power_do_png" over2="eq_power_hov_png" down2="eq_power_do_png" action1="equalizer.enable()" action2="equalizer.disable()" tooltiptext1="Enable / disable equalizer" tooltiptext2="Enable / disable equalizer"/>
+      <Text text="VLC EQUALIZER" x="134" y="288" width="220" font="small" color="#F8F8F8" alignment="center"/>
+      <Text text="PREAMP" x="382" y="96" width="226" font="small" color="#D1D1D1" alignment="center"/>
+      <Slider x="464" y="142" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(120,0)" value="equalizer.preamp" tooltiptext="Equalizer preamplification"/>
+      <Text text="Dead Signal Interactive" x="120" y="348" width="470" font="small" color="#9FA2B0" alignment="center"/>
+    </Layout>
+    <Layout id="equalizer_5" width="706" height="420">
+      <Image image="f_top_s_5_png" x="354" y="0" action="move" width="24" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_5_png" x="354" y="300" action="move" width="24" height="120" resize="mosaic"/>
+      <Image image="f_left_s_5_png" x="0" y="122" action="move" width="354" height="184" resize="mosaic"/>
+      <Image image="f_right_s_5_png" x="378" y="122" action="move" width="328" height="184" resize="mosaic"/>
+      <Image image="f_top_left_5_png" x="0" y="0" action="move"/>
+      <Image image="eq_top_right_5_png" x="378" y="0" action="move"/>
+      <Image image="f_bot_left_5_png" x="0" y="306" action="move"/>
+      <Image image="f_bot_right_5_png" x="378" y="306" action="move"/>
+      <Button x="570" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="equalizer.hide()" tooltiptext="Close equalizer"/>
+      <Image image="eq_vlc_back" x="66" y="70"/>
+      <Slider x="110" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(0)" tooltiptext="VLC equalizer band 1"/>
+      <Slider x="136" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(1)" tooltiptext="VLC equalizer band 2"/>
+      <Slider x="160" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(2)" tooltiptext="VLC equalizer band 3"/>
+      <Slider x="186" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(3)" tooltiptext="VLC equalizer band 4"/>
+      <Slider x="210" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(4)" tooltiptext="VLC equalizer band 5"/>
+      <Slider x="236" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(5)" tooltiptext="VLC equalizer band 6"/>
+      <Slider x="262" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(6)" tooltiptext="VLC equalizer band 7"/>
+      <Slider x="286" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(7)" tooltiptext="VLC equalizer band 8"/>
+      <Slider x="312" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(8)" tooltiptext="VLC equalizer band 9"/>
+      <Slider x="338" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(9)" tooltiptext="VLC equalizer band 10"/>
+      <Checkbox x="466" y="284" state="equalizer.isEnabled" up1="eq_power_no_png" over1="eq_power_hov_png" down1="eq_power_do_png" up2="eq_power_do_png" over2="eq_power_hov_png" down2="eq_power_do_png" action1="equalizer.enable()" action2="equalizer.disable()" tooltiptext1="Enable / disable equalizer" tooltiptext2="Enable / disable equalizer"/>
+      <Text text="VLC EQUALIZER" x="134" y="288" width="220" font="small" color="#F8F8F8" alignment="center"/>
+      <Text text="PREAMP" x="382" y="96" width="226" font="small" color="#D1D1D1" alignment="center"/>
+      <Slider x="464" y="142" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(120,0)" value="equalizer.preamp" tooltiptext="Equalizer preamplification"/>
+      <Text text="Dead Signal Interactive" x="120" y="348" width="470" font="small" color="#9FA2B0" alignment="center"/>
+    </Layout>
+    <Layout id="equalizer_6" width="706" height="420">
+      <Image image="f_top_s_6_png" x="354" y="0" action="move" width="24" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_6_png" x="354" y="300" action="move" width="24" height="120" resize="mosaic"/>
+      <Image image="f_left_s_6_png" x="0" y="122" action="move" width="354" height="184" resize="mosaic"/>
+      <Image image="f_right_s_6_png" x="378" y="122" action="move" width="328" height="184" resize="mosaic"/>
+      <Image image="f_top_left_6_png" x="0" y="0" action="move"/>
+      <Image image="eq_top_right_6_png" x="378" y="0" action="move"/>
+      <Image image="f_bot_left_6_png" x="0" y="306" action="move"/>
+      <Image image="f_bot_right_6_png" x="378" y="306" action="move"/>
+      <Button x="570" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="equalizer.hide()" tooltiptext="Close equalizer"/>
+      <Image image="eq_vlc_back" x="66" y="70"/>
+      <Slider x="110" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(0)" tooltiptext="VLC equalizer band 1"/>
+      <Slider x="136" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(1)" tooltiptext="VLC equalizer band 2"/>
+      <Slider x="160" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(2)" tooltiptext="VLC equalizer band 3"/>
+      <Slider x="186" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(3)" tooltiptext="VLC equalizer band 4"/>
+      <Slider x="210" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(4)" tooltiptext="VLC equalizer band 5"/>
+      <Slider x="236" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(5)" tooltiptext="VLC equalizer band 6"/>
+      <Slider x="262" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(6)" tooltiptext="VLC equalizer band 7"/>
+      <Slider x="286" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(7)" tooltiptext="VLC equalizer band 8"/>
+      <Slider x="312" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(8)" tooltiptext="VLC equalizer band 9"/>
+      <Slider x="338" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(9)" tooltiptext="VLC equalizer band 10"/>
+      <Checkbox x="466" y="284" state="equalizer.isEnabled" up1="eq_power_no_png" over1="eq_power_hov_png" down1="eq_power_do_png" up2="eq_power_do_png" over2="eq_power_hov_png" down2="eq_power_do_png" action1="equalizer.enable()" action2="equalizer.disable()" tooltiptext1="Enable / disable equalizer" tooltiptext2="Enable / disable equalizer"/>
+      <Text text="VLC EQUALIZER" x="134" y="288" width="220" font="small" color="#F8F8F8" alignment="center"/>
+      <Text text="PREAMP" x="382" y="96" width="226" font="small" color="#D1D1D1" alignment="center"/>
+      <Slider x="464" y="142" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(120,0)" value="equalizer.preamp" tooltiptext="Equalizer preamplification"/>
+      <Text text="Dead Signal Interactive" x="120" y="348" width="470" font="small" color="#9FA2B0" alignment="center"/>
+    </Layout>
+    <Layout id="equalizer_7" width="706" height="420">
+      <Image image="f_top_s_7_png" x="354" y="0" action="move" width="24" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_7_png" x="354" y="300" action="move" width="24" height="120" resize="mosaic"/>
+      <Image image="f_left_s_7_png" x="0" y="122" action="move" width="354" height="184" resize="mosaic"/>
+      <Image image="f_right_s_7_png" x="378" y="122" action="move" width="328" height="184" resize="mosaic"/>
+      <Image image="f_top_left_7_png" x="0" y="0" action="move"/>
+      <Image image="eq_top_right_7_png" x="378" y="0" action="move"/>
+      <Image image="f_bot_left_7_png" x="0" y="306" action="move"/>
+      <Image image="f_bot_right_7_png" x="378" y="306" action="move"/>
+      <Button x="570" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="equalizer.hide()" tooltiptext="Close equalizer"/>
+      <Image image="eq_vlc_back" x="66" y="70"/>
+      <Slider x="110" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(0)" tooltiptext="VLC equalizer band 1"/>
+      <Slider x="136" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(1)" tooltiptext="VLC equalizer band 2"/>
+      <Slider x="160" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(2)" tooltiptext="VLC equalizer band 3"/>
+      <Slider x="186" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(3)" tooltiptext="VLC equalizer band 4"/>
+      <Slider x="210" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(4)" tooltiptext="VLC equalizer band 5"/>
+      <Slider x="236" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(5)" tooltiptext="VLC equalizer band 6"/>
+      <Slider x="262" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(6)" tooltiptext="VLC equalizer band 7"/>
+      <Slider x="286" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(7)" tooltiptext="VLC equalizer band 8"/>
+      <Slider x="312" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(8)" tooltiptext="VLC equalizer band 9"/>
+      <Slider x="338" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(9)" tooltiptext="VLC equalizer band 10"/>
+      <Checkbox x="466" y="284" state="equalizer.isEnabled" up1="eq_power_no_png" over1="eq_power_hov_png" down1="eq_power_do_png" up2="eq_power_do_png" over2="eq_power_hov_png" down2="eq_power_do_png" action1="equalizer.enable()" action2="equalizer.disable()" tooltiptext1="Enable / disable equalizer" tooltiptext2="Enable / disable equalizer"/>
+      <Text text="VLC EQUALIZER" x="134" y="288" width="220" font="small" color="#F8F8F8" alignment="center"/>
+      <Text text="PREAMP" x="382" y="96" width="226" font="small" color="#D1D1D1" alignment="center"/>
+      <Slider x="464" y="142" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(120,0)" value="equalizer.preamp" tooltiptext="Equalizer preamplification"/>
+      <Text text="Dead Signal Interactive" x="120" y="348" width="470" font="small" color="#9FA2B0" alignment="center"/>
+    </Layout>
+    <Layout id="equalizer_1" width="706" height="420">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="24" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="300" action="move" width="24" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="184" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="378" y="122" action="move" width="328" height="184" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="eq_top_right_1_png" x="378" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="306" action="move"/>
+      <Image image="f_bot_right_1_png" x="378" y="306" action="move"/>
+      <Button x="570" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="equalizer.hide()" tooltiptext="Close equalizer"/>
+      <Image image="eq_vlc_back" x="66" y="70"/>
+      <Slider x="110" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(0)" tooltiptext="VLC equalizer band 1"/>
+      <Slider x="136" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(1)" tooltiptext="VLC equalizer band 2"/>
+      <Slider x="160" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(2)" tooltiptext="VLC equalizer band 3"/>
+      <Slider x="186" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(3)" tooltiptext="VLC equalizer band 4"/>
+      <Slider x="210" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(4)" tooltiptext="VLC equalizer band 5"/>
+      <Slider x="236" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(5)" tooltiptext="VLC equalizer band 6"/>
+      <Slider x="262" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(6)" tooltiptext="VLC equalizer band 7"/>
+      <Slider x="286" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(7)" tooltiptext="VLC equalizer band 8"/>
+      <Slider x="312" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(8)" tooltiptext="VLC equalizer band 9"/>
+      <Slider x="338" y="120" up="eq_thumb_png" down="eq_thumb_do_png" points="(0,120),(0,0)" thickness="26" value="equalizer.band(9)" tooltiptext="VLC equalizer band 10"/>
+      <Checkbox x="466" y="284" state="equalizer.isEnabled" up1="eq_power_no_png" over1="eq_power_hov_png" down1="eq_power_do_png" up2="eq_power_do_png" over2="eq_power_hov_png" down2="eq_power_do_png" action1="equalizer.enable()" action2="equalizer.disable()" tooltiptext1="Enable / disable equalizer" tooltiptext2="Enable / disable equalizer"/>
+      <Text text="VLC EQUALIZER" x="134" y="288" width="220" font="small" color="#F8F8F8" alignment="center"/>
+      <Text text="PREAMP" x="382" y="96" width="226" font="small" color="#D1D1D1" alignment="center"/>
+      <Slider x="464" y="142" up="eq_thumb2_png" down="eq_thumb2_do_png" points="(0,0),(120,0)" value="equalizer.preamp" tooltiptext="Equalizer preamplification"/>
+      <Text text="Dead Signal Interactive" x="120" y="348" width="470" font="small" color="#9FA2B0" alignment="center"/>
+    </Layout>
+  </Window>
+  <Window id="video" x="760" y="820" visible="false">
+    <Layout id="video_2" width="1416" height="880" minwidth="1416" minheight="880" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_2_png" x="354" y="0" action="move" rightbottom="righttop" width="734" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_2_png" x="354" y="760" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="734" height="120" resize="mosaic"/>
+      <Image image="f_left_s_2_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="644" resize="mosaic"/>
+      <Image image="f_right_s_2_png" x="1088" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="644" resize="mosaic"/>
+      <Image image="f_top_left_2_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_2_png" x="1088" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_2_png" x="0" y="766" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_2_png" x="1088" y="766" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="1280" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="video.hide()" tooltiptext="Close video" lefttop="righttop" rightbottom="righttop"/>
+      <Video x="68" y="74" width="1280" height="746" rightbottom="rightbottom"/>
+      <Button x="1238" y="12" up="vid_zoom_no_png" over="vid_zoom_hov_png" down="vid_zoom_do_png" action="vlc.fullscreen()" tooltiptext="Fullscreen" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_resize_png" x="1344" y="832" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="video_3" width="1416" height="880" minwidth="1416" minheight="880" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_3_png" x="354" y="0" action="move" rightbottom="righttop" width="734" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_3_png" x="354" y="760" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="734" height="120" resize="mosaic"/>
+      <Image image="f_left_s_3_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="644" resize="mosaic"/>
+      <Image image="f_right_s_3_png" x="1088" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="644" resize="mosaic"/>
+      <Image image="f_top_left_3_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_3_png" x="1088" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_3_png" x="0" y="766" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_3_png" x="1088" y="766" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="1280" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="video.hide()" tooltiptext="Close video" lefttop="righttop" rightbottom="righttop"/>
+      <Video x="68" y="74" width="1280" height="746" rightbottom="rightbottom"/>
+      <Button x="1238" y="12" up="vid_zoom_no_png" over="vid_zoom_hov_png" down="vid_zoom_do_png" action="vlc.fullscreen()" tooltiptext="Fullscreen" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_resize_png" x="1344" y="832" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="video_4" width="1416" height="880" minwidth="1416" minheight="880" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_4_png" x="354" y="0" action="move" rightbottom="righttop" width="734" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_4_png" x="354" y="760" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="734" height="120" resize="mosaic"/>
+      <Image image="f_left_s_4_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="644" resize="mosaic"/>
+      <Image image="f_right_s_4_png" x="1088" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="644" resize="mosaic"/>
+      <Image image="f_top_left_4_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_4_png" x="1088" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_4_png" x="0" y="766" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_4_png" x="1088" y="766" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="1280" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="video.hide()" tooltiptext="Close video" lefttop="righttop" rightbottom="righttop"/>
+      <Video x="68" y="74" width="1280" height="746" rightbottom="rightbottom"/>
+      <Button x="1238" y="12" up="vid_zoom_no_png" over="vid_zoom_hov_png" down="vid_zoom_do_png" action="vlc.fullscreen()" tooltiptext="Fullscreen" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_resize_png" x="1344" y="832" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="video_5" width="1416" height="880" minwidth="1416" minheight="880" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_5_png" x="354" y="0" action="move" rightbottom="righttop" width="734" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_5_png" x="354" y="760" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="734" height="120" resize="mosaic"/>
+      <Image image="f_left_s_5_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="644" resize="mosaic"/>
+      <Image image="f_right_s_5_png" x="1088" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="644" resize="mosaic"/>
+      <Image image="f_top_left_5_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_5_png" x="1088" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_5_png" x="0" y="766" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_5_png" x="1088" y="766" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="1280" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="video.hide()" tooltiptext="Close video" lefttop="righttop" rightbottom="righttop"/>
+      <Video x="68" y="74" width="1280" height="746" rightbottom="rightbottom"/>
+      <Button x="1238" y="12" up="vid_zoom_no_png" over="vid_zoom_hov_png" down="vid_zoom_do_png" action="vlc.fullscreen()" tooltiptext="Fullscreen" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_resize_png" x="1344" y="832" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="video_6" width="1416" height="880" minwidth="1416" minheight="880" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_6_png" x="354" y="0" action="move" rightbottom="righttop" width="734" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_6_png" x="354" y="760" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="734" height="120" resize="mosaic"/>
+      <Image image="f_left_s_6_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="644" resize="mosaic"/>
+      <Image image="f_right_s_6_png" x="1088" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="644" resize="mosaic"/>
+      <Image image="f_top_left_6_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_6_png" x="1088" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_6_png" x="0" y="766" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_6_png" x="1088" y="766" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="1280" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="video.hide()" tooltiptext="Close video" lefttop="righttop" rightbottom="righttop"/>
+      <Video x="68" y="74" width="1280" height="746" rightbottom="rightbottom"/>
+      <Button x="1238" y="12" up="vid_zoom_no_png" over="vid_zoom_hov_png" down="vid_zoom_do_png" action="vlc.fullscreen()" tooltiptext="Fullscreen" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_resize_png" x="1344" y="832" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="video_7" width="1416" height="880" minwidth="1416" minheight="880" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_7_png" x="354" y="0" action="move" rightbottom="righttop" width="734" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_7_png" x="354" y="760" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="734" height="120" resize="mosaic"/>
+      <Image image="f_left_s_7_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="644" resize="mosaic"/>
+      <Image image="f_right_s_7_png" x="1088" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="644" resize="mosaic"/>
+      <Image image="f_top_left_7_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_7_png" x="1088" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_7_png" x="0" y="766" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_7_png" x="1088" y="766" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="1280" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="video.hide()" tooltiptext="Close video" lefttop="righttop" rightbottom="righttop"/>
+      <Video x="68" y="74" width="1280" height="746" rightbottom="rightbottom"/>
+      <Button x="1238" y="12" up="vid_zoom_no_png" over="vid_zoom_hov_png" down="vid_zoom_do_png" action="vlc.fullscreen()" tooltiptext="Fullscreen" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_resize_png" x="1344" y="832" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+    <Layout id="video_1" width="1416" height="880" minwidth="1416" minheight="880" maxwidth="3000" maxheight="2000">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" rightbottom="righttop" width="734" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="760" action="move" lefttop="leftbottom" rightbottom="rightbottom" width="734" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" rightbottom="leftbottom" width="354" height="644" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="1088" y="122" action="move" lefttop="righttop" rightbottom="rightbottom" width="328" height="644" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="1088" y="0" action="move" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_bot_left_1_png" x="0" y="766" action="move" lefttop="leftbottom" rightbottom="leftbottom"/>
+      <Image image="f_bot_right_1_png" x="1088" y="766" action="move" lefttop="rightbottom" rightbottom="rightbottom"/>
+      <Button x="1280" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="video.hide()" tooltiptext="Close video" lefttop="righttop" rightbottom="righttop"/>
+      <Video x="68" y="74" width="1280" height="746" rightbottom="rightbottom"/>
+      <Button x="1238" y="12" up="vid_zoom_no_png" over="vid_zoom_hov_png" down="vid_zoom_do_png" action="vlc.fullscreen()" tooltiptext="Fullscreen" lefttop="righttop" rightbottom="righttop"/>
+      <Image image="f_resize_png" x="1344" y="832" action="resizeSE" lefttop="rightbottom" rightbottom="rightbottom"/>
+    </Layout>
+  </Window>
+  <Window id="info" x="1640" y="120" visible="false">
+    <Layout id="info_about" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="about_carbon" x="74" y="70" width="676" height="438" resize="mosaic"/>
+      <Text text="VLC conversion" x="128" y="182" width="580" font="small" color="#00AEEF" alignment="center"/>
+      <Text text="Dead Signal Interactive" x="128" y="224" width="580" font="small" color="#00AEEF" alignment="center"/>
+      <Text text="Original skin: The Skins Factory" x="128" y="286" width="580" font="small" color="#D1D1D1" alignment="center"/>
+      <Text text="Need for Speed Underground" x="128" y="328" width="580" font="small" color="#D1D1D1" alignment="center"/>
+      <Text text="Copyright 2003 Electronic Arts Inc." x="128" y="368" width="580" font="small" color="#D1D1D1" alignment="center"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+    </Layout>
+    <Layout id="info_c_sub_1_1" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_1_1_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+    </Layout>
+    <Layout id="info_c_sub_2_1" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_2_1_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_2_2)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_2_2" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_2_2_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_2_1)" tooltiptext="Previous page"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_2_3)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_2_3" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_2_3_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_2_2)" tooltiptext="Previous page"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_2_4)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_2_4" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_2_4_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_2_3)" tooltiptext="Previous page"/>
+    </Layout>
+    <Layout id="info_c_sub_3_1" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_3_1_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_3_2)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_3_2" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_3_2_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_3_1)" tooltiptext="Previous page"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_3_3)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_3_3" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_3_3_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_3_2)" tooltiptext="Previous page"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_3_4)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_3_4" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_3_4_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_3_3)" tooltiptext="Previous page"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_3_5)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_3_5" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_3_5_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_3_4)" tooltiptext="Previous page"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_3_6)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_3_6" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_3_6_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_3_5)" tooltiptext="Previous page"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_3_7)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_3_7" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_3_7_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_3_6)" tooltiptext="Previous page"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_3_8)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_3_8" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_3_8_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_3_7)" tooltiptext="Previous page"/>
+      <Button x="696" y="452" up="c_nav_next_no_png" over="c_nav_next_hov_png" down="c_nav_next_do_png" action="info.setLayout(info_c_sub_3_9)" tooltiptext="Next page"/>
+    </Layout>
+    <Layout id="info_c_sub_3_9" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_3_9_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+      <Button x="646" y="452" up="c_nav_prev_no_png" over="c_nav_prev_hov_png" down="c_nav_prev_do_png" action="info.setLayout(info_c_sub_3_8)" tooltiptext="Previous page"/>
+    </Layout>
+    <Layout id="info_c_sub_4_1" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_sub_4_1_jpg" x="74" y="70"/>
+      <Button x="94" y="452" up="c_menu_return_no_png" over="c_menu_return_hov_png" down="c_menu_return_do_png" action="info.setLayout(info_menu)" tooltiptext="Return to original menu"/>
+    </Layout>
+    <Layout id="info_menu" width="826" height="564">
+      <Image image="f_top_s_1_png" x="354" y="0" action="move" width="144" height="122" resize="mosaic"/>
+      <Image image="f_bot_s_1_png" x="354" y="444" action="move" width="144" height="120" resize="mosaic"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="move" width="354" height="328" resize="mosaic"/>
+      <Image image="f_right_s_1_png" x="498" y="122" action="move" width="328" height="328" resize="mosaic"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="move"/>
+      <Image image="f_top_right_1_png" x="498" y="0" action="move"/>
+      <Image image="f_bot_left_1_png" x="0" y="450" action="move"/>
+      <Image image="info_bot_right_1_png" x="498" y="450" action="move"/>
+      <Button x="690" y="12" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="info.hide()" tooltiptext="Close information"/>
+      <Image image="c_back_png" x="28" y="68"/>
+      <Image image="c_back_jpg" x="74" y="70"/>
+      <Button x="346" y="208" up="menu_0_no" over="menu_0_hov" down="menu_0_do" action="info.setLayout(info_c_sub_1_1)" tooltiptext="About the game"/>
+      <Button x="348" y="276" up="menu_1_no" over="menu_1_hov" down="menu_1_do" action="info.setLayout(info_c_sub_2_1)" tooltiptext="Story"/>
+      <Button x="348" y="348" up="menu_2_no" over="menu_2_hov" down="menu_2_do" action="info.setLayout(info_c_sub_3_1)" tooltiptext="Screenshots"/>
+      <Button x="348" y="422" up="menu_3_no" over="menu_3_hov" down="menu_3_do" action="info.setLayout(info_c_sub_4_1)" tooltiptext="Web destinations"/>
+      <Text text="Dead Signal Interactive" x="186" y="514" width="450" font="small" color="#B7BBC8" alignment="center"/>
+      <Button x="620" y="496" up="m_info_no_png" over="m_info_hov_png" down="m_info_do_png" action="info.setLayout(info_about)" tooltiptext="About this VLC conversion"/>
+    </Layout>
+  </Window>
+</Theme>

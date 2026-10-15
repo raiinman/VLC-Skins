@@ -87,4 +87,5 @@ Convert the supplied Need for Speed Underground WMP skin to VLC Skins2 using ori
 - `skins/AGENTS.md`: recovered artwork, generated themes, provenance.
 - `tools/AGENTS.md`: extraction, conversion, validation and packaging.
 - `docs/AGENTS.md`: parity records, runtime evidence, review limits.
-- Root owns README.md, requirements.txt, .gitignore and vendor/DOX-LICENSE.
+- Root owns README.md, requirements.txt, .gitignore, vendor dependencies/licenses, and dist review packages.
+- dist contains both VLT scales and an isolated Windows review launcher. Regenerate packages with tools/build.py; keep launcher filenames aligned with them.

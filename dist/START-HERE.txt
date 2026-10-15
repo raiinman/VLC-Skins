@@ -1,0 +1,15 @@
+Review build: Need for Speed Underground for VLC
+
+Double-click Preview-2x.cmd to open the 2x skin in a separate VLC instance.
+Keep the launcher and VLT together. It saves its own review-vlcrc.ini here;
+it does not replace your normal VLC preferences.
+
+For permanent use: VLC > Tools > Preferences > Interface > Use custom skin,
+select the VLT, save, restart VLC. The 1x VLT retains the original size.
+
+Original skin: The Skins Factory / Electronic Arts, 2003.
+VLC conversion: Dead Signal Interactive.
+
+The PNG is an asset-rendered comparison, not a runtime screenshot.
+Read Review-notes.md for remaining interaction and animation checks.
+The 80% acceptance milestone awaits your review.

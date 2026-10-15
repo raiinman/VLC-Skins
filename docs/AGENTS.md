@@ -13,7 +13,10 @@ Separate static verification, runtime observation and pending checks. Record uns
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check after conversion changes.
+Run python tools/build.py --check and python tools/check_contracts.py after conversion changes.
 
 ## Child DOX Index
 None.
+
+
+PARITY.md owns the acceptance status, SOURCES.md owns provenance references, and preview.png is an asset-rendered comparison rather than runtime evidence.
