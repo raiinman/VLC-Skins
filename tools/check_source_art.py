@@ -64,6 +64,25 @@ def compare(assets, resource, expected, scale, prescaled=False):
     assert actual.tobytes() == expected.tobytes(), (scale, resource, 'source pixels')
 
 
+def verify_video_backing_pixels(assets, layout, scale):
+    """Independently compose source parent artwork before Windows RGB caching."""
+    count = 0
+    for prefix, source_x in [('m_close', 96), ('vid_zoom', 75)]:
+        assert not layout.findall(f'Image[@image="{prefix}_no_png"]'), 'Do not cache a partially alpha idle backing against black'
+        idle = scaled(source_pixels(SOURCE/f'{prefix}_no.png'), scale)
+        for color in range(1, 8):
+            header = scaled(source_pixels(SOURCE/f'eq_top_right_{color}.png'), scale)
+            expected = header.crop((source_x*scale, 6*scale, (source_x+19)*scale, 25*scale))
+            expected.alpha_composite(idle)
+            resource = f'video_{prefix}_backing_{color}'
+            assert len(layout.findall(f'Image[@image="{resource}"]')) == 1, (scale, resource, 'Source header backing patch missing')
+            assert expected.getchannel('A').getextrema() == (255, 255)
+            compare(assets, resource, expected, scale, prescaled=True)
+            assert assets.image(resource).getchannel('A').getextrema() == (255, 255), (scale, resource, 'Cached source backing must be opaque')
+            count += 1
+    return count
+
+
 def main():
     original = E.fromstring((SOURCE / 'nfs.wms').read_bytes(), E.XMLParser(recover=True))
     source_controls = {node.get('image').replace('.', '_'): node
@@ -106,7 +125,7 @@ def main():
         # idle bitmap is not redundant behind its child button.
         backing_count = 0
         for target_id, source_id in [('tracks', 'plView'), ('equalizer', 'eqView'),
-                                     ('video', 'videoView'), ('info', 'infoView')]:
+                                     ('info', 'infoView')]:
             source_view = original.find(f'view[@id="{source_id}"]')
             for parent in source_view.findall('subview'):
                 name = parent.get('backgroundImage')
@@ -127,6 +146,26 @@ def main():
                     assert image is not None and button is not None, (layout.get('id'), 'Source button backing missing')
                     assert layout.index(image) < layout.index(button), (layout.get('id'), 'Backing covers button feedback')
                     backing_count += 1
+        video_backings = verify_video_backing_pixels(assets, assets.tree.find('.//Window[@id="video"]/Layout'), scale)
+        # A source-looking opaque patch still fails if even one cached RGB pixel
+        # is wrong. Mutate only this reader instance, never the packaged artwork.
+        original_image = assets.image
+        def altered_image(resource):
+            image = original_image(resource)
+            if resource == 'video_vid_zoom_backing_1':
+                image = image.copy()
+                r, g, b, a = image.getpixel((0, 0))
+                image.putpixel((0, 0), (r ^ 1, g, b, a))
+            return image
+        assets.image = altered_image
+        try:
+            verify_video_backing_pixels(assets, assets.tree.find('.//Window[@id="video"]/Layout'), scale)
+        except AssertionError:
+            pass
+        else:
+            raise AssertionError('Incorrect video backing pixel escaped source comparison')
+        finally:
+            assets.image = original_image
 
         source_link = original.find('.//subview[@id="link1"]')
         source_menu = original.find('.//subview[@id="menuBack"]')
@@ -161,7 +200,7 @@ def main():
             compare(assets, f'eq_power_{state}_png', expected, scale)
         print(f'PASS {scale}x: {original_count} source images, {state_bindings} '
               'source control state bindings, 12 menu states, 3 EQ power states '
-              f'and source menu positions; {backing_count} source button backings and web overlay')
+              f'and source menu positions; {backing_count} source button backings, {video_backings} opaque video composites and web overlay')
 
 
 if __name__ == '__main__':

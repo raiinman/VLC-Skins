@@ -35,7 +35,9 @@ check_video.py requires explicit Video.autoresize=false, compares packaged XML w
 
 check_video.py also guards reversible framed maximize actions, original feedback in both Checkbox states, and monitor-sized geometry. Maximize only video: VLC 3.0.23 shares one restore rectangle across skin windows. Never replace stateful toggles with unconditional maximize or cover Video with a double-click overlay.
 
-Information-menu sprites resample full source artwork before clipping with a nearest-neighbor output-scale mapping mask. WMP BUTTONGROUP.showBackground defaults false: retain only mapped regions. Preserve original parent close/zoom image backings and the static Web Destinations overlay; its obsolete outbound actions remain omitted.
+Uniform screen_black fills must use resize=scale. A 1px mosaic causes one native GDI copy per output pixel and can stall idle/header repaint. Keep textured frame rails tiled; pixel-equivalence tests alone do not detect this performance defect.
+
+Information-menu sprites resample full source artwork before clipping with a nearest-neighbor output-scale mapping mask. WMP BUTTONGROUP.showBackground defaults false: retain only mapped regions. Preserve original parent close/zoom image backings and the static Web Destinations overlay; its obsolete outbound actions remain omitted. Video backings use opaque palette-matched header/idle composites to avoid partial-alpha cached RGB fringes. Scale full source header and idle images before cropping/compositing; independently verify exact pixels, opacity, palette selection and draw order.
 
 check_corners.py compares real-art resize patches with independently decoded native-scale source crops and models Windows cached RGB copy. Alpha-based hit checks do not establish paint transparency. Keep the resize_hit resource as a blue-corner compatibility alias for existing derived panes; other palettes use their matching conditional images.
 

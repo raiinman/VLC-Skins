@@ -2,27 +2,67 @@
   "date": "2026-10-15",
   "packages": {
     "1": {
-      "sha256": "c3caa6562d8dddd4f93e6b69dc94124957bf5a0f748d26c7874e2eb5f3011e5b"
+      "sha256": "7b886b7236b38921642441b82cedddf8fd565ca58c517fa11b92b064262ffab5"
     },
     "2": {
-      "sha256": "fd823ffb56e6bbe87cbaf42d76dfca8d19865f4086d738b032427284e8b69b7b"
+      "sha256": "214f5a2f4f14e8a213eff5e7eff1259493cd9ffe2544e520d4b645a30703a1b6"
     }
   },
-  "native_verified": false,
-  "behavior": {
-    "buttons": "monitor-filling video with original skin border; second click restores",
-    "video_double_click": "native borderless fullscreen path preserved"
+  "native_verified": true,
+  "native_scope": "Targeted video tests only: blue palette, 1920x1080 monitor, silent synthetic local clip. Not full parity certification.",
+  "tested_derived_skins": {
+    "1": {
+      "scale": 1,
+      "restored_video": {
+        "layout": "video_1",
+        "x": 380,
+        "y": 100,
+        "width": 708,
+        "height": 440
+      },
+      "source_sha256": "7b886b7236b38921642441b82cedddf8fd565ca58c517fa11b92b064262ffab5",
+      "derived_sha256": "2dd5138e37db69f55db30e8c3a584881a4a476658f224c41a5eedfff7383606f"
+    },
+    "2": {
+      "scale": 2,
+      "restored_video": {
+        "layout": "video_1",
+        "x": 480,
+        "y": 100,
+        "width": 1416,
+        "height": 880
+      },
+      "source_sha256": "214f5a2f4f14e8a213eff5e7eff1259493cd9ffe2544e520d4b645a30703a1b6",
+      "derived_sha256": "f5bd981e605c1e29498869f9a30f8883543bbbd2c621064d15feea26b2828df3"
+    }
   },
-  "art": "Original two-button header, button positions, idle backings and all normal/hover/pressed artwork preserved.",
-  "offline_checks": "Required suite passes both scales; full 8K panel hit rasters; fullscreen action/state/feedback mutations rejected; 756 visual cases with only 42 existing explained closed-main residuals.",
-  "companion": {
-    "source_sha256": "c3caa6562d8dddd4f93e6b69dc94124957bf5a0f748d26c7874e2eb5f3011e5b",
-    "derived_sha256": "d069da385f3c5a64b2b285e576ee97ebcf2912937dd8df0c0754f96cd2bf2f55",
-    "status": "prepared for next restart; running session untouched"
-  },
-  "remaining": [
-    "Native framed maximize/restore and video double-click review"
+  "passed_both_scales": [
+    "Idle header appearance",
+    "Video plus button framed maximize/restore while idle",
+    "Video plus button framed maximize/restore during playback",
+    "Video double-click into borderless fullscreen",
+    "Video double-click back to framed pane",
+    "Stopped-header appearance",
+    "Saved original pane position and size restored"
   ],
-  "desktop_input": false,
-  "vlc_launched": false
+  "baseline": "Prior build reproduced incomplete old-size artwork after maximize; 1px solid mosaic requested 1,876,076 native copies at 1x/1920x1080. Partial-alpha idle backing caches also introduced black fringes.",
+  "fix": "Cached scaled solid fills; 14 opaque source header/idle backing composites per scale; original feedback resources unchanged.",
+  "offline_checks": "Full required suite passes both scales, including pixel/alpha/palette/order and mosaic regression mutations; companion 12 profile tests, self-test, bridge-click and deployed DTD/CRC pass.",
+  "test_setup": "Existing companion exposes native windows; added browser pane hidden for video tests. Temporary 2x profile used generic browser frame with original native video controls preserved. No browser thumbnails or authentication interacted with.",
+  "cleanup": {
+    "normal_vlc_preferences_unchanged_at_test_cleanup": true,
+    "normal_vlc_preferences_unchanged_during_deployment": true,
+    "later_normal_config_change_detected_and_left_untouched": true,
+    "installed_skins_unchanged": true,
+    "temporary_profiles_removed": true,
+    "companion_pane_settings_restored": true,
+    "normal_1x_companion_prepared_for_next_restart": true
+  },
+  "deployed_normal_companion_derived_sha256": "59bdfdd86681db0032b808fc327af70aff4b7eb6c950ce41b154cb6d2ac0917f",
+  "remaining": [
+    "Other palettes/monitors and media aspect ratios not covered by live pass",
+    "Native close-button action and all other controls not exhaustively retested",
+    "Full native parity and user visual acceptance"
+  ],
+  "privacy": "No desktop screenshots, browser content, credentials or user media stored."
 }

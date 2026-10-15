@@ -1,0 +1,15 @@
+# Video pane repaint and button backings
+
+The idle and maximized pane exposed two Windows Skins2 rendering problems. The controls retained their correct source coordinates and feedback assets; playback was not selecting a different header.
+
+The solid black background used a 1x1 Image with `resize="mosaic"` at 1x. CtrlImage performs a native graphics copy for each tile. At a 1920x1080 video window, the background alone therefore requested 1852x1013 = 1,876,076 copies per full repaint. Even partial updates scan all tile positions. The initial native test showed an enlarged window retaining old-size artwork until repaint completed. This is a source-derived draw-count explanation, not a measured frame-time benchmark.
+
+Uniform video/playlist backgrounds now use `resize="scale"`. VLC caches the full-size solid bitmap and copies it once per paint. The companion's uniform content/plain-frame fills use the same policy. Original textured rails remain tiled, and the resulting solid pixels are unchanged. After rebuilding, the complete frame appeared in the first post-action snapshots in both scales.
+
+The video close/plus parent backings also contained partial alpha. CtrlImage caches those pixels against black, then copies cached RGB onto the header. Each backing is now composed onto its matching original header crop before caching: close at source (96,6)-(115,25), plus at (75,6)-(94,25). At 2x, full source images are resampled before cropping/compositing. The 14 opaque patches per scale follow the independent palette state. The original button normal/hover/pressed resources still draw above them, preserving source feedback and the two-button header.
+
+The native final review used the blue palette on a 1920x1080 monitor. Both scales passed framed maximize/restore while idle and playing, double-click into and out of borderless fullscreen, and stopped-header inspection. Saved settings confirmed restored video rectangles: 1x (380,100,708,440), 2x (480,100,1416,880). The companion exposed the native windows; its added browser pane was hidden during video tests. The temporary 2x profile used a generic browser frame and did not alter the source video controls. Test profiles were restored afterward and the normal companion's corrected 1x copy was prepared for its next restart.
+
+Exact hashes and scope are in `fullscreen-review.json`. This is targeted native video verification, not full native parity certification. Other palettes, monitors, resolutions and media aspect ratios remain outside this live pass. No desktop captures, browser content, credentials or user media were stored in this report.
+
+Official VLC 3.0.23 implementation: [CtrlImage drawing/cache](https://github.com/videolan/vlc/blob/3.0.23/modules/gui/skins2/controls/ctrl_image.cpp), [Windows graphics copies and blending](https://github.com/videolan/vlc/blob/3.0.23/modules/gui/skins2/win32/win32_graphics.cpp), [AnimBitmap feedback blending](https://github.com/videolan/vlc/blob/3.0.23/modules/gui/skins2/utils/anim_bitmap.cpp). Context7 returned legacy/unrelated mosaic examples; the fix follows these pinned native sources and the vendored DTD.

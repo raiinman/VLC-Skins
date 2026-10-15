@@ -31,7 +31,9 @@ Keep default desktop positions inside the declared work areas without scaling th
 
 The video viewport uses autoresize=false: media dimensions cannot enlarge the parent layout. Retain rightbottom stretch anchors and the manual resize corner. Do not infer native aspect fit or automatic window display from this policy.
 
-Panel close buttons and video zoom retain their original parent idle-image backings. Video uses the original eq_top_right two-button header. Web Destinations keeps c_link_no.jpg at (127,118) source coordinates, without obsolete outbound actions. Menu-region masks stay crisp at output scale; full artwork is filtered before cropping.
+Video/playlist solid black Image backgrounds use resize=scale, preserving the same opaque black pixels with a cached native fill instead of per-pixel mosaic drawing. Textured artwork retains its original tiling.
+
+Panel close buttons and video zoom retain their original parent idle-image backings. For video, flatten each idle backing onto its matching native-scale eq_top_right header crop before CtrlImage caching; keep original button feedback separate. Video uses the original two-button header. Web Destinations keeps c_link_no.jpg at (127,118) source coordinates, without obsolete outbound actions. Menu-region masks stay crisp at output scale; full artwork is filtered before cropping.
 
 Controller fullscreen and video zoom are stateful Checkboxes bound to video.isMaximized. Keep original normal/hover/pressed artwork in both states; use video.maximize()/unmaximize() only for the video pane. Native maximize fills the current monitor with the existing skin frame; allow up to 8192x4320. Leave video mouse input unobstructed for native borderless fullscreen on double-click.
 

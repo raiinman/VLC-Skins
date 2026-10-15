@@ -317,6 +317,24 @@ class Builder:
         self.bitmap('intro_light_sequence',lightseq,81,10,1)
         return self.bitmap('intro_sequence',seq,81,10,1)
 
+    def video_button_backings(self,layout,prefix,width,offset):
+        # CtrlImage caches RGBA against black before copying RGB to the layout.
+        # Supply the complete source header/idle composite so partial button
+        # edges cannot replace the original recess with a black fringe.
+        idle=rgba(prefix+'_no.png')
+        if self.scale!=1:
+            idle=idle.resize((idle.width*self.scale,idle.height*self.scale),Image.Resampling.LANCZOS)
+        for color in range(1,8):
+            header=rgba(f'eq_top_right_{color}.png')
+            if self.scale!=1:
+                header=header.resize((header.width*self.scale,header.height*self.scale),Image.Resampling.LANCZOS)
+            x=(164-offset)*self.scale;y=6*self.scale
+            patch=header.crop((x,y,x+idle.width,y+idle.height))
+            patch.alpha_composite(idle)
+            assert patch.getchannel('A').getextrema()==(255,255)
+            key=self.bitmap(f'video_{prefix}_backing_{color}',patch,prescaled=True)
+            self.image(layout,key,width-offset,6,lefttop='righttop',visible=self.palette_visible(color))
+
     def panels(self):
         # Remove the obsolete SRS/WOW rails using the source carbon texture.
         eq=rgba('eq_back.png');tile=eq.crop((2,128,18,136))
@@ -340,11 +358,13 @@ class Builder:
                     # Native maximize uses the whole monitor, including its frame.
                     l.set('maxwidth','8192');l.set('maxheight','4320')
                 self.frame(l,None,w,h,top=top,bottom='info_bot_right' if kind=='equalizer' else 'f_bot_right',resizable=resize)
-                self.image(l,'m_close_no.png',w-68,6,**({'lefttop':'righttop'} if resize else {}))
+                if kind=='video':self.video_button_backings(l,'m_close',w,68)
+                else:self.image(l,'m_close_no.png',w-68,6,**({'lefttop':'righttop'} if resize else {}))
                 self.button(l,'m_close',w-68,6,kind+'.hide()','Close '+kind,**({'lefttop':'righttop'} if resize else {}))
                 if kind in ('tracks','video'):
                     self.bitmap('screen_black',Image.new('RGBA',(1,1),'black'))
-                    self.image(l,'screen_black',34,37,width=self.n(w-68),height=self.n(h-67),resize='mosaic',rightbottom='rightbottom')
+                    # A 1px mosaic makes millions of native GDI calls at fullscreen.
+                    self.image(l,'screen_black',34,37,width=self.n(w-68),height=self.n(h-67),resize='scale',rightbottom='rightbottom')
                 if kind=='tracks':
                     self.check(l,'pl_shuffle',w-110,6,'playlist.isRandom','playlist.setRandom(true)','playlist.setRandom(false)','Shuffle',lefttop='righttop')
                     self.check(l,'pl_repeat',w-89,6,'playlist.isLoop','playlist.setLoop(true)','playlist.setLoop(false)','Repeat playlist',lefttop='righttop')
@@ -354,7 +374,7 @@ class Builder:
                 elif kind=='video':
                     # Media dimensions must not enlarge the framed user-sized panel.
                     E.SubElement(l,'Video',x=self.n(34),y=self.n(37),width=self.n(w-68),height=self.n(h-67),rightbottom='rightbottom',autoresize='false')
-                    self.image(l,'vid_zoom_no.png',w-89,6,lefttop='righttop')
+                    self.video_button_backings(l,'vid_zoom',w,89)
                     self.check(l,'vid_zoom',w-89,6,'video.isMaximized','video.maximize()','video.unmaximize()','Fill screen with skin border / restore',prefix2='vid_zoom',lefttop='righttop')
                 else:
                     self.image(l,'eq_vlc_back',33,35)

@@ -13,6 +13,7 @@ from lxml import etree as E
 from assets import ThemeAssets, visible
 from build import ROOT, SKIN, SOURCE
 from check_panels import geometry
+from check_source_art import verify_video_backing_pixels
 
 
 def intersects(a, b):
@@ -22,6 +23,8 @@ def intersects(a, b):
 
 
 def verify_policy(tree):
+    fills = tree.findall('.//Image[@image="screen_black"]')
+    assert len(fills) == 2 and all(node.get('resize') == 'scale' for node in fills), 'Solid fills must not tile once per pixel on native repaint'
     videos = tree.findall('.//Video')
     assert len(videos) == 1, 'Keep one embedded viewport across all palettes'
     video = videos[0]
@@ -34,7 +37,8 @@ def verify_policy(tree):
     return video
 
 
-def verify_header(layout, scale):
+def verify_header(layout, scale, assets):
+    verify_video_backing_pixels(assets, layout, scale)
     source = E.fromstring((SOURCE/'nfs.wms').read_bytes(), E.XMLParser(recover=True)).find('view[@id="videoView"]')
     width = int(layout.get('width'))
     headers = []
@@ -55,17 +59,24 @@ def verify_header(layout, scale):
         original = source.find(f'subview[@backgroundImage="{prefix}_no.png"]')
         assert original is not None and original.find(f'button[@image="{prefix}_no.png"]') is not None
         key = prefix+'_no_png'
-        images = layout.findall(f'Image[@image="{key}"]')
         buttons = [node for node in layout if node.tag in ('Button','Checkbox') and (node.get('up') or node.get('up1')) == key]
-        assert len(images) == len(buttons) == 1, (prefix, 'Retain source parent backing and button')
-        backing, button = images[0], buttons[0]
+        assert len(buttons) == 1, (prefix, 'Retain one original functional button')
+        button = buttons[0]
         offset = int(original.get('left').rsplit('-', 1)[1])
         expected = width-offset*scale, int(original.get('top', 0))*scale
-        for node in (backing, button):
-            assert (int(node.get('x')), int(node.get('y'))) == expected
-            assert node.get('lefttop') == node.get('rightbottom') == 'righttop'
-        assert max(layout.index(header) for header in headers) < layout.index(backing) < layout.index(button), (prefix, 'Header/backing/button draw order changed')
-        backings.append(backing)
+        assert (int(button.get('x')), int(button.get('y'))) == expected
+        assert button.get('lefttop') == button.get('rightbottom') == 'righttop'
+        for color in range(1, 8):
+            images = layout.findall(f'Image[@image="video_{prefix}_backing_{color}"]')
+            assert len(images) == 1, (prefix, color, 'Retain the native-scale source composite')
+            backing = images[0]
+            assert (int(backing.get('x')), int(backing.get('y'))) == expected
+            assert backing.get('lefttop') == backing.get('rightbottom') == 'righttop'
+            assert backing.get('visible') == headers[color-1].get('visible') == f'palette_{color}.isActive'
+            for active in range(1, 8):
+                assert visible(backing.get('visible'), f'main_{active}') == (active == color)
+            assert max(layout.index(header) for header in headers) < layout.index(backing) < layout.index(button), (prefix, color, 'Header/backing/button draw order changed')
+            backings.append(backing)
     return backings
 
 
@@ -92,7 +103,7 @@ def verify_zoom_controls(tree):
 def verify_geometry(assets, scale):
     video = verify_policy(assets.tree)
     layout = video.getparent()
-    backings = verify_header(layout, scale)
+    backings = verify_header(layout, scale, assets)
     original = int(layout.get('width')), int(layout.get('height'))
     minimum = int(layout.get('minwidth')), int(layout.get('minheight'))
     maximum = int(layout.get('maxwidth')), int(layout.get('maxheight'))
@@ -162,17 +173,30 @@ def main():
                 pass
             else:
                 raise AssertionError('Unsafe autoresize mutation escaped')
-        for mutation in ('wrong-header', 'missing-backing', 'backing-over-button'):
+        changed = deepcopy(assets.tree)
+        changed.find('.//Image[@image="screen_black"]').set('resize', 'mosaic')
+        try:
+            verify_policy(changed)
+        except AssertionError:
+            pass
+        else:
+            raise AssertionError('Per-pixel native repaint regression escaped')
+        for mutation in ('wrong-header', 'missing-backing', 'backing-over-button', 'wrong-backing-palette', 'partial-alpha-backing'):
             changed = deepcopy(assets.tree.find('.//Layout[@id="video_1"]'))
             if mutation == 'wrong-header':
                 changed.find('Image[@image="eq_top_right_1_png"]').set('image', 'f_top_right_1_png')
             else:
-                backing = changed.find('Image[@image="vid_zoom_no_png"]')
-                changed.remove(backing)
-                if mutation == 'backing-over-button':
-                    changed.append(backing)
+                backing = changed.find('Image[@image="video_vid_zoom_backing_1"]')
+                if mutation == 'wrong-backing-palette':
+                    backing.set('visible', 'palette_2.isActive')
+                elif mutation == 'partial-alpha-backing':
+                    backing.set('image', 'vid_zoom_no_png')
+                else:
+                    changed.remove(backing)
+                    if mutation == 'backing-over-button':
+                        changed.append(backing)
             try:
-                verify_header(changed, scale)
+                verify_header(changed, scale, assets)
             except AssertionError:
                 pass
             else:
