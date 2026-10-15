@@ -33,6 +33,8 @@ The video viewport uses autoresize=false: media dimensions cannot enlarge the pa
 
 Panel close buttons and video zoom retain their original parent idle-image backings. Video uses the original eq_top_right two-button header. Web Destinations keeps c_link_no.jpg at (127,118) source coordinates, without obsolete outbound actions. Menu-region masks stay crisp at output scale; full artwork is filtered before cropping.
 
+Controller fullscreen and video zoom are stateful Checkboxes bound to video.isMaximized. Keep original normal/hover/pressed artwork in both states; use video.maximize()/unmaximize() only for the video pane. Native maximize fills the current monitor with the existing skin frame; allow up to 8192x4320. Leave video mouse input unobstructed for native borderless fullscreen on double-click.
+
 Resizable panes use seven conditional corner patches at (width-36,height-24), with rightbottom anchors. Crop (128,33)-(151,57) from each complete f_bot_right bitmap after output scaling. Preserve the source alpha shape and visible grip; fully transparent pixels remain outside the hit region.
 
 All auxiliary frame/corner visibility uses palette_N.isActive, independent of main shutter/clock layouts. The palette_state window is always hidden and defaults to blue. It adds no visible pane or native playback widget. Legacy saved colored layouts require matching hidden state migration before loading; new state is saved by VLC afterward.

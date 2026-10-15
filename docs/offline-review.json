@@ -1,16 +1,16 @@
 {
   "date": "2026-10-15",
   "prior_native_review_commit": "49a3daee7bb0ac5824f2aaf9bc247f9c4f9ff591",
-  "scope": "Offline source/artifact checks at both scales; separate limited authorized native 1x companion shutter retest is recorded in shutter-pane-review.json. Normal VLC preferences and installed skins unchanged.",
-  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams. Replace lower-right alpha-1 black resize images with exact native-scale original corner crops for all seven palettes. Isolate pane palettes from shutter/clock main layout transitions using persistent hidden palette state; preserve legacy colors through explicit saved-state migration.",
+  "scope": "Current framed-fullscreen candidate checked offline at both scales. Preceding shutter build native observations retain their own hashes. No desktop input or VLC launch for this update; installed skins and normal VLC preferences unchanged.",
+  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams. Replace lower-right alpha-1 black resize images with exact native-scale original corner crops for all seven palettes. Isolate pane palettes from shutter/clock main layout transitions using persistent hidden palette state; preserve legacy colors through explicit saved-state migration. Fullscreen entry points now toggle native video maximize/restore with the original border and feedback assets; native video double-click remains borderless. Video maximum bounds are 8192x4320.",
   "native_verified": false,
   "native_initialization_seconds": null,
   "packages": {
     "1": {
-      "sha256": "b865790023d0b239bc6e10878e6a0407b3e7cd1c4ffdee7581053491d0e8218a"
+      "sha256": "c3caa6562d8dddd4f93e6b69dc94124957bf5a0f748d26c7874e2eb5f3011e5b"
     },
     "2": {
-      "sha256": "db141fcb33fd5e6a1649ffd04b3fd89b075bf8b05dfc7420ecd6d6db9a9290a7"
+      "sha256": "fd823ffb56e6bbe87cbaf42d76dfca8d19865f4086d738b032427284e8b69b7b"
     }
   },
   "offline_checks": {
@@ -20,7 +20,7 @@
     "animation_band_reconstruction": "every frame; pass",
     "startup_source_frames": "162 per scale; pass",
     "original_images": "177 per scale; pass",
-    "source_hover_pressed_bindings": "920 per scale; pass",
+    "source_hover_pressed_bindings": "978 per scale; pass",
     "menu_and_EQ_crops": "12 menu and 3 EQ states per scale; pass",
     "panel_geometry": "336 states, 1134 button checks and 980 slider-access samples per scale; pass",
     "python_compilation": "pass",
@@ -29,11 +29,12 @@
     "default_placement": "5 windows and 983 critical controls per scale; 1x 1280x720 and 2x 1920x1040; pass",
     "isolated_launchers": "both UTF-8 INI writers and write-failure checks; VLC not launched; pass",
     "independent_review": "no concrete regressions found",
-    "video_sizing": "explicit media-autoresize off, exact packaged XML, five manual sizes per scale, button clearance and mutation rejection; pass",
+    "video_sizing": "framed maximize/restore, original feedback in both states, exact packaged XML; 10 sizes at 1x / 9 at 2x including monitor bounds and 8K maximum; mutation rejection; pass",
     "combined_layer_visuals": "756 cases: 714 exact; 42 closed-main cases exactly explained by documented functional layer raise; no native rendering claim",
     "resize_corner": "70 palette/pane/size combinations per scale; exact source RGBA, packaged assets and bounded cached-copy model; old black mask rejected",
     "palette_isolation": "56 main states per scale, no auxiliary visibility changes through inactive gaps; pass",
-    "palette_migration": "57 saved state/color cases, byte preservation, backups and idempotence; pass"
+    "palette_migration": "57 saved state/color cases, byte preservation, backups and idempotence; pass",
+    "framed_fullscreen": "all 58 controller/video toggles per scale use video.isMaximized and reversible actions; native double-click source path preserved"
   },
   "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets. Video omission/true autoresize mutations rejected; visual residual self-checks detect visible-pixel and shifted-layer mutations while ignoring zero-alpha RGB. The old alpha-1 corner bitmap fails the new source-pixel guard and reproduces a black rectangle in the cached-copy model. Temporal gap tests now reject auxiliary main-layout visibility bindings; adapter mutations removing state migration or reintroducing old pane bindings are rejected.",
   "remaining": [
@@ -45,9 +46,10 @@
     "Native end-to-end preview launcher validation",
     "Native hover/leave input-gate timing",
     "Closed-main outer-control layer raise produces localized source-order pixel differences",
-    "Native lower-right appearance/resize recheck; regenerate existing derived pane copies"
+    "Native lower-right appearance/resize recheck; regenerate existing derived pane copies",
+    "Native framed maximize/restore and borderless video double-click on current candidate"
   ],
   "contact_sheet": "startup-frames.png and visual-*.png are offline asset renders, not native captures.",
   "visual_comparison": "visual-comparison.json plus source/converted/residual sheets; fonts/credits excluded, default-size main/information compositions only",
-  "limited_native_review": "shutter-pane-review.json; native 1x blue YouTube/video frames stable during open/close; not full native certification"
+  "limited_native_review": "shutter-pane-review.json refers to the preceding build only; current fullscreen behavior is not native-tested"
 }

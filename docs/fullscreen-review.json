@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-15",
+  "packages": {
+    "1": {
+      "sha256": "c3caa6562d8dddd4f93e6b69dc94124957bf5a0f748d26c7874e2eb5f3011e5b"
+    },
+    "2": {
+      "sha256": "fd823ffb56e6bbe87cbaf42d76dfca8d19865f4086d738b032427284e8b69b7b"
+    }
+  },
+  "native_verified": false,
+  "behavior": {
+    "buttons": "monitor-filling video with original skin border; second click restores",
+    "video_double_click": "native borderless fullscreen path preserved"
+  },
+  "art": "Original two-button header, button positions, idle backings and all normal/hover/pressed artwork preserved.",
+  "offline_checks": "Required suite passes both scales; full 8K panel hit rasters; fullscreen action/state/feedback mutations rejected; 756 visual cases with only 42 existing explained closed-main residuals.",
+  "companion": {
+    "source_sha256": "c3caa6562d8dddd4f93e6b69dc94124957bf5a0f748d26c7874e2eb5f3011e5b",
+    "derived_sha256": "d069da385f3c5a64b2b285e576ee97ebcf2912937dd8df0c0754f96cd2bf2f55",
+    "status": "prepared for next restart; running session untouched"
+  },
+  "remaining": [
+    "Native framed maximize/restore and video double-click review"
+  ],
+  "desktop_input": false,
+  "vlc_launched": false
+}

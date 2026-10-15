@@ -191,7 +191,7 @@ class Builder:
                         E.SubElement(l,'Button',id=f'decorative_light_{c}_{state}_{int(remaining)}',up=light,x=self.n(21),y=self.n(32),action='none')
                     elif shut:self.image(l,'shutter_light.png',21,32,action='move')
                     self.button(l,'m_min',44,37,'vlc.minimize()','Minimize')
-                    self.button(l,'m_full',55,11,'video.show();vlc.fullscreen()','Fullscreen video')
+                    self.check(l,'m_full',55,11,'video.isMaximized','video.show();video.maximize()','video.show();video.unmaximize()','Fill screen with skin border / restore',prefix2='m_full')
                     self.button(l,'m_close',87,10,'vlc.quit()','Close VLC')
                     self.button(l,'m_open',64,52,'dialogs.fileSimple()','Open media')
                     for p,x,y,w in [('m_vis',37,86,'video'),('m_pl',27,126,'tracks'),('m_eq',32,168,'equalizer')]:
@@ -336,6 +336,9 @@ class Builder:
             for c in (1,):
                 resize=kind!='equalizer'
                 l=self.layout(win,f'{kind}_{c}',w,h,resize)
+                if kind=='video':
+                    # Native maximize uses the whole monitor, including its frame.
+                    l.set('maxwidth','8192');l.set('maxheight','4320')
                 self.frame(l,None,w,h,top=top,bottom='info_bot_right' if kind=='equalizer' else 'f_bot_right',resizable=resize)
                 self.image(l,'m_close_no.png',w-68,6,**({'lefttop':'righttop'} if resize else {}))
                 self.button(l,'m_close',w-68,6,kind+'.hide()','Close '+kind,**({'lefttop':'righttop'} if resize else {}))
@@ -352,7 +355,7 @@ class Builder:
                     # Media dimensions must not enlarge the framed user-sized panel.
                     E.SubElement(l,'Video',x=self.n(34),y=self.n(37),width=self.n(w-68),height=self.n(h-67),rightbottom='rightbottom',autoresize='false')
                     self.image(l,'vid_zoom_no.png',w-89,6,lefttop='righttop')
-                    self.button(l,'vid_zoom',w-89,6,'vlc.fullscreen()','Fullscreen',lefttop='righttop')
+                    self.check(l,'vid_zoom',w-89,6,'video.isMaximized','video.maximize()','video.unmaximize()','Fill screen with skin border / restore',prefix2='vid_zoom',lefttop='righttop')
                 else:
                     self.image(l,'eq_vlc_back',33,35)
                     for i,(dx,hz) in enumerate(zip([14,27,39,52,64,77,90,102,115,128],['60 Hz','170 Hz','310 Hz','600 Hz','1 kHz','3 kHz','6 kHz','12 kHz','14 kHz','16 kHz'])):

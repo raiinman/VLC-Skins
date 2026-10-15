@@ -33,6 +33,8 @@ check_transitions.py compares source shutter/light frames and non-restarting tra
 
 check_video.py requires explicit Video.autoresize=false, compares packaged XML with audited geometry, and checks manual resize extremes. compare_layers.py composes retained WMS and VLC layers independently, writes source/converted/residual sheets and visual-comparison.json; disclose omitted dynamic text, conversion additions and renderer limitations.
 
+check_video.py also guards reversible framed maximize actions, original feedback in both Checkbox states, and monitor-sized geometry. Maximize only video: VLC 3.0.23 shares one restore rectangle across skin windows. Never replace stateful toggles with unconditional maximize or cover Video with a double-click overlay.
+
 Information-menu sprites resample full source artwork before clipping with a nearest-neighbor output-scale mapping mask. WMP BUTTONGROUP.showBackground defaults false: retain only mapped regions. Preserve original parent close/zoom image backings and the static Web Destinations overlay; its obsolete outbound actions remain omitted.
 
 check_corners.py compares real-art resize patches with independently decoded native-scale source crops and models Windows cached RGB copy. Alpha-based hit checks do not establish paint transparency. Keep the resize_hit resource as a blue-corner compatibility alias for existing derived panes; other palettes use their matching conditional images.

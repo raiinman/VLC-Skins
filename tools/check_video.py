@@ -56,7 +56,7 @@ def verify_header(layout, scale):
         assert original is not None and original.find(f'button[@image="{prefix}_no.png"]') is not None
         key = prefix+'_no_png'
         images = layout.findall(f'Image[@image="{key}"]')
-        buttons = layout.findall(f'Button[@up="{key}"]')
+        buttons = [node for node in layout if node.tag in ('Button','Checkbox') and (node.get('up') or node.get('up1')) == key]
         assert len(images) == len(buttons) == 1, (prefix, 'Retain source parent backing and button')
         backing, button = images[0], buttons[0]
         offset = int(original.get('left').rsplit('-', 1)[1])
@@ -69,6 +69,26 @@ def verify_header(layout, scale):
     return backings
 
 
+def verify_zoom_controls(tree):
+    controls = []
+    for layout in tree.findall('.//Window[@id="main"]/Layout'):
+        matches = [node for node in layout if (node.get('up') or node.get('up1')) == 'm_full_no_png']
+        assert len(matches) == 1
+        controls.append((matches[0], 'm_full', 'video.show();'))
+    pane = tree.find('.//Window[@id="video"]/Layout')
+    matches = [node for node in pane if (node.get('up') or node.get('up1')) == 'vid_zoom_no_png']
+    assert len(matches) == 1
+    controls.append((matches[0], 'vid_zoom', ''))
+    for node, prefix, lead in controls:
+        assert node.tag == 'Checkbox' and node.get('state') == 'video.isMaximized', 'Framed maximize must expose its restore state'
+        assert node.get('action1') == lead+'video.maximize()'
+        assert node.get('action2') == lead+'video.unmaximize()', 'Second click must restore rather than maximize again'
+        for state in (1, 2):
+            for attr, suffix in (('up', 'no'), ('over', 'hov'), ('down', 'do')):
+                assert node.get(attr+str(state)) == prefix+'_'+suffix+'_png', (prefix, state, 'Original feedback was changed')
+    return controls
+
+
 def verify_geometry(assets, scale):
     video = verify_policy(assets.tree)
     layout = video.getparent()
@@ -77,6 +97,7 @@ def verify_geometry(assets, scale):
     minimum = int(layout.get('minwidth')), int(layout.get('minheight'))
     maximum = int(layout.get('maxwidth')), int(layout.get('maxheight'))
     assert minimum[0] <= original[0] <= maximum[0] and minimum[1] <= original[1] <= maximum[1]
+    assert maximum[0] >= 8192 and maximum[1] >= 4320, 'Framed maximize must not stop at the previous 3000x2000 cap'
     handles = layout.findall('Image[@action="resizeSE"]')
     assert len(handles) == 7, 'Manual resizing must remain available in every palette'
     for handle in handles:
@@ -88,6 +109,13 @@ def verify_geometry(assets, scale):
     assert not any((n.get('up') or '').startswith('m_logo') for n in layout), 'Source logo belongs on the controller, away from video'
     sizes = [minimum, (original[0]+173*scale, original[1]+91*scale), maximum,
              (minimum[0], maximum[1]), (maximum[0], minimum[1])]
+    # Monitor-sized geometry only, not a simulation of native maximize.
+    candidates = [(1280,720),(1920,1080),(2560,1440),(3840,2160),(7680,4320),(8192,4320)]
+    for size in candidates:
+        if size[0] >= minimum[0] and size[1] >= minimum[1]:
+            assert size[0] <= maximum[0] and size[1] <= maximum[1]
+            if size not in sizes:
+                sizes.append(size)
     for size in sizes:
         viewport = geometry(video, original, size, (0, 0))
         x, y, width, height = viewport
@@ -96,6 +124,8 @@ def verify_geometry(assets, scale):
         for node in layout:
             if node.tag == 'Button':
                 keys = [node.get(attr) for attr in ('up', 'over', 'down') if node.get(attr)]
+            elif node.tag == 'Checkbox':
+                keys = [node.get(attr+str(state)) for state in (1,2) for attr in ('up','over','down') if node.get(attr+str(state))]
             elif node in handles or node in backings:
                 keys = [node.get('image')]
             else:
@@ -109,12 +139,14 @@ def verify_geometry(assets, scale):
 def main():
     for scale in (1, 2):
         assets = ThemeAssets(SKIN/f'vlc-{scale}x')
+        verify_zoom_controls(assets.tree)
         count = verify_geometry(assets, scale)
         package = ROOT/f'dist/Need-for-Speed-Underground-{scale}x.vlt'
         with zipfile.ZipFile(package) as archive:
             packaged_xml = archive.read('theme.xml')
             assert E.tostring(E.fromstring(packaged_xml), method='c14n') == E.tostring(assets.tree, method='c14n'), 'Packaged geometry differs from audited theme'
             verify_policy(E.fromstring(packaged_xml))
+            verify_zoom_controls(E.fromstring(packaged_xml))
         # Prove that both accidental opt-in and omission of the DTD-defaulted
         # attribute are caught; do not alter the generated theme on disk.
         for value in (None, 'true'):
@@ -145,7 +177,18 @@ def main():
                 pass
             else:
                 raise AssertionError('Source header mutation escaped: '+mutation)
-        print(f'PASS {scale}x: generated/package media-autoresize disabled; source headers/backings; {count} manual sizes preserve viewport margins and control clearance; unsafe mutations rejected')
+        for prefix in ('m_full', 'vid_zoom'):
+            for attr, value in (('action1','vlc.fullscreen()'), ('action2','video.maximize()'), ('up2',prefix+'_do_png'), ('over2',prefix+'_no_png'), ('down2',prefix+'_hov_png')):
+                changed = deepcopy(assets.tree)
+                node = next(node for node in changed.iter('Checkbox') if node.get('up1') == prefix+'_no_png')
+                node.set(attr, value)
+                try:
+                    verify_zoom_controls(changed)
+                except AssertionError:
+                    pass
+                else:
+                    raise AssertionError('Framed maximize mutation escaped: '+prefix+'/'+attr)
+        print(f'PASS {scale}x: generated/package media-autoresize disabled; framed maximize/restore and original checkbox states; source headers/backings; {count} sizes preserve viewport/control clearance; unsafe mutations rejected')
 
 
 if __name__ == '__main__':

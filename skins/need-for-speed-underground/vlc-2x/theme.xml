@@ -316,7 +316,7 @@
       <Text text="$t" x="258" y="330" width="120" font="clock" color="#00AEEF" alignment="center" visible="main_1.isActive" id="control_15"/>
       <Button id="clock_1_open_0" x="240" y="334" up="clock_hit" action="main.setLayout(main_1_remaining)" tooltiptext="Show remaining time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_17"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_18"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_18"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_19"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_20"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_21"/>
@@ -345,7 +345,7 @@
       <Image image="time_dash_png" x="240" y="336" id="control_41"/>
       <Button id="clock_1_open_1" x="240" y="334" up="clock_hit" action="main.setLayout(main_1)" tooltiptext="Show elapsed time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_43"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_44"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_44"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_45"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_46"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_47"/>
@@ -377,7 +377,7 @@
       <Button id="decorative_shutter_1_opening_0_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_1_opening_0_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_70"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_71"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_71"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_72"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_73"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_74"/>
@@ -411,7 +411,7 @@
       <Button id="decorative_shutter_1_opening_1_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_1_opening_1_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_99"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_100"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_100"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_101"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_102"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_103"/>
@@ -431,7 +431,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_116"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_117"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_118"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_119"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_119"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_120"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_121"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_122"/>
@@ -450,7 +450,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_134"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_135"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_136"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_137"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_137"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_138"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_139"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_140"/>
@@ -484,7 +484,7 @@
       <Button id="decorative_endpoint_1_0_band_0" up="shutter_endpoint_1_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_1_0_band_1" up="shutter_endpoint_1_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_164"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_165"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_165"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_166"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_167"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_168"/>
@@ -520,7 +520,7 @@
       <Button id="decorative_endpoint_1_1_band_0" up="shutter_endpoint_1_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_1_1_band_1" up="shutter_endpoint_1_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_194"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_195"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_195"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_196"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_197"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_198"/>
@@ -549,7 +549,7 @@
       <Text text="$t" x="258" y="330" width="120" font="clock" color="#00AEEF" alignment="center" visible="main_2.isActive" id="control_218"/>
       <Button id="clock_2_open_0" x="240" y="334" up="clock_hit" action="main.setLayout(main_2_remaining)" tooltiptext="Show remaining time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_220"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_221"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_221"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_222"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_223"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_224"/>
@@ -578,7 +578,7 @@
       <Image image="time_dash_png" x="240" y="336" id="control_244"/>
       <Button id="clock_2_open_1" x="240" y="334" up="clock_hit" action="main.setLayout(main_2)" tooltiptext="Show elapsed time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_246"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_247"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_247"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_248"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_249"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_250"/>
@@ -610,7 +610,7 @@
       <Button id="decorative_shutter_2_opening_0_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_2_opening_0_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_273"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_274"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_274"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_275"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_276"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_277"/>
@@ -644,7 +644,7 @@
       <Button id="decorative_shutter_2_opening_1_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_2_opening_1_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_302"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_303"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_303"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_304"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_305"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_306"/>
@@ -664,7 +664,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_319"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_320"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_321"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_322"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_322"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_323"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_324"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_325"/>
@@ -683,7 +683,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_337"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_338"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_339"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_340"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_340"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_341"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_342"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_343"/>
@@ -717,7 +717,7 @@
       <Button id="decorative_endpoint_2_0_band_0" up="shutter_endpoint_2_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_2_0_band_1" up="shutter_endpoint_2_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_367"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_368"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_368"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_369"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_370"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_371"/>
@@ -753,7 +753,7 @@
       <Button id="decorative_endpoint_2_1_band_0" up="shutter_endpoint_2_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_2_1_band_1" up="shutter_endpoint_2_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_397"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_398"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_398"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_399"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_400"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_401"/>
@@ -782,7 +782,7 @@
       <Text text="$t" x="258" y="330" width="120" font="clock" color="#00AEEF" alignment="center" visible="main_3.isActive" id="control_421"/>
       <Button id="clock_3_open_0" x="240" y="334" up="clock_hit" action="main.setLayout(main_3_remaining)" tooltiptext="Show remaining time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_423"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_424"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_424"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_425"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_426"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_427"/>
@@ -811,7 +811,7 @@
       <Image image="time_dash_png" x="240" y="336" id="control_447"/>
       <Button id="clock_3_open_1" x="240" y="334" up="clock_hit" action="main.setLayout(main_3)" tooltiptext="Show elapsed time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_449"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_450"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_450"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_451"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_452"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_453"/>
@@ -843,7 +843,7 @@
       <Button id="decorative_shutter_3_opening_0_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_3_opening_0_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_476"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_477"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_477"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_478"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_479"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_480"/>
@@ -877,7 +877,7 @@
       <Button id="decorative_shutter_3_opening_1_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_3_opening_1_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_505"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_506"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_506"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_507"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_508"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_509"/>
@@ -897,7 +897,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_522"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_523"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_524"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_525"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_525"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_526"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_527"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_528"/>
@@ -916,7 +916,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_540"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_541"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_542"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_543"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_543"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_544"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_545"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_546"/>
@@ -950,7 +950,7 @@
       <Button id="decorative_endpoint_3_0_band_0" up="shutter_endpoint_3_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_3_0_band_1" up="shutter_endpoint_3_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_570"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_571"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_571"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_572"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_573"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_574"/>
@@ -986,7 +986,7 @@
       <Button id="decorative_endpoint_3_1_band_0" up="shutter_endpoint_3_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_3_1_band_1" up="shutter_endpoint_3_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_600"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_601"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_601"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_602"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_603"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_604"/>
@@ -1015,7 +1015,7 @@
       <Text text="$t" x="258" y="330" width="120" font="clock" color="#00AEEF" alignment="center" visible="main_4.isActive" id="control_624"/>
       <Button id="clock_4_open_0" x="240" y="334" up="clock_hit" action="main.setLayout(main_4_remaining)" tooltiptext="Show remaining time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_626"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_627"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_627"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_628"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_629"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_630"/>
@@ -1044,7 +1044,7 @@
       <Image image="time_dash_png" x="240" y="336" id="control_650"/>
       <Button id="clock_4_open_1" x="240" y="334" up="clock_hit" action="main.setLayout(main_4)" tooltiptext="Show elapsed time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_652"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_653"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_653"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_654"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_655"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_656"/>
@@ -1076,7 +1076,7 @@
       <Button id="decorative_shutter_4_opening_0_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_4_opening_0_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_679"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_680"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_680"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_681"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_682"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_683"/>
@@ -1110,7 +1110,7 @@
       <Button id="decorative_shutter_4_opening_1_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_4_opening_1_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_708"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_709"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_709"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_710"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_711"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_712"/>
@@ -1130,7 +1130,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_725"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_726"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_727"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_728"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_728"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_729"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_730"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_731"/>
@@ -1149,7 +1149,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_743"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_744"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_745"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_746"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_746"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_747"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_748"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_749"/>
@@ -1183,7 +1183,7 @@
       <Button id="decorative_endpoint_4_0_band_0" up="shutter_endpoint_4_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_4_0_band_1" up="shutter_endpoint_4_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_773"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_774"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_774"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_775"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_776"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_777"/>
@@ -1219,7 +1219,7 @@
       <Button id="decorative_endpoint_4_1_band_0" up="shutter_endpoint_4_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_4_1_band_1" up="shutter_endpoint_4_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_803"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_804"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_804"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_805"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_806"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_807"/>
@@ -1248,7 +1248,7 @@
       <Text text="$t" x="258" y="330" width="120" font="clock" color="#00AEEF" alignment="center" visible="main_5.isActive" id="control_827"/>
       <Button id="clock_5_open_0" x="240" y="334" up="clock_hit" action="main.setLayout(main_5_remaining)" tooltiptext="Show remaining time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_829"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_830"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_830"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_831"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_832"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_833"/>
@@ -1277,7 +1277,7 @@
       <Image image="time_dash_png" x="240" y="336" id="control_853"/>
       <Button id="clock_5_open_1" x="240" y="334" up="clock_hit" action="main.setLayout(main_5)" tooltiptext="Show elapsed time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_855"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_856"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_856"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_857"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_858"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_859"/>
@@ -1309,7 +1309,7 @@
       <Button id="decorative_shutter_5_opening_0_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_5_opening_0_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_882"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_883"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_883"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_884"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_885"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_886"/>
@@ -1343,7 +1343,7 @@
       <Button id="decorative_shutter_5_opening_1_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_5_opening_1_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_911"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_912"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_912"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_913"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_914"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_915"/>
@@ -1363,7 +1363,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_928"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_929"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_930"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_931"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_931"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_932"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_933"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_934"/>
@@ -1382,7 +1382,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_946"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_947"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_948"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_949"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_949"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_950"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_951"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_952"/>
@@ -1416,7 +1416,7 @@
       <Button id="decorative_endpoint_5_0_band_0" up="shutter_endpoint_5_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_5_0_band_1" up="shutter_endpoint_5_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_976"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_977"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_977"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_978"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_979"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_980"/>
@@ -1452,7 +1452,7 @@
       <Button id="decorative_endpoint_5_1_band_0" up="shutter_endpoint_5_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_5_1_band_1" up="shutter_endpoint_5_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1006"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1007"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1007"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1008"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1009"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1010"/>
@@ -1481,7 +1481,7 @@
       <Text text="$t" x="258" y="330" width="120" font="clock" color="#00AEEF" alignment="center" visible="main_6.isActive" id="control_1030"/>
       <Button id="clock_6_open_0" x="240" y="334" up="clock_hit" action="main.setLayout(main_6_remaining)" tooltiptext="Show remaining time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1032"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1033"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1033"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1034"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1035"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1036"/>
@@ -1510,7 +1510,7 @@
       <Image image="time_dash_png" x="240" y="336" id="control_1056"/>
       <Button id="clock_6_open_1" x="240" y="334" up="clock_hit" action="main.setLayout(main_6)" tooltiptext="Show elapsed time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1058"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1059"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1059"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1060"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1061"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1062"/>
@@ -1542,7 +1542,7 @@
       <Button id="decorative_shutter_6_opening_0_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_6_opening_0_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1085"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1086"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1086"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1087"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1088"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1089"/>
@@ -1576,7 +1576,7 @@
       <Button id="decorative_shutter_6_opening_1_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_6_opening_1_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1114"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1115"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1115"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1116"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1117"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1118"/>
@@ -1596,7 +1596,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_1131"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_1132"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1133"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1134"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1134"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1135"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1136"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1137"/>
@@ -1615,7 +1615,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_1149"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_1150"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1151"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1152"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1152"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1153"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1154"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1155"/>
@@ -1649,7 +1649,7 @@
       <Button id="decorative_endpoint_6_0_band_0" up="shutter_endpoint_6_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_6_0_band_1" up="shutter_endpoint_6_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1179"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1180"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1180"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1181"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1182"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1183"/>
@@ -1685,7 +1685,7 @@
       <Button id="decorative_endpoint_6_1_band_0" up="shutter_endpoint_6_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_6_1_band_1" up="shutter_endpoint_6_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1209"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1210"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1210"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1211"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1212"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1213"/>
@@ -1714,7 +1714,7 @@
       <Text text="$t" x="258" y="330" width="120" font="clock" color="#00AEEF" alignment="center" visible="main_7.isActive" id="control_1233"/>
       <Button id="clock_7_open_0" x="240" y="334" up="clock_hit" action="main.setLayout(main_7_remaining)" tooltiptext="Show remaining time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1235"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1236"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1236"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1237"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1238"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1239"/>
@@ -1743,7 +1743,7 @@
       <Image image="time_dash_png" x="240" y="336" id="control_1259"/>
       <Button id="clock_7_open_1" x="240" y="334" up="clock_hit" action="main.setLayout(main_7)" tooltiptext="Show elapsed time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1261"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1262"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1262"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1263"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1264"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1265"/>
@@ -1775,7 +1775,7 @@
       <Button id="decorative_shutter_7_opening_0_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_7_opening_0_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1288"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1289"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1289"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1290"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1291"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1292"/>
@@ -1809,7 +1809,7 @@
       <Button id="decorative_shutter_7_opening_1_band_0" up="shutter_open_band_0" x="108" y="104" action="none" help="Decorative shutter animation"/>
       <Button id="decorative_shutter_7_opening_1_band_1" up="shutter_open_band_1" x="108" y="297" action="none" help="Decorative shutter animation"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1317"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1318"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1318"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1319"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1320"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1321"/>
@@ -1829,7 +1829,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_1334"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_1335"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1336"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1337"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1337"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1338"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1339"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1340"/>
@@ -1848,7 +1848,7 @@
       <Image image="shutter_light_png" x="42" y="64" action="move" id="control_1352"/>
       <Image image="shutter_f01_png" x="108" y="104" id="control_1353"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1354"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1355"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1355"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1356"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1357"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1358"/>
@@ -1882,7 +1882,7 @@
       <Button id="decorative_endpoint_7_0_band_0" up="shutter_endpoint_7_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_7_0_band_1" up="shutter_endpoint_7_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1382"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1383"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1383"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1384"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1385"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1386"/>
@@ -1918,7 +1918,7 @@
       <Button id="decorative_endpoint_7_1_band_0" up="shutter_endpoint_7_band_0" x="108" y="104" action="none" help="Hide source interior at closed endpoint"/>
       <Button id="decorative_endpoint_7_1_band_1" up="shutter_endpoint_7_band_1" x="108" y="297" action="none" help="Hide source interior at closed endpoint"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1412"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1413"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1413"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1414"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1415"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1416"/>
@@ -1963,7 +1963,7 @@
       <Text text="$t" x="258" y="330" width="120" font="clock" color="#00AEEF" alignment="center" visible="main_start.isActive" id="control_1437"/>
       <Button id="clock_1_open_0_startup" x="240" y="334" up="clock_hit" action="main.setLayout(main_1_remaining)" tooltiptext="Show remaining time"/>
       <Button x="88" y="74" up="m_min_no_png" over="m_min_hov_png" down="m_min_do_png" action="vlc.minimize()" tooltiptext="Minimize" id="control_1439"/>
-      <Button x="110" y="22" up="m_full_no_png" over="m_full_hov_png" down="m_full_do_png" action="video.show();vlc.fullscreen()" tooltiptext="Fullscreen video" id="control_1440"/>
+      <Checkbox x="110" y="22" state="video.isMaximized" up1="m_full_no_png" over1="m_full_hov_png" down1="m_full_do_png" up2="m_full_no_png" over2="m_full_hov_png" down2="m_full_do_png" action1="video.show();video.maximize()" action2="video.show();video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" id="control_1440"/>
       <Button x="174" y="20" up="m_close_no_png" over="m_close_hov_png" down="m_close_do_png" action="vlc.quit()" tooltiptext="Close VLC" id="control_1441"/>
       <Button x="128" y="104" up="m_open_no_png" over="m_open_hov_png" down="m_open_do_png" action="dialogs.fileSimple()" tooltiptext="Open media" id="control_1442"/>
       <Checkbox x="74" y="172" state="video.isVisible" up1="m_vis_no_png" over1="m_vis_hov_png" down1="m_vis_do_png" up2="m_vis_do_png" over2="m_vis_hov_png" down2="m_vis_do_png" action1="video.show()" action2="video.hide()" tooltiptext1="Show / hide video" tooltiptext2="Show / hide video" id="control_1443"/>
@@ -2149,7 +2149,7 @@
     </Layout>
   </Window>
   <Window id="video" x="480" y="100" visible="false">
-    <Layout id="video_1" width="1416" height="880" minwidth="1416" minheight="880" maxwidth="3000" maxheight="2000">
+    <Layout id="video_1" width="1416" height="880" minwidth="1416" minheight="880" maxwidth="8192" maxheight="4320">
       <Image image="f_top_s_1_png" x="354" y="0" action="move" visible="palette_1.isActive" rightbottom="righttop" width="734" height="122" resize="mosaic" id="control_1779"/>
       <Image image="f_bot_s_1_png" x="354" y="760" action="move" visible="palette_1.isActive" lefttop="leftbottom" rightbottom="rightbottom" width="734" height="120" resize="mosaic" id="control_1780"/>
       <Image image="f_left_s_1_png" x="0" y="122" action="move" visible="palette_1.isActive" rightbottom="leftbottom" width="354" height="644" resize="mosaic" id="control_1781"/>
@@ -2211,7 +2211,7 @@
       <Image image="screen_black" x="68" y="74" width="1280" height="746" resize="mosaic" rightbottom="rightbottom" id="control_1837"/>
       <Video x="68" y="74" width="1280" height="746" rightbottom="rightbottom" autoresize="false" id="control_1838"/>
       <Image image="vid_zoom_no_png" x="1238" y="12" lefttop="righttop" id="control_1839" rightbottom="righttop"/>
-      <Button x="1238" y="12" up="vid_zoom_no_png" over="vid_zoom_hov_png" down="vid_zoom_do_png" action="vlc.fullscreen()" tooltiptext="Fullscreen" lefttop="righttop" id="control_1840" rightbottom="righttop"/>
+      <Checkbox x="1238" y="12" state="video.isMaximized" up1="vid_zoom_no_png" over1="vid_zoom_hov_png" down1="vid_zoom_do_png" up2="vid_zoom_no_png" over2="vid_zoom_hov_png" down2="vid_zoom_do_png" action1="video.maximize()" action2="video.unmaximize()" tooltiptext1="Fill screen with skin border / restore" tooltiptext2="Fill screen with skin border / restore" lefttop="righttop" id="control_1840" rightbottom="righttop"/>
       <Image image="resize_hit" x="1344" y="832" action="resizeSE" lefttop="rightbottom" visible="palette_1.isActive" id="control_1841" rightbottom="rightbottom"/>
       <Image image="resize_hit_2" x="1344" y="832" action="resizeSE" lefttop="rightbottom" visible="palette_2.isActive" id="control_1842" rightbottom="rightbottom"/>
       <Image image="resize_hit_3" x="1344" y="832" action="resizeSE" lefttop="rightbottom" visible="palette_3.isActive" id="control_1843" rightbottom="rightbottom"/>

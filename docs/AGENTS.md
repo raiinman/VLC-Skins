@@ -34,3 +34,5 @@ VIDEO-SIZING.md owns the source-backed video sizing analysis. visual-comparison.
 CORNER-FIX.md records the source-backed cached-image paint defect and current fix. pane-corner-cache-model*.png are offline illustrations, never native screenshots. Record that old running/derived skins require regeneration and reload before showing new assets.
 
 SHUTTER-ISOLATION.md and shutter-pane-review.json own the transient-layout defect, migration requirements and limited native retest. Record original reproduction separately from fixed observations, and never imply native 2x/all-color coverage from the 1x blue retest.
+
+FULLSCREEN.md owns framed maximize versus native borderless double-click behavior. fullscreen-review.json records current package hashes and offline verification; do not apply the preceding shutter build's native observations to this candidate.

@@ -38,3 +38,7 @@ YouTube skins must be regenerated from this VLT and reloaded to see the fix.
 Shutter isolation: pane color no longer follows shutter/clock layout changes.
 See SHUTTER-ISOLATION.md for the limited native retest and one-time migration
 of existing saved colored profiles. Review launchers reset their own profiles.
+
+Framed fullscreen: fullscreen and video plus buttons fill the monitor with
+the original skin border; click again to restore. Double-click native video
+for borderless fullscreen. See FULLSCREEN.md; native retest is pending.

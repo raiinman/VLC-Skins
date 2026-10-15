@@ -121,8 +121,8 @@ def main():
                     image = next((node for node in layout.findall('Image')
                                   if node.get('image') == key and
                                   (int(node.get('x', 0)), int(node.get('y', 0))) == (x, y)), None)
-                    button = next((node for node in layout.findall('Button')
-                                   if node.get('up') == key and
+                    button = next((node for node in layout if node.tag in ('Button','Checkbox')
+                                   and (node.get('up') or node.get('up1')) == key and
                                    (int(node.get('x', 0)), int(node.get('y', 0))) == (x, y)), None)
                     assert image is not None and button is not None, (layout.get('id'), 'Source button backing missing')
                     assert layout.index(image) < layout.index(button), (layout.get('id'), 'Backing covers button feedback')

@@ -56,3 +56,7 @@ The offline comparison restores the original parent button backings, the video's
 Of 756 reconstructed main/information compositions, 714 match exactly. The remaining 42 closed-main cases differ along shutter/outer-control overlaps; they match exactly when the source reference applies the documented outer-control layer raise needed for VLC input access. This is a localized rendering deviation, not 100% pixel identity. Dynamic text/font changes and conversion-credit additions are excluded explicitly. Playlist/EQ/video full composites, live state changes and native display remain outside this comparison's scope.
 
 Shutter/clock layout changes no longer change auxiliary pane visibility. Pane color is stored separately and changes only on palette cycling or intro replay. The 1x blue YouTube/video frames stayed intact in a limited native open/close retest; both scales pass temporal visibility checks. Existing colored settings need the one-time migration described in SHUTTER-ISOLATION.md; positions are preserved.
+
+## Framed fullscreen adaptation
+
+Fullscreen entry points now toggle monitor-filling video with the original skin border and restore its previous rectangle. The source two-button header and all feedback assets are preserved; no third icon was added. Double-clicking native video retains borderless fullscreen. Offline guards cover both scales and up to 8192x4320; live maximize/restore and double-click remain pending. See FULLSCREEN.md and fullscreen-review.json.
