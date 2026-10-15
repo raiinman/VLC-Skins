@@ -13,7 +13,7 @@ Preserve original asset pixels and author attribution; record intentional change
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py, python tools/check_launchers.py python tools/check_video.py and python tools/check_corners.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py, python tools/check_launchers.py, python tools/check_video.py python tools/check_corners.py and python tools/check_palette.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
 
 ## Child DOX Index
 None.
@@ -34,3 +34,5 @@ The video viewport uses autoresize=false: media dimensions cannot enlarge the pa
 Panel close buttons and video zoom retain their original parent idle-image backings. Video uses the original eq_top_right two-button header. Web Destinations keeps c_link_no.jpg at (127,118) source coordinates, without obsolete outbound actions. Menu-region masks stay crisp at output scale; full artwork is filtered before cropping.
 
 Resizable panes use seven conditional corner patches at (width-36,height-24), with rightbottom anchors. Crop (128,33)-(151,57) from each complete f_bot_right bitmap after output scaling. Preserve the source alpha shape and visible grip; fully transparent pixels remain outside the hit region.
+
+All auxiliary frame/corner visibility uses palette_N.isActive, independent of main shutter/clock layouts. The palette_state window is always hidden and defaults to blue. It adds no visible pane or native playback widget. Legacy saved colored layouts require matching hidden state migration before loading; new state is saved by VLC afterward.

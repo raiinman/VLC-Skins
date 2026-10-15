@@ -91,3 +91,5 @@ Convert the supplied Need for Speed Underground WMP skin to VLC Skins2 using ori
 - dist contains both VLT scales and isolated Windows review launchers. Regenerate packages with tools/build.py; keep launcher filenames aligned with them.
 
 Background audits must not launch VLC, take desktop input, alter installed skins or edit user profiles. Review launchers reset only their adjacent isolated INI files before starting VLC; launcher-writer tests execute the writer against private fixtures without launching VLC.
+
+A hidden palette_state window stores pane color independently of main shutter/clock layouts. Keep this state synchronized on explicit color/replay actions and migrate legacy saved color entries without resetting pane positions. Background-only boundaries remain in force unless the user explicitly authorizes native interaction for a specific test.

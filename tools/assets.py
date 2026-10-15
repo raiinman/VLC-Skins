@@ -37,8 +37,11 @@ class ThemeAssets:
 
 def visible(expression, active='main_1', windows=None, flags=None):
     windows=windows or {};flags=flags or {}
-    values={active+'.isActive':True,**{k+'.isVisible':v for k,v in windows.items()},**flags}
     import re
+    match=re.fullmatch(r'main_([1-7])(?:_.*)?',active)
+    color=match.group(1) if match else '1' if active=='main_start' else None
+    palette={f'palette_{color}.isActive':True} if color else {}
+    values={active+'.isActive':True,**palette,**{k+'.isVisible':v for k,v in windows.items()},**flags}
     parts=[]
     for token in re.findall(r'\(|\)|[A-Za-z0-9_.]+',expression or 'true'):
         if token in ('and','or','not','(',')'):parts.append(token)

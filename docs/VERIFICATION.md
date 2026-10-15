@@ -1,6 +1,6 @@
 # Verification evidence — 2026-10-15
 
-Latest candidate: offline verified only. No VLC launches, desktop input, installed-skin changes or profile edits were performed in this background pass. Exact candidate hashes are in `offline-review.json`; prior native records keep their original package hashes.
+Latest candidate: offline checks pass at both scales, with a separate limited native 1x shutter-isolation retest in `shutter-pane-review.json`. This user-authorized test used desktop input and a corrected companion session. Installed skins and normal VLC preferences were unchanged. Exact hashes are in `offline-review.json`; earlier native records retain their original tested hashes.
 
 ## Automated checks
 
@@ -82,3 +82,11 @@ The user screenshot shows a black resize-sized rectangle covering the lower-righ
 Both scales now use exact native-scale corner crops for all seven palettes, selected by active main palette and anchored to the lower right. The original visible grip and transparent outside edge are retained. check_corners.py rejects the old mask, verifies 70 palette/pane/size combinations per scale, checks packaged assets, and proves unchanged corner pixels under an explicitly bounded black-cache copy model. It does not launch VLC or prove final Windows appearance. The independent review found no concrete regressions.
 
 The blue resize_hit resource name remains compatible with existing derived pane builders, including the YouTube prototype. Their old embedded copies do not change automatically; regenerate them from a corrected VLT and reload later. A derived builder that uses only the blue alias does not automatically inherit the canonical seven-palette selection. No helper source, installed skin, profile, running process or desktop input was changed in this fix. Root ownership and its child index are unchanged; nearest DOX contracts were updated.
+
+## Shutter isolation retest
+
+The initial native shutter open/close test reproduced rectangular frame cutouts on the video pane. Pane palette expressions depended on main layout activity; TopWindow deactivates the old layout before activating the new one. That transient all-false state hid and repainted every auxiliary frame.
+
+Current pane visibility depends on a separate hidden palette state. Shutter and clock actions leave it untouched; only color cycling and intro replay change it. check_palette.py passes all 56 main states per scale through the inactive gap, plus 57 saved-color migration cases with byte-preservation/backup/idempotence checks. All earlier offline checks and twelve YouTube adapter tests pass. The adapter inherits source pane visibility and synchronizes saved palette state during private configuration generation.
+
+The corrected private companion was launched and its 1x blue shutter clicked closed and open. Mid-animation observations in both directions and the closed endpoint showed intact YouTube/video pane borders, with no reproduced cutouts. This establishes the limited live retest, not exhaustive timing, every pane/color, 2x native behavior, or video decoding. No desktop captures or browser content are stored. Standalone test windows were not exposed by the desktop tool, so those owned test processes were stopped and the existing companion's discovery support was used. The corrected companion session remains available.

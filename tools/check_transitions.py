@@ -6,7 +6,7 @@ from check_source_art import source_pixels, scaled
 
 
 def destination(node):
-    action=node.get('action')
+    action=node.get('action').split(';')[-1]
     assert action.startswith('main.setLayout(') and action.endswith(')'), action
     return action[len('main.setLayout('):-1]
 

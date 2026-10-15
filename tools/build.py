@@ -115,9 +115,16 @@ class Builder:
         return f'main_{color}' + ('' if state=='open' else '_'+state) + ('_remaining' if remaining else '')
 
     def palette_visible(self, color):
-        ids=[self.main_id(color,state,remaining) for state in ('open','opening','closed','closing') for remaining in (False,True)]
-        if color==1:ids.append('main_start')
-        return ' or '.join(lid+'.isActive' for lid in ids)
+        return f'palette_{color}.isActive'
+
+    def palette_state(self):
+        # Main layout switches briefly deactivate both endpoints. Keep pane
+        # colors in an independent hidden window, changed only by color actions.
+        window=E.SubElement(self.theme,'Window',id='palette_state',x='0',y='0',visible='false',dragdrop='false',playondrop='false')
+        key=self.bitmap('palette_marker',Image.new('RGBA',(1,1)),prescaled=True)
+        for color in (2,3,4,5,6,7,1):
+            layout=E.SubElement(window,'Layout',id=f'palette_{color}',width='1',height='1')
+            E.SubElement(layout,'Image',image=key,x='0',y='0')
 
     def window(self, name, x, y, visible=False):
         # Desktop positions are independent of asset scale. Keep every fresh
@@ -206,7 +213,7 @@ class Builder:
                     self.check(l,'m_play',234,182,'vlc.isPlaying','vlc.play()','vlc.pause()','Play / pause',prefix2='m_pause')
                     self.button(l,'m_prev',208,217,'playlist.previous()','Previous track')
                     target=self.main_id(c%7+1,'closed' if shut else 'open',remaining)
-                    self.button(l,'m_color',194,269,f'main.setLayout({target})','Cycle seven original color schemes')
+                    self.button(l,'m_color',194,269,f'palette_state.setLayout(palette_{c%7+1});main.setLayout({target})','Cycle seven original color schemes')
                     self.check(l,'m_info',215,257,'info.isVisible','info.show()','info.hide()','Information / About')
                     action=f'main.setLayout({self.main_id(c,"opening" if shut else "closing",remaining)})'
                     shutter_blocker=None
@@ -385,7 +392,7 @@ class Builder:
                 for y,t in [(91,'VLC conversion'),(112,'Dead Signal Interactive'),(143,'Original skin: The Skins Factory'),(164,'Need for Speed Underground'),(184,'Copyright 2003 Electronic Arts Inc.')]:
                     self.text(l,t,64,y,290,color='#00AEEF' if y<140 else '#D1D1D1',small=True)
                 self.text(l,'Replay intro',222,229,90,color='#D1D1D1',small=True)
-                self.button(l,'m_shutter',323,226,'main.setLayout(main_1);main.setLayout(main_start);main.show();info.hide()','Replay original startup animation')
+                self.button(l,'m_shutter',323,226,'palette_state.setLayout(palette_1);main.setLayout(main_1);main.setLayout(main_start);main.show();info.hide()','Replay original startup animation')
             elif page=='menu':
                 self.image(l,'c_back.jpg',37,35)
                 mapping=Image.open(SOURCE/'c_menu_map.png').convert('RGB')
@@ -425,6 +432,7 @@ class Builder:
         win.append(win[0])
 
     def save(self):
+        self.palette_state()
         # Hidden layouts still observe time changes in VLC. Gate their text
         # before rasterization; activation refreshes the current value.
         for layout in self.theme.findall('./Window[@id="main"]/Layout'):

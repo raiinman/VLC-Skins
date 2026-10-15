@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-15",
+  "baseline": "Native original session reproduced pane frame cutouts on shutter opening and closing.",
+  "packages": {
+    "1": {
+      "sha256": "b865790023d0b239bc6e10878e6a0407b3e7cd1c4ffdee7581053491d0e8218a"
+    },
+    "2": {
+      "sha256": "db141fcb33fd5e6a1649ffd04b3fd89b075bf8b05dfc7420ecd6d6db9a9290a7"
+    }
+  },
+  "derived_1x_sha256": "ee65579c95bfa3fa83a0b133cc624866a2d81069cd295b09bb1698dc4717c50d",
+  "native_1x": {
+    "palette": "blue",
+    "actions": [
+      "close shutter",
+      "open shutter"
+    ],
+    "observed": "Mid-animation in both directions and closed endpoint retained YouTube/video pane borders, without reproduced rectangular cutouts.",
+    "scope": "Companion exposes native skin windows; no media thumbnails clicked."
+  },
+  "offline_both_scales": "All required checks pass; 56 temporal state cases and 57 saved-color migration cases.",
+  "remaining": [
+    "Native 2x shutter/pane review",
+    "Exhaustive all-pane/all-color animation timing"
+  ],
+  "privacy": "No desktop captures, browser content or credentials stored."
+}

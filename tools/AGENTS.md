@@ -13,7 +13,7 @@ Accept only safe archive paths. Validate CRC after the documented four-byte head
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py, python tools/check_launchers.py python tools/check_video.py and python tools/check_corners.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py, python tools/check_launchers.py, python tools/check_video.py python tools/check_corners.py and python tools/check_palette.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
 
 ## Child DOX Index
 None.
@@ -36,3 +36,5 @@ check_video.py requires explicit Video.autoresize=false, compares packaged XML w
 Information-menu sprites resample full source artwork before clipping with a nearest-neighbor output-scale mapping mask. WMP BUTTONGROUP.showBackground defaults false: retain only mapped regions. Preserve original parent close/zoom image backings and the static Web Destinations overlay; its obsolete outbound actions remain omitted.
 
 check_corners.py compares real-art resize patches with independently decoded native-scale source crops and models Windows cached RGB copy. Alpha-based hit checks do not establish paint transparency. Keep the resize_hit resource as a blue-corner compatibility alias for existing derived panes; other palettes use their matching conditional images.
+
+Palette visibility uses an independent hidden palette_state window with seven 1x1 transparent layouts. Only color cycling and intro replay may switch it; shutter/clock actions must never reselect even the same palette layout. check_palette.py models the all-main-inactive gap. migrate_palette.py migrates only an explicitly selected closed profile, derives palette from saved main layout, makes a backup and preserves other bytes. Never migrate a live profile.

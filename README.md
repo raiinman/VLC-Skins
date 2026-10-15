@@ -47,6 +47,7 @@ python tools/check_placement.py
 python tools/check_launchers.py
 python tools/check_video.py
 python tools/check_corners.py
+python tools/check_palette.py
 python tools/compare_layers.py
 python tools/preview.py
 # Native initialization check (launches VLC; run when desktop testing is available):
@@ -68,3 +69,5 @@ DOX is installed as the root and child AGENTS.md hierarchy, copied and adapted f
 Original skin: **The Skins Factory**. Original copyright: **© 2003 Electronic Arts Inc. All Rights Reserved.** Conversion: **Dead Signal Interactive**. Original materials retain their owners' rights. This private review repository does not assign a new license to the recovered artwork, scripts or branding.
 
 The lower-right resize corner now uses matching original artwork at both scales. [Corner fix](docs/CORNER-FIX.md) explains the Windows cache-copy defect and the remaining native appearance check. Already running or derived copies must be regenerated/reloaded to use the new assets.
+
+Shutter and clock changes now leave auxiliary pane artwork stable. [Shutter isolation](docs/SHUTTER-ISOLATION.md) records the limited native 1x retest and saved-color migration. Review launchers start fresh; when upgrading an existing colored normal profile, close its VLC instance and run `python tools/migrate_palette.py "C:/path/to/vlcrc"` once before loading the new skin. The tool backs up the selected file and preserves other preferences and pane positions.

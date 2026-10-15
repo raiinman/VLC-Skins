@@ -141,7 +141,7 @@ def main():
         assets = ThemeAssets(SKIN/f'vlc-{scale}x')
         counts = Counter()
         for layout in assets.tree.findall('.//Layout'):
-            if layout.getparent().get('id') == 'main':
+            if layout.getparent().get('id') in ('main','palette_state'):
                 continue
             original = int(layout.get('width')), int(layout.get('height'))
             sizes = [original]

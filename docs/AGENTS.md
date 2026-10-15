@@ -13,7 +13,7 @@ Separate static verification, runtime observation and pending checks. Record uns
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py, python tools/check_launchers.py python tools/check_video.py and python tools/check_corners.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py, python tools/check_launchers.py, python tools/check_video.py python tools/check_corners.py and python tools/check_palette.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
 
 ## Child DOX Index
 None.
@@ -32,3 +32,5 @@ Record default placement, transition gating and isolated launcher-writer checks 
 VIDEO-SIZING.md owns the source-backed video sizing analysis. visual-comparison.json and visual-*.png own offline combined-layer comparison evidence; these are reconstructed asset renders, never native screenshots or a percentage acceptance score.
 
 CORNER-FIX.md records the source-backed cached-image paint defect and current fix. pane-corner-cache-model*.png are offline illustrations, never native screenshots. Record that old running/derived skins require regeneration and reload before showing new assets.
+
+SHUTTER-ISOLATION.md and shutter-pane-review.json own the transient-layout defect, migration requirements and limited native retest. Record original reproduction separately from fixed observations, and never imply native 2x/all-color coverage from the 1x blue retest.

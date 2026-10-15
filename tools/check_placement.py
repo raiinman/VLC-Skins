@@ -14,7 +14,7 @@ def verify(assets, scale):
     screen_width, screen_height = WORK_AREAS[scale]
     count = 0
     windows = assets.tree.findall('Window')
-    assert {w.get('id') for w in windows} == {'main', 'tracks', 'equalizer', 'info', 'video'}
+    assert {w.get('id') for w in windows} == {'main', 'tracks', 'equalizer', 'info', 'video','palette_state'}
     for window in windows:
         wx, wy = int(window.get('x')), int(window.get('y'))
         for layout in window.findall('Layout'):
@@ -38,7 +38,7 @@ def main():
     for scale in (1, 2):
         assets = ThemeAssets(SKIN/f'vlc-{scale}x')
         count = verify(assets, scale)
-        print(f'PASS {scale}x: all 5 default windows fit {WORK_AREAS[scale]}, {count} critical control instances contained')
+        print(f'PASS {scale}x: 5 pane defaults and hidden palette state fit {WORK_AREAS[scale]}, {count} critical control instances contained')
 
 
 if __name__ == '__main__':

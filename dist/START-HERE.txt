@@ -34,3 +34,7 @@ separate offline source/render evidence from the remaining native checks.
 Lower-right corner fix: matching original corner artwork replaces the black
 resize hit bitmap at both scales. See CORNER-FIX.md. Running or derived
 YouTube skins must be regenerated from this VLT and reloaded to see the fix.
+
+Shutter isolation: pane color no longer follows shutter/clock layout changes.
+See SHUTTER-ISOLATION.md for the limited native retest and one-time migration
+of existing saved colored profiles. Review launchers reset their own profiles.
