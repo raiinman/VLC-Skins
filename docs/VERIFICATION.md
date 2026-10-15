@@ -1,5 +1,7 @@
 # Verification evidence — 2026-10-15
 
+Latest candidate: offline verified only. No VLC launches, desktop input, installed-skin changes or profile edits were performed in this background pass. Exact candidate hashes are in `offline-review.json`; prior native records keep their original package hashes.
+
 ## Automated checks
 
 - `python tools/build.py --check`: both scales validate against the official VLC 3.0.x DTD; IDs, resource references and functional button actions pass.
@@ -12,7 +14,7 @@
 
 ## Native VLC 3.0.23
 
-Both scales of the prior parity candidate loaded and played a generated silent 640×360 MPEG-4/AAC clip through VLC's loopback RC interface. The reference is 90 seconds long. Native playback statistics and exact candidate hashes are recorded in `runtime-summary.json`; they prove theme load and player operation, not skin button interaction. The current banded packages have separate exact hashes and native silent-WAV initialization checks in `load-benchmark.json`.
+Both scales of the prior parity candidate loaded and played a generated silent 640×360 MPEG-4/AAC clip through VLC's loopback RC interface. The reference is 90 seconds long. Native playback statistics and exact candidate hashes are recorded in `runtime-summary.json`; they prove theme load and player operation, not skin button interaction. The previous native-tested banded packages have exact hashes and silent-WAV initialization checks in `load-benchmark.json`; those measurements do not apply to the subsequent offline candidate.
 
 Native Computer Use now reaches skin controls through an isolated floating Direct3D output window. Mouse clicks and drags were checked against independent read-only HTTP values: play/pause, volume endpoints, seeking, playlist selection/scrolling and EQ enable/band/preamp at both scales; next/previous, shuffle/repeat and Open Media at 1x. Native views showed shutter travel/endpoints, selected palettes, clock-mode changes, original Story/Screenshots navigation and credits. The final 2x resize grip increased playlist height from 640 to 665 pixels. The final 1x package loaded and displayed its clock; the tool then failed with `foreground window did not report a process id`, including recovery, before the final resize recheck.
 
@@ -38,6 +40,16 @@ Regular VLC launches can restore a layout without the intro. Review launchers re
 
 Reversed volume sprites now agree with native minimum/maximum values. Playlist scrollbar points match VLC's descending scroll variable. The EQ uses its smooth original corner, metadata uses all original palette colors, and the clock is more legible. Closing preserves the interior during travel and covers it only at the endpoint; a clock click preserves the closing destination. Transparent source resize rectangles now receive input through alpha 1 hit masks. Pixel and binding contracts guard both scales.
 
-At 2x, 16 bands per short shutter sequence created up to 49 active timers and 980 callbacks/second. Two bands reduce closing to seven timers while retaining every pixel. Dynamic text is visible only in its owning main layout; inactive copies no longer rasterize on each time update. Final initialization timings and hashes are in load-benchmark.json. The animation sequence is preserved; precise wall-clock pacing remains a review item.
+At 2x, 16 bands per short shutter sequence created up to 49 active timers and 980 callbacks/second. Two bands reduce closing to seven timers while retaining every pixel. Dynamic text is visible only in its owning main layout; inactive copies no longer rasterize on each time update. The previous native candidate's initialization timings and hashes are in load-benchmark.json. The animation sequence is preserved; precise wall-clock pacing remains a review item.
 
 Native paused seeking can leave clock text stale until resume. Upstream StreamTime notifies before setting the input position, and an identical subsequent percentage suppresses another notification. Changing clock mode during shutter travel also activates a layout, which can finish opening early or restart closing. These limits are recorded rather than claimed fixed.
+
+## Background source review
+
+The original GIF has opaque magenta pixels but its WMS container declares magenta transparency. The converter previously enlarged GIF frames before the native color key removed those pixels, introducing colored edge pixels at 2x. `color_key` now applies the original key before fades and per-frame resampling, consistent with the static source artwork.
+
+- `check_startup.py`: all 81 intro and 81 lighting frames at each scale match independently decoded, keyed source pixels and source fade timing. The test failed at the first GIF frame on the previous assets and passes after correction.
+- `check_source_art.py`: 176 used source images, 920 original hover/pressed bindings, 12 menu-state crops and three EQ power crops per scale pass. In-memory pixel and wrong-hover-binding mutations were rejected.
+- `check_panels.py`: 336 palette/size/checkbox combinations and 1,134 panel button-ownership checks per scale pass. Resize handles remain attached and viewport margins remain constant at base, enlarged and maximum sizes. Obstruction and detached-anchor mutations were rejected. This is an offline geometry model.
+
+The startup contact sheet renders corrected assets over a neutral background. It does not establish native playback, wall-clock timing or visual acceptance. Native load/performance and final desktop checks remain pending for this candidate.

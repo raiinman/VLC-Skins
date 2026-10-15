@@ -13,7 +13,7 @@ Preserve original asset pixels and author attribution; record intentional change
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py and python tools/check_animation_bands.py after conversion changes.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py and python tools/check_panels.py after conversion changes.
 
 ## Child DOX Index
 None.

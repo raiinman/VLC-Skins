@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-15",
+  "prior_native_review_commit": "49a3daee7bb0ac5824f2aaf9bc247f9c4f9ff591",
+  "scope": "Background-only source and artifact verification. No VLC launches, desktop input, installed-skin changes or profile edits.",
+  "change": "Apply WMS exact magenta key to GIF frames before fading and per-frame resampling.",
+  "native_verified": false,
+  "native_initialization_seconds": null,
+  "packages": {
+    "1": {
+      "sha256": "226d398f8cc00ab5e4402b1511a053a0f2f1530890db08902e864758801eea87"
+    },
+    "2": {
+      "sha256": "c6c4f9eb70227168e05ea19a31cb40844537a01071cd0bf02be3317bfeee08d1"
+    }
+  },
+  "offline_checks": {
+    "DTD_and_bindings": "pass both scales",
+    "source_contracts": "pass both scales",
+    "main_hit_model": "856 controls per scale; pass",
+    "animation_band_reconstruction": "every frame; pass",
+    "startup_source_frames": "162 per scale; pass",
+    "original_images": "176 per scale; pass",
+    "source_hover_pressed_bindings": "920 per scale; pass",
+    "menu_and_EQ_crops": "12 menu and 3 EQ states per scale; pass",
+    "panel_geometry": "336 states and 1134 button checks per scale; pass",
+    "python_compilation": "pass",
+    "diff_whitespace": "pass"
+  },
+  "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations.",
+  "remaining": [
+    "Native recheck of the latest candidate",
+    "Exact wall-clock animation pacing",
+    "Final 1x resize interaction",
+    "Embedded video placement and resize",
+    "Audible EQ response"
+  ],
+  "contact_sheet": "startup-frames.png is asset-rendered, not a native capture."
+}

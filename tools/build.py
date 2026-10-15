@@ -36,7 +36,11 @@ def recover(path):
 
 
 def rgba(name):
-    im = Image.open(SOURCE / name).convert('RGBA')
+    return color_key(Image.open(SOURCE / name))
+
+
+def color_key(image):
+    im = image.convert('RGBA')
     # The WMZ mixes real alpha and a magenta transparency key.
     r, g, b = ImageChops.difference(im.convert('RGB'), Image.new('RGB', im.size, MAGENTA)).split()
     mask = ImageChops.lighter(ImageChops.lighter(r, g), b).point(lambda x: 255 if x else 0)
@@ -277,7 +281,7 @@ class Builder:
 
     def startup_sequence(self):
         with Image.open(SOURCE/'intro_anim.gif') as gif:
-            frames=[f.convert('RGBA').copy() for f in ImageSequence.Iterator(gif)]
+            frames=[color_key(f) for f in ImageSequence.Iterator(gif)]
             loop=gif.info.get('loop')==0
         # Source timers: 1.5 s static; GIF; light fades at 6.5 s; intro fades at 7.5 s.
         seq=Image.new('RGBA',(194,194*81));lightseq=Image.new('RGBA',(258,231*81))

@@ -13,7 +13,7 @@ Accept only safe archive paths. Validate CRC after the documented four-byte head
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py and python tools/check_animation_bands.py after conversion changes.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py and python tools/check_panels.py after conversion changes.
 
 ## Child DOX Index
 None.
@@ -26,3 +26,5 @@ Assign explicit unique IDs to every control: VLC 3.0.x synthetic IDs collide pas
 Native animation strips taller than 4096 pixels become horizontal bands. Canonical PNGs and animation-bands.json are offline references; VLC loads only physical bands. check_animation_bands.py checks exact reconstruction, timing, placement and actions. benchmark_load.py measures CLI autoplay after the skins2 interface is ready; both scales must initialize within 30 seconds on the test machine. RC-triggered playback and buffered file-log timing cannot establish initialization time.
 
 Short 11-frame sequences use two bands when splitting is required; the 81-frame intro uses 16. Each band adds a native timer and repaint, so do not increase the count without runtime evidence. Main dynamic Text visibility follows its owning layout.isActive, including startup after cloning. Both volume and seek sprite order runs minimum to maximum. Resize handles use alpha 1 because the source magenta rectangle is entirely transparent to VLC. Closing layouts retain the interior during travel, then cover it with exact native-scale closed pixels; clock toggles must retain the closing destination.
+
+Apply the WMS exact magenta transparency key before resampling or fading GIF frames. check_startup.py independently compares every startup/light frame to source pixels and timings; check_source_art.py checks original artwork and hover/pressed bindings; check_panels.py checks panel button ownership, resize attachment and viewport margins offline. Native benchmarking launches VLC and is excluded from background-only work.

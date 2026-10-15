@@ -1,5 +1,7 @@
 # Parity and acceptance
 
+The latest candidate has an offline intro-transparency correction; native evidence below belongs to the earlier review candidate. See `offline-review.json` for exact scope.
+
 The current target is complete parity within the user's permitted VLC adaptations. Acceptance belongs to the user. This build is not certified as 100% visually or interactively identical.
 
 | Source behavior | Conversion | Evidence |
@@ -23,6 +25,7 @@ The current target is complete parity within the user's permitted VLC adaptation
 - Original images remain lossless at 1x. Each animation/needle frame is independently resampled with Lanczos at 2x to avoid bleeding from adjacent frames.
 - Equalizer frequencies follow VLC; removed WMP-only controls include preset/reset, SRS/WOW/TruBass, speaker size, balance, crossfade, skin sounds and visualization presets. Their source assets remain archived. The removed right-side EQ rails use the original carbon texture and VLC preamp.
 - Clock/metadata use a TTF font over the original backing. The clock uses 14 source-scale pixels for legibility. Metadata retains the source palette colors.
+- The original playlist changes the playing-row background with its palette. VLC Playtree exposes a fixed selection background and playing-text color, without a separate playing-row background binding. The single retained Playtree therefore cannot reproduce that palette-dependent row treatment.
 - Palette switching is immediate. The source JavaScript color crossfade has no direct Skins2 layout-action equivalent.
 - Regular VLC launches restore the saved layout, which can bypass the intro after switching away from `main_start`. Skins2 has no source-script on-load timer equivalent. Review launchers clear saved layout state; the conversion credit page provides Replay intro in the blue theme, including when `main_start` is already selected.
 - VLC owns native context/preferences dialogs. Its skin API cannot style those interiors. The skin's own information menu retains its original artwork.

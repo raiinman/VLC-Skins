@@ -49,5 +49,6 @@
   "native_mouse_verified": false,
   "fullscreen_keyboard_verified_on_prior_parity_build": true,
   "candidate_commit": "0a5b82541686884b8cc37074d70909cd9d219381",
-  "current_candidate_initialization": "load-benchmark.json"
+  "subsequent_native_initialization": "load-benchmark.json",
+  "latest_offline_candidate": "offline-review.json"
 }

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
   "vlc_version": "3.0.23",
-  "final_package_sha256": {
+  "reviewed_package_sha256": {
     "1": "6d4eca36f815ad99400b1bafd03bf6afc0203d9df85ce74b392ab8a4ae31020b",
     "2": "be7bce48ac0bd4ac66b9ca9e73992621480431fc22fc02de038562100f70cc1c"
   },

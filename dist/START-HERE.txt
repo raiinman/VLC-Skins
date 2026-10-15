@@ -6,8 +6,10 @@ VLC conversion: Dead Signal Interactive.
 Install VLC, extract this bundle, then run Preview-1x.cmd or Preview-2x.cmd.
 The launchers use separate settings files. 1x matches the source 300x298 size.
 2x is 600x596 with independently resampled sprite frames. Lossless animation
-bands reduce initialization to about 3.5 seconds at 1x / 18 seconds at 2x on
-the test machine. The original intro then takes about 8 seconds.
+bands measured about 3.5 seconds at 1x / 18 seconds at 2x on the prior
+native-tested build. This newer intro-transparency candidate is verified
+offline only. Its native initialization and timing recheck remain pending.
+The original intro sequence is about 8 seconds.
 
 For your regular VLC profile: Tools > Preferences > Interface > Use custom
 skin, choose a VLT, save and restart VLC.
