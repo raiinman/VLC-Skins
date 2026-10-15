@@ -1,5 +1,6 @@
 """Read standalone and atlas-backed theme bitmaps for review/checks."""
 from functools import lru_cache
+import json
 from lxml import etree as E
 from PIL import Image
 
@@ -9,6 +10,11 @@ class ThemeAssets:
         self.directory=directory
         self.tree=E.parse(str(directory/'theme.xml'))
         self.resources={n.get('id'):n for n in self.tree.iter() if n.get('id')}
+        manifest=directory/'animation-bands.json'
+        if manifest.exists():
+            # Canonical strips are offline references; VLC loads only the bands.
+            for key,item in json.loads(manifest.read_text()).items():
+                self.resources[key]=E.Element('Bitmap',**item['bitmap'])
 
     @lru_cache(maxsize=32)
     def file(self, name):

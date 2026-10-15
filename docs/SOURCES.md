@@ -20,3 +20,5 @@ Context7 resolved `/videolan/vlc` during the parity pass, but its returned skin 
 - [VLC animation bitmap](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/utils/anim_bitmap.cpp): frame timing and loop behavior.
 
 - [VLC time formatting](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/vars/time.cpp): remaining-time tokens omit a leading minus; the conversion restores the original `time_dash.png` indicator.
+- [Windows graphics regions](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/win32/win32_graphics.cpp) and [bitmap caching](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/src/generic_bitmap.cpp): repeated region combinations make long animation masks expensive. Horizontal bands retain their pixels while bounding individual mask work.
+- [Theme state restoration](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/src/theme.cpp): restoring another saved layout can bypass a dedicated intro layout.

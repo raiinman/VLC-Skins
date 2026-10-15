@@ -25,7 +25,7 @@ The video panel is rectangular and clear of the NFS logo. The seek and volume ga
 
 Palette changes preserve the clock mode, shutter state and open panels. The information frame also follows the selected palette. Startup and shutter playback follow the original script timing.
 
-The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. Its full-quality animation strips make cold loading expensive: the observed 2x load took about two minutes on the test machine; 1x loaded in about twenty seconds. Separate `Preview-1x.cmd` and `Preview-2x.cmd` launchers use isolated settings files. [Control mapping and review limits](docs/PARITY.md).
+The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. Lossless horizontal animation bands reduce Windows initialization to approximately 4 seconds at 1x and 14 seconds at 2x on the test machine, followed by the roughly 8-second original intro. Separate `Preview-1x.cmd` and `Preview-2x.cmd` launchers use isolated settings and start the intro. Regular VLC launches may restore another saved layout and skip it; Information → conversion credits → Replay intro runs it again in the blue theme. [Control mapping and review limits](docs/PARITY.md).
 
 ## Build and verify
 
@@ -36,7 +36,10 @@ python -m pip install -r requirements.txt
 python tools/build.py
 python tools/check_contracts.py
 python tools/check_hits.py
+python tools/check_animation_bands.py
 python tools/preview.py
+# Windows native initialization regression check (requires installed VLC):
+python tools/benchmark_load.py
 ```
 
 To repeat recovery from the supplied package:

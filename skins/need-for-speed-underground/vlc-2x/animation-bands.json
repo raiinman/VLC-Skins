@@ -1,0 +1,554 @@
+{
+  "shutter_open_light": {
+    "bitmap": {
+      "id": "shutter_open_light",
+      "file": "assets/shutter_open_light.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_open_light_band_0",
+        "y": 0,
+        "height": 28
+      },
+      {
+        "id": "shutter_open_light_band_1",
+        "y": 28,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_2",
+        "y": 57,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_3",
+        "y": 86,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_4",
+        "y": 115,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_5",
+        "y": 144,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_6",
+        "y": 173,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_7",
+        "y": 202,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_8",
+        "y": 231,
+        "height": 28
+      },
+      {
+        "id": "shutter_open_light_band_9",
+        "y": 259,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_10",
+        "y": 288,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_11",
+        "y": 317,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_12",
+        "y": 346,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_13",
+        "y": 375,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_14",
+        "y": 404,
+        "height": 29
+      },
+      {
+        "id": "shutter_open_light_band_15",
+        "y": 433,
+        "height": 29
+      }
+    ]
+  },
+  "shutter_open": {
+    "bitmap": {
+      "id": "shutter_open",
+      "file": "assets/shutter_open.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_open_band_0",
+        "y": 0,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_1",
+        "y": 24,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_2",
+        "y": 48,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_3",
+        "y": 72,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_4",
+        "y": 96,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_5",
+        "y": 120,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_6",
+        "y": 144,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_7",
+        "y": 168,
+        "height": 25
+      },
+      {
+        "id": "shutter_open_band_8",
+        "y": 193,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_9",
+        "y": 217,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_10",
+        "y": 241,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_11",
+        "y": 265,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_12",
+        "y": 289,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_13",
+        "y": 313,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_14",
+        "y": 337,
+        "height": 24
+      },
+      {
+        "id": "shutter_open_band_15",
+        "y": 361,
+        "height": 25
+      }
+    ]
+  },
+  "shutter_close_light": {
+    "bitmap": {
+      "id": "shutter_close_light",
+      "file": "assets/shutter_close_light.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_close_light_band_0",
+        "y": 0,
+        "height": 28
+      },
+      {
+        "id": "shutter_close_light_band_1",
+        "y": 28,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_2",
+        "y": 57,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_3",
+        "y": 86,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_4",
+        "y": 115,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_5",
+        "y": 144,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_6",
+        "y": 173,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_7",
+        "y": 202,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_8",
+        "y": 231,
+        "height": 28
+      },
+      {
+        "id": "shutter_close_light_band_9",
+        "y": 259,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_10",
+        "y": 288,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_11",
+        "y": 317,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_12",
+        "y": 346,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_13",
+        "y": 375,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_14",
+        "y": 404,
+        "height": 29
+      },
+      {
+        "id": "shutter_close_light_band_15",
+        "y": 433,
+        "height": 29
+      }
+    ]
+  },
+  "shutter_close": {
+    "bitmap": {
+      "id": "shutter_close",
+      "file": "assets/shutter_close.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "11",
+      "fps": "20",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "shutter_close_band_0",
+        "y": 0,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_1",
+        "y": 24,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_2",
+        "y": 48,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_3",
+        "y": 72,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_4",
+        "y": 96,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_5",
+        "y": 120,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_6",
+        "y": 144,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_7",
+        "y": 168,
+        "height": 25
+      },
+      {
+        "id": "shutter_close_band_8",
+        "y": 193,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_9",
+        "y": 217,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_10",
+        "y": 241,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_11",
+        "y": 265,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_12",
+        "y": 289,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_13",
+        "y": 313,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_14",
+        "y": 337,
+        "height": 24
+      },
+      {
+        "id": "shutter_close_band_15",
+        "y": 361,
+        "height": 25
+      }
+    ]
+  },
+  "intro_light_sequence": {
+    "bitmap": {
+      "id": "intro_light_sequence",
+      "file": "assets/intro_light_sequence.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "81",
+      "fps": "10",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "intro_light_sequence_band_0",
+        "y": 0,
+        "height": 28
+      },
+      {
+        "id": "intro_light_sequence_band_1",
+        "y": 28,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_2",
+        "y": 57,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_3",
+        "y": 86,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_4",
+        "y": 115,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_5",
+        "y": 144,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_6",
+        "y": 173,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_7",
+        "y": 202,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_8",
+        "y": 231,
+        "height": 28
+      },
+      {
+        "id": "intro_light_sequence_band_9",
+        "y": 259,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_10",
+        "y": 288,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_11",
+        "y": 317,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_12",
+        "y": 346,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_13",
+        "y": 375,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_14",
+        "y": 404,
+        "height": 29
+      },
+      {
+        "id": "intro_light_sequence_band_15",
+        "y": 433,
+        "height": 29
+      }
+    ]
+  },
+  "intro_sequence": {
+    "bitmap": {
+      "id": "intro_sequence",
+      "file": "assets/intro_sequence.png",
+      "alphacolor": "#FF00FF",
+      "nbframes": "81",
+      "fps": "10",
+      "loop": "1"
+    },
+    "bands": [
+      {
+        "id": "intro_sequence_band_0",
+        "y": 0,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_1",
+        "y": 24,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_2",
+        "y": 48,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_3",
+        "y": 72,
+        "height": 25
+      },
+      {
+        "id": "intro_sequence_band_4",
+        "y": 97,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_5",
+        "y": 121,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_6",
+        "y": 145,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_7",
+        "y": 169,
+        "height": 25
+      },
+      {
+        "id": "intro_sequence_band_8",
+        "y": 194,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_9",
+        "y": 218,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_10",
+        "y": 242,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_11",
+        "y": 266,
+        "height": 25
+      },
+      {
+        "id": "intro_sequence_band_12",
+        "y": 291,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_13",
+        "y": 315,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_14",
+        "y": 339,
+        "height": 24
+      },
+      {
+        "id": "intro_sequence_band_15",
+        "y": 363,
+        "height": 25
+      }
+    ]
+  }
+}

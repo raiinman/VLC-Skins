@@ -327,6 +327,8 @@ class Builder:
                 # Credit stays in the information panel, away from media.
                 for y,t in [(91,'VLC conversion'),(112,'Dead Signal Interactive'),(143,'Original skin: The Skins Factory'),(164,'Need for Speed Underground'),(184,'Copyright 2003 Electronic Arts Inc.')]:
                     self.text(l,t,64,y,290,color='#00AEEF' if y<140 else '#D1D1D1',small=True)
+                self.text(l,'Replay intro',222,229,90,color='#D1D1D1',small=True)
+                self.button(l,'m_shutter',323,226,'main.setLayout(main_1);main.setLayout(main_start);main.show();info.hide()','Replay original startup animation')
             elif page=='menu':
                 self.image(l,'c_back.jpg',37,35)
                 mapping=Image.open(SOURCE/'c_menu_map.png').convert('RGB')
@@ -362,6 +364,7 @@ class Builder:
         for i,node in enumerate(self.theme.iter()):
             if node.tag in ('Image','Button','Checkbox','Slider','Text','Video') and not node.get('id'):
                 node.set('id',f'control_{i}')
+        self.band_animations()
         self.pack_atlases()
         # XML requires resource declarations before windows; resources were discovered lazily.
         children=list(self.theme)
@@ -382,6 +385,39 @@ class Builder:
             files={'theme.xml','skin.dtd'}|{n.get('file') for n in self.theme if n.get('file')}
             for filename in sorted(files):z.write(self.out/filename,filename)
         return path
+
+    def band_animations(self):
+        # Win32 combines a region for every opaque run. Long sprite strips
+        # make that work quadratic; small horizontal bands keep pixels intact.
+        manifest={}
+        for node in list(self.theme.findall('Bitmap')):
+            frames=int(node.get('nbframes','1'))
+            if frames<=1:continue
+            im=Image.open(self.out/node.get('file')).convert('RGBA')
+            if im.height<=4096:continue
+            height=im.height//frames;bands=[]
+            for index in range(16):
+                y0=height*index//16;y1=height*(index+1)//16
+                strip=Image.new('RGBA',(im.width,(y1-y0)*frames))
+                for frame in range(frames):
+                    strip.paste(im.crop((0,frame*height+y0,im.width,frame*height+y1)),(0,frame*(y1-y0)))
+                key=node.get('id')+f'_band_{index}'
+                filename=f'assets/{key}.png';strip.save(self.out/filename)
+                resource=copy.deepcopy(node);resource.set('id',key);resource.set('file',filename)
+                self.theme.insert(self.theme.index(node),resource)
+                bands.append(dict(id=key,y=y0,height=y1-y0))
+            manifest[node.get('id')]=dict(bitmap=dict(node.attrib),bands=bands)
+            for layout in self.theme.findall('.//Layout'):
+                for control in list(layout):
+                    if control.get('up')!=node.get('id'):continue
+                    assert control.tag=='Button' and not control.get('over') and not control.get('down')
+                    for index,band in enumerate(bands):
+                        part=copy.deepcopy(control);part.set('id',control.get('id')+f'_band_{index}')
+                        part.set('up',band['id']);part.set('y',str(int(control.get('y','0'))+band['y']))
+                        layout.insert(layout.index(control),part)
+                    layout.remove(control)
+            self.theme.remove(node)
+        (self.out/'animation-bands.json').write_text(json.dumps(manifest,indent=2)+'\n')
 
     def pack_atlases(self):
         """Load static art in a few decoder calls without changing its pixels."""

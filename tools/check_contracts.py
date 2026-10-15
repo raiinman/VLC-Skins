@@ -11,6 +11,9 @@ for scale in (1,2):
     layouts={l.get('id'):w.get('id') for w in windows.values() for l in w}
     assert windows['main'][-1].get('id')=='main_start'
     assert windows['info'][-1].get('id')=='info_menu'
+    replay=tree.find('.//Layout[@id="info_about"]/Button[@tooltiptext="Replay original startup animation"]')
+    assert replay is not None,'Restored layouts need a way to replay the original intro'
+    assert replay.get('action')=='main.setLayout(main_1);main.setLayout(main_start);main.show();info.hide()'
     for node in tree.iter():
         if node.tag in ('Image','Button','Checkbox','Slider','Text','Video'):
             assert node.get('id') and node.get('id')!='none','VLC generated-ID collision risk'

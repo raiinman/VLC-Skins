@@ -13,10 +13,12 @@ Separate static verification, runtime observation and pending checks. Record uns
 Follow the root visual parity contract.
 
 ## Verification
-Run python tools/build.py --check, python tools/check_contracts.py and python tools/check_hits.py after conversion changes.
+Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py and python tools/check_animation_bands.py after conversion changes.
 
 ## Child DOX Index
 None.
 
 
 PARITY.md owns acceptance and deviations; SOURCES.md owns provenance; VERIFICATION.md owns check evidence and limits. preview.png is an asset-rendered comparison, not a native screenshot. Keep native RC playback, fullscreen keyboard checks, offline hit modeling and actual skin mouse review distinct.
+
+load-benchmark.json records final package initialization measurements. runtime-summary.json records earlier video playback tests and their exact package hashes; keep the versions distinct. Record saved-layout intro limits and replay access in PARITY.md.

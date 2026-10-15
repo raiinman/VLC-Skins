@@ -1,0 +1,16 @@
+[
+  {
+    "scale": 1,
+    "autoplay_after_interface_ready_seconds": 4.39,
+    "process_alive_after_animation": true,
+    "theme_errors": [],
+    "sha256": "0fe974c3025636e7814beb498f3eff487e93b316b57d66ec0ea117cd475032c2"
+  },
+  {
+    "scale": 2,
+    "autoplay_after_interface_ready_seconds": 13.42,
+    "process_alive_after_animation": true,
+    "theme_errors": [],
+    "sha256": "8840bb81be90bdf826a75d607e56c442c93a3d3bff7f23258e8a3e5cfa646134"
+  }
+]

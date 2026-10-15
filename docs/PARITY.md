@@ -10,7 +10,7 @@ The current target is complete parity within the user's permitted VLC adaptation
 | Elapsed/remaining clock | Clickable toggle; retained across palette/shutter changes | State-transition contracts; click pending |
 | Palette cycling | All frame palettes, including information; preserves panel widgets and clock/shutter state | Layout/visibility contracts; visual switching pending |
 | Shutter | Eleven travel frames at 20 fps, separate timed lighting, open/closed endpoints | Source script and frame contracts; mouse/timing review pending |
-| Startup | Source 59-frame GIF, initial hold, lighting and final fade at source timings | 81-frame 10 fps sequence, transparent final overlays; visual review pending |
+| Startup | Source 59-frame GIF, initial hold, lighting and final fade at source timings | 81-frame 10 fps sequence with lossless bands; saved-layout limit below; visual review pending |
 | Playlist | One Playtree, scrolling, add, shuffle, loop | DTD/action checks; native selection/scroll pending |
 | Equalizer | One ten-band EQ, preamp, enable | Native variable bindings; audible/drag review pending |
 | Video | One rectangular resizable viewport inside original framing | Native decoding/playback and fullscreen/Escape; embedded placement/resize pending |
@@ -24,6 +24,7 @@ The current target is complete parity within the user's permitted VLC adaptation
 - Equalizer frequencies follow VLC; removed WMP-only controls include preset/reset, SRS/WOW/TruBass, speaker size, balance, crossfade, skin sounds and visualization presets. Their source assets remain archived. The removed right-side EQ rails use the original carbon texture and VLC preamp.
 - Clock/metadata use a TTF font over the original backing.
 - Palette switching is immediate. The source JavaScript color crossfade has no direct Skins2 layout-action equivalent.
+- Regular VLC launches restore the saved layout, which can bypass the intro after switching away from `main_start`. Skins2 has no source-script on-load timer equivalent. Review launchers clear saved layout state; the conversion credit page provides Replay intro in the blue theme, including when `main_start` is already selected.
 - VLC owns native context/preferences dialogs. Its skin API cannot style those interiors. The skin's own information menu retains its original artwork.
 - Old marketing links remain as source artwork; obsolete outbound actions are omitted.
 - Decorative WMP overlays were pass-through. Functional outer buttons are layered above the equivalent Skins2 decorative hit masks to keep the controls reachable.
