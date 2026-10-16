@@ -1,6 +1,11 @@
+Current refinement: the HUD now uses a flat smoked-charcoal fill at the user's
+request, with the same rounded shape and subtle border. The speaker glyph is
+centered inside its23px circle; filename text is two source pixels below the
+backing's top edge. See UI-POLISH.md for current exact packages and evidence.
+
 # Compact controls and filename readability
 
-The user approved a slim smoked-carbon strip in place of the full framed hover
+The user approved a slim smoked-charcoal strip in place of the full framed hover
 pane. Both skins now use the same360x64 physical artwork (361px framed window,
 including an invisible identification column), down from425x146 at1x and
 850x292 at2x. It has no outer pane frame or duplicate filename header. Original

@@ -15,12 +15,8 @@ def original(name):
 
 
 def carbon():
-    tile = original('eq_back.png').crop((200,90,220,106))
-    image = Image.new('RGBA', (360,64))
-    for y in range(64):
-        for x in range(360):
-            r,g,b,_ = tile.getpixel((x % 20,y % 16))
-            image.putpixel((x,y),(r//3+4,g//3+7,b//3+10,255))
+    """Flat smoked charcoal; retain the resource name for bundle compatibility."""
+    image = Image.new('RGBA', (360,64), (13,17,21,255))
     mask = Image.new('L', image.size)
     ImageDraw.Draw(mask).rounded_rectangle((0,0,359,63), radius=10, fill=255)
     image.putalpha(mask)
@@ -35,9 +31,10 @@ def volume_icon(state):
               'do':((8,14,20),(32,174,221),(242,250,255))}
     fill,outline,glyph = colors[state]
     draw.ellipse((1,1,21,21),fill=fill+(255,),outline=outline+(255,))
-    draw.polygon([(5,9),(8,9),(12,5),(12,18),(8,14),(5,14)],fill=glyph+(255,))
-    draw.arc((8,6,18,17),-55,55,fill=glyph+(255,),width=1)
-    draw.arc((8,3,22,20),-55,55,fill=glyph+(255,),width=1)
+    # Keep the complete speaker/waves centered at (11,11), clear of the ring.
+    draw.polygon([(3,9),(6,9),(10,5),(10,17),(6,13),(3,13)],fill=glyph+(255,))
+    draw.arc((5,6,15,16),-55,55,fill=glyph+(255,),width=1)
+    draw.arc((5,4,19,18),-55,55,fill=glyph+(255,),width=1)
     return image
 
 

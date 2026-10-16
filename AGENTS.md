@@ -82,7 +82,7 @@ Preserve the period appearance: fullscreen buttons fill the monitor with the ori
 
 Preserve the original skin's five sound effects at both scales. Sound and framed-video hover support must preserve the user's running 1x session; coordinate shared helper changes with the YouTube chat. Offline source/build work never authorizes restarting that session. Keep native controls and original artwork in the hover bars.
 
-The user approved replacing the large framed hover panel with a compact smoked-carbon strip: no outer frame or duplicate title, original small transport controls, thin seek line and hover-expanded volume with a click fallback. Keep its physical size independent of main skin scale. Filename readability takes precedence over source palette text colors: use larger white scrolling text on a dark backing without covering gauges or the logo. Prepare dial-triggered native volume OSD offline; no desktop control, live profile change or restart is authorized by this background work.
+The user approved replacing the large framed hover panel with a compact strip with a flat matching smoked-charcoal fill: no outer frame or duplicate title, original small transport controls, thin seek line and hover-expanded volume with a click fallback. Keep its physical size independent of main skin scale. Filename readability takes precedence over source palette text colors: use larger white scrolling text on a dark backing without covering gauges or the logo. Prepare dial-triggered native volume OSD offline; no desktop control, live profile change or restart is authorized by this background work.
 
 Restore source Info page entry/return and frame-color fades at both scales, keeping state independent of shutter/clock and page navigation. Tooltips must be readable and prefer above the pointer. Prepare these changes offline and coordinate with the YouTube chat; preserve the user's running 1x setup and installed/profile files.
 
@@ -116,3 +116,5 @@ A hidden palette_state window stores pane color independently of main shutter/cl
 ## README presentation
 
 The root owns `README.md`, original decorative artwork in `readme-banner.png`, and its brief in `readme-banner-prompt.txt`. Keep the README centered with compact Shields.io `label-message-color` logo badges, a linked section index, and verified project-file shortcuts. Center tables and code containers while preserving exact code spacing, source attribution, project status, and evidence limits. Public repository metrics may use live Shields.io or Badgen badges. Decorative art and badges do not establish implementation or acceptance.
+
+Framed hover controls should appear over an exposed video pane even while another window is active, but never over hidden, minimized or covered remembered pane locations. Keep the speaker centered inside its existing circle and filename text slightly below its backing border. Restore working native tooltips without claiming unsupported custom font sizing.

@@ -18,7 +18,8 @@ DOCS = ('PARITY.md', 'VERIFICATION.md', 'SOURCES.md', 'COMPACT-CONTROLS.md',
         'visual-comparison.json', 'STORAGE-OPTIMIZATION.md', 'storage-optimization-review.json',
         'LOADING-AND-MEMORY.md', 'storage-load-benchmark.json',
         'FAST-LOADING.md', 'fast-loading-equivalence.json', 'fast-load-benchmark.json',
-        'fresh-skin-install.json', 'fresh-1x-rollout.json', 'hover-visibility-review.json')
+        'fresh-skin-install.json', 'fresh-1x-rollout.json', 'hover-visibility-review.json', 'UI-POLISH.md', 'ui-polish-review.json',
+        'native-hover-review.json', 'ui-polish-install.json', 'ui-polish-rollout.json')
 NOTICE = """NEED FOR SPEED UNDERGROUND / VLC — OFFLINE REVIEW BUNDLE
 
 These are the current verified offline packages and matching support files.
@@ -26,9 +27,9 @@ Staging does not launch VLC, execute the helper, install a skin, change a profil
 or reload the running player. Native evidence is scoped by exact package hashes;
 loading checks do not verify visual controls, sound or animation smoothness.
 
-Read docs/FAST-LOADING.md, fast-loading-equivalence.json and fast-load-benchmark.json
-for this candidate's exact pixels/timing/control checks and native loading/memory
-measurements. Earlier failed candidates retain their own scoped reports. Native
+Read docs/UI-POLISH.md and native-hover-review.json for the current UI fixes
+and scoped private native hover/tooltip tests. FAST-LOADING.md and
+fast-load-benchmark.json retain the prior exact hashes' loading measurements. Earlier failed candidates retain their own scoped reports. Native
 measurements apply only when their exact VLT hashes match this bundle.
 
 For a future MANUAL launch, Start-1x.cmd or Start-2x.cmd starts an isolated review

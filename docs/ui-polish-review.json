@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-15",
+  "scope": "UI refinement and native hover/tooltip correction; historical native reports retain their tested hashes.",
+  "packages": {
+    "1": {
+      "sha256": "74c5fab95d53a5ba0a50f04b6d93344c48e0a5fd9bd795ab6c9d981a1340ad68",
+      "bytes": 52690022
+    },
+    "2": {
+      "sha256": "c9edaafb073bf6cefd26c963fc62d7234c35ce1764e592b9533537fd0d258aa4",
+      "bytes": 180190740
+    }
+  },
+  "helper_sha256": "1fa8a107ff1cc303541bd1a0959b96efa7869eb012cf096ad502495107ce1b15",
+  "changes": {
+    "filename": "Text at62,119 source pixels, two below existing backing top117; backing/font/gauge/logo unchanged",
+    "speaker": "Glyph centered at11,11 inside unchanged23x23 circle and all three feedback states",
+    "background": "Flat opaque smokedcharcoal13,17,21 with unchanged rounded silhouette/subtle border and framed217/255 opacity",
+    "inactive_hover": "Foreground ownership no longer required; actual exposed selected-PID video/openbar under pointer remains mandatory",
+    "tooltips": "Theme.defaultfont native12px restores creation; custom16px binding was invalid because Theme builds before custom Fonts. Exact selected-PID native tooltip is moved above pointer without activation.",
+    "private_data": "Include unchanged native FreeSans, skin.dtd and skin.catalog beside Lua observer data so VLC_DATA_PATH retains Skins2 dependencies"
+  },
+  "offline_checks": {
+    "conversion_suite": "17pass both scales",
+    "layer_cases": {
+      "exact": 714,
+      "explained": 42,
+      "unexplained": 0
+    },
+    "hover": "8 playback/volume states and19 rejected mutations per scale",
+    "readability": "42 filename layouts and6 rejected mutations per scale",
+    "helper": "Compiler and pure tests pass"
+  },
+  "native_evidence": "native-hover-review.json:68mandatory private native checks pass on both actual skins, with real embedded video and native tooltip creation. Optional private motion did not show visible tooltip; timer/above-pointer appearance remains unverified.",
+  "limits": [
+    "Pillow asset renders do not certify native glyph placement/scrolling",
+    "Full end-to-end physical hover, opacity, timing and audio acceptance require separate observation"
+  ]
+}

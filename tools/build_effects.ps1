@@ -15,6 +15,13 @@ if ($test.ExitCode -ne 0) { throw 'Skin effects pure self-test failed.' }
 $luaDirectory = Join-Path (Split-Path -Parent $output) 'data/lua/intf'
 $null = New-Item -ItemType Directory -Force -Path $luaDirectory
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'nfs_volume_osd.lua') -Destination (Join-Path $luaDirectory 'nfs_volume_osd_v1.lua') -Force
+$fontDirectory = Join-Path (Split-Path -Parent $output) 'data/skins/fonts'
+$null = New-Item -ItemType Directory -Force -Path $fontDirectory
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot '../vendor/FreeSans.ttf') -Destination (Join-Path $fontDirectory 'FreeSans.ttf') -Force
+$skinDataDirectory = Split-Path -Parent $fontDirectory
+foreach ($resource in @('skin.dtd', 'skin.catalog')) {
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot ('../vendor/' + $resource)) -Destination (Join-Path $skinDataDirectory $resource) -Force
+}
 $packageDirectory = Split-Path -Parent (Split-Path -Parent $output)
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Start-NFS.ps1') -Destination (Join-Path $packageDirectory 'Start-NFS.ps1') -Force
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Playlist-Text-Size.ps1') -Destination (Join-Path $packageDirectory 'Playlist-Text-Size.ps1') -Force

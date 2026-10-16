@@ -57,7 +57,7 @@ class Builder:
             assert self.out.resolve().is_relative_to(SKIN.resolve())
             shutil.rmtree(self.out)
         (self.out / 'assets').mkdir(parents=True, exist_ok=True)
-        self.theme = E.Element('Theme', version='2.0', tooltipfont='tooltip')
+        self.theme = E.Element('Theme', version='2.0', tooltipfont='defaultfont')
         E.SubElement(self.theme, 'ThemeInfo', name='Need for Speed Underground', author='The Skins Factory / VLC conversion: Dead Signal Interactive')
         self.ids = {}
         font = ROOT / 'vendor/FreeSans.ttf'
@@ -66,7 +66,6 @@ class Builder:
         E.SubElement(self.theme, 'Font', id='small', file='assets/FreeSans.ttf', size=str(8 * scale))
         E.SubElement(self.theme, 'Font', id='clock', file='assets/FreeSans.ttf', size=str(14 * scale))
         E.SubElement(self.theme, 'Font', id='metadata', file='assets/FreeSans.ttf', size=str(12 * scale))
-        E.SubElement(self.theme, 'Font', id='tooltip', file='assets/FreeSans.ttf', size='16')
         E.SubElement(self.theme, 'Font', id='playlist', file='assets/FreeSans.ttf', size=str(12 * scale))
 
     def n(self, v):
@@ -208,7 +207,7 @@ class Builder:
                         ImageDraw.Draw(backing).line((0,0,176,0),fill=(42,60,70,255))
                         ImageDraw.Draw(backing).line((0,15,176,15),fill=(3,6,9,255))
                         E.SubElement(l,'Image',image=self.bitmap('metadata_backing',backing),x=self.n(62),y=self.n(117))
-                        title=self.text(l,'$N',62,117,177,color='#FFFFFF')
+                        title=self.text(l,'$N',62,119,177,color='#FFFFFF')
                         title.set('font','metadata');title.set('focus','false');title.set('scrolling','auto')
                         E.SubElement(l,'Button',x=self.n(58),y=self.n(134),up=self.bitmap('m_logo_no.png'),over=self.bitmap('m_logo_hov.png'),down=self.bitmap('m_logo_no.png'),action='info.show()',tooltiptext='Need for Speed information')
                         clocktext=self.text(l,'$l' if remaining else '$t',129,165,60)

@@ -1,3 +1,6 @@
+Current UI refinement packages are documented in [UI-POLISH.md](UI-POLISH.md).
+This loading report retains its exact preceding f628/a1bf hashes and measured scope.
+
 # Loading regression fixed; fresh 1x running
 
 Both current packages pass the 30-second initialization gate in the authorized

@@ -46,7 +46,7 @@ def verify(assets, scale):
             continue
         assert len(text) == len(images) == 1, (lid, 'Missing/duplicated metadata')
         text, image = text[0], images[0]
-        expected = {'x': 62 * scale, 'y': 117 * scale, 'width': 177 * scale}
+        expected = {'x': 62 * scale, 'y': 119 * scale, 'width': 177 * scale}
         assert all(text.get(k) == str(v) for k, v in expected.items()), lid
         for key, value in {'font': 'metadata', 'color': '#FFFFFF', 'scrolling': 'auto',
                            'focus': 'false', 'visible': lid + '.isActive'}.items():
@@ -55,6 +55,8 @@ def verify(assets, scale):
         assert int(image.get('width', backing.width)) == backing.width
         assert int(image.get('height', backing.height)) == backing.height
         assert layout.index(image) < layout.index(text), 'Backing covers filename'
+        assert int(text.get('y')) >= int(image.get('y')) + 2 * scale, 'Filename touches top border'
+        assert int(text.get('y')) + int(font.get('size')) + 2 * scale <= int(image.get('y')) + backing.height, 'Filename exceeds backing'
         assert image.get('action', 'none') == image.get('action2', 'none') == 'none'
         logo = layout.find('Button[@up="m_logo_no_png"]')
         assert logo is not None

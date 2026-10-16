@@ -31,6 +31,31 @@ def xy(node):
     return int(node.get('x', 0)), int(node.get('y', 0))
 
 
+def volume_icon_pixels(icon, state):
+    """Independent geometry oracle: centered glyph, unchanged circular backing."""
+    colors = {'no': ((14,22,29),(62,76,85),(194,220,234)),
+              'hov': ((20,34,43),(32,174,221),(242,250,255)),
+              'do': ((8,14,20),(32,174,221),(242,250,255))}
+    fill, outline, glyph = colors[state]
+    assert icon.size == (23,23)
+    backing = Image.new('RGBA', icon.size)
+    ImageDraw.Draw(backing).ellipse((1,1,21,21), fill=fill+(255,), outline=outline+(255,))
+    assert icon.getchannel('A').tobytes() == backing.getchannel('A').tobytes(), 'Speaker must retain circular hit footprint'
+    inner = Image.new('L', icon.size)
+    ImageDraw.Draw(inner).ellipse((3,3,19,19), fill=255)
+    mask = Image.new('L', icon.size)
+    for y in range(23):
+        for x in range(23):
+            pixel = icon.getpixel((x,y))
+            if pixel == glyph+(255,):
+                assert inner.getpixel((x,y)), ('Speaker glyph touches circular ring', state, x, y)
+                mask.putpixel((x,y),255)
+            else:
+                assert pixel == backing.getpixel((x,y)), ('Speaker backing changed', state, x, y)
+    assert mask.getbbox() == (3,5,20,18), ('Speaker glyph must center on (11,11)', state, mask.getbbox())
+    return mask
+
+
 def exact_image(assets, key, expected):
     actual = assets.image(key)
     assert actual.size == expected.size and actual.tobytes() == expected.tobytes(), (key, 'pixels changed')
@@ -44,16 +69,21 @@ def source_feedback(assets, node, prefix, state=''):
 
 
 def expected_carbon():
-    source = source_pixels(SOURCE/'eq_back.png')
     image = Image.new('RGBA', (360, 64))
-    image.putdata([tuple(channel//3+offset for channel, offset in zip(
-        source.getpixel((200+x % 20, 90+y % 16))[:3], (4, 7, 10)))+(255,)
-        for y in range(64) for x in range(360)])
+    image.paste((13,17,21,255), (0,0,360,64))
     alpha = Image.new('L', image.size)
     ImageDraw.Draw(alpha).rounded_rectangle((0, 0, 359, 63), radius=10, fill=255)
     image.putalpha(alpha)
     ImageDraw.Draw(image).rounded_rectangle((0, 0, 359, 63), radius=10, outline=(59, 72, 80, 255))
     return image
+
+
+def flat_background_pixels(image):
+    # Check a broad interior independently of the rounded-outline recipe.
+    # Every source row/column, including the former 16px seams, must be flat.
+    assert image.size == (360,64)
+    interior = image.crop((12,2,348,62))
+    assert interior.getextrema() == ((13,13),(17,17),(21,21),(255,255)), 'Compact background must have no grain, stripes or alpha modulation'
 
 
 def transparent_layout(assets, layout, identifier, size):
@@ -90,6 +120,7 @@ def verify(assets, scale):
     transparent_layout(assets, volume_window[1], 'hover_volume_collapsed', (71, 19))
     font = assets.tree.find('Font[@id="compactfont"]')
     assert font is not None and font.get('size') == '11', 'Compact font must not scale with main skin'
+    flat_background_pixels(assets.image('compact_carbon'))
     exact_image(assets, 'compact_carbon', expected_carbon())
     rail_pixels = Image.new('RGBA', (1, 3))
     rail_pixels.putdata([(35, 114, 142, 255), (9, 22, 29, 255), (52, 76, 86, 255)])
@@ -148,6 +179,7 @@ def verify(assets, scale):
                 assert volume.get(attr+state) == key
                 icon = assets.image(key)
                 assert icon.size == (23, 23) and set(icon.getchannel('A').tobytes()) == {0, 255}
+                volume_icon_pixels(icon, suffix)
         assert len({assets.image(f'compact_volume_{s}_png').tobytes() for s in ('no', 'hov', 'do')}) == 3
         own_gate = layout_id+'.isActive' if companion else window_id+'.isVisible'
         texts = layout.findall('Text')
@@ -216,7 +248,7 @@ def mutations(assets, scale):
     original_image = assets.image
     failures = ('name', 'visible', 'play', 'slider', 'overlap', 'tile', 'signal', 'closed-order',
                 'helper-drag', 'scaled-size', 'volume-state', 'volume-gate', 'text-focus',
-                'closed-paint', 'carbon-pixel', 'thumb-pixel')
+                'closed-paint', 'carbon-pixel', 'thumb-pixel', 'speaker-offset', 'speaker-ring', 'carbon-stripe')
     for failure in failures:
         assets.tree = deepcopy(original)
         window = assets.tree.find('Window[@id="fullscreenController"]')
@@ -240,6 +272,28 @@ def mutations(assets, scale):
         elif failure == 'text-focus': layout.find('Text').set('focus', 'true')
         elif failure == 'closed-paint':
             assets.tree.find('.//Layout[@id="video_hover_closed"]/Image').set('image', 'compact_carbon')
+        elif failure in ('speaker-offset', 'speaker-ring'):
+            def corrupt_speaker(key):
+                image = original_image(key)
+                if key == 'compact_volume_no_png':
+                    image = image.copy()
+                    glyph = (194,220,234,255)
+                    if failure == 'speaker-ring':
+                        image.putpixel((20,11),glyph)
+                    else:
+                        points = [(x,y) for y in range(23) for x in range(23) if image.getpixel((x,y)) == glyph]
+                        for x,y in points: image.putpixel((x,y),(14,22,29,255))
+                        for x,y in points: image.putpixel((x+1,y),glyph)
+                return image
+            assets.image = corrupt_speaker
+        elif failure == 'carbon-stripe':
+            def striped_image(key):
+                image = original_image(key)
+                if key == 'compact_carbon':
+                    image = image.copy()
+                    ImageDraw.Draw(image).line((12,16,347,16), fill=(14,18,22,255))
+                return image
+            assets.image = striped_image
         elif failure in ('carbon-pixel', 'thumb-pixel'):
             corrupt_key = 'compact_carbon' if failure == 'carbon-pixel' else 'compact_eq_thumb2_png'
             def corrupt_image(key):

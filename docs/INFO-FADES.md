@@ -1,3 +1,8 @@
+Current correction: the earlier custom16px tooltip binding prevented VLC3.0.23
+from creating any tooltip because Theme is built before custom Fonts. The new
+packages use defaultfont; see UI-POLISH.md and native-hover-review.json for
+scoped native verification. Earlier exact-hash reports remain historical.
+
 # Info transitions and readable tooltips
 
 Both scales now have native, lossless Info page animations at 20 fps. A selected
@@ -36,13 +41,13 @@ uses the previous selected page rather than WMP's arbitrary current-alpha/
 last-completed callback state. There is no automatic slideshow. The separate
 conversion-credit page has no invented source transition.
 
-Tooltips use a fixed 16 px FreeSans font on both scales, retaining VLC's native
+Tooltips use VLC's built-in defaultfont (12 px) on both scales, retaining its native
 black-on-pale-yellow appearance. VLC hardcodes their position below the pointer;
 the optional helper moves only its selected VLC process's native tooltip above
 the pointer, with an 8 px gap. It clamps to the pointer monitor's work area and
 uses below-pointer placement when the top edge leaves no room. It preserves
 VLC's text, show/hide timing and disabled input behavior. It reasserts topmost
-without activation, while the selected VLC process has foreground focus.
+without activation, while the actual window under the pointer belongs to the selected VLC process; foreground focus is not required.
 
 Tooltip identity requires selected PID, SkinWindowClass, popup/disabled and tool
 styles, a same-process owner, then the exact fixed caption `tooltip`. No user
