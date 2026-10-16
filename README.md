@@ -19,6 +19,7 @@
 <table align="center"><tbody><tr><td align="center"><a href="#readme-overview"><strong>Overview</strong></a></td><td align="center"><a href="#readme-section-1"><strong>Try it</strong></a></td></tr><tr><td align="center"><a href="#readme-section-2"><strong>Preserved and adapted</strong></a></td><td align="center"><a href="#readme-section-3"><strong>Build and verify</strong></a></td></tr><tr><td align="center" colspan="2"><a href="#readme-section-4"><strong>Credits</strong></a></td></tr></tbody></table>
 <h4 align="center">Project shortcuts</h4>
 <table align="center"><tbody><tr><td align="center"><a href="docs/VERIFICATION.md"><strong>VERIFICATION</strong></a></td><td align="center"><a href="docs/FULLSCREEN.md"><strong>FULLSCREEN</strong></a></td></tr><tr><td align="center"><a href="docs/SOUNDS-AND-HOVER.md"><strong>SOUNDS-AND-HOVER</strong></a></td><td align="center"><a href="requirements.txt"><strong>requirements.txt</strong></a></td></tr></tbody></table>
+<p align="center"><a href="skins/README.md"><strong>✦ Browse the skin collection</strong></a></p>
 <!-- project-index:end -->
 
 <a name="readme-overview"></a>
