@@ -7,6 +7,47 @@ from lxml import etree as E
 from PIL import Image, ImageChops
 
 
+def share_backings(builder):
+    """Share static page paint after IDs are assigned, without restarting fades.
+
+    Each route is an exclusive layout of info_page_state. Native CtrlImage
+    eagerly caches its bitmap even while hidden, so repeated static backings
+    can share one control. Keep the first ID and every non-visibility attribute;
+    animated decorations, navigation and the legacy layouts remain untouched.
+    """
+    hub = builder.theme.find('Window[@id="info"]/Layout[@id="info_menu"]')
+    groups = {}
+    route_gate = re.compile(r'info_state_\w+\.isActive')
+    for node in hub:
+        if (node.tag != 'Image'
+                or not re.fullmatch(r'(?:c_back|c_sub_\d+_\d+)_jpg', node.get('image', ''))
+                or (node.get('x'), node.get('y')) != (str(37*builder.scale), str(35*builder.scale))
+                or any(node.get(a) not in (None, 'none') for a in ('action', 'action2'))):
+            continue
+        gates = node.get('visible', '').split(' or ')
+        if not gates or not all(route_gate.fullmatch(gate) for gate in gates):
+            continue
+        key = tuple(sorted((k, v) for k, v in node.attrib.items() if k not in ('id', 'visible')))
+        groups.setdefault(key, []).append(node)
+    if not groups:
+        return
+    # Route content follows the shared frame prefix (including About, whose
+    # carbon backing is deliberately outside this JPEG-only optimization).
+    start = min(hub.index(node) for node in hub
+                if route_gate.fullmatch(node.get('visible', ''))
+                or any(node in nodes for nodes in groups.values()))
+    shared = []
+    for nodes in groups.values():
+        first = nodes[0]
+        gates = list(dict.fromkeys(gate for node in nodes for gate in node.get('visible').split(' or ')))
+        first.set('visible', ' or '.join(gates))
+        for node in nodes:
+            hub.remove(node)
+        shared.append(first)
+    for offset, node in enumerate(shared):
+        hub.insert(start+offset, node)
+
+
 def augment(builder):
     from build import SOURCE, rgba
     b = builder

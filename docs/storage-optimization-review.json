@@ -1,0 +1,69 @@
+{
+  "method": "Offline actual-package pixels, timing, non-bitmap XML and other payload comparison. Retained RGBA = FileBitmap buffers + copied SubBitmaps per VLC source; excludes graphics, decoder temporaries and all other allocations. Initial CtrlImage cache pixels are counted separately from source dimensions per constructor, not post-resize memory. This is not measured RSS or startup time.",
+  "results": [
+    {
+      "before": {
+        "sha256": "9c20da648e0bd9613fc6989160389afcee742a579dde594117a00637f22b05b2",
+        "package_bytes": 52405898,
+        "non_bitmap_xml_sha256": "cda1ecb57b6ae2d1d53b28a6180f36fa981f0e60ba63bc1bf419a3af4ee50304",
+        "top_level_png_count": 8,
+        "image_control_count": 1554,
+        "initial_image_cache_rgba_bytes": 77623484,
+        "decoded_file_rgba_bytes": 187229772,
+        "subbitmap_copy_rgba_bytes": 177465140,
+        "retained_bitmap_rgba_bytes": 364694912,
+        "atlas_parent_rgba_bytes": 187229772
+      },
+      "after": {
+        "sha256": "53c40a26545e01558650ab33033966ffa301df3247de886450fbe1a18f5ff9bf",
+        "package_bytes": 54058832,
+        "non_bitmap_xml_sha256": "cda1ecb57b6ae2d1d53b28a6180f36fa981f0e60ba63bc1bf419a3af4ee50304",
+        "top_level_png_count": 143,
+        "image_control_count": 1515,
+        "initial_image_cache_rgba_bytes": 66076052,
+        "decoded_file_rgba_bytes": 179590116,
+        "subbitmap_copy_rgba_bytes": 5710940,
+        "retained_bitmap_rgba_bytes": 185301056,
+        "atlas_parent_rgba_bytes": 7835916
+      },
+      "resource_count": 394,
+      "equivalent_info_route_count": 55,
+      "initial_image_cache_rgba_saved_bytes": 11547432,
+      "exact_pixels_timing_and_controls": true,
+      "retained_bitmap_rgba_saved_bytes": 179393856,
+      "scale": 1
+    },
+    {
+      "before": {
+        "sha256": "124b791a3b13cf8f1a9ddd158aa6faddff9f128ec8128e005336275a868b8901",
+        "package_bytes": 179183239,
+        "non_bitmap_xml_sha256": "858b0d92074beebeea7d4f159c9d1e690dafd6681c400a64397a359eb527cc3b",
+        "top_level_png_count": 34,
+        "image_control_count": 1554,
+        "initial_image_cache_rgba_bytes": 309939800,
+        "decoded_file_rgba_bytes": 727363848,
+        "subbitmap_copy_rgba_bytes": 703660916,
+        "retained_bitmap_rgba_bytes": 1431024764,
+        "atlas_parent_rgba_bytes": 721762824
+      },
+      "after": {
+        "sha256": "3faacb28eb26e1c546a9587d9399db77bf56ee823739ac1354165e20035652f7",
+        "package_bytes": 184517989,
+        "non_bitmap_xml_sha256": "858b0d92074beebeea7d4f159c9d1e690dafd6681c400a64397a359eb527cc3b",
+        "top_level_png_count": 200,
+        "image_control_count": 1515,
+        "initial_image_cache_rgba_bytes": 263750072,
+        "decoded_file_rgba_bytes": 710751120,
+        "subbitmap_copy_rgba_bytes": 11965316,
+        "retained_bitmap_rgba_bytes": 722716436,
+        "atlas_parent_rgba_bytes": 13454496
+      },
+      "resource_count": 434,
+      "equivalent_info_route_count": 55,
+      "initial_image_cache_rgba_saved_bytes": 46189728,
+      "exact_pixels_timing_and_controls": true,
+      "retained_bitmap_rgba_saved_bytes": 708308328,
+      "scale": 2
+    }
+  ]
+}

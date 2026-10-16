@@ -17,7 +17,7 @@ Context7 resolved `/videolan/vlc` during the parity pass, but its returned skin 
 
 - Source `nfs.js` supplies the 50 ms shutter interval and startup timer/fade sequence; source `volume_map.png` and `seek_map.png` encode horizontal grayscale ramps.
 - [VLC generated control IDs](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/parser/skin_parser.cpp): the fixed-size generated-ID buffer truncates four-digit counters. Every generated control receives an explicit unique ID to avoid collisions in large themes.
-- [VLC animation bitmap](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/utils/anim_bitmap.cpp): frame timing and loop behavior.
+- [VLC animation bitmap](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/src/anim_bitmap.cpp): frame timing and loop behavior.
 
 - [VLC time formatting](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/vars/time.cpp): remaining-time tokens omit a leading minus; the conversion restores the original `time_dash.png` indicator.
 - [Windows graphics regions](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/win32/win32_graphics.cpp) and [bitmap caching](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/src/generic_bitmap.cpp): repeated region combinations make long animation masks expensive. Horizontal bands retain their pixels while bounding individual mask work.

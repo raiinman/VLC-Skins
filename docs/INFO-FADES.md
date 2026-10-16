@@ -65,7 +65,7 @@ Offline checks verify all animation pixels, source timings, 54 page states,
 navigation ownership, idle suppression, state isolation and rejected mutations.
 Helper tests cover tooltip identity and monitor geometry without native calls.
 Native animation smoothness and tooltip stacking/DPI behavior remain unverified.
-The separately authorized loading-only test in `info-load-benchmark.json` measured
+The pre-optimization, separately authorized loading-only test in `info-load-benchmark.json` measured
 8.27 seconds at 1x and 29.55 seconds at 2x, with no logged theme errors or fallback.
 Both survived the intro; the 2x result is close to the 30-second budget. Page strips alone add about 85 MiB decoded RGBA at 1x /
 339 MiB at 2x before native graphics copies; lossless PNG compression does not
@@ -81,3 +81,9 @@ endAlphaBlend and htcpInfo; original nfs.wms infoSub passThrough; VideoLAN
 checkout paths use modules/skins2), plus cached CtrlButton/AnimBitmap sources.
 Context7 returned legacy Skins1 examples; the current Skins2 DTD and native
 implementation determine the supported animation and tooltip behavior.
+
+Subsequent lossless resource storage and shared static backing changes are scoped
+in STORAGE-OPTIMIZATION.md and storage-optimization-review.json. Previous loading
+and memory measurements above remain bound to their original hashes. Every
+fade frame, timing value and active route paint order is independently preserved;
+new native timing/RSS measurements remain pending.

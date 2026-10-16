@@ -25,6 +25,8 @@ Original resources are under need-for-speed-underground/original; provenance.jso
 
 Generated themes contain explicit control IDs and lossless atlases. Canonical animation strips remain offline references; animation-bands.json maps them to lossless native bands that bound Windows mask-construction cost. Preserve pixels, frame counts, fps and loops.
 
+Only small resources (at most65536 total pixels) belong in atlases. Large artwork and physical animation bands remain standalone exact PNGs to avoid duplicated parent/cropped RGBA in VLC. Static live Info page backings share one Image per identical page/geometry, with mutually exclusive route OR visibility and unchanged active draw order. Preserve surviving explicit control IDs; animations and their timers remain separate and unchanged. storage-optimization-review.json binds offline equivalence/allocation evidence to exact packages; old native timings never transfer to rebuilt hashes.
+
 Keep the credit-page intro replay action and reset-layout review launchers: VLC may restore another layout on normal launch and bypass the initial intro.
 
 Filename metadata uses white12x-scale FreeSans, scrolling=auto and focus=false over a177x16 dark backing at(62,117) source coordinates. It must not cover the volume sprite's final row116 or logo starting134. Preserve owning-layout text visibility and original closed-shutter interior. The14-pixel source-scale clock font is also an allowed readability adaptation. Preserve the smooth EQ bottom corner and exact native-scale opaque closing endpoint patches, leaving original shutter edges intact.

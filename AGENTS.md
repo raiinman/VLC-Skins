@@ -88,6 +88,8 @@ Restore source Info page entry/return and frame-color fades at both scales, keep
 
 Keep the playlist only slightly larger by default, with clearer text and user-adjustable sizing. Preserve original frame/buttons/selection styling and native corner resizing. Optional personal text-size settings must save separate derived skins for the next launch, never silently reload or replace the running setup.
 
+Keep the reviewable offline skins current after each verified fix: stage both scales and matching helper/scripts/docs into outputs/NFS-Current-Offline, with an exact-hash manifest and complete ZIP. Preserve earlier versioned evidence and releases. Offline staging never authorizes installing skins, updating companion copies, editing active profiles or reloading the running 1x session. Performance optimizations must preserve exact artwork, every animation frame/timing and control behavior; distinguish source-backed allocation savings from measured native startup/RSS.
+
 When the user asks to push a corrected skin into VLC, install both verified VLT scales into the active VLC skin library, back up the previous files, and verify installed hashes. Updating GitHub or the companion copy alone does not satisfy installation. Check the selected skin path and clearly distinguish installed files from an already-running skin that still needs reload/restart.
 
 ## Project contract

@@ -483,6 +483,8 @@ class Builder:
         for i,node in enumerate(self.theme.iter()):
             if node.tag in ('Image','Button','Checkbox','Slider','Text','Video') and not node.get('id'):
                 node.set('id',f'control_{i}')
+        from info_fades import share_backings
+        share_backings(self)
         self.band_animations()
         self.pack_atlases()
         # XML requires resource declarations before windows; resources were discovered lazily.
@@ -545,11 +547,14 @@ class Builder:
         (self.out/'animation-bands.json').write_text(json.dumps(manifest,indent=2)+'\n')
 
     def pack_atlases(self):
-        """Load static art in a few decoder calls without changing its pixels."""
+        """Batch small sprites; large/animated art must not gain a full RGBA copy."""
         entries=[]
         for node in list(self.theme.findall('Bitmap')):
             im=Image.open(self.out/node.get('file')).convert('RGBA')
-            if im.width<=2048 and im.height<=4096:entries.append((node,im))
+            # VLC retains the atlas AND a separately allocated SubBitmap.
+            # Large strips outweigh decoder-call savings; keep their exact PNG.
+            if im.width*im.height <= 65536:
+                entries.append((node,im))
         entries.sort(key=lambda item:item[1].height,reverse=True)
         pages=[];page=[];x=y=rowh=usedw=0
         for node,im in entries:

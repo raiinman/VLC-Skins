@@ -171,11 +171,35 @@ def structure(assets, scale, report, bands):
         assert node[0].tag == 'Image' and node[0].get('action') in (None, 'none')
         same(assets.image(node[0].get('image')), Image.new('RGBA', (1, 1)), 'Invisible state marker')
     assert len(report['routes']) == len(expected_routes)
+    # Independently derive static ownership from routes, not the fade manifest
+    # or the optimizer's grouping. About retains its separate carbon texture.
+    expected_backings = {}
+    for target, previous in expected_routes:
+        if target == 'about':
+            continue
+        key = (previous if target in PAGES and previous else 'c_back')+'_jpg'
+        expected_backings.setdefault(key, set()).add(state(target, previous)+'.isActive')
+    backings = [n for n in hub if n.tag == 'Image'
+                and n.get('image') in expected_backings
+                and (n.get('x'), n.get('y')) == (str(37*scale), str(35*scale))]
+    assert len(backings) == len(expected_backings), 'One shared static backing per source page'
+    first_content = min(hub.index(n) for n in hub
+                        if re.fullmatch(r'info_state_\w+\.isActive', n.get('visible', '')) and n not in backings)
+    for key, gates in expected_backings.items():
+        matches = [n for n in backings if n.get('image') == key]
+        assert len(matches) == 1, ('Unique static page backing', key)
+        node = matches[0]
+        actual = node.get('visible', '').split(' or ')
+        assert len(actual) == len(set(actual)) and set(actual) == gates, ('Backing route ownership', key)
+        assert node.get('action') in (None, 'none') and node.get('action2') in (None, 'none'), 'Static backing must not own actions'
+        assert hub.index(node) < first_content, ('Shared backing must precede route content', key)
     for record, (target, previous) in zip(report['routes'], expected_routes):
         sid = state(target, previous)
         gate = sid+'.isActive'
         key = 'info_page_in_'+target if target in PAGES else 'info_page_out_'+previous if target == 'menu' and previous else None
         assert record == dict(state=sid, target=target, previous=previous, resource=key, visible=gate), record
+        active_backings = [n for n in backings if visible(n.get('visible'), 'main_1', flags={gate: True})]
+        assert len(active_backings) == (0 if target == 'about' else 1), ('Exclusive backing ownership', sid)
         contents = [n for n in hub if n.get('visible') == gate]
         assert contents, sid
         forwarders = [n for n in contents if n.get('up', '').startswith('info_menu_hit_')]
@@ -185,7 +209,7 @@ def structure(assets, scale, report, bands):
         if key:
             indexes = check_animation(assets, hub, key, gate, 37*scale, 35*scale, bands)
             backing = (previous if target in PAGES and previous else 'c_back')+'_jpg'
-            candidates = [n for n in contents if n.get('image') == backing]
+            candidates = [n for n in active_backings if n.get('image') == backing]
             assert len(candidates) == 1 and hub.index(candidates[0]) < min(indexes), ('Page backing', sid)
             assert (candidates[0].get('x'), candidates[0].get('y')) == (str(37*scale), str(35*scale))
             for node in buttons:
@@ -292,7 +316,7 @@ def hits(assets, scale, hub):
 
 def mutations(assets, scale, report, bands):
     original = assets.tree
-    cases = ('default', 'layout-switch', 'restart', 'under-fade', 'missing-backing', 'frame-gate', 'marker', 'frame-default', 'color-trigger', 'forward-action', 'forward-under-fade', 'menu-over-fade')
+    cases = ('default', 'layout-switch', 'restart', 'under-fade', 'missing-backing', 'backing-state', 'backing-leak', 'backing-duplicate', 'backing-late', 'frame-gate', 'marker', 'frame-default', 'color-trigger', 'forward-action', 'forward-under-fade', 'menu-over-fade')
     for case in cases:
         assets.tree = deepcopy(original)
         hub = assets.tree.find('.//Layout[@id="info_menu"]')
@@ -304,7 +328,13 @@ def mutations(assets, scale, report, bands):
         elif case == 'restart': animation.set('over', 'c_back_jpg')
         elif case == 'under-fade': hub.remove(button); hub.insert(hub.index(animation), button)
         elif case == 'missing-backing':
-            backing = next(n for n in hub if n.get('visible') == animation.get('visible') and n.get('image') == 'c_back_jpg'); hub.remove(backing)
+            backing = next(n for n in hub if n.get('image') == 'c_back_jpg'); hub.remove(backing)
+        elif case.startswith('backing-'):
+            backing = next(n for n in hub if n.get('image') == 'c_back_jpg')
+            if case == 'backing-state': backing.set('visible', ' or '.join(backing.get('visible').split(' or ')[1:]))
+            elif case == 'backing-leak': backing.set('visible', backing.get('visible')+' or info_state_about.isActive')
+            elif case == 'backing-duplicate': hub.insert(hub.index(backing), deepcopy(backing))
+            else: hub.remove(backing); hub.append(backing)
         elif case == 'frame-gate': next(n for n in hub if n.get('up', '').startswith('info_frame_')).set('visible', 'true')
         elif case == 'marker': assets.tree.find('.//Layout[@id="info_state_menu"]/Image').set('image', 'c_back_jpg')
         elif case == 'frame-default':
@@ -418,6 +448,28 @@ def memory_assets(scale, out):
         return key
     builder.bitmap = MethodType(bitmap, builder)
     builder.information()
+    # Match production ordering: optimization follows stable control IDs.
+    for index, node in enumerate(builder.theme.iter()):
+        if node.tag in ('Image', 'Button', 'Text') and not node.get('id'):
+            node.set('id', f'fixture_{index}')
+    before = {n.get('id'): dict(n.attrib) for n in builder.theme.iter() if n.get('id')}
+    hub = builder.theme.find('Window[@id="info"]/Layout[@id="info_menu"]')
+    def active_paint():
+        return {state(*route): [(n.tag, tuple(sorted((k, v) for k, v in n.attrib.items()
+                                                    if k not in ('id', 'visible'))))
+                               for n in hub if visible(n.get('visible'), 'main_1',
+                                                       flags={state(*route)+'.isActive': True})]
+                for route in routes()}
+    paint_before = active_paint()
+    from info_fades import share_backings
+    share_backings(builder)
+    assert active_paint() == paint_before, 'Every route retains exact visible paint/control order and attributes'
+    for node in builder.theme.iter():
+        if node.get('id') in before:
+            assert {k: v for k, v in node.attrib.items() if k != 'visible'} == {k: v for k, v in before[node.get('id')].items() if k != 'visible'}, 'Sharing changes only visibility of retained IDs'
+    snapshot = E.tostring(builder.theme)
+    share_backings(builder)
+    assert E.tostring(builder.theme) == snapshot, 'Backing sharing must be idempotent'
     assets = ThemeAssets.__new__(ThemeAssets)
     assets.synthetic = True
     assets.tree = E.ElementTree(builder.theme)
