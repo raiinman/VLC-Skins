@@ -117,4 +117,3 @@ Shutter and clock changes now leave auxiliary pane artwork stable. [Shutter isol
 
 </div>
 <!-- project-centered:end -->
-

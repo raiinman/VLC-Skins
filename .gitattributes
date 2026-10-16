@@ -1,0 +1,4 @@
+# Preserve the exact bytes used by the companion addon hash contract.
+dist/skin-support/companion-hud/* -text
+dist/skin-support/companion_hud_apply.py -text
+tools/companion_hud_apply.py -text
