@@ -1,0 +1,23 @@
+{
+  "releaseTag": "nfs-underground-1x-v1.0.0",
+  "canonicalSourceSha256": "298b21d32f5eef893c6d5465e0692dca1035644c148d4bd48b2fa70e3d9f10e9",
+  "releaseVltSha256": "91ed2e80498b3b6fc3a746a22c54e02b79df8f0f491837eaee674fdd73c87497",
+  "releaseVltBytes": 52718536,
+  "runtimeMembersUnchanged": 18,
+  "sourceCommit": "47cd94deb3d4c45970cadbcebbefd726246669bd",
+  "sourceChecksPassed": 17,
+  "releaseNoticesOnly": [
+    "notices/CREDITS.txt",
+    "notices/FreeSans-GPL-2.0.txt",
+    "notices/LICENSE-CODE.txt"
+  ],
+  "2xUnchanged": true,
+  "2xNotReleased": true,
+  "oldPrereleasesRetainedAsDrafts": true,
+  "companionFinalHash": "c156220bee37475990e6bb1aa01ad89bd131f0be5964d14e310e393e65111c28",
+  "publication": "ready for 1x publication; release film follows separately",
+  "companionBytes": 11719155,
+  "companionHostSha256": "601ff0b7d527a1248107157aa2fbf5cf689d5d08f17d05d5d950034afe650937",
+  "nativeVideoRaiseAndPopupOwnerPassed": true,
+  "physicalHoverNotVerified": true
+}

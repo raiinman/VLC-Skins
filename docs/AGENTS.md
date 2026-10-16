@@ -89,4 +89,6 @@ SNAP-CENTERING.md and snap-centering-review.json own the1x-only native text vert
 
 DEVELOPMENT.md owns developer-only build/recovery instructions moved from the public front page. The user authorized public 1x release; old packaging holds are historical. Keep 2x held and distinguish the one-file VLT from the optional prebuilt companion and replacement release film.
 
-RELEASE-PROMO.md owns the replacement release film direction and verification, separate from historical PROMO-1X.md. RELEASE-1X.md owns current public asset/install scope and known release limits.
+RELEASE-PROMO.md owns the replacement release film direction and verification, separate from historical PROMO-1X.md. RELEASE-1X.md and release-1x-manifest.json own current public asset/install scope and known release limits.
+
+youtube-companion-banner.png is generated promotional artwork for the optional companion, based on the actual native1x deck capture, not an untouched runtime screenshot. youtube-companion-banner-prompt.txt retains its creative brief and provenance. Keep original skin art and upstream rights separate.

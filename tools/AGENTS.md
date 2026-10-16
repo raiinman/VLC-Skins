@@ -119,4 +119,4 @@ The1x SNAP label uses y=playlistHeight-22 and ON/OFF y=playlistHeight-21, center
 
 release_promo.py owns the replacement product-led release film, separate from the rejected preview. Require every original intro frame at source timing, native capture provenance/privacy, explicit optional-companion labels, per-frame visual audit and full export decoding. Generated media stay outside Git. No physical input or runtime/profile changes are authorized by renderer work.
 
-package_1x_release.py creates a separate release copy with original-art credits, MIT-code scope and the retained FreeSans GPL text. Require exact source hash, safe unique ZIP paths and CRCs; preserve every runtime payload and its compression byte-for-byte. Never overwrite or regenerate the canonical/user1x or held2x archive.
+package_1x_release.py creates a separate release copy with original-art credits, MIT-code scope and the retained FreeSans GPL text. Require exact source hash, safe unique ZIP paths and CRCs; preserve every runtime member byte-for-byte and retain its compression method. Never overwrite or regenerate the canonical/user1x or held2x archive.

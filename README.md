@@ -28,6 +28,8 @@ Need VLC? [Get VLC for Windows](https://www.videolan.org/vlc/). [Official skin i
 
 ## YouTube & extras
 
+<p align="center"><img src="docs/youtube-companion-banner.png" alt="Promotional illustration of the optional YouTube companion, based on the real 1x deck" width="720"></p>
+
 Want YouTube in its own matching pane, original skin sounds, and controls that appear over the video?
 
 [Download the optional Windows companion](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-1x-Companion-Windows-x64.zip), unzip it, and follow its **START-HERE.txt** file. It includes the ready-to-run programs and its own Python runtime. You do not compile or install developer tools. It requires installed **64-bit VLC and Google Chrome**.

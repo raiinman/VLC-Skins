@@ -1,0 +1,27 @@
+Generated with the built-in imagegen tool. Reference: real 1x app deck screenshot, used as a visual reference. Generated promotional compositions, not untouched app screenshots.
+
+GITHUB BANNER PROMPT
+Use case: ads-marketing. Make a finished wide 16:9 promotional image for a GitHub README for an unofficial fan-made YouTube companion for the NFS Underground VLC skin. Use the provided image as the actual product insert: preserve the circular deck's original silhouette, buttons, gauges, carbon fiber, blue/green face, and its small YouTube button. Do not invent or redesign controls or add browser UI. Clean up only the jagged black exterior background when placing it. This is the compact original 1x deck shown enlarged as a product hero, not a stretched 2x edition.
+Art direction: an early-2000s tuner magazine / car audio advertisement with tasteful polish. Charcoal brushed metal, subtle perforated speaker texture, cold blue underglow, small red play-button accent behind the deck. No car needed. Sharp, tactile, glossy metal rather than generic futuristic neon. Big deck on the right, generous margins, restrained atmospheric light trails. Left: big readable slightly condensed white italic headline, very few words. Text verbatim:
+"YOUR OLD DECK."
+"NOW WITH YouTube."
+Below smaller:
+"NFS Underground for VLC"
+"Optional YouTube companion • Up to 4K"
+Footer small but readable:
+"Windows x64 • Requires VLC + Chrome"
+"Dead Signal Interactive • Original skin: The Skins Factory"
+Make hierarchy strong at thumbnail size. No release date, download URL, now available claim, fake screenshots, official partnership seal, 2x claim, extra logos or other text. Keep all important content inside a 7% safe margin. Opaque background. Aim 1920x1080 or another true 16:9 canvas.
+
+REDDIT SQUARE PROMPT
+Use case: ads-marketing. Recompose this finished promo into a square 1:1 Reddit post image, approximately 1536x1536. Keep the same brushed dark metal, perforated speaker texture, blue light accents, red play symbol and exact circular NFS Underground VLC deck. Preserve its design and proportions; do not invent new buttons or panels. The second reference is the original real app deck to preserve. Make the deck the large center-lower hero, with the red play symbol partly behind it. Top headline, two lines, big white condensed italic type:
+"YOUR OLD DECK."
+"NOW WITH YouTube."
+Under headline smaller:
+"NFS Underground for VLC"
+Bottom, readable:
+"Optional YouTube companion • Up to 4K"
+"Windows x64 • Requires VLC + Chrome"
+"Dead Signal Interactive"
+"Original skin: The Skins Factory"
+Use all text verbatim. More breathing room than the wide design, important details inside an 8% margin. No extra slogans, no download CTA, no URLs, no availability claims. This is an unofficial fan project, no official partnership badges. Keep original face and YouTube button readable. Opaque background.
