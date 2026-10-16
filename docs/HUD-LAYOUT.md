@@ -19,3 +19,19 @@ Exact current hashes and evidence are in hud-layout-review.json. The preceding
 UI-POLISH and native-hover records retain their tested versions. Installation
 and companion-owned live adoption are recorded separately. No mouse or keyboard
 control is needed for source/build work or private non-input-desktop checks.
+
+Both exact packages pass all17 conversion checks,23hover mutation cases per
+scale and10addon mutations. The layer comparison has714exact cases and42
+explained closed-main residuals, with no unexplained cases. Both packages pass
+78private native assertions, including8opaque-alpha readbacks and strict window
+exposure gates. All four protected processes,24guarded paths and the input
+desktop were preserved; owned test children closed. The native fixture calls
+shared product-source methods, not the deployed helper executable.
+
+Both user-library packages are installed with verified backups. The running1x
+companion adopted the new source and exact latest159-item checkpoint, preserving
+manual1080p, captions, paused0:02, volume256, six pane geometries, preferences,
+normal settings and original source bytes/compression. No2x profile was created.
+The final screenshot was occluded by user windows; no mouse/keyboard/focus action
+was taken to expose it. Current physical button/menu appearance is unverified.
+See hud-layout-install.json and hud-layout-rollout.json for exact evidence.

@@ -52,5 +52,6 @@
     "No current2x physical visual review",
     "No new startup/RSS measurements",
     "Standalone VLTs contain no inactive Settings/CC buttons"
-  ]
+  ],
+  "live_adoption": "hud-layout-rollout.json: current1x source08d4 adopted with exact159-item latest checkpoint, manual1080p, native captions on, paused0:02 and latest volume256 preserved; six pane geometries/preferences/normalsettings and sourcebytes/ZIPstorage retained. No2xprofile created. Read-only screenshot occluded; current physical appearance unverified."
 }

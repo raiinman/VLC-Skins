@@ -1,0 +1,154 @@
+{
+  "date": "2026-10-16",
+  "scope": "Companion-owned fresh latest checkpoint rollout; final confirmation used no mouse, keyboard or foreground action.",
+  "owner_thread": "01a14113-4c1a-7343-911c-043dbf6f0337",
+  "live": {
+    "companionPid": 34512,
+    "vlcPid": 69848,
+    "chromePid": 25068,
+    "queueCount": 159,
+    "all_ids_match_saved_order": true,
+    "selected_ordinal_retained": true,
+    "status": {
+      "state": "paused",
+      "time": 2,
+      "length": 928,
+      "currentplid": 3,
+      "resolution": "1920x1080",
+      "video": 54,
+      "audio": 115
+    },
+    "volume": 256,
+    "managedQueueCount": 159,
+    "sourceSHA256": "08d4e5c1f972f863e306b30b6e11d9113889a49f05c54b69ee36d1305138552c",
+    "derivedSHA256": "31e424cf35017bf43864f07ff1affeea0b46812514fab5089b6537155e2b32dc",
+    "helperSHA256": "9eb268f597236db8217717d075ef1a2e14c46fb903d932aa7504d59925f5fc59",
+    "source_asset_bytes_preserved": true,
+    "source_member_storage_preserved": true,
+    "effectsSchema": 2,
+    "hoverGeometry": {
+      "width": 361,
+      "height": 64,
+      "closedWidth": 362,
+      "closedHeight": 1
+    },
+    "saved_geometry_retained": {
+      "main": true,
+      "video": true,
+      "tracks": true,
+      "equalizer": true,
+      "info": true,
+      "youtube": true
+    },
+    "other_private_preferences_retained": true,
+    "normal_settings_unchanged": true,
+    "volumeOsdChannel": 9
+  },
+  "support": {
+    "helperPid": 33716,
+    "helper_sha256": "9eb268f597236db8217717d075ef1a2e14c46fb903d932aa7504d59925f5fc59",
+    "chromePid": 25068
+  },
+  "final_proof": {
+    "exactLatestCheckpointMatch": true,
+    "queueCount": 159,
+    "quality": 1080,
+    "time": 2,
+    "state": "paused",
+    "volume": 256,
+    "nativeCaptionES": 4,
+    "controls": {
+      "video_hover_controls": [
+        {
+          "id": "control_3761",
+          "action": "nfs_fx_button.setLayout(nfs_fx_button_trigger);playlist.previous()",
+          "tooltip": "Previous track"
+        },
+        {
+          "id": "control_3762",
+          "action": null,
+          "tooltip": null
+        },
+        {
+          "id": "control_3763",
+          "action": "nfs_fx_button.setLayout(nfs_fx_button_trigger);vlc.stop()",
+          "tooltip": "Stop"
+        },
+        {
+          "id": "control_3764",
+          "action": "nfs_fx_button.setLayout(nfs_fx_button_trigger);playlist.next()",
+          "tooltip": "Next track"
+        },
+        {
+          "id": "control_3766",
+          "action": null,
+          "tooltip": null
+        },
+        {
+          "id": "yt_hover_settings",
+          "action": "yt_playback_actions.setLayout(yt_playback_settings)",
+          "tooltip": "Playback settings"
+        },
+        {
+          "id": "yt_hover_cc",
+          "action": null,
+          "tooltip": null
+        }
+      ],
+      "fullscreen_controls": [
+        {
+          "id": "control_3719",
+          "action": "nfs_fx_button.setLayout(nfs_fx_button_trigger);playlist.previous()",
+          "tooltip": "Previous track"
+        },
+        {
+          "id": "control_3720",
+          "action": null,
+          "tooltip": null
+        },
+        {
+          "id": "control_3721",
+          "action": "nfs_fx_button.setLayout(nfs_fx_button_trigger);vlc.stop()",
+          "tooltip": "Stop"
+        },
+        {
+          "id": "control_3722",
+          "action": "nfs_fx_button.setLayout(nfs_fx_button_trigger);playlist.next()",
+          "tooltip": "Next track"
+        },
+        {
+          "id": "control_3724",
+          "action": null,
+          "tooltip": null
+        },
+        {
+          "id": "control_3728",
+          "action": "nfs_fx_button.setLayout(nfs_fx_button_trigger);vlc.fullscreen()",
+          "tooltip": "Enter / leave borderless fullscreen"
+        },
+        {
+          "id": "control_3729",
+          "action": "fullscreenController.hide()",
+          "tooltip": "Hide playback controls"
+        },
+        {
+          "id": "yt_fullscreen_settings",
+          "action": "yt_playback_actions.setLayout(yt_playback_settings)",
+          "tooltip": "Playback settings"
+        },
+        {
+          "id": "yt_fullscreen_cc",
+          "action": null,
+          "tooltip": null
+        }
+      ]
+    },
+    "livePhysicalButtons": "unverified: readonly screenshot occluded, no input performed"
+  },
+  "inactive2xprofile_created": false,
+  "limits": [
+    "Read-only screenshot was occluded by user windows; current physical button/menu appearance remains unverified",
+    "Current2x physical visual review remains unverified",
+    "No full animation/audio/100percent parity certification"
+  ]
+}

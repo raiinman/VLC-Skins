@@ -27,7 +27,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: both skins include a flat matching hover strip, centered speaker, lowered filename text, restored native tooltips and hover on inactive exposed video panes. The framed strip omits duplicate fullscreen/hide controls, and companion Settings/CC are now25px. All17 offline checks and78 private native assertions pass. The refined1x setup is running with its159-item queue,1080p,captions and settings preserved. Its solid fill and inset icons were visually confirmed;2x physical visual review remains pending.** See [current fixes and limits](docs/HUD-LAYOUT.md).
+**Status: both skins include a flat matching hover strip, centered speaker, lowered filename text, restored native tooltips and hover on inactive exposed video panes. The framed strip omits duplicate fullscreen/hide controls, and companion Settings/CC are now25px. All17 offline checks and78 private native assertions pass. The refined1x setup is running with its159-item queue,1080p,captions and settings preserved. Current enlarged-button deployment is verified by exact package and playback checks; the final read-only screenshot was occluded, so current physical appearance remains for review.** See [current fixes and limits](docs/HUD-LAYOUT.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
