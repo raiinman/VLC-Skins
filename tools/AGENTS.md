@@ -22,6 +22,10 @@ Sound/hover support: skin_support.py adds exact source WAVs and source-derived c
 
 SkinEffects.cs is an optional .NET Framework product runtime, scoped to an explicit installed VLC PID plus start time. It owns no global input hooks, media playlist changes, focus changes or VLC termination. Commands target only dedicated native command images, never pointer/keyboard injection. Build with build_effects.ps1; --self-test checks pure decisions and --check-skin validates/extracts a VLT without audio or desktop APIs. Native audibility/hover/stacking claims require separate observed tests. Start-NFS.ps1 uses per-scale private APPDATA/config and refuses a second launch of its still-running profile; -SelfTest touches no user profile or process.
 
+Reassert framed-bar topmost stacking on each desired-open poll with NOACTIVATE, including when its coordinates already match. Borderless suppression requires an unowned visible SkinWindowClass covering its monitor within the selected process; owned framed panes are not blockers. The helper-positioned framed bar must not expose native move actions, because VLC retains its initial offscreen origin. Keep the native fullscreen controller draggable. Framed-bar wheel routing still uses that stale origin; click/drag success does not establish correct wheel routing.
+
+Optional diagnostics require an explicit absolute path, create a new file and record only changed typed discovery/geometry/hover/sound states. Never add window titles, media identifiers, credentials or default-on logging. Audio process/session meters establish correlated stream energy, not speaker audibility or complete waveform continuity; retain missing-sample and exact-build scope in evidence.
+
 
 Build ownership: build.py recovers inputs, packs lossless atlases and packages both scales; assets.py reads standalone/atlas frames; check_contracts.py validates original pixels, state transitions, source timing and explicit control IDs; check_hits.py models input layers offline; preview.py makes an explicitly asset-rendered comparison.
 

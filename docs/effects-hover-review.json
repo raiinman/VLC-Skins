@@ -1,33 +1,489 @@
 {
   "date": "2026-10-15",
-  "scope": "Offline sound/hover candidate at both scales; no VLC launch, mouse/keyboard input, or live profile change.",
+  "scope": "Targeted native tests of final 1x and 2x blue skins in separately owned companion instances; default running 1x sessions preserved.",
   "packages": {
     "1": {
-      "sha256": "63e373bc865962bee3c14309f2aa64bbc3f4982d80c652dda38dc293443cd74c"
+      "sha256": "f39765f5a97a30a631faeb3c9fa7ef87c93a5196d93c21a8e38521a6392c826b"
     },
     "2": {
-      "sha256": "8281c6abe7381e80c639e73f71f59c890c3351c7f81572b8071788a605835d88"
+      "sha256": "56f77cce425a321386c34a9ef79c99ae9c009eb41b0b931fcd2990dd3bb3ac25"
     }
   },
-  "helper_sha256": "69889b24ea8f35edb096d40fe6d6d3fd672450e53852739271c7ea064dcd76b3",
+  "helper_sha256": "c579c3fd6b43de8c0c99ab65747b6f216ca9a0c37fc473368dd30d973ca2eec5",
   "checks": {
-    "full_existing_conversion_suite": "pass both scales",
-    "original_sound_bindings": "1076 per scale; independent WMS mapping and original playback suffixes",
-    "sound_payloads": "five exact original WAV files per scale, generated and packaged",
-    "hover_bars": "28 palette/play states per scale; original pixels, controls and 11 rejected mutations",
-    "helper": "compiled; pure scheduling/hover/manifest/saved-size tests and both actual VLT extraction checks pass",
-    "private_launcher": "configuration writer/migration self-test; no process launched",
-    "companion": "13 profile tests, skin preparer self-test, bridge-click test and isolated compilation/self-check"
+    "conversion_suite": "All required offline suites pass both scales; helper pure tests, both archive checks and private launcher tests pass.",
+    "hover_mutation_guards": 12,
+    "visual_comparison": {
+      "cases": 756,
+      "exact": 714,
+      "documented_residuals": 42,
+      "unexplained": 0
+    },
+    "companion_isolation": "Compiled and self-tested; distinct explicit data-directory instances used; default instance names unchanged."
   },
-  "native_verified": false,
-  "audible_skin_effects_verified": false,
-  "running_session_reloaded": false,
-  "remaining": [
-    "Native skin initialization and audibility at both scales",
-    "Framed hover native discovery/stacking/leave timing and close behavior",
-    "Borderless native controller reveal/hide and framed-controller suppression",
-    "Maximize/restore and double-click regression with new controllers",
-    "Shared YouTube helper deployment requires a coordinated later restart"
+  "native_verified": true,
+  "native_scope": "Targeted controls only; not exhaustive parity or acceptance.",
+  "controls": {
+    "1x": {
+      "framed_pause_resume": "pass",
+      "seek_drag_seconds": [
+        30,
+        226
+      ],
+      "volume_native_units": [
+        256,
+        130
+      ],
+      "framed_maximize_restore": [
+        [
+          1920,
+          1080
+        ],
+        [
+          708,
+          440
+        ]
+      ],
+      "borderless_double_click_entry_exit": "pass",
+      "native_fullscreen_hover_reveal_pause": "pass; paused at197 seconds",
+      "framed_stop": "pass on clear second hit; first center attempt did not change state",
+      "framed_close": "pass",
+      "idle_hover": "observed after stop"
+    },
+    "2x": {
+      "framed_pause_resume": "pass",
+      "seek_drag_seconds": [
+        26,
+        226
+      ],
+      "volume_native_units": [
+        130,
+        282
+      ],
+      "framed_maximize_restore": [
+        [
+          1920,
+          1080
+        ],
+        [
+          1416,
+          880
+        ]
+      ],
+      "borderless_double_click_entry_exit": "pass",
+      "native_fullscreen_hover_reveal_pause": "pass; paused at285 seconds"
+    }
+  },
+  "audio": {
+    "1": {
+      "scale": 1,
+      "sourceSnapshotFirstUtc": "2026-10-16T01:13:23.3850879Z",
+      "sourceSnapshotLastUtc": "2026-10-16T01:22:12.0520220Z",
+      "positiveThreshold": 1e-06,
+      "scope": "Exact helper-PID single-process session output energy plus read-only target-session mute/volume. No acoustic audibility claim.",
+      "events": {
+        "initialSamplingBeforeFirstClick": {
+          "windowStartUtc": "2026-10-16T01:13:23.3850879Z",
+          "windowEndUtc": "2026-10-16T01:13:44Z",
+          "samples": 1033,
+          "positiveSamples": 0,
+          "maximumPeak": null,
+          "firstPositiveUtc": null,
+          "lastPositiveUtc": null,
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 0,
+          "positiveSessionLevelReads": 0,
+          "positiveSessionsAllUnmuted": null,
+          "positiveSessionVolumeMin": null,
+          "positiveSessionVolumeMax": null
+        },
+        "shutterClose": {
+          "windowStartUtc": "2026-10-16T01:13:45.137Z",
+          "windowEndUtc": "2026-10-16T01:13:49.137Z",
+          "samples": 200,
+          "positiveSamples": 81,
+          "maximumPeak": 0.929134,
+          "firstPositiveUtc": "2026-10-16T01:13:45.4070828Z",
+          "lastPositiveUtc": "2026-10-16T01:13:47.0039165Z",
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 0,
+          "positiveSessionLevelReads": 81,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "shutterOpen": {
+          "windowStartUtc": "2026-10-16T01:13:56.149Z",
+          "windowEndUtc": "2026-10-16T01:14:00.149Z",
+          "samples": 200,
+          "positiveSamples": 82,
+          "maximumPeak": 0.929134,
+          "firstPositiveUtc": "2026-10-16T01:13:56.4040179Z",
+          "lastPositiveUtc": "2026-10-16T01:13:58.0283755Z",
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 0,
+          "positiveSessionLevelReads": 82,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "isolatedNativeControlButton": {
+          "windowStartUtc": "2026-10-16T01:21:20Z",
+          "windowEndUtc": "2026-10-16T01:21:22Z",
+          "samples": 100,
+          "positiveSamples": 18,
+          "maximumPeak": 0.479025453,
+          "firstPositiveUtc": "2026-10-16T01:21:20.4339718Z",
+          "lastPositiveUtc": "2026-10-16T01:21:20.7613181Z",
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 0,
+          "positiveSessionLevelReads": 18,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "infoOpeningComplete": {
+          "windowStartUtc": "2026-10-16T01:16:54.187Z",
+          "windowEndUtc": "2026-10-16T01:17:14Z",
+          "samples": 990,
+          "positiveSamples": 771,
+          "maximumPeak": 0.9974029,
+          "firstPositiveUtc": "2026-10-16T01:16:54.4341338Z",
+          "lastPositiveUtc": "2026-10-16T01:17:12.6137216Z",
+          "meterErrorSamples": 137,
+          "noSuccessfulMeterReadSamples": 137,
+          "positiveSessionLevelReads": 771,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "infoBeyondButtonDuration": {
+          "windowStartUtc": "2026-10-16T01:16:55.200Z",
+          "windowEndUtc": "2026-10-16T01:17:14Z",
+          "samples": 940,
+          "positiveSamples": 734,
+          "maximumPeak": 0.9974029,
+          "firstPositiveUtc": "2026-10-16T01:16:55.2005868Z",
+          "lastPositiveUtc": "2026-10-16T01:17:12.6137216Z",
+          "meterErrorSamples": 137,
+          "noSuccessfulMeterReadSamples": 137,
+          "positiveSessionLevelReads": 734,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "introReplay": {
+          "windowStartUtc": "2026-10-16T01:17:47.207Z",
+          "windowEndUtc": "2026-10-16T01:17:57Z",
+          "samples": 489,
+          "positiveSamples": 337,
+          "maximumPeak": 0.521769166,
+          "firstPositiveUtc": "2026-10-16T01:17:49.0021457Z",
+          "lastPositiveUtc": "2026-10-16T01:17:55.7221279Z",
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 0,
+          "positiveSessionLevelReads": 337,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "logo": {
+          "windowStartUtc": "2026-10-16T01:18:32.265Z",
+          "windowEndUtc": "2026-10-16T01:18:36.265Z",
+          "samples": 200,
+          "positiveSamples": 121,
+          "maximumPeak": 0.99408114,
+          "firstPositiveUtc": "2026-10-16T01:18:32.5640310Z",
+          "lastPositiveUtc": "2026-10-16T01:18:35.4107365Z",
+          "meterErrorSamples": 22,
+          "noSuccessfulMeterReadSamples": 22,
+          "positiveSessionLevelReads": 121,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        }
+      },
+      "soundFindings": {
+        "shutter": {
+          "status": "positive output energy for close and open; every positive target-session read unmuted at volume1",
+          "events": [
+            "shutterClose",
+            "shutterOpen"
+          ],
+          "sourceDurationSeconds": 1.6137868480725623
+        },
+        "button": {
+          "status": "positive output energy in narrow isolated native control test slot; every positive target-session read unmuted at volume1",
+          "events": [
+            "isolatedNativeControlButton"
+          ],
+          "sourceDurationSeconds": 0.32621315192743766,
+          "attribution": "Parent reports hover stop/control around01:21; isolated cluster01:21:20.434..20.761 matches short original button effect. Exact clicked-control timestamp is approximate."
+        },
+        "info": {
+          "status": "positive output energy through first full isolated information sound, well beyond button duration; every positive target-session read unmuted at volume1",
+          "events": [
+            "infoOpeningComplete",
+            "infoBeyondButtonDuration"
+          ],
+          "sourceDurationSeconds": 18.043197278911563
+        },
+        "intro": {
+          "status": "positive replay-correlated output energy; every positive target-session read unmuted at volume1",
+          "events": [
+            "introReplay"
+          ],
+          "sourceDurationSeconds": 6.72609977324263,
+          "startupStatus": "Initial launch intro not captured: meter starts after helper/host launch and no positive sample appears before first shutter click. Late sampling cannot establish an absent startup sound."
+        },
+        "logo": {
+          "status": "positive logo-correlated output energy; every positive target-session read unmuted at volume1",
+          "events": [
+            "logo"
+          ],
+          "sourceDurationSeconds": 2.873469387755102
+        }
+      },
+      "limitations": [
+        "Only exact single-process helperPID37448 session peaks were read; no desktop audio, original waveform, endpoint meter, or unrelated process audio was recorded.",
+        "Positive stream energy and unmuted/nonzero target-session volume do not establish speaker audibility or endpoint/hardware state.",
+        "Sound attribution uses parent-provided UI times, source signal mapping, duration and prior matching scale evidence; peaks alone cannot identify a waveform.",
+        "Null/error meter samples are unavailable/invalid samples, not confirmed silence; no HRESULT recorded to resolve their precise cause.",
+        "Sampling is nominal20ms; actual recorded timestamps govern timing coverage.",
+        "No UI, process, installed skin, running media, input or profile changes were performed for this analysis."
+      ]
+    },
+    "2": {
+      "scale": 2,
+      "sourceSnapshotFirstUtc": "2026-10-16T01:05:44.8374542Z",
+      "sourceSnapshotLastUtc": "2026-10-16T01:13:04.6777934Z",
+      "positiveThreshold": 1e-06,
+      "scope": "Exact helper-PID single-process session stream energy and read-only session mute/volume only; no desktop/audio waveform recording or endpoint-level measurement.",
+      "events": {
+        "startupIntro": {
+          "windowStartUtc": "2026-10-16T01:05:44.8374542Z",
+          "windowEndUtc": "2026-10-16T01:06:20Z",
+          "samples": 1763,
+          "positiveSamples": 333,
+          "maximumPeak": 0.521769166,
+          "firstPositiveUtc": "2026-10-16T01:06:06.7967920Z",
+          "lastPositiveUtc": "2026-10-16T01:06:13.4124871Z",
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 1102,
+          "positiveSessionLevelReads": 333,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "shutterClose": {
+          "windowStartUtc": "2026-10-16T01:06:52.802Z",
+          "windowEndUtc": "2026-10-16T01:06:56.802Z",
+          "samples": 200,
+          "positiveSamples": 81,
+          "maximumPeak": 0.929134,
+          "firstPositiveUtc": "2026-10-16T01:06:53.0908692Z",
+          "lastPositiveUtc": "2026-10-16T01:06:54.6997382Z",
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 0,
+          "positiveSessionLevelReads": 81,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "shutterOpen": {
+          "windowStartUtc": "2026-10-16T01:07:01.842Z",
+          "windowEndUtc": "2026-10-16T01:07:05.842Z",
+          "samples": 199,
+          "positiveSamples": 85,
+          "maximumPeak": 0.929134,
+          "firstPositiveUtc": "2026-10-16T01:07:02.4534138Z",
+          "lastPositiveUtc": "2026-10-16T01:07:04.0750509Z",
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 0,
+          "positiveSessionLevelReads": 85,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "isolatedNativeControlButton": {
+          "windowStartUtc": "2026-10-16T01:07:33.500Z",
+          "windowEndUtc": "2026-10-16T01:07:35Z",
+          "samples": 75,
+          "positiveSamples": 17,
+          "maximumPeak": 0.4761036,
+          "firstPositiveUtc": "2026-10-16T01:07:34.0595986Z",
+          "lastPositiveUtc": "2026-10-16T01:07:34.3713718Z",
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 0,
+          "positiveSessionLevelReads": 17,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "infoOpeningComplete": {
+          "windowStartUtc": "2026-10-16T01:09:27.535Z",
+          "windowEndUtc": "2026-10-16T01:09:47Z",
+          "samples": 974,
+          "positiveSamples": 773,
+          "maximumPeak": 0.9980322,
+          "firstPositiveUtc": "2026-10-16T01:09:27.7723257Z",
+          "lastPositiveUtc": "2026-10-16T01:09:45.9526290Z",
+          "meterErrorSamples": 135,
+          "noSuccessfulMeterReadSamples": 135,
+          "positiveSessionLevelReads": 773,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "infoBeyondButtonDuration": {
+          "windowStartUtc": "2026-10-16T01:09:28.500Z",
+          "windowEndUtc": "2026-10-16T01:09:47Z",
+          "samples": 925,
+          "positiveSamples": 738,
+          "maximumPeak": 0.9980322,
+          "firstPositiveUtc": "2026-10-16T01:09:28.5240712Z",
+          "lastPositiveUtc": "2026-10-16T01:09:45.9526290Z",
+          "meterErrorSamples": 135,
+          "noSuccessfulMeterReadSamples": 135,
+          "positiveSessionLevelReads": 738,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "repeatedInfoInterrupted": {
+          "windowStartUtc": "2026-10-16T01:10:39.907Z",
+          "windowEndUtc": "2026-10-16T01:10:51Z",
+          "samples": 554,
+          "positiveSamples": 412,
+          "maximumPeak": 0.996676147,
+          "firstPositiveUtc": "2026-10-16T01:10:40.2015941Z",
+          "lastPositiveUtc": "2026-10-16T01:10:50.3905398Z",
+          "meterErrorSamples": 95,
+          "noSuccessfulMeterReadSamples": 95,
+          "positiveSessionLevelReads": 412,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "introReplay": {
+          "windowStartUtc": "2026-10-16T01:10:59.871Z",
+          "windowEndUtc": "2026-10-16T01:11:10Z",
+          "samples": 505,
+          "positiveSamples": 335,
+          "maximumPeak": 0.52070266,
+          "firstPositiveUtc": "2026-10-16T01:11:01.7516748Z",
+          "lastPositiveUtc": "2026-10-16T01:11:08.4385413Z",
+          "meterErrorSamples": 0,
+          "noSuccessfulMeterReadSamples": 0,
+          "positiveSessionLevelReads": 335,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        },
+        "logo": {
+          "windowStartUtc": "2026-10-16T01:12:24.252Z",
+          "windowEndUtc": "2026-10-16T01:12:28.252Z",
+          "samples": 200,
+          "positiveSamples": 120,
+          "maximumPeak": 0.99408114,
+          "firstPositiveUtc": "2026-10-16T01:12:24.7106564Z",
+          "lastPositiveUtc": "2026-10-16T01:12:27.5132167Z",
+          "meterErrorSamples": 23,
+          "noSuccessfulMeterReadSamples": 23,
+          "positiveSessionLevelReads": 120,
+          "positiveSessionsAllUnmuted": true,
+          "positiveSessionVolumeMin": 1,
+          "positiveSessionVolumeMax": 1
+        }
+      },
+      "soundFindings": {
+        "intro": {
+          "status": "positive startup-correlated and replay-correlated stream energy; all positive target sessions unmuted at volume 1",
+          "events": [
+            "startupIntro",
+            "introReplay"
+          ],
+          "sourceDurationSeconds": 6.72609977324263,
+          "startupContext": {
+            "helperStartReportedUtc": "2026-10-16T01:05:34Z",
+            "samplingStartUtc": "2026-10-16T01:05:44.8374542Z",
+            "skinReadyReportedUtc": "2026-10-16T01:06:05Z"
+          },
+          "attribution": "Startup peak cluster starts01:06:06.797 after skin READY, consistent with delayed intro signaling; isolated startup cluster lasts ~6.616sec and has same maximum as 1x original intro replay. No 2x dispatch diagnostic timestamp is supplied."
+        },
+        "shutter": {
+          "status": "positive close/open helper stream energy; positive target sessions unmuted at volume 1",
+          "events": [
+            "shutterClose",
+            "shutterOpen"
+          ],
+          "sourceDurationSeconds": 1.6137868480725623
+        },
+        "button": {
+          "status": "positive isolated short helper stream energy correlated with native control test; positive target sessions unmuted at volume 1",
+          "events": [
+            "isolatedNativeControlButton"
+          ],
+          "sourceDurationSeconds": 0.32621315192743766,
+          "attribution": "Exact clicked control timestamp is approximate; isolated measured cluster01:07:34.060..34.371 is ~0.312sec and matches the original button effect duration/peak from verified1x."
+        },
+        "info": {
+          "status": "positive helper stream energy extends well beyond button duration across first isolated full information sound; positive target sessions unmuted at volume 1",
+          "events": [
+            "infoOpeningComplete",
+            "infoBeyondButtonDuration",
+            "repeatedInfoInterrupted"
+          ],
+          "sourceDurationSeconds": 18.043197278911563,
+          "repeatCaveat": "Second info opening was deliberately interrupted by about click around01:10:47; no complete second playback claim."
+        },
+        "logo": {
+          "status": "positive logo-correlated helper stream energy; positive target sessions unmuted at volume 1",
+          "events": [
+            "logo"
+          ],
+          "sourceDurationSeconds": 2.873469387755102
+        }
+      },
+      "limitations": [
+        "Session peaks demonstrate generated output-energy, not acoustic speaker audibility or endpoint/hardware mute state.",
+        "Only matching single-process PID96472 was metered. Sound identity uses parent-provided UI event times plus source mapping/duration and matching1x evidence; meter data alone is not waveform identification.",
+        "Null/error meter readings are unavailable/invalid samples, not confirmed silence; no HRESULT was recorded to resolve their precise cause.",
+        "Sampling is nominal20ms; actual timestamps determine coverage and can contain discovery/scheduling gaps.",
+        "Startup identity is inferred from timing/duration/source signaling, without a separate2x helper dispatch diagnostic.",
+        "No original waveform capture, user-desktop audio recording, global audio meter, or volume/mute mutation was performed."
+      ]
+    }
+  },
+  "audio_output_verified_both_scales": true,
+  "acoustic_speaker_audibility_verified": false,
+  "fixes": [
+    "Reassert framed hover topmost with NOACTIVATE while desired open; playback previously covered it.",
+    "Suppress framed bar only for visible unowned monitor-covering SkinWindowClass fullscreen roots.",
+    "Disable dragging on helper-positioned frame artwork to prevent stale-coordinate jumps; native fullscreen bar remains draggable."
   ],
-  "audio_incident": "User confirmed regular media sound returned after Windows VLC sessions were unmuted; distinct from missing skin effects."
+  "preservation": {
+    "running_user_sessions_restarted": false,
+    "normal_vlcrc_and_active_private_skin_files_hash_unchanged": {
+      "vlcrc": true,
+      "skin-profiles.json": true,
+      "Selected-Skin-YouTube.vlt": true,
+      "Selected-Skin-YouTube.vlcrc": true
+    },
+    "shared_qt_settings": "Only generated test clip resume time changed; exact pre-test bytes restored after all owned players closed.",
+    "test_processes_closed": true,
+    "active_companion_deployed_or_restarted": false
+  },
+  "remaining": [
+    "Mouse-wheel routing over helper-positioned framed bar uses stale native coordinates; click/drag works.",
+    "Initial-launch 1x intro was sampled too late; 1x replay and 2x initial/replay output measured.",
+    "Previous/next queue progression, all palettes, multi-monitor behavior and every hover/pressed state were not exhaustively tested.",
+    "User listening/visual acceptance remains required; meter activity is not speaker audibility.",
+    "Current running 1x retains loaded assets/helper until a coordinated later restart."
+  ],
+  "limits": [
+    "Information/logo meter intervals include unavailable reads; positive samples do not establish uninterrupted waveform output.",
+    "No desktop screenshots, user media, browser credentials or audio recordings are stored in this report.",
+    "An initial 1x native fullscreen pause attempt coincided with generated clip completion and was excluded; later retest passed."
+  ]
 }

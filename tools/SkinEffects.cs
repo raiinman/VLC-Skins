@@ -170,6 +170,7 @@ namespace NfsSkinSupport
             if (children.Count > 1) return IntPtr.Zero;
             return initialSizes.Count == 1 ? initialSizes[0] : IntPtr.Zero;
         }
+        internal string VideoDiscovery = "none";
         internal IntPtr FindVideo(List<IntPtr> windows, Dimensions initial)
         {
             var children = new List<IntPtr>(); var initialSizes = new List<IntPtr>();
@@ -192,13 +193,44 @@ namespace NfsSkinSupport
                 Native.Rect rect;
                 if (Native.GetWindowRect(hwnd, out rect) && rect.Width == initial.width && rect.Height == initial.height) initialSizes.Add(hwnd);
             }
+            VideoDiscovery = children.Count == 1 ? "child" : children.Count > 1 ? "ambiguous-child" : initialSizes.Count == 1 ? "fallback" : initialSizes.Count > 1 ? "ambiguous-fallback" : "none";
             return ChooseVideo(children, initialSizes);
         }
         public void Dispose() { Process.Dispose(); }
     }
 
+    internal sealed class Diagnostics : IDisposable
+    {
+        private readonly TextWriter writer;
+        private readonly JavaScriptSerializer serializer = new JavaScriptSerializer();
+        private readonly Dictionary<string, string> states = new Dictionary<string, string>();
+        internal Diagnostics(TextWriter writer) { this.writer = writer; }
+        internal static bool IsAbsolute(string path)
+        {
+            if (String.IsNullOrEmpty(path) || !Path.IsPathRooted(path)) return false;
+            string root = Path.GetPathRoot(path);
+            return root.Length > 1 && !(root.Length == 2 && root[1] == ':');
+        }
+        internal static Diagnostics Open(string path)
+        {
+            Manifest.Require(IsAbsolute(path), "Diagnostic path must be explicit and absolute.");
+            path = Path.GetFullPath(path);
+            return new Diagnostics(new StreamWriter(new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.Read), new System.Text.UTF8Encoding(false)) { AutoFlush = true });
+        }
+        internal void Change(string category, object state)
+        {
+            string json = serializer.Serialize(state), previous;
+            if (states.TryGetValue(category, out previous) && previous == json) return;
+            states[category] = json;
+            writer.WriteLine("{\"utc\":" + serializer.Serialize(DateTime.UtcNow.ToString("o", System.Globalization.CultureInfo.InvariantCulture)) + ",\"category\":" + serializer.Serialize(category) + ",\"state\":" + json + "}");
+        }
+        public void Dispose() { writer.Dispose(); }
+    }
+
     internal static class HoverDecision
     {
+        internal static bool BorderlessCandidate(bool visible, bool hasOwner, string windowClass) { return visible && !hasOwner && windowClass == "SkinWindowClass"; }
+        internal static uint PositionFlags(bool alreadyPositioned) { return 0x0001u | 0x0010u | 0x0200u | (alreadyPositioned ? 0x0002u : 0u); }
         internal static bool IsOpen(int width, int height, HoverSpec spec) { return width == spec.width && height == spec.height; }
         internal static bool Suppress(bool suppressed, bool moved, bool manuallyClosed) { return manuallyClosed || (suppressed && !moved); }
         internal static bool Show(bool videoVisible, bool foregroundVlc, bool nativeFullscreen, bool insideVideo, bool insideVisibleBar, long idleMilliseconds, bool suppressed = false)
@@ -231,6 +263,7 @@ namespace NfsSkinSupport
         private readonly Target target;
         private readonly Assets assets;
         private readonly Dimensions videoFallback;
+        private readonly Diagnostics diagnostics;
         private readonly Dictionary<string, SoundPlayer> players = new Dictionary<string, SoundPlayer>();
         private readonly List<MemoryStream> soundStreams = new List<MemoryStream>();
         private readonly List<SoundState> signals = new List<SoundState>();
@@ -244,10 +277,11 @@ namespace NfsSkinSupport
         private bool hadBarObservation, previousBarOpen, lastRequestedShow, closeSuppressed;
         private long movedAt = -10000, commandAt = -10000, discoveryAt = -10000;
         private long lastButtonTriggered = -10000;
-        internal EffectsContext(Target target, Assets assets, Dimensions videoFallback = null)
+        internal EffectsContext(Target target, Assets assets, Dimensions videoFallback = null, Diagnostics diagnostics = null)
         {
             this.target = target; this.assets = assets;
             this.videoFallback = videoFallback ?? assets.Manifest.video;
+            this.diagnostics = diagnostics;
             foreach (var spec in assets.Manifest.sounds)
             {
                 // Keep original WAV bytes in memory and retain each input stream
@@ -306,6 +340,7 @@ namespace NfsSkinSupport
             foreach (var signal in signals) if (!target.Owns(signal.Window)) signal.Window = UniquePair(windows, signal.Spec.width, signal.Spec.height, signal.Spec.readyWidth, signal.Spec.height, true);
             if (!target.Owns(command)) command = Unique(windows, assets.Manifest.command.width, assets.Manifest.command.height, true);
             IntPtr foundVideo = target.FindVideo(windows, videoFallback);
+            if (diagnostics != null) diagnostics.Change("discovery", new { source = target.VideoDiscovery, found = foundVideo != IntPtr.Zero });
             if (foundVideo != IntPtr.Zero) video = foundVideo;
             else if (!target.Owns(video)) video = IntPtr.Zero;
             if (!target.Owns(hover)) hover = UniquePair(windows, assets.Manifest.hover.width, assets.Manifest.hover.height, assets.Manifest.hover.closedWidth, assets.Manifest.hover.closedHeight, false);
@@ -328,11 +363,14 @@ namespace NfsSkinSupport
                     if (signal.SeenReady && signal.Spec.id == "button") lastButtonTriggered = now;
                     signal.Due = SignalDecision.Due(signal.SeenReady, signal.Spec.id, now, lastButtonTriggered);
                     signal.ResetAfter = now;
+                    if (diagnostics != null) diagnostics.Change("sound-" + signal.Spec.id, new { id = signal.Spec.id, played = false, muted = muted, phase = "trigger" });
                 }
                 if (signal.Spec.id == "info" && signal.Due >= 0) signal.Due = Math.Max(signal.Due, lastButtonTriggered + 100);
                 if (signal.Due >= 0 && now >= signal.Due)
                 {
-                    if (!muted) try { players[signal.Spec.id].Play(); } catch (Exception error) { Trace.WriteLine(error.Message); }
+                    bool played = false;
+                    if (!muted) try { players[signal.Spec.id].Play(); played = true; } catch (Exception error) { Trace.WriteLine(error.Message); }
+                    if (diagnostics != null) diagnostics.Change("sound-" + signal.Spec.id, new { id = signal.Spec.id, played = played, muted = muted, phase = "dispatch" });
                     signal.Due = -1; signal.ResetAfter = now;
                 }
                 if (signal.Due < 0 && now >= signal.ResetAfter) { DoubleClick(signal.Window, 1, 1); signal.ResetAfter = now + 200; }
@@ -340,15 +378,25 @@ namespace NfsSkinSupport
         }
         private bool Borderless()
         {
+            string blockerClass = ""; int blockerWidth = 0, blockerHeight = 0; bool blockerOwned = false;
             // Native fullscreen may keep the old framed window visible behind
             // it; its own controller can temporarily be the foreground HWND.
             foreach (IntPtr hwnd in ownedWindows)
             {
-                if (hwnd == video || hwnd == hover || !target.Owns(hwnd) || !Native.IsWindowVisible(hwnd)) continue;
+                if (hwnd == video || hwnd == hover || !target.Owns(hwnd)) continue;
+                var name = new System.Text.StringBuilder(128); Native.GetClassName(hwnd, name, name.Capacity);
+                bool hasOwner = Native.GetWindow(hwnd, 4) != IntPtr.Zero;
+                if (!HoverDecision.BorderlessCandidate(Native.IsWindowVisible(hwnd), hasOwner, name.ToString())) continue;
                 Native.Rect rect; if (!Rect(hwnd, out rect)) continue;
                 var info = new Native.MonitorInfo { Size = Marshal.SizeOf(typeof(Native.MonitorInfo)) };
-                if (Native.GetMonitorInfo(Native.MonitorFromWindow(hwnd, 2), ref info) && rect.Left <= info.Monitor.Left && rect.Top <= info.Monitor.Top && rect.Right >= info.Monitor.Right && rect.Bottom >= info.Monitor.Bottom) return true;
+                if (Native.GetMonitorInfo(Native.MonitorFromWindow(hwnd, 2), ref info) && rect.Left <= info.Monitor.Left && rect.Top <= info.Monitor.Top && rect.Right >= info.Monitor.Right && rect.Bottom >= info.Monitor.Bottom)
+                {
+                    blockerClass = name.ToString(); blockerWidth = rect.Width; blockerHeight = rect.Height; blockerOwned = hasOwner;
+                    if (diagnostics != null) diagnostics.Change("fullscreen-blocker", new { detected = true, windowClass = blockerClass, width = blockerWidth, height = blockerHeight, owned = blockerOwned });
+                    return true;
+                }
             }
+            if (diagnostics != null) diagnostics.Change("fullscreen-blocker", new { detected = false, windowClass = blockerClass, width = blockerWidth, height = blockerHeight, owned = blockerOwned });
             return false;
         }
         private void HoverCommand(bool show, long now)
@@ -361,6 +409,7 @@ namespace NfsSkinSupport
         {
             Native.Rect bounds, bar;
             bool videoVisible = Rect(video, out bounds) && Native.IsWindowVisible(video);
+            if (diagnostics != null) diagnostics.Change("video", new { found = target.Owns(video), width = bounds.Width, height = bounds.Height, visible = videoVisible });
             bool barKnown = Rect(hover, out bar) && Native.IsWindowVisible(hover);
             bool barVisible = barKnown && HoverDecision.IsOpen(bar.Width, bar.Height, assets.Manifest.hover);
             Point cursor;
@@ -379,13 +428,17 @@ namespace NfsSkinSupport
             }
             previousCursor = cursor; hadCursor = true; wasInsideVideo = inside;
             IntPtr foreground = Native.GetForegroundWindow();
-            bool desired = HoverDecision.Show(videoVisible, target.Owns(foreground), videoVisible && Borderless(), inside, barVisible && bar.Contains(cursor), now - movedAt, closeSuppressed);
+            bool foregroundOwn = target.Owns(foreground), fullscreenDetected = videoVisible && Borderless();
+            bool desired = HoverDecision.Show(videoVisible, foregroundOwn, fullscreenDetected, inside, barVisible && bar.Contains(cursor), now - movedAt, closeSuppressed);
+            if (diagnostics != null) diagnostics.Change("hover", new { open = barVisible, desired = desired, inside = inside, foregroundOwn = foregroundOwn, fullscreenDetected = fullscreenDetected, suppressed = closeSuppressed });
             if (desired && barVisible)
             {
                 int width = assets.Manifest.hover.width, height = assets.Manifest.hover.height;
                 int x = bounds.Left + (bounds.Width - width) / 2;
                 int y = bounds.Bottom - 30 * assets.Manifest.scale - height - 6 * assets.Manifest.scale;
-                if (bar.Left != x || bar.Top != y) Native.SetWindowPos(hover, new IntPtr(-1), x, y, width, height, 0x0001 | 0x0010 | 0x0200);
+                // Playback can reorder native skin/vout windows without moving
+                // this bar. Reassert stacking even when its position is current.
+                Native.SetWindowPos(hover, new IntPtr(-1), x, y, width, height, HoverDecision.PositionFlags(bar.Left == x && bar.Top == y));
             }
             if (desired != barVisible) HoverCommand(desired, now);
         }
@@ -439,6 +492,20 @@ namespace NfsSkinSupport
         private static void Invalid(Action action) { try { action(); } catch (InvalidDataException) { return; } throw new Exception("Unsafe manifest accepted."); }
         private static int SelfTest()
         {
+            Check(Diagnostics.IsAbsolute("C:/owned/log.jsonl"));
+            Check(Diagnostics.IsAbsolute(@"C:\owned\log.jsonl"));
+            Check(!Diagnostics.IsAbsolute("log.jsonl"));
+            Check(!Diagnostics.IsAbsolute(@"\owned\log.jsonl"));
+            Check(!Diagnostics.IsAbsolute("C:log.jsonl"));
+            Check(HoverDecision.BorderlessCandidate(true, false, "SkinWindowClass"));
+            Check(!HoverDecision.BorderlessCandidate(true, true, "SkinWindowClass"));
+            Check(!HoverDecision.BorderlessCandidate(true, false, "#32770"));
+            Check(!HoverDecision.BorderlessCandidate(false, false, "SkinWindowClass"));
+            Check(HoverDecision.PositionFlags(false) == (0x0001u | 0x0010u | 0x0200u));
+            Check(HoverDecision.PositionFlags(true) == (0x0001u | 0x0010u | 0x0200u | 0x0002u));
+            var diagnosticText = new StringWriter();
+            using (var log = new Diagnostics(diagnosticText)) { log.Change("hover", new { open = false }); log.Change("hover", new { open = false }); log.Change("hover", new { open = true }); }
+            Check(diagnosticText.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).Length == 2);
             var size = ParseVideoSize("708x440", 1); Check(size.width == 708 && size.height == 440);
             size = ParseVideoSize("1920x1080", 2); Check(size.width == 1920 && size.height == 1080);
             size = ParseVideoSize("8192x4320", 2); Check(size.width == 8192 && size.height == 4320);
@@ -500,13 +567,14 @@ namespace NfsSkinSupport
             {
                 if (selfTest) { if (arguments.Length != 1) throw new ArgumentException("Use --self-test."); return SelfTest(); }
                 if (checkSkin) { if (arguments.Length != 2) throw new ArgumentException("Use --check-skin path.vlt."); using (var validated = Assets.Open(Path.GetFullPath(arguments[1]))) { } return 0; }
-                int pid = 0; string skin = null, videoSize = null;
+                int pid = 0; string skin = null, videoSize = null, diagnosticPath = null;
                 for (int i = 0; i < arguments.Length; i += 2)
                 {
                     if (i + 1 >= arguments.Length) throw new ArgumentException("Use --pid N --skin path.vlt [--video-size WIDTHxHEIGHT].");
                     if (arguments[i] == "--pid" && pid == 0) pid = Int32.Parse(arguments[i + 1]);
                     else if (arguments[i] == "--skin" && skin == null) skin = Path.GetFullPath(arguments[i + 1]);
                     else if (arguments[i] == "--video-size" && videoSize == null) videoSize = arguments[i + 1];
+                    else if (arguments[i] == "--diagnostic-log" && diagnosticPath == null) diagnosticPath = arguments[i + 1];
                     else throw new ArgumentException("Use --pid N --skin path.vlt [--video-size WIDTHxHEIGHT].");
                 }
                 if (pid <= 0 || skin == null) throw new ArgumentException("Use --pid N --skin path.vlt [--video-size WIDTHxHEIGHT].");
@@ -520,7 +588,8 @@ namespace NfsSkinSupport
                         {
                             Dimensions fallback = videoSize == null ? null : ParseVideoSize(videoSize, assets.Manifest.scale);
                             Native.SetProcessDPIAware(); Application.EnableVisualStyles();
-                            using (var context = new EffectsContext(target, assets, fallback)) Application.Run(context);
+                            using (var log = diagnosticPath == null ? null : Diagnostics.Open(diagnosticPath))
+                            using (var context = new EffectsContext(target, assets, fallback, log)) Application.Run(context);
                         }
                     }
                 }

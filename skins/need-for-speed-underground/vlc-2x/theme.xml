@@ -3453,62 +3453,62 @@
   </Window>
   <Window id="videoHoverController" x="-31000" y="-30800" visible="true" dragdrop="false" playondrop="false">
     <Layout id="video_hover_controls" width="852" height="292">
-      <Image image="f_top_s_1_png" x="354" y="0" action="move" visible="palette_1.isActive" width="168" height="122" resize="mosaic" id="control_3110"/>
-      <Image image="f_bot_s_1_png" x="354" y="172" action="move" visible="palette_1.isActive" width="168" height="120" resize="mosaic" id="control_3111"/>
-      <Image image="f_left_s_1_png" x="0" y="122" action="move" visible="palette_1.isActive" width="354" height="56" resize="mosaic" id="control_3112"/>
-      <Image image="f_right_s_1_png" x="522" y="122" action="move" visible="palette_1.isActive" width="328" height="56" resize="mosaic" id="control_3113"/>
-      <Image image="f_top_left_1_png" x="0" y="0" action="move" visible="palette_1.isActive" id="control_3114"/>
-      <Image image="eq_top_right_1_png" x="522" y="0" action="move" visible="palette_1.isActive" id="control_3115"/>
-      <Image image="f_bot_left_1_png" x="0" y="178" action="move" visible="palette_1.isActive" id="control_3116"/>
-      <Image image="f_bot_right_1_png" x="522" y="178" action="move" visible="palette_1.isActive" id="control_3117"/>
-      <Image image="f_top_s_2_png" x="354" y="0" action="move" visible="palette_2.isActive" width="168" height="122" resize="mosaic" id="control_3118"/>
-      <Image image="f_bot_s_2_png" x="354" y="172" action="move" visible="palette_2.isActive" width="168" height="120" resize="mosaic" id="control_3119"/>
-      <Image image="f_left_s_2_png" x="0" y="122" action="move" visible="palette_2.isActive" width="354" height="56" resize="mosaic" id="control_3120"/>
-      <Image image="f_right_s_2_png" x="522" y="122" action="move" visible="palette_2.isActive" width="328" height="56" resize="mosaic" id="control_3121"/>
-      <Image image="f_top_left_2_png" x="0" y="0" action="move" visible="palette_2.isActive" id="control_3122"/>
-      <Image image="eq_top_right_2_png" x="522" y="0" action="move" visible="palette_2.isActive" id="control_3123"/>
-      <Image image="f_bot_left_2_png" x="0" y="178" action="move" visible="palette_2.isActive" id="control_3124"/>
-      <Image image="f_bot_right_2_png" x="522" y="178" action="move" visible="palette_2.isActive" id="control_3125"/>
-      <Image image="f_top_s_3_png" x="354" y="0" action="move" visible="palette_3.isActive" width="168" height="122" resize="mosaic" id="control_3126"/>
-      <Image image="f_bot_s_3_png" x="354" y="172" action="move" visible="palette_3.isActive" width="168" height="120" resize="mosaic" id="control_3127"/>
-      <Image image="f_left_s_3_png" x="0" y="122" action="move" visible="palette_3.isActive" width="354" height="56" resize="mosaic" id="control_3128"/>
-      <Image image="f_right_s_3_png" x="522" y="122" action="move" visible="palette_3.isActive" width="328" height="56" resize="mosaic" id="control_3129"/>
-      <Image image="f_top_left_3_png" x="0" y="0" action="move" visible="palette_3.isActive" id="control_3130"/>
-      <Image image="eq_top_right_3_png" x="522" y="0" action="move" visible="palette_3.isActive" id="control_3131"/>
-      <Image image="f_bot_left_3_png" x="0" y="178" action="move" visible="palette_3.isActive" id="control_3132"/>
-      <Image image="f_bot_right_3_png" x="522" y="178" action="move" visible="palette_3.isActive" id="control_3133"/>
-      <Image image="f_top_s_4_png" x="354" y="0" action="move" visible="palette_4.isActive" width="168" height="122" resize="mosaic" id="control_3134"/>
-      <Image image="f_bot_s_4_png" x="354" y="172" action="move" visible="palette_4.isActive" width="168" height="120" resize="mosaic" id="control_3135"/>
-      <Image image="f_left_s_4_png" x="0" y="122" action="move" visible="palette_4.isActive" width="354" height="56" resize="mosaic" id="control_3136"/>
-      <Image image="f_right_s_4_png" x="522" y="122" action="move" visible="palette_4.isActive" width="328" height="56" resize="mosaic" id="control_3137"/>
-      <Image image="f_top_left_4_png" x="0" y="0" action="move" visible="palette_4.isActive" id="control_3138"/>
-      <Image image="eq_top_right_4_png" x="522" y="0" action="move" visible="palette_4.isActive" id="control_3139"/>
-      <Image image="f_bot_left_4_png" x="0" y="178" action="move" visible="palette_4.isActive" id="control_3140"/>
-      <Image image="f_bot_right_4_png" x="522" y="178" action="move" visible="palette_4.isActive" id="control_3141"/>
-      <Image image="f_top_s_5_png" x="354" y="0" action="move" visible="palette_5.isActive" width="168" height="122" resize="mosaic" id="control_3142"/>
-      <Image image="f_bot_s_5_png" x="354" y="172" action="move" visible="palette_5.isActive" width="168" height="120" resize="mosaic" id="control_3143"/>
-      <Image image="f_left_s_5_png" x="0" y="122" action="move" visible="palette_5.isActive" width="354" height="56" resize="mosaic" id="control_3144"/>
-      <Image image="f_right_s_5_png" x="522" y="122" action="move" visible="palette_5.isActive" width="328" height="56" resize="mosaic" id="control_3145"/>
-      <Image image="f_top_left_5_png" x="0" y="0" action="move" visible="palette_5.isActive" id="control_3146"/>
-      <Image image="eq_top_right_5_png" x="522" y="0" action="move" visible="palette_5.isActive" id="control_3147"/>
-      <Image image="f_bot_left_5_png" x="0" y="178" action="move" visible="palette_5.isActive" id="control_3148"/>
-      <Image image="f_bot_right_5_png" x="522" y="178" action="move" visible="palette_5.isActive" id="control_3149"/>
-      <Image image="f_top_s_6_png" x="354" y="0" action="move" visible="palette_6.isActive" width="168" height="122" resize="mosaic" id="control_3150"/>
-      <Image image="f_bot_s_6_png" x="354" y="172" action="move" visible="palette_6.isActive" width="168" height="120" resize="mosaic" id="control_3151"/>
-      <Image image="f_left_s_6_png" x="0" y="122" action="move" visible="palette_6.isActive" width="354" height="56" resize="mosaic" id="control_3152"/>
-      <Image image="f_right_s_6_png" x="522" y="122" action="move" visible="palette_6.isActive" width="328" height="56" resize="mosaic" id="control_3153"/>
-      <Image image="f_top_left_6_png" x="0" y="0" action="move" visible="palette_6.isActive" id="control_3154"/>
-      <Image image="eq_top_right_6_png" x="522" y="0" action="move" visible="palette_6.isActive" id="control_3155"/>
-      <Image image="f_bot_left_6_png" x="0" y="178" action="move" visible="palette_6.isActive" id="control_3156"/>
-      <Image image="f_bot_right_6_png" x="522" y="178" action="move" visible="palette_6.isActive" id="control_3157"/>
-      <Image image="f_top_s_7_png" x="354" y="0" action="move" visible="palette_7.isActive" width="168" height="122" resize="mosaic" id="control_3158"/>
-      <Image image="f_bot_s_7_png" x="354" y="172" action="move" visible="palette_7.isActive" width="168" height="120" resize="mosaic" id="control_3159"/>
-      <Image image="f_left_s_7_png" x="0" y="122" action="move" visible="palette_7.isActive" width="354" height="56" resize="mosaic" id="control_3160"/>
-      <Image image="f_right_s_7_png" x="522" y="122" action="move" visible="palette_7.isActive" width="328" height="56" resize="mosaic" id="control_3161"/>
-      <Image image="f_top_left_7_png" x="0" y="0" action="move" visible="palette_7.isActive" id="control_3162"/>
-      <Image image="eq_top_right_7_png" x="522" y="0" action="move" visible="palette_7.isActive" id="control_3163"/>
-      <Image image="f_bot_left_7_png" x="0" y="178" action="move" visible="palette_7.isActive" id="control_3164"/>
-      <Image image="f_bot_right_7_png" x="522" y="178" action="move" visible="palette_7.isActive" id="control_3165"/>
+      <Image image="f_top_s_1_png" x="354" y="0" action="none" visible="palette_1.isActive" width="168" height="122" resize="mosaic" id="control_3110"/>
+      <Image image="f_bot_s_1_png" x="354" y="172" action="none" visible="palette_1.isActive" width="168" height="120" resize="mosaic" id="control_3111"/>
+      <Image image="f_left_s_1_png" x="0" y="122" action="none" visible="palette_1.isActive" width="354" height="56" resize="mosaic" id="control_3112"/>
+      <Image image="f_right_s_1_png" x="522" y="122" action="none" visible="palette_1.isActive" width="328" height="56" resize="mosaic" id="control_3113"/>
+      <Image image="f_top_left_1_png" x="0" y="0" action="none" visible="palette_1.isActive" id="control_3114"/>
+      <Image image="eq_top_right_1_png" x="522" y="0" action="none" visible="palette_1.isActive" id="control_3115"/>
+      <Image image="f_bot_left_1_png" x="0" y="178" action="none" visible="palette_1.isActive" id="control_3116"/>
+      <Image image="f_bot_right_1_png" x="522" y="178" action="none" visible="palette_1.isActive" id="control_3117"/>
+      <Image image="f_top_s_2_png" x="354" y="0" action="none" visible="palette_2.isActive" width="168" height="122" resize="mosaic" id="control_3118"/>
+      <Image image="f_bot_s_2_png" x="354" y="172" action="none" visible="palette_2.isActive" width="168" height="120" resize="mosaic" id="control_3119"/>
+      <Image image="f_left_s_2_png" x="0" y="122" action="none" visible="palette_2.isActive" width="354" height="56" resize="mosaic" id="control_3120"/>
+      <Image image="f_right_s_2_png" x="522" y="122" action="none" visible="palette_2.isActive" width="328" height="56" resize="mosaic" id="control_3121"/>
+      <Image image="f_top_left_2_png" x="0" y="0" action="none" visible="palette_2.isActive" id="control_3122"/>
+      <Image image="eq_top_right_2_png" x="522" y="0" action="none" visible="palette_2.isActive" id="control_3123"/>
+      <Image image="f_bot_left_2_png" x="0" y="178" action="none" visible="palette_2.isActive" id="control_3124"/>
+      <Image image="f_bot_right_2_png" x="522" y="178" action="none" visible="palette_2.isActive" id="control_3125"/>
+      <Image image="f_top_s_3_png" x="354" y="0" action="none" visible="palette_3.isActive" width="168" height="122" resize="mosaic" id="control_3126"/>
+      <Image image="f_bot_s_3_png" x="354" y="172" action="none" visible="palette_3.isActive" width="168" height="120" resize="mosaic" id="control_3127"/>
+      <Image image="f_left_s_3_png" x="0" y="122" action="none" visible="palette_3.isActive" width="354" height="56" resize="mosaic" id="control_3128"/>
+      <Image image="f_right_s_3_png" x="522" y="122" action="none" visible="palette_3.isActive" width="328" height="56" resize="mosaic" id="control_3129"/>
+      <Image image="f_top_left_3_png" x="0" y="0" action="none" visible="palette_3.isActive" id="control_3130"/>
+      <Image image="eq_top_right_3_png" x="522" y="0" action="none" visible="palette_3.isActive" id="control_3131"/>
+      <Image image="f_bot_left_3_png" x="0" y="178" action="none" visible="palette_3.isActive" id="control_3132"/>
+      <Image image="f_bot_right_3_png" x="522" y="178" action="none" visible="palette_3.isActive" id="control_3133"/>
+      <Image image="f_top_s_4_png" x="354" y="0" action="none" visible="palette_4.isActive" width="168" height="122" resize="mosaic" id="control_3134"/>
+      <Image image="f_bot_s_4_png" x="354" y="172" action="none" visible="palette_4.isActive" width="168" height="120" resize="mosaic" id="control_3135"/>
+      <Image image="f_left_s_4_png" x="0" y="122" action="none" visible="palette_4.isActive" width="354" height="56" resize="mosaic" id="control_3136"/>
+      <Image image="f_right_s_4_png" x="522" y="122" action="none" visible="palette_4.isActive" width="328" height="56" resize="mosaic" id="control_3137"/>
+      <Image image="f_top_left_4_png" x="0" y="0" action="none" visible="palette_4.isActive" id="control_3138"/>
+      <Image image="eq_top_right_4_png" x="522" y="0" action="none" visible="palette_4.isActive" id="control_3139"/>
+      <Image image="f_bot_left_4_png" x="0" y="178" action="none" visible="palette_4.isActive" id="control_3140"/>
+      <Image image="f_bot_right_4_png" x="522" y="178" action="none" visible="palette_4.isActive" id="control_3141"/>
+      <Image image="f_top_s_5_png" x="354" y="0" action="none" visible="palette_5.isActive" width="168" height="122" resize="mosaic" id="control_3142"/>
+      <Image image="f_bot_s_5_png" x="354" y="172" action="none" visible="palette_5.isActive" width="168" height="120" resize="mosaic" id="control_3143"/>
+      <Image image="f_left_s_5_png" x="0" y="122" action="none" visible="palette_5.isActive" width="354" height="56" resize="mosaic" id="control_3144"/>
+      <Image image="f_right_s_5_png" x="522" y="122" action="none" visible="palette_5.isActive" width="328" height="56" resize="mosaic" id="control_3145"/>
+      <Image image="f_top_left_5_png" x="0" y="0" action="none" visible="palette_5.isActive" id="control_3146"/>
+      <Image image="eq_top_right_5_png" x="522" y="0" action="none" visible="palette_5.isActive" id="control_3147"/>
+      <Image image="f_bot_left_5_png" x="0" y="178" action="none" visible="palette_5.isActive" id="control_3148"/>
+      <Image image="f_bot_right_5_png" x="522" y="178" action="none" visible="palette_5.isActive" id="control_3149"/>
+      <Image image="f_top_s_6_png" x="354" y="0" action="none" visible="palette_6.isActive" width="168" height="122" resize="mosaic" id="control_3150"/>
+      <Image image="f_bot_s_6_png" x="354" y="172" action="none" visible="palette_6.isActive" width="168" height="120" resize="mosaic" id="control_3151"/>
+      <Image image="f_left_s_6_png" x="0" y="122" action="none" visible="palette_6.isActive" width="354" height="56" resize="mosaic" id="control_3152"/>
+      <Image image="f_right_s_6_png" x="522" y="122" action="none" visible="palette_6.isActive" width="328" height="56" resize="mosaic" id="control_3153"/>
+      <Image image="f_top_left_6_png" x="0" y="0" action="none" visible="palette_6.isActive" id="control_3154"/>
+      <Image image="eq_top_right_6_png" x="522" y="0" action="none" visible="palette_6.isActive" id="control_3155"/>
+      <Image image="f_bot_left_6_png" x="0" y="178" action="none" visible="palette_6.isActive" id="control_3156"/>
+      <Image image="f_bot_right_6_png" x="522" y="178" action="none" visible="palette_6.isActive" id="control_3157"/>
+      <Image image="f_top_s_7_png" x="354" y="0" action="none" visible="palette_7.isActive" width="168" height="122" resize="mosaic" id="control_3158"/>
+      <Image image="f_bot_s_7_png" x="354" y="172" action="none" visible="palette_7.isActive" width="168" height="120" resize="mosaic" id="control_3159"/>
+      <Image image="f_left_s_7_png" x="0" y="122" action="none" visible="palette_7.isActive" width="354" height="56" resize="mosaic" id="control_3160"/>
+      <Image image="f_right_s_7_png" x="522" y="122" action="none" visible="palette_7.isActive" width="328" height="56" resize="mosaic" id="control_3161"/>
+      <Image image="f_top_left_7_png" x="0" y="0" action="none" visible="palette_7.isActive" id="control_3162"/>
+      <Image image="eq_top_right_7_png" x="522" y="0" action="none" visible="palette_7.isActive" id="control_3163"/>
+      <Image image="f_bot_left_7_png" x="0" y="178" action="none" visible="palette_7.isActive" id="control_3164"/>
+      <Image image="f_bot_right_7_png" x="522" y="178" action="none" visible="palette_7.isActive" id="control_3165"/>
       <Image image="hover_carbon" x="68" y="74" width="714" height="158" resize="mosaic" id="control_3166"/>
       <Image image="video_vid_zoom_backing_1" x="672" y="12" lefttop="righttop" visible="palette_1.isActive" id="control_3167" rightbottom="righttop"/>
       <Image image="video_vid_zoom_backing_2" x="672" y="12" lefttop="righttop" visible="palette_2.isActive" id="control_3168" rightbottom="righttop"/>

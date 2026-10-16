@@ -470,6 +470,11 @@ class Builder:
             # without changing its artwork or native FSC sizing.
             layout=self.layout(win,layout_id,width+int(companion),height)
             self.frame(layout,None,width,height,top='eq_top_right')
+            if companion:
+                # The helper owns placement; native dragging would use VLC's
+                # offscreen internal origin and jump the bar out of view.
+                for frame in layout.findall('Image'):
+                    if frame.get('action')=='move':frame.set('action','none')
             carbon=self.bitmap('hover_carbon',rgba('eq_back.png').crop((200,90,220,106)))
             E.SubElement(layout,'Image',image=carbon,x=self.n(34),y=self.n(37),
                          width=self.n(width-68),height=self.n(height-67),resize='mosaic')

@@ -1,6 +1,6 @@
 # Parity and acceptance
 
-The latest candidate includes offline intro-transparency, shutter-gate, default-placement and isolated preview-reset fixes; native evidence below belongs to the earlier review candidate. See `offline-review.json` for exact scope.
+The latest candidate includes original sounds and video hover bars, with targeted native evidence at both scales in `effects-hover-review.json`. Earlier native evidence below retains its recorded version scope. See `offline-review.json` for the complete offline scope.
 
 The current target is complete parity within the user's permitted VLC adaptations. Acceptance belongs to the user. This build is not certified as 100% visually or interactively identical.
 
@@ -24,7 +24,7 @@ The current target is complete parity within the user's permitted VLC adaptation
 - Video is rectangular; the NFS logo remains on the audio controller. Original panel frames omit their unused transparent bottom margins.
 - Media dimensions no longer resize the video panel automatically. The frame follows the user's manual size; native playback and aspect-fit behavior still require review. See [video sizing audit](VIDEO-SIZING.md).
 - Original images remain lossless at 1x. Each animation/needle frame is independently resampled with Lanczos at 2x to avoid bleeding from adjacent frames.
-- Equalizer frequencies follow VLC; removed WMP-only controls include preset/reset, SRS/WOW/TruBass, speaker size, balance, crossfade and visualization presets. The removed right-side EQ rails use the original carbon texture and VLC preamp. Original skin sounds are included through the optional Windows helper; sound and framed-video hover behavior still require native review. See SOUNDS-AND-HOVER.md.
+- Equalizer frequencies follow VLC; removed WMP-only controls include preset/reset, SRS/WOW/TruBass, speaker size, balance, crossfade and visualization presets. The removed right-side EQ rails use the original carbon texture and VLC preamp. The optional Windows helper restores original sounds and framed-video hover. Both scales passed targeted controls and audio-output tests; physical speaker audibility and exhaustive parity remain unverified. Framed-bar mouse-wheel routing remains incorrect; click/drag sliders work. See SOUNDS-AND-HOVER.md.
 - Clock/metadata use a TTF font over the original backing. The clock uses 14 source-scale pixels for legibility. Metadata retains the source palette colors.
 - The original playlist changes the playing-row background with its palette. VLC Playtree exposes a fixed selection background and playing-text color, without a separate playing-row background binding. The single retained Playtree therefore cannot reproduce that palette-dependent row treatment.
 - Palette switching is immediate. The source JavaScript color crossfade has no direct Skins2 layout-action equivalent.

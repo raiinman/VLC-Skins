@@ -1,16 +1,16 @@
 {
   "date": "2026-10-15",
   "prior_native_review_commit": "49a3daee7bb0ac5824f2aaf9bc247f9c4f9ff591",
-  "scope": "Offline sound/hover candidate at both scales; no VLC launch, mouse/keyboard input, or live profile change.",
+  "scope": "Offline verification of current sound/hover build; separate targeted native evidence in effects-hover-review.json.",
   "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams. Replace lower-right alpha-1 black resize images with exact native-scale original corner crops for all seven palettes. Isolate pane palettes from shutter/clock main layout transitions using persistent hidden palette state; preserve legacy colors through explicit saved-state migration. Fullscreen entry points now toggle native video maximize/restore with the original border and feedback assets; native video double-click remains borderless. Video maximum bounds are 8192x4320. Scale solid fills rather than tile each output pixel; flatten video idle backings onto palette-matched original header crops before native caching. Restore source WAVs through an optional process-scoped Windows helper and original-art native/fullscreen and framed hover bars; ready/trigger layout protocol avoids routine SW_SHOW activation.",
   "native_verified": false,
   "native_initialization_seconds": null,
   "packages": {
     "1": {
-      "sha256": "63e373bc865962bee3c14309f2aa64bbc3f4982d80c652dda38dc293443cd74c"
+      "sha256": "f39765f5a97a30a631faeb3c9fa7ef87c93a5196d93c21a8e38521a6392c826b"
     },
     "2": {
-      "sha256": "8281c6abe7381e80c639e73f71f59c890c3351c7f81572b8071788a605835d88"
+      "sha256": "56f77cce425a321386c34a9ef79c99ae9c009eb41b0b931fcd2990dd3bb3ac25"
     }
   },
   "offline_checks": {
@@ -38,27 +38,18 @@
     "video_backings": "14 opaque source header/idle composites per scale; exact pixels, alpha, palette, draw order and mutations pass",
     "solid_fill_cost": "uniform backgrounds require cached scaling; mosaic regression rejected; textured rails retained",
     "sound_effects": "1076 per scale; independent WMS mapping and original playback suffixes",
-    "hover_controls": "28 palette/play states per scale; original pixels, controls and 11 rejected mutations",
+    "hover_controls": "28 palette/play states per scale, original pixels and control access; 12 rejected mutations",
     "helper": "compiled; pure scheduling/hover/manifest/saved-size tests and both actual VLT extraction checks pass"
   },
   "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets. Video omission/true autoresize mutations rejected; visual residual self-checks detect visible-pixel and shifted-layer mutations while ignoring zero-alpha RGB. The old alpha-1 corner bitmap fails the new source-pixel guard and reproduces a black rectangle in the cached-copy model. Temporal gap tests now reject auxiliary main-layout visibility bindings; adapter mutations removing state migration or reintroducing old pane bindings are rejected.",
   "remaining": [
-    "Native skin initialization and audibility at both scales",
-    "Framed hover native discovery/stacking/leave timing and close behavior",
-    "Borderless native controller reveal/hide and framed-controller suppression",
-    "Maximize/restore and double-click regression with new controllers",
-    "Shared YouTube helper deployment requires a coordinated later restart",
-    "Native recheck of the latest candidate",
-    "Exact wall-clock animation pacing",
-    "Final 1x resize interaction",
-    "Embedded video placement and resize",
-    "Audible EQ response",
-    "Native end-to-end preview launcher validation",
-    "Native hover/leave input-gate timing",
-    "Closed-main outer-control layer raise produces localized source-order pixel differences",
-    "Native lower-right appearance/resize recheck; regenerate existing derived pane copies"
+    "Mouse-wheel routing over helper-positioned framed bar uses stale native coordinates; click/drag works.",
+    "Initial-launch 1x intro was sampled too late; 1x replay and 2x initial/replay output measured.",
+    "Previous/next queue progression, all palettes, multi-monitor behavior and every hover/pressed state were not exhaustively tested.",
+    "User listening/visual acceptance remains required; meter activity is not speaker audibility.",
+    "Current running 1x retains loaded assets/helper until a coordinated later restart."
   ],
   "contact_sheet": "startup-frames.png and visual-*.png are offline asset renders, not native captures.",
   "visual_comparison": "visual-comparison.json plus source/converted/residual sheets; fonts/credits excluded, default-size main/information compositions only",
-  "limited_native_review": "fullscreen-review.json and earlier records apply only to their prior exact package hashes, not this sound/hover candidate."
+  "limited_native_review": "Current exact hashes have targeted sound/hover evidence in effects-hover-review.json; earlier reports retain their original version scope."
 }

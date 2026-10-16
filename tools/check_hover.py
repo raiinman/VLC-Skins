@@ -3,6 +3,8 @@
 The native fullscreenController name selects VLC's borderless mouse-motion
 handler. XML has no windowed-video hover event; videoHoverController requires
 the companion. Geometry/hit checks do not prove native timing or HWND behavior.
+The companion's external HWND placement also leaves VLC's internal origin
+unchanged: wheel targeting is a known limitation, outside this offline check.
 """
 import argparse
 from copy import deepcopy
@@ -19,6 +21,9 @@ from skin_support import playback_action
 
 CONTROLLERS = {'fullscreenController': ('fullscreen_controls', 425, 0, 0),
                'videoHoverController': ('video_hover_controls', 426, -31000, -30800)}
+FRAME_IMAGES = {f'{part}_{color}_png' for color in range(1, 8)
+                for part in ('f_top_s', 'f_bot_s', 'f_left_s', 'f_right_s',
+                             'f_top_left', 'eq_top_right', 'f_bot_left', 'f_bot_right')}
 
 
 def verify(assets, scale):
@@ -53,6 +58,11 @@ def verify(assets, scale):
             assert int(layout.get(name, value)) == value, 'Controller must remain fixed size'
         assert layout.find('.//Video') is None, 'Controller must not create another video output'
         assert not layout.findall('.//Image[@action="resizeSE"]')
+        frames = [node for node in layout.findall('Image') if node.get('image') in FRAME_IMAGES]
+        assert len(frames) == len(FRAME_IMAGES) and {node.get('image') for node in frames} == FRAME_IMAGES
+        assert all(node.get('action') == ('none' if companion else 'move') for node in frames), 'Only native fullscreen frame may drag'
+        if companion:
+            assert not window.findall('.//Image[@action="move"]'), 'Companion dragging uses a stale offscreen origin'
         buttons = layout.findall('Button')
         assert len(buttons) == 5
         expected = {'m_prev': 'playlist.previous()', 'm_next': 'playlist.next()',
@@ -120,12 +130,16 @@ def verify(assets, scale):
         for key, box in [('hover_carbon',(200,90,220,106)), ('hover_rail',(198,18,268,25))]:
             compare(assets, key, source_pixels(SOURCE/'eq_back.png').crop(box), scale)
     # The companion adds only one transparent column (two at2x). Visual/control
-    # geometry remains identical; only IDs, text gates and close targets differ.
+    # geometry remains identical; IDs, text gates, close targets and native-only
+    # frame dragging differ. Frame actions were independently asserted above.
     normalized = []
     for layout in layouts:
         clone = deepcopy(layout)
         clone.set('width', str(425*scale))
         for node in clone.iter():
+            if layout.get('id') == 'fullscreen_controls' and node.tag == 'Image' and node.get('image') in FRAME_IMAGES:
+                assert node.get('action') == 'move'
+                node.set('action', 'none')
             node.attrib.pop('id', None)
             for attr in ('visible','action'):
                 if node.get(attr):
@@ -138,7 +152,7 @@ def verify(assets, scale):
 
 def mutations(assets, scale):
     original = assets.tree
-    for failure in ('name', 'visible', 'play', 'slider', 'overlap', 'palette', 'tile', 'unknown-signal', 'trailing-signal', 'closed-paint', 'closed-order'):
+    for failure in ('name', 'visible', 'play', 'slider', 'overlap', 'palette', 'tile', 'unknown-signal', 'trailing-signal', 'closed-paint', 'closed-order', 'helper-drag'):
         assets.tree = deepcopy(original)
         window = assets.tree.find('Window[@id="fullscreenController"]')
         layout = window[0]
@@ -158,6 +172,8 @@ def mutations(assets, scale):
         elif failure == 'closed-order':
             companion = assets.tree.find('Window[@id="videoHoverController"]')
             companion.append(companion[0])
+        elif failure == 'helper-drag':
+            assets.tree.find('.//Layout[@id="video_hover_controls"]/Image[@image="f_top_left_1_png"]').set('action', 'move')
         else:
             previous = layout.find('Button[@up="m_prev_no_png"]')
             previous.set('action', 'nfs_fx_unknown.show();playlist.previous()' if failure == 'unknown-signal'
@@ -212,7 +228,8 @@ def main():
                 assert E.tostring(packaged,method='c14n') == E.tostring(assets.tree,method='c14n'), 'Packaged hover controls differ from audited XML'
         verify(assets,scale)
         mutations(assets,scale)
-        print(f'PASS {scale}x: native/companion bars, transparent closed default, source art, 28 palette/play states, transport/slider hits and 11 rejected mutations; '+('memory only' if args.self_test else 'package XML matches'))
+        print(f'PASS {scale}x: native/companion bars, native-only frame dragging, transparent closed default, source art, 28 palette/play states, transport/slider hits and 12 rejected mutations; '+('memory only' if args.self_test else 'package XML matches'))
+    print('Coverage limit: offline geometry/art checks do not certify native behavior; companion wheel targeting retains VLC\'s stale internal origin.')
 
 
 if __name__ == '__main__':

@@ -9,8 +9,8 @@ original view-load sound. Startup/replay requests intro4.wav after the original
 Skins2 cannot play a WAV directly. `SkinEffects.exe` supplies that capability
 without adding the effects to VLC's playlist or changing media volume/mute.
 The tray menu can mute skin sounds independently. Windows' application mixer
-can also affect helper audio. The earlier silent-media incident was resolved
-by unmuting VLC in Windows; it was separate from missing skin effects.
+can also affect helper audio. Process audio-meter activity establishes helper
+output, rather than speaker audibility or an acoustic recording.
 
 `fullscreenController` is VLC's special native auto-revealing controller for
 borderless fullscreen. The original-art bar has previous, play/pause, stop,
@@ -23,6 +23,15 @@ it shows the framed bar on video hover, retains it while hovered, and hides it
 after 1.8 seconds without motion or when another application has focus. Native
 VLC controls handle playback, seeking and volume. No transparent input layer
 covers Video, so native double-click and context-menu input remain available.
+While the framed bar is requested open, the helper reasserts its stacking order
+on every poll without activating it. Playback can reorder VLC's native windows
+even when the bar's position has not changed. Framed maximize does not suppress
+the bar: the borderless blocker must be a visible, unowned `SkinWindowClass`
+window covering its monitor in the selected VLC process.
+
+The helper owns framed-bar placement. Its background does not initiate native
+dragging, which would use VLC's stale internal offscreen origin and make the
+bar jump away. The separate native borderless fullscreen bar remains draggable.
 The helper does not move the actual pointer, send keyboard input, change focus,
 or stop VLC. It validates the installed VLC executable, PID and start time.
 
@@ -35,6 +44,11 @@ only to that VLC process's dedicated command images; ordinary media actions
 remain in XML. Sound files are extracted from a five-file whitelist into an
 instance-specific temporary directory and removed on exit. This implementation
 adds no browser credentials, network interface or HTTP control password.
+
+Optional `--diagnostic-log` requires an explicit absolute path and creates a new
+file. It records changed discovery, geometry, hover and sound-dispatch states,
+without window titles, media identifiers or credentials. Normal operation does
+not create this diagnostic log.
 
 Use `Start-1x.cmd` or `Start-2x.cmd` from the complete support bundle. Each starts
 a separate VLC process and helper, with a persistent private per-scale profile
@@ -49,8 +63,37 @@ Compilation and archive validation do not establish audible output, native
 window discovery, overlay stacking, hover timing or fullscreen suppression.
 Initial skin window creation still follows VLC's normal startup window-show
 behavior; routine layout switches avoid repeating that activation path.
-Those behaviors still require a coordinated live test at both scales. Earlier
-fullscreen native reports apply only to the package hashes they recorded.
+
+## Targeted native review
+
+Final 1x VLT `f39765f5a97a`, 2x VLT `56f77cce425a` and helper
+`c579c3fd6b43` passed targeted native tests in separate private instances.
+Both framed bars revealed above playback and operated pause/resume, seek
+dragging and volume. Framed maximize filled 1920x1080 and restored the original
+708x440 / 1416x880 rectangles. Double-click entered/exited native borderless
+fullscreen at both scales; each native fullscreen bar revealed and paused video.
+Final 1x also passed stop, idle-bar display and manual hide. The first stop hit
+had no effect; a clear second hit stopped playback. Earlier scratch-build tests
+established hover hold/hide and native fullscreen resume/zoom exit separately.
+
+All five original effects produced positive helper-process audio energy at
+both scales. Every positive final-session reading was unmuted at volume 1.
+The 2x initial intro and both intro replays were measured; initial 1x startup
+was sampled too late to assess. Information/logo intervals contain unavailable
+meter reads, so these results do not prove uninterrupted waveform playback or
+physical speaker audibility. Exact sanitized findings and hashes are recorded
+in [effects-hover-review.json](effects-hover-review.json).
+
+User-running VLC processes and active skin-profile files were preserved. Only
+the generated clip's shared Qt resume time changed during testing; the exact
+pre-test Qt bytes were restored after owned test players closed. The current
+running 1x session was not reloaded or redeployed.
+
+Wheel routing over the helper-positioned framed bar remains incorrect because
+VLC retains its original internal coordinates. Click and drag controls passed.
+Queue progression, every palette/state, multi-monitor behavior and user
+listening/visual acceptance remain outside this targeted pass. Complete 100%
+visual and interactive parity is not certified.
 
 Official VLC 3.0.23 sources: [FscWindow](https://github.com/videolan/vlc/blob/3.0.23/modules/gui/skins2/src/fsc_window.cpp),
 [builder](https://github.com/videolan/vlc/blob/3.0.23/modules/gui/skins2/parser/builder.cpp),

@@ -20,6 +20,8 @@ None.
 
 SOUNDS-AND-HOVER.md and effects-hover-review.json own original sound mappings, optional helper requirements and offline/runtime boundaries. Preserve earlier native report hashes; newly generated sound/hover candidates have no inherited native certification. Record installed files separately from running in-memory skins and never imply a live session was reloaded during background work.
 
+Separate scratch-helper/preceding-VLT observations from final-package native checks. Sound dispatch and positive target-process/session peaks do not establish speaker audibility or uninterrupted audio when samples are unavailable. Preserve the framed-bar wheel-routing limitation and do not infer 100% parity from targeted click/drag, maximize or fullscreen tests. Runtime checks still in progress must stay marked pending.
+
 
 PARITY.md owns acceptance and deviations; SOURCES.md owns provenance; VERIFICATION.md owns check evidence and limits. preview.png is an asset-rendered comparison, not a native screenshot. Keep native RC playback, fullscreen keyboard checks, offline hit modeling and actual skin mouse review distinct.
 
