@@ -27,7 +27,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: both skins include a flat matching hover strip, centered speaker, lowered filename text, restored native tooltips and hover on inactive exposed video panes. All17 offline checks and68 private native exposure checks pass. The coordinated1x update is in progress; physical tooltip appearance remains unverified.** See [current fixes and limits](docs/UI-POLISH.md).
+**Status: both skins include a flat matching hover strip, centered speaker, lowered filename text, restored native tooltips and hover on inactive exposed video panes. All17 offline checks and78 private native assertions pass. The refined1x update is coordinated with the companion; live1x tooltip readability was observed on the preceding revision, with2x visual review still pending.** See [current fixes and limits](docs/UI-POLISH.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -53,7 +53,7 @@ The fullscreen button and the video pane's plus button fill the monitor **with t
 
 The support bundle's `Start-1x.cmd` and `Start-2x.cmd` also run the original skin sounds and framed video hover controls through a small Windows helper. Borderless fullscreen uses VLC's native hover controller. The launchers preserve existing sessions and use private per-scale settings. A VLT loaded alone needs the helper for sounds and framed hover. [Behavior and test limits](docs/SOUNDS-AND-HOVER.md).
 
-The new hover strip stays 360 × 64 pixels on both skins, using original small transport buttons, a thin seek line and expandable volume. The framed strip uses 85% opacity; native fullscreen retains VLC's fade. Main filenames use larger white scrolling text. The bundled Lua interface requests VLC's native volume overlay when the dial changes. The current packages are installed in the user library; the fresh visible 1x session now uses the matching compact helper. [Compact controls](docs/COMPACT-CONTROLS.md).
+The new hover strip stays 360 × 64 pixels on both skins, using original small transport buttons, a thin seek line and expandable volume. The framed strip uses an opaque matching charcoal fill; native fullscreen retains VLC's fade. Main filenames use larger white scrolling text. The bundled Lua interface requests VLC's native volume overlay when the dial changes. The current packages are installed in the user library; the fresh visible 1x session now uses the matching compact helper. [Compact controls](docs/COMPACT-CONTROLS.md).
 
 The optional [companion HUD addon](docs/COMPANION-HUD.md) places Settings and CC in the existing compact strip without enlarging it. It requires companion-owned quality/caption wiring and is not added as an inert control to standalone VLTs.
 

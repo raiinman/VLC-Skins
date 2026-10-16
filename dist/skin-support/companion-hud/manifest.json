@@ -6,63 +6,63 @@
     {
       "id": "yt_hud_settings_no",
       "file": "settings_no.png",
-      "sha256": "a4bab7f215f3c8c1616d27efa680fb192a1502634a6e354adfff743f6b442eed",
+      "sha256": "75ee5e40cb73a7708d1e10c7ec90fe3cf857c8c2673bea9dfe74da5d20d87ae5",
       "width": 19,
       "height": 19
     },
     {
       "id": "yt_hud_settings_hov",
       "file": "settings_hov.png",
-      "sha256": "52c02c7d4a5889f850647e29147e5269c4f9ac946b17de8f7e9292c07a0d9a16",
+      "sha256": "8f854471208f1baf6ffcb9684cf344fab867661311e27695f9501891c1369adc",
       "width": 19,
       "height": 19
     },
     {
       "id": "yt_hud_settings_do",
       "file": "settings_do.png",
-      "sha256": "6ecbc3dd75cc2da8e9d770f45b561bc26e762753597d9a8c5770c99139f278a0",
+      "sha256": "b842abde58623ee7c89022dac2de4b7ea6e711fa8f0642f11a6846b737d108b8",
       "width": 19,
       "height": 19
     },
     {
       "id": "yt_hud_cc_off_no",
       "file": "cc_off_no.png",
-      "sha256": "ce011c5297e36058df4ce7a041579f519a2dcc496be5b2f1a1112e7de85cf8f9",
+      "sha256": "eeada64598fb7146c1de63f21a5df67a8bd2e999b3aca55096781df45f01a36b",
       "width": 19,
       "height": 19
     },
     {
       "id": "yt_hud_cc_off_hov",
       "file": "cc_off_hov.png",
-      "sha256": "f1dc73e11d370681e1aba06716909b638596be2ad456a8d2c94080124573da0a",
+      "sha256": "aa9d00e24811960db73513853245c775e1d41dcf6bd0b02b57c752245023dd56",
       "width": 19,
       "height": 19
     },
     {
       "id": "yt_hud_cc_off_do",
       "file": "cc_off_do.png",
-      "sha256": "b900b0c33905601b6dfab4c4ee51a2c0fe65207215c26a262a7c8451beb54770",
+      "sha256": "a494fa586209cb26e84774064fe4db0fd88a2f3dc39811c309ed84bebadd04cd",
       "width": 19,
       "height": 19
     },
     {
       "id": "yt_hud_cc_on_no",
       "file": "cc_on_no.png",
-      "sha256": "25794f5935482d42a6ce9a0d674c038ece95af6a6fddbad37c42322b2227fadf",
+      "sha256": "9834ab10315bf520695849e0da7eb94dcf46e2facb9484be5fa7c527d8efda4a",
       "width": 19,
       "height": 19
     },
     {
       "id": "yt_hud_cc_on_hov",
       "file": "cc_on_hov.png",
-      "sha256": "1ec24e3187113ecf6a1f13e00c56bba3b8d6529944422f875da3e078e9b1719d",
+      "sha256": "17e4ece1859284de4af5227de1b361de1b504ad0368cc7c8fafc9f634a1a7831",
       "width": 19,
       "height": 19
     },
     {
       "id": "yt_hud_cc_on_do",
       "file": "cc_on_do.png",
-      "sha256": "fa3adeef6d0ba0286ecf72055f647a633656f6b842230ae5d39377846fadbace",
+      "sha256": "2aa81b53c18dabe48d2313596039eacd9b84174a43fcd1c8ed789c2d1ed55c18",
       "width": 19,
       "height": 19
     },

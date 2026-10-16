@@ -1,13 +1,8 @@
-# Verification evidence — 2026-10-15
+# Verification evidence, 2026-10-16
 
-Latest UI revision: see UI-POLISH.md, ui-polish-review.json and
-native-hover-review.json for exact74c5/c9ed packages and matching helper.
-All17 offline checks pass;68mandatory private native checks cover real embedded
-video exposure, stale/covered/hidden/minimized/restored windows, bar retention
-and native tooltip creation on both scales. The optional private motion probe
-did not display tooltips; physical timer/above-pointer appearance remains
-unverified. The following loading/rollout reports retain preceding hashes.
+Current UI revision: UI-POLISH.md and ui-polish-review.json identify exact479bed/4a8954 packages and matching helper9eb268. All17 offline checks pass;78private native assertions cover real embedded video exposure, stale/covered/hidden/minimized/restored windows, bar retention, all8alpha255opacity readbacks and native tooltip creation on both scales. Four protected processes,23unique guard paths and the input desktop remained unchanged; test children closed. These tests call shared product-source methods compiled into a private fixture, not the deployed helper EXE. First failed cover assertion is retained separately; its precise cause is not proven. Live1x tooltip readability and companion Settings/CC evidence are separately scoped. Physical2x tooltip placement and full parity remain unverified.
 
+The following historical loading/rollout reports retain their preceding exact hashes.
 
 The current loading fix passes native initialization: **1x8.27s /517.8MiB**,
 **2x28.27s /1807.2MiB**, both within the existing30-second budget. Exact hashes,

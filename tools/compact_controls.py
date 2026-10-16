@@ -25,17 +25,8 @@ def carbon():
 
 
 def volume_icon(state):
-    image = Image.new('RGBA',(23,23)); draw = ImageDraw.Draw(image)
-    colors = {'no':((14,22,29),(62,76,85),(194,220,234)),
-              'hov':((20,34,43),(32,174,221),(242,250,255)),
-              'do':((8,14,20),(32,174,221),(242,250,255))}
-    fill,outline,glyph = colors[state]
-    draw.ellipse((1,1,21,21),fill=fill+(255,),outline=outline+(255,))
-    # Keep the complete speaker/waves centered at (11,11), clear of the ring.
-    draw.polygon([(3,9),(6,9),(10,5),(10,17),(6,13),(3,13)],fill=glyph+(255,))
-    draw.arc((5,6,15,16),-55,55,fill=glyph+(255,),width=1)
-    draw.arc((5,4,19,18),-55,55,fill=glyph+(255,),width=1)
-    return image
+    from hud_button_art import button_icon
+    return button_icon('speaker',state,23)
 
 
 def add_controllers(builder):

@@ -1,20 +1,20 @@
 {
-  "scope": "Both user-library VLTs installed with verified backups; distinct from running companion source.",
+  "scope": "Both refined user-library VLTs installed with verified backups; running companion update is separate.",
   "results": [
     {
       "scale": 1,
       "library": "APPDATA/vlc/skins",
-      "before_sha256": "f628659a9b325b7fa754c4148535ecac0d51e8750d2ed9bfb0893a59ecd20c63",
-      "installed_sha256": "74c5fab95d53a5ba0a50f04b6d93344c48e0a5fd9bd795ab6c9d981a1340ad68",
+      "before_sha256": "74c5fab95d53a5ba0a50f04b6d93344c48e0a5fd9bd795ab6c9d981a1340ad68",
+      "installed_sha256": "479bedabc8ddefb66353116b91ab4aa903756132edc41f6d2ade163c4d52974f",
       "backup_verified": true
     },
     {
       "scale": 2,
       "library": "APPDATA/vlc/skins",
-      "before_sha256": "a1bfe1a08a00a28eb66ef30a38a38db1d988f34a918dc2dfc0d5eda76abc1c09",
-      "installed_sha256": "c9edaafb073bf6cefd26c963fc62d7234c35ce1764e592b9533537fd0d258aa4",
+      "before_sha256": "c9edaafb073bf6cefd26c963fc62d7234c35ce1764e592b9533537fd0d258aa4",
+      "installed_sha256": "4a895449960dfbdab30338ffe2d293890ff5199059995b66c18a63995c7c2577",
       "backup_verified": true
     }
   ],
-  "program_files": "Previous write was denied; ProgramFiles copies remain unchanged. User-library packages are current."
+  "program_files": "Previous denied ProgramFiles library writes were not repeated; those copies remain unchanged."
 }

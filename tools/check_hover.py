@@ -32,27 +32,28 @@ def xy(node):
 
 
 def volume_icon_pixels(icon, state):
-    """Independent geometry oracle: centered glyph, unchanged circular backing."""
-    colors = {'no': ((14,22,29),(62,76,85),(194,220,234)),
-              'hov': ((20,34,43),(32,174,221),(242,250,255)),
-              'do': ((8,14,20),(32,174,221),(242,250,255))}
-    fill, outline, glyph = colors[state]
+    """Independent native-pixel checks for the source-matched beveled speaker."""
+    import math
     assert icon.size == (23,23)
-    backing = Image.new('RGBA', icon.size)
-    ImageDraw.Draw(backing).ellipse((1,1,21,21), fill=fill+(255,), outline=outline+(255,))
-    assert icon.getchannel('A').tobytes() == backing.getchannel('A').tobytes(), 'Speaker must retain circular hit footprint'
-    inner = Image.new('L', icon.size)
-    ImageDraw.Draw(inner).ellipse((3,3,19,19), fill=255)
+    alpha = icon.getchannel('A')
+    assert alpha.getbbox() == (1,1,22,22), 'Speaker circular footprint changed'
+    assert all(alpha.getpixel((x,y)) == 0 for x in range(23) for y in range(23)
+               if x in (0,22) or y in (0,22)), 'Speaker outer margin must be transparent'
+    assert any(0 < value < 255 for value in alpha.tobytes()), 'Circle edge must be antialiased'
     mask = Image.new('L', icon.size)
     for y in range(23):
         for x in range(23):
             pixel = icon.getpixel((x,y))
-            if pixel == glyph+(255,):
-                assert inner.getpixel((x,y)), ('Speaker glyph touches circular ring', state, x, y)
+            if min(pixel[:3]) >= 90 and pixel[3]:
+                assert math.hypot(x-11,y-11) <= 7, ('Speaker ink touches inner bevel',state,x,y)
                 mask.putpixel((x,y),255)
-            else:
-                assert pixel == backing.getpixel((x,y)), ('Speaker backing changed', state, x, y)
-    assert mask.getbbox() == (3,5,20,18), ('Speaker glyph must center on (11,11)', state, mask.getbbox())
+    expected = (5,7,18,15) if state == 'hov' else (5,8,18,15)
+    assert mask.getbbox() == expected, ('Speaker glyph must remain small and centered',state,mask.getbbox())
+    # A smooth neutral highlight and recessed dark lower face replace the old
+    # flat cyan-outline disk. These probes sit outside the glyph.
+    top, bottom = icon.getpixel((11,4)), icon.getpixel((11,18))
+    assert top[3] == bottom[3] == 255 and top[0]-bottom[0] >= 16, 'Missing beveled face lighting'
+    assert max(top[:3])-min(top[:3]) <= 6, 'Face must remain neutral dark metal'
     return mask
 
 
@@ -178,7 +179,7 @@ def verify(assets, scale):
                 key = f'compact_volume_{suffix}_png'
                 assert volume.get(attr+state) == key
                 icon = assets.image(key)
-                assert icon.size == (23, 23) and set(icon.getchannel('A').tobytes()) == {0, 255}
+                assert icon.size == (23, 23)
                 volume_icon_pixels(icon, suffix)
         assert len({assets.image(f'compact_volume_{s}_png').tobytes() for s in ('no', 'hov', 'do')}) == 3
         own_gate = layout_id+'.isActive' if companion else window_id+'.isVisible'
@@ -277,11 +278,11 @@ def mutations(assets, scale):
                 image = original_image(key)
                 if key == 'compact_volume_no_png':
                     image = image.copy()
-                    glyph = (194,220,234,255)
+                    glyph = (210,218,224,255)
                     if failure == 'speaker-ring':
                         image.putpixel((20,11),glyph)
                     else:
-                        points = [(x,y) for y in range(23) for x in range(23) if image.getpixel((x,y)) == glyph]
+                        points = [(x,y) for y in range(23) for x in range(23) if min(image.getpixel((x,y))[:3]) >= 90]
                         for x,y in points: image.putpixel((x,y),(14,22,29,255))
                         for x,y in points: image.putpixel((x+1,y),glyph)
                 return image

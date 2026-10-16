@@ -1,24 +1,25 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-16",
   "scope": "UI refinement and native hover/tooltip correction; historical native reports retain their tested hashes.",
   "packages": {
     "1": {
-      "sha256": "74c5fab95d53a5ba0a50f04b6d93344c48e0a5fd9bd795ab6c9d981a1340ad68",
-      "bytes": 52690022
+      "sha256": "479bedabc8ddefb66353116b91ab4aa903756132edc41f6d2ade163c4d52974f",
+      "bytes": 52692219
     },
     "2": {
-      "sha256": "c9edaafb073bf6cefd26c963fc62d7234c35ce1764e592b9533537fd0d258aa4",
-      "bytes": 180190740
+      "sha256": "4a895449960dfbdab30338ffe2d293890ff5199059995b66c18a63995c7c2577",
+      "bytes": 180193027
     }
   },
-  "helper_sha256": "1fa8a107ff1cc303541bd1a0959b96efa7869eb012cf096ad502495107ce1b15",
+  "helper_sha256": "9eb268f597236db8217717d075ef1a2e14c46fb903d932aa7504d59925f5fc59",
   "changes": {
     "filename": "Text at62,119 source pixels, two below existing backing top117; backing/font/gauge/logo unchanged",
-    "speaker": "Glyph centered at11,11 inside unchanged23x23 circle and all three feedback states",
-    "background": "Flat opaque smokedcharcoal13,17,21 with unchanged rounded silhouette/subtle border and framed217/255 opacity",
+    "speaker": "Smaller centered inset speaker glyph on source-matched dark beveled23px face; three feedback states; original transport artwork preserved",
+    "background": "Flat opaque RGB13,17,21 with unchanged rounded silhouette/subtle border and framed255/255 opacity; native fullscreen fading remains VLC-owned",
     "inactive_hover": "Foreground ownership no longer required; actual exposed selected-PID video/openbar under pointer remains mandatory",
     "tooltips": "Theme.defaultfont native12px restores creation; custom16px binding was invalid because Theme builds before custom Fonts. Exact selected-PID native tooltip is moved above pointer without activation.",
-    "private_data": "Include unchanged native FreeSans, skin.dtd and skin.catalog beside Lua observer data so VLC_DATA_PATH retains Skins2 dependencies"
+    "private_data": "Include unchanged native FreeSans, skin.dtd and skin.catalog beside Lua observer data so VLC_DATA_PATH retains Skins2 dependencies",
+    "companion_buttons": "Smaller Settings/CC glyphs in consistent19px beveled faces; transparent outer pixel margin; addon geometry/protocol unchanged"
   },
   "offline_checks": {
     "conversion_suite": "17pass both scales",
@@ -29,11 +30,37 @@
     },
     "hover": "8 playback/volume states and19 rejected mutations per scale",
     "readability": "42 filename layouts and6 rejected mutations per scale",
-    "helper": "Compiler and pure tests pass"
+    "helper": "Compiler and pure tests pass",
+    "independent_review": "No actionable issues in shared beveled faces, inset glyphs, antialiased transparent margins, feedback, existing dependencies or original transport preservation."
   },
-  "native_evidence": "native-hover-review.json:68mandatory private native checks pass on both actual skins, with real embedded video and native tooltip creation. Optional private motion did not show visible tooltip; timer/above-pointer appearance remains unverified.",
+  "native_evidence": "native-hover-review.json:78mandatory private native assertions pass on both exact currentVLTs. All8synthetic/actual bar opacity reads alpha255/flags2/layeredtrue. Embedded video, native tooltip creation, native coverage setup/strict covered rejection and stale/hidden/minimized/restored exposure checks pass. Fixture compiles shared productsource; deployed helper EXE not launched by test. Optional motion did not showtooltip.",
   "limits": [
     "Pillow asset renders do not certify native glyph placement/scrolling",
-    "Full end-to-end physical hover, opacity, timing and audio acceptance require separate observation"
-  ]
+    "Private tests do not certify full helper timing/audio; live1x tooltip was observed visible, but pixels and above-pointer placement were not captured by this read-only probe."
+  ],
+  "live_tooltip_readonly_observation": {
+    "scope": "Prior live1x74c5/c9ed revision, read-only exact selected-PID native tooltip identity. No pointer, input, focus or window mutations.",
+    "pid": 104864,
+    "creation_filetime": 134366091054058109,
+    "tooltip_windows": [
+      {
+        "exact_identity": true,
+        "visible": true,
+        "width": 105,
+        "height": 21
+      }
+    ],
+    "process_alive": true,
+    "input_desktop_unchanged": true
+  },
+  "prior_native_evidence": "native-hover-before-button-refinement.json retains68passing checks on74c5/c9ed packages; current native report is separate",
+  "failed_native_attempt": "native-hover-opacity-first-attempt.json: first run failed2xcovered-window assertion before fixture confirmed coverage. All protected processes/files/inputdesktop remained unchanged; no passing result inferred.",
+  "native_preservation": {
+    "protected_process_count": 4,
+    "unique_guarded_paths": 23,
+    "processes_alive": true,
+    "files_unchanged": true,
+    "input_desktop_unchanged": true,
+    "owned_children_closed": true
+  }
 }

@@ -48,6 +48,7 @@ namespace NfsSkinSupport
     internal static class HoverFixtureApi
     {
         [DllImport("user32.dll")] internal static extern bool ShowWindow(IntPtr window, int command);
+        [DllImport("user32.dll", SetLastError = true)] internal static extern bool GetLayeredWindowAttributes(IntPtr window, out uint colorKey, out byte alpha, out uint flags);
         [DllImport("user32.dll")] internal static extern IntPtr GetThreadDesktop(uint thread);
         [DllImport("kernel32.dll")] internal static extern uint GetCurrentThreadId();
         [DllImport("user32.dll", CharSet = CharSet.Unicode)] internal static extern bool GetUserObjectInformation(IntPtr handle, int index, StringBuilder text, int length, out int needed);
@@ -70,6 +71,8 @@ namespace NfsSkinSupport
     {
         private static readonly List<object> cases = new List<object>();
         private static readonly List<object> actualResults = new List<object>();
+        private static readonly List<object> opacityReadbacks = new List<object>();
+        private static readonly List<object> coverageReadbacks = new List<object>();
         private static Point point;
         private static void Check(int scale, string name, bool condition)
         {
@@ -79,6 +82,22 @@ namespace NfsSkinSupport
         private static bool Read(IntPtr video, IntPtr bar, bool barOpen, int pid, out bool onVideo, out bool onBar, out IntPtr root)
         {
             return HoverDecision.ReadExposure(pid, video, bar, barOpen, point, out root, out onVideo, out onBar);
+        }
+        private static void CheckOpacity(int scale, string prefix, IntPtr bar)
+        {
+            // Exercise the product implementation, not a copied alpha constant
+            // or a fixture-only SetLayeredWindowAttributes call.
+            for (int pass = 0; pass < 2; pass++)
+            {
+                Native.SetBarOpacity(bar);
+                uint colorKey, flags; byte alpha;
+                bool read = HoverFixtureApi.GetLayeredWindowAttributes(bar, out colorKey, out alpha, out flags);
+                bool layered = (Native.ReadStyle(bar, -20) & 0x80000) != 0;
+                opacityReadbacks.Add(new { scale = scale, bar = prefix, reassert = pass != 0,
+                    readSucceeded = read, alpha = alpha, flags = flags, layered = layered });
+                Check(scale, prefix + (pass == 0 ? "-opaque-alpha255" : "-opaque-alpha255-reassert"),
+                    read && flags == 2 && alpha == 255 && layered);
+            }
         }
         private static void Scale(int scale)
         {
@@ -106,6 +125,7 @@ namespace NfsSkinSupport
                 Check(scale, "foreign-pid-rejected", !exposed && !onVideo && !onBar);
                 child.Hide();
                 bar.Place(point.X-20, point.Y-20, 361, 64);
+                CheckOpacity(scale, "synthetic-framed-bar", bar.Handle);
                 exposed = Read(video.Handle, bar.Handle, true, pid, out onVideo, out onBar, out root);
                 Check(scale, "open-bar-root", exposed && !onVideo && onBar && root == bar.Handle);
                 Check(scale, "stationary-open-bar-retained", HoverDecision.Show(exposed, false, false, onBar, 10000));
@@ -226,8 +246,25 @@ namespace NfsSkinSupport
                     Check(scale, "actual-embedded-vout-child", childObserved);
                     using (var blocker = new HoverFixtureWindow(point.X-30, point.Y-30, 100, 100, IntPtr.Zero))
                     {
-                        blocker.Place(point.X-30, point.Y-30, 100, 100);
+                        // VLC can asynchronously raise its video after creating
+                        // the vout. Establish actual native coverage before
+                        // testing the product rejection, rather than assuming a
+                        // cross-process SetWindowPos has settled immediately.
+                        watch.Restart();
+                        int placements = 0;
+                        IntPtr nativeRoot = IntPtr.Zero;
+                        do
+                        {
+                            blocker.Place(point.X-30, point.Y-30, 100, 100);
+                            Pause(); placements++;
+                            nativeRoot = Native.GetAncestor(Native.WindowFromPoint(point), 2);
+                        } while (nativeRoot != blocker.Handle && watch.ElapsedMilliseconds < 3000);
+                        Check(scale, "actual-occluder-native-coverage-established", nativeRoot == blocker.Handle);
                         exposed = Read(video, bar, false, target.Pid, out onVideo, out onBar, out root);
+                        coverageReadbacks.Add(new { scale = scale, placements = placements,
+                            nativeCoverageEstablished = nativeRoot == blocker.Handle,
+                            productRoot = root == blocker.Handle ? "fixture-occluder" : root == video ? "selected-video" : root == bar ? "selected-bar" : "other",
+                            exposed = exposed, pointerOnVideo = onVideo, pointerOnBar = onBar });
                         Check(scale, "actual-covered-video-no-show", !exposed && root == blocker.Handle && !HoverDecision.Show(exposed, false, true, true, 0));
                         blocker.Hide();
                     }
@@ -255,6 +292,7 @@ namespace NfsSkinSupport
                         Pause();
                     }
                     Check(scale, "actual-bar-open-layout", target.Owns(bar) && Native.GetWindowRect(bar, out bounds) && bounds.Width == 361 && bounds.Height == 64);
+                    CheckOpacity(scale, "actual-framed-bar", bar);
                     Move(target, bar, point.X-100, point.Y-40);
                     exposed = Read(video, bar, true, target.Pid, out onVideo, out onBar, out root);
                     Check(scale, "actual-open-bar-idle-retention", exposed && onBar && HoverDecision.Show(exposed, false, false, onBar, 10000));
@@ -316,7 +354,7 @@ namespace NfsSkinSupport
                 }
             }
             catch (Exception problem) { error = problem.GetType().Name + ": " + problem.Message; }
-            var report = new { schemaVersion = 1, passed = error == null, error = error, cases = cases, actualVlc = actualResults,
+            var report = new { schemaVersion = 1, passed = error == null, error = error, cases = cases, actualVlc = actualResults, opacityReadbacks = opacityReadbacks, coverageReadbacks = coverageReadbacks,
                 fixedTestPoint = true, pointerInputInjected = false, privateDesktop = true,
                 scope = "Shared ReadExposure native topology and Show decision; optional actual VLT idle/playing windows, foreground-independent predicate. No complete helper timer/audio or user-input end-to-end certification.",
                 cleanup = "All fixture windows disposed before report; desktop/process cleanup verified by Python owner." };

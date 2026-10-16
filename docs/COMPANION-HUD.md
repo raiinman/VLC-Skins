@@ -1,7 +1,7 @@
 # Settings and CC in the video hover strip
 
-This optional addon belongs to the companion-derived skin. Standalone VLTs and
-the validated helper stay unchanged. The compact strip remains 360x64 pixels at
+This optional addon belongs to the companion-derived skin. Standalone VLTs receive no inactive Settings/CC buttons. The matching helper
+uses an opaque framed bar, and the core speaker shares the same beveled face style. The compact strip remains 360x64 pixels at
 both scales. The existing seek line shortens from 336 to 288 pixels, leaving
 19x19 Settings and CC buttons at (307,2) and(332,2). Transport, time, volume,
 fullscreen and close controls retain their positions and original assets.
@@ -44,3 +44,10 @@ thumb clearance and unchanged original payloads/compression. It rejects 10
 mutations per scale, including overlap between alpha-1 native hit pixels.
 Host dispatch, quality/caption preservation and running-session adoption require
 separate companion evidence. Exact hashes are in companion-hud-review.json.
+
+The refined glyphs are deliberately smaller inside neutral beveled dark faces,
+matching the original transport family. Native Settings opening, a readable
+above-bar tooltip and actual CC off/on were observed on the preceding live1x
+revision. Popup submenu automation could not retain the transient menu, so
+submenu selection is not certified. The coordinated refined rollout is recorded
+separately in ui-polish-rollout.json.

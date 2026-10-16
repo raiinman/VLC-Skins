@@ -195,6 +195,12 @@ def main():
         (output/'preservation.json').write_text(json.dumps(dict(before=hashes_before, after=hashes_after), indent=2)+'\n', encoding='utf-8')
         report['source_sha256'] = sha(compiled_product)
         report['fixture_sha256'] = sha(compiled_fixture)
+        report['fixture_executable_sha256'] = sha(executable)
+        report['packaged_helper_sha256_reference_only'] = sha(ROOT/'dist/skin-support/SkinEffects.exe')
+        report['deployed_helper_executable_launched'] = False
+        report['binary_scope'] = ('The private fixture executable compiles immutable copies of product source and fixture source. '
+                                  'It calls shared product methods directly. The packaged helper hash is reference only; '
+                                  'neither the packaged nor the user-session helper executable is launched by this test.')
         report['passed'] = bool(report.get('passed') and report.get('fixture_exit_code') == 0 and not cleanup_error and report['input_desktop_unchanged']
                               and report['guarded_files_unchanged'] and all(item['alive'] for item in report['protected_processes'])
                               and report.get('skin_copies_unchanged', False))

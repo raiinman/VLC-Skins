@@ -150,7 +150,7 @@ namespace NfsSkinSupport
                 if (IntPtr.Size == 8) SetWindowLong64(hwnd, -20, new IntPtr(style | 0x80000));
                 else SetWindowLong32(hwnd, -20, (int)(style | 0x80000));
             }
-            SetLayeredWindowAttributes(hwnd, 0, 217, 2);
+            SetLayeredWindowAttributes(hwnd, 0, 255, 2);
         }
     }
 

@@ -1,8 +1,8 @@
 # Parity and acceptance
 
-Current offline packages include the lossless storage/static-backing optimization recorded in STORAGE-OPTIMIZATION.md. Every packaged bitmap pixel, animation setting and active Info route control/paint order is compared with the preceding build. Native startup/RSS tests show lower memory but slower loading, with2xfailing30s (LOADING-AND-MEMORY.md); full visual review remains pending; earlier native timing and GUI evidence retains its original scope.
+Current packages retain exact original artwork and animation timing, the balanced-atlas loading fix, Info page/frame fades, slightly roomier resizable playlist and readable filename text. The hover strip uses an opaque matching charcoal fill and original transport art, with smaller source-matched beveled speaker and optional companion Settings/CC buttons. Native tooltips use supported defaultfont12px; the helper places the selected player's tooltip above the pointer. Exposed inactive video panes can reveal the controls; covered, hidden, minimized and stale locations remain rejected.
 
-The latest candidate also restores Info page/frame fades, enlarges tooltips with helper placement above the pointer, and slightly enlarges the playlist with clearer text and optional text-size customization. It has offline evidence only in `info-fades-review.json`. The preceding compact candidate is recorded in `compact-review.json`; targeted native evidence in `effects-hover-review.json` applies to older large-bar packages/helper. See `offline-review.json` for the current offline scope.
+See UI-POLISH.md and ui-polish-review.json for the latest exact hashes and scoped native tests. Earlier loading reports remain historical: the memory-first candidate failed its startup gate, and the subsequent balanced build passed at8.27/28.27seconds. Current cosmetic hashes do not inherit those exact-hash timings. Full visual acceptance remains pending.
 
 The current target is complete parity within the user's permitted VLC adaptations. Acceptance belongs to the user. This build is not certified as 100% visually or interactively identical.
 

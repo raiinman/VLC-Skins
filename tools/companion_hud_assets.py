@@ -33,41 +33,9 @@ def sha256(data):
 
 
 def icon(kind, state):
-    """19 physical pixels, vector/font glyphs sampled at8x for clean edges."""
-    sample = 8
-    image = Image.new('RGBA', (19*sample, 19*sample))
-    draw = ImageDraw.Draw(image)
-    fill, outline, glyph = COLORS[state]
-    if kind == 'cc_on':
-        glyph = (32,174,221) if state == 'no' else (102,218,255)
-    draw.ellipse(tuple(v*sample for v in (1,1,17,17)),
-                 fill=fill+(255,), outline=outline+(255,), width=sample)
-    if kind == 'settings':
-        points = []
-        # Eight conventional teeth; a centered circular axle stays dark.
-        for tooth in range(8):
-            for fraction, radius in ((-.5,4.3),(-.27,5.8),(.27,5.8),(.5,4.3)):
-                angle = (tooth+fraction)*math.tau/8
-                points.append(((9+math.cos(angle)*radius)*sample,
-                               (9+math.sin(angle)*radius)*sample))
-        draw.polygon(points, fill=glyph+(255,))
-        draw.ellipse(tuple(v*sample for v in (6.9,6.9,11.1,11.1)), fill=fill+(255,))
-    elif kind in ('cc_off', 'cc_on'):
-        font = ImageFont.truetype(str(FONT), 9*sample)
-        bounds = draw.textbbox((0,0), 'CC', font=font)
-        x = 9*sample-(bounds[2]-bounds[0])/2-bounds[0]
-        y = 9*sample-(bounds[3]-bounds[1])/2-bounds[1]
-        draw.text((x,y), 'CC', font=font, fill=glyph+(255,))
-    else:
-        raise ValueError('Unknown icon kind: ' + kind)
-    image = image.resize((19,19), Image.Resampling.LANCZOS)
-    # Lanczos fringes count as native hits even at alpha1. Keep the full
-    # original seek thumb clear with an exact transparent one-pixel margin.
-    alpha = image.getchannel('A')
-    margin = ImageDraw.Draw(alpha)
-    margin.rectangle((0,0,18,18), outline=0)
-    image.putalpha(alpha)
-    return image
+    """Shared beveled face, small inset glyph and exact transparent margin."""
+    from hud_button_art import button_icon
+    return button_icon(kind,state,19)
 
 
 def xml_template():

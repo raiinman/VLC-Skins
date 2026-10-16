@@ -2,10 +2,11 @@
 
 Both scales now place the main filename two source pixels below its backing's
 top edge (text y=119; backing y=117). Font size, backing, gauges and logo are
-unchanged. The speaker glyph is centered inside its existing 23px circle in all
-three feedback states. The compact bar uses a flat matching smoked-charcoal
-fill (RGB 13,17,21), retaining its rounded silhouette, subtle border and 85%
-framed opacity. No textured tile or new decorative artwork remains in the bar.
+unchanged. The speaker, Settings and CC glyphs are smaller and inset inside crisp dark
+beveled faces, with distinct normal, hover and pressed feedback. The compact bar uses a flat matching smoked-charcoal
+fill (RGB 13,17,21), retaining its rounded silhouette and subtle border.
+Framed opacity is now 255/255, so video detail cannot bleed through the strip.
+No textured tile or grain remains. Native fullscreen fading remains VLC-owned.
 
 Framed hover and expanded volume now work while another app is active. The
 helper still requires the actual window under the pointer to be the exposed
@@ -27,14 +28,28 @@ controls and mutation rejection are independently checked. Asset-only previews
 are available separately; they do not prove native glyph placement or scrolling.
 
 Exact package/helper hashes are in ui-polish-review.json. Private actual-skin
-native hover/tooltip evidence is recorded in native-hover-review.json: 68 checks
+native hover/tooltip evidence is recorded in native-hover-review.json: 78 checks
 passed, including real embedded video children, exposed/hidden/minimized/covered
 windows, old rectangles, restoration, bar retention and private-desktop identity.
 Native tooltip windows were created on both skins. The optional 500ms private
 motion probe did not produce a visible tooltip, so timer-driven display and
-above-pointer appearance remain unverified. All test processes closed; the three
-protected processes, 12 guard paths and input desktop were unchanged.
+above-pointer appearance remain unverified by the private fixture. All test
+processes closed; four protected processes, 23 unique guard paths and the input
+desktop were unchanged. All eight synthetic/actual-bar opacity readbacks were
+255 with LWA_ALPHA and layered style. The fixture compiles shared product
+source and calls its methods; it does not launch the packaged helper EXE.
+The first run failed a2xcover assertion without confirming native coverage.
+That failed report remains in native-hover-opacity-first-attempt.json. The
+next fixture explicitly established coverage before the unchanged strict
+rejection check; both scales passed. The first failure's precise cause is not
+proven by the later pass.
 Installation and the companion's coordinated running1x update are separate
 records. The earlier 8.27/28.27-second measurements remain scoped to the preceding
 f628/a1bf packages in fast-load-benchmark.json; this cosmetic revision does not
 inherit those exact-hash measurements or a 100% parity certification.
+
+A read-only probe of the updated running 1x player found exactly one native
+tooltip with the expected class/style/owner and fixed caption. It was actively
+visible at105x21 pixels. The probe did not capture text pixels or measure
+above-pointer placement. Companion Settings/CC menu testing is recorded
+separately from the private both-scale exposure checks.

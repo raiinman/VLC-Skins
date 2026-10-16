@@ -16,8 +16,8 @@ Volume shows a small speaker/percentage by default. The helper expands its
 native slider on hover in either bar; clicking the speaker provides a fallback
 when loading the VLT without the helper. No input layer covers the video, so
 native double-click remains available. The native fullscreen controller keeps
-VLC's fade. The helper applies85% window-wide opacity to the framed bar; native
-Skins2 does not support a separately transparent backdrop with opaque controls.
+VLC's fade. The helper keeps the framed bar fully opaque (255/255), preventing video
+detail from showing through the matching flat fill and button edges.
 Theme alpha is unchanged so the main player and other panes remain unaffected.
 
 The main filename uses12px at1x and24px at2x, replacing8/16px palette-colored

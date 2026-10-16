@@ -19,7 +19,8 @@ DOCS = ('PARITY.md', 'VERIFICATION.md', 'SOURCES.md', 'COMPACT-CONTROLS.md',
         'LOADING-AND-MEMORY.md', 'storage-load-benchmark.json',
         'FAST-LOADING.md', 'fast-loading-equivalence.json', 'fast-load-benchmark.json',
         'fresh-skin-install.json', 'fresh-1x-rollout.json', 'hover-visibility-review.json', 'UI-POLISH.md', 'ui-polish-review.json',
-        'native-hover-review.json', 'ui-polish-install.json', 'ui-polish-rollout.json',
+        'native-hover-review.json', 'native-hover-before-button-refinement.json', 'native-hover-opacity-first-attempt.json',
+        'ui-polish-install.json', 'ui-polish-install-before-button-refinement.json', 'ui-polish-rollout.json',
         'COMPANION-HUD.md', 'companion-hud-review.json')
 NOTICE = """NEED FOR SPEED UNDERGROUND / VLC — OFFLINE REVIEW BUNDLE
 

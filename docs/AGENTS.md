@@ -58,3 +58,7 @@ hover-visibility-review.json records the stale-rectangle hover defect, exact hel
 UI-POLISH.md and ui-polish-review.json own the flat HUD fill, speaker centering, filename inset, restored defaultfont tooltips and focus-independent exposed hover. native-hover-review.json distinguishes private native fixture/actual-skin window gates from full pointer/timer visual acceptance. ui-polish-install.json and ui-polish-rollout.json record this revision separately from historical fresh-skin reports. Keep custom-tooltip font load-order failure and complete private Skins2 resource lookup documented.
 
 COMPANION-HUD.md and companion-hud-review.json own the optional derived-skin Settings/CC assets, stdlib injector, signal protocol and offline both-scale checks. The companion owns native dispatch, actual caption/availability state and menu anchoring. Do not imply that the standalone VLT/helper gained an inactive button or a new IPC service.
+
+Keep native-hover-before-button-refinement.json and ui-polish-install-before-button-refinement.json as exact-hash history. Current button refinements use source-matched beveled faces with inset glyphs, transparent outer margins and an opaque255/255 framed fill; record private native opacity readbacks separately from a deployed helper run.
+
+Retain native-hover-opacity-first-attempt.json as the failed private2x covered-window assertion, including preservation results. A later passing fixture run does not erase failed evidence or justify lowering exposure checks.
