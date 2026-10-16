@@ -83,17 +83,18 @@ def _load(addon_folder):
     folder = Path(addon_folder).resolve()
     try:
         manifest = json.loads(_read(folder, 'manifest.json'))
-        require(manifest['schemaVersion'] == 1 and manifest['assetPrefix'] == 'companion-hud/', 'Unsupported addon manifest')
+        require(manifest['schemaVersion'] == 2 and manifest['assetPrefix'] == 'companion-hud/', 'Unsupported addon manifest')
         template = manifest['template']
         xml = _read(folder, template['file'])
         require(_hash(xml) == template['sha256'], 'Addon template hash mismatch')
         tree = _xml(xml, addon=True)
-        require(tree.tag == 'CompanionHudAddon' and tree.get('schemaVersion') == '1', 'Unsupported addon template')
+        require(tree.tag == 'CompanionHudAddon' and tree.get('schemaVersion') == '2', 'Unsupported addon template')
         require([n.tag for n in tree] == ['Resources', 'Controllers', 'Windows'], 'Unexpected addon template sections')
         identifiers = _ids(tree)
         expected = {'yt_hud_settings_'+s for s in ('no', 'hov', 'do')}
         expected |= {'yt_hud_cc_'+state+'_'+s for state in ('off', 'on') for s in ('no', 'hov', 'do')}
         expected.add('yt_hud_command_hit')
+        expected.update(('yt_hud_settings_disabled', 'yt_hud_cc_disabled'))
         assets, payloads = {}, {}
         for item in manifest['assets']:
             key = item['id']

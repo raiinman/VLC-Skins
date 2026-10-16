@@ -67,6 +67,14 @@ def glyph_mask(kind, size):
         draw.polygon(points,fill=255)
         hole = 1.9 if size == 25 else 1.45
         draw.ellipse(box((center-hole,center-hole,center+hole,center+hole)),fill=0)
+    elif kind == 'clear':
+        draw.line(box((center-4,center-4,center+4,center-4)),fill=255,width=SAMPLE)
+        draw.rectangle(box((center-1.5,center-6,center+1.5,center-4)),outline=255,width=SAMPLE)
+        draw.line([tuple(coordinate(v) for v in p) for p in
+                   [(center-3.5,center-2.5),(center-3,center+5),
+                    (center+3,center+5),(center+3.5,center-2.5)]],fill=255,width=SAMPLE)
+        for x in (center-1,center+1):
+            draw.line(box((x,center-1.5,x,center+3)),fill=255,width=SAMPLE)
     elif kind in ('cc_off','cc_on'):
         font = ImageFont.truetype(str(FONT),(10 if size == 25 else 8)*SAMPLE)
         bounds = font.getbbox('CC')
@@ -89,7 +97,8 @@ def glyph_mask(kind, size):
 
 
 def button_icon(kind, state, size):
-    if state not in ('no','hov','do') or (kind == 'speaker' and size != 23) or (kind != 'speaker' and size not in (19,25)):
+    allowed_sizes = (23,) if kind == 'speaker' else (29,) if kind == 'clear' else (19,25)
+    if state not in ('no','hov','do') or size not in allowed_sizes:
         raise ValueError('Unsupported HUD button state/size')
     image = face(size,state)
     colors = {'no':(210,218,224),'hov':(246,250,252),'do':(167,181,190)}
@@ -99,3 +108,53 @@ def button_icon(kind, state, size):
     glyph.putalpha(glyph_mask(kind,size))
     image.alpha_composite(glyph)
     return image
+
+
+def snapping_button(state, enabled, native_text=False):
+    """Readable footer pill with explicit SNAP and ON/OFF labels."""
+    if state not in ('no','hov','do'):
+        raise ValueError('Unsupported snapping button state')
+    if native_text:
+        # Crisp metal face, with lettering rendered by VLC at display size.
+        width, height = 82*SAMPLE, 29*SAMPLE
+        image = Image.new('RGBA',(width,height))
+        mask = Image.new('L',image.size)
+        ImageDraw.Draw(mask).rounded_rectangle((SAMPLE,2*SAMPLE,81*SAMPLE,27*SAMPLE),
+                                              radius=12*SAMPLE,fill=255)
+        draw = ImageDraw.Draw(image)
+        for y in range(height):
+            fraction=y/height
+            shade=round(48-30*fraction+15*max(0,1-abs(fraction-.24)*9))
+            if state=='hov':shade+=9
+            elif state=='do':shade=round(shade*.56)
+            draw.line((0,y,width,y),fill=(shade,shade+2,shade+4,255))
+        image.putalpha(mask)
+        draw=ImageDraw.Draw(image)
+        draw.rounded_rectangle((SAMPLE,2*SAMPLE,81*SAMPLE,27*SAMPLE),radius=12*SAMPLE,
+                               outline=(4,6,8,255),width=SAMPLE)
+        draw.arc((2*SAMPLE,3*SAMPLE,80*SAMPLE,26*SAMPLE),185,355,
+                 fill=(92,101,108,255) if state!='do' else (30,36,40,255),width=SAMPLE)
+        draw.rounded_rectangle((48*SAMPLE,6*SAMPLE,75*SAMPLE,23*SAMPLE),radius=5*SAMPLE,
+                               fill=(20,47,56,255) if enabled else (20,23,26,255),
+                               outline=(68,109,121,255) if enabled else (56,62,67,255),width=SAMPLE)
+        return image.resize((82,29),Image.Resampling.LANCZOS)
+    image = Image.new('RGBA',(82*SAMPLE,29*SAMPLE))
+    draw = ImageDraw.Draw(image)
+    def rect(values):
+        return tuple(round(v*SAMPLE) for v in values)
+    fill = {'no':(26,29,32),'hov':(38,44,49),'do':(15,18,21)}[state]
+    edge = {'no':(69,75,80),'hov':(102,119,128),'do':(43,49,54)}[state]
+    draw.rounded_rectangle(rect((1.5,2,80.5,27)),radius=12*SAMPLE,
+                           fill=fill,outline=(5,7,9),width=2*SAMPLE)
+    draw.rounded_rectangle(rect((3,3.5,79,25.5)),radius=10*SAMPLE,
+                           outline=edge,width=SAMPLE)
+    font = ImageFont.truetype(str(FONT),12*SAMPLE)
+    status_font = ImageFont.truetype(str(FONT),9*SAMPLE)
+    color = (231,237,240) if state != 'do' else (176,188,197)
+    draw.text((10*SAMPLE,14.5*SAMPLE),'SNAP',font=font,anchor='lm',fill=color)
+    status_fill = (26,61,72) if enabled else (37,40,43)
+    status_ink = (133,225,246) if enabled else (184,190,195)
+    draw.rounded_rectangle(rect((48,7,74,22)),radius=5*SAMPLE,fill=status_fill)
+    draw.text((61*SAMPLE,14.5*SAMPLE),'ON' if enabled else 'OFF',
+              font=status_font,anchor='mm',fill=status_ink)
+    return image.resize((82,29),Image.Resampling.LANCZOS)

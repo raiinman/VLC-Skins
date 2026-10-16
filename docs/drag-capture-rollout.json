@@ -1,0 +1,141 @@
+{
+  "queueCount": 165,
+  "exactFreshCheckpointMatch": true,
+  "selectedIndex": 161,
+  "state": "paused",
+  "time": 2,
+  "volume": 307,
+  "quality": 0,
+  "captionsOff": true,
+  "sixUserGeometriesPreserved": {
+    "main": true,
+    "video": true,
+    "tracks": true,
+    "equalizer": true,
+    "info": true,
+    "youtube": true
+  },
+  "clockModePreserved": "elapsed",
+  "otherPrivatePreferencesPreserved": true,
+  "normalProfileSourceAndSoundPreserved": true,
+  "hostSHA256": "f3fc7d4a1a67587fdfcebcf39bad044353774680abb7b94244c3de001e547b1c",
+  "sourceSHA256": "173e66df933597af35034db58b67eb483bcbb532c6aaa230b011afc03dfe2a0c",
+  "helperSHA256": "a2c67dc30c12f670059e605641214f7df6fe65023ef7f29b6cb18d5552f00584",
+  "dllSHA256": "b4c859e2422fe995e5af974e2fed5b1b1889fd1ed658f0f77da62a413dde87fe",
+  "physicalInputUsed": false,
+  "packagingHeld": true,
+  "date": "2026-10-16",
+  "scope": "Matched helper and DLL repair applied through one owned restart; no VLT or host source changes, no physical input or packaging",
+  "readOnlyIntegration": {
+    "clockWidths": [
+      151,
+      152
+    ],
+    "readOnly": true,
+    "wheelBindingObserved": true,
+    "wheelMarkers": [
+      1313231703
+    ],
+    "noInputOrForegroundCalls": true,
+    "clockPhaseObserved": true,
+    "samples": [
+      [
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        },
+        {
+          "role": "clock",
+          "width": 152,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        }
+      ],
+      [
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        },
+        {
+          "role": "clock",
+          "width": 152,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        }
+      ],
+      [
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        },
+        {
+          "role": "clock",
+          "width": 151,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        }
+      ],
+      [
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        },
+        {
+          "role": "clock",
+          "width": 151,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        }
+      ],
+      [
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        },
+        {
+          "role": "clock",
+          "width": 152,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        }
+      ],
+      [
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        },
+        {
+          "role": "clock",
+          "width": 151,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        }
+      ]
+    ]
+  },
+  "actualUserDragObserved": false
+}

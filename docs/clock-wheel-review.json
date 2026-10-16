@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-16",
+  "scope": "Development verification at both scales; later separately authorized1x activation recorded in review-1x-rollout.json. Packaging remains held.",
+  "packages": {
+    "1": "173e66df933597af35034db58b67eb483bcbb532c6aaa230b011afc03dfe2a0c",
+    "2": "98123a8733a1651f96331a4136f3801ceba9fd08fab93b4f5b88affcee77fad6"
+  },
+  "helper_sha256": "223d69a9e6b464a8870e85a42736d81045b8fbeae05b5dd921572b2fc206c745",
+  "wheel_dll_sha256": "843f086a4f6d4a1a25a9f9e92e032744c8aac2b274d064bfa54d9fec6f4a42d9",
+  "helper_source_sha256": "41d3d01207eca3314e7e1cf25cbd1244918a592c47464ecd092511b4b7202bcf",
+  "wheel_source_sha256": "a7a4448241364d63a14bec19906c1eae49a7dbc20e00f5d6056adf3fec38820a",
+  "clock_checks": {
+    "main_layouts_per_scale": 43,
+    "rejected_mutations_per_scale": 11,
+    "HUD_hit_states_per_scale": 16,
+    "HUD_mutations_per_scale": 23,
+    "legacy_mode_migration": "Both Start-NFS and companion actual-XML checks pass"
+  },
+  "wheel_native_fixture": {
+    "passed": true,
+    "error": null,
+    "cases": [
+      {
+        "name": "before-hook-volume-screen-point",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "volume-local280x43",
+        "passed": true,
+        "expected": 2279311360,
+        "actual": 2279311360
+      },
+      {
+        "name": "seek-local80x12",
+        "passed": true,
+        "expected": 2277279544,
+        "actual": 2277279544
+      },
+      {
+        "name": "negative-wheel-delta-preserved",
+        "passed": true,
+        "expected": 2279311360,
+        "actual": 2279311360
+      },
+      {
+        "name": "ordinary-motion-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "horizontal-wheel-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "outside-point-untouched",
+        "passed": true,
+        "expected": 9371747,
+        "actual": 9371747
+      },
+      {
+        "name": "wrong-pid-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "wrong-origin-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "hidden-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "closed-size-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "disabled-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "after-unhook-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      }
+    ],
+    "ownedChildClosed": true,
+    "scope": "Cross-process queued-message DLL correction on synthetic private SkinWindowClass. Fixed seek/volume coordinates, not actual VLC controls or physical wheel delivery.",
+    "physicalInputUsed": false,
+    "fixture_exit_code": 0,
+    "cleanup_errors": [],
+    "input_desktop_unchanged": true,
+    "guarded_files_unchanged": true,
+    "protected_processes": [
+      {
+        "pid": 42140,
+        "alive": true
+      },
+      {
+        "pid": 113420,
+        "alive": true
+      },
+      {
+        "pid": 17700,
+        "alive": true
+      },
+      {
+        "pid": 9104,
+        "alive": true
+      }
+    ],
+    "owned_fixture_closed": true,
+    "dll_sha256": "843f086a4f6d4a1a25a9f9e92e032744c8aac2b274d064bfa54d9fec6f4a42d9",
+    "fixture_source_sha256": "760d97f17e48b5faf910da72e35590e9c254cb290ca2890761cb28d8aa9f6b65",
+    "fixture_sha256": "20e1849cd2ea64c50ef314c6ebdebc46003bd3eec4fdc5023d7cef18487b64ba"
+  },
+  "physical_input_used": false,
+  "live_session_changed": false,
+  "packaging_performed": false,
+  "limits": [
+    "Wheel fixture is synthetic cross-process, not actual VLC playback",
+    "Native paused-seek text raster and shutter wall-clock continuity unobserved",
+    "Exact zero native formatting remains unavailable",
+    "Wheel DLL currently x64 only; matching helper/DLL required"
+  ],
+  "subsequent_1x_deployment": "review-1x-rollout.json"
+}

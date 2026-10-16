@@ -1,0 +1,120 @@
+{
+  "passed": true,
+  "source1xSha256": "298b21d32f5eef893c6d5465e0692dca1035644c148d4bd48b2fa70e3d9f10e9",
+  "source2xUnchanged": true,
+  "changes": [
+    {
+      "id": "snapping_label_tracks_1",
+      "downPixels": 2
+    },
+    {
+      "id": "snapping_on_tracks_1",
+      "downPixels": 3
+    },
+    {
+      "id": "snapping_off_tracks_1",
+      "downPixels": 3
+    }
+  ],
+  "allOtherXmlAndEveryPayloadByteUnchanged": true,
+  "checks": [
+    {
+      "check": "build",
+      "passed": true
+    },
+    {
+      "check": "check_contracts",
+      "passed": true
+    },
+    {
+      "check": "check_hits",
+      "passed": true
+    },
+    {
+      "check": "check_animation_bands",
+      "passed": true
+    },
+    {
+      "check": "check_startup",
+      "passed": true
+    },
+    {
+      "check": "check_source_art",
+      "passed": true
+    },
+    {
+      "check": "check_panels",
+      "passed": true
+    },
+    {
+      "check": "check_transitions",
+      "passed": true
+    },
+    {
+      "check": "check_placement",
+      "passed": true
+    },
+    {
+      "check": "check_launchers",
+      "passed": true
+    },
+    {
+      "check": "check_video",
+      "passed": true
+    },
+    {
+      "check": "check_corners",
+      "passed": true
+    },
+    {
+      "check": "check_palette",
+      "passed": true
+    },
+    {
+      "check": "check_snapping",
+      "passed": true
+    }
+  ],
+  "hostSha256": "1034ffab7caf59d817b6fcb4d65df8f27924ea79eb280718c6ae979f5130a5b9",
+  "status": "Matched1x loaded; Play-now default read back by companion without input/media; centered native label coordinates independently verified.",
+  "helperAndDllUnchanged": true,
+  "packaging": "held",
+  "physicalInputUsed": false,
+  "activation": {
+    "hostPid": 69080,
+    "vlcPid": 47096,
+    "chromePid": 31960,
+    "queueCount": 0,
+    "state": "stopped",
+    "volume": 265,
+    "comboSelectedIndex": 1,
+    "policy": "Play now",
+    "paneGeometryAndPreferencesPreserved": true,
+    "normalSoundAnd2xHashesPreserved": true,
+    "mainLayoutNormalization": {
+      "from": "main_1_opening",
+      "to": "main_1"
+    },
+    "sourceSHA256": "298b21d32f5eef893c6d5465e0692dca1035644c148d4bd48b2fa70e3d9f10e9",
+    "buildHashes": {
+      "VlcYouTube.exe": "1034ffab7caf59d817b6fcb4d65df8f27924ea79eb280718c6ae979f5130a5b9",
+      "prepare_skin.py": "32bf476ef9ef037f5458b678d2c35f428f7507c0e1a3833973b1d4a10d40ccd2",
+      "SkinEffects.exe": "56cc00e980f8d387f2f7ce31892a7f98b1c2d9334f0b4ff68d0f26a1c170bb68",
+      "NfsWheelBridge64.dll": "0b88ad21177e214f671360ebb1962f2599012459910d3410de7c6184dc592e5d"
+    },
+    "derivedSHA256": "7be899f4d75123a19f5aaf8c7810597772aa79c1624b62ba741aa44b937b1484",
+    "bridgeReady": true,
+    "restoreUsed": false
+  },
+  "independentReadOnly": {
+    "vlcPid": 47096,
+    "nativeTextY": {
+      "SNAP": 318,
+      "ON": 319,
+      "OFF": 319
+    },
+    "nativeBridgeStatus": 1,
+    "physicalInputUsed": false
+  },
+  "historicalEvidenceUnchangedReason": "Earlier measurements remain scoped to their exact tested artifacts; all non-alignment payloads/behavior are unchanged."
+}

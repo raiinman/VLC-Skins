@@ -22,7 +22,9 @@ for scale in (1,2):
         assert assets.image('resize_hit').getchannel('A').getextrema()[1]==255,'Resize handle must retain visible source corner pixels'
     for layout in windows['main']:
         for node in layout.findall('Text'):
-            assert node.get('visible')==layout.get('id')+'.isActive','Inactive clock rasterization'
+            if node.get('font')=='clock':
+                assert node.get('visible').startswith(layout.get('id')+'.isActive and clock_'),'Inactive clock rasterization'
+            else:assert node.get('visible')==layout.get('id')+'.isActive','Inactive metadata rasterization'
     replay=tree.find('.//Layout[@id="info_about"]/Button[@tooltiptext="Replay original startup animation"]')
     assert replay is not None,'Restored layouts need a way to replay the original intro'
     assert playback_action(replay.get('action'))=='info_frame_state.setLayout(info_frame_idle);palette_state.setLayout(palette_1);main.setLayout(main_1);main.setLayout(main_start);main.show();info.hide()'
@@ -72,12 +74,12 @@ for scale in (1,2):
                     node=next(n for n in layout if n.get('up')==prefix+'_no_png' or n.get('up1')==prefix+'_no_png')
                     assert (int(node.get('x')),int(node.get('y')))==(int(source.get('left'))*scale,int(source.get('top'))*scale),(lid,prefix)
                 if state in ('open','opening','closing'):
-                    clock=next(n for n in layout if n.get('id','').startswith('clock_'))
-                    clock_state='closing' if state=='closing' else 'open'
-                    assert clock.get('action')==f'main.setLayout({Builder.main_id(c,clock_state,not remaining)})'
-                    token='$l' if remaining else '$t'
-                    assert layout.find(f'Text[@text="{token}"]') is not None
-                    assert (layout.find('Image[@image="time_dash_png"]') is not None)==remaining
+                    clock=next(n for n in layout if n.tag=='Checkbox' and n.get('id','').startswith('clock_'))
+                    assert clock.get('state')=='(clock_remaining_a.isActive or clock_remaining_b.isActive)'
+                    assert clock.get('action1')=='clock_state.setLayout(clock_remaining_a)'
+                    assert clock.get('action2')=='clock_state.setLayout(clock_elapsed_a)'
+                    assert len(layout.findall('Text[@font="clock"]'))==4
+                    assert len(layout.findall('Image[@image="time_dash_png"]'))==1
                     metadata=layout.find('Text[@text="$N"]')
                     assert metadata is not None
                     assert metadata.get('color')=='#FFFFFF'

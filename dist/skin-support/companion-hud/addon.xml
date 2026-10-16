@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<CompanionHudAddon schemaVersion="1">
+<CompanionHudAddon schemaVersion="2">
   <Resources>
     <Bitmap id="yt_hud_settings_no" file="companion-hud/settings_no.png" alphacolor="#FF00FF" />
     <Bitmap id="yt_hud_settings_hov" file="companion-hud/settings_hov.png" alphacolor="#FF00FF" />
@@ -11,15 +11,21 @@
     <Bitmap id="yt_hud_cc_on_hov" file="companion-hud/cc_on_hov.png" alphacolor="#FF00FF" />
     <Bitmap id="yt_hud_cc_on_do" file="companion-hud/cc_on_do.png" alphacolor="#FF00FF" />
     <Bitmap id="yt_hud_command_hit" file="companion-hud/command_hit.png" alphacolor="#FF00FF" />
+    <Bitmap id="yt_hud_settings_disabled" file="companion-hud/settings_disabled.png" alphacolor="#FF00FF" />
+    <Bitmap id="yt_hud_cc_disabled" file="companion-hud/cc_disabled.png" alphacolor="#FF00FF" />
   </Resources>
   <Controllers>
     <Controller layout="fullscreen_controls">
       <Button id="yt_fullscreen_settings" x="300" y="0" up="yt_hud_settings_no" over="yt_hud_settings_hov" down="yt_hud_settings_do" action="yt_playback_actions.setLayout(yt_playback_settings)" tooltiptext="Playback settings" visible="fullscreenController.isVisible and yt_controls_available.isActive" />
       <Checkbox id="yt_fullscreen_cc" x="330" y="0" state="yt_cc_on.isActive" action1="yt_playback_actions.setLayout(yt_playback_cc)" action2="yt_playback_actions.setLayout(yt_playback_cc)" tooltiptext1="Turn captions on" tooltiptext2="Turn captions off" visible="fullscreenController.isVisible and yt_controls_available.isActive" up1="yt_hud_cc_off_no" over1="yt_hud_cc_off_hov" down1="yt_hud_cc_off_do" up2="yt_hud_cc_on_no" over2="yt_hud_cc_on_hov" down2="yt_hud_cc_on_do" />
+      <Button id="yt_fullscreen_settings_unavailable" x="300" y="0" up="yt_hud_settings_disabled" over="yt_hud_settings_disabled" down="yt_hud_settings_disabled" action="none" tooltiptext="Playback settings available during YouTube playback" visible="fullscreenController.isVisible and yt_controls_unavailable.isActive" />
+      <Button id="yt_fullscreen_cc_unavailable" x="330" y="0" up="yt_hud_cc_disabled" over="yt_hud_cc_disabled" down="yt_hud_cc_disabled" action="none" tooltiptext="Captions available during YouTube playback" visible="fullscreenController.isVisible and yt_controls_unavailable.isActive" />
     </Controller>
     <Controller layout="video_hover_controls">
       <Button id="yt_hover_settings" x="300" y="0" up="yt_hud_settings_no" over="yt_hud_settings_hov" down="yt_hud_settings_do" action="yt_playback_actions.setLayout(yt_playback_settings)" tooltiptext="Playback settings" visible="video_hover_controls.isActive and yt_controls_available.isActive" />
       <Checkbox id="yt_hover_cc" x="330" y="0" state="yt_cc_on.isActive" action1="yt_playback_actions.setLayout(yt_playback_cc)" action2="yt_playback_actions.setLayout(yt_playback_cc)" tooltiptext1="Turn captions on" tooltiptext2="Turn captions off" visible="video_hover_controls.isActive and yt_controls_available.isActive" up1="yt_hud_cc_off_no" over1="yt_hud_cc_off_hov" down1="yt_hud_cc_off_do" up2="yt_hud_cc_on_no" over2="yt_hud_cc_on_hov" down2="yt_hud_cc_on_do" />
+      <Button id="yt_hover_settings_unavailable" x="300" y="0" up="yt_hud_settings_disabled" over="yt_hud_settings_disabled" down="yt_hud_settings_disabled" action="none" tooltiptext="Playback settings available during YouTube playback" visible="video_hover_controls.isActive and yt_controls_unavailable.isActive" />
+      <Button id="yt_hover_cc_unavailable" x="330" y="0" up="yt_hud_cc_disabled" over="yt_hud_cc_disabled" down="yt_hud_cc_disabled" action="none" tooltiptext="Captions available during YouTube playback" visible="video_hover_controls.isActive and yt_controls_unavailable.isActive" />
     </Controller>
   </Controllers>
   <Windows>
@@ -30,6 +36,7 @@
         <Image id="yt_settings_cc_off_cell" image="yt_hud_command_hit" x="20" y="0" width="3" height="3" resize="scale" action2="yt_cc_indicator.setLayout(yt_cc_off)" />
         <Image id="yt_settings_available_cell" image="yt_hud_command_hit" x="30" y="0" width="3" height="3" resize="scale" action2="yt_hud_availability.setLayout(yt_controls_available)" />
         <Image id="yt_settings_unavailable_cell" image="yt_hud_command_hit" x="40" y="0" width="3" height="3" resize="scale" action2="yt_hud_availability.setLayout(yt_controls_unavailable)" />
+        <Image id="yt_settings_video_show_cell" image="yt_hud_command_hit" x="100" y="0" width="3" height="3" resize="scale" action2="video.show()" />
       </Layout>
       <Layout id="yt_playback_cc" width="213" height="17">
         <Image id="yt_cc_reset_cell" image="yt_hud_command_hit" x="0" y="0" width="3" height="3" resize="scale" action2="yt_playback_actions.setLayout(yt_playback_ready)" />
@@ -37,6 +44,7 @@
         <Image id="yt_cc_cc_off_cell" image="yt_hud_command_hit" x="20" y="0" width="3" height="3" resize="scale" action2="yt_cc_indicator.setLayout(yt_cc_off)" />
         <Image id="yt_cc_available_cell" image="yt_hud_command_hit" x="30" y="0" width="3" height="3" resize="scale" action2="yt_hud_availability.setLayout(yt_controls_available)" />
         <Image id="yt_cc_unavailable_cell" image="yt_hud_command_hit" x="40" y="0" width="3" height="3" resize="scale" action2="yt_hud_availability.setLayout(yt_controls_unavailable)" />
+        <Image id="yt_cc_video_show_cell" image="yt_hud_command_hit" x="100" y="0" width="3" height="3" resize="scale" action2="video.show()" />
       </Layout>
       <Layout id="yt_playback_ready" width="211" height="17">
         <Image id="yt_ready_reset_cell" image="yt_hud_command_hit" x="0" y="0" width="3" height="3" resize="scale" action2="yt_playback_actions.setLayout(yt_playback_ready)" />
@@ -44,6 +52,7 @@
         <Image id="yt_ready_cc_off_cell" image="yt_hud_command_hit" x="20" y="0" width="3" height="3" resize="scale" action2="yt_cc_indicator.setLayout(yt_cc_off)" />
         <Image id="yt_ready_available_cell" image="yt_hud_command_hit" x="30" y="0" width="3" height="3" resize="scale" action2="yt_hud_availability.setLayout(yt_controls_available)" />
         <Image id="yt_ready_unavailable_cell" image="yt_hud_command_hit" x="40" y="0" width="3" height="3" resize="scale" action2="yt_hud_availability.setLayout(yt_controls_unavailable)" />
+        <Image id="yt_ready_video_show_cell" image="yt_hud_command_hit" x="100" y="0" width="3" height="3" resize="scale" action2="video.show()" />
       </Layout>
     </Window>
     <Window id="yt_cc_indicator" x="-31000" y="-30500" visible="false" dragdrop="false" playondrop="false">

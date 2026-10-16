@@ -16,7 +16,9 @@ def verify(assets, scale):
     count = 0
     windows = assets.tree.findall('Window')
     expected = {'main', 'tracks', 'equalizer', 'info', 'video', 'palette_state',
-                'fullscreenController', 'videoHoverController', 'nfs_hover_command','hover_volume_state','info_page_state','info_frame_state'}
+                'fullscreenController', 'videoHoverController', 'nfs_hover_command','hover_volume_state','info_page_state','info_frame_state','clock_state',
+                'playlist_clear_command', 'playlist_clear_capability', 'clock_refresh_command',
+                'snapping_command', 'snapping_state'}
     expected.update('nfs_fx_'+key for key in EFFECT_KEYS)
     assert {w.get('id') for w in windows} == expected
     for window in windows:
@@ -26,7 +28,9 @@ def verify(assets, scale):
             assert (wx, wy, window.get('visible')) == (0, 0, 'false')
             assert len(window) == 1
             assert (int(window[0].get('width')), int(window[0].get('height'))) == (360,64)
-        offscreen = key in ('videoHoverController','nfs_hover_command','hover_volume_state') or key.startswith('nfs_fx_')
+        offscreen = key in ('videoHoverController','nfs_hover_command','hover_volume_state','clock_state',
+                           'playlist_clear_command','playlist_clear_capability','clock_refresh_command',
+                           'snapping_command','snapping_state') or key.startswith('nfs_fx_')
         if offscreen:
             if key == 'videoHoverController':
                 position = (-31000, -30800)
@@ -36,10 +40,34 @@ def verify(assets, scale):
                 position = (-31000, -30900)
                 layout_sizes = {'nfs_hover_command_layout': (133, 17)}
                 default_layout = 'nfs_hover_command_layout'
+            elif key == 'clock_state':
+                position=(-31000,-30200)
+                layout_sizes={'clock_elapsed_a':(151,17),'clock_elapsed_b':(152,17),'clock_remaining_a':(153,17),'clock_remaining_b':(154,17)}
+                default_layout='clock_elapsed_a'
             elif key == 'hover_volume_state':
                 position=(-31000,-30700)
                 layout_sizes={'hover_volume_expanded':(72,19),'hover_volume_collapsed':(71,19)}
                 default_layout='hover_volume_collapsed'
+            elif key == 'playlist_clear_command':
+                position=(-31000,-30100)
+                layout_sizes={'playlist_clear_requested':(162,17),'playlist_clear_ready':(161,17)}
+                default_layout='playlist_clear_ready'
+            elif key == 'playlist_clear_capability':
+                position=(-31000,-30000)
+                layout_sizes={'playlist_clear_enabled':(172,1),'playlist_clear_disabled':(171,1)}
+                default_layout='playlist_clear_disabled'
+            elif key == 'clock_refresh_command':
+                position=(-31000,-29900)
+                layout_sizes={'clock_refresh_commands':(181,17)}
+                default_layout='clock_refresh_commands'
+            elif key == 'snapping_command':
+                position=(-31000,-29800)
+                layout_sizes={'snapping_requested':(192,17),'snapping_ready':(191,17)}
+                default_layout='snapping_ready'
+            elif key == 'snapping_state':
+                position=(-31000,-29700)
+                layout_sizes={'snapping_enabled':(202,1),'snapping_disabled':(203,1),'snapping_unavailable':(201,1)}
+                default_layout='snapping_unavailable'
             else:
                 effect = key.removeprefix('nfs_fx_')
                 position = (-31000, -31000)

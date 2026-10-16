@@ -18,9 +18,9 @@ ROOT = Path(__file__).resolve().parents[1]
 ADDON = ROOT/'dist/skin-support/companion-hud'
 LAYOUTS = ('fullscreen_controls', 'video_hover_controls')
 RESOURCES = {'yt_hud_settings_'+s for s in ('no', 'hov', 'do')} | {
-    'yt_hud_cc_'+state+'_'+s for state in ('off', 'on') for s in ('no', 'hov', 'do')} | {'yt_hud_command_hit'}
+    'yt_hud_cc_'+state+'_'+s for state in ('off', 'on') for s in ('no', 'hov', 'do')} | {'yt_hud_command_hit', 'yt_hud_settings_disabled', 'yt_hud_cc_disabled'}
 WINDOWS = {'yt_playback_actions', 'yt_cc_indicator', 'yt_hud_availability'}
-CONTROLS = {'yt_'+prefix+'_'+name for prefix in ('fullscreen', 'hover') for name in ('settings', 'cc')}
+CONTROLS = {'yt_'+prefix+'_'+name for prefix in ('fullscreen', 'hover') for name in ('settings', 'cc', 'settings_unavailable', 'cc_unavailable')}
 
 
 def parse(data):
@@ -55,8 +55,9 @@ def validate(original_xml, changed_xml, payloads, frame):
             assert image.size == (25, 25)
             bounds = image.getchannel('A').getbbox()
             assert bounds and bounds[0]+bounds[2] == 25 and bounds[1]+bounds[3] == 25, ('Centered button region', key)
+            threshold = 90 if key.endswith('_disabled') else 110
             ink = [(x,y) for y in range(25) for x in range(25)
-                   if max(image.getpixel((x,y))[:3]) >= 110 and image.getpixel((x,y))[3]]
+                   if max(image.getpixel((x,y))[:3]) >= threshold and image.getpixel((x,y))[3]]
             assert ink, ('Missing readable glyph',key)
             width = max(x for x,y in ink)-min(x for x,y in ink)+1
             height = max(y for x,y in ink)-min(y for x,y in ink)+1
@@ -68,7 +69,7 @@ def validate(original_xml, changed_xml, payloads, frame):
         assert len({payloads[nodes[f'yt_hud_{family}_{s}'].get('file')] for s in ('no', 'hov', 'do')}) == 3, 'Distinct native feedback states'
     actions = ('yt_playback_actions.setLayout(yt_playback_ready)', 'yt_cc_indicator.setLayout(yt_cc_on)',
                'yt_cc_indicator.setLayout(yt_cc_off)', 'yt_hud_availability.setLayout(yt_controls_available)',
-               'yt_hud_availability.setLayout(yt_controls_unavailable)')
+               'yt_hud_availability.setLayout(yt_controls_unavailable)', 'video.show()')
     requests = nodes['yt_playback_actions']
     assert dict(requests.attrib) == dict(id='yt_playback_actions', x='-31000', y='-30600', visible='true', dragdrop='false', playondrop='false')
     expected_routes = [('settings', 212), ('cc', 213), ('ready', 211)]
@@ -76,13 +77,14 @@ def validate(original_xml, changed_xml, payloads, frame):
     fingerprints = set()
     for name, width in expected_routes:
         layout = nodes['yt_playback_'+name]
-        assert len(layout) == 5
+        assert len(layout) == 6
         for index, (cell, action) in enumerate(zip(layout, actions)):
-            suffix = ('reset', 'cc_on', 'cc_off', 'available', 'unavailable')[index]
+            suffix = ('reset', 'cc_on', 'cc_off', 'available', 'unavailable', 'video_show')[index]
+            x = (0,10,20,30,40,100)[index]
             assert dict(cell.attrib) == dict(id=f'yt_{name}_{suffix}_cell', image='yt_hud_command_hit',
-                    x=str(index*10), y='0', width='3', height='3', resize='scale', action2=action), 'Native command mapping'
+                    x=str(x), y='0', width='3', height='3', resize='scale', action2=action), 'Native command mapping'
             assert cell.tag == 'Image'
-            assert index*10 <= index*10+1 < index*10+3
+            assert x <= x+1 < x+3
         fingerprints.add((width, 17))
     for window, y, layouts in (
         ('yt_cc_indicator', -30500, [('yt_cc_on', 222), ('yt_cc_off', 221)]),
@@ -103,9 +105,11 @@ def validate(original_xml, changed_xml, payloads, frame):
         ('fullscreen_controls', 'fullscreen', 'fullscreenController.isVisible'),
         ('video_hover_controls', 'hover', 'video_hover_controls.isActive')):
         layout = nodes[layout_id]
-        new = [nodes[f'yt_{prefix}_{name}'] for name in ('settings', 'cc')]
-        assert list(layout)[-2:] == new, 'Addon controls must be above retained controls'
-        for node, name, x in zip(new, ('settings', 'cc'), (300, 330)):
+        enabled = [nodes[f'yt_{prefix}_{name}'] for name in ('settings', 'cc')]
+        disabled = [nodes[f'yt_{prefix}_{name}_unavailable'] for name in ('settings', 'cc')]
+        new = enabled+disabled
+        assert list(layout)[-4:] == new, 'Addon controls must be above retained controls'
+        for node, name, x in zip(enabled, ('settings', 'cc'), (300, 330)):
             assert (node.get('x'), node.get('y')) == (str(x), '0')
             assert node.get('visible') == gate+' and yt_controls_available.isActive'
             assert not active(node.get('visible'), {gate: True, 'yt_controls_unavailable.isActive': True}), 'Unavailable controls must be hidden'
@@ -119,6 +123,15 @@ def validate(original_xml, changed_xml, payloads, frame):
                 assert node.get('action1') == node.get('action2') == 'yt_playback_actions.setLayout(yt_playback_cc)'
                 for state, color in (('1', 'off'), ('2', 'on')):
                     assert [node.get(attr+state) for attr in ('up', 'over', 'down')] == [f'yt_hud_cc_{color}_{s}' for s in ('no', 'hov', 'do')]
+        for node, name, x in zip(disabled, ('settings', 'cc'), (300, 330)):
+            assert node.tag == 'Button' and node.get('action') == 'none'
+            assert (node.get('x'), node.get('y')) == (str(x), '0')
+            assert node.get('visible') == gate+' and yt_controls_unavailable.isActive'
+            assert active(node.get('visible'), {gate: True, 'yt_controls_unavailable.isActive': True})
+            assert not active(node.get('visible'), {gate: True, 'yt_controls_available.isActive': True})
+            assert not active(node.get('visible'), {'yt_controls_unavailable.isActive': True})
+            assert [node.get(a) for a in ('up','over','down')] == ['yt_hud_'+name+'_disabled']*3
+            assert 'available during YouTube playback' in node.get('tooltiptext', '')
         seek = layout.find('Slider[@value="time"]')
         assert seek.get('points') == '(0,0),(281,0)' and seek.get('x') == seek.get('y') == '12'
         # Native CtrlSlider centers the ORIGINAL thumb with integer half sizes.
@@ -160,7 +173,7 @@ def validate(original_xml, changed_xml, payloads, frame):
 
 
 def mutations(xml, original, payloads, frame):
-    for kind in ('signal-collision', 'trigger-default', 'overlap', 'native-moved', 'availability', 'cc-boolean', 'low-alpha-overlap'):
+    for kind in ('signal-collision', 'trigger-default', 'overlap', 'native-moved', 'availability', 'cc-boolean', 'unavailable-gate', 'unavailable-dispatch', 'low-alpha-overlap'):
         tree = parse(xml)
         candidate_payloads, candidate_frame = payloads, frame
         if kind == 'signal-collision':
@@ -171,6 +184,8 @@ def mutations(xml, original, payloads, frame):
         elif kind == 'native-moved': tree.find('.//Layout[@id="video_hover_controls"]/Button').set('x', '9')
         elif kind == 'availability': tree.find('.//Button[@id="yt_hover_settings"]').set('visible', 'true')
         elif kind == 'cc-boolean': tree.find('.//Checkbox[@id="yt_hover_cc"]').set('state', 'vlc.hasSubtitles')
+        elif kind == 'unavailable-gate': tree.find('.//Button[@id="yt_hover_settings_unavailable"]').set('visible', 'true')
+        elif kind == 'unavailable-dispatch': tree.find('.//Button[@id="yt_hover_cc_unavailable"]').set('action', 'yt_playback_actions.setLayout(yt_playback_cc)')
         else:
             candidate_payloads = dict(payloads)
             name = tree.find('Bitmap[@id="yt_hud_settings_no"]').get('file')
@@ -189,7 +204,7 @@ def mutations(xml, original, payloads, frame):
             if kind == 'low-alpha-overlap':
                 assert error.args and error.args[0][0] == 'Seek thumb overlaps addon', 'Low-alpha mutation must reach overlap oracle'
         else: raise AssertionError('Mutation accepted: '+kind)
-    return 7
+    return 9
 
 
 def main():

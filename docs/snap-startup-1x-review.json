@@ -1,0 +1,526 @@
+{
+  "date": "2026-10-16",
+  "scope": "1x only;2x held; no packaging or physical input",
+  "status": "1x fixes verified and loaded; visual/speaker review remains user-owned.2x and packaging held.",
+  "hashes": {
+    "dist/Need-for-Speed-Underground-1x.vlt": "36b0019213b62633819fd8ea7cb0f4785147b7e6846d2c78db7d620dc542c600",
+    "dist/Need-for-Speed-Underground-2x.vlt": "b61e35bbb59f81d2279604fa0c910201780c6ee7fc6c3cb33e0c7ceaed8cb67c",
+    "dist/skin-support/SkinEffects.exe": "56cc00e980f8d387f2f7ce31892a7f98b1c2d9334f0b4ff68d0f26a1c170bb68",
+    "dist/skin-support/NfsWheelBridge64.dll": "0b88ad21177e214f671360ebb1962f2599012459910d3410de7c6184dc592e5d",
+    "tools/SkinEffects.cs": "1371d8240261db06df9e4d7767398b32526475bdca8856a531e433b51f2faf73",
+    "tools/WheelBridge.c": "ca213264aa8db0aa4eefea325d86b4f7d3c91a93d8fdd51432779fb5f9be9e17",
+    "tools/hud_button_art.py": "a9d5cb225fd84b1743b587016a7bd8cd73bfdc432b1725af30534eaddd96fa6f",
+    "tools/snapping_controls.py": "64fe4d20a0514d96dda7f17b33b016238ff8d5880a8fe9334bb2a9c98fd7e427"
+  },
+  "conversionChecks": [
+    {
+      "check": "build",
+      "passed": true
+    },
+    {
+      "check": "check_contracts",
+      "passed": true
+    },
+    {
+      "check": "check_hits",
+      "passed": true
+    },
+    {
+      "check": "check_animation_bands",
+      "passed": true
+    },
+    {
+      "check": "check_startup",
+      "passed": true
+    },
+    {
+      "check": "check_source_art",
+      "passed": true
+    },
+    {
+      "check": "check_panels",
+      "passed": true
+    },
+    {
+      "check": "check_transitions",
+      "passed": true
+    },
+    {
+      "check": "check_placement",
+      "passed": true
+    },
+    {
+      "check": "check_launchers",
+      "passed": true
+    },
+    {
+      "check": "check_video",
+      "passed": true
+    },
+    {
+      "check": "check_corners",
+      "passed": true
+    },
+    {
+      "check": "check_palette",
+      "passed": true
+    },
+    {
+      "check": "check_effects",
+      "passed": true
+    },
+    {
+      "check": "check_hover",
+      "passed": true
+    },
+    {
+      "check": "check_clock",
+      "passed": true
+    },
+    {
+      "check": "check_docking",
+      "passed": true
+    },
+    {
+      "check": "check_playlist_clear",
+      "passed": true
+    },
+    {
+      "check": "check_snapping",
+      "passed": true
+    },
+    {
+      "check": "check_companion_hud",
+      "passed": true
+    }
+  ],
+  "equivalence": {
+    "passed": true,
+    "beforeSha256": "67e5f544bcdb8633df13eda59973832b6f1cf0b3ae7903217ea0a5118ec9a1d7",
+    "afterSha256": "36b0019213b62633819fd8ea7cb0f4785147b7e6846d2c78db7d620dc542c600",
+    "changedResources": [
+      "snapping_off_no_png",
+      "snapping_off_hov_png",
+      "snapping_off_do_png",
+      "snapping_on_no_png",
+      "snapping_on_hov_png",
+      "snapping_on_do_png"
+    ],
+    "onlyNewXml": "Two native fonts and three noninteractive labels per playlist layout",
+    "otherOriginalControlsAndAllOtherPixelsTimingPayloadsUnchanged": true,
+    "twoXPackageSha256Unchanged": "b61e35bbb59f81d2279604fa0c910201780c6ee7fc6c3cb33e0c7ceaed8cb67c"
+  },
+  "capture": {
+    "passed": true,
+    "cases": [
+      {
+        "name": "before-hook-private-capture-established",
+        "passed": true
+      },
+      {
+        "name": "before-hook-clock-delivers-and-drops-capture",
+        "passed": true
+      },
+      {
+        "name": "before-hook-volume-screen-point",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "volume-local280x43",
+        "passed": true,
+        "expected": 2279311360,
+        "actual": 2279311360
+      },
+      {
+        "name": "seek-local80x12",
+        "passed": true,
+        "expected": 2277279544,
+        "actual": 2277279544
+      },
+      {
+        "name": "negative-wheel-delta-preserved",
+        "passed": true,
+        "expected": 2279311360,
+        "actual": 2279311360
+      },
+      {
+        "name": "ordinary-motion-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "horizontal-wheel-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "outside-point-untouched",
+        "passed": true,
+        "expected": 9371747,
+        "actual": 9371747
+      },
+      {
+        "name": "wrong-pid-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "wrong-origin-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "hidden-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "closed-size-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "disabled-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "private-GUI-thread-capture-established",
+        "passed": true
+      },
+      {
+        "name": "clock-during-capture-becomes-WM_NULL",
+        "passed": true
+      },
+      {
+        "name": "clock-command-preserves-private-capture",
+        "passed": true
+      },
+      {
+        "name": "private-capture-released",
+        "passed": true
+      },
+      {
+        "name": "clock-after-release-delivers",
+        "passed": true
+      },
+      {
+        "name": "ordinary-double-click-delivers-during-capture",
+        "passed": true
+      },
+      {
+        "name": "playlist-161-cell0-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "playlist-161-cell10-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "playlist-161-cell20-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "playlist-162-cell0-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "playlist-162-cell10-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "playlist-162-cell20-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "playlist-noncell-x-delivers",
+        "passed": true
+      },
+      {
+        "name": "playlist-noncell-y-delivers",
+        "passed": true
+      },
+      {
+        "name": "playlist-wrong-width-delivers",
+        "passed": true
+      },
+      {
+        "name": "playlist-wrong-position-delivers",
+        "passed": true
+      },
+      {
+        "name": "playlist-wrong-class-delivers",
+        "passed": true
+      },
+      {
+        "name": "playlist-command-after-capture-release-delivers",
+        "passed": true
+      },
+      {
+        "name": "fixed-clock-cell0-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "fixed-clock-cell10-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "fixed-clock-noncell-x-delivers",
+        "passed": true
+      },
+      {
+        "name": "fixed-clock-noncell-y-delivers",
+        "passed": true
+      },
+      {
+        "name": "fixed-clock-playlist-only-cell-delivers",
+        "passed": true
+      },
+      {
+        "name": "fixed-clock-wrong-width-delivers",
+        "passed": true
+      },
+      {
+        "name": "fixed-clock-wrong-position-delivers",
+        "passed": true
+      },
+      {
+        "name": "fixed-clock-command-after-capture-release-delivers",
+        "passed": true
+      },
+      {
+        "name": "snapping-191-cell0-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "snapping-191-cell10-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "snapping-191-cell20-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "snapping-191-cell30-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "snapping-192-cell0-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "snapping-192-cell10-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "snapping-192-cell20-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "snapping-192-cell30-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "snapping-noncell-x-delivers",
+        "passed": true
+      },
+      {
+        "name": "snapping-noncell-y-delivers",
+        "passed": true
+      },
+      {
+        "name": "snapping-noncell40-delivers",
+        "passed": true
+      },
+      {
+        "name": "snapping-wrong-width-delivers",
+        "passed": true
+      },
+      {
+        "name": "snapping-wrong-position-delivers",
+        "passed": true
+      },
+      {
+        "name": "snapping-command-after-capture-release-delivers",
+        "passed": true
+      },
+      {
+        "name": "startup-cell0-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "startup-cell1-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "startup-cell2-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "startup-cell10-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "startup-cell11-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "startup-cell12-suppressed-while-captured",
+        "passed": true
+      },
+      {
+        "name": "startup-noncell-x-delivers",
+        "passed": true
+      },
+      {
+        "name": "startup-noncell-y-delivers",
+        "passed": true
+      },
+      {
+        "name": "startup-wrong-width-delivers",
+        "passed": true
+      },
+      {
+        "name": "startup-wrong-position-delivers",
+        "passed": true
+      },
+      {
+        "name": "after-unhook-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      }
+    ],
+    "input_desktop_unchanged": true,
+    "guarded_files_unchanged": true,
+    "protected_processes": [
+      {
+        "pid": 48892,
+        "alive": true
+      },
+      {
+        "pid": 95268,
+        "alive": true
+      },
+      {
+        "pid": 22256,
+        "alive": true
+      },
+      {
+        "pid": 55624,
+        "alive": true
+      }
+    ],
+    "cleanup_errors": []
+  },
+  "twoXUnchanged": true,
+  "nativeStartup": {
+    "sourceSHA256": "36b0019213b62633819fd8ea7cb0f4785147b7e6846d2c78db7d620dc542c600",
+    "helperSHA256": "56cc00e980f8d387f2f7ce31892a7f98b1c2d9334f0b4ff68d0f26a1c170bb68",
+    "dllSHA256": "0b88ad21177e214f671360ebb1962f2599012459910d3410de7c6184dc592e5d",
+    "normalAndPrivateHashesPreserved": true,
+    "inputDesktopUnchanged": true,
+    "cases": [
+      {
+        "mode": "complete",
+        "soundEvents": [
+          {
+            "utc": "2026-10-16T12:09:06.1670660Z",
+            "category": "sound-intro",
+            "state": {
+              "id": "intro",
+              "played": false,
+              "muted": false,
+              "phase": "trigger",
+              "observedAtMs": 265,
+              "dueAtMs": 1765
+            }
+          },
+          {
+            "utc": "2026-10-16T12:09:07.6713785Z",
+            "category": "sound-intro",
+            "state": {
+              "id": "intro",
+              "played": true,
+              "muted": false,
+              "phase": "dispatch",
+              "dispatchedAtMs": 1765
+            }
+          }
+        ],
+        "dispatchDelayMs": 1500,
+        "testOnlyPcmSilence": true
+      }
+    ],
+    "userChoiceReturnGate": {
+      "passed": true,
+      "fixtureResult": "PASS: user-choice controlled native startup; loaded-ready marker, preserved static main, native replay/return and preserved user choice"
+    },
+    "scope": "Two owned1x native workers: complete animation/frame-change/one silent sound dispatch and preserved saved return; short replay followed by a layout choice which gated return did not override. Test-only PCM silence, no speaker audibility claim."
+  },
+  "activation": {
+    "passed": true,
+    "vlcPid": 9556,
+    "helperPid": 102784,
+    "mainTopmostRestored": true,
+    "introReady": 1,
+    "introState": "ready",
+    "bridgeStatus": 1,
+    "snappingSupported": true,
+    "snappingStateWidth": 203,
+    "nativeSnapFonts": [
+      13,
+      12
+    ],
+    "nativeSnapLabelsNoninteractive": true,
+    "physicalInputUsed": false,
+    "companionActivation": {
+      "hostPid": 24388,
+      "vlcPid": 9556,
+      "chromePid": 108752,
+      "queueCount": 0,
+      "state": "stopped",
+      "volume": 269,
+      "paneGeometryPreserved": true,
+      "mainLayoutNormalization": {
+        "from": "main_1_opening",
+        "to": "main_1"
+      },
+      "normalSoundAnd2xHashesPreserved": true,
+      "startupEvents": [
+        "2026-10-16T12:12:01.1217920Z STARTUP replay_requested",
+        "2026-10-16T12:12:09.8697406Z STARTUP full_sequence_complete"
+      ],
+      "sourceSHA256": "36b0019213b62633819fd8ea7cb0f4785147b7e6846d2c78db7d620dc542c600",
+      "buildHashes": {
+        "VlcYouTube.exe": "ac5e7b0a4ad9680ed717985b0b4c9725e80c150353154ee2c6b00473f2e1871b",
+        "prepare_skin.py": "32bf476ef9ef037f5458b678d2c35f428f7507c0e1a3833973b1d4a10d40ccd2",
+        "SkinEffects.exe": "56cc00e980f8d387f2f7ce31892a7f98b1c2d9334f0b4ff68d0f26a1c170bb68",
+        "NfsWheelBridge64.dll": "0b88ad21177e214f671360ebb1962f2599012459910d3410de7c6184dc592e5d"
+      },
+      "derivedSHA256": "1c0e1aec95176e56adfe62e8b55fe0bc32bbf6d13d25f92ebb644f642ff571eb",
+      "bridgeReady": true,
+      "restoreUsed": false,
+      "nativeVolumeRestored": true
+    },
+    "scope": "Read-only live bindings and managed source font check. No physical input or further restart."
+  },
+  "limits": [
+    "Native timing/visual startup proof and physical speaker audibility are distinct.",
+    "Native SNAP text quality remains subject to user visual review.",
+    "No2xbuild,sourcepackage,profile oractive2xsetup update."
+  ],
+  "preparedCompanion": {
+    "hostSha256": "ac5e7b0a4ad9680ed717985b0b4c9725e80c150353154ee2c6b00473f2e1871b",
+    "prepareSkinSha256": "32bf476ef9ef037f5458b678d2c35f428f7507c0e1a3833973b1d4a10d40ccd2"
+  }
+}

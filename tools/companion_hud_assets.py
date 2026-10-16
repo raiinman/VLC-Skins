@@ -25,7 +25,8 @@ COMMANDS = [('reset', 0, 'yt_playback_actions.setLayout(yt_playback_ready)'),
             ('cc_on', 10, 'yt_cc_indicator.setLayout(yt_cc_on)'),
             ('cc_off', 20, 'yt_cc_indicator.setLayout(yt_cc_off)'),
             ('available', 30, 'yt_hud_availability.setLayout(yt_controls_available)'),
-            ('unavailable', 40, 'yt_hud_availability.setLayout(yt_controls_unavailable)')]
+            ('unavailable', 40, 'yt_hud_availability.setLayout(yt_controls_unavailable)'),
+            ('video_show', 100, 'video.show()')]
 
 
 def sha256(data):
@@ -38,14 +39,25 @@ def icon(kind, state):
     return button_icon(kind,state,25)
 
 
+def disabled_icon(kind):
+    from hud_button_art import face, glyph_mask
+    image = face(25, 'no')
+    glyph = Image.new('RGBA', (25, 25), (104, 116, 126, 255))
+    glyph.putalpha(glyph_mask(kind, 25))
+    image.alpha_composite(glyph)
+    return image
+
+
 def xml_template():
-    root = E.Element('CompanionHudAddon', schemaVersion='1')
+    root = E.Element('CompanionHudAddon', schemaVersion='2')
     resources = E.SubElement(root, 'Resources')
     for kind in ('settings','cc_off','cc_on'):
         for state in STATES:
             key = f'yt_hud_{kind}_{state}'
             E.SubElement(resources, 'Bitmap', id=key, file=ASSET_PREFIX+f'{kind}_{state}.png', alphacolor='#FF00FF')
     E.SubElement(resources, 'Bitmap', id='yt_hud_command_hit', file=ASSET_PREFIX+'command_hit.png', alphacolor='#FF00FF')
+    for kind in ('settings', 'cc'):
+        E.SubElement(resources, 'Bitmap', id='yt_hud_'+kind+'_disabled', file=ASSET_PREFIX+kind+'_disabled.png', alphacolor='#FF00FF')
     controllers = E.SubElement(root, 'Controllers')
     for layout, prefix, gate in [('fullscreen_controls','yt_fullscreen','fullscreenController.isVisible'),
                                   ('video_hover_controls','yt_hover','video_hover_controls.isActive')]:
@@ -63,6 +75,12 @@ def xml_template():
             for attribute, state in [('up','no'),('over','hov'),('down','do')]:
                 attrs[attribute+value] = f'yt_hud_{kind}_{state}'
         E.SubElement(parent,'Checkbox', **attrs)
+        for kind, x in [('settings', 300), ('cc', 330)]:
+            key = 'yt_hud_'+kind+'_disabled'
+            E.SubElement(parent, 'Button', id=prefix+'_'+kind+'_unavailable', x=str(x), y='0',
+                         up=key, over=key, down=key, action='none',
+                         tooltiptext=('Playback settings' if kind == 'settings' else 'Captions')+' available during YouTube playback',
+                         visible=gate+' and yt_controls_unavailable.isActive')
     windows = E.SubElement(root, 'Windows')
     action = E.SubElement(windows,'Window', id='yt_playback_actions', x='-31000', y='-30600',
                           visible='true', dragdrop='false', playondrop='false')
@@ -96,9 +114,14 @@ def generate(output):
     Image.new('RGBA',(3,3),(0,0,0,1)).save(output/'command_hit.png')
     assets.append(dict(id='yt_hud_command_hit',file='command_hit.png',
                        sha256=sha256((output/'command_hit.png').read_bytes()),width=3,height=3))
+    for kind, glyph in [('settings', 'settings'), ('cc', 'cc_off')]:
+        filename = kind+'_disabled.png'
+        disabled_icon(glyph).save(output/filename)
+        assets.append(dict(id='yt_hud_'+kind+'_disabled', file=filename,
+                           sha256=sha256((output/filename).read_bytes()), width=25, height=25))
     template = xml_template()
     (output/'addon.xml').write_bytes(template)
-    manifest = dict(schemaVersion=1,assetPrefix=ASSET_PREFIX,
+    manifest = dict(schemaVersion=2,assetPrefix=ASSET_PREFIX,
                     scope='Companion-derived skins only; validated core VLT/helper remain unchanged.',
                     assets=assets,template=dict(file='addon.xml',sha256=sha256(template)),
                     physicalArtwork=dict(width=360,height=64),
@@ -121,7 +144,7 @@ def generate(output):
                                       available=dict(id='yt_controls_available',width=223,height=1),
                                       unavailable=dict(id='yt_controls_unavailable',width=224,height=1),
                                       default='yt_controls_unavailable',
-                                      policy='Enable only for ready managed YouTube entries; hide for unmanaged/no entry.'),
+                                      policy='Enable only for ready managed YouTube entries; retain dimmed non-dispatching buttons for unmanaged/no entry.'),
                     integration=['Copy Resources children before Window nodes; copy Windows children as root Windows.',
                                  'Append each Controller child to its matching existing layout without scaling.',
                                  'Shorten only its existing time Slider points and rail width to281; retain original thumb/resources.',

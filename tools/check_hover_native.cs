@@ -21,10 +21,12 @@ namespace NfsSkinSupport
     internal sealed class HoverFixtureWindow : NativeWindow, IDisposable
     {
         private readonly bool child;
-        internal HoverFixtureWindow(int x, int y, int width, int height, IntPtr parent)
+        internal HoverFixtureWindow(int x, int y, int width, int height, IntPtr parent, bool skinClass = false)
         {
+            if (skinClass) HoverFixtureApi.RegisterSkinClass();
             child = parent != IntPtr.Zero;
-            CreateHandle(new CreateParams { Caption = "NFS private exposure fixture",
+            if (skinClass) { AssignHandle(HoverFixtureApi.CreateSkinWindow(x,y,width,height)); return; }
+            CreateHandle(new CreateParams { Caption = "NFS private exposure fixture", ClassName = skinClass ? "SkinWindowClass" : null,
                 X = x, Y = y, Width = width, Height = height, Parent = parent,
                 Style = parent == IntPtr.Zero ? unchecked((int)0x80000000) : 0x40000000,
                 ExStyle = parent == IntPtr.Zero ? 0x08000080 : 0 });
@@ -47,6 +49,34 @@ namespace NfsSkinSupport
 
     internal static class HoverFixtureApi
     {
+        private delegate IntPtr WindowProcedure(IntPtr hwnd, uint message, IntPtr wp, IntPtr lp);
+        [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+        private struct WindowClass
+        {
+            internal uint Style; internal WindowProcedure Procedure;
+            internal int ClassExtra, WindowExtra;
+            internal IntPtr Instance, Icon, Cursor, Background;
+            internal string MenuName, ClassName;
+        }
+        [DllImport("user32.dll",CharSet=CharSet.Unicode,SetLastError=true)] private static extern ushort RegisterClass(ref WindowClass value);
+        [DllImport("user32.dll",CharSet=CharSet.Unicode)] private static extern IntPtr DefWindowProc(IntPtr hwnd,uint message,IntPtr wp,IntPtr lp);
+        [DllImport("kernel32.dll",CharSet=CharSet.Unicode)] private static extern IntPtr GetModuleHandle(string name);
+        private static readonly WindowProcedure skinProcedure = DefWindowProc;
+        private static bool skinRegistered;
+        [DllImport("user32.dll",CharSet=CharSet.Unicode,SetLastError=true)] private static extern IntPtr CreateWindowEx(uint exStyle,string className,string title,uint style,int x,int y,int width,int height,IntPtr parent,IntPtr menu,IntPtr instance,IntPtr param);
+        internal static IntPtr CreateSkinWindow(int x,int y,int width,int height)
+        {
+            IntPtr result=CreateWindowEx(0x08000080,"SkinWindowClass","",0x80000000,x,y,width,height,IntPtr.Zero,IntPtr.Zero,GetModuleHandle(null),IntPtr.Zero);
+            if(result==IntPtr.Zero) throw new InvalidOperationException("Private skin fixture window creation failed.");
+            return result;
+        }
+        internal static void RegisterSkinClass()
+        {
+            if (skinRegistered) return;
+            var value = new WindowClass { Style=0x4000, Procedure=skinProcedure, Instance=GetModuleHandle(null), ClassName="SkinWindowClass" };
+            if (RegisterClass(ref value)==0) throw new InvalidOperationException("Private skin fixture class registration failed.");
+            skinRegistered=true;
+        }
         [DllImport("user32.dll")] internal static extern bool ShowWindow(IntPtr window, int command);
         [DllImport("user32.dll", SetLastError = true)] internal static extern bool GetLayeredWindowAttributes(IntPtr window, out uint colorKey, out byte alpha, out uint flags);
         [DllImport("user32.dll")] internal static extern IntPtr GetThreadDesktop(uint thread);
@@ -154,6 +184,172 @@ namespace NfsSkinSupport
                 exposed = Read(video.Handle, bar.Handle, false, pid, out onVideo, out onBar, out root);
                 Check(scale, "exposed-video-idle-expiry", exposed && !HoverDecision.Show(exposed, false, onVideo, false, 1800));
             }
+        }
+        private static void SnappingSettings(string reportPath)
+        {
+            string folder=Path.Combine(Path.GetDirectoryName(reportPath),"snapping-settings-fixture");
+            Directory.CreateDirectory(folder);
+            string path=Path.Combine(folder,"snapping-enabled.txt");
+            Check(0,"snapping-settings-missing-default-on",SkinSnapping.Load(path));
+            Check(0,"snapping-settings-save-off",SkinSnapping.Save(path,false)&&File.ReadAllText(path)=="false");
+            Check(0,"snapping-settings-reload-shared-off",!SkinSnapping.Load(path));
+            Check(0,"snapping-settings-replace-on",SkinSnapping.Save(path,true)&&SkinSnapping.Load(path));
+            File.WriteAllText(path,"invalid");
+            Check(0,"snapping-settings-invalid-default-on",SkinSnapping.Load(path));
+            string blocked=Path.Combine(folder,"directory-instead-of-file");Directory.CreateDirectory(blocked);
+            Check(0,"snapping-settings-write-failure-contained",!SkinSnapping.Save(blocked,false)&&Directory.Exists(blocked));
+            Check(0,"snapping-settings-no-temporary-files",Directory.GetFiles(folder,"*.tmp").Length==0);
+        }
+        private static void ClockTooltipGate(int scale)
+        {
+            int pid=Process.GetCurrentProcess().Id;
+            using (var skin=new HoverFixtureWindow(point.X-80,point.Y-80,300*scale,298*scale,IntPtr.Zero,true))
+            using (var cover=new HoverFixtureWindow(point.X-20,point.Y-20,80,80,IntPtr.Zero))
+            using (var state=new HoverFixtureWindow(-31000,-30200,151,17,IntPtr.Zero,true))
+            using (var fixedCommand=new HoverFixtureWindow(-31000,-29900,181,17,IntPtr.Zero,true))
+            using (var wrongClass=new HoverFixtureWindow(-31000,-29900,181,17,IntPtr.Zero))
+            {
+                fixedCommand.Place(-31000,-29900,181,17);
+                wrongClass.Place(-31000,-29900,181,17);
+                Check(scale,"clock-fixed-command-exact-native-identity",ClockRefreshDecision.IsFixedCommand(pid,fixedCommand.Handle));
+                Check(scale,"clock-fixed-command-other-pid-rejected",!ClockRefreshDecision.IsFixedCommand(pid+1,fixedCommand.Handle));
+                Check(scale,"clock-fixed-command-wrong-class-rejected",!ClockRefreshDecision.IsFixedCommand(pid,wrongClass.Handle));
+                fixedCommand.Hide();
+                Check(scale,"clock-fixed-command-hidden-rejected",!ClockRefreshDecision.IsFixedCommand(pid,fixedCommand.Handle));
+                fixedCommand.Place(-31000,-29901,181,17);
+                Check(scale,"clock-fixed-command-wrong-position-rejected",!ClockRefreshDecision.IsFixedCommand(pid,fixedCommand.Handle));
+                fixedCommand.Place(-31000,-29900,182,17);
+                Check(scale,"clock-fixed-command-wrong-size-rejected",!ClockRefreshDecision.IsFixedCommand(pid,fixedCommand.Handle));
+                skin.Place(point.X-80,point.Y-80,300*scale,298*scale);
+                Check(scale,"tooltip-clock-deferred-over-exposed-skin",ClockRefreshDecision.PointerOverSkin(pid,point));
+                Check(scale,"tooltip-clock-foreign-pid-not-deferred",!ClockRefreshDecision.PointerOverSkin(pid+1,point));
+                cover.Place(point.X-20,point.Y-20,80,80);
+                Check(scale,"tooltip-clock-resumes-over-covering-root",!ClockRefreshDecision.PointerOverSkin(pid,point));
+                cover.Hide(); skin.Hide();
+                Check(scale,"tooltip-clock-resumes-after-leave",!ClockRefreshDecision.PointerOverSkin(pid,point));
+                state.Place(-31000,-30200,151,17);
+                Check(scale,"tooltip-clock-offscreen-state-excluded",!ClockRefreshDecision.PointerOverSkin(pid,new Point(-30999,-30199)));
+            }
+        }
+        private static void Stacking(int scale)
+        {
+            int pid = Process.GetCurrentProcess().Id, x = point.X - 150, y = point.Y - 120;
+            using (var video = new HoverFixtureWindow(x, y, 708*scale, 440*scale, IntPtr.Zero))
+            using (var bar = new HoverFixtureWindow(point.X-20, point.Y-20, 361, 64, IntPtr.Zero))
+            using (var browser = new HoverFixtureWindow(point.X-40, point.Y-40, 180, 150, IntPtr.Zero))
+            using (var popup = new HoverFixtureWindow(point.X-10, point.Y-10, 80, 80, IntPtr.Zero))
+            using (var cascade = new HoverFixtureWindow(point.X-5,point.Y-5,70,70,IntPtr.Zero))
+            using (var originalOwner = new HoverFixtureWindow(-30000,-30000,1,1,IntPtr.Zero))
+            using (var stacking = new HoverStacking(pid))
+            {
+                video.Place(x,y,708*scale,440*scale); bar.Place(point.X-20,point.Y-20,361,64);
+                Check(scale,"stack-original-owner-set",Native.SetOwner(bar.Handle,originalOwner.Handle));
+                Native.SetWindowPos(video.Handle,new IntPtr(-2),0,0,0,0,0x0213);
+                Check(scale,"stack-bind-and-place",stacking.Place(video.Handle,bar.Handle,point.X-20,point.Y-20));
+                Check(scale,"stack-video-owns-bar",Native.GetWindow(bar.Handle,4)==video.Handle);
+                Check(scale,"stack-normal-video-no-global-topmost",(Native.ReadStyle(bar.Handle,-20)&8)==0&&(Native.ReadStyle(video.Handle,-20)&8)==0);
+                browser.Place(point.X-40,point.Y-40,180,150);
+                Native.SetWindowPos(browser.Handle,new IntPtr(-2),0,0,0,0,0x0213);
+                Native.SetWindowPos(browser.Handle,IntPtr.Zero,0,0,0,0,0x0213);
+                Application.DoEvents();
+                Check(scale,"stack-browser-covers-video-and-bar",Native.GetAncestor(Native.WindowFromPoint(point),2)==browser.Handle);
+                Check(scale,"stack-covered-reposition-succeeds",stacking.Place(video.Handle,bar.Handle,point.X-20,point.Y-20));
+                Check(scale,"stack-refresh-does-not-raise-video-pair",Native.GetAncestor(Native.WindowFromPoint(point),2)==browser.Handle);
+                bool onVideo,onBar;IntPtr root;
+                Check(scale,"stack-covered-exposure-denied",!Read(video.Handle,bar.Handle,true,pid,out onVideo,out onBar,out root));
+                // Simulate the native owner being raised, not physical activation.
+                Native.SetWindowPos(video.Handle,IntPtr.Zero,0,0,0,0,0x0213);
+                Application.DoEvents();
+                coverageReadbacks.Add(new { scale=scale, phase="video-owner-raise", root=Native.GetAncestor(Native.WindowFromPoint(point),2).ToInt64(),
+                    video=video.Handle.ToInt64(), bar=bar.Handle.ToInt64(), browser=browser.Handle.ToInt64(),
+                    videoPrevious=Native.GetWindow(video.Handle,3).ToInt64(), barNext=Native.GetWindow(bar.Handle,2).ToInt64(),
+                    barVisible=Native.IsWindowVisible(bar.Handle), videoStyle=Native.ReadStyle(video.Handle,-20), barStyle=Native.ReadStyle(bar.Handle,-20) });
+                Check(scale,"stack-video-raise-and-helper-sync-lift-bar",stacking.Place(video.Handle,bar.Handle,point.X-20,point.Y-20)&&Native.GetWindow(bar.Handle,4)==video.Handle&&Native.GetAncestor(Native.WindowFromPoint(point),2)==bar.Handle);
+                Check(scale,"stack-exposed-inactive-bar-retained",Read(video.Handle,bar.Handle,true,pid,out onVideo,out onBar,out root)&&onBar);
+                popup.Place(point.X-10,point.Y-10,80,80);
+                Native.SetWindowPos(popup.Handle,new IntPtr(-2),0,0,0,0,0x0213);
+                Native.SetWindowPos(popup.Handle,IntPtr.Zero,0,0,0,0,0x0213);
+                Check(scale,"stack-popup-remains-above-after-refresh",stacking.Place(video.Handle,bar.Handle,point.X-20,point.Y-20)&&Native.GetAncestor(Native.WindowFromPoint(point),2)==popup.Handle);
+                Check(scale,"stack-unowned-popup-does-not-maintain-bar",!Read(video.Handle,bar.Handle,true,pid,out onVideo,out onBar,out root));
+                Check(scale,"stack-popup-owner-assigned",Native.SetOwner(popup.Handle,bar.Handle));
+                Check(scale,"stack-owned-popup-maintains-bar",Read(video.Handle,bar.Handle,true,pid,out onVideo,out onBar,out root)&&onBar&&HoverDecision.Show(true,false,false,onBar,9000));
+                cascade.Place(point.X-5,point.Y-5,70,70);
+                Check(scale,"stack-cascade-owner-assigned",Native.SetOwner(cascade.Handle,popup.Handle));
+                Native.SetWindowPos(cascade.Handle,IntPtr.Zero,0,0,0,0,0x0213);
+                Check(scale,"stack-owned-cascade-maintains-bar",Read(video.Handle,bar.Handle,true,pid,out onVideo,out onBar,out root)&&onBar&&root==cascade.Handle);
+                cascade.Hide();
+                Point outsideBar = new Point(point.X - 30, point.Y + 10);
+                Native.SetWindowPos(popup.Handle,IntPtr.Zero,outsideBar.X-5,outsideBar.Y-5,80,80,0x0014);
+                Application.DoEvents();
+                stacking.Place(video.Handle,bar.Handle,point.X-20,point.Y-20);
+                bool popupExposure = HoverDecision.ReadExposure(pid,video.Handle,bar.Handle,true,outsideBar,out root,out onVideo,out onBar);
+                Native.Rect barBounds; Native.GetWindowRect(bar.Handle,out barBounds);
+                coverageReadbacks.Add(new { scale=scale, phase="outside-popup", root=root.ToInt64(), popup=popup.Handle.ToInt64(), popupExposure=popupExposure, onBar=onBar, contains=barBounds.Contains(outsideBar), owner=Native.GetWindow(popup.Handle,4).ToInt64(), below=HoverDecision.FirstVisibleRootBelow(bar.Handle,new Point(barBounds.Left+barBounds.Width/2,barBounds.Top+barBounds.Height/2)).ToInt64(), video=video.Handle.ToInt64(), x=outsideBar.X,y=outsideBar.Y });
+                Check(scale,"stack-owned-popup-outside-bar-keeps-exact-desired",!barBounds.Contains(outsideBar)&&root==popup.Handle&&popupExposure&&HoverDecision.Show(popupExposure,false,false,onBar,9000,false));
+                popup.Hide();
+                // Regression topology: an independently raised bar above a browser
+                // must not maintain itself using its own remembered rectangle.
+                Native.SetWindowPos(browser.Handle,IntPtr.Zero,0,0,0,0,0x0213);
+                Native.SetWindowPos(bar.Handle,IntPtr.Zero,0,0,0,0,0x0213);
+                Check(scale,"stack-stale-floating-bar-topology",Native.GetAncestor(Native.WindowFromPoint(point),2)==bar.Handle&&HoverDecision.FirstVisibleRootBelow(bar.Handle,point)==browser.Handle);
+                Check(scale,"stack-bar-over-covered-video-denied",!Read(video.Handle,bar.Handle,true,pid,out onVideo,out onBar,out root)&&!onBar);
+                browser.Hide();
+                Native.SetWindowPos(video.Handle,new IntPtr(-1),0,0,0,0,0x0213);
+                Check(scale,"stack-respects-video-topmost-intent",stacking.Place(video.Handle,bar.Handle,point.X-20,point.Y-20)&&(Native.ReadStyle(bar.Handle,-20)&8)!=0);
+                Native.SetWindowPos(video.Handle,new IntPtr(-2),0,0,0,0,0x0213);
+                Check(scale,"stack-demotes-with-video",stacking.Place(video.Handle,bar.Handle,point.X-20,point.Y-20)&&(Native.ReadStyle(bar.Handle,-20)&8)==0);
+                stacking.Dispose();
+                Check(scale,"stack-original-owner-restored",Native.GetWindow(bar.Handle,4)==originalOwner.Handle);
+                Check(scale,"stack-owner-cycle-rejected",Native.SetOwner(video.Handle,bar.Handle)&&!stacking.Bind(video.Handle,bar.Handle));
+                Native.SetOwner(video.Handle,IntPtr.Zero);
+            }
+        }
+        private static IntPtr ClockState(Target target)
+        {
+            var matches=target.Windows().Where(window => { Native.Rect bounds; return target.Owns(window)&&Native.GetWindowRect(window,out bounds)&&ClockRefreshDecision.Matches(bounds); }).ToList();
+            return matches.Count==1 ? matches[0] : IntPtr.Zero;
+        }
+        private static bool WaitTooltip(Target target, bool visible, int timeout)
+        {
+            var watch=Stopwatch.StartNew();
+            do { IntPtr tip=TooltipWindow(target); if(tip!=IntPtr.Zero&&Native.IsWindowVisible(tip)==visible)return true; Pause(); } while(watch.ElapsedMilliseconds<timeout);
+            return false;
+        }
+        private static void PrivateTooltipHit(Target target,IntPtr main,int x,int y)
+        {
+            if(!target.Owns(main)||!Native.PostMessage(main,0x0206,IntPtr.Zero,new IntPtr((y<<16)|(x&0xffff)))) throw new InvalidOperationException("Owned tooltip hit probe failed.");
+            Pause();
+        }
+        private static void ActualClockTooltip(int scale,Target target,IntPtr main)
+        {
+            var commands=target.Windows().Where(window=>ClockRefreshDecision.IsFixedCommand(target.Pid,window)).ToList();
+            Check(scale,"actual-fixed-clock-command-discovery",commands.Count==1);
+            IntPtr fixedCommand=commands[0],state=ClockState(target);
+            Check(scale,"actual-clock-state-discovery",state!=IntPtr.Zero);
+            foreach(int cell in new[]{0,10})
+            {
+                if(!target.Owns(fixedCommand)||!Native.PostMessage(fixedCommand,0x0203,new IntPtr(1),new IntPtr(cell)))throw new InvalidOperationException("Owned fixed clock command failed.");
+                Pause();
+                // Leave/re-enter the same original control after priming each
+                // persistent Image. Right-double-click has no CtrlButton FSM
+                // transition, and avoids WM_MOUSEMOVE TrackMouseEvent on a
+                // non-input desktop. It performs only native hit/tooltip logic.
+                PrivateTooltipHit(target,main,0,0);
+                PrivateTooltipHit(target,main,74*scale,62*scale);
+                Check(scale,"actual-tooltip-visible-before-fixed-cell-"+cell,WaitTooltip(target,true,1800));
+                for(int repeat=0;repeat<3;repeat++)
+                {
+                    var pause=Stopwatch.StartNew(); while(pause.ElapsedMilliseconds<500)Pause();
+                    if(!target.Owns(fixedCommand)||!Native.PostMessage(fixedCommand,0x0203,new IntPtr(1),new IntPtr(cell)))throw new InvalidOperationException("Owned fixed clock repeat failed.");
+                    Pause(); Native.Rect bounds;
+                    Check(scale,"actual-fixed-cell-"+cell+"-phase-b-"+repeat,target.Owns(state)&&Native.GetWindowRect(state,out bounds)&&bounds.Width==(cell==0?152:154));
+                    Check(scale,"actual-tooltip-survives-fixed-cell-"+cell+"-"+repeat,WaitTooltip(target,true,200));
+                }
+            }
+            // Reproduce the original native failure after establishing the new
+            // path: changing the clicked state's Image cancels the global tip.
+            if(!target.Owns(state)||!Native.PostMessage(state,0x0203,new IntPtr(1),IntPtr.Zero))throw new InvalidOperationException("Owned legacy clock baseline failed.");
+            Check(scale,"actual-legacy-clock-cancels-tooltip-baseline",WaitTooltip(target,false,1000));
         }
         private static string Log(string path)
         {
@@ -305,18 +501,10 @@ namespace NfsSkinSupport
                     if (main != IntPtr.Zero)
                     {
                         Move(target, main, point.X-74*scale, point.Y-62*scale);
-                        // Optional native timer observation on known Open media
-                        // artwork. This is only an owned private window message,
-                        // never a physical pointer move or action-button click.
-                        if (target.Owns(main)) Native.PostMessage(main, 0x0200, IntPtr.Zero, new IntPtr(((62*scale) << 16) | (74*scale)));
-                        watch.Restart();
-                        while (watch.ElapsedMilliseconds < 1800)
-                        {
-                            IntPtr tooltip = TooltipWindow(target);
-                            if (tooltip != IntPtr.Zero && Native.IsWindowVisible(tooltip)) { tooltipTimerVisible = true; break; }
-                            Pause();
-                        }
                     }
+                    Check(scale,"actual-tooltip-test-main-window",main!=IntPtr.Zero);
+                    ActualClockTooltip(scale,target,main);
+                    tooltipTimerVisible=true;
                     string finalLog = Log(request.log);
                     Check(scale, "actual-no-theme-error-or-fallback", !finalLog.Contains("skins2 error:") && !finalLog.Contains("xml error:")
                         && !finalLog.Contains("trying default skin") && !finalLog.Contains("trying the default skin")
@@ -333,7 +521,7 @@ namespace NfsSkinSupport
                 }
                 actualResults.Add(new { scale = request.scale, initialized = initialized, discovery = discovery,
                     realEmbeddedChildObserved = childObserved, nativeTooltipVisibleAfterMotion = tooltipTimerVisible,
-                    tooltipTimerScope = "Optional private WM_MOUSEMOVE observation; false is an unverified timer/display result, never a creation/exposure pass.", ownedProcessClosed = cleanup });
+                    tooltipTimerScope = "Private message-only native hit probe on original Button; fixed clock commands preserve native tooltip visibility. No physical hover or appearance certification.", ownedProcessClosed = cleanup });
                 if (!cleanup) throw new InvalidOperationException("Owned test VLC cleanup failed.");
             }
         }
@@ -345,7 +533,7 @@ namespace NfsSkinSupport
             string error = null;
             try
             {
-                Scale(1); Scale(2);
+                SnappingSettings(args[0]); Scale(1); Scale(2); Stacking(1); Stacking(2); ClockTooltipGate(1); ClockTooltipGate(2);
                 if (args.Length == 4)
                 {
                     var permit = Stopwatch.StartNew();

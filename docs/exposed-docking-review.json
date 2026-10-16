@@ -1,0 +1,241 @@
+{
+  "date": "2026-10-16",
+  "nativeOcclusion": {
+    "passed": true,
+    "cases": 28,
+    "protectedProcessesAlive": true,
+    "guardedFilesUnchanged": true,
+    "inputDesktopUnchanged": true,
+    "cleanupErrors": []
+  },
+  "nativeCaseNames": [
+    {
+      "scale": 1,
+      "name": "unfiltered-covered-baseline-attracts",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "baseline-detach",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "attach-exact-candidate-filter",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "filtered-covered-target-does-not-attract",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "covered-detach",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "filtered-partial-exposed-target-snaps",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "filtered-main-carries-attached-child",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "filtered-child-detaches-alone",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "filtered-exposed-target-snaps",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "exposed-detach",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "filtered-screen-left-edge-retained",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "screen-edge-detach",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "remove-enable-marker-native-fallback",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "disabled-filter-covered-target-native-fallback",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "unfiltered-covered-baseline-attracts",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "baseline-detach",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "attach-exact-candidate-filter",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "filtered-covered-target-does-not-attract",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "covered-detach",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "filtered-partial-exposed-target-snaps",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "filtered-main-carries-attached-child",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "filtered-child-detaches-alone",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "filtered-exposed-target-snaps",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "exposed-detach",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "filtered-screen-left-edge-retained",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "screen-edge-detach",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "remove-enable-marker-native-fallback",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "disabled-filter-covered-target-native-fallback",
+      "passed": true
+    }
+  ],
+  "exactPluginSHA256": "c88b5d37fd554a968508d2d20ce4cec2279134b9840c05adba989b25d84682c5",
+  "debugSymbols": {
+    "url": "https://download.videolan.org/pub/videolan/vlc/3.0.23/win64/vlc-3.0.23-win64-debugsym.7z",
+    "sha256": "89961135219ed525ec9b0987b7ac64cca4c8a7c04a89a4d7fe6be6aaf5313072"
+  },
+  "matchedDebuglinkCRC32": "0x650b427a",
+  "nativeFunctions": {
+    "Anchor::canHang": {
+      "rva": "0x398b0",
+      "wholePrologueBytes": "4157415641554154555756534883ec58"
+    },
+    "WindowManager::checkAnchors": {
+      "rva": "0x5a070",
+      "wholePrologueBytes": "4157415641554154555756534881ec98000000"
+    },
+    "GenericLayout::getWindow": "0x106590",
+    "GenericWindow::getOSHandle": "0x40e40",
+    "std::_Rb_tree_increment(const*)": "0x1a59b0",
+    "GenericWindow::getOSHandle.wholeBytes": "488b4928488b0148ff6040"
+  },
+  "canHangReturnSites": {
+    "stationaryThis": "0x5a3df",
+    "stationaryOther": "0x5a3bb"
+  },
+  "nativeFields": {
+    "Anchor.layout": "0x60",
+    "WindowManager.movingHeader": "0xa8",
+    "movingHeader.firstNode": "0x10",
+    "treeNode.window": "0x20"
+  },
+  "analysisEvidenceScope": "Offline COFF debug symbols, exact debuglink CRC and Capstone instruction decoding. REA confirmed artifact identity; deep provider unavailable. No native process patch executed by this analysis.",
+  "rejectedCandidatesRetained": [
+    "Initial helper signature transcription rejected before patch (Status3).",
+    "First stationary argument mapping retained native attraction; negative fixture failed.",
+    "Fixture startup race fixed with a bounded read-only module-ready wait."
+  ],
+  "limits": [
+    "Only exact copied portable runtime/plugin signatures enable filtering; installed processes remain unpatched.",
+    "Unknown opacity/cloak/geometry or invalid native identity retains native behavior.",
+    "Private native geometry proof, not physical drag smoothness or full user acceptance."
+  ],
+  "liveActivation": "Complete: matched1x load and DLL compatibility repair, empty queue/settings preserved; read-only Status1/wheel/clear/fixedclock/owner checks pass. See exposed-docking-rollout.json.",
+  "packagingHeld": true,
+  "adjacentPluginCandidate": {
+    "dllSHA256": "72f29f26ce264109e36a36263331c20edb3aabad111cc5d566bf017c56f49dad",
+    "helperSHA256": "8bf8b4a244d33eccc4246764abf7d18d50f91fb1b892bfbe78cbf5aa4cbe54ab",
+    "occlusionSourceSHA256": "68769ec8db7a9c2857424c27d4cff04dae10a1a14095174564055ec75e1df79a",
+    "wheelSourceSHA256": "e0b69419335a0ecacd053e2f8e150109c2e04c587038650522b3502b7037f4b6",
+    "helperSourceSHA256": "9d406edf5ed5597d66fde84f253ebf1cc35433b02ce754d80b547a7aad64c96a",
+    "buildScriptSHA256": "9894568ac4ce44dea5d4fba8e4b26c9265446cbfa5f72514b8ff4c409f9977b9",
+    "packages": {
+      "1": "f7b51777b476c19969472ac92f8c1de834b58cb1e0ce41d2365195fea098dfb7",
+      "2": "c465efadba4593e07fdf9caf045eb511b3b5e58a502605247ddd76cc9c78895f"
+    }
+  },
+  "candidate": {
+    "dllSHA256": "63fcfbb76a6dde54259bd196f1e213f8b390eefa41d5bbffe5d3c5c0e8f572a4",
+    "helperSHA256": "8bf8b4a244d33eccc4246764abf7d18d50f91fb1b892bfbe78cbf5aa4cbe54ab",
+    "occlusionSourceSHA256": "3cc6f79ba18f763be8465844ecd87152bd04beb5f834a553d59a2968eb7ed4e2",
+    "wheelSourceSHA256": "e0b69419335a0ecacd053e2f8e150109c2e04c587038650522b3502b7037f4b6",
+    "helperSourceSHA256": "9d406edf5ed5597d66fde84f253ebf1cc35433b02ce754d80b547a7aad64c96a",
+    "buildScriptSHA256": "28137665930803ade266358323868bfad253206420983ffeda1c9c28043cd4d9",
+    "packages": {
+      "1": "f7b51777b476c19969472ac92f8c1de834b58cb1e0ce41d2365195fea098dfb7",
+      "2": "c465efadba4593e07fdf9caf045eb511b3b5e58a502605247ddd76cc9c78895f"
+    }
+  },
+  "sharedInstalledPluginNative": {
+    "passed": true,
+    "cases": 28,
+    "reportSHA256": "53881e20566a28f55a69fa4fd466c9cd7bcc1f460f51e56ee6c28fde4d480d5e",
+    "candidateDLLSHA256": "63fcfbb76a6dde54259bd196f1e213f8b390eefa41d5bbffe5d3c5c0e8f572a4",
+    "packages": {
+      "1": "f7b51777b476c19969472ac92f8c1de834b58cb1e0ce41d2365195fea098dfb7",
+      "2": "c465efadba4593e07fdf9caf045eb511b3b5e58a502605247ddd76cc9c78895f"
+    },
+    "protectedProcessesAlive": true,
+    "guardedFilesUnchanged": true,
+    "inputDesktopUnchanged": true,
+    "cleanupErrors": [],
+    "scope": "Copied EXE-only private runtime, actual standard installed core and GUI module mappings verified; installed exe/core/plugin/cache files guarded."
+  },
+  "initialLiveActivation": {
+    "status": 2,
+    "filterActive": false,
+    "reason": "Existing companion launcher shares standard installed plugins. Adjacent-plugin-only candidate safely refused this valid private-executable layout."
+  },
+  "compatibilityPolicy": "Only exact adjacent-private or Windows-known-folder standard plugin path after unchanged copied-executable SHA/name/portable checks. Full plugin SHA and machine-code pins unchanged. Installed executables remain excluded."
+}

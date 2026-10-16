@@ -26,20 +26,20 @@ The current target is complete parity within the user's permitted VLC adaptation
 - Video is rectangular; the NFS logo remains on the audio controller. Original panel frames omit their unused transparent bottom margins.
 - Media dimensions no longer resize the video panel automatically. The frame follows the user's manual size; native playback and aspect-fit behavior still require review. See [video sizing audit](VIDEO-SIZING.md).
 - Original images remain lossless at 1x. Each animation/needle frame is independently resampled with Lanczos at 2x to avoid bleeding from adjacent frames.
-- Equalizer frequencies follow VLC; removed WMP-only controls include preset/reset, SRS/WOW/TruBass, speaker size, balance, crossfade and visualization presets. The removed right-side EQ rails use the original carbon texture and VLC preamp. The optional Windows helper restores original sounds and framed-video hover. Both scales passed targeted controls and audio-output tests; physical speaker audibility and exhaustive parity remain unverified. Framed-bar mouse-wheel routing remains incorrect; click/drag sliders work. See SOUNDS-AND-HOVER.md.
-- Clock/metadata use a TTF font. The clock uses 14 source-scale pixels. Metadata uses user-approved white 12 source-scale pixels over a dark 177 × 16 backing, preserving the gauge and logo. The approved compact HUD keeps the same physical size on both scales; native display remains pending.
+- Equalizer frequencies follow VLC; removed WMP-only controls include preset/reset, SRS/WOW/TruBass, speaker size, balance, crossfade and visualization presets. The removed right-side EQ rails use the original carbon texture and VLC preamp. The optional Windows helper restores original sounds and framed-video hover. Both scales passed targeted controls and audio-output tests; physical speaker audibility and exhaustive parity remain unverified. The preceding framed-bar mouse-wheel route remains incorrect; the correction in CLOCK-AND-WHEEL.md is now loaded in the authorized1x review setup, with actual wheel behavior still for user review. Click/drag sliders work. See SOUNDS-AND-HOVER.md.
+- Clock/metadata use a TTF font. The clock uses 14 source-scale pixels. Metadata uses user-approved white 12 source-scale pixels over a dark 177 × 16 backing, preserving the gauge and logo. The approved compact HUD keeps the same physical size on both scales; scoped private native display/exposure checks pass, with final appearance judged by the user.
 - The original playlist changes the playing-row background with its palette. VLC Playtree exposes a fixed selection background and playing-text color, without a separate playing-row background binding. The single retained Playtree therefore cannot reproduce that palette-dependent row treatment.
 - Main/other-pane palette switching remains immediate. The Info frame now fades changing opaque pixels for 700 ms independently; fractional-alpha filtered edges switch immediately to preserve cached paint and hit shape.
 - The original Info sound is an 18.043-second audio-only cue over static artwork, with no companion movie or slideshow. Page entry/return fades now reach their endpoints at 400/500 ms; Web Destinations art appears after entry. Timed near-invisible click forwarders preserve menu return layering; exact hover feedback during those500ms and arbitrary interrupted fades remain source differences. Native timing/load review is pending; see INFO-FADES.md.
 - Playlist defaults increase from420x320 to440x340 source pixels; its dedicated font increases from10 to12 source pixels and text brightens. The original frame, red selection, scrollbar and lower-right manual resize are retained. Optional bundle text customization applies on the next dedicated launch; it never reloads the running player.
-- Tooltips use16physicalpixels on both skins. Above-pointer monitor-clamped placement requires the new matching helper; plain VLTs retain VLC's below-pointer positioning. Native appearance/stacking remain pending.
+- Tooltips use VLC defaultfont12physicalpixels on both skins. Above-pointer monitor-clamped placement requires the new matching helper; plain VLTs retain VLC's below-pointer positioning. Native appearance/stacking remain pending.
 - Regular VLC launches restore the saved layout, which can bypass the intro after switching away from `main_start`. Skins2 has no source-script on-load timer equivalent. Review launchers clear saved layout state; the conversion credit page provides Replay intro in the blue theme, including when `main_start` is already selected.
 - VLC owns native context/preferences dialogs. Its skin API cannot style those interiors. The skin's own information menu retains its original artwork.
 - Old marketing links remain as source artwork; obsolete outbound actions are omitted.
 - Decorative WMP overlays were pass-through. Functional outer buttons are layered above the equivalent Skins2 decorative hit masks to keep the controls reachable.
 
-- Paused seeking works, but VLC's native time variable can notify text before the seek completes; the clock may retain its previous value until playback resumes. This was reproduced at 2x and traced to upstream source.
-- Changing the clock token activates another layout. During shutter opening this can finish travel early; during closing it restarts travel while preserving the closing destination.
+- The preceding paused-seek clock could retain an old value until resume. The matching development helper now requests a visibility refresh without media changes; source/offline checks pass, exact native raster latency remains unobserved. Exact-zero formatting is still VLC-owned. See CLOCK-AND-WHEEL.md.
+- Clock-mode clicks now change an independent state instead of the main layout in both development skins. Source/transition checks confirm shutter and palette actions are preserved; live animation continuity remains for review. Packaging remains held; the authorized1x review rollout is recorded in review-1x-rollout.json.
 - Resize controls use exact palette corner artwork. The previous alpha-1 black masks allowed resizing but painted black rectangles through Windows cached-image copies. Native 2x resize was verified on the earlier package; the corrected corner appearance and final 1x resize need native recheck. See CORNER-FIX.md.
 
 ## Acceptance still needed
@@ -62,6 +62,30 @@ Of 756 reconstructed main/information compositions, 714 match exactly. The remai
 
 Shutter/clock layout changes no longer change auxiliary pane visibility. Pane color is stored separately and changes only on palette cycling or intro replay. The 1x blue YouTube/video frames stayed intact in a limited native open/close retest; both scales pass temporal visibility checks. Existing colored settings need the one-time migration described in SHUTTER-ISOLATION.md; positions are preserved.
 
+## Current control repairs
+
+Both development scales now include the confirmed companion Clear playlist
+button beside the folder, a persistent clock-command receiver that preserves
+native tooltips during periodic refresh, and schema2 companion art that retains
+dimmed Settings/CC controls while playback is unavailable. The private native
+bridge filters proven covered targets in the exact supported copied runtime,
+while retaining exposed/partial docking, screen magnetism and native groups.
+See PLAYLIST-AND-TOOLTIPS.md and EXPOSED-DOCKING.md for exact hashes, focused
+both-scale proof and fallback limits. No physical input or actual queue clear
+is used in verification. Packaging remains held; user acceptance is separate.
+
 ## Framed fullscreen adaptation
 
 Fullscreen entry points now toggle monitor-filling video with the original skin border and restore its previous rectangle. The source two-button header and all feedback assets are preserved; no third icon was added. Double-clicking native video retains borderless fullscreen. Offline guards cover both scales and up to 8192x4320. Targeted native blue-palette tests at 1920x1080 passed in both scales: idle/playing framed maximize/restore, borderless double-click both directions, and stopped header appearance. Uniform fills use cached scaling; video backing composites prevent cached black fringes without replacing feedback assets. See FULLSCREEN.md, VIDEO-REPAINT.md and fullscreen-review.json for exact scope and remaining native gaps.
+
+The explicit snapping preference and current companion startup/playback visibility work are documented in SNAPPING-AND-PLAYBACK.md. DefaultON retains native docking; userOFF prevents pane/screen snaps and attached-group movement in the supported private runtime. This is an optional adaptation, not a source-art parity claim.
+
+## Current1x SNAP/startup repair
+
+The rejected baked-label SNAP pill is replaced in1x by native13px SNAP and12px ON/OFF Text over a stronger graphite face. Noninteractive labels preserve the original Checkbox hit target. The2x package remains on hold with its previous exact bytes; this1x refinement is not a2x update or visual acceptance claim.
+
+The dedicated1x setup now waits for the loaded sound helper, restarts the full81-frame intro and triggers its sound in one native action. The original1500ms cue delay is retained. Native private proof shows animation advancement and one dispatch at1500ms; source frame/pixel checks remain exact. The8.1second controlled startup returns to the saved stable palette/shutter choice, and its gated return does not override a user layout change. Main stays above startup and restores its prior topmost state afterward. YouTube starts after the sequence.
+
+The matched current1x update is loaded with fresh actual queue, volume and settings preserved. Main opening/closing transient layouts intentionally normalize to their stable open/closed state; pane geometry is preserved. Physical appearance, speaker synchronization and overall parity remain user-review items. See SNAP-STARTUP-1X.md and snap-startup-1x-review.json for exact scope. Packaging remains held.
+
+The1x SNAP label centering is corrected by moving SNAP down2pixels and ON/OFF down3pixels; every other package payload/XML field is unchanged. The companion now defaults playlist/Mix selections to Play now while preserving the existing queue and retaining explicit Add to queue. The matched1x update is loaded; native ComboBox selection1 was read back without input or media actions. See SNAP-CENTERING.md and snap-centering-review.json.2x and packaging remain held.

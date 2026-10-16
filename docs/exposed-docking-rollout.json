@@ -1,0 +1,81 @@
+{
+  "queueCount": 0,
+  "state": "stopped",
+  "currentplid": -1,
+  "time": 0,
+  "volume": 256,
+  "oldCheckpointRestored": false,
+  "hostPid": 26204,
+  "vlcPid": 45344,
+  "chromePid": 67384,
+  "sixUserGeometriesPreserved": {
+    "main": true,
+    "video": true,
+    "tracks": true,
+    "equalizer": true,
+    "info": true,
+    "youtube": true
+  },
+  "clockModePreserved": "elapsed",
+  "otherPrivatePreferencesPreserved": true,
+  "normalProfileSourceAndSoundPreserved": true,
+  "onlyDllChanged": true,
+  "sourceSHA256": "f7b51777b476c19969472ac92f8c1de834b58cb1e0ce41d2365195fea098dfb7",
+  "hostSHA256": "fa647480870b9d61e4bd25dbf50de3884aa5361f3791b221a27ebcc766837473",
+  "helperSHA256": "8bf8b4a244d33eccc4246764abf7d18d50f91fb1b892bfbe78cbf5aa4cbe54ab",
+  "dllSHA256": "63fcfbb76a6dde54259bd196f1e213f8b390eefa41d5bbffe5d3c5c0e8f572a4",
+  "derivedSHA256": "a56aa23c00b7924e6199961700d08ae5f50e7469882326d98459e5c0876f3585",
+  "physicalInputUsed": false,
+  "packagingHeld": true,
+  "occlusionLiveGate": "passed, read-only Status1 observed",
+  "helperPid": 53184,
+  "occlusionStatus": 1,
+  "wheelHookEnabledProperty": 1313231703,
+  "readOnlyIntegration": {
+    "readOnly": true,
+    "noInputOrForegroundOrShowCalls": true,
+    "rows": [
+      {
+        "role": "framed-hover",
+        "width": 362,
+        "height": 1,
+        "wheelMarker": 1313231703,
+        "occlusionStatus": 1,
+        "ownerInSelectedVlc": true
+      },
+      {
+        "role": "clock-state",
+        "width": 152,
+        "height": 17
+      },
+      {
+        "role": "clear-capability",
+        "width": 172,
+        "height": 1
+      },
+      {
+        "role": "clear-command",
+        "width": 161,
+        "height": 17
+      },
+      {
+        "role": "fixed-clock-command",
+        "width": 181,
+        "height": 17
+      }
+    ],
+    "clockPhaseBObserved": true,
+    "fixedClockCommandObserved": true,
+    "clearReadyObserved": true,
+    "clearCapabilityEnabledObserved": true,
+    "wheelBindingObserved": true,
+    "occlusionInstalledObserved": true,
+    "barOwnerInSelectedVlc": true,
+    "passed": true
+  },
+  "limits": [
+    "Both scales passed private native checks. Current activation is1x only.",
+    "Physical user drag feel and exhaustive parity acceptance remain separate.",
+    "No actual user queue clear performed during verification."
+  ]
+}

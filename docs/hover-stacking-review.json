@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "source_sha256": "bd6bf0ba20168c109f5e6eca388c299766c0e3f868bb345dcbb72bd18fe4cc1b",
+  "helper_sha256": "4797c91efc24317c219e1397f65f120ddd5bd5e4b4deca1f8fc8a001730f8004",
+  "wheel_dll_sha256": "b4c859e2422fe995e5af974e2fed5b1b1889fd1ed658f0f77da62a413dde87fe",
+  "compile_passed": true,
+  "pure_self_test_passed": true,
+  "native_fixture": {
+    "passed": true,
+    "cases": 86,
+    "source_sha256": "bd6bf0ba20168c109f5e6eca388c299766c0e3f868bb345dcbb72bd18fe4cc1b",
+    "fixture_sha256": "3969c0389edd015375a36c54f7408b337d9600fb4ac41d992a3d91a5ab715e89",
+    "fixture_executable_sha256": "0a122564fab7a08d0c3817be261da60a5c63646ae6154a4908400be85d58b487",
+    "private_desktop": true,
+    "actual_vlc_launched": false,
+    "input_desktop_unchanged": true,
+    "guarded_files_unchanged": true,
+    "protected_processes_alive": true,
+    "cleanup_error": null,
+    "owned_process_closed": true
+  },
+  "preserved": {
+    "source_vlts_unchanged": true,
+    "wheel_capture_guard_dll_unchanged": true,
+    "artwork_animations_unchanged": true,
+    "screen_magnet_and_pane_anchors_unchanged": true
+  },
+  "scope": "Shared source methods and synthetic private Win32 topology at both physical skin scale geometries. Not full helper timing, physical activation or drag feel. Product exe compiled separately from same frozen source; live activation recorded separately.",
+  "packaging": "held",
+  "runtime_activation": "Coordinated1x load complete; see hover-stacking-rollout.json. No2x profile or packaging update.",
+  "additional_fixture_case": {
+    "status": "pending corrected-setup rerun",
+    "failure": "An added outside-bar popup assertion used a synthetic TOPMOST placement that changed owner stacking before the product reconcile. Original86 passing cases remain scoped to their frozen fixture hash.",
+    "correction": "Fixture now preserves z order and reconciles through the product path before the extra assertion; product source unchanged.",
+    "failed_reports_retained": true
+  }
+}

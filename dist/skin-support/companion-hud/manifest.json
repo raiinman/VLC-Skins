@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "assetPrefix": "companion-hud/",
   "scope": "Companion-derived skins only; validated core VLT/helper remain unchanged.",
   "assets": [
@@ -72,11 +72,25 @@
       "sha256": "1466aa7297e06f238aeba92e97baef0beb6c1729b3ecc47b4d6502ead61de1f0",
       "width": 3,
       "height": 3
+    },
+    {
+      "id": "yt_hud_settings_disabled",
+      "file": "settings_disabled.png",
+      "sha256": "4c6fa83f7f73fe892dc3549afb5fc34ddea25f1e51097ba4955bf68f43231b49",
+      "width": 25,
+      "height": 25
+    },
+    {
+      "id": "yt_hud_cc_disabled",
+      "file": "cc_disabled.png",
+      "sha256": "eb749d59a28f9dba9a86f3541c90f51765cd4bad1aaf301bb7ecb29fc1b4c6d0",
+      "width": 25,
+      "height": 25
     }
   ],
   "template": {
     "file": "addon.xml",
-    "sha256": "46a986060171df58ae21239b34fdba5013bd39df11bdd173ae3bc6000a034b10"
+    "sha256": "b349a682afaf0080ec5eb4080ad7dfaa52170205562b559b5fef70531fa9266a"
   },
   "physicalArtwork": {
     "width": 360,
@@ -161,6 +175,10 @@
       "unavailable": [
         41,
         1
+      ],
+      "video_show": [
+        101,
+        1
       ]
     },
     "actions": {
@@ -168,7 +186,8 @@
       "cc_on": "yt_cc_indicator.setLayout(yt_cc_on)",
       "cc_off": "yt_cc_indicator.setLayout(yt_cc_off)",
       "available": "yt_hud_availability.setLayout(yt_controls_available)",
-      "unavailable": "yt_hud_availability.setLayout(yt_controls_unavailable)"
+      "unavailable": "yt_hud_availability.setLayout(yt_controls_unavailable)",
+      "video_show": "video.show()"
     }
   },
   "captionIndicator": {
@@ -205,7 +224,7 @@
       "height": 1
     },
     "default": "yt_controls_unavailable",
-    "policy": "Enable only for ready managed YouTube entries; hide for unmanaged/no entry."
+    "policy": "Enable only for ready managed YouTube entries; retain dimmed non-dispatching buttons for unmanaged/no entry."
   },
   "integration": [
     "Copy Resources children before Window nodes; copy Windows children as root Windows.",

@@ -1,0 +1,260 @@
+{
+  "date": "2026-10-16",
+  "sourcePackages": {
+    "1": "f7b51777b476c19969472ac92f8c1de834b58cb1e0ce41d2365195fea098dfb7",
+    "2": "c465efadba4593e07fdf9caf045eb511b3b5e58a502605247ddd76cc9c78895f"
+  },
+  "placementRerunAfterExplicitProtocolAllowlist": {
+    "passed": true,
+    "note": "Initial strict window allowlist rejected the two new offscreen protocol windows. Added exact IDs/defaults/geometry; original failed log retained."
+  },
+  "existingContracts": [
+    {
+      "scale": 1,
+      "existingControlLayoutWindowFontAttributesUnchanged": 3835
+    },
+    {
+      "scale": 2,
+      "existingControlLayoutWindowFontAttributesUnchanged": 3962
+    }
+  ],
+  "tooltipHelperSource": "9d406edf5ed5597d66fde84f253ebf1cc35433b02ce754d80b547a7aad64c96a",
+  "tooltipHelperSHA256": "8bf8b4a244d33eccc4246764abf7d18d50f91fb1b892bfbe78cbf5aa4cbe54ab",
+  "tooltipPrivateNative": {
+    "passed": true,
+    "cases": 186,
+    "protectedProcessesAlive": true,
+    "guardedFilesUnchanged": true,
+    "inputDesktopUnchanged": true,
+    "cleanupErrors": null,
+    "fixtureSourceSHA256": "467395ecd1f35751da2485a30b836d5ec78fc47ee1d3bb4863f9a8fa1ce7b280"
+  },
+  "limits": [
+    "Private native source-method, timer and macro proof, not physical pointer hover appearance or complete helper timing.",
+    "First fixed receiver hit or mode change can cancel a tooltip once; repeated refresh preserves it.",
+    "Older source packages without fixed command retain hover-deferral fallback.",
+    "No actual user queue clear performed."
+  ],
+  "packagingHeld": true,
+  "liveActivation": "Complete: matched1x load and DLL compatibility repair, empty queue/settings preserved; read-only Status1/wheel/clear/fixedclock/owner checks pass. See exposed-docking-rollout.json.",
+  "finalConversionChecksPassed": true,
+  "companionClearNativeProof": {
+    "sourceCommit": "c61ea8d",
+    "scale": 1,
+    "passed": true,
+    "readyObserved": 161,
+    "requestObserved": 162,
+    "capabilityDisabledObserved": 171,
+    "capabilityEnabledObserved": 172,
+    "requestConsumedOnce": true,
+    "acknowledgedReady": true,
+    "actualQueueClearPerformed": false,
+    "liveSessionAndFilesUnchanged": true,
+    "scope": "Exact candidateVLT on a private non-input desktop using real host signal code. Does not test destructive ClearPlaylist confirmation execution."
+  },
+  "clearCaptureDLL": {
+    "sha256": "cd1cc71950b174b3ec7401f1b34a3ee55a1897ee03b96e8807a5932c8dd68477",
+    "privateCases": 33,
+    "passed": true,
+    "liveProcessesAndFilesAndDesktopPreserved": true,
+    "scope": "Existing wheel and clock plus exact clear-command cells, native synthetic private fixture."
+  },
+  "initialConversionChecks": [
+    {
+      "check": "build.py --check",
+      "exitCode": 0
+    },
+    {
+      "check": "check_contracts.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_hits.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_animation_bands.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_startup.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_source_art.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_panels.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_transitions.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_placement.py",
+      "exitCode": 1
+    },
+    {
+      "check": "check_launchers.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_video.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_corners.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_palette.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_effects.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_hover.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_clock.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_docking.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_playlist_clear.py",
+      "exitCode": 0
+    }
+  ],
+  "conversionChecks": [
+    {
+      "check": "build.py --check",
+      "exitCode": 0
+    },
+    {
+      "check": "check_contracts.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_hits.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_animation_bands.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_startup.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_source_art.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_panels.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_transitions.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_placement.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_launchers.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_video.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_corners.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_palette.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_effects.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_hover.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_clock.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_docking.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_playlist_clear.py",
+      "exitCode": 0
+    },
+    {
+      "check": "check_companion_hud.py",
+      "exitCode": 0
+    }
+  ],
+  "finalCombinedBridgeNative": {
+    "passed": true,
+    "cases": 41,
+    "dllSHA256": "63fcfbb76a6dde54259bd196f1e213f8b390eefa41d5bbffe5d3c5c0e8f572a4",
+    "protectedProcessesAlive": true,
+    "filesUnchanged": true,
+    "desktopUnchanged": true,
+    "cleanupErrors": []
+  },
+  "fixedClockCommand": {
+    "window": [
+      -31000,
+      -29900,
+      181,
+      17
+    ],
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "macro": "mode phase_a then phase_b synchronously",
+    "actualSameReceiverTooltipSurvivalBothModesBothScales": true,
+    "legacyCancellationBaselineReproduced": true
+  },
+  "companionHUD": {
+    "schemaVersion": 2,
+    "manifestSHA256": "73ae75bc03cde93fbfce2fd171b4f6b9755ad3ee9b901e34e682db1476d07903",
+    "templateSHA256": "09ee48c2a498d73a2801b0085ad84aaff391fa3eb6b315f41abff1c6ebae570d",
+    "injectorSHA256": "f65cd91cd7f0697c065077e3bc29d4e0f8dc20c827a1051d552335e57c81dadb",
+    "assetCount": 12,
+    "unavailableControlsVisibleDimmedInert": true,
+    "activeProtocolUnchanged": true,
+    "bothScaleOfflineChecksPassed": true
+  },
+  "latestUserQueueObservation": {
+    "count": 0,
+    "state": "stopped",
+    "volume": 256,
+    "old165CheckpointMustNotBeRestored": true
+  }
+}

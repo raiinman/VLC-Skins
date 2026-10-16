@@ -51,8 +51,10 @@ for scale in (1,2):
                 palette=layout.find('Button[@up="m_color_no_png"]')
                 assert destination(palette)==Builder.main_id(color%7+1,'closed' if shut else 'open',remaining)
                 if state!='closed':
-                    clock=next(n for n in layout if n.get('id','').startswith('clock_'))
-                    assert destination(clock)==Builder.main_id(color,'closing' if state=='closing' else 'open',not remaining)
+                    clock=next(n for n in layout if n.tag=='Checkbox' and n.get('id','').startswith('clock_'))
+                    assert clock.get('action1')=='clock_state.setLayout(clock_remaining_a)'
+                    assert clock.get('action2')=='clock_state.setLayout(clock_elapsed_a)'
+                    assert not any('main.setLayout' in clock.get(a,'') for a in ('action1','action2'))
                 if state in ('opening','closing'):
                     blocker=layout.find('Button[@up="shutter_transition_blocker"]')
                     assert blocker is not None and blocker.get('action')=='none'

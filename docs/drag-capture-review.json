@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-16",
+  "cause": "Periodic offscreen clock double-click dispatch in VLC unconditionally releases GUI-thread mouse capture",
+  "native_snap_targets": "Registered VLC skin windows and primary screen work area, no unrelated app window enumeration",
+  "candidate_helper_sha256": "a2c67dc30c12f670059e605641214f7df6fe65023ef7f29b6cb18d5552f00584",
+  "candidate_dll_sha256": "b4c859e2422fe995e5af974e2fed5b1b1889fd1ed658f0f77da62a413dde87fe",
+  "helper_source_sha256": "d209f6a5b92997e697ac343f4467acee44b017db45c0610f3b4fea286ac61ac4",
+  "dll_source_sha256": "438e7e0f04e2cafff0bf29e9a648cfd57d91f0d1c36fd1d3e1a33c0cbe466d24",
+  "helper_selftest": "Pass, including GUITHREADINFO ABI size",
+  "private_native_regression": {
+    "passed": true,
+    "error": null,
+    "cases": [
+      {
+        "name": "before-hook-private-capture-established",
+        "passed": true
+      },
+      {
+        "name": "before-hook-clock-delivers-and-drops-capture",
+        "passed": true
+      },
+      {
+        "name": "before-hook-volume-screen-point",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "volume-local280x43",
+        "passed": true,
+        "expected": 2279311360,
+        "actual": 2279311360
+      },
+      {
+        "name": "seek-local80x12",
+        "passed": true,
+        "expected": 2277279544,
+        "actual": 2277279544
+      },
+      {
+        "name": "negative-wheel-delta-preserved",
+        "passed": true,
+        "expected": 2279311360,
+        "actual": 2279311360
+      },
+      {
+        "name": "ordinary-motion-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "horizontal-wheel-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "outside-point-untouched",
+        "passed": true,
+        "expected": 9371747,
+        "actual": 9371747
+      },
+      {
+        "name": "wrong-pid-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "wrong-origin-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "hidden-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "closed-size-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "disabled-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      },
+      {
+        "name": "private-GUI-thread-capture-established",
+        "passed": true
+      },
+      {
+        "name": "clock-during-capture-becomes-WM_NULL",
+        "passed": true
+      },
+      {
+        "name": "clock-command-preserves-private-capture",
+        "passed": true
+      },
+      {
+        "name": "private-capture-released",
+        "passed": true
+      },
+      {
+        "name": "clock-after-release-delivers",
+        "passed": true
+      },
+      {
+        "name": "ordinary-double-click-delivers-during-capture",
+        "passed": true
+      },
+      {
+        "name": "after-unhook-untouched",
+        "passed": true,
+        "expected": 9372028,
+        "actual": 9372028
+      }
+    ],
+    "ownedChildClosed": true,
+    "scope": "Cross-process queued-message wheel correction and clock-command capture protection on synthetic private SkinWindowClass. Not actual VLC controls or physical input delivery.",
+    "physicalInputUsed": false,
+    "fixture_exit_code": 0,
+    "cleanup_errors": [],
+    "input_desktop_unchanged": true,
+    "guarded_files_unchanged": true,
+    "protected_processes": [
+      {
+        "pid": 99588,
+        "alive": true
+      },
+      {
+        "pid": 104608,
+        "alive": true
+      },
+      {
+        "pid": 27068,
+        "alive": true
+      },
+      {
+        "pid": 33968,
+        "alive": true
+      }
+    ],
+    "owned_fixture_closed": true,
+    "dll_sha256": "b4c859e2422fe995e5af974e2fed5b1b1889fd1ed658f0f77da62a413dde87fe",
+    "fixture_source_sha256": "780b086b132cee35f29109282b440f21646082ba4c952d05e896e6aa348625c3",
+    "fixture_sha256": "7beaeee80a747e143c8cac2f86bd350e82276fa34f091bf55bea3050074c8f33"
+  },
+  "source_vlt_changed": false,
+  "snap_policy_changed": false,
+  "packaging_on_hold": true,
+  "runtime_deployment": "drag-capture-rollout.json:1x matched helper/DLL applied, fresh queue/settings/geometry preserved, idle phase and hook binding observed read-only",
+  "limits": [
+    "Private native capture regression is reproduced; user physical dragging was not observed",
+    "Occluded-but-visible VLC panes may remain magnetic targets",
+    "Screen magnet uses primary work area; unrelated applications are not native snap targets"
+  ]
+}

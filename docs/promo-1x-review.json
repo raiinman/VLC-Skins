@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-16",
+  "scale": "1x",
+  "promoStatus": "rendered and verified, not published",
+  "activation": {
+    "owner": "YouTube companion chat",
+    "build": "4k-rollout-20261016-140841",
+    "source1xSha256": "298b21d32f5eef893c6d5465e0692dca1035644c148d4bd48b2fa70e3d9f10e9",
+    "hostSha256": "e5769eb8b13f61c08dcb2897b200ab6034b4f3528a3ec91ef6f2b310eff9a556",
+    "freshQueueCount": 0,
+    "savedPaneRowsAndPreferencesPreserved": true,
+    "oldQueueRestoreUsed": false,
+    "normalAndCanonical1x2xPreserved": true,
+    "evidence": "Companion docs/research/2026-10-16-4k-activation.json"
+  },
+  "export": {
+    "filename": "NFS-Underground-VLC-1x-Promo.mp4",
+    "localOutput": "sibling outputs/NFS-1x-Promo-4K",
+    "durationSeconds": 32,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "videoCodec": "H264",
+    "audioCodec": "AAC",
+    "audioRate": 48000,
+    "audioChannels": 2,
+    "bytes": 4900737,
+    "sha256": "3d83af8c5fb4f26c02875d4fdb4930ca37752d373c1b77a78d1ca3c2b0f16d1a",
+    "fullDecodeErrors": 0,
+    "meanAudioDb": -21.2,
+    "peakAudioDb": -6.8
+  },
+  "edit": {
+    "intro": "Original source animation artwork composition, original intro/shutter sounds and original synthesized backing",
+    "browse": "Previously captured signed-in public BBB search, account redaction and editorial first-result crop",
+    "playback": "New actual private matched VLC3840x2160 capture, manual2160, validated private checkpoint at120s; 150frames15fps, first8seconds used",
+    "settings": "Actual native quality/HUD/menu layers at measured coordinates, close-up crop; Current2160p60 and selected2160p60",
+    "credits": [
+      "The Skins Factory",
+      "Dead Signal Interactive",
+      "Big Buck Bunny, Blender Foundation, CC BY3.0"
+    ]
+  },
+  "review": {
+    "privacyReviewed": true,
+    "movingNativeFramesReviewed": [
+      0,
+      20,
+      40,
+      60,
+      80,
+      100,
+      120,
+      149
+    ],
+    "cutAndOverlayFramesReviewed": true,
+    "nativeResolutionAndAudioVideoAdvanceVerified": true,
+    "privateSoftwareDecodeWingdiDummyAudio": true,
+    "speakerAudibilityNotTested": true,
+    "audioListeningNotPerformed": true,
+    "initialSearchTimeoutAndTitleBlackFootageExcluded": true,
+    "physicalInputUsed": false,
+    "userQueueChangedByCapture": false
+  },
+  "holds": {
+    "2x": true,
+    "releasePackaging": true,
+    "publication": true
+  },
+  "dox": "Root/tools/docs contracts reviewed; skins subtree unchanged, no conversion checks required."
+}

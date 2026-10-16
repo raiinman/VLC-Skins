@@ -274,6 +274,76 @@ class Builder:
         startup.insert(1,light)
         win.append(startup)
 
+    def independent_clock(self):
+        """Keep mode/refresh phase separate from main animation layouts.
+
+        Added after original control IDs exist. Offscreen phase commands refresh
+        native time text without seeking, pausing or reselecting main layouts.
+        """
+        assert self.theme.find('Window[@id="clock_state"]') is None
+        marker=self.bitmap('clock_refresh_hit',Image.new('RGBA',(1,1),(0,0,0,1)),prescaled=True)
+        state=E.SubElement(self.theme,'Window',id='clock_state',x='-31000',y='-30200',
+                           visible='true',dragdrop='false',playondrop='false')
+        # Last is the fresh default. Legacy private settings are migrated by
+        # the launcher, without changing the main shutter/palette layout.
+        for mode,phase,width in (('elapsed','b',152),('remaining','a',153),
+                                 ('remaining','b',154),('elapsed','a',151)):
+            layout=E.SubElement(state,'Layout',id='clock_'+mode+'_'+phase,width=str(width),height='17')
+            E.SubElement(layout,'Image',id='clock_marker_'+mode+'_'+phase,image=marker,x='0',y='0',
+                         action2='clock_state.setLayout(clock_'+mode+'_'+('b' if phase=='a' else 'a')+')')
+        remaining='(clock_remaining_a.isActive or clock_remaining_b.isActive)'
+        for layout in self.theme.findall('Window[@id="main"]/Layout'):
+            identifier=layout.get('id')
+            clock=next((n for n in layout if n.get('id','').startswith('clock_')),None)
+            if clock is None:continue
+            assert clock.tag=='Button' and clock.get('up')=='clock_hit'
+            clock.tag='Checkbox'
+            for attr in ('action','up','over','down'):clock.attrib.pop(attr,None)
+            clock.set('state',remaining)
+            clock.set('up1','clock_hit');clock.set('up2','clock_hit')
+            clock.set('action1','clock_state.setLayout(clock_remaining_a)')
+            clock.set('action2','clock_state.setLayout(clock_elapsed_a)')
+            clock.attrib.pop('tooltiptext',None)
+            clock.set('tooltiptext1','Show remaining time');clock.set('tooltiptext2','Show elapsed time')
+            original=layout.find('Text[@font="clock"]')
+            assert original is not None and original.get('text') in ('$t','$l')
+            alternate=copy.deepcopy(original)
+            alternate.set('id','clock_alternate_'+identifier)
+            alternate.set('text','$l' if original.get('text')=='$t' else '$t')
+            layout.insert(layout.index(original)+1,alternate)
+            for text in (original,alternate):
+                mode='remaining' if text.get('text')=='$l' else 'elapsed'
+                text.set('visible',identifier+'.isActive and clock_'+mode+'_a.isActive')
+                second=copy.deepcopy(text);second.set('id','clock_phase_b_'+text.get('id'))
+                second.set('visible',identifier+'.isActive and clock_'+mode+'_b.isActive')
+                layout.insert(layout.index(text)+1,second)
+            dash=layout.find('Image[@image="time_dash_png"]')
+            if dash is None:
+                dash=E.Element('Image',id='clock_dash_'+identifier,image='time_dash_png',
+                               x=self.n(120),y=self.n(168))
+                layout.insert(layout.index(alternate)+1,dash)
+            dash.set('visible',identifier+'.isActive and '+remaining)
+        # Native compact elapsed/duration clocks need the same paused-seek
+        # refresh, while retaining their existing visibility owner and IDs.
+        for window_id,layout_id in (('fullscreenController','fullscreen_controls'),
+                                    ('videoHoverController','video_hover_controls')):
+            layout=self.theme.find('Window[@id="'+window_id+'"]'+'/Layout[@id="'+layout_id+'"]')
+            original=layout.find('Text[@text="$t / $d"]')
+            assert original is not None and original.get('id')
+            owner=original.get('visible','true')
+            second=copy.deepcopy(original);second.set('id','clock_phase_b_'+original.get('id'))
+            original.set('visible',owner+' and (clock_elapsed_a.isActive or clock_remaining_a.isActive)')
+            second.set('visible',owner+' and (clock_elapsed_b.isActive or clock_remaining_b.isActive)')
+            layout.insert(layout.index(original)+1,second)
+        # A persistent receiver avoids changing the hit-control identity on
+        # each refresh, which otherwise cancels VLC's global tooltip timer.
+        command=E.SubElement(self.theme,'Window',id='clock_refresh_command',x='-31000',y='-29900',
+                             visible='true',dragdrop='false',playondrop='false')
+        layout=E.SubElement(command,'Layout',id='clock_refresh_commands',width='181',height='17')
+        for mode,x in [('elapsed',0),('remaining',10)]:
+            E.SubElement(layout,'Image',id='clock_refresh_'+mode,image=marker,x=str(x),y='0',
+                         action2=f'clock_state.setLayout(clock_{mode}_a);clock_state.setLayout(clock_{mode}_b)')
+
     def shutter_sequence(self,closing,light_only=False):
         name=('shutter_close' if closing else 'shutter_open')+('_light' if light_only else '')
         if name in self.ids:return name
@@ -482,6 +552,11 @@ class Builder:
         for i,node in enumerate(self.theme.iter()):
             if node.tag in ('Image','Button','Checkbox','Slider','Text','Video') and not node.get('id'):
                 node.set('id',f'control_{i}')
+        from playlist_clear import add as add_playlist_clear
+        add_playlist_clear(self)
+        from snapping_controls import add as add_snapping_controls
+        add_snapping_controls(self)
+        self.independent_clock()
         from info_fades import share_backings
         share_backings(self)
         self.band_animations()
@@ -491,6 +566,8 @@ class Builder:
         for node in self.theme.iter():
             if node.get('lefttop') and not node.get('rightbottom'):
                 node.set('rightbottom',node.get('lefttop'))
+        from docking import add_to_theme
+        add_to_theme(self.theme)
         for child in children:self.theme.remove(child)
         for tagset in [('ThemeInfo',),('Bitmap','Font'),('Window',)]:
             for child in children:

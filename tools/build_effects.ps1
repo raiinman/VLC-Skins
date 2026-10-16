@@ -12,6 +12,18 @@ $source = Join-Path $PSScriptRoot 'SkinEffects.cs'
 if ($LASTEXITCODE -ne 0) { throw 'Skin effects compilation failed.' }
 $test = Start-Process -FilePath $output -ArgumentList '--self-test' -WindowStyle Hidden -Wait -PassThru
 if ($test.ExitCode -ne 0) { throw 'Skin effects pure self-test failed.' }
+$wheelTempRoot = [IO.Path]::GetFullPath([IO.Path]::GetTempPath())
+$wheelBuild = Join-Path $wheelTempRoot ('NfsWheelBuild-' + [Guid]::NewGuid().ToString('N'))
+try {
+    & (Join-Path $PSScriptRoot 'build_wheel.ps1') -OutputDirectory $wheelBuild
+    Copy-Item -LiteralPath (Join-Path $wheelBuild 'NfsWheelBridge64.dll') -Destination (Join-Path (Split-Path -Parent $output) 'NfsWheelBridge64.dll') -Force
+} finally {
+    $resolvedWheelBuild = [IO.Path]::GetFullPath($wheelBuild)
+    if ($resolvedWheelBuild.StartsWith($wheelTempRoot.TrimEnd('\') + '\', [StringComparison]::OrdinalIgnoreCase) -and
+        [IO.Path]::GetFileName($resolvedWheelBuild) -match '^NfsWheelBuild-[0-9a-f]{32}$' -and (Test-Path -LiteralPath $resolvedWheelBuild)) {
+        Remove-Item -LiteralPath $resolvedWheelBuild -Recurse -Force
+    }
+}
 $luaDirectory = Join-Path (Split-Path -Parent $output) 'data/lua/intf'
 $null = New-Item -ItemType Directory -Force -Path $luaDirectory
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'nfs_volume_osd.lua') -Destination (Join-Path $luaDirectory 'nfs_volume_osd_v1.lua') -Force

@@ -115,17 +115,27 @@ namespace NfsSkinSupport
     {
         [StructLayout(LayoutKind.Sequential)] internal struct Rect { internal int Left, Top, Right, Bottom; internal int Width { get { return Right - Left; } } internal int Height { get { return Bottom - Top; } } internal bool Contains(Point p) { return p.X >= Left && p.X < Right && p.Y >= Top && p.Y < Bottom; } }
         [StructLayout(LayoutKind.Sequential)] internal struct MonitorInfo { internal int Size; internal Rect Monitor; internal Rect Work; internal uint Flags; }
+        [StructLayout(LayoutKind.Sequential)] internal struct GuiThreadInfo
+        {
+            internal int Size; internal uint Flags;
+            internal IntPtr Active, Focus, Capture, MenuOwner, MoveSize, Caret;
+            internal Rect CaretRect;
+        }
         internal delegate bool EnumCallback(IntPtr hwnd, IntPtr argument);
         [DllImport("user32.dll")] internal static extern bool EnumWindows(EnumCallback callback, IntPtr argument);
         [DllImport("user32.dll")] internal static extern bool EnumChildWindows(IntPtr parent, EnumCallback callback, IntPtr argument);
         [DllImport("user32.dll", CharSet = CharSet.Unicode)] internal static extern int GetClassName(IntPtr hwnd, System.Text.StringBuilder name, int count);
         [DllImport("user32.dll")] internal static extern IntPtr GetWindow(IntPtr hwnd, uint command);
         [DllImport("user32.dll")] internal static extern uint GetWindowThreadProcessId(IntPtr hwnd, out uint pid);
+        [DllImport("user32.dll")] internal static extern bool GetGUIThreadInfo(uint thread, ref GuiThreadInfo info);
         [DllImport("user32.dll")] internal static extern bool GetWindowRect(IntPtr hwnd, out Rect rect);
         [DllImport("user32.dll")] internal static extern bool IsWindowVisible(IntPtr hwnd);
         [DllImport("user32.dll")] internal static extern bool IsIconic(IntPtr hwnd);
         [DllImport("user32.dll")] internal static extern IntPtr WindowFromPoint(Point point);
         [DllImport("user32.dll")] internal static extern bool IsWindow(IntPtr hwnd);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)] internal static extern bool SetProp(IntPtr hwnd, string name, IntPtr value);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)] internal static extern IntPtr GetProp(IntPtr hwnd, string name);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)] internal static extern IntPtr RemoveProp(IntPtr hwnd, string name);
         [DllImport("user32.dll")] internal static extern IntPtr GetForegroundWindow();
         [DllImport("user32.dll")] internal static extern bool GetCursorPos(out Point point);
         [DllImport("user32.dll")] internal static extern IntPtr GetAncestor(IntPtr hwnd, uint flags);
@@ -136,6 +146,10 @@ namespace NfsSkinSupport
         [DllImport("user32.dll")] internal static extern bool SetWindowPos(IntPtr hwnd, IntPtr after, int x, int y, int width, int height, uint flags);
         [DllImport("user32.dll")] internal static extern bool PostMessage(IntPtr hwnd, uint message, IntPtr wParam, IntPtr lParam);
         [DllImport("user32.dll")] internal static extern bool SetProcessDPIAware();
+        [DllImport("user32.dll")] internal static extern int GetWindowRgn(IntPtr hwnd, IntPtr region);
+        [DllImport("gdi32.dll")] internal static extern IntPtr CreateRectRgn(int left, int top, int right, int bottom);
+        [DllImport("gdi32.dll")] internal static extern bool PtInRegion(IntPtr region, int x, int y);
+        [DllImport("gdi32.dll")] internal static extern bool DeleteObject(IntPtr value);
         [DllImport("user32.dll", EntryPoint = "GetWindowLongW")] private static extern int GetWindowLong32(IntPtr hwnd, int index);
         [DllImport("user32.dll", EntryPoint = "GetWindowLongPtrW")] private static extern IntPtr GetWindowLong64(IntPtr hwnd, int index);
         [DllImport("user32.dll", EntryPoint = "SetWindowLongW")] private static extern int SetWindowLong32(IntPtr hwnd, int index, int value);
@@ -143,6 +157,12 @@ namespace NfsSkinSupport
         [DllImport("user32.dll")] private static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint key, byte alpha, uint flags);
         [DllImport("user32.dll")] private static extern bool GetLayeredWindowAttributes(IntPtr hwnd, out uint key, out byte alpha, out uint flags);
         internal static long ReadStyle(IntPtr hwnd, int index) { return IntPtr.Size == 8 ? GetWindowLong64(hwnd, index).ToInt64() : GetWindowLong32(hwnd, index); }
+        internal static bool SetOwner(IntPtr hwnd, IntPtr owner)
+        {
+            if (IntPtr.Size == 8) SetWindowLong64(hwnd, -8, owner);
+            else SetWindowLong32(hwnd, -8, owner.ToInt32());
+            return GetWindow(hwnd, 4) == owner;
+        }
         internal static bool SetBarOpacity(IntPtr hwnd)
         {
             long style = IntPtr.Size == 8 ? GetWindowLong64(hwnd, -20).ToInt64() : GetWindowLong32(hwnd, -20);
@@ -346,14 +366,104 @@ namespace NfsSkinSupport
             if (pointerRoot != IntPtr.Zero) Native.GetWindowThreadProcessId(pointerRoot, out pid);
             bool selected = pointerRoot != IntPtr.Zero && pid == (uint)selectedPid;
             pointerOnVideo = selected && pointerRoot == video;
-            pointerOnBar = selected && barVisible && pointerRoot == hover;
+            pointerOnBar = barVisible && ((selected && pointerRoot == hover && FirstVisibleRootBelow(hover, cursor) == video) ||
+                PopupKeepsBar(selectedPid, video, hover, pointerRoot));
             return Exposed(Native.IsWindowVisible(video), Native.IsIconic(video), pointerOnVideo, pointerOnBar);
+        }
+        internal static bool PopupKeepsBar(int selectedPid, IntPtr video, IntPtr hover, IntPtr popup)
+        {
+            uint videoPid, barPid;
+            Native.Rect bounds;
+            if (popup == IntPtr.Zero || popup == hover || popup == video ||
+                Native.GetWindowThreadProcessId(video, out videoPid) == 0 || videoPid != (uint)selectedPid ||
+                Native.GetWindowThreadProcessId(hover, out barPid) == 0 || barPid != (uint)selectedPid ||
+                Native.GetWindow(hover, 4) != video || !Native.IsWindowVisible(hover) ||
+                !Native.GetWindowRect(hover, out bounds)) return false;
+            var seen = new HashSet<IntPtr>();
+            for (int count = 0; count < 16 && popup != IntPtr.Zero; count++, popup = Native.GetWindow(popup, 4))
+            {
+                if (popup == hover)
+                    return FirstVisibleRootBelow(hover, new Point(bounds.Left + bounds.Width / 2, bounds.Top + bounds.Height / 2)) == video;
+                if (!seen.Add(popup) || !Native.IsWindowVisible(popup) || Native.IsIconic(popup) || Native.GetAncestor(popup, 2) != popup) return false;
+            }
+            return false;
+        }
+        internal static IntPtr FirstVisibleRootBelow(IntPtr window, Point point)
+        {
+            var visited = new HashSet<IntPtr>();
+            for (int count = 0; count < 256; count++)
+            {
+                window = Native.GetWindow(window, 2); // GW_HWNDNEXT, downward in z order.
+                if (window == IntPtr.Zero || !visited.Add(window)) return IntPtr.Zero;
+                Native.Rect bounds;
+                if (!Native.IsWindowVisible(window) || Native.IsIconic(window) || Native.GetAncestor(window, 2) != window ||
+                    !Native.GetWindowRect(window, out bounds) || !bounds.Contains(point)) continue;
+                IntPtr region = Native.CreateRectRgn(0, 0, 0, 0);
+                if (region == IntPtr.Zero) return IntPtr.Zero;
+                try
+                {
+                    int kind = Native.GetWindowRgn(window, region);
+                    // ERROR also means no custom window region: its rectangle applies.
+                    if (kind == 0 || Native.PtInRegion(region, point.X - bounds.Left, point.Y - bounds.Top)) return window;
+                }
+                finally { Native.DeleteObject(region); }
+            }
+            return IntPtr.Zero;
         }
         internal static bool IsOpen(int width, int height, HoverSpec spec) { return width == spec.width && height == spec.height; }
         internal static bool Suppress(bool suppressed, bool moved, bool manuallyClosed) { return manuallyClosed || (suppressed && !moved); }
         internal static bool Show(bool videoVisible, bool nativeFullscreen, bool insideVideo, bool insideVisibleBar, long idleMilliseconds, bool suppressed = false)
         {
             return !suppressed && videoVisible && !nativeFullscreen && (insideVisibleBar || (insideVideo && idleMilliseconds < 1800));
+        }
+    }
+
+    internal sealed class HoverStacking : IDisposable
+    {
+        private readonly int pid;
+        private IntPtr bar, video, originalOwner;
+        internal HoverStacking(int selectedPid) { pid = selectedPid; }
+        private bool Owns(IntPtr window)
+        {
+            uint owner;
+            return window != IntPtr.Zero && Native.IsWindow(window) && Native.GetWindowThreadProcessId(window, out owner) != 0 && owner == (uint)pid;
+        }
+        internal bool Bind(IntPtr selectedVideo, IntPtr selectedBar)
+        {
+            if (bar == selectedBar && video == selectedVideo && Owns(bar) && Owns(video) && Native.GetWindow(bar, 4) == video) return true;
+            Dispose();
+            if (selectedBar == selectedVideo || !Owns(selectedBar) || !Owns(selectedVideo) ||
+                Native.GetAncestor(selectedBar, 2) != selectedBar || Native.GetAncestor(selectedVideo, 2) != selectedVideo) return false;
+            uint owner;
+            if (Native.GetWindowThreadProcessId(selectedBar, out owner) != Native.GetWindowThreadProcessId(selectedVideo, out owner)) return false;
+            var seen = new HashSet<IntPtr>();
+            IntPtr ancestor = selectedVideo;
+            for (int count = 0; ancestor != IntPtr.Zero; count++, ancestor = Native.GetWindow(ancestor, 4))
+                if (count == 128 || ancestor == selectedBar || !seen.Add(ancestor)) return false;
+            IntPtr oldOwner = Native.GetWindow(selectedBar, 4);
+            if (oldOwner != IntPtr.Zero && !Owns(oldOwner)) return false;
+            if (!Native.SetOwner(selectedBar, selectedVideo)) return false;
+            bar = selectedBar; video = selectedVideo; originalOwner = oldOwner;
+            return true;
+        }
+        internal bool Place(IntPtr selectedVideo, IntPtr selectedBar, int x, int y)
+        {
+            if (!Bind(selectedVideo, selectedBar)) return false;
+            bool videoTopmost = (Native.ReadStyle(video, -20) & 8) != 0;
+            bool barTopmost = (Native.ReadStyle(bar, -20) & 8) != 0;
+            if (videoTopmost != barTopmost && !Native.SetWindowPos(bar, new IntPtr(videoTopmost ? -1 : -2), 0, 0, 0, 0, 0x0213)) return false;
+            IntPtr previous = Native.GetWindow(video, 3); // GW_HWNDPREV.
+            uint flags = HoverDecision.PositionFlags(false);
+            if (previous == bar) flags |= 0x0004; // Already immediately above its video.
+            else if (previous == IntPtr.Zero || (!videoTopmost && (Native.ReadStyle(previous, -20) & 8) != 0)) previous = IntPtr.Zero;
+            // NOACTIVATE + NOOWNERZORDER: placing a bar must never raise its video.
+            return Owns(bar) && Owns(video) && Native.SetWindowPos(bar, previous, x, y, 0, 0, flags);
+        }
+        public void Dispose()
+        {
+            if (Owns(bar) && Native.GetWindow(bar, 4) == video)
+                Native.SetOwner(bar, Owns(originalOwner) ? originalOwner : IntPtr.Zero);
+            bar = video = originalOwner = IntPtr.Zero;
         }
     }
 
@@ -364,6 +474,66 @@ namespace NfsSkinSupport
             if (!seenReady && id != "intro") return -1;
             return id == "intro" ? now + 1500 : id == "info" ? Math.Max(now, lastButtonTriggered + 100) : now;
         }
+    }
+
+    internal static class SkinSnapping
+    {
+        internal static string SettingsPath
+        {
+            get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "NfsSkinEffects", "snapping-enabled.txt"); }
+        }
+        internal static bool Parse(string value)
+        {
+            // Invalid or missing settings preserve native snapping by default.
+            return value == null || !String.Equals(value.Trim(), "false", StringComparison.Ordinal);
+        }
+        internal static bool Load(string path)
+        {
+            try { return Parse(File.ReadAllText(path)); }
+            catch (IOException) { return true; }
+            catch (UnauthorizedAccessException) { return true; }
+        }
+        internal static bool Save(string path, bool enabled)
+        {
+            string temporary = path + "." + Guid.NewGuid().ToString("N") + ".tmp";
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                File.WriteAllText(temporary, enabled ? "true" : "false");
+                if (File.Exists(path)) File.Replace(temporary, path, null);
+                else File.Move(temporary, path);
+                return true;
+            }
+            catch (IOException) { return false; }
+            catch (UnauthorizedAccessException) { return false; }
+            finally
+            {
+                try { if (File.Exists(temporary)) File.Delete(temporary); }
+                catch (IOException) { }
+                catch (UnauthorizedAccessException) { }
+            }
+        }
+    }
+
+    internal sealed class SnappingRequest
+    {
+        private bool ready,handling;
+        internal void Reset() { ready=false; handling=false; }
+        internal bool Observe(int width,bool supported)
+        {
+            if(width==191) { ready=true; handling=false; return false; }
+            if(width!=192 || handling)return false;
+            handling=true;
+            return ready && supported;
+        }
+    }
+
+    internal static class SnappingProtocol
+    {
+        internal static bool Command(Native.Rect r) { return r.Left==-31000 && r.Top==-29800 && r.Height==17 && (r.Width==191 || r.Width==192); }
+        internal static bool State(Native.Rect r) { return r.Left==-31000 && r.Top==-29700 && r.Height==1 && r.Width>=201 && r.Width<=203; }
+        internal static int DesiredWidth(bool supported,bool enabled) { return !supported ? 201 : enabled ? 202 : 203; }
+        internal static int StateCell(int width) { return width==202 ? 10 : width==203 ? 20 : 30; }
     }
 
     internal static class SkinSoundVolume
@@ -463,34 +633,177 @@ namespace NfsSkinSupport
         internal long ResetAfter;
     }
 
+    internal static class ClockRefreshDecision
+    {
+        internal static bool TooltipHover(bool selectedPid, bool visible, bool minimized, string windowClass, Native.Rect bounds)
+        {
+            return selectedPid && visible && !minimized && windowClass == "SkinWindowClass" &&
+                !(bounds.Left <= -30000 && bounds.Top <= -30000);
+        }
+        internal static bool PointerOverSkin(int selectedPid, Point cursor)
+        {
+            IntPtr hit = Native.WindowFromPoint(cursor);
+            IntPtr root = hit == IntPtr.Zero ? IntPtr.Zero : Native.GetAncestor(hit, 2);
+            uint pid; Native.Rect bounds;
+            if (root == IntPtr.Zero || Native.GetWindowThreadProcessId(root, out pid) == 0 ||
+                pid != (uint)selectedPid || !Native.GetWindowRect(root, out bounds)) return false;
+            var name = new System.Text.StringBuilder(128);
+            Native.GetClassName(root, name, name.Capacity);
+            return TooltipHover(true, Native.IsWindowVisible(root), Native.IsIconic(root), name.ToString(), bounds);
+        }
+        internal static bool MatchesCommand(Native.Rect r)
+        {
+            return r.Left == -31000 && r.Top == -29900 && r.Width == 181 && r.Height == 17;
+        }
+        internal static int CommandX(int stateWidth)
+        {
+            return stateWidth == 151 || stateWidth == 152 ? 0 : stateWidth == 153 || stateWidth == 154 ? 10 : -1;
+        }
+        internal static bool IsFixedCommand(int selectedPid, IntPtr window)
+        {
+            uint pid; Native.Rect bounds;
+            if (window == IntPtr.Zero || Native.GetWindowThreadProcessId(window, out pid) == 0 || pid != (uint)selectedPid ||
+                !Native.IsWindowVisible(window) || !Native.GetWindowRect(window, out bounds) || !MatchesCommand(bounds)) return false;
+            var name = new System.Text.StringBuilder(128);
+            Native.GetClassName(window, name, name.Capacity);
+            return name.ToString() == "SkinWindowClass";
+        }
+        internal static bool Matches(Native.Rect r)
+        {
+            return r.Left == -31000 && r.Top == -30200 && r.Height == 17 && r.Width >= 151 && r.Width <= 154;
+        }
+    }
+
+    // Correct only wheel messages already queued for this VLC thread and bar.
+    internal sealed class WheelBridge : IDisposable
+    {
+        private const string Prefix = "NfsSkinWheelBridge.";
+        private readonly Target target;
+        private IntPtr window, hook, module;
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)] private static extern IntPtr LoadLibraryEx(string path, IntPtr file, uint flags);
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi, ExactSpelling = true)] private static extern IntPtr GetProcAddress(IntPtr library, string name);
+        [DllImport("kernel32.dll")] private static extern bool FreeLibrary(IntPtr library);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)] private static extern bool SetProp(IntPtr hwnd, string name, IntPtr value);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)] private static extern IntPtr GetProp(IntPtr hwnd, string name);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)] private static extern IntPtr RemoveProp(IntPtr hwnd, string name);
+        [DllImport("user32.dll", SetLastError = true)] private static extern IntPtr SetWindowsHookEx(int type, IntPtr procedure, IntPtr library, uint thread);
+        [DllImport("user32.dll")] private static extern bool UnhookWindowsHookEx(IntPtr value);
+        internal WheelBridge(Target target) { this.target = target; }
+        private static bool MatchingArchitecture(string path)
+        {
+            try
+            {
+                using (var reader = new BinaryReader(File.OpenRead(path)))
+                {
+                    if (reader.BaseStream.Length < 64 || reader.ReadUInt16() != 0x5a4d) return false;
+                    reader.BaseStream.Position = 60; int offset = reader.ReadInt32();
+                    if (offset < 64 || offset > reader.BaseStream.Length - 6) return false;
+                    reader.BaseStream.Position = offset;
+                    return reader.ReadUInt32() == 0x4550 && reader.ReadUInt16() == (IntPtr.Size == 8 ? 0x8664 : 0x14c);
+                }
+            }
+            catch (IOException) { return false; }
+            catch (UnauthorizedAccessException) { return false; }
+        }
+        internal bool SnappingSupported
+        {
+            get { return hook != IntPtr.Zero && target.Owns(window) &&
+                GetProp(window, Prefix + "Enabled").ToInt64() == 0x4E465357 &&
+                GetProp(window, Prefix + "OwnerPid").ToInt64() == target.Pid &&
+                GetProp(window, "NfsOcclusionBridge.SnappingSupported").ToInt64() == 1; }
+        }
+        internal bool SetSnapping(bool enabled)
+        {
+            if (!SnappingSupported) return false;
+            if (enabled)
+            {
+                if (GetProp(window, Prefix + "SnappingOff") == IntPtr.Zero) return true;
+                RemoveProp(window, Prefix + "SnappingOff");
+                return GetProp(window, Prefix + "SnappingOff") == IntPtr.Zero;
+            }
+            return GetProp(window, Prefix + "SnappingOff").ToInt64() == 1 || SetProp(window, Prefix + "SnappingOff", new IntPtr(1));
+        }
+        internal void Attach(IntPtr hwnd)
+        {
+            if (window == hwnd && hook != IntPtr.Zero && target.Owns(hwnd)) return;
+            Dispose();
+            if (hook != IntPtr.Zero) return;
+            if (!target.Owns(hwnd) || GetProp(hwnd, Prefix + "Enabled") != IntPtr.Zero) return;
+            uint pid; uint thread = Native.GetWindowThreadProcessId(hwnd, out pid);
+            var name = new System.Text.StringBuilder(128); Native.GetClassName(hwnd, name, name.Capacity);
+            Native.Rect r;
+            if (thread == 0 || pid != (uint)target.Pid || name.ToString() != "SkinWindowClass" || !Native.GetWindowRect(hwnd, out r) ||
+                r.Left != -31000 || r.Top != -30800 ||
+                !((r.Width == 361 && r.Height == 64) || (r.Width == 362 && r.Height == 1))) return;
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, IntPtr.Size == 8 ? "NfsWheelBridge64.dll" : "NfsWheelBridge32.dll");
+            if (!File.Exists(path)) return; // Older helper-only bundles remain usable.
+            if (!MatchingArchitecture(path) || !MatchingArchitecture(target.Process.MainModule.FileName)) return;
+            try
+            {
+                module = LoadLibraryEx(path, IntPtr.Zero, 0x900);
+                if (module == IntPtr.Zero) return;
+                IntPtr procedure = GetProcAddress(module, "CorrectWheel");
+                if (procedure == IntPtr.Zero) { Dispose(); return; }
+                window = hwnd;
+                if (!SetProp(hwnd, Prefix + "OwnerPid", new IntPtr(target.Pid)) ||
+                    !SetProp(hwnd, Prefix + "OriginX", new IntPtr(-31000)) || !SetProp(hwnd, Prefix + "OriginY", new IntPtr(-30800))) { Dispose(); return; }
+                hook = SetWindowsHookEx(3, procedure, module, thread);
+                if (hook == IntPtr.Zero || !SetProp(hwnd, Prefix + "Enabled", new IntPtr(0x4E465357))) Dispose();
+            }
+            catch (System.ComponentModel.Win32Exception) { Dispose(); }
+        }
+        public void Dispose()
+        {
+            if (window != IntPtr.Zero && target.Owns(window))
+            {
+                RemoveProp(window, Prefix + "SnappingOff");
+                RemoveProp(window, Prefix + "Enabled");
+                foreach (string name in new[] { "OwnerPid", "OriginX", "OriginY" }) RemoveProp(window, Prefix + name);
+            }
+            if (hook != IntPtr.Zero && !UnhookWindowsHookEx(hook) && target.Alive()) { window = IntPtr.Zero; return; }
+            if (module != IntPtr.Zero) FreeLibrary(module);
+            hook = module = window = IntPtr.Zero;
+        }
+    }
+
     internal sealed class EffectsContext : ApplicationContext
     {
         private readonly Target target;
         private readonly Assets assets;
         private readonly Dimensions videoFallback;
         private readonly Diagnostics diagnostics;
+        private readonly WheelBridge wheelBridge;
+        private readonly HoverStacking hoverStacking;
         private readonly Dictionary<string, SoundPlayer> players = new Dictionary<string, SoundPlayer>();
         private readonly List<MemoryStream> soundStreams = new List<MemoryStream>();
         private readonly Dictionary<string, byte[]> originalSounds = new Dictionary<string, byte[]>();
         private int soundVolume;
+        private bool snappingEnabled;
+        private readonly SnappingRequest snappingRequest=new SnappingRequest();
+        private IntPtr snappingCommand, snappingState;
+        private long snappingCommandAt=-10000;
+        private readonly ToolStripMenuItem snappingMenu;
         private readonly List<SoundState> signals = new List<SoundState>();
         private readonly System.Windows.Forms.Timer timer;
         private readonly NotifyIcon tray;
         private readonly Stopwatch clock = Stopwatch.StartNew();
-        private IntPtr video, hover, command, nativeHover, tooltip;
+        private IntPtr video, hover, command, nativeHover, tooltip, clockRefresh, clockRefreshCommand;
         private List<IntPtr> ownedWindows = new List<IntPtr>();
         private Point previousCursor;
         private bool hadCursor, wasInsideVideo, muted, disposed;
         private bool hadBarObservation, previousBarOpen, lastRequestedShow, closeSuppressed;
         private bool volumeRequested, volumeRequestKnown;
         private long movedAt = -10000, commandAt = -10000, discoveryAt = -10000;
-        private long lastButtonTriggered = -10000;
+        private long lastButtonTriggered = -10000, clockRefreshAt = -10000;
         internal EffectsContext(Target target, Assets assets, Dimensions videoFallback = null, Diagnostics diagnostics = null)
         {
             this.target = target; this.assets = assets;
+            wheelBridge = new WheelBridge(target);
+            hoverStacking = new HoverStacking(target.Pid);
             this.videoFallback = videoFallback ?? assets.Manifest.video;
             this.diagnostics = diagnostics;
             soundVolume = SkinSoundVolume.Load();
+            snappingEnabled = SkinSnapping.Load(SkinSnapping.SettingsPath);
             foreach (var spec in assets.Manifest.sounds)
             {
                 originalSounds.Add(spec.id, File.ReadAllBytes(assets.Files[spec.id]));
@@ -521,6 +834,9 @@ namespace NfsSkinSupport
             }
             menu.Items.Add(volumeMenu);
             menu.Items.Add(mute);
+            snappingMenu = new ToolStripMenuItem("Window snapping (unavailable)") { Checked=true, Enabled=false };
+            snappingMenu.Click += delegate { ToggleSnapping(); };
+            menu.Items.Add(snappingMenu);
             menu.Items.Add("Exit helper", null, delegate { ExitThread(); });
             tray = new NotifyIcon { Icon = SystemIcons.Application, Text = "NFS Underground skin effects", ContextMenuStrip = menu, Visible = true };
             timer = new System.Windows.Forms.Timer { Interval = 30 };
@@ -578,7 +894,12 @@ namespace NfsSkinSupport
         }
         private bool DoubleClick(IntPtr hwnd, int x, int y)
         {
-            return target.Owns(hwnd) && Native.PostMessage(hwnd, 0x0203, new IntPtr(1), new IntPtr((y << 16) | (x & 0xffff)));
+            if (!target.Owns(hwnd)) return false;
+            uint pid; uint thread = Native.GetWindowThreadProcessId(hwnd, out pid);
+            var info = new Native.GuiThreadInfo { Size = Marshal.SizeOf(typeof(Native.GuiThreadInfo)) };
+            // VLC's double-click handler releases capture, including offscreen commands.
+            if (thread == 0 || pid != (uint)target.Pid || !Native.GetGUIThreadInfo(thread, ref info) || info.Capture != IntPtr.Zero) return false;
+            return Native.PostMessage(hwnd, 0x0203, new IntPtr(1), new IntPtr((y << 16) | (x & 0xffff)));
         }
         private bool IsTooltip(IntPtr hwnd)
         {
@@ -593,12 +914,60 @@ namespace NfsSkinSupport
             int count = Native.GetWindowText(hwnd, caption, caption.Capacity);
             return count == 7 && TooltipDecision.Identity(true, name.ToString(), caption.ToString(), style, extendedStyle, ownedParent);
         }
+        private bool IsSnappingWindow(IntPtr hwnd, bool isCommand)
+        {
+            Native.Rect bounds;
+            if (!Rect(hwnd,out bounds) || !Native.IsWindowVisible(hwnd) || !(isCommand ? SnappingProtocol.Command(bounds) : SnappingProtocol.State(bounds))) return false;
+            var name=new System.Text.StringBuilder(128); Native.GetClassName(hwnd,name,name.Capacity);
+            return name.ToString()=="SkinWindowClass";
+        }
+        private void ToggleSnapping()
+        {
+            bool next=!snappingEnabled;
+            if (!wheelBridge.SetSnapping(next)) return;
+            snappingEnabled=next;
+            if (!SkinSnapping.Save(SkinSnapping.SettingsPath,next))
+                tray.ShowBalloonTip(4000,"Window snapping","Changed for this session, but the preference could not be saved.",ToolTipIcon.Warning);
+        }
+        private void PollSnapping(long now)
+        {
+            bool supported=wheelBridge.SnappingSupported && wheelBridge.SetSnapping(snappingEnabled);
+            snappingMenu.Enabled=supported;
+            snappingMenu.Checked=!supported || snappingEnabled;
+            snappingMenu.Text=supported ? "Window snapping" : "Window snapping (unavailable)";
+            if (!IsSnappingWindow(snappingCommand,true) || !IsSnappingWindow(snappingState,false)) return;
+            Native.Rect cmd,state; if(!Rect(snappingCommand,out cmd)||!Rect(snappingState,out state))return;
+            if(snappingRequest.Observe(cmd.Width,supported))ToggleSnapping();
+            if(cmd.Width==192)
+            {
+                if(now-snappingCommandAt>=200 && DoubleClick(snappingCommand,0,0))snappingCommandAt=now;
+                return;
+            }
+            int desired=SnappingProtocol.DesiredWidth(supported,snappingEnabled);
+            if(state.Width!=desired && now-snappingCommandAt>=200 && DoubleClick(snappingCommand,SnappingProtocol.StateCell(desired),0))snappingCommandAt=now;
+        }
         private void Discover(long now)
         {
             if (now - discoveryAt < 200) return;
             discoveryAt = now;
             var windows = target.Windows();
             ownedWindows = windows;
+            var snapCommands=windows.Where(hwnd=>IsSnappingWindow(hwnd,true)).ToList();
+            IntPtr foundSnap=snapCommands.Count==1 ? snapCommands[0] : IntPtr.Zero;
+            if(foundSnap!=snappingCommand) snappingRequest.Reset();
+            snappingCommand=foundSnap;
+            var snapStates=windows.Where(hwnd=>IsSnappingWindow(hwnd,false)).ToList();
+            snappingState=snapStates.Count==1 ? snapStates[0] : IntPtr.Zero;
+            var clocks = windows.Where(hwnd => { Native.Rect r; return Rect(hwnd, out r) && ClockRefreshDecision.Matches(r) && Native.IsWindowVisible(hwnd); }).ToList();
+            clockRefresh = clocks.Count == 1 ? clocks[0] : IntPtr.Zero;
+            if (clockRefresh != IntPtr.Zero)
+            {
+                var name = new System.Text.StringBuilder(128);
+                Native.GetClassName(clockRefresh, name, name.Capacity);
+                if (name.ToString() != "SkinWindowClass") clockRefresh = IntPtr.Zero;
+            }
+            var fixedClocks = windows.Where(hwnd => ClockRefreshDecision.IsFixedCommand(target.Pid, hwnd)).ToList();
+            clockRefreshCommand = fixedClocks.Count == 1 ? fixedClocks[0] : IntPtr.Zero;
             var tooltips = windows.Where(IsTooltip).ToList();
             tooltip = tooltips.Count == 1 ? tooltips[0] : IntPtr.Zero;
             foreach (var signal in signals) if (!target.Owns(signal.Window)) signal.Window = UniquePair(windows, signal.Spec.width, signal.Spec.height, signal.Spec.readyWidth, signal.Spec.height, true);
@@ -608,6 +977,7 @@ namespace NfsSkinSupport
             if (foundVideo != IntPtr.Zero) video = foundVideo;
             else if (!target.Owns(video)) video = IntPtr.Zero;
             if (!target.Owns(hover)) hover = UniquePair(windows, assets.Manifest.hover.width, assets.Manifest.hover.height, assets.Manifest.hover.closedWidth, assets.Manifest.hover.closedHeight, false);
+            if (assets.Manifest.schemaVersion == 2) wheelBridge.Attach(hover);
             if (assets.Manifest.schemaVersion == 2 && !target.Owns(nativeHover)) nativeHover = Unique(windows, 360, 64, false);
         }
         private void PollSounds(long now)
@@ -619,7 +989,21 @@ namespace NfsSkinSupport
                 Native.Rect bounds;
                 if (!Rect(signal.Window, out bounds) || bounds.Left > -30000 || (bounds.Width != signal.Spec.width && bounds.Width != signal.Spec.readyWidth) || bounds.Height != signal.Spec.height) { signal.Window = IntPtr.Zero; signal.Handling = false; signal.Due = -1; continue; }
                 if (!Native.IsWindowVisible(signal.Window)) continue;
-                if (bounds.Width == signal.Spec.readyWidth) { signal.SeenReady = true; signal.Handling = false; signal.Due = -1; continue; }
+                if (bounds.Width == signal.Spec.readyWidth) {
+                    signal.SeenReady = true; signal.Handling = false; signal.Due = -1;
+                    // Advertise only after assets were loaded and the native
+                    // ready signal was observed. The host can now replay the
+                    // visual animation and trigger its sound in one action.
+                    if (signal.Spec.id == "intro" && bounds.Left == -31000 && bounds.Top == -31000 &&
+                        bounds.Width == 43 && bounds.Height == 17 && target.Owns(signal.Window))
+                    {
+                        var name = new System.Text.StringBuilder(128);
+                        Native.GetClassName(signal.Window,name,name.Capacity);
+                        if (name.ToString()=="SkinWindowClass" && Native.GetProp(signal.Window,"NfsSkinEffects.IntroReady")==IntPtr.Zero)
+                            Native.SetProp(signal.Window,"NfsSkinEffects.IntroReady",new IntPtr(1));
+                    }
+                    continue;
+                }
                 if (!signal.Handling)
                 {
                     signal.Handling = true;
@@ -628,14 +1012,14 @@ namespace NfsSkinSupport
                     if (signal.SeenReady && signal.Spec.id == "button") lastButtonTriggered = now;
                     signal.Due = SignalDecision.Due(signal.SeenReady, signal.Spec.id, now, lastButtonTriggered);
                     signal.ResetAfter = now;
-                    if (diagnostics != null) diagnostics.Change("sound-" + signal.Spec.id, new { id = signal.Spec.id, played = false, muted = muted, phase = "trigger" });
+                    if (diagnostics != null) diagnostics.Change("sound-" + signal.Spec.id, new { id = signal.Spec.id, played = false, muted = muted, phase = "trigger", observedAtMs=now, dueAtMs=signal.Due });
                 }
                 if (signal.Spec.id == "info" && signal.Due >= 0) signal.Due = Math.Max(signal.Due, lastButtonTriggered + 100);
                 if (signal.Due >= 0 && now >= signal.Due)
                 {
                     bool played = false;
                     if (!muted && soundVolume > 0) try { players[signal.Spec.id].Play(); played = true; } catch (Exception error) { Trace.WriteLine(error.Message); }
-                    if (diagnostics != null) diagnostics.Change("sound-" + signal.Spec.id, new { id = signal.Spec.id, played = played, muted = muted, phase = "dispatch" });
+                    if (diagnostics != null) diagnostics.Change("sound-" + signal.Spec.id, new { id = signal.Spec.id, played = played, muted = muted, phase = "dispatch", dispatchedAtMs=now });
                     signal.Due = -1; signal.ResetAfter = now;
                 }
                 if (signal.Due < 0 && now >= signal.ResetAfter) { DoubleClick(signal.Window, 1, 1); signal.ResetAfter = now + 200; }
@@ -687,12 +1071,21 @@ namespace NfsSkinSupport
             if (diagnostics != null) diagnostics.Change("video", new { found = target.Owns(video), width = bounds.Width, height = bounds.Height, visible = videoVisible });
             bool barKnown = Rect(hover, out bar) && Native.IsWindowVisible(hover);
             bool barVisible = barKnown && HoverDecision.IsOpen(bar.Width, bar.Height, assets.Manifest.hover);
+            bool stackingReady = hoverStacking.Bind(video, hover);
+            if (barVisible && videoVisible && stackingReady)
+            {
+                int x = bounds.Left + (bounds.Width - assets.Manifest.hover.width) / 2;
+                int y = bounds.Bottom - 30 * assets.Manifest.scale - assets.Manifest.hover.height - 6 * assets.Manifest.scale;
+                stackingReady = hoverStacking.Place(video, hover, x, y);
+                Rect(hover, out bar);
+                if (assets.Manifest.schemaVersion == 2 && target.Owns(hover)) Native.SetBarOpacity(hover);
+            }
             Point cursor;
             if (!Native.GetCursorPos(out cursor)) return;
             // Rectangles survive hiding/occlusion. Only the exposed selected video
             // or its already-open bar may maintain hover, including vout children.
             IntPtr pointerRoot; bool pointerOnVideo, pointerOnBar;
-            bool exposed = HoverDecision.ReadExposure(target.Pid, video, hover, barVisible, cursor, out pointerRoot, out pointerOnVideo, out pointerOnBar) && videoVisible;
+            bool exposed = HoverDecision.ReadExposure(target.Pid, video, hover, barVisible, cursor, out pointerRoot, out pointerOnVideo, out pointerOnBar) && videoVisible && stackingReady;
             bool inside = exposed && pointerOnVideo && bounds.Contains(cursor);
             bool moved = !hadCursor || cursor != previousCursor || (inside && !wasInsideVideo);
             if (moved) movedAt = now;
@@ -708,31 +1101,43 @@ namespace NfsSkinSupport
             previousCursor = cursor; hadCursor = true; wasInsideVideo = inside;
             IntPtr foreground = Native.GetForegroundWindow();
             bool foregroundOwn = target.Owns(foreground), fullscreenDetected = videoVisible && Borderless();
-            bool desired = HoverDecision.Show(exposed, fullscreenDetected, inside, pointerOnBar && bar.Contains(cursor), now - movedAt, closeSuppressed);
+            bool desired = HoverDecision.Show(exposed, fullscreenDetected, inside, pointerOnBar, now - movedAt, closeSuppressed);
             if (diagnostics != null) diagnostics.Change("hover", new { open = barVisible, desired = desired, inside = inside, foregroundOwn = foregroundOwn, fullscreenDetected = fullscreenDetected, suppressed = closeSuppressed });
-            if (desired && barVisible)
-            {
-                int width = assets.Manifest.hover.width, height = assets.Manifest.hover.height;
-                int x = bounds.Left + (bounds.Width - width) / 2;
-                int y = bounds.Bottom - 30 * assets.Manifest.scale - height - 6 * assets.Manifest.scale;
-                // Playback can reorder native skin/vout windows without moving
-                // this bar. Reassert stacking even when its position is current.
-                Native.SetWindowPos(hover, new IntPtr(-1), x, y, width, height, HoverDecision.PositionFlags(bar.Left == x && bar.Top == y));
-                if (assets.Manifest.schemaVersion == 2 && target.Owns(hover)) Native.SetBarOpacity(hover);
-            }
             if (desired != barVisible) HoverCommand(desired, now);
             if (assets.Manifest.schemaVersion == 2)
             {
                 Native.Rect nativeBar;
-                bool framedVolume = desired && barVisible && HoverDecision.VolumeRegion(cursor.X - bar.Left, cursor.Y - bar.Top);
+                bool framedVolume = desired && barVisible && pointerRoot == hover && HoverDecision.VolumeRegion(cursor.X - bar.Left, cursor.Y - bar.Top);
                 bool nativeVolume = pointerRoot == nativeHover && target.Owns(nativeHover) && Rect(nativeHover, out nativeBar) && Native.IsWindowVisible(nativeHover) && nativeBar.Width == 360 && nativeBar.Height == 64 && HoverDecision.VolumeRegion(cursor.X - nativeBar.Left, cursor.Y - nativeBar.Top);
                 VolumeCommand(framedVolume || nativeVolume, now);
             }
         }
+        private void PollClock(long now)
+        {
+            Native.Rect bounds;
+            if (now - clockRefreshAt < 500 || !Rect(clockRefresh, out bounds) || !ClockRefreshDecision.Matches(bounds) || !Native.IsWindowVisible(clockRefresh)) return;
+            if (ClockRefreshDecision.IsFixedCommand(target.Pid, clockRefreshCommand))
+            {
+                // Persistent command Images retain native last-hit identity while
+                // their synchronous macro refreshes only the separate state layouts.
+                int x = ClockRefreshDecision.CommandX(bounds.Width);
+                if (x >= 0 && DoubleClick(clockRefreshCommand, x, 0)) clockRefreshAt = now;
+                return;
+            }
+            // Legacy clock commands enter a different Image after each layout switch.
+            // VLC findHitControl hides the global tooltip before its 500ms timer
+            // can display. Leave native tooltip lifetime intact during skin hover.
+            Point cursor;
+            if (!Native.GetCursorPos(out cursor) || ClockRefreshDecision.PointerOverSkin(target.Pid, cursor) ||
+                (IsTooltip(tooltip) && Native.IsWindowVisible(tooltip))) return;
+            // Paused-seek forced refresh resumes when the pointer leaves the skin.
+            // Visibility refresh reads VLC's completed seek without seeking or resuming it.
+            if (DoubleClick(clockRefresh, 0, 0)) clockRefreshAt = now;
+        }
         private void Tick(object sender, EventArgs arguments)
         {
             if (!target.Alive()) { ExitThread(); return; }
-            try { long now = clock.ElapsedMilliseconds; Discover(now); PollSounds(now); PollHover(now); PollTooltip(); }
+            try { long now = clock.ElapsedMilliseconds; Discover(now); PollSounds(now); PollHover(now); PollSnapping(now); PollTooltip(); PollClock(now); }
             catch (Exception error) { Trace.WriteLine(error.Message); ExitThread(); }
         }
         private void PollTooltip()
@@ -752,12 +1157,16 @@ namespace NfsSkinSupport
             if (!disposed)
             {
                 disposed = true; timer.Stop();
+                if(IsSnappingWindow(snappingCommand,true))DoubleClick(snappingCommand,30,0);
+                wheelBridge.Dispose(); hoverStacking.Dispose();
                 if (target.Alive())
                 {
                     VolumeCommand(false, clock.ElapsedMilliseconds + 200);
                     HoverCommand(false, clock.ElapsedMilliseconds + 400);
                     foreach (var signal in signals)
                     {
+                        if (signal.Spec.id == "intro" && target.Owns(signal.Window))
+                            Native.RemoveProp(signal.Window,"NfsSkinEffects.IntroReady");
                         Native.Rect rect;
                         if (Rect(signal.Window, out rect) && rect.Left <= -30000 && rect.Width == signal.Spec.width && rect.Height == signal.Spec.height && Native.IsWindowVisible(signal.Window)) DoubleClick(signal.Window, 1, 1);
                     }
@@ -849,6 +1258,26 @@ namespace NfsSkinSupport
         private static int SelfTest()
         {
             SoundVolumeTests();
+            var snappingRequest=new SnappingRequest();
+            Check(!snappingRequest.Observe(192,true)); // stale saved trigger
+            Check(!snappingRequest.Observe(191,true));
+            Check(snappingRequest.Observe(192,true));
+            Check(!snappingRequest.Observe(192,true)); // delayed ACK cannot repeat
+            Check(!snappingRequest.Observe(191,true));
+            Check(snappingRequest.Observe(192,true)); // subsequent explicit click
+            snappingRequest.Reset();
+            Check(!snappingRequest.Observe(191,false) && !snappingRequest.Observe(192,false));
+            Check(!snappingRequest.Observe(192,true)); // capability change is not a click
+            Check(!snappingRequest.Observe(191,true) && snappingRequest.Observe(192,true));
+            Check(SnappingProtocol.DesiredWidth(false,false)==201 && SnappingProtocol.DesiredWidth(true,true)==202 && SnappingProtocol.DesiredWidth(true,false)==203);
+            Check(SnappingProtocol.StateCell(201)==30 && SnappingProtocol.StateCell(202)==10 && SnappingProtocol.StateCell(203)==20);
+            Check(SnappingProtocol.Command(new Native.Rect {Left=-31000,Top=-29800,Right=-30809,Bottom=-29783}));
+            Check(!SnappingProtocol.Command(new Native.Rect {Left=-31000,Top=-29801,Right=-30809,Bottom=-29784}));
+            Check(SnappingProtocol.State(new Native.Rect {Left=-31000,Top=-29700,Right=-30797,Bottom=-29699}));
+            Check(!SnappingProtocol.State(new Native.Rect {Left=-31000,Top=-29700,Right=-30796,Bottom=-29699}));
+            Check(SkinSnapping.Parse(null) && SkinSnapping.Parse("") && SkinSnapping.Parse("true"));
+            Check(!SkinSnapping.Parse("false") && !SkinSnapping.Parse(" false\r\n"));
+            Check(SkinSnapping.Parse("False") && SkinSnapping.Parse("0") && SkinSnapping.Parse("corrupt"));
             Check(TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x88000000L, 0x80L, true));
             Check(!TooltipDecision.Identity(false, "SkinWindowClass", "tooltip", 0x88000000L, 0x80L, true));
             Check(!TooltipDecision.Identity(true, "OtherClass", "tooltip", 0x88000000L, 0x80L, true));
@@ -858,6 +1287,18 @@ namespace NfsSkinSupport
             Check(!TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x08000000L, 0x80L, true));
             Check(!TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x88000000L, 0, true));
             Check(!TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x88000000L, 0x80L, false));
+            Check(ClockRefreshDecision.CommandX(151)==0 && ClockRefreshDecision.CommandX(152)==0);
+            Check(ClockRefreshDecision.CommandX(153)==10 && ClockRefreshDecision.CommandX(154)==10);
+            Check(ClockRefreshDecision.CommandX(150)==-1 && ClockRefreshDecision.CommandX(155)==-1);
+            Check(ClockRefreshDecision.MatchesCommand(new Native.Rect { Left=-31000,Top=-29900,Right=-30819,Bottom=-29883 }));
+            Check(!ClockRefreshDecision.MatchesCommand(new Native.Rect { Left=-31000,Top=-29901,Right=-30819,Bottom=-29884 }));
+            var skinBounds = new Native.Rect { Left=20, Top=20, Right=320, Bottom=318 };
+            Check(ClockRefreshDecision.TooltipHover(true,true,false,"SkinWindowClass",skinBounds));
+            Check(!ClockRefreshDecision.TooltipHover(false,true,false,"SkinWindowClass",skinBounds));
+            Check(!ClockRefreshDecision.TooltipHover(true,false,false,"SkinWindowClass",skinBounds));
+            Check(!ClockRefreshDecision.TooltipHover(true,true,true,"SkinWindowClass",skinBounds));
+            Check(!ClockRefreshDecision.TooltipHover(true,true,false,"OtherClass",skinBounds));
+            Check(!ClockRefreshDecision.TooltipHover(true,true,false,"SkinWindowClass",new Native.Rect { Left=-31000,Top=-30200,Right=-30849,Bottom=-30183 }));
             var tooltipWork = new Native.Rect { Left = 0, Top = 0, Right = 1920, Bottom = 1040 };
             Check(TooltipDecision.Place(new Point(600, 400), 200, 30, tooltipWork) == new Point(500, 362));
             Check(TooltipDecision.Place(new Point(1919, 400), 200, 30, tooltipWork) == new Point(1720, 362));
@@ -975,6 +1416,11 @@ namespace NfsSkinSupport
             Check(Target.ChooseVideo(new List<IntPtr>(), new List<IntPtr> {new IntPtr(7)}) == new IntPtr(7));
             Check(Target.ChooseVideo(new List<IntPtr>(), new List<IntPtr> {new IntPtr(7),new IntPtr(8)}) == IntPtr.Zero);
             Check(Target.ChooseVideo(new List<IntPtr>(), new List<IntPtr>()) == IntPtr.Zero);
+            for (int width = 150; width <= 155; width++)
+                Check(ClockRefreshDecision.Matches(new Native.Rect { Left=-31000, Top=-30200, Right=-31000+width, Bottom=-30183 }) == (width >= 151 && width <= 154));
+            Check(!ClockRefreshDecision.Matches(new Native.Rect { Left=0, Top=-30200, Right=151, Bottom=-30183 }));
+            Check(!ClockRefreshDecision.Matches(new Native.Rect { Left=-31000, Top=-30201, Right=-30849, Bottom=-30184 }));
+            Check(Marshal.SizeOf(typeof(Native.GuiThreadInfo)) == (IntPtr.Size == 8 ? 72 : 48));
             return 0;
         }
         [STAThread] private static int Main(string[] arguments)

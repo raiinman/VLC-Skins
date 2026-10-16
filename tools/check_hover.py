@@ -97,11 +97,13 @@ def transparent_layout(assets, layout, identifier, size):
     exact_image(assets, marker.get('image'), Image.new('RGBA', (1, 1)))
 
 
-def state_hits(assets, layout, playing, expanded):
+def state_hits(assets, layout, playing, expanded, phase):
     """Resolve independent checkbox states before using the panel hit model."""
     clone = deepcopy(layout)
     flags = {'vlc.isPlaying': playing, EXPANDED: expanded,
-             'fullscreenController.isVisible': True, 'video_hover_controls.isActive': True}
+             'fullscreenController.isVisible': True, 'video_hover_controls.isActive': True,
+             'clock_elapsed_a.isActive': phase=='a','clock_remaining_a.isActive':False,
+             'clock_elapsed_b.isActive': phase=='b','clock_remaining_b.isActive':False}
     for node in clone:
         node.set('visible', str(visible(node.get('visible'), flags=flags)).lower())
         if node.tag == 'Checkbox' and visible(node.get('state'), flags=flags):
@@ -189,12 +191,25 @@ def verify(assets, scale):
         assert len({assets.image(f'compact_volume_{s}_png').tobytes() for s in ('no', 'hov', 'do')}) == 3
         own_gate = layout_id+'.isActive' if companion else window_id+'.isVisible'
         texts = layout.findall('Text')
-        assert len(texts) == 2
-        time = layout.find('Text[@text="$t / $d"]')
+        assert len(texts) == 3
+        times = layout.findall('Text[@text="$t / $d"]')
+        assert len(times)==2
+        time = times[0]
         percent = layout.find('Text[@text="$V%"]')
         assert time is not None and xy(time) == (148, 33) and time.get('width') == '80'
         assert percent is not None and xy(percent) == (259, 34) and percent.get('width') == '46'
-        assert time.get('visible') == own_gate
+        for other in times:
+            assert xy(other)==(148,33) and other.get('width')=='80'
+        for mode in ('elapsed','remaining'):
+            shown_ids=[]
+            for phase in ('a','b'):
+                flags={own_gate:True,**{'clock_'+m+'_'+p+'.isActive':m==mode and p==phase for m in ('elapsed','remaining') for p in ('a','b')}}
+                shown=[n for n in times if visible(n.get('visible'),flags=flags)]
+                assert len(shown)==1
+                shown_ids.append(shown[0].get('id'))
+                flags[own_gate]=False
+                assert not any(visible(n.get('visible'),flags=flags) for n in times)
+            assert shown_ids[0]!=shown_ids[1], 'Native clock phase must switch Text visibility'
         for text in texts:
             assert text.get('font') == 'compactfont' and text.get('color') == '#FFFFFF'
             assert text.get('focus') == 'false' and text.get('scrolling') == 'none'
@@ -222,7 +237,7 @@ def verify(assets, scale):
                 assert visible(volume_slider.get('visible'), flags=flags) == (own and expanded)
                 assert visible(rails[1].get('visible'), flags=flags) == (own and expanded)
             for playing in (False, True):
-                state_hits(assets, layout, playing, expanded)
+                for phase in ('a','b'):state_hits(assets, layout, playing, expanded, phase)
         for node in layout:
             key = node.get('image') or node.get('up') or node.get('up1')
             if key and node.tag != 'Slider':
@@ -357,6 +372,9 @@ def memory_assets(scale):
         return key
     builder.bitmap = MethodType(bitmap, builder)
     builder.hover_controllers()
+    for i,node in enumerate(builder.theme.iter()):
+        if node.tag in ('Image','Button','Checkbox','Slider','Text','Video') and not node.get('id'):node.set('id',f'control_{i}')
+    builder.independent_clock()
     assets = ThemeAssets.__new__(ThemeAssets)
     assets.tree = E.ElementTree(builder.theme)
     assets.resources = {n.get('id'): n for n in builder.theme.iter() if n.get('id')}
@@ -376,7 +394,7 @@ def main():
                 assert E.tostring(E.fromstring(package.read('theme.xml')), method='c14n') == E.tostring(assets.tree, method='c14n')
         verify(assets, scale)
         count = mutations(assets, scale)
-        print(f'PASS {scale}x: physical compact bars, original 1x feedback, volume states, 8 playback/volume hit states, {count} rejected mutations; '+('memory only' if args.self_test else 'package XML matches'))
+        print(f'PASS {scale}x: physical compact bars, original 1x feedback, volume states, 16 playback/volume/clock-phase hit states, {count} rejected mutations; '+('memory only' if args.self_test else 'package XML matches'))
     print('Coverage limit: offline geometry/art checks do not certify native behavior; companion wheel targeting retains VLC\'s stale internal origin.')
 
 

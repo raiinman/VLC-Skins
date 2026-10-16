@@ -1,0 +1,51 @@
+{
+  "queueCount": 165,
+  "exactFreshCheckpointMatch": true,
+  "selectedIndex": 161,
+  "state": "paused",
+  "time": 25,
+  "volume": 269,
+  "quality": 1920,
+  "captionsOff": true,
+  "hostPid": 52496,
+  "vlcPid": 101052,
+  "chromePid": 28788,
+  "sixUserGeometriesPreserved": {
+    "main": true,
+    "video": true,
+    "tracks": true,
+    "equalizer": true,
+    "info": true,
+    "youtube": true
+  },
+  "clockModePreserved": "elapsed",
+  "otherPrivatePreferencesPreserved": true,
+  "normalProfileSourceAndSoundPreserved": true,
+  "nativeResolution": "1080x1920",
+  "hostSHA256": "e78658ac82b4917b17a1bab7d0c4d1d16eb782e495c13afebe36ca1ec91d00a7",
+  "sourceSHA256": "173e66df933597af35034db58b67eb483bcbb532c6aaa230b011afc03dfe2a0c",
+  "helperSHA256": "4797c91efc24317c219e1397f65f120ddd5bd5e4b4deca1f8fc8a001730f8004",
+  "dllSHA256": "b4c859e2422fe995e5af974e2fed5b1b1889fd1ed658f0f77da62a413dde87fe",
+  "derivedSHA256": "6bb24082ba443dd42db60e54cb276d5e7b69c63cf0516835cfe8c83dc375e76f",
+  "physicalInputUsed": false,
+  "packagingHeld": true,
+  "readOnlyIntegration": {
+    "clockWidths": [
+      151,
+      152
+    ],
+    "clockPhaseObserved": true,
+    "wheelBindingObserved": true,
+    "barOwnerInSelectedVlc": true,
+    "barOwnerSize": [
+      813,
+      585
+    ],
+    "noInputOrForegroundCalls": true
+  },
+  "limits": [
+    "No physical dragging or actual Settings selection performed.",
+    "Both-scale synthetic86-case proof is separate from current1x activation.",
+    "Extra corrected outside-bar fixture assertion remains pending; failed setup reports retained."
+  ]
+}

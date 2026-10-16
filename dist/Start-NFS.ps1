@@ -43,7 +43,37 @@ function Read-EffectsManifest([string]$SkinPath) {
         $entries = @($archive.Entries | Where-Object { $_.FullName -eq 'nfs-effects.json' })
         if ($entries.Count -ne 1 -or $entries[0].Length -gt 65536) { throw 'Missing, duplicate or oversized effects manifest.' }
         $reader = [IO.StreamReader]::new($entries[0].Open())
-        try { return ($reader.ReadToEnd() | ConvertFrom-Json) } finally { $reader.Dispose() }
+        try { $manifest = ($reader.ReadToEnd() | ConvertFrom-Json) } finally { $reader.Dispose() }
+        $themes = @($archive.Entries | Where-Object { $_.FullName -eq 'theme.xml' })
+        if ($themes.Count -ne 1 -or $themes[0].Length -gt 16777216) { throw 'Missing, duplicate or oversized skin XML.' }
+        $settings = [Xml.XmlReaderSettings]::new()
+        $settings.DtdProcessing = [Xml.DtdProcessing]::Ignore
+        $settings.XmlResolver = $null
+        $stream = $themes[0].Open()
+        $xmlReader = [Xml.XmlReader]::Create($stream, $settings)
+        try { $theme = [Xml.XmlDocument]::new(); $theme.XmlResolver = $null; $theme.Load($xmlReader) } finally { $xmlReader.Dispose(); $stream.Dispose() }
+        $clock = $theme.SelectSingleNode('/Theme/Window[@id="clock_state"]')
+        $hasClock = $null -ne $clock
+        if ($hasClock) {
+            $sizes = @{clock_elapsed_a=151;clock_elapsed_b=152;clock_remaining_a=153;clock_remaining_b=154}
+            if ($clock.SelectNodes('Layout').Count -ne 4) { throw 'Invalid packaged clock state.' }
+            foreach ($name in $sizes.Keys) {
+                $layout = $clock.SelectSingleNode('Layout[@id="'+$name+'"]')
+                if ($null -eq $layout -or $layout.GetAttribute('width') -ne [string]$sizes[$name] -or $layout.GetAttribute('height') -ne '17') { throw 'Invalid packaged clock geometry.' }
+            }
+        }
+        $manifest | Add-Member -NotePropertyName clockRefresh -NotePropertyValue $hasClock -Force
+        $snap = $theme.SelectSingleNode('/Theme/Window[@id="snapping_command"]')
+        if ($null -ne $snap) {
+            $snapState = $theme.SelectSingleNode('/Theme/Window[@id="snapping_state"]')
+            if ($null -eq $snapState -or $snap.GetAttribute('x') -ne '-31000' -or $snap.GetAttribute('y') -ne '-29800' -or $snap.SelectNodes('Layout').Count -ne 2 -or $snapState.SelectNodes('Layout').Count -ne 3) { throw 'Invalid packaged snapping protocol.' }
+            foreach ($pair in @(@('snapping_requested',192),@('snapping_ready',191))) {
+                $layout = $snap.SelectSingleNode('Layout[@id="'+$pair[0]+'"]')
+                if ($null -eq $layout -or $layout.GetAttribute('width') -ne [string]$pair[1] -or $layout.GetAttribute('height') -ne '17') { throw 'Invalid packaged snapping command.' }
+            }
+        }
+        $manifest | Add-Member -NotePropertyName snappingToggle -NotePropertyValue ($null -ne $snap) -Force
+        return $manifest
     } finally { $archive.Dispose() }
 }
 
@@ -55,8 +85,16 @@ function Initialize-SupportState([string]$Text, [int]$AssetScale, $EffectsManife
     $entries = [regex]::Matches($saved.Groups[1].Value, $pattern)
     $main = @($entries | Where-Object { $_.Groups[1].Value -eq 'main' })
     if ($main.Count -ne 1 -or ([regex]::Replace($saved.Groups[1].Value, $pattern, '')).Trim()) { return $Text }
+    $clockRefresh = $null -ne $EffectsManifest -and $EffectsManifest.clockRefresh -eq $true
+    $clockEntries = @($entries | Where-Object { $_.Groups[1].Value -eq 'clock_state' })
+    $clockMode = if ($main[0].Groups[2].Value -match '_remaining$') { 'remaining' } else { 'elapsed' }
+    if ($clockEntries.Count -eq 1 -and $clockEntries[0].Groups[2].Value -match '^clock_(elapsed|remaining)(_[ab])?$') {
+        $clockMode = $Matches[1]
+    }
     $resetInfoFrame = @($entries | Where-Object { $_.Groups[1].Value -eq 'info_frame_state' }).Count -gt 0
-    $owned = @('nfs_fx_button','nfs_fx_shutter','nfs_fx_intro','nfs_fx_info','nfs_fx_logo','nfs_hover_command','videoHoverController','fullscreenController','hover_volume_state','info_frame_state')
+    $snappingToggle = $null -ne $EffectsManifest -and $EffectsManifest.snappingToggle -eq $true
+    $owned = @('nfs_fx_button','nfs_fx_shutter','nfs_fx_intro','nfs_fx_info','nfs_fx_logo','nfs_hover_command','videoHoverController','fullscreenController','hover_volume_state','info_frame_state','clock_state')
+    if ($snappingToggle) { $owned += @('snapping_command','snapping_state') }
     $parts = @($entries | Where-Object { $_.Groups[1].Value -notin $owned } | ForEach-Object { $_.Value })
     $keys = @('button','shutter','intro','info','logo')
     for ($index=0; $index -lt $keys.Count; $index++) {
@@ -71,6 +109,14 @@ function Initialize-SupportState([string]$Text, [int]$AssetScale, $EffectsManife
     $parts += '["fullscreenController" "fullscreen_controls" 0 0 ' + $geometry.NativeWidth + ' ' + $geometry.NativeHeight + ' 0]'
     if ($geometry.Schema -eq 2) { $parts += '["hover_volume_state" "hover_volume_collapsed" -31000 -30700 71 19 1]' }
     if ($resetInfoFrame) { $parts += '["info_frame_state" "info_frame_idle" 0 0 1 1 0]' }
+    if ($clockRefresh) {
+        $clockWidth = if ($clockMode -eq 'remaining') {153} else {151}
+        $parts += '["clock_state" "clock_'+$clockMode+'_a" -31000 -30200 '+$clockWidth+' 17 1]'
+    }
+    if ($snappingToggle) {
+        $parts += '["snapping_command" "snapping_ready" -31000 -29800 191 17 1]'
+        $parts += '["snapping_state" "snapping_unavailable" -31000 -29700 201 1 1]'
+    }
     return $Text.Substring(0,$saved.Groups[1].Index) + ($parts -join '') + $Text.Substring($saved.Groups[1].Index+$saved.Groups[1].Length)
 }
 
@@ -103,6 +149,25 @@ if ($SelfTest) {
         $infoFixture = $compact + $infoSaved + '["info_frame_state" "info_frame_7" 0 0 1 1 0]'
         $infoResult = Initialize-SupportState $infoFixture $assetScale $manifest
         if (-not $infoResult.Contains($infoSaved) -or $infoResult.Contains('"info_frame_7"') -or -not $infoResult.Contains('["info_frame_state" "info_frame_idle" 0 0 1 1 0]') -or (Initialize-SupportState $infoResult $assetScale $manifest) -ne $infoResult) { throw 'Info frame reset must preserve saved content/geometry and be idempotent.' }
+        $manifest | Add-Member -NotePropertyName clockRefresh -NotePropertyValue $true -Force
+        $manifest | Add-Member -NotePropertyName snappingToggle -NotePropertyValue $true -Force
+        $snapFixture = 'skins2-config='+$geometry+'["snapping_command" "snapping_requested" 1 2 192 17 1]["snapping_state" "snapping_disabled" 3 4 203 1 1]'
+        $snapReset = Initialize-SupportState $snapFixture $assetScale $manifest
+        if (-not $snapReset.Contains($geometry) -or $snapReset.Contains('"snapping_requested"') -or $snapReset.Contains('"snapping_disabled"') -or -not $snapReset.Contains('["snapping_command" "snapping_ready" -31000 -29800 191 17 1]') -or -not $snapReset.Contains('["snapping_state" "snapping_unavailable" -31000 -29700 201 1 1]') -or (Initialize-SupportState $snapReset $assetScale $manifest) -ne $snapReset) { throw 'Snapping transient reset must preserve panes, reset stale requests and be idempotent.' }
+        foreach ($legacyMode in @('elapsed','remaining')) {
+            $suffix = if ($legacyMode -eq 'remaining') {'_remaining'} else {''}
+            $mainSaved = '["main" "main_7_closing'+$suffix+'" -5 20 300 298 1]'
+            $videoSaved = '["video" "video_1" 8 9 1234 987 1]'
+            $clockResult = Initialize-SupportState ('skins2-config='+$mainSaved+$videoSaved) $assetScale $manifest
+            $width = if ($legacyMode -eq 'remaining') {153} else {151}
+            $expectedClock = '["clock_state" "clock_'+$legacyMode+'_a" -31000 -30200 '+$width+' 17 1]'
+            if (-not $clockResult.Contains($mainSaved+$videoSaved) -or -not $clockResult.Contains($expectedClock) -or (Initialize-SupportState $clockResult $assetScale $manifest) -ne $clockResult) { throw 'Legacy clock mode/geometry migration failed.' }
+            $opposite = if ($legacyMode -eq 'remaining') {'elapsed'} else {'remaining'}
+            $savedClock = '["clock_state" "clock_'+$opposite+'_b" 1 2 1 1 0]'
+            $preserved = Initialize-SupportState ('skins2-config='+$mainSaved+$videoSaved+$savedClock) $assetScale $manifest
+            $oppositeWidth = if ($opposite -eq 'remaining') {153} else {151}
+            if (-not $preserved.Contains('["clock_state" "clock_'+$opposite+'_a" -31000 -30200 '+$oppositeWidth+' 17 1]') -or -not $preserved.Contains($mainSaved+$videoSaved)) { throw 'Existing independent clock mode was lost.' }
+        }
         $manifest.hover.width = 722
         $rejected = $false
         try { $null = Get-EffectsGeometry $assetScale $manifest } catch { $rejected = $true }

@@ -1,0 +1,149 @@
+{
+  "queueCount": 165,
+  "orderedIdsAndTitlesMatch": true,
+  "selectedIndex": 161,
+  "state": "paused",
+  "time": 2,
+  "volume": 307,
+  "normalFilesUnchanged": true,
+  "derivedSHA256": "d31a5408efda7206ba75a99c1b9c3df106248eb21fc0bb7011c6a2fabd4d52c2",
+  "physicalInputUsed": false,
+  "exactFreshCheckpointMatch": true,
+  "quality": 0,
+  "captionsOff": true,
+  "sixUserGeometriesPreserved": {
+    "main": true,
+    "video": true,
+    "tracks": true,
+    "equalizer": true,
+    "info": true,
+    "youtube": true
+  },
+  "otherPrivatePreferencesPreserved": true,
+  "soundPreferencePreserved": true,
+  "profileOnlyChangedPinnedSource": true,
+  "sourceAssetsAndStoragePreserved": true,
+  "clockState": "[\"clock_state\" \"clock_elapsed_a\" -31000 -30200 151 17 1]",
+  "hostSHA256": "f3fc7d4a1a67587fdfcebcf39bad044353774680abb7b94244c3de001e547b1c",
+  "sourceSHA256": "173e66df933597af35034db58b67eb483bcbb532c6aaa230b011afc03dfe2a0c",
+  "helperSHA256": "223d69a9e6b464a8870e85a42736d81045b8fbeae05b5dd921572b2fc206c745",
+  "dllSHA256": "843f086a4f6d4a1a25a9f9e92e032744c8aac2b274d064bfa54d9fec6f4a42d9",
+  "inactive2xProfileCreated": false,
+  "packagesOrReleaseCreated": false,
+  "minimumSizeAdaptations": [],
+  "date": "2026-10-16",
+  "authorization": "User explicitly requested loading prepared fixes into 1x for review while packaging stays held",
+  "readOnlyIntegration": {
+    "clockWidths": [
+      151,
+      152
+    ],
+    "readOnly": true,
+    "wheelBindingObserved": true,
+    "wheelMarkers": [
+      1313231703
+    ],
+    "noInputOrForegroundCalls": true,
+    "clockPhaseObserved": true,
+    "samples": [
+      [
+        {
+          "role": "clock",
+          "width": 152,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        },
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        }
+      ],
+      [
+        {
+          "role": "clock",
+          "width": 151,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        },
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        }
+      ],
+      [
+        {
+          "role": "clock",
+          "width": 151,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        },
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        }
+      ],
+      [
+        {
+          "role": "clock",
+          "width": 152,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        },
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        }
+      ],
+      [
+        {
+          "role": "clock",
+          "width": 152,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        },
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        }
+      ],
+      [
+        {
+          "role": "clock",
+          "width": 151,
+          "height": 17,
+          "visible": true,
+          "marker": 0
+        },
+        {
+          "role": "framed-hover",
+          "width": 362,
+          "height": 1,
+          "visible": true,
+          "marker": 1313231703
+        }
+      ]
+    ]
+  },
+  "packagingOnHold": true,
+  "scope": "One coordinated owned1x restart. Queue/settings preserved. Read-only phase/binding observations do not establish actual mousewheel behavior, clock raster timing or visual parity."
+}

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-16",
+  "packages": {
+    "1": "04524f3403fbc534083443dddbef469cf47593107fe41e8bd9827b456fbd6cef",
+    "2": "08f3096f9f6ad41b86f8bee12d513dedf24c1930aacd7017a300dd076e06b758"
+  },
+  "screen_magnet": 15,
+  "anchor_range": 15,
+  "main_priority": 2,
+  "auxiliary_priority": 1,
+  "per_scale": {
+    "layouts": 77,
+    "anchors": 308,
+    "resized_corner_positions": 340,
+    "contact_cases": 7272,
+    "rejected_mutations": 9
+  },
+  "strict_range_hidden_cases": 39,
+  "companion_augmented_anchors": 312,
+  "conversion_suite": "All17 checks pass both scales",
+  "DTD": "Pass both actual packages",
+  "companion_hud": "Both source VLTs, DTD, exact payload/compression preservation and10 mutations pass",
+  "native_gestures": "88private native steps,44per scale pass on both exact packages; all4 protectedprocesses/14fileguards/inputdesktop unchanged; cleanup pass",
+  "clock_layout": "Click attempt alone cannot certify active layout",
+  "assets": "Only Anchor nodes added to existing theme XML. Original resources, controls, IDs, geometry and animations preserved.",
+  "limits": [
+    "Corner alignment rather than arbitrary sliding edges",
+    "Auxiliary equal priority does not create a moving group",
+    "Coincident same-side corners may overlap",
+    "Already-aligned hidden children may follow main"
+  ],
+  "physical_input_used": false,
+  "actual_archive_equivalence": {
+    "1": {
+      "unchanged_non_xml_entries": 17,
+      "only_xml_semantic_additions": "308Anchor nodes",
+      "baseline_sha256": "08d4e5c1f972f863e306b30b6e11d9113889a49f05c54b69ee36d1305138552c",
+      "candidate_sha256": "04524f3403fbc534083443dddbef469cf47593107fe41e8bd9827b456fbd6cef"
+    },
+    "2": {
+      "unchanged_non_xml_entries": 42,
+      "only_xml_semantic_additions": "308Anchor nodes",
+      "baseline_sha256": "102b6f1cb0c3a0ecbfdf4a903c069819920c972a9b8a75f73da96b2e49f1fbff",
+      "candidate_sha256": "08f3096f9f6ad41b86f8bee12d513dedf24c1930aacd7017a300dd076e06b758"
+    }
+  },
+  "deployment": "Both AppData library VLTs installed with backups; runtime rollout and packaging held for user parity review."
+}

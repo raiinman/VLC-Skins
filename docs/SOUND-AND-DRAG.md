@@ -10,9 +10,9 @@ subsequent cues at the new level. Source WAVs and cue timing are unchanged.
 The helper now skips redundant alpha writes when the framed strip is already
 opaque. Required inactive-hover topmost behavior remains unchanged. Screen-edge
 snapping stays at VLC's original15px threshold, as requested. The proposed
-magnet0 experiment was discarded before installation. Current skins have no
-explicit docking anchors; screen snapping and pane-to-pane docking are distinct.
-No pane-docking behavior is claimed by the drag checker.
+magnet0 experiment was discarded before installation. The preceding packages have no
+explicit docking anchors; the later candidate is documented in DOCKING.md.
+The screen-edge drag checker does not certify pane docking.
 
 All20 compiled-helper gain cases match independently calculated samples and
 preserve non-sample bytes. All82 private native assertions pass on both exact

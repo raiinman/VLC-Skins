@@ -1,0 +1,20 @@
+{
+  "scope": "Both current docking user-library VLTs installed with verified backups; running companion update is separate.",
+  "results": [
+    {
+      "scale": 1,
+      "library": "APPDATA/vlc/skins",
+      "before_sha256": "08d4e5c1f972f863e306b30b6e11d9113889a49f05c54b69ee36d1305138552c",
+      "installed_sha256": "04524f3403fbc534083443dddbef469cf47593107fe41e8bd9827b456fbd6cef",
+      "backup_verified": true
+    },
+    {
+      "scale": 2,
+      "library": "APPDATA/vlc/skins",
+      "before_sha256": "102b6f1cb0c3a0ecbfdf4a903c069819920c972a9b8a75f73da96b2e49f1fbff",
+      "installed_sha256": "08f3096f9f6ad41b86f8bee12d513dedf24c1930aacd7017a300dd076e06b758",
+      "backup_verified": true
+    }
+  ],
+  "program_files": "Previous denied ProgramFiles library writes were not repeated; those copies remain unchanged."
+}
