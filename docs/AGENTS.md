@@ -18,6 +18,8 @@ Run python tools/build.py --check, python tools/check_contracts.py, python tools
 ## Child DOX Index
 None.
 
+info-load-benchmark.json records loading-only native evidence for the current Info/playlist candidate, separately from historical load-benchmark.json. Retain exact package/runtime hashes, warm-cache single-run scope, memory costs and process/file/input-desktop preservation results. A passing initialization time never certifies visual controls, tooltip placement, animation smoothness or sound.
+
 SOUNDS-AND-HOVER.md and effects-hover-review.json own original sound mappings, optional helper requirements and offline/runtime boundaries. Preserve earlier native report hashes; newly generated sound/hover candidates have no inherited native certification. Record installed files separately from running in-memory skins and never imply a live session was reloaded during background work.
 
 COMPACT-CONTROLS.md and compact-review.json own the approved smaller HUD, filename readability, private native-volume OSD integration and offline-only evidence. Keep prior large-bar native records scoped to their exact hashes. INFO-SOURCE-AUDIT.md and info-source-audit.json record the original18-second audio-only info cue and separate main intro GIF. INFO-FADES.md and info-fades-review.json own the new native page/frame transition implementation, readable above-pointer tooltips, exact hashes, offline checks and transient/performance limits. Do not treat the original source-audit gap description as current implementation status.

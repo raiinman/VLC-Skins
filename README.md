@@ -68,11 +68,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/Start-NFS.ps1 -SelfTes
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/Playlist-Text-Size.ps1 -SelfTest
 python tools/compare_layers.py
 python tools/preview.py
-# Native initialization check (launches VLC; run when desktop testing is available):
-python tools/benchmark_load.py
+# Authorized native initialization check (private desktop; no input control):
+python tools/benchmark_load.py --output ../work/load-benchmark.json
 ```
 
 The optional volume-OSD mock test requires test-only `lupa==2.8` and runs with `python tools/check_osd.py` (or `--lua-python-path` for a private dependency directory). Python/Lupa are not required by the Windows review bundle.
+
+The current Info/playlist packages loaded in 8.27 seconds at 1x and 29.55 seconds at 2x in one Windows run per scale; see [exact hashes and preservation checks](docs/info-load-benchmark.json). The 2x result is close to the 30-second budget and used about 1.76 GiB working memory. These are warm-cache measurements under concurrent workload, not cold-start guarantees. The benchmark copies the installed runtime into a private portable directory, uses silent dummy audio and non-input desktops, and never launches the effects helper. Add repeatable `--protect-pid PID` and `--guard-file PATH` options for live-session preservation checks; normal VLC config files are guarded automatically. Native visual controls and animation smoothness require separate review.
 
 To repeat recovery from the supplied package:
 

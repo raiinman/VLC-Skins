@@ -64,12 +64,16 @@ skin. It never reloads VLC, edits active profiles or changes shared artwork.
 Offline checks verify all animation pixels, source timings, 54 page states,
 navigation ownership, idle suppression, state isolation and rejected mutations.
 Helper tests cover tooltip identity and monitor geometry without native calls.
-Native animation smoothness, tooltip stacking/DPI behavior and initialization
-time remain unverified. Page strips alone add about 85 MiB decoded RGBA at 1x /
+Native animation smoothness and tooltip stacking/DPI behavior remain unverified.
+The separately authorized loading-only test in `info-load-benchmark.json` measured
+8.27 seconds at 1x and 29.55 seconds at 2x, with no logged theme errors or fallback.
+Both survived the intro; the 2x result is close to the 30-second budget. Page strips alone add about 85 MiB decoded RGBA at 1x /
 339 MiB at 2x before native graphics copies; lossless PNG compression does not
-remove that runtime cost. Fresh initialization measurements are required before
-calling performance preserved. No VLC instance was launched or reloaded, and no
-installed skin, active profile or companion file was changed by this work.
+remove that runtime cost. Total working sets after startup measured about 518 MiB
+and 1805 MiB respectively. One warm-cache run per scale under concurrent workload
+does not establish cold-start performance or visual fidelity. The tests launched
+only owned copies on private non-input desktops. The running 1x player/helper,
+installed skins, active profiles and guarded companion files were preserved.
 
 Source references: original nfs.js showInfo/infoNavNext/infoNavPrev/navCheck/
 endAlphaBlend and htcpInfo; original nfs.wms infoSub passThrough; VideoLAN

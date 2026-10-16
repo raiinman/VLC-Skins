@@ -105,4 +105,6 @@ Convert the supplied Need for Speed Underground WMP skin to VLC Skins2 using ori
 
 Background audits must not launch VLC, take desktop input, alter installed skins or edit user profiles. Review launchers reset only their adjacent isolated INI files before starting VLC; launcher-writer tests execute the writer against private fixtures without launching VLC.
 
+Explicitly authorized loading-only tests use benchmark_load.py with a copied portable runtime, per-test config/temp paths and private non-input desktops. Never switch desktops or inject input. Protect the running player/helper by retained process identity and guard active profile/companion file hashes. Termination and RC commands belong only to owned test processes; verify TCP ownership after connecting before writing. Record exact package hashes, preservation checks and single-run/cache limits separately from GUI evidence.
+
 A hidden palette_state window stores pane color independently of main shutter/clock layouts. Keep this state synchronized on explicit color/replay actions and migrate legacy saved color entries without resetting pane positions. Background-only boundaries remain in force unless the user explicitly authorizes native interaction for a specific test.
