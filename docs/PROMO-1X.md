@@ -1,4 +1,6 @@
-# 1x promo
+# 1x promo (rejected historical preview)
+
+The user rejected this 32-second preview. Do not distribute or promote it. See [the replacement release film](RELEASE-PROMO.md). Its captures and evidence remain historical; this file does not describe the current public release film.
 
 Status: resumed by the user after genuine YouTube 4K and highest-first Auto passed native verification. The companion owner activates the clean matched build in the existing 1x setup while preserving fresh queue/settings/geometry. The promo features actual 3840x2160 playback and its real quality menu. Earlier 360p capture cannot stand in for 4K footage. Keep 2x and release packaging held.
 

@@ -1,5 +1,7 @@
 # Parity and acceptance
 
+**Current release:** the user authorized and published the 1x release on2026-10-16. See [release scope and limits](RELEASE-1X.md). Historical packaging holds below describe earlier reviews; 2x remains held. Publication is not a100percent parity certification.
+
 Current packages retain exact original artwork and animation timing, the balanced-atlas loading fix, Info page/frame fades, slightly roomier resizable playlist and readable filename text. The hover strip uses an opaque matching charcoal fill and original transport art, with smaller source-matched beveled speaker and optional companion Settings/CC buttons. Native tooltips use supported defaultfont12px; the helper places the selected player's tooltip above the pointer. Exposed inactive video panes can reveal the controls; covered, hidden, minimized and stale locations remain rejected.
 
 See UI-POLISH.md and ui-polish-review.json for the latest exact hashes and scoped native tests. Earlier loading reports remain historical: the memory-first candidate failed its startup gate, and the subsequent balanced build passed at8.27/28.27seconds. Current cosmetic hashes do not inherit those exact-hash timings. Full visual acceptance remains pending.
@@ -39,7 +41,7 @@ The current target is complete parity within the user's permitted VLC adaptation
 - Decorative WMP overlays were pass-through. Functional outer buttons are layered above the equivalent Skins2 decorative hit masks to keep the controls reachable.
 
 - The preceding paused-seek clock could retain an old value until resume. The matching development helper now requests a visibility refresh without media changes; source/offline checks pass, exact native raster latency remains unobserved. Exact-zero formatting is still VLC-owned. See CLOCK-AND-WHEEL.md.
-- Clock-mode clicks now change an independent state instead of the main layout in both development skins. Source/transition checks confirm shutter and palette actions are preserved; live animation continuity remains for review. Packaging remains held; the authorized1x review rollout is recorded in review-1x-rollout.json.
+- Clock-mode clicks now change an independent state instead of the main layout in both development skins. Source/transition checks confirm shutter and palette actions are preserved; live animation continuity remains for review. The 1x release is now published; the authorized1x review rollout is recorded in review-1x-rollout.json.
 - Resize controls use exact palette corner artwork. The previous alpha-1 black masks allowed resizing but painted black rectangles through Windows cached-image copies. Native 2x resize was verified on the earlier package; the corrected corner appearance and final 1x resize need native recheck. See CORNER-FIX.md.
 
 ## Acceptance still needed
@@ -72,7 +74,7 @@ bridge filters proven covered targets in the exact supported copied runtime,
 while retaining exposed/partial docking, screen magnetism and native groups.
 See PLAYLIST-AND-TOOLTIPS.md and EXPOSED-DOCKING.md for exact hashes, focused
 both-scale proof and fallback limits. No physical input or actual queue clear
-is used in verification. Packaging remains held; user acceptance is separate.
+is used in verification. The 1x release is now published; user acceptance is separate.
 
 ## Framed fullscreen adaptation
 
@@ -86,6 +88,6 @@ The rejected baked-label SNAP pill is replaced in1x by native13px SNAP and12px O
 
 The dedicated1x setup now waits for the loaded sound helper, restarts the full81-frame intro and triggers its sound in one native action. The original1500ms cue delay is retained. Native private proof shows animation advancement and one dispatch at1500ms; source frame/pixel checks remain exact. The8.1second controlled startup returns to the saved stable palette/shutter choice, and its gated return does not override a user layout change. Main stays above startup and restores its prior topmost state afterward. YouTube starts after the sequence.
 
-The matched current1x update is loaded with fresh actual queue, volume and settings preserved. Main opening/closing transient layouts intentionally normalize to their stable open/closed state; pane geometry is preserved. Physical appearance, speaker synchronization and overall parity remain user-review items. See SNAP-STARTUP-1X.md and snap-startup-1x-review.json for exact scope. Packaging remains held.
+The matched current1x update is loaded with fresh actual queue, volume and settings preserved. Main opening/closing transient layouts intentionally normalize to their stable open/closed state; pane geometry is preserved. Physical appearance, speaker synchronization and overall parity remain user-review items. See SNAP-STARTUP-1X.md and snap-startup-1x-review.json for exact scope. The 1x release is now published; 2x remains held.
 
 The1x SNAP label centering is corrected by moving SNAP down2pixels and ON/OFF down3pixels; every other package payload/XML field is unchanged. The companion now defaults playlist/Mix selections to Play now while preserving the existing queue and retaining explicit Add to queue. The matched1x update is loaded; native ComboBox selection1 was read back without input or media actions. See SNAP-CENTERING.md and snap-centering-review.json.2x and packaging remain held.

@@ -23,3 +23,15 @@ The Blender film is credited `(c) 2008 Blender Foundation / www.bigbuckbunny.org
 Record an ordered edit decision list and source hashes. A final render requires explicit observed-action verification for every native segment; discovery-only footage cannot substitute for handoff, and an unchanged framed pane cannot substitute for fullscreen. Probe and fully decode the export. Audit every encoded frame for unexpected black/freeze intervals and inspect original-resolution frames at cuts, labels, boot phases and native control actions. Distinguish expected held source-animation frames from accidental frozen footage. Report audio peak/loudness checks separately from listening; do not claim listening when no audition occurred.
 
 No desktop input, VLC launch, live-profile access or public posting is performed by the renderer. The root release workflow owns distribution and publication. 2x remains on hold.
+
+## Release export
+
+The final film is the approved 48-second edit, `NFS-Underground-VLC-1x-Release.mp4`. Native fullscreen was omitted because its transition was not captured successfully. Native playlist, EQ and Info receive approximately seven seconds at their actual capture cadence; the genuine public-card click is followed by real moving native 4K and its 2160p60 menu. No UI was redrawn. The first 16 seconds use original source-art animation composition, distinct from the following native recordings.
+
+- Export: 1920 × 1080, 60 fps, H.264/AAC stereo, 48 kHz. Lower-rate native capture retains its actual timestamps, without interpolated control states.
+- Full decode: 2,880 frames, zero decode errors, zero unexpected black frames; continuous native-playback motion gate passed. Every encoded frame was measured and original-resolution frames were extracted immediately before, at and after each cut.
+- Full-resolution review covered boot, palette, native pane details, discovery, moving playback, readable quality selection and final credits. Public Blender content only; no personal account details in final frames.
+- Audio measured mean −19.1 dBFS, peak −3.1 dBFS. Original cues are synchronized editorially; listening was not performed and this film is not speaker-audibility evidence.
+- SHA256: `cd7e580983be6b0dcb5e9f66fcd5d80b2fd6003aba12fd2a3870de75c423ff08`.
+
+Local output contains the MP4, poster, credits, reviewed source manifest, ordered edit decisions, encoded-frame audit and cut frames. The rejected preview and earlier failed native captures remain separate historical records. Existing preview documentation was intentionally retained as history, not relabeled as this release film.

@@ -26,7 +26,7 @@ SKIN = ROOT / 'skins/need-for-speed-underground'
 W, H, FPS, DURATION = 1920, 1080, 60, 54
 FONT = 'C:/Windows/Fonts/bahnschrift.ttf'
 BLUE = '#57cff2'
-CUTS = [0, 1.25, 2.5, 3, 11.1, 11.65, 12.7, 13.25, 16.05, 20, 28, 36, 40, 46, 50, 54]
+CUTS = [0, 1.25, 2.5, 3, 11.1, 11.65, 12.7, 13.25, 16.05, 23, 28, 36, 40, 46, 50, 54]
 
 
 @lru_cache(maxsize=64)
@@ -219,7 +219,7 @@ def render(output, manifest, preview=False, omit_fullscreen=False):
     duration = 48 if omit_fullscreen else DURATION
     native_end = 40 if omit_fullscreen else 46
     cuts = [t for t in CUTS if t <= 40]+[44,48] if omit_fullscreen else CUTS
-    required = {'details':3.95, 'browse':8, 'playback':8, 'quality':4}
+    required = {'details':6.95, 'browse':5, 'playback':8, 'quality':4}
     if not omit_fullscreen:
         required['fullscreen'] = 6
     if not preview:
@@ -272,7 +272,7 @@ def render(output, manifest, preview=False, omit_fullscreen=False):
             place(image, stills[p], (510, 78, 900, 900))
             text(image, (80, 1000), 'SEVEN ORIGINAL COLOURS.', 22, '#a3b1b9')
         elif t < native_end:
-            key, start = ('details', 16.05) if t < 20 else ('browse',20) if t < 28 else ('playback',28) if t < 36 else ('quality',36) if t < 40 else ('fullscreen',40)
+            key, start = ('details', 16.05) if t < 23 else ('browse',23) if t < 28 else ('playback',28) if t < 36 else ('quality',36) if t < 40 else ('fullscreen',40)
             capture = clips[key].frame(t-start)
             if key == 'details' and capture.size == stills[1].size:
                 capture = capture.copy()
@@ -299,7 +299,7 @@ def render(output, manifest, preview=False, omit_fullscreen=False):
             text(image, (144, 605), '(c) 2008 Blender Foundation / www.bigbuckbunny.org', 23, '#a1b0b9')
             text(image, (144, 670), 'Built with AI assistance.', 22, '#a1b0b9')
             text(image, (144, 730), '1x RELEASE', 26, BLUE)
-        if 20 <= t < native_end:
+        if 23 <= t < native_end:
             text(image, (60, 8), 'Demo film: (c) 2008 Blender Foundation / www.bigbuckbunny.org · CC BY 3.0', 15, '#8296a2')
         if 3 <= t < 13.25:
             text(image, (1390, 1000), 'SOUND: OPTIONAL COMPANION', 18, '#a3b1b9')
@@ -313,7 +313,12 @@ def render(output, manifest, preview=False, omit_fullscreen=False):
         ffmpeg.stdin.close()
         if ffmpeg.wait():
             raise RuntimeError('FFmpeg export failed')
-    edl = {'duration':duration, 'fps':FPS, 'dimensions':[W,H], 'cuts':cuts, 'intro':{'start':3,'end':11.1,'frames':81,'source_fps':10,'output_holds':6,'sound_start':4.5,'type':'source-exact asset composition, not native screen capture'}, 'ordered_shots':[{'start':0,'end':3,'source':'original artwork macro crops','type':'asset editorial enlargement'}, {'start':3,'end':11.1,'source':'all81main_start sourceframes','type':'asset animation'}, {'start':11.1,'end':13.25,'source':'original shutter closing/closed/opening layouts','sound_cues':[11.1,12.7],'type':'asset animation'}, {'start':13.25,'end':16.05,'source':'seven original palettes, 0.4s each','type':'asset montage'}, *[{'start':start,'end':end,'source':key,'type':'actual native capture'} for key,start,end in [('details',16.05,20),('browse',20,28),('playback',28,36),('quality',36,40),('fullscreen',40,46)] if key in clips], {'start':native_end,'end':duration,'source':'original main artwork and authored release/credit typography','type':'editorial end card'}], 'clips':{k:c.spec for k,c in clips.items()}, 'audio':audio, 'output':str(encoded), 'preview_only':preview}
+    native_shots = [('details',16.05,23),('browse',23,28),('playback',28,36),('quality',36,40),('fullscreen',40,46)]
+    edl = {'duration':duration, 'fps':FPS, 'dimensions':[W,H], 'cuts':cuts, 'intro':{'start':3,'end':11.1,'frames':81,'source_fps':10,'output_holds':6,'sound_start':4.5,'type':'source-exact asset composition, not native screen capture'},
+           'ordered_shots':[{'start':0,'end':3,'source':'original artwork macro crops','type':'asset editorial enlargement'}, {'start':3,'end':11.1,'source':'all81main_start sourceframes','type':'asset animation'}, {'start':11.1,'end':13.25,'source':'original shutter closing/closed/opening layouts','sound_cues':[11.1,12.7],'type':'asset animation'}, {'start':13.25,'end':16.05,'source':'seven original palettes, 0.4s each','type':'asset montage'},
+                            *[{'start':start,'end':end,'source':key,'type':'actual native capture'} for key,start,end in native_shots if key in clips],
+                            {'start':native_end,'end':duration,'source':'original main artwork and authored release/credit typography','type':'editorial end card'}],
+           'clips':{k:c.spec for k,c in clips.items()}, 'audio':audio, 'output':str(encoded), 'preview_only':preview}
     (output/'edit-decisions.json').write_text(json.dumps(edl,indent=2),encoding='utf-8')
     (output/'credits.txt').write_text('Original skin: The Skins Factory\nVLC conversion: Dead Signal Interactive\nBuilt with AI assistance.\nBig Buck Bunny: (c) 2008 Blender Foundation / www.bigbuckbunny.org, CC BY 3.0\nFilm source: https://peach.blender.org/about/\nFilm license: https://creativecommons.org/licenses/by/3.0/\nChanges: short excerpts displayed in native VLC, editorial framing/scaling; original film audio omitted.\nMusic: original synthesized production for this release film.\nYouTube, skin sounds and framed hover require the optional companion.\n',encoding='utf-8')
     return encoded

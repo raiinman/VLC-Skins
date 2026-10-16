@@ -1,3 +1,9 @@
+# Current release evidence
+
+The public 1x release is described in [RELEASE-1X.md](RELEASE-1X.md) and [release-1x-manifest.json](release-1x-manifest.json). It preserves all18canonical runtime members and adds only redistribution notices. The optional companion includes the verified video-activation repair and its own Python runtime. Physical cursor-hover feel, speaker audibility and exhaustive parity remain distinct user-review limits. 2x is not released.
+
+The reports below are historical and retain their exact artifact scope.
+
 Current helper maintenance: SOUND-AND-DRAG.md and sound-drag-review.json identify helper eb7a0bb8 with unchanged08d4/102b skins. Twenty compiled original-WAV gain cases and82 private native assertions pass, including suppression of four unchanged alpha writes. Original15px screen snapping is retained; physical drag smoothness remains unverified. Earlier reports below retain their own exact helper versions.
 
 Latest HUD layout: HUD-LAYOUT.md and hud-layout-review.json identify exact08d4/102b packages. See hud-layout-native-review.json for78 passing private native assertions. The older UI/native records below retain their own hashes.

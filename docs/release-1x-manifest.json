@@ -15,9 +15,28 @@
   "2xNotReleased": true,
   "oldPrereleasesRetainedAsDrafts": true,
   "companionFinalHash": "c156220bee37475990e6bb1aa01ad89bd131f0be5964d14e310e393e65111c28",
-  "publication": "ready for 1x publication; release film follows separately",
+  "publication": "published",
   "companionBytes": 11719155,
   "companionHostSha256": "601ff0b7d527a1248107157aa2fbf5cf689d5d08f17d05d5d950034afe650937",
   "nativeVideoRaiseAndPopupOwnerPassed": true,
-  "physicalHoverNotVerified": true
+  "physicalHoverNotVerified": true,
+  "releaseUrl": "https://github.com/raiinman/VLC-Skins/releases/tag/nfs-underground-1x-v1.0.0",
+  "anonymousDownloadsHttpStatus": 200,
+  "film": {
+    "url": "https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-VLC-1x-Release.mp4",
+    "sha256": "cd7e580983be6b0dcb5e9f66fcd5d80b2fd6003aba12fd2a3870de75c423ff08",
+    "bytes": 10816904,
+    "seconds": 48,
+    "fps": 60,
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "everyEncodedFrameDecoded": 2880,
+    "blackFrames": 0,
+    "audioPeakDbfs": -3.1,
+    "audioListeningPerformed": false,
+    "nativeFullscreenFootageOmitted": true,
+    "rendererSourceSha256": "156d3a30d7141d785880de7542b39bff7f629bc22293370c8381da3ee930231f"
+  }
 }

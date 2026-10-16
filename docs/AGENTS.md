@@ -92,3 +92,5 @@ DEVELOPMENT.md owns developer-only build/recovery instructions moved from the pu
 RELEASE-PROMO.md owns the replacement release film direction and verification, separate from historical PROMO-1X.md. RELEASE-1X.md and release-1x-manifest.json own current public asset/install scope and known release limits.
 
 youtube-companion-banner.png is generated promotional artwork for the optional companion, based on the actual native1x deck capture, not an untouched runtime screenshot. youtube-companion-banner-prompt.txt retains its creative brief and provenance. Keep original skin art and upstream rights separate.
+
+release-poster.jpg is the original-asset release-film end card linked to the published MP4. It is promotional composition, not a native runtime screenshot. Its verification is recorded with RELEASE-PROMO.md and the release manifest.

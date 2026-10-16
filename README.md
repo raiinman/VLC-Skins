@@ -11,7 +11,9 @@ The classic Need for Speed Underground skin, made for VLC on Windows.
 
 [Install](#install-the-skin) · [YouTube & extras](#youtube--extras) · [Controls](#controls) · [Help](#help) · [Credits](#credits)
 
-<img src="docs/preview.png" alt="NFS Underground skin artwork and VLC conversion" width="720">
+<a href="https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-VLC-1x-Release.mp4"><img src="docs/release-poster.jpg" alt="Watch the 48-second NFS Underground 1x release film" width="720"></a>
+
+[Watch the release film](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-VLC-1x-Release.mp4) � 48 seconds � 1080p60
 
 *Original-size 1x release. 2x is still being worked on.*
 
