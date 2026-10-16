@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-16",
+  "scope": "Coalesced companion and helper update with fresh latest checkpoint. No mouse, keyboard or foreground action. Companion playback changes require its updated VLC-Addons build, not a standalone VLT.",
+  "owner_thread": "01a14113-4c1a-7343-911c-043dbf6f0337",
+  "live": {
+    "companionPid": 37500,
+    "vlcPid": 95820,
+    "chromePid": 67564,
+    "queueCount": 165,
+    "all_ids_match_saved_order": true,
+    "selected_ordinal_retained": true,
+    "status": {
+      "state": "paused",
+      "time": 2,
+      "length": 50,
+      "currentplid": 164,
+      "resolution": "360x640",
+      "video": 54,
+      "audio": 119
+    },
+    "volume": 256,
+    "managedQueueCount": 165,
+    "sourceSHA256": "08d4e5c1f972f863e306b30b6e11d9113889a49f05c54b69ee36d1305138552c",
+    "derivedSHA256": "cc8b40eab24c8827eba81aaef4e66da42cd3be066366022f3b67fb0186d939b8",
+    "helperSHA256": "eb7a0bb8f39f627346bcd0ac7d7e57df2b7b5a8f0b4587317f4cf2fd6d195c90",
+    "source_asset_bytes_preserved": true,
+    "source_member_storage_preserved": true,
+    "effectsSchema": 2,
+    "hoverGeometry": {
+      "width": 361,
+      "height": 64,
+      "closedWidth": 362,
+      "closedHeight": 1
+    },
+    "saved_geometry_retained": {
+      "main": true,
+      "video": true,
+      "tracks": true,
+      "equalizer": true,
+      "info": true,
+      "youtube": true
+    },
+    "other_private_preferences_retained": true,
+    "normal_settings_unchanged": true,
+    "volumeOsdChannel": 9
+  },
+  "support": {
+    "helperPid": 73556,
+    "helper_sha256": "eb7a0bb8f39f627346bcd0ac7d7e57df2b7b5a8f0b4587317f4cf2fd6d195c90",
+    "chromePid": 67564
+  },
+  "final_proof": {
+    "exactLatestCheckpointMatch": true,
+    "queueCount": 165,
+    "selectedIndex": 161,
+    "quality": 0,
+    "time": 2,
+    "state": "paused",
+    "volume": 256,
+    "isLive": false,
+    "nativeCaptionES": -1,
+    "soundSettingPreserved": true,
+    "skinProfilesUnchanged": true,
+    "mouseKeyboardForegroundActions": false,
+    "limits": [
+      "Current physical pane click/menu/dragging feel/audibility not tested",
+      "Live full DVR/long pause and broad content compatibility unproven",
+      "Live quality and restores return to live edge"
+    ]
+  },
+  "issue_status": {
+    "ordinary_click": "Append and play chosen ordinary video without clearing queue; playlist/Mix append behavior retained. Trusted bridge/host fixtures pass.",
+    "skin_sounds": "Independent tray volume presets, default25percent; active matched helper adopted. Original WAVs and media volume preserved.",
+    "settings_menu": "Native root/submenus placed outside full hover bounds, including edge flips. Private popup/cascade tests pass despite three bar-topmost raises; AutoClose unchanged.",
+    "dragging": "Unchanged embedded-child geometry writes skipped; routine browser resize keepsNOZORDER/NOACTIVATE and avoidsFRAMECHANGED outside style changes. Helper skips unchanged alpha writes. Native15px screen snapping retained; physical smoothness unverified.",
+    "live": "Public live720p native audio/video advancement for12seconds plus pause/resume passes. Original rolling-HLS resolver and finite720p seeking gates pass.",
+    "shorts_reels": "Trusted Shorts/reel renderer routing and public portrait360x640 native audio/video, pause, seek20 and resume-to23 pass; zero relay errors."
+  },
+  "latest_state_note": "The human changed the session during offline work. Preserve latest165 items, Auto quality, captions off, selected ordinal161, paused0:02, volume256. Never restore prior159/1080p/captions-on snapshot.",
+  "inactive2xprofile_created": false,
+  "limits": [
+    "Current physical clicks, menus, drag feel and speaker audibility remain unverified",
+    "Live DVR/long pauses and broad content compatibility remain unproven; live quality changes/restores return to live edge",
+    "Screen-edge snapping retained; pane-to-pane docking requires separate anchors and is a remaining parity gap",
+    "No100percent visual/audio/interaction acceptance inferred"
+  ]
+}

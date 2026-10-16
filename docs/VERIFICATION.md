@@ -1,3 +1,5 @@
+Current helper maintenance: SOUND-AND-DRAG.md and sound-drag-review.json identify helper eb7a0bb8 with unchanged08d4/102b skins. Twenty compiled original-WAV gain cases and82 private native assertions pass, including suppression of four unchanged alpha writes. Original15px screen snapping is retained; physical drag smoothness remains unverified. Earlier reports below retain their own exact helper versions.
+
 Latest HUD layout: HUD-LAYOUT.md and hud-layout-review.json identify exact08d4/102b packages. See hud-layout-native-review.json for78 passing private native assertions. The older UI/native records below retain their own hashes.
 
 # Verification evidence, 2026-10-16

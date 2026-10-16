@@ -21,3 +21,20 @@ These fixtures do not play audio or establish subjective drag smoothness.
 The companion separately removes unchanged embedded-child resize work and owns
 click-to-play, Settings-menu placement, live streams and Shorts/Reels routing.
 See maintenance-rollout.json for current integration status and remaining limits.
+
+The coordinated update is running. Its fresh checkpoint preserved the latest
+165 queue rows, selected portrait video, Auto quality, captions off, paused0:02,
+volume256, six pane geometries, private preferences and normal VLC settings.
+The earlier159-item/1080p/captions-on state was not restored over newer choices.
+The original skin sound setting was absent and remains absent; first-use25percent
+therefore applies without creating a preference file until the user changes it.
+
+The companion changed ordinary clicks to append-and-play while preserving the
+queue, routed Shorts/reel cards, moved Settings menus and submenus outside the
+full hover bar, and skipped unchanged embedded-child resizes. Private native
+popup tests, public live720p playback/pause/resume, finite720p seek and public
+portrait Shorts playback/pause/seek/resume pass. Live DVR and long pauses remain
+unproven; live quality changes/restores return to the current live edge.
+These companion fixes require its updated build, not only this skin bundle.
+Physical clicks/menu placement, drag feel and audibility remain for user review.
+See maintenance-rollout.json for exact deployment and preservation evidence.

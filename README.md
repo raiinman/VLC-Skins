@@ -27,7 +27,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: both skins include a flat matching hover strip, centered speaker, lowered filename text, restored native tooltips and hover on inactive exposed video panes. The framed strip omits duplicate fullscreen/hide controls, and companion Settings/CC are now25px. All17 offline checks and78 private native assertions pass. The refined1x setup is running with its159-item queue,1080p,captions and settings preserved. Current enlarged-button deployment is verified by exact package and playback checks; the final read-only screenshot was occluded, so current physical appearance remains for review.** See [current fixes and limits](docs/HUD-LAYOUT.md).
+**Status: both scales preserve the original artwork and animations, with compact hover controls, clearer text and native tooltips. The matching helper now provides independent skin-sound volume, starting at25percent. Screen-edge snapping stays enabled. Source and targeted private native checks pass; complete visual parity remains under review.** See [current fixes and limits](docs/SOUND-AND-DRAG.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -39,7 +39,7 @@ This comparison is rendered from the assets and XML, not captured from VLC. [Cor
 
 ## Try it
 
-<table align="center"><tbody><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/hud-layout-current-2026-10-16/Need-for-Speed-Underground-2x.vlt">2x skin</a>: 600 × 596 main player, for modern screens.</td></tr><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/hud-layout-current-2026-10-16/Need-for-Speed-Underground-1x.vlt">1x skin</a>: original 300 × 298 main player.</td></tr><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/hud-layout-current-2026-10-16/NFS-Current-Offline.zip">Complete matching review bundle</a>: both skins, helper, OSD script, settings dialog and launchers. Loading and offline checks pass; native visual/audio review remains separately scoped.</td></tr></tbody></table>
+<table align="center"><tbody><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/sound-controls-current-2026-10-16/Need-for-Speed-Underground-2x.vlt">2x skin</a>: 600 × 596 main player, for modern screens.</td></tr><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/sound-controls-current-2026-10-16/Need-for-Speed-Underground-1x.vlt">1x skin</a>: original 300 × 298 main player.</td></tr><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/sound-controls-current-2026-10-16/NFS-Current-Offline.zip">Complete matching review bundle</a>: both skins, helper, OSD script, settings dialog and launchers. Loading and offline checks pass; native visual/audio review remains separately scoped.</td></tr></tbody></table>
 
 Future verified fixes refresh the complete NFS-Current-Offline bundle and its hash manifest; staging never installs or reloads a running skin.
 
@@ -50,6 +50,8 @@ In VLC, choose **Tools → Preferences → Interface → Use custom skin**, sele
 The star/visualization button opens the rectangular video window; the list button opens the original framed playlist; the bars button opens the equalizer. The small color button cycles seven palettes. The information button opens the original game menu, whose footer has a separate conversion credit button. Drag the frame to move a panel and its corner to resize the playlist or video.
 
 The fullscreen button and the video pane's plus button fill the monitor **with the skin border**; click again to restore. Double-click the video for native **borderless fullscreen**. The original two-button header is preserved. See [fullscreen behavior and verification limits](docs/FULLSCREEN.md).
+
+Right-click the **NFS Underground skin effects** tray icon and choose **Skin sound volume** for independent0-100percent presets. First use starts at25percent; video and Windows volume remain unchanged. [Sound levels and dragging checks](docs/SOUND-AND-DRAG.md).
 
 The support bundle's `Start-1x.cmd` and `Start-2x.cmd` also run the original skin sounds and framed video hover controls through a small Windows helper. Borderless fullscreen uses VLC's native hover controller. The launchers preserve existing sessions and use private per-scale settings. A VLT loaded alone needs the helper for sounds and framed hover. [Behavior and test limits](docs/SOUNDS-AND-HOVER.md).
 

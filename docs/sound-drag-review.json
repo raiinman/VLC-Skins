@@ -43,5 +43,6 @@
     "Screen-edge snapping preserved; pane-to-pane docking is a separate missing explicit-anchor behavior",
     "Companion live/Reels/menu/click fixes and latest rollout remain separately recorded",
     "Current cosmetic VLTs keep earlier exact-hash checks; no new loading/RSS measurements"
-  ]
+  ],
+  "live_adoption": "maintenance-rollout.json: matched helper eb7a0bb8 adopted in running1x, latest165-item checkpoint/current portrait selection/Auto quality/captions-off/paused0:02/volume256 and six geometries/preferences preserved. Sound setting absent before/after, so default25percent applies. No physical input or foreground action."
 }

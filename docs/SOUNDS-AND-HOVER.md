@@ -1,3 +1,5 @@
+Current helper adds independent persisted skin-sound volume, default25percent, through its tray menu. See SOUND-AND-DRAG.md and sound-drag-review.json; preceding evidence below retains its original helper hash.
+
 # Original sounds and video controls
 
 The current offline candidate retains the compact 360 × 64 strip described in COMPACT-CONTROLS.md, with hover-expanded volume and a click fallback, and adds the Info/tooltip/playlist work in INFO-FADES.md. Current exact hashes and offline-only limits are in info-fades-review.json; compact-review.json records the preceding compact-only candidate. Native results later in this document apply to older large-bar versions recorded in effects-hover-review.json.
