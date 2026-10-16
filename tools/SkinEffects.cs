@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -132,19 +133,72 @@ namespace NfsSkinSupport
         [DllImport("user32.dll")] internal static extern bool SetProcessDPIAware();
     }
 
+    internal static class RuntimeTrust
+    {
+        internal static string Absolute(string path)
+        {
+            Manifest.Require(Diagnostics.IsAbsolute(path), "VLC executable paths must be explicit and absolute.");
+            return Path.GetFullPath(path);
+        }
+        internal static bool SamePath(string first, string second) { return String.Equals(first, second, StringComparison.OrdinalIgnoreCase); }
+        internal static bool Installed(string path)
+        {
+            var roots = new[] { Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), Environment.GetEnvironmentVariable("ProgramW6432") };
+            return roots.Where(p => !String.IsNullOrEmpty(p)).Any(p => SamePath(path, Path.GetFullPath(Path.Combine(p, "VideoLAN", "VLC", "vlc.exe"))));
+        }
+        internal static string Hash(string path)
+        {
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (var hash = SHA256.Create()) return BitConverter.ToString(hash.ComputeHash(stream)).Replace("-", "").ToLowerInvariant();
+        }
+        internal static bool Layout(string executable, string hash)
+        {
+            if (hash == null || hash.Length != 64 || hash.Any(c => !(c >= '0' && c <= '9') && !(c >= 'a' && c <= 'f'))) return false;
+            var directory = Path.GetDirectoryName(executable);
+            return String.Equals(Path.GetFileName(executable), "vlc.exe", StringComparison.OrdinalIgnoreCase) &&
+                String.Equals(Path.GetFileName(directory), hash, StringComparison.OrdinalIgnoreCase) &&
+                String.Equals(Path.GetFileName(Path.GetDirectoryName(directory)), "VlcRuntime", StringComparison.OrdinalIgnoreCase);
+        }
+        internal static void Identity(string actual, string expected, long actualStart, long expectedStart, string installedHash, string runtimeHash)
+        {
+            Manifest.Require(SamePath(actual, expected), "The VLC PID does not belong to the supplied private runtime.");
+            Manifest.Require(expectedStart > 0 && actualStart == expectedStart, "The VLC PID start time does not match this launch.");
+            Manifest.Require(Layout(expected, installedHash) && String.Equals(installedHash, runtimeHash, StringComparison.Ordinal), "Private VLC must match the installed executable and its SHA256 directory.");
+        }
+        internal static void Validate(string actual, long actualStart, string runtime, string installed, long expectedStart)
+        {
+            runtime = Absolute(runtime); installed = Absolute(installed);
+            Manifest.Require(Installed(installed) && !SamePath(runtime, installed), "The reference must be standard installed VideoLAN VLC and the runtime must be a private copy.");
+            Manifest.Require(SamePath(actual, runtime) && expectedStart > 0 && actualStart == expectedStart, "The private VLC PID path/start time does not match this launch.");
+            string hash = Hash(installed);
+            Identity(actual, runtime, actualStart, expectedStart, hash, Hash(runtime));
+            Manifest.Require(Directory.Exists(Path.Combine(Path.GetDirectoryName(runtime), "portable")), "Private VLC requires its adjacent portable settings directory.");
+        }
+    }
+
     internal sealed class Target : IDisposable
     {
         internal readonly Process Process;
         internal readonly int Pid;
         private readonly long startTime;
-        internal Target(int pid)
+        internal Target(int pid, string trustedRuntime = null, string installedVlc = null, long expectedStart = 0)
         {
             Process = Process.GetProcessById(pid); Pid = pid;
-            string actual = Path.GetFullPath(Process.MainModule.FileName);
-            var roots = new[] { Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), Environment.GetEnvironmentVariable("ProgramW6432") };
-            bool known = roots.Where(p => !String.IsNullOrEmpty(p)).Any(p => String.Equals(actual, Path.GetFullPath(Path.Combine(p, "VideoLAN", "VLC", "vlc.exe")), StringComparison.OrdinalIgnoreCase));
-            Manifest.Require(known && String.Equals(Process.ProcessName, "vlc", StringComparison.OrdinalIgnoreCase), "The supplied PID must be the installed VideoLAN VLC executable.");
-            startTime = Process.StartTime.ToUniversalTime().Ticks;
+            try
+            {
+                string actual = Path.GetFullPath(Process.MainModule.FileName);
+                startTime = Process.StartTime.ToUniversalTime().Ticks;
+                Manifest.Require(String.Equals(Process.ProcessName, "vlc", StringComparison.OrdinalIgnoreCase), "The supplied PID must be VLC.");
+                if (trustedRuntime == null && installedVlc == null && expectedStart == 0)
+                    Manifest.Require(RuntimeTrust.Installed(actual), "The supplied PID must be the installed VideoLAN VLC executable.");
+                else
+                {
+                    Manifest.Require(trustedRuntime != null && installedVlc != null && expectedStart > 0, "Private runtime validation requires all three trust options.");
+                    RuntimeTrust.Validate(actual, startTime, trustedRuntime, installedVlc, expectedStart);
+                }
+                Manifest.Require(Alive(), "The VLC process exited during validation.");
+            }
+            catch { Process.Dispose(); throw; }
         }
         internal bool Alive()
         {
@@ -492,6 +546,20 @@ namespace NfsSkinSupport
         private static void Invalid(Action action) { try { action(); } catch (InvalidDataException) { return; } throw new Exception("Unsafe manifest accepted."); }
         private static int SelfTest()
         {
+            string hash = new string('a', 64), otherHash = new string('b', 64);
+            string runtime = Path.GetFullPath(@"C:\private\VlcRuntime\" + hash + @"\vlc.exe");
+            RuntimeTrust.Identity(runtime, runtime.ToUpperInvariant(), 10, 10, hash, hash);
+            Invalid(delegate { RuntimeTrust.Identity(runtime, runtime, 10, 11, hash, hash); });
+            Invalid(delegate { RuntimeTrust.Identity(runtime, runtime, 0, 0, hash, hash); });
+            Invalid(delegate { RuntimeTrust.Identity(runtime, runtime, 10, 10, hash, otherHash); });
+            Invalid(delegate { RuntimeTrust.Identity(runtime, @"C:\other\vlc.exe", 10, 10, hash, hash); });
+            Check(!RuntimeTrust.Layout(@"C:\private\" + hash + @"\vlc.exe", hash));
+            Check(!RuntimeTrust.Layout(runtime.Replace("vlc.exe", "other.exe"), hash));
+            Check(!RuntimeTrust.Layout(runtime, otherHash));
+            Check(!RuntimeTrust.Layout(runtime, new string('z', 64)));
+            Invalid(delegate { RuntimeTrust.Absolute("vlc.exe"); });
+            Invalid(delegate { RuntimeTrust.Absolute(@"\private\vlc.exe"); });
+            Invalid(delegate { RuntimeTrust.Absolute("C:vlc.exe"); });
             Check(Diagnostics.IsAbsolute("C:/owned/log.jsonl"));
             Check(Diagnostics.IsAbsolute(@"C:\owned\log.jsonl"));
             Check(!Diagnostics.IsAbsolute("log.jsonl"));
@@ -567,7 +635,8 @@ namespace NfsSkinSupport
             {
                 if (selfTest) { if (arguments.Length != 1) throw new ArgumentException("Use --self-test."); return SelfTest(); }
                 if (checkSkin) { if (arguments.Length != 2) throw new ArgumentException("Use --check-skin path.vlt."); using (var validated = Assets.Open(Path.GetFullPath(arguments[1]))) { } return 0; }
-                int pid = 0; string skin = null, videoSize = null, diagnosticPath = null;
+                int pid = 0; string skin = null, videoSize = null, diagnosticPath = null, trustedRuntime = null, installedVlc = null;
+                long expectedStart = 0; bool hasExpectedStart = false;
                 for (int i = 0; i < arguments.Length; i += 2)
                 {
                     if (i + 1 >= arguments.Length) throw new ArgumentException("Use --pid N --skin path.vlt [--video-size WIDTHxHEIGHT].");
@@ -575,10 +644,15 @@ namespace NfsSkinSupport
                     else if (arguments[i] == "--skin" && skin == null) skin = Path.GetFullPath(arguments[i + 1]);
                     else if (arguments[i] == "--video-size" && videoSize == null) videoSize = arguments[i + 1];
                     else if (arguments[i] == "--diagnostic-log" && diagnosticPath == null) diagnosticPath = arguments[i + 1];
+                    else if (arguments[i] == "--trusted-vlc-runtime" && trustedRuntime == null) trustedRuntime = RuntimeTrust.Absolute(arguments[i + 1]);
+                    else if (arguments[i] == "--installed-vlc" && installedVlc == null) installedVlc = RuntimeTrust.Absolute(arguments[i + 1]);
+                    else if (arguments[i] == "--pid-start-ticks" && !hasExpectedStart) { expectedStart = Int64.Parse(arguments[i + 1], System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture); hasExpectedStart = true; }
                     else throw new ArgumentException("Use --pid N --skin path.vlt [--video-size WIDTHxHEIGHT].");
                 }
                 if (pid <= 0 || skin == null) throw new ArgumentException("Use --pid N --skin path.vlt [--video-size WIDTHxHEIGHT].");
-                using (var target = new Target(pid))
+                Manifest.Require((trustedRuntime == null && installedVlc == null && !hasExpectedStart) ||
+                    (trustedRuntime != null && installedVlc != null && hasExpectedStart && expectedStart > 0), "Supply --trusted-vlc-runtime, --installed-vlc and --pid-start-ticks together.");
+                using (var target = new Target(pid, trustedRuntime, installedVlc, expectedStart))
                 {
                     bool created;
                     using (var instance = new Mutex(true, "Local\\NfsSkinEffects-" + pid + "-" + target.Process.StartTime.ToUniversalTime().Ticks, out created))

@@ -66,6 +66,16 @@ behavior; routine layout switches avoid repeating that activation path.
 
 ## Targeted native review
 
+The later helper build `0e1186bac215` adds opt-in validation for a companion-managed
+byte-identical portable VLC executable. Its pure and filesystem rejection tests
+pass; the native review below retains its earlier helper hash. The new options
+are `--trusted-vlc-runtime <absolute-exe> --installed-vlc <standard-installed-exe>
+--pid-start-ticks <UTC-ticks>`, supplied together. Validation binds the process
+path/start time, both executable hashes, `VlcRuntime/<SHA256>/vlc.exe` layout and
+adjacent `portable` directory. Default standalone launches remain installed-only.
+The companion owns DLL/plugin configuration and actual shared-Qt-settings
+isolation verification; this executable check alone does not establish either.
+
 Final 1x VLT `f39765f5a97a`, 2x VLT `56f77cce425a` and helper
 `c579c3fd6b43` passed targeted native tests in separate private instances.
 Both framed bars revealed above playback and operated pause/resume, seek
