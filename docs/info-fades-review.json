@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-15",
+  "base_commit": "8944795",
+  "scope": "Offline source/build/fixture verification only. No VLC/GUI launch, desktop input, installed skin, active profile or companion source changed.",
+  "native_verified": false,
+  "sha256": {
+    "Need-for-Speed-Underground-1x.vlt": "9c20da648e0bd9613fc6989160389afcee742a579dde594117a00637f22b05b2",
+    "Need-for-Speed-Underground-2x.vlt": "124b791a3b13cf8f1a9ddd158aa6faddff9f128ec8128e005336275a868b8901",
+    "skin-support/SkinEffects.exe": "27a9eeec1eb4657c24e4f230df921aadc795c260e39d57f4175b6ddddeada055",
+    "skin-support/data/lua/intf/nfs_volume_osd_v1.lua": "9ff2ac594b3c29f20dff8e5026282412e7398d9c2f59810cf7a73412fc8409f1",
+    "Start-NFS.ps1": "36027aa5b75a5dbb0af1bcf8452693fb6cb787260c871943269040b2f3c421bd",
+    "Playlist-Text-Size.ps1": "f009e89d7ad2999f921d29a47428e49df58b2b028f1820e67ce15c09882f7f3b"
+  },
+  "distribution": "Generated VLTs and complete bundle are private GitHub prerelease assets at info-playlist-offline-2026-10-15; local dist VLTs remain ignored build outputs.",
+  "info": {
+    "page_entry": "9 frames@20fps; alpha50→255 at400ms over previous selected page/menu",
+    "page_return": "11 frames@20fps; alpha255→0 at500ms over menu",
+    "frame": "15 frames@20fps; changing fully opaque palette pixels fade over700ms; filtered fractional-alpha edges switch immediately",
+    "state": "54 hidden page routes, one shared live Info layout; independent frame state defaults idle and only explicit color actions trigger it",
+    "saved_state": "legacy static Info IDs retained; private launcher resets saved frame trigger without changing page/geometry; ordinary VLC restoration may replay saved transition state",
+    "return_input": "mapped native alpha1 hit buttons forward exact menu actions then release at500ms; identical up/over/down prevent hover restart",
+    "sound": "imode.wav unchanged; no invented18-second video or slideshow"
+  },
+  "tooltip": {
+    "font": "FreeSans16physicalpixels at both scales",
+    "placement": "matching helper prefers8px above pointer, clamps to cursor-monitor work area, flips below if no room above",
+    "identity": "selectedPID/class/styles/ownedparent then exact fixedcaption tooltip; no arbitrary window text logging",
+    "behavior": "native show/hide/text retained; foregroundselectedVLC only; topmost NOACTIVATE/NOSIZE; no input hooks or cursor/keyboard/focus changes"
+  },
+  "playlist": {
+    "default_source_size": [
+      440,
+      340
+    ],
+    "previous_source_size": [
+      420,
+      320
+    ],
+    "default_font_pixels": {
+      "1x": 12,
+      "2x": 24
+    },
+    "previous_font_pixels": {
+      "1x": 10,
+      "2x": 20
+    },
+    "text": "#C9CDD4",
+    "selection": "original#A01A1A",
+    "pane_customization": "existing native lower-right resize",
+    "text_customization": "Playlist-Text-Size.cmd future-launch dialog;8..48physicalpixels; separate derivedVLT andsource/customhashsidecar, stalehash/scale→canonical fallback",
+    "live_changes": false
+  },
+  "checks": {
+    "conversion_suite": "pass both scales:DTD/bindings/sourceart/hits/startup/shutter/panes/placement/launchers/video/corners/palette/effects/hover/readability",
+    "source_art": "177 originals and1094 source feedback bindings per scale",
+    "info": "all source pixels/timings and physical bands;54states,590first/last-frame button checks,16rejected mutations per scale; packagebitmapbytes/XML/manifest match",
+    "palette_isolation": "56main states including activeInfoframe/pagefade flags; all-main-inactive gaps preserve panevisibility;57savedpalette fixtures",
+    "playlist_geometry": "440x340source default; native resize/scrollbar/corner access checks; singlePlaytree/dedicatedfont",
+    "customization": "both fixture SelfTests pass; actual1x18px/2x26px derivedVLTs alter onlyFontdigits, all other XML/assets/actions exact; stalehash/crossscale/range/invalidfontrejected",
+    "helper": "compiled; pure tests including18tooltipidentity/geometry cases, runtime trust fixtures and actual VLT extraction pass; no native calls",
+    "osd": "20mockedLua5.1/5.2cases+4rejectedmutations; bundledscript/launcherbytes match",
+    "readability_mutations": "6rejected per scale;42filename layouts",
+    "combined_visuals": "756cases:714exact,42documentedouter-control-layerresiduals;0unexplained; native renderer not used"
+  },
+  "performance": {
+    "additional_page_rgba_mib": {
+      "1x": 84.7,
+      "2x": 338.8
+    },
+    "note": "Before native bitmap/mask/cached copies and frame strips; native initialization timing required; PNGcompression does not remove decoded cost."
+  },
+  "remaining": [
+    "Native fade smoothness/timer timing, tooltip placement/stacking/DPI and customization GUI need later coordinated live review.",
+    "Exact transient return hover feedback and arbitrary interrupted WMP fades are not reproduced; one-level alpha forwarding may change a transient RGB channel by one step.",
+    "Fractional-alpha filtered frame edge pixels switch immediately.",
+    "New2x animation memory/load cost requires fresh native measurements.",
+    "Framed-hover mouse-wheel routing retains the existing stale-origin limitation.",
+    "No100%parity acceptance inferred; prior native reports remain scoped to older exact hashes."
+  ],
+  "previews": "info-fades-*.png andplaylist-text-*.png are offline source/asset/font reconstructions, not native screenshots; playlist rowspacing is approximate."
+}

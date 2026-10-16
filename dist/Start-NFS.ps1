@@ -55,7 +55,8 @@ function Initialize-SupportState([string]$Text, [int]$AssetScale, $EffectsManife
     $entries = [regex]::Matches($saved.Groups[1].Value, $pattern)
     $main = @($entries | Where-Object { $_.Groups[1].Value -eq 'main' })
     if ($main.Count -ne 1 -or ([regex]::Replace($saved.Groups[1].Value, $pattern, '')).Trim()) { return $Text }
-    $owned = @('nfs_fx_button','nfs_fx_shutter','nfs_fx_intro','nfs_fx_info','nfs_fx_logo','nfs_hover_command','videoHoverController','fullscreenController','hover_volume_state')
+    $resetInfoFrame = @($entries | Where-Object { $_.Groups[1].Value -eq 'info_frame_state' }).Count -gt 0
+    $owned = @('nfs_fx_button','nfs_fx_shutter','nfs_fx_intro','nfs_fx_info','nfs_fx_logo','nfs_hover_command','videoHoverController','fullscreenController','hover_volume_state','info_frame_state')
     $parts = @($entries | Where-Object { $_.Groups[1].Value -notin $owned } | ForEach-Object { $_.Value })
     $keys = @('button','shutter','intro','info','logo')
     for ($index=0; $index -lt $keys.Count; $index++) {
@@ -69,6 +70,7 @@ function Initialize-SupportState([string]$Text, [int]$AssetScale, $EffectsManife
     $parts += '["videoHoverController" "video_hover_closed" -31000 -30800 ' + $geometry.ClosedWidth + ' ' + $geometry.ClosedHeight + ' 1]'
     $parts += '["fullscreenController" "fullscreen_controls" 0 0 ' + $geometry.NativeWidth + ' ' + $geometry.NativeHeight + ' 0]'
     if ($geometry.Schema -eq 2) { $parts += '["hover_volume_state" "hover_volume_collapsed" -31000 -30700 71 19 1]' }
+    if ($resetInfoFrame) { $parts += '["info_frame_state" "info_frame_idle" 0 0 1 1 0]' }
     return $Text.Substring(0,$saved.Groups[1].Index) + ($parts -join '') + $Text.Substring($saved.Groups[1].Index+$saved.Groups[1].Length)
 }
 
@@ -97,6 +99,10 @@ if ($SelfTest) {
             if (-not $compact.Contains($expected)) { throw 'Compact support state migration failed.' }
         }
         if ($compact.Contains('"hover_volume_expanded"') -or (Initialize-SupportState $compact $assetScale $manifest) -ne $compact) { throw 'Compact support reset/idempotence failed.' }
+        $infoSaved = '["info" "info_menu" -2 13 826 564 1]["info_page_state" "info_state_c_sub_2_3" 0 0 1 1 0]'
+        $infoFixture = $compact + $infoSaved + '["info_frame_state" "info_frame_7" 0 0 1 1 0]'
+        $infoResult = Initialize-SupportState $infoFixture $assetScale $manifest
+        if (-not $infoResult.Contains($infoSaved) -or $infoResult.Contains('"info_frame_7"') -or -not $infoResult.Contains('["info_frame_state" "info_frame_idle" 0 0 1 1 0]') -or (Initialize-SupportState $infoResult $assetScale $manifest) -ne $infoResult) { throw 'Info frame reset must preserve saved content/geometry and be idempotent.' }
         $manifest.hover.width = 722
         $rejected = $false
         try { $null = Get-EffectsGeometry $assetScale $manifest } catch { $rejected = $true }
@@ -107,11 +113,12 @@ if ($SelfTest) {
 }
 
 # This file ships beside the VLTs. Source-tree invocation uses dist/ instead.
+. (Join-Path $PSScriptRoot 'Playlist-Text-Size.ps1') -FunctionsOnly
 $bundle = $PSScriptRoot
 if (-not (Test-Path -LiteralPath (Join-Path $bundle "Need-for-Speed-Underground-$($Scale)x.vlt"))) {
     $bundle = Join-Path (Split-Path $PSScriptRoot -Parent) 'dist'
 }
-$skin = Join-Path $bundle "Need-for-Speed-Underground-$($Scale)x.vlt"
+$skin = Resolve-PlaylistSkin $bundle $Scale
 $helper = Join-Path $bundle 'skin-support/SkinEffects.exe'
 $osdData = Join-Path $bundle 'skin-support/data'
 $osdScript = Join-Path $osdData 'lua/intf/nfs_volume_osd_v1.lua'

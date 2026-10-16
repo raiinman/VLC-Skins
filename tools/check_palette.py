@@ -27,7 +27,7 @@ def check_theme(assets):
         expression = node.get('visible', 'true')
         assert not re.search(r'\bmain_\w*\.isActive', expression), 'Pane paint must not depend on transient main layout activity'
         if 'palette_' in expression:
-            assert re.fullmatch(r'palette_[1-7]\.isActive', expression), expression
+            assert re.fullmatch(r'palette_([1-7])\.isActive(?: and info_frame_\1\.isActive)?', expression), expression
     main = assets.tree.find('Window[@id="main"]')
     temporal = 0
     for layout in main:
@@ -41,9 +41,12 @@ def check_theme(assets):
                 assert playback_action(actions[0]).startswith(expected), (lid, 'Palette state must change before the main color')
             else:
                 assert not any('palette_state.setLayout(' in action for action in actions), (lid, node.get('id'), 'Clock/shutter must leave palette state untouched')
+                assert not any('info_frame_state.setLayout(' in action for action in actions), (lid,'Clock/shutter must leave Info frame fade untouched')
         if lid == 'main_start':
             continue
         flags = {f'palette_{color}.isActive': color == c for color in range(1, 8)}
+        flags.update({f'info_frame_{color}.isActive': color == c for color in range(1, 8)})
+        flags['info_state_c_sub_2_2_from_c_sub_2_1.isActive'] = True
         # VLC deactivates the previous main layout before activating its target.
         # The independent palette remains fixed through this all-main-inactive gap.
         destination = f'main_{c}_closing' if '_closing' not in lid else f'main_{c}'
@@ -56,7 +59,7 @@ def check_theme(assets):
         temporal += 1
     assert temporal == 56
     replay = assets.tree.find('.//Button[@tooltiptext="Replay original startup animation"]')
-    assert playback_action(replay.get('action')).startswith('palette_state.setLayout(palette_1);')
+    assert playback_action(replay.get('action')).startswith('info_frame_state.setLayout(info_frame_idle);palette_state.setLayout(palette_1);')
     return temporal
 
 

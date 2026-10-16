@@ -57,7 +57,7 @@ class Builder:
             assert self.out.resolve().is_relative_to(SKIN.resolve())
             shutil.rmtree(self.out)
         (self.out / 'assets').mkdir(parents=True, exist_ok=True)
-        self.theme = E.Element('Theme', version='2.0', tooltipfont='defaultfont')
+        self.theme = E.Element('Theme', version='2.0', tooltipfont='tooltip')
         E.SubElement(self.theme, 'ThemeInfo', name='Need for Speed Underground', author='The Skins Factory / VLC conversion: Dead Signal Interactive')
         self.ids = {}
         font = ROOT / 'vendor/FreeSans.ttf'
@@ -66,6 +66,8 @@ class Builder:
         E.SubElement(self.theme, 'Font', id='small', file='assets/FreeSans.ttf', size=str(8 * scale))
         E.SubElement(self.theme, 'Font', id='clock', file='assets/FreeSans.ttf', size=str(14 * scale))
         E.SubElement(self.theme, 'Font', id='metadata', file='assets/FreeSans.ttf', size=str(12 * scale))
+        E.SubElement(self.theme, 'Font', id='tooltip', file='assets/FreeSans.ttf', size='16')
+        E.SubElement(self.theme, 'Font', id='playlist', file='assets/FreeSans.ttf', size=str(12 * scale))
 
     def n(self, v):
         return str(round(v * self.scale))
@@ -356,7 +358,7 @@ class Builder:
         for state in ('no','hov','do'):
             im=rgba('eq_set_'+state+'.png').crop(box);im.putalpha(mask.crop(box))
             self.bitmap('eq_power_'+state+'.png',im)
-        for kind,w,h,x,y,top in [('tracks',420,320,380,60,'pl_top_right'),('equalizer',353,210,60,380,'eq_top_right'),('video',708,440,380,410,'eq_top_right')]:
+        for kind,w,h,x,y,top in [('tracks',440,340,380,60,'pl_top_right'),('equalizer',353,210,60,380,'eq_top_right'),('video',708,440,380,410,'eq_top_right')]:
             win=self.window(kind,x,y)
             for c in (1,):
                 resize=kind!='equalizer'
@@ -375,7 +377,7 @@ class Builder:
                 if kind=='tracks':
                     self.check(l,'pl_shuffle',w-110,6,'playlist.isRandom','playlist.setRandom(true)','playlist.setRandom(false)','Shuffle',lefttop='righttop')
                     self.check(l,'pl_repeat',w-89,6,'playlist.isLoop','playlist.setLoop(true)','playlist.setLoop(false)','Repeat playlist',lefttop='righttop')
-                    tree=E.SubElement(l,'Playtree',id='track_list',x=self.n(34),y=self.n(37),width=self.n(w-86),height=self.n(h-67),font='ui',fgcolor='#9FA2B0',playcolor='#FFFFFF',bgcolor1='#000000',bgcolor2='#000000',selcolor='#A01A1A',flat='true',rightbottom='rightbottom')
+                    tree=E.SubElement(l,'Playtree',id='track_list',x=self.n(34),y=self.n(37),width=self.n(w-86),height=self.n(h-67),font='playlist',fgcolor='#C9CDD4',playcolor='#FFFFFF',bgcolor1='#000000',bgcolor2='#000000',selcolor='#A01A1A',flat='true',rightbottom='rightbottom')
                     E.SubElement(tree,'Slider',x=self.n(w-44),y=self.n(43),up=self.bitmap('eq_thumb2.png'),down=self.bitmap('eq_thumb2_do.png'),points=f'(0,{self.n(h-90)}),(0,0)',lefttop='righttop',rightbottom='rightbottom')
                     self.button(l,'m_open',32,h-31,'playlist.add()','Add media',lefttop='leftbottom')
                 elif kind=='video':
@@ -460,6 +462,8 @@ class Builder:
                 # The original information button artwork opens conversion credits.
                 self.button(l,'m_info',310,248,'info.setLayout(info_about)','About this VLC conversion')
         win.append(win[0])
+        from info_fades import augment
+        augment(self)
 
     def hover_controllers(self):
         from compact_controls import add_controllers
@@ -497,7 +501,7 @@ class Builder:
         dist=ROOT/'dist';dist.mkdir(exist_ok=True)
         path=dist/f'Need-for-Speed-Underground-{self.scale}x.vlt'
         with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as z:
-            files={'theme.xml','skin.dtd'}|support_files|{n.get('file') for n in self.theme if n.get('file')}
+            files={'theme.xml','skin.dtd','info-fades.json'}|support_files|{n.get('file') for n in self.theme if n.get('file')}
             for filename in sorted(files):z.write(self.out/filename,filename)
         return path
 
@@ -513,7 +517,7 @@ class Builder:
             height=im.height//frames;bands=[]
             # Short shutter strips need only two bands. Excess bands add
             # independent timers and synchronous Win32 paints per frame.
-            count=2 if frames<=11 else 16
+            count=2 if frames<=15 else 16
             for index in range(count):
                 y0=height*index//count;y1=height*(index+1)//count
                 strip=Image.new('RGBA',(im.width,(y1-y0)*frames))
@@ -528,10 +532,13 @@ class Builder:
             for layout in self.theme.findall('.//Layout'):
                 for control in list(layout):
                     if control.get('up')!=node.get('id'):continue
-                    assert control.tag=='Button' and not control.get('over') and not control.get('down')
+                    assert control.tag=='Button'
+                    assert all(control.get(attr) in (None,node.get('id')) for attr in ('over','down'))
                     for index,band in enumerate(bands):
                         part=copy.deepcopy(control);part.set('id',control.get('id')+f'_band_{index}')
                         part.set('up',band['id']);part.set('y',str(int(control.get('y','0'))+band['y']))
+                        for attr in ('over','down'):
+                            if part.get(attr):part.set(attr,band['id'])
                         layout.insert(layout.index(control),part)
                     layout.remove(control)
             self.theme.remove(node)

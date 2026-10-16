@@ -111,6 +111,8 @@ def verify(assets, layout, palette, size, checked, scale, stats=None):
             continue
         if node.tag not in ('Button', 'Checkbox'):
             continue
+        if node.get('id','').startswith('decorative_info_'):
+            continue  # Timed decoration is checked frame-by-frame by check_info_fades.
         actual = canvas.crop((x, y, x+w, y+h))
         points = [(a, owner) for a, owner in zip(alpha.tobytes(), array('i', actual.tobytes())) if a > 100]
         assert points and all(owner == index for a, owner in points), (layout.get('id'), palette, size, node.get('id'), 'button obscured')

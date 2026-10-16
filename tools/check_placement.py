@@ -16,7 +16,7 @@ def verify(assets, scale):
     count = 0
     windows = assets.tree.findall('Window')
     expected = {'main', 'tracks', 'equalizer', 'info', 'video', 'palette_state',
-                'fullscreenController', 'videoHoverController', 'nfs_hover_command','hover_volume_state'}
+                'fullscreenController', 'videoHoverController', 'nfs_hover_command','hover_volume_state','info_page_state','info_frame_state'}
     expected.update('nfs_fx_'+key for key in EFFECT_KEYS)
     assert {w.get('id') for w in windows} == expected
     for window in windows:

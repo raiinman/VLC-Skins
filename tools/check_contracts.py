@@ -13,6 +13,8 @@ for scale in (1,2):
     assert windows['main'][-1].get('id')=='main_start'
     assert windows['info'][-1].get('id')=='info_menu'
     assert assets.resources['clock'].get('size')==str(14*scale)
+    assert tree.getroot().get('tooltipfont')=='tooltip'
+    assert assets.resources['tooltip'].get('size')=='16','Readable fixed physical tooltip size on both skins'
     for panel in ('tracks','video'):
         handles=windows[panel].findall('.//Image[@action="resizeSE"]')
         assert len(handles)==7 and handles[0].get('image')=='resize_hit'
@@ -22,7 +24,7 @@ for scale in (1,2):
             assert node.get('visible')==layout.get('id')+'.isActive','Inactive clock rasterization'
     replay=tree.find('.//Layout[@id="info_about"]/Button[@tooltiptext="Replay original startup animation"]')
     assert replay is not None,'Restored layouts need a way to replay the original intro'
-    assert playback_action(replay.get('action'))=='palette_state.setLayout(palette_1);main.setLayout(main_1);main.setLayout(main_start);main.show();info.hide()'
+    assert playback_action(replay.get('action'))=='info_frame_state.setLayout(info_frame_idle);palette_state.setLayout(palette_1);main.setLayout(main_1);main.setLayout(main_start);main.show();info.hide()'
     for node in tree.iter():
         if node.tag in ('Image','Button','Checkbox','Slider','Text','Video'):
             assert node.get('id') and node.get('id')!='none','VLC generated-ID collision risk'
@@ -45,7 +47,13 @@ for scale in (1,2):
         assert len(tree.findall('.//'+tag))==1,'Duplicate playback widget: '+tag
     assert len(tree.findall('.//Slider[@value="equalizer.band(0)"]'))==1
     scroll=tree.find('.//Playtree/Slider')
-    assert scroll.get('points')==f'(0,{230*scale}),(0,0)','Playlist top must map to native value 1'
+    assert scroll.get('points')==f'(0,{250*scale}),(0,0)','Playlist top must map to native value 1'
+    playlist=windows['tracks'][0]
+    assert (int(playlist.get('width')),int(playlist.get('height')))==(440*scale,340*scale)
+    assert playlist.get('maxwidth') and playlist.get('maxheight'),'Playlist must retain native manual resizing'
+    tracklist=playlist.find('Playtree')
+    assert tracklist.get('font')=='playlist' and assets.resources['playlist'].get('size')==str(12*scale)
+    assert tracklist.get('fgcolor')=='#C9CDD4' and tracklist.get('selcolor')=='#A01A1A'
     eq=tree.find('.//Layout[@id="equalizer_1"]')
     for c in range(1,8):
         assert eq.find(f'Image[@image="info_bot_right_{c}_png"]') is not None,'Source EQ corner is smooth'
@@ -78,7 +86,7 @@ for scale in (1,2):
                         assert layout.find(f'Button[@up="shutter_endpoint_{c}"]') is not None or layout.find(f'Button[@up="shutter_endpoint_{c}_band_0"]') is not None
                 palette=next(n for n in layout if n.get('up')=='m_color_no_png')
                 target=Builder.main_id(c%7+1,'closed' if state in ('closed','closing') else 'open',remaining)
-                assert playback_action(palette.get('action'))==f'palette_state.setLayout(palette_{c%7+1});main.setLayout({target})'
+                assert playback_action(palette.get('action'))==f'palette_state.setLayout(palette_{c%7+1});info_frame_state.setLayout(info_frame_{c%7+1});main.setLayout({target})'
         for lid in [Builder.main_id(c),Builder.main_id(c,'closing',True)]:
             for frame in tree.findall('.//Image[@image="f_top_left_1_png"]'):
                 assert visible(frame.get('visible'),lid)==(c==1)

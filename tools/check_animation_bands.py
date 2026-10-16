@@ -14,7 +14,7 @@ for scale in (1,2):
     for key,item in manifest.items():
         original=Image.open(root/item['bitmap']['file']).convert('RGBA')
         frames=int(item['bitmap']['nbframes']);height=original.height//frames
-        assert len(item['bands'])==(2 if frames<=11 else 16),'Excess animation timers'
+        assert len(item['bands'])==(2 if frames<=15 else 16),'Excess animation timers'
         rebuilt=Image.new('RGBA',original.size)
         for band in item['bands']:
             node=a.resources[band['id']]
@@ -24,13 +24,20 @@ for scale in (1,2):
             for frame in range(frames):
                 rebuilt.paste(im.crop((0,frame*h,im.width,(frame+1)*h)),(0,frame*height+band['y']))
         assert rebuilt.tobytes()==original.tobytes(),key
-        origin=(53,52) if key=='intro_sequence' else (21,32) if 'light' in key else (54,52)
+        origin=(37*scale,35*scale) if key.startswith('info_page_') else tuple(v*scale for v in ((53,52) if key=='intro_sequence' else (21,32) if 'light' in key else (54,52)))
+        if key.startswith('info_frame_'):
+            info=json.loads((root/'info-fades.json').read_text())
+            part=next(p for p in info['frames'] if p['resource']==key)
+            origin=(part['x'],part['y'])
         for layout in a.tree.findall('.//Layout'):
             parts=[n for n in layout if n.get('up') in {b['id'] for b in item['bands']}]
             if not parts:continue
-            assert len(parts)==len(item['bands']),(key,layout.get('id'))
-            for part,band in zip(parts,item['bands']):
-                assert part.get('up')==band['id']
-                assert (int(part.get('x')),int(part.get('y')))==(origin[0]*scale,origin[1]*scale+band['y'])
-                assert part.get('action')==('main.setLayout(main_1)' if key=='intro_sequence' else 'none')
+            groups={p.get('visible') for p in parts}
+            for group in groups:
+                matching=[p for p in parts if p.get('visible')==group]
+                assert len(matching)==len(item['bands']),(key,layout.get('id'),group)
+                for part,band in zip(matching,item['bands']):
+                    assert part.get('up')==band['id']
+                    assert (int(part.get('x')),int(part.get('y')))==(origin[0],origin[1]+band['y'])
+                    assert part.get('action')==('main.setLayout(main_1)' if key=='intro_sequence' else 'none')
     print(f'PASS {scale}x: bounded Windows masks; animation bands reconstruct every original frame exactly')

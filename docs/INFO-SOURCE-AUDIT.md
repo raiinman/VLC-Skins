@@ -10,8 +10,9 @@ pages, nine Screenshots pages and one Web Destinations page. The original does
 have short visual transitions: selected pages fade from alpha50 to255 over
 400ms, returning to the menu fades out over500ms, and palette-frame changes
 use a default700ms fade. These are not synchronized to the18-second sound.
-The current conversion switches info pages/palettes immediately; those fades
-remain a real visual parity gap, separate from a nonexistent Info cinematic.
+The subsequent offline candidate restores page and frame fades on both scales;
+INFO-FADES.md records its native implementation, verification and transient
+limitations. It does not add an invented Info cinematic.
 
 All247 archive members were checked against the extracted source and provenance
 CRCs:217PNG,22JPEG, one GIF, five WAV, one WMS and one JavaScript file. Every

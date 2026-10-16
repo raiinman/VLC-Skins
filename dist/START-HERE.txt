@@ -33,9 +33,16 @@ expand volume on hover (speaker click fallback). The framed strip uses 85%
 opacity. Main filenames use larger white text. No running skin was updated
 by preparing this bundle. See COMPACT-CONTROLS.md and compact-review.json.
 
+Info pages/frame colors now fade; tooltips use larger text and the helper
+places them above the pointer. Playlist defaults are slightly larger with
+clearer text; drag its lower-right corner to resize the pane. Run
+Playlist-Text-Size.cmd to save a personal text size for the NEXT Start-1x/2x
+launch. Saving never reloads your running VLC. See INFO-FADES.md and
+info-fades-review.json for the current offline-only candidate and limits.
+
 The original 18-second imode.wav accompanies static Info artwork, not a video
-or slideshow. Original short page/frame fades are still a parity gap;
-see INFO-SOURCE-AUDIT.md. Framed hover mouse-wheel routing also remains open.
+or slideshow. See INFO-SOURCE-AUDIT.md. Framed hover mouse-wheel routing
+also remains open. New animation cost needs fresh native load measurements.
 
 Fresh positions fit work areas of 1280x720 at 1x and 1920x1040 at 2x.
 Existing saved VLC positions may override them. The shutter uses static

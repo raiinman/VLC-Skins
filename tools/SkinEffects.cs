@@ -128,6 +128,8 @@ namespace NfsSkinSupport
         [DllImport("user32.dll")] internal static extern bool GetCursorPos(out Point point);
         [DllImport("user32.dll")] internal static extern IntPtr GetAncestor(IntPtr hwnd, uint flags);
         [DllImport("user32.dll")] internal static extern IntPtr MonitorFromWindow(IntPtr hwnd, uint flags);
+        [DllImport("user32.dll")] internal static extern IntPtr MonitorFromPoint(Point point, uint flags);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)] internal static extern int GetWindowText(IntPtr hwnd, System.Text.StringBuilder text, int count);
         [DllImport("user32.dll", CharSet = CharSet.Auto)] internal static extern bool GetMonitorInfo(IntPtr monitor, ref MonitorInfo info);
         [DllImport("user32.dll")] internal static extern bool SetWindowPos(IntPtr hwnd, IntPtr after, int x, int y, int width, int height, uint flags);
         [DllImport("user32.dll")] internal static extern bool PostMessage(IntPtr hwnd, uint message, IntPtr wParam, IntPtr lParam);
@@ -137,6 +139,7 @@ namespace NfsSkinSupport
         [DllImport("user32.dll", EntryPoint = "SetWindowLongW")] private static extern int SetWindowLong32(IntPtr hwnd, int index, int value);
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtrW")] private static extern IntPtr SetWindowLong64(IntPtr hwnd, int index, IntPtr value);
         [DllImport("user32.dll")] private static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint key, byte alpha, uint flags);
+        internal static long ReadStyle(IntPtr hwnd, int index) { return IntPtr.Size == 8 ? GetWindowLong64(hwnd, index).ToInt64() : GetWindowLong32(hwnd, index); }
         internal static void SetBarOpacity(IntPtr hwnd)
         {
             long style = IntPtr.Size == 8 ? GetWindowLong64(hwnd, -20).ToInt64() : GetWindowLong32(hwnd, -20);
@@ -297,6 +300,29 @@ namespace NfsSkinSupport
         public void Dispose() { writer.Dispose(); }
     }
 
+    internal static class TooltipDecision
+    {
+        internal static bool Structural(bool selectedPid, string windowClass, long style, long extendedStyle, bool ownedParent)
+        {
+            return selectedPid && windowClass == "SkinWindowClass" && ownedParent &&
+                (style & 0x88000000L) == 0x88000000L && (extendedStyle & 0x80L) != 0;
+        }
+        internal static bool Identity(bool selectedPid, string windowClass, string caption, long style, long extendedStyle, bool ownedParent)
+        {
+            return Structural(selectedPid, windowClass, style, extendedStyle, ownedParent) && caption == "tooltip";
+        }
+        private static int Clamp(long value, int lower, long upper) { return (int)Math.Min(Math.Max(value, lower), Math.Max(lower, upper)); }
+        internal static Point Place(Point cursor, int width, int height, Native.Rect work)
+        {
+            if (width <= 0 || height <= 0 || work.Right <= work.Left || work.Bottom <= work.Top) throw new ArgumentException("Invalid tooltip or work-area dimensions.");
+            long y = (long)cursor.Y - height - 8;
+            if (y < work.Top) y = (long)cursor.Y + 8;
+            // Oversized native text cannot fit without changing VLC's size;
+            // align that dimension to the work-area origin instead of resizing.
+            return new Point(Clamp((long)cursor.X - width / 2, work.Left, (long)work.Right - width), Clamp(y, work.Top, (long)work.Bottom - height));
+        }
+    }
+
     internal static class HoverDecision
     {
         internal static bool BorderlessCandidate(bool visible, bool hasOwner, string windowClass) { return visible && !hasOwner && windowClass == "SkinWindowClass"; }
@@ -341,7 +367,7 @@ namespace NfsSkinSupport
         private readonly System.Windows.Forms.Timer timer;
         private readonly NotifyIcon tray;
         private readonly Stopwatch clock = Stopwatch.StartNew();
-        private IntPtr video, hover, command, nativeHover;
+        private IntPtr video, hover, command, nativeHover, tooltip;
         private List<IntPtr> ownedWindows = new List<IntPtr>();
         private Point previousCursor;
         private bool hadCursor, wasInsideVideo, muted, disposed;
@@ -403,12 +429,27 @@ namespace NfsSkinSupport
         {
             return target.Owns(hwnd) && Native.PostMessage(hwnd, 0x0203, new IntPtr(1), new IntPtr((y << 16) | (x & 0xffff)));
         }
+        private bool IsTooltip(IntPtr hwnd)
+        {
+            // Inspect no captions until PID, class, styles and owned parent
+            // already match VLC's exact native tooltip construction.
+            if (!target.Owns(hwnd)) return false;
+            var name = new System.Text.StringBuilder(128); Native.GetClassName(hwnd, name, name.Capacity);
+            long style = Native.ReadStyle(hwnd, -16), extendedStyle = Native.ReadStyle(hwnd, -20);
+            bool ownedParent = target.Owns(Native.GetWindow(hwnd, 4));
+            if (!TooltipDecision.Structural(true, name.ToString(), style, extendedStyle, ownedParent)) return false;
+            var caption = new System.Text.StringBuilder(9);
+            int count = Native.GetWindowText(hwnd, caption, caption.Capacity);
+            return count == 7 && TooltipDecision.Identity(true, name.ToString(), caption.ToString(), style, extendedStyle, ownedParent);
+        }
         private void Discover(long now)
         {
             if (now - discoveryAt < 200) return;
             discoveryAt = now;
             var windows = target.Windows();
             ownedWindows = windows;
+            var tooltips = windows.Where(IsTooltip).ToList();
+            tooltip = tooltips.Count == 1 ? tooltips[0] : IntPtr.Zero;
             foreach (var signal in signals) if (!target.Owns(signal.Window)) signal.Window = UniquePair(windows, signal.Spec.width, signal.Spec.height, signal.Spec.readyWidth, signal.Spec.height, true);
             if (!target.Owns(command)) command = Unique(windows, assets.Manifest.command.width, assets.Manifest.command.height, true);
             IntPtr foundVideo = target.FindVideo(windows, videoFallback);
@@ -536,8 +577,19 @@ namespace NfsSkinSupport
         private void Tick(object sender, EventArgs arguments)
         {
             if (!target.Alive()) { ExitThread(); return; }
-            try { long now = clock.ElapsedMilliseconds; Discover(now); PollSounds(now); PollHover(now); }
+            try { long now = clock.ElapsedMilliseconds; Discover(now); PollSounds(now); PollHover(now); PollTooltip(); }
             catch (Exception error) { Trace.WriteLine(error.Message); ExitThread(); }
+        }
+        private void PollTooltip()
+        {
+            if (!target.Owns(Native.GetForegroundWindow())) return;
+            Native.Rect bounds;
+            if (!IsTooltip(tooltip) || !Native.IsWindowVisible(tooltip) || !Rect(tooltip, out bounds) || bounds.Width <= 0 || bounds.Height <= 0) return;
+            Point cursor; if (!Native.GetCursorPos(out cursor)) return;
+            var monitor = new Native.MonitorInfo { Size = Marshal.SizeOf(typeof(Native.MonitorInfo)) };
+            if (!Native.GetMonitorInfo(Native.MonitorFromPoint(cursor, 2), ref monitor) || monitor.Work.Right <= monitor.Work.Left || monitor.Work.Bottom <= monitor.Work.Top) return;
+            Point position = TooltipDecision.Place(cursor, bounds.Width, bounds.Height, monitor.Work);
+            if (target.Owns(tooltip)) Native.SetWindowPos(tooltip, new IntPtr(-1), position.X, position.Y, bounds.Width, bounds.Height, HoverDecision.PositionFlags(bounds.Left == position.X && bounds.Top == position.Y));
         }
         protected override void ExitThreadCore()
         {
@@ -584,6 +636,27 @@ namespace NfsSkinSupport
         private static void Invalid(Action action) { try { action(); } catch (InvalidDataException) { return; } throw new Exception("Unsafe manifest accepted."); }
         private static int SelfTest()
         {
+            Check(TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x88000000L, 0x80L, true));
+            Check(!TooltipDecision.Identity(false, "SkinWindowClass", "tooltip", 0x88000000L, 0x80L, true));
+            Check(!TooltipDecision.Identity(true, "OtherClass", "tooltip", 0x88000000L, 0x80L, true));
+            Check(!TooltipDecision.Identity(true, "SkinWindowClass", "tooltip-other", 0x88000000L, 0x80L, true));
+            Check(!TooltipDecision.Identity(true, "SkinWindowClass", "Tooltip", 0x88000000L, 0x80L, true));
+            Check(!TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x80000000L, 0x80L, true));
+            Check(!TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x08000000L, 0x80L, true));
+            Check(!TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x88000000L, 0, true));
+            Check(!TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x88000000L, 0x80L, false));
+            var tooltipWork = new Native.Rect { Left = 0, Top = 0, Right = 1920, Bottom = 1040 };
+            Check(TooltipDecision.Place(new Point(600, 400), 200, 30, tooltipWork) == new Point(500, 362));
+            Check(TooltipDecision.Place(new Point(1919, 400), 200, 30, tooltipWork) == new Point(1720, 362));
+            Check(TooltipDecision.Place(new Point(0, 400), 200, 30, tooltipWork) == new Point(0, 362));
+            Check(TooltipDecision.Place(new Point(600, 10), 200, 30, tooltipWork) == new Point(500, 18));
+            Check(TooltipDecision.Place(new Point(600, 38), 200, 30, tooltipWork) == new Point(500, 0));
+            Check(TooltipDecision.Place(new Point(600, 1039), 200, 30, tooltipWork) == new Point(500, 1001));
+            tooltipWork = new Native.Rect { Left = -1920, Top = -1080, Right = 0, Bottom = 0 };
+            Check(TooltipDecision.Place(new Point(-1800, -500), 200, 30, tooltipWork) == new Point(-1900, -538));
+            Check(TooltipDecision.Place(new Point(-1919, -1079), 200, 30, tooltipWork) == new Point(-1920, -1071));
+            tooltipWork = new Native.Rect { Left = -40, Top = -20, Right = 0, Bottom = 0 };
+            Check(TooltipDecision.Place(new Point(-10, -10), 100, 30, tooltipWork) == new Point(-40, -20));
             Check(HoverDecision.VolumeRegion(232, 25));
             Check(HoverDecision.VolumeRegion(311, 59));
             Check(!HoverDecision.VolumeRegion(231, 25));

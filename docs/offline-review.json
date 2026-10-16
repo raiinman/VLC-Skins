@@ -1,16 +1,16 @@
 {
   "date": "2026-10-15",
   "prior_native_review_commit": "49a3daee7bb0ac5824f2aaf9bc247f9c4f9ff591",
-  "scope": "Offline candidate only; no VLC launch, desktop input, active installs, profiles or running processes changed.",
-  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams. Replace lower-right alpha-1 black resize images with exact native-scale original corner crops for all seven palettes. Isolate pane palettes from shutter/clock main layout transitions using persistent hidden palette state; preserve legacy colors through explicit saved-state migration. Fullscreen entry points now toggle native video maximize/restore with the original border and feedback assets; native video double-click remains borderless. Video maximum bounds are 8192x4320. Scale solid fills rather than tile each output pixel; flatten video idle backings onto palette-matched original header crops before native caching. Restore source WAVs through an optional process-scoped Windows helper and original-art native/fullscreen and framed hover bars; ready/trigger layout protocol avoids routine SW_SHOW activation. Replace large hover bars with approved fixed360x64 compact original-button strip, hover-expanded volume and framed window-wide85% opacity; enlarge filename to white12 source-scale pixels; add private native volume-OSD observer. No live deployment.",
+  "scope": "Offline source/build/fixture verification only. No VLC/GUI launch, desktop input, installed skin, active profile or companion source changed.",
+  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams. Replace lower-right alpha-1 black resize images with exact native-scale original corner crops for all seven palettes. Isolate pane palettes from shutter/clock main layout transitions using persistent hidden palette state; preserve legacy colors through explicit saved-state migration. Fullscreen entry points now toggle native video maximize/restore with the original border and feedback assets; native video double-click remains borderless. Video maximum bounds are 8192x4320. Scale solid fills rather than tile each output pixel; flatten video idle backings onto palette-matched original header crops before native caching. Restore source WAVs through an optional process-scoped Windows helper and original-art native/fullscreen and framed hover bars; ready/trigger layout protocol avoids routine SW_SHOW activation. Replace large hover bars with approved fixed360x64 compact original-button strip, hover-expanded volume and framed window-wide85% opacity; enlarge filename to white12 source-scale pixels; add private native volume-OSD observer. No live deployment. Restore native Info entry/return and frame-color fades with independent states; readable16px above-pointer native tooltips via matchinghelper; slightlyroomier440x340playlist with12x-scale text and optional future-launch personal text-size copies.",
   "native_verified": false,
   "native_initialization_seconds": null,
   "packages": {
     "1": {
-      "sha256": "12278fc441665a80657474d81bde1f629bfcfc135a2bd37acba96789e7ec9699"
+      "sha256": "9c20da648e0bd9613fc6989160389afcee742a579dde594117a00637f22b05b2"
     },
     "2": {
-      "sha256": "0ce40f0746c2606f44c49f7250e4d6605d5d48b3ab605598632d90b8bd359412"
+      "sha256": "124b791a3b13cf8f1a9ddd158aa6faddff9f128ec8128e005336275a868b8901"
     }
   },
   "offline_checks": {
@@ -20,13 +20,13 @@
     "animation_band_reconstruction": "every frame; pass",
     "startup_source_frames": "162 per scale; pass",
     "original_images": "177 per scale; pass",
-    "source_hover_pressed_bindings": "978 original bindings per scale; compact aliases separately validated",
+    "source_hover_pressed_bindings": "177 originals and1094 source feedback bindings per scale",
     "menu_and_EQ_crops": "12 menu and 3 EQ states per scale; pass",
-    "panel_geometry": "616 states,1722 button checks and1400 slider-access samples per scale; pass",
+    "panel_geometry": "1484states,1722buttonchecks,1400slider-accesssamples per scale;pass",
     "python_compilation": "pass",
     "diff_whitespace": "pass",
     "shutter_transitions": "44 source door/light frames and 56 main states per scale; pass",
-    "default_placement": "997 critical controls per scale; pass",
+    "default_placement": "1233criticalcontrolinstances per scale;pass",
     "isolated_launchers": "both UTF-8 INI writers and write-failure checks; VLC not launched; pass",
     "independent_review": "no concrete regressions found",
     "video_sizing": "framed maximize/restore, original feedback in both states, exact packaged XML; 10 sizes at 1x / 9 at 2x including monitor bounds and 8K maximum; mutation rejection; pass",
@@ -37,21 +37,26 @@
     "framed_fullscreen": "all 58 controller/video toggles per scale use video.isMaximized and reversible actions; native double-click source path preserved",
     "video_backings": "14 opaque source header/idle composites per scale; exact pixels, alpha, palette, draw order and mutations pass",
     "solid_fill_cost": "uniform backgrounds require cached scaling; mosaic regression rejected; textured rails retained",
-    "sound_effects": "1076 per scale; independent WMS mapping and original playback suffixes",
+    "sound_effects": "1092source-derivedsignals per scale;five originalWAVs exact",
     "hover_controls": "8 playback/volume hit states per scale; 16 rejected mutations; actual packaged XML matches",
     "helper": "compiled; pure self-test, both actual VLT extraction checks and runtime trust fixtures pass",
     "readability": "42 layouts and 6 rejected mutations per scale; opaque backing/contrast/gauge/logo separation",
-    "native_volume_osd": "20 actual mocked Lua5.1/5.2 cases +4 rejected mutations; packaged script and launcher bytes checked"
+    "native_volume_osd": "20 actual mocked Lua5.1/5.2 cases +4 rejected mutations; packaged script and launcher bytes checked",
+    "info_fades": "all source pixels/timings and physical bands;54states,590first/last-frame button checks,16rejected mutations per scale; packagebitmapbytes/XML/manifest match",
+    "tooltip": "compiled; pure tests including18tooltipidentity/geometry cases, runtime trust fixtures and actual VLT extraction pass; no native calls",
+    "playlist_customization": "both fixture SelfTests pass; actual1x18px/2x26px derivedVLTs alter onlyFontdigits, all other XML/assets/actions exact; stalehash/crossscale/range/invalidfontrejected"
   },
   "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets. Video omission/true autoresize mutations rejected; visual residual self-checks detect visible-pixel and shifted-layer mutations while ignoring zero-alpha RGB. The old alpha-1 corner bitmap fails the new source-pixel guard and reproduces a black rectangle in the cached-copy model. Temporal gap tests now reject auxiliary main-layout visibility bindings; adapter mutations removing state migration or reintroducing old pane bindings are rejected.",
   "remaining": [
-    "Native compact opacity, hover expansion, stacking, text scrolling and dial OSD display need coordinated live verification.",
-    "Framed-bar mouse-wheel routing retains stale native origin limitation.",
-    "Original Info page and frame fades remain missing; no missing18-second cinematic exists in supplied archive.",
-    "All earlier native reports retain their own package/helper hashes; no100% acceptance inferred."
+    "Native fade smoothness/timer timing, tooltip placement/stacking/DPI and customization GUI need later coordinated live review.",
+    "Exact transient return hover feedback and arbitrary interrupted WMP fades are not reproduced; one-level alpha forwarding may change a transient RGB channel by one step.",
+    "Fractional-alpha filtered frame edge pixels switch immediately.",
+    "New2x animation memory/load cost requires fresh native measurements.",
+    "Framed-hover mouse-wheel routing retains the existing stale-origin limitation.",
+    "No100%parity acceptance inferred; prior native reports remain scoped to older exact hashes."
   ],
   "contact_sheet": "startup-frames.png and visual-*.png are offline asset renders, not native captures.",
   "visual_comparison": "visual-comparison.json plus source/converted/residual sheets; fonts/credits excluded, default-size main/information compositions only",
-  "limited_native_review": "effects-hover-review.json covers older large-bar hashes only; current candidate has no native evidence.",
-  "current_details": "compact-review.json"
+  "limited_native_review": "Current candidate has no native evidence. effects-hover-review.json and all earlier reports retain their older hashes.",
+  "current_details": "info-fades-review.json"
 }

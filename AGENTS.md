@@ -84,6 +84,10 @@ Preserve the original skin's five sound effects at both scales. Sound and framed
 
 The user approved replacing the large framed hover panel with a compact smoked-carbon strip: no outer frame or duplicate title, original small transport controls, thin seek line and hover-expanded volume with a click fallback. Keep its physical size independent of main skin scale. Filename readability takes precedence over source palette text colors: use larger white scrolling text on a dark backing without covering gauges or the logo. Prepare dial-triggered native volume OSD offline; no desktop control, live profile change or restart is authorized by this background work.
 
+Restore source Info page entry/return and frame-color fades at both scales, keeping state independent of shutter/clock and page navigation. Tooltips must be readable and prefer above the pointer. Prepare these changes offline and coordinate with the YouTube chat; preserve the user's running 1x setup and installed/profile files.
+
+Keep the playlist only slightly larger by default, with clearer text and user-adjustable sizing. Preserve original frame/buttons/selection styling and native corner resizing. Optional personal text-size settings must save separate derived skins for the next launch, never silently reload or replace the running setup.
+
 When the user asks to push a corrected skin into VLC, install both verified VLT scales into the active VLC skin library, back up the previous files, and verify installed hashes. Updating GitHub or the companion copy alone does not satisfy installation. Check the selected skin path and clearly distinguish installed files from an already-running skin that still needs reload/restart.
 
 ## Project contract
@@ -96,7 +100,7 @@ Convert the supplied Need for Speed Underground WMP skin to VLC Skins2 using ori
 - `tools/AGENTS.md`: extraction, conversion, validation and packaging.
 - `docs/AGENTS.md`: parity records, runtime evidence, review limits.
 - Root owns README.md, requirements.txt, .gitignore, vendor dependencies/licenses, and dist review packages.
-- dist contains both VLT scales and isolated Windows review launchers. Regenerate packages with tools/build.py; keep launcher filenames aligned with them.
+- Local dist contains both generated VLT scales and isolated Windows review launchers. VLTs are ignored build outputs distributed as versioned GitHub release assets, because the lossless2x package exceeds regular Git's file limit; keep source and release hashes aligned and never substitute an LFS pointer or stale archive in user bundles. Regenerate with tools/build.py; keep launcher filenames aligned with them.
 - tools/skin_support.py and tools/SkinEffects.cs own the optional Windows sound/framed-hover bridge; tools/Start-NFS.ps1 starts a separately owned VLC process with per-scale private settings. Plain VLTs retain native borderless hover without requiring the helper. Do not claim sounds/framed hover from VLT installation alone.
 
 Background audits must not launch VLC, take desktop input, alter installed skins or edit user profiles. Review launchers reset only their adjacent isolated INI files before starting VLC; launcher-writer tests execute the writer against private fixtures without launching VLC.

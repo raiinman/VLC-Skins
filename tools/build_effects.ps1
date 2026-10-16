@@ -17,6 +17,9 @@ $null = New-Item -ItemType Directory -Force -Path $luaDirectory
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'nfs_volume_osd.lua') -Destination (Join-Path $luaDirectory 'nfs_volume_osd_v1.lua') -Force
 $packageDirectory = Split-Path -Parent (Split-Path -Parent $output)
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Start-NFS.ps1') -Destination (Join-Path $packageDirectory 'Start-NFS.ps1') -Force
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Playlist-Text-Size.ps1') -Destination (Join-Path $packageDirectory 'Playlist-Text-Size.ps1') -Force
+$customizerLauncher = "@echo off`r`npowershell.exe -NoProfile -ExecutionPolicy Bypass -File `"%~dp0Playlist-Text-Size.ps1`"`r`nexit /b %errorlevel%`r`n"
+[System.IO.File]::WriteAllText((Join-Path $packageDirectory 'Playlist-Text-Size.cmd'), $customizerLauncher, [System.Text.Encoding]::ASCII)
 foreach ($scale in 1, 2) {
     $launcher = "@echo off`r`npowershell.exe -NoProfile -ExecutionPolicy Bypass -File `"%~dp0Start-NFS.ps1`" -Scale $scale`r`nexit /b %errorlevel%`r`n"
     [System.IO.File]::WriteAllText((Join-Path $packageDirectory "Start-${scale}x.cmd"), $launcher, [System.Text.Encoding]::ASCII)

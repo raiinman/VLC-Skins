@@ -2,7 +2,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: compact hover controls, readable filenames and dial-triggered volume OSD are prepared offline for both scales. Live verification and parity acceptance remain pending.** Earlier native reports cover their recorded older package hashes. See [verification](docs/VERIFICATION.md).
+**Status: Info fades, readable above-pointer tooltips, a roomier playlist, compact hover controls and dial volume OSD are prepared offline for both scales. Live verification and parity acceptance remain pending.** Earlier native reports cover their recorded older package hashes. See [verification](docs/VERIFICATION.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -10,8 +10,11 @@ This comparison is rendered from the assets and XML, not captured from VLC. [Cor
 
 ## Try it
 
-- [2x skin](dist/Need-for-Speed-Underground-2x.vlt): 600 × 596 main player, for modern screens.
-- [1x skin](dist/Need-for-Speed-Underground-1x.vlt): original 300 × 298 main player.
+- [2x skin](https://github.com/raiinman/VLC-Skins/releases/download/info-playlist-offline-2026-10-15/Need-for-Speed-Underground-2x.vlt): 600 × 596 main player, for modern screens.
+- [1x skin](https://github.com/raiinman/VLC-Skins/releases/download/info-playlist-offline-2026-10-15/Need-for-Speed-Underground-1x.vlt): original 300 × 298 main player.
+- [Complete matching review bundle](https://github.com/raiinman/VLC-Skins/releases/download/info-playlist-offline-2026-10-15/NFS-Info-Playlist-Offline-Review.zip): both skins, helper, OSD script, settings dialog and launchers. This is an offline prerelease with native checks pending.
+
+Built VLTs are release assets; rebuilding creates ignored local copies in dist/. This keeps the large 2x archive outside regular Git file limits without changing its lossless artwork.
 
 In VLC, choose **Tools → Preferences → Interface → Use custom skin**, select the VLT, save, then restart. [Official installation instructions](https://vlc-user-documentation.readthedocs.io/en/latest/addons/skins.html).
 
@@ -22,6 +25,8 @@ The fullscreen button and the video pane's plus button fill the monitor **with t
 The support bundle's `Start-1x.cmd` and `Start-2x.cmd` also run the original skin sounds and framed video hover controls through a small Windows helper. Borderless fullscreen uses VLC's native hover controller. The launchers preserve existing sessions and use private per-scale settings. A VLT loaded alone needs the helper for sounds and framed hover. [Behavior and test limits](docs/SOUNDS-AND-HOVER.md).
 
 The new hover strip stays 360 × 64 pixels on both skins, using original small transport buttons, a thin seek line and expandable volume. The framed strip uses 85% opacity; native fullscreen retains VLC's fade. Main filenames use larger white scrolling text. The bundled Lua interface requests VLC's native volume overlay when the dial changes. These changes have offline checks only and have not been installed into the running session. [Compact controls](docs/COMPACT-CONTROLS.md).
+
+Info pages now fade in/out at the original 400/500 ms timings, and Info frame colors fade for 700 ms. Tooltips use larger text; the helper prefers above the pointer. The playlist starts slightly larger with clearer text, keeps its lower-right resize corner, and the bundle's `Playlist-Text-Size.cmd` lets you save a personal text size for the next dedicated launch. Current VLC sessions stay unchanged. [Behavior and limits](docs/INFO-FADES.md).
 
 ## Preserved and adapted
 
@@ -57,8 +62,10 @@ python tools/check_palette.py
 python tools/check_effects.py
 python tools/check_hover.py
 python tools/check_readability.py --self-test
+python tools/check_info_fades.py
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/build_effects.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/Start-NFS.ps1 -SelfTest
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/Playlist-Text-Size.ps1 -SelfTest
 python tools/compare_layers.py
 python tools/preview.py
 # Native initialization check (launches VLC; run when desktop testing is available):
