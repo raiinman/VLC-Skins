@@ -53,3 +53,11 @@ tooltip with the expected class/style/owner and fixed caption. It was actively
 visible at105x21 pixels. The probe did not capture text pixels or measure
 above-pointer placement. Companion Settings/CC menu testing is recorded
 separately from the private both-scale exposure checks.
+
+The current coordinated1x rollout is confirmed in ui-polish-rollout.json. The
+companion observed a solid charcoal strip without video bleed and smaller
+inset gear/CC/speaker glyphs in beveled circles. All159 ordered queue rows,
+manual1080p, captions on, paused0:02, latest volume256, six pane geometries,
+private preferences and normal VLC settings were preserved. Original asset
+bytes and compression remain intact. No inactive2x profile was created.
+The2x exact-package private tests pass; physical2x appearance is not certified.

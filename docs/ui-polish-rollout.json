@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-16",
+  "scope": "Companion-owned fresh UTF8 checkpoint rollout and retained-session reopen, exact native playback/settings checks and observed live1x appearance. Root performed no mouse or keyboard actions.",
+  "owner_thread": "01a14113-4c1a-7343-911c-043dbf6f0337",
+  "live": {
+    "companionPid": 84216,
+    "vlcPid": 9564,
+    "chromePid": 30336,
+    "queueCount": 159,
+    "all_ids_match_saved_order": true,
+    "selected_ordinal_retained": true,
+    "status": {
+      "state": "paused",
+      "time": 2,
+      "length": 928,
+      "currentplid": 3,
+      "resolution": "1920x1080",
+      "video": 71,
+      "audio": 123
+    },
+    "volume": 256,
+    "managedQueueCount": 159,
+    "sourceSHA256": "479bedabc8ddefb66353116b91ab4aa903756132edc41f6d2ade163c4d52974f",
+    "derivedSHA256": "487b9769616674b3f38e2ef294f8fd572fcb72b15e2394c9a51660b08c0f287b",
+    "helperSHA256": "9eb268f597236db8217717d075ef1a2e14c46fb903d932aa7504d59925f5fc59",
+    "source_asset_bytes_preserved": true,
+    "source_member_storage_preserved": true,
+    "effectsSchema": 2,
+    "hoverGeometry": {
+      "width": 361,
+      "height": 64,
+      "closedWidth": 362,
+      "closedHeight": 1
+    },
+    "saved_geometry_retained": {
+      "main": true,
+      "video": true,
+      "tracks": true,
+      "equalizer": true,
+      "info": true,
+      "youtube": true
+    },
+    "other_private_preferences_retained": true,
+    "normal_settings_unchanged": true,
+    "volumeOsdChannel": 9
+  },
+  "support": {
+    "helperPid": 44764,
+    "helperSHA256": "9eb268f597236db8217717d075ef1a2e14c46fb903d932aa7504d59925f5fc59",
+    "chromePid": 30336
+  },
+  "final_proof": {
+    "exactCheckpointMatch": true,
+    "queueCount": 159,
+    "quality": 1080,
+    "captionsOn": true,
+    "nativeCaptionES": 4,
+    "time": 2,
+    "state": "paused",
+    "volume": 256,
+    "unicodeTitlesCorrect": true,
+    "visual1xObserved": true,
+    "popupSubmenuFromHover": "unverified: Sky underlying-target activation dismisses companion dropdown"
+  },
+  "visual_observation": "Solid matching charcoal fill, no video bleed, gear/CC/speaker inset inside beveled circles; original transport positions retained, duplicate browser-toolbar buttons absent.",
+  "preservation": "All159 ordered IDs/titles, manual1080p, captions on with one native track, paused2seconds, latest volume256, six pane geometries, private preferences, normal VLC settings and original asset bytes/compression preserved. Two original known Unicode punctuation titles repaired.",
+  "inactive2xprofile_created": false,
+  "limits": [
+    "Current2x physical appearance/tooltip review remains unverified",
+    "Popup submenu selection from hover was not verified because automation activation dismissed the transient menu",
+    "No full animation/audio/100percent parity certification"
+  ]
+}
