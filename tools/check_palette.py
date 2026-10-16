@@ -8,6 +8,7 @@ from lxml import etree as E
 from assets import ThemeAssets, visible
 from build import ROOT, SKIN
 from migrate_palette import migrate, migrate_file
+from skin_support import playback_action
 
 
 def check_theme(assets):
@@ -37,7 +38,7 @@ def check_theme(assets):
             is_color = node.get('up') == 'm_color_no_png'
             if is_color:
                 expected = f'palette_state.setLayout(palette_{c%7+1});'
-                assert actions[0].startswith(expected), (lid, 'Palette state must change before the main color')
+                assert playback_action(actions[0]).startswith(expected), (lid, 'Palette state must change before the main color')
             else:
                 assert not any('palette_state.setLayout(' in action for action in actions), (lid, node.get('id'), 'Clock/shutter must leave palette state untouched')
         if lid == 'main_start':
@@ -55,7 +56,7 @@ def check_theme(assets):
         temporal += 1
     assert temporal == 56
     replay = assets.tree.find('.//Button[@tooltiptext="Replay original startup animation"]')
-    assert replay.get('action').startswith('palette_state.setLayout(palette_1);')
+    assert playback_action(replay.get('action')).startswith('palette_state.setLayout(palette_1);')
     return temporal
 
 

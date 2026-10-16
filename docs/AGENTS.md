@@ -18,6 +18,8 @@ Run python tools/build.py --check, python tools/check_contracts.py, python tools
 ## Child DOX Index
 None.
 
+SOUNDS-AND-HOVER.md and effects-hover-review.json own original sound mappings, optional helper requirements and offline/runtime boundaries. Preserve earlier native report hashes; newly generated sound/hover candidates have no inherited native certification. Record installed files separately from running in-memory skins and never imply a live session was reloaded during background work.
+
 
 PARITY.md owns acceptance and deviations; SOURCES.md owns provenance; VERIFICATION.md owns check evidence and limits. preview.png is an asset-rendered comparison, not a native screenshot. Keep native RC playback, fullscreen keyboard checks, offline hit modeling and actual skin mouse review distinct.
 

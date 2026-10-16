@@ -10,6 +10,7 @@ from pathlib import Path
 
 from lxml import etree as E
 from PIL import Image, ImageChops, ImageDraw, ImageSequence
+from skin_support import add_support
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIN = ROOT / 'skins/need-for-speed-underground'
@@ -454,7 +455,63 @@ class Builder:
                 self.button(l,'m_info',310,248,'info.setLayout(info_about)','About this VLC conversion')
         win.append(win[0])
 
+    def hover_controllers(self):
+        # This exact window ID opts into VLC's native borderless-fullscreen
+        # mouse-motion/fade handling. The companion positions the second bar
+        # over framed/windowed video; XML alone has no video-hover variable.
+        width,height=425,146
+        for window_id,layout_id in [('fullscreenController','fullscreen_controls'),
+                                    ('videoHoverController','video_hover_controls')]:
+            companion=window_id=='videoHoverController'
+            win=E.SubElement(self.theme,'Window',id=window_id,x='-31000' if companion else '0',
+                             y='-30800' if companion else '0',
+                             visible='true' if companion else 'false',dragdrop='false',playondrop='false')
+            # One transparent source pixel distinguishes the companion HWND
+            # without changing its artwork or native FSC sizing.
+            layout=self.layout(win,layout_id,width+int(companion),height)
+            self.frame(layout,None,width,height,top='eq_top_right')
+            carbon=self.bitmap('hover_carbon',rgba('eq_back.png').crop((200,90,220,106)))
+            E.SubElement(layout,'Image',image=carbon,x=self.n(34),y=self.n(37),
+                         width=self.n(width-68),height=self.n(height-67),resize='mosaic')
+            # Preserve the opaque source parent/idle composites used by video.
+            self.video_button_backings(layout,'vid_zoom',width,89)
+            self.button(layout,'vid_zoom',width-89,6,'vlc.fullscreen()',
+                        'Enter / leave borderless fullscreen')
+            self.video_button_backings(layout,'m_close',width,68)
+            close_action='videoHoverController.setLayout(video_hover_closed)' if companion else window_id+'.hide()'
+            self.button(layout,'m_close',width-68,6,close_action,'Hide playback controls')
+            text_visible=layout_id+'.isActive' if companion else window_id+'.isVisible'
+            title=self.text(layout,'$N',43,32,280,color='#D1D1D1',small=True)
+            title.set('visible',text_visible);title.set('focus','false')
+            # Reuse the original equalizer rail and thumb as straight controls.
+            # The rail may stretch, but never tile a uniform single-pixel fill.
+            rail=self.bitmap('hover_rail',rgba('eq_back.png').crop((198,18,268,25)))
+            for value,x,y,length,tip in [('time',48,61,329,'Seek: $T / $D'),
+                                       ('volume',283,98,85,'Volume: $V%')]:
+                E.SubElement(layout,'Image',image=rail,x=self.n(x),y=self.n(y-3),
+                             width=self.n(length),height=self.n(7),resize='scale')
+                E.SubElement(layout,'Slider',id=layout_id+'_'+value,x=self.n(x),y=self.n(y),
+                             up=self.bitmap('eq_thumb2.png'),down=self.bitmap('eq_thumb2_do.png'),
+                             points=f'(0,0),({self.n(length)},0)',thickness=self.n(8),
+                             value=value,tooltiptext=tip)
+            self.button(layout,'m_prev',48,83,'playlist.previous()','Previous track')
+            self.check(layout,'m_play',85,83,'vlc.isPlaying','vlc.play()','vlc.pause()',
+                       'Play / pause',prefix2='m_pause')
+            self.button(layout,'m_stop',122,83,'vlc.stop()','Stop')
+            self.button(layout,'m_next',159,83,'playlist.next()','Next track')
+            for text,x,y,w in [('$t / $d',196,83,77),('Volume',283,79,85)]:
+                label=self.text(layout,text,x,y,w,color='#D1D1D1',small=True)
+                label.set('visible',text_visible);label.set('focus','false')
+            if companion:
+                # Stay OS-visible offscreen, switching layouts without SW_SHOW
+                # stealing focus. VLC activates the last declared layout first.
+                closed=self.layout(win,'video_hover_closed',427,1)
+                marker=self.bitmap('hover_closed_marker',Image.new('RGBA',(1,1)),prescaled=True)
+                E.SubElement(closed,'Image',image=marker,x='0',y='0',width='1',height='1')
+
     def save(self):
+        self.hover_controllers()
+        support_files=add_support(self)
         self.palette_state()
         # Hidden layouts still observe time changes in VLC. Gate their text
         # before rasterization; activation refreshes the current value.
@@ -484,7 +541,7 @@ class Builder:
         dist=ROOT/'dist';dist.mkdir(exist_ok=True)
         path=dist/f'Need-for-Speed-Underground-{self.scale}x.vlt'
         with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as z:
-            files={'theme.xml','skin.dtd'}|{n.get('file') for n in self.theme if n.get('file')}
+            files={'theme.xml','skin.dtd'}|support_files|{n.get('file') for n in self.theme if n.get('file')}
             for filename in sorted(files):z.write(self.out/filename,filename)
         return path
 

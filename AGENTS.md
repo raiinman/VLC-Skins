@@ -80,6 +80,8 @@ When the user requests a durable behavior change, record it here or in the relev
 
 Preserve the period appearance: fullscreen buttons fill the monitor with the original video frame and toggle restore; double-clicking the video uses native borderless fullscreen. Keep the original two-button video header rather than inventing a mismatched third control.
 
+Preserve the original skin's five sound effects at both scales. Sound and framed-video hover support must preserve the user's running 1x session; coordinate shared helper changes with the YouTube chat. Offline source/build work never authorizes restarting that session. Keep native controls and original artwork in the hover bars.
+
 When the user asks to push a corrected skin into VLC, install both verified VLT scales into the active VLC skin library, back up the previous files, and verify installed hashes. Updating GitHub or the companion copy alone does not satisfy installation. Check the selected skin path and clearly distinguish installed files from an already-running skin that still needs reload/restart.
 
 ## Project contract
@@ -93,6 +95,7 @@ Convert the supplied Need for Speed Underground WMP skin to VLC Skins2 using ori
 - `docs/AGENTS.md`: parity records, runtime evidence, review limits.
 - Root owns README.md, requirements.txt, .gitignore, vendor dependencies/licenses, and dist review packages.
 - dist contains both VLT scales and isolated Windows review launchers. Regenerate packages with tools/build.py; keep launcher filenames aligned with them.
+- tools/skin_support.py and tools/SkinEffects.cs own the optional Windows sound/framed-hover bridge; tools/Start-NFS.ps1 starts a separately owned VLC process with per-scale private settings. Plain VLTs retain native borderless hover without requiring the helper. Do not claim sounds/framed hover from VLT installation alone.
 
 Background audits must not launch VLC, take desktop input, alter installed skins or edit user profiles. Review launchers reset only their adjacent isolated INI files before starting VLC; launcher-writer tests execute the writer against private fixtures without launching VLC.
 

@@ -7,6 +7,7 @@
   "omissions": [
     "Dynamic metadata and clock text/font adaptation, including alpha-1 clock input mask",
     "Conversion credit footer/button",
+    "New video hover controller compositions and offscreen sound/command windows; checked separately by check_hover.py and check_effects.py",
     "Hover/pressed behavior of removed obsolete outbound links; their original idle overlay remains compared"
   ],
   "limits": [
@@ -4889,8 +4890,8 @@
     }
   ],
   "package_sha256": {
-    "1": "7b886b7236b38921642441b82cedddf8fd565ca58c517fa11b92b064262ffab5",
-    "2": "214f5a2f4f14e8a213eff5e7eff1259493cd9ffe2544e520d4b645a30703a1b6"
+    "1": "63e373bc865962bee3c14309f2aa64bbc3f4982d80c652dda38dc293443cd74c",
+    "2": "8281c6abe7381e80c639e73f71f59c890c3351c7f81572b8071788a605835d88"
   },
   "summary": {
     "cases": 756,

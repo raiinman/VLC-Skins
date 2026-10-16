@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "scale": 2,
+  "sounds": [
+    {
+      "id": "button",
+      "file": "sounds/button.wav",
+      "width": 51,
+      "readyWidth": 41,
+      "height": 17
+    },
+    {
+      "id": "shutter",
+      "file": "sounds/shutter.wav",
+      "width": 52,
+      "readyWidth": 42,
+      "height": 17
+    },
+    {
+      "id": "intro",
+      "file": "sounds/intro4.wav",
+      "width": 53,
+      "readyWidth": 43,
+      "height": 17
+    },
+    {
+      "id": "info",
+      "file": "sounds/imode.wav",
+      "width": 54,
+      "readyWidth": 44,
+      "height": 17
+    },
+    {
+      "id": "logo",
+      "file": "sounds/eagames.wav",
+      "width": 55,
+      "readyWidth": 45,
+      "height": 17
+    }
+  ],
+  "command": {
+    "width": 67,
+    "height": 17,
+    "showX": 2,
+    "hideX": 35,
+    "y": 2
+  },
+  "hover": {
+    "width": 852,
+    "height": 292,
+    "closedWidth": 854,
+    "closedHeight": 2
+  },
+  "video": {
+    "width": 1416,
+    "height": 880
+  }
+}

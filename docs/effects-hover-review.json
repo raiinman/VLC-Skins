@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-15",
+  "scope": "Offline sound/hover candidate at both scales; no VLC launch, mouse/keyboard input, or live profile change.",
+  "packages": {
+    "1": {
+      "sha256": "63e373bc865962bee3c14309f2aa64bbc3f4982d80c652dda38dc293443cd74c"
+    },
+    "2": {
+      "sha256": "8281c6abe7381e80c639e73f71f59c890c3351c7f81572b8071788a605835d88"
+    }
+  },
+  "helper_sha256": "69889b24ea8f35edb096d40fe6d6d3fd672450e53852739271c7ea064dcd76b3",
+  "checks": {
+    "full_existing_conversion_suite": "pass both scales",
+    "original_sound_bindings": "1076 per scale; independent WMS mapping and original playback suffixes",
+    "sound_payloads": "five exact original WAV files per scale, generated and packaged",
+    "hover_bars": "28 palette/play states per scale; original pixels, controls and 11 rejected mutations",
+    "helper": "compiled; pure scheduling/hover/manifest/saved-size tests and both actual VLT extraction checks pass",
+    "private_launcher": "configuration writer/migration self-test; no process launched",
+    "companion": "13 profile tests, skin preparer self-test, bridge-click test and isolated compilation/self-check"
+  },
+  "native_verified": false,
+  "audible_skin_effects_verified": false,
+  "running_session_reloaded": false,
+  "remaining": [
+    "Native skin initialization and audibility at both scales",
+    "Framed hover native discovery/stacking/leave timing and close behavior",
+    "Borderless native controller reveal/hide and framed-controller suppression",
+    "Maximize/restore and double-click regression with new controllers",
+    "Shared YouTube helper deployment requires a coordinated later restart"
+  ],
+  "audio_incident": "User confirmed regular media sound returned after Windows VLC sessions were unmuted; distinct from missing skin effects."
+}

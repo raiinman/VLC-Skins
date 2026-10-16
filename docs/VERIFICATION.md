@@ -1,6 +1,8 @@
 # Verification evidence — 2026-10-15
 
-Latest candidate passes offline checks at both scales plus targeted native video tests in blue on a 1920x1080 monitor: framed maximize/restore while idle and playing, borderless double-click in/out, and stopped header appearance. Saved positions and dimensions were restored. The preceding build's limited native 1x shutter-isolation retest remains in `shutter-pane-review.json` with its original hashes. Installed skins and normal VLC preferences were unchanged; temporary companion profiles were restored afterward. Current hashes are in `offline-review.json` and `fullscreen-review.json`; earlier native records retain their original tested hashes. This does not certify full native parity.
+The latest sound/hover candidate passes offline checks at both scales. `effects-hover-review.json` records its hashes, compiled-helper checks and untested native behavior. Earlier `fullscreen-review.json` covers only its recorded prior packages: blue-palette framed maximize/restore, borderless double-click and stopped headers at both scales. No running player was restarted for the sound/hover work, and no native or audible result is inherited from those older builds.
+
+`check_effects.py` passes 1,076 source-derived signal bindings per scale, exact original WAV bytes in generated and packaged files, reset layouts and manifest geometry. `check_hover.py` passes original-art comparisons, 28 palette/play states per scale, transport/slider access and 11 rejected mutations. Helper compilation, pure state tests and real archive extraction checks are separate from actual audio, HWND stacking and hover timing, which remain unverified.
 
 ## Automated checks
 

@@ -18,6 +18,8 @@ Run python tools/build.py --check, python tools/check_contracts.py, python tools
 ## Child DOX Index
 None.
 
+Both generated archives also carry nfs-effects.json and the five unchanged source WAVs in sounds/. Sound actions switch their own offscreen ready/trigger layouts and retain the original playback action suffix. The default intro trigger follows original startup delay. Original-art fullscreenController and videoHoverController bars share assets without adding another Video. The framed controller's closed layout must be fully transparent and last/default; runtime open/close uses setLayout, never activating show/hide calls. Helper-dependent features remain explicitly labeled and require native review.
+
 
 Original resources are under need-for-speed-underground/original; provenance.json records all 247 members and their CRCs. vlc-1x and vlc-2x are generated.
 

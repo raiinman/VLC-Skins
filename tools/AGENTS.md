@@ -18,6 +18,10 @@ Run python tools/build.py --check, python tools/check_contracts.py, python tools
 ## Child DOX Index
 None.
 
+Sound/hover support: skin_support.py adds exact source WAVs and source-derived click signals, preserving media actions. Signals switch already-visible offscreen windows between unique ready/trigger layouts; never use Window.show()/hide() for routine sound events, because Win32 SW_SHOW can activate them. Framed hover similarly switches between an original-art open layout and a fully transparent closed layout. Native fullscreenController remains VLC-owned. check_effects.py and check_hover.py independently validate assets, signals, action preservation, geometry, hit access and rejected mutations. Run both with the conversion suite.
+
+SkinEffects.cs is an optional .NET Framework product runtime, scoped to an explicit installed VLC PID plus start time. It owns no global input hooks, media playlist changes, focus changes or VLC termination. Commands target only dedicated native command images, never pointer/keyboard injection. Build with build_effects.ps1; --self-test checks pure decisions and --check-skin validates/extracts a VLT without audio or desktop APIs. Native audibility/hover/stacking claims require separate observed tests. Start-NFS.ps1 uses per-scale private APPDATA/config and refuses a second launch of its still-running profile; -SelfTest touches no user profile or process.
+
 
 Build ownership: build.py recovers inputs, packs lossless atlases and packages both scales; assets.py reads standalone/atlas frames; check_contracts.py validates original pixels, state transitions, source timing and explicit control IDs; check_hits.py models input layers offline; preview.py makes an explicitly asset-rendered comparison.
 

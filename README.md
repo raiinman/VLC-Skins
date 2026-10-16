@@ -2,7 +2,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: both scales pass offline checks and targeted live video fullscreen tests; full parity acceptance remains pending.** Current native video tests cover framed maximize/restore idle and playing, borderless double-click in both directions, and stopped header appearance. Earlier native mouse tests cover transport, volume/seek, playlist selection/scrolling, equalizer controls and original information navigation. Offline checks also cover corrected intro transparency, shutter input gating, resized sliders and default panel placement. Both preview launchers reset their isolated layout settings before launch. See [verification](docs/VERIFICATION.md).
+**Status: sound and video hover support is under offline verification at both scales; live verification and parity acceptance remain pending.** Earlier native reports cover the exact older package hashes recorded there, including framed maximize/restore and borderless double-click. See [verification](docs/VERIFICATION.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -19,11 +19,13 @@ The star/visualization button opens the rectangular video window; the list butto
 
 The fullscreen button and the video pane's plus button fill the monitor **with the skin border**; click again to restore. Double-click the video for native **borderless fullscreen**. The original two-button header is preserved. See [fullscreen behavior and verification limits](docs/FULLSCREEN.md).
 
+The support bundle's `Start-1x.cmd` and `Start-2x.cmd` also run the original skin sounds and framed video hover controls through a small Windows helper. Borderless fullscreen uses VLC's native hover controller. The launchers preserve existing sessions and use private per-scale settings. A VLT loaded alone needs the helper for sounds and framed hover. [Behavior and test limits](docs/SOUNDS-AND-HOVER.md).
+
 ## Preserved and adapted
 
 Original player artwork, hover/pressed buttons, seven palettes, information menu, game description, story pages, screenshots, startup animation and shutter frames are retained. The source is a WMZ/WMS package rather than a Winamp skin.
 
-The video panel is rectangular and clear of the NFS logo. The seek and volume gauges keep the original needle sprites and horizontal drag mapping recovered from the source position maps. Click the clock to toggle elapsed and remaining time. The ten-band equalizer and preamp use VLC variables; obsolete WMP SRS/WOW, speaker-size, balance, crossfade, sound-effects and WMP visualization-preset controls are removed. VLC owns native context and settings dialogs; Skins2 cannot restyle their interiors. The skin's own information menu retains its original images.
+The video panel is rectangular and clear of the NFS logo. The seek and volume gauges keep the original needle sprites and horizontal drag mapping recovered from the source position maps. Click the clock to toggle elapsed and remaining time. The ten-band equalizer and preamp use VLC variables; obsolete WMP SRS/WOW, speaker-size, balance, crossfade and WMP visualization-preset controls are removed. Original skin effects are retained through the helper. VLC owns native context and settings dialogs; Skins2 cannot restyle their interiors. The skin's own information menu retains its original images.
 
 The video panel now retains the user-selected size when media dimensions change. [Sizing source audit](docs/VIDEO-SIZING.md) records the policy and native review limits. The [layer comparison report](docs/visual-comparison.json) and source/converted/residual sheets compare retained art offline; omitted fonts and conversion additions are listed in the report.
 
@@ -50,6 +52,10 @@ python tools/check_launchers.py
 python tools/check_video.py
 python tools/check_corners.py
 python tools/check_palette.py
+python tools/check_effects.py
+python tools/check_hover.py
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/build_effects.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/Start-NFS.ps1 -SelfTest
 python tools/compare_layers.py
 python tools/preview.py
 # Native initialization check (launches VLC; run when desktop testing is available):

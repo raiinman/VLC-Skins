@@ -231,7 +231,7 @@ def main():
               'self_checks':'Invisible RGB ignored; opaque pixel and one-pixel layer displacement mutations detected.',
               'menu_semantics':'WMP BUTTONGROUP.showBackground defaults false; no source override exists. Only mapped regions are composed.',
               'menu_semantics_source':'https://learn.microsoft.com/en-us/previous-versions/windows/desktop/wmp/buttongroup-showbackground',
-              'omissions':['Dynamic metadata and clock text/font adaptation, including alpha-1 clock input mask', 'Conversion credit footer/button',
+              'omissions':['Dynamic metadata and clock text/font adaptation, including alpha-1 clock input mask', 'Conversion credit footer/button', 'New video hover controller compositions and offscreen sound/command windows; checked separately by check_hover.py and check_effects.py',
                            'Hover/pressed behavior of removed obsolete outbound links; their original idle overlay remains compared'],
               'limits':['Source z-order and tiled frame geometry are reconstructed, not executed in WMP.',
                         'All controls use a uniform feedback state for comparison; this does not simulate simultaneous hover.',

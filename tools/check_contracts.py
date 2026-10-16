@@ -4,6 +4,7 @@ from lxml import etree as E
 from PIL import Image
 from build import SKIN, SOURCE, Builder, validate, rgba
 from assets import ThemeAssets, visible
+from skin_support import playback_action
 
 for scale in (1,2):
     out=SKIN/f'vlc-{scale}x';validate(out);assets=ThemeAssets(out);tree=assets.tree
@@ -21,7 +22,7 @@ for scale in (1,2):
             assert node.get('visible')==layout.get('id')+'.isActive','Inactive clock rasterization'
     replay=tree.find('.//Layout[@id="info_about"]/Button[@tooltiptext="Replay original startup animation"]')
     assert replay is not None,'Restored layouts need a way to replay the original intro'
-    assert replay.get('action')=='palette_state.setLayout(palette_1);main.setLayout(main_1);main.setLayout(main_start);main.show();info.hide()'
+    assert playback_action(replay.get('action'))=='palette_state.setLayout(palette_1);main.setLayout(main_1);main.setLayout(main_start);main.show();info.hide()'
     for node in tree.iter():
         if node.tag in ('Image','Button','Checkbox','Slider','Text','Video'):
             assert node.get('id') and node.get('id')!='none','VLC generated-ID collision risk'
@@ -75,7 +76,7 @@ for scale in (1,2):
                         assert layout.find(f'Button[@up="shutter_endpoint_{c}"]') is not None or layout.find(f'Button[@up="shutter_endpoint_{c}_band_0"]') is not None
                 palette=next(n for n in layout if n.get('up')=='m_color_no_png')
                 target=Builder.main_id(c%7+1,'closed' if state in ('closed','closing') else 'open',remaining)
-                assert palette.get('action')==f'palette_state.setLayout(palette_{c%7+1});main.setLayout({target})'
+                assert playback_action(palette.get('action'))==f'palette_state.setLayout(palette_{c%7+1});main.setLayout({target})'
         for lid in [Builder.main_id(c),Builder.main_id(c,'closing',True)]:
             for frame in tree.findall('.//Image[@image="f_top_left_1_png"]'):
                 assert visible(frame.get('visible'),lid)==(c==1)

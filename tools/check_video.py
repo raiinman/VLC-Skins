@@ -14,6 +14,7 @@ from assets import ThemeAssets, visible
 from build import ROOT, SKIN, SOURCE
 from check_panels import geometry
 from check_source_art import verify_video_backing_pixels
+from skin_support import playback_action
 
 
 def intersects(a, b):
@@ -92,8 +93,11 @@ def verify_zoom_controls(tree):
     controls.append((matches[0], 'vid_zoom', ''))
     for node, prefix, lead in controls:
         assert node.tag == 'Checkbox' and node.get('state') == 'video.isMaximized', 'Framed maximize must expose its restore state'
-        assert node.get('action1') == lead+'video.maximize()'
-        assert node.get('action2') == lead+'video.unmaximize()', 'Second click must restore rather than maximize again'
+        first, second = node.get('action1'), node.get('action2')
+        if prefix == 'vid_zoom':
+            first, second = playback_action(first), playback_action(second)
+        assert first == lead+'video.maximize()'
+        assert second == lead+'video.unmaximize()', 'Second click must restore rather than maximize again'
         for state in (1, 2):
             for attr, suffix in (('up', 'no'), ('over', 'hov'), ('down', 'do')):
                 assert node.get(attr+str(state)) == prefix+'_'+suffix+'_png', (prefix, state, 'Original feedback was changed')
