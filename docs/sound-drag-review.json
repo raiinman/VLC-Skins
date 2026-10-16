@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-16",
+  "scope": "Independent skin-sound volume and reduced redundant native work; companion owns playback/menu/stream/embedded-host changes. No graphics/animation change.",
+  "packages": {
+    "1": {
+      "sha256": "08d4e5c1f972f863e306b30b6e11d9113889a49f05c54b69ee36d1305138552c"
+    },
+    "2": {
+      "sha256": "102b6f1cb0c3a0ecbfdf4a903c069819920c972a9b8a75f73da96b2e49f1fbff"
+    }
+  },
+  "helper_sha256": "eb7a0bb8f39f627346bcd0ac7d7e57df2b7b5a8f0b4587317f4cf2fd6d195c90",
+  "source_sha256": "2bade4ff0a5eb9537c143b7bf6ca7e3f16f64450a17ee97d94d8266b4d2a3ef1",
+  "sound_control": {
+    "location": "NFS Underground skin effects tray icon, right-click, Skin sound volume",
+    "presets": [
+      0,
+      10,
+      25,
+      50,
+      75,
+      100
+    ],
+    "default": 25,
+    "persistence": "LocalAppData/NfsSkinEffects/sound-volume.txt, shared across scales for future launches",
+    "separate_mute": true,
+    "media_and_system_volume_unchanged": true,
+    "original_WAV_bytes_unchanged": true
+  },
+  "checks": {
+    "helper_pure_selftest": true,
+    "actual_original_PCM_gain": "20cases: five original WAVs x0/25/50/100; every sample and non-sample byte checked, source bytes retained. Compiled helper Apply method, no playback/settings I/O.",
+    "current_VLT_effects": "Both scales1091source-derivedsignals, five exact original WAVs",
+    "current_VLT_hover": "Both scales23mutations and8playback/volume states",
+    "snapping": "Native15px preserved;1952edge sweeps/3rejected mutations",
+    "native": "82private assertions pass,8alpha255readbacks,4unchanged repeat calls skipalpha writes. Four protectedprocesses/26guardpaths/inputdesktop preserved, owned copiedVLCchildrenclosed. Fixture compiles shared product source, packagedhelper EXE not launched.",
+    "runtime_trust": "copied-executable fixtures pass",
+    "independent_review": "No actionable findings"
+  },
+  "limits": [
+    "No speaker-audibility certification",
+    "No measured drag latency or subjective physical drag review",
+    "Screen-edge snapping preserved; pane-to-pane docking is a separate missing explicit-anchor behavior",
+    "Companion live/Reels/menu/click fixes and latest rollout remain separately recorded",
+    "Current cosmetic VLTs keep earlier exact-hash checks; no new loading/RSS measurements"
+  ]
+}

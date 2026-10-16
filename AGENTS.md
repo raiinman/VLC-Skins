@@ -126,3 +126,5 @@ Hashed companion addon XML/manifest assets and the shared injector use .gitattri
 New Settings, CC and speaker glyphs must be visibly inset within consistent, crisp circles that match the original NFS button faces. Keep the framed bar opaque so underlying video does not make its flat fill or button edges look noisy.
 
 Remove redundant fullscreen/hide buttons from the framed hover strip because the video header provides them. Keep both native fullscreen HUD controls for borderless use. Settings and CC use25px faces with larger inset glyphs; keep the matching opaque fill to prevent whole-strip video bleed.
+
+Preserve magnetic snapping to screen edges and intended pane/main-player connections while improving dragging. Never treat the native15px snap zone itself as a bug or disable it to claim smoother movement.

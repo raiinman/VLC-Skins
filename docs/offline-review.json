@@ -48,7 +48,9 @@
     "asset_storage": "394/420 logical resources exact RGBA/dimensions/frame/fps/loop;55 Info route/no-route paint-control projections match;other XML and non-image payloads identical; complete2-to4band archive fixture and seven mutations plus six original mutations.",
     "conversion_suite": "all17 conversion and independent visual comparison checks pass both scales",
     "hover_exposure": "No foreground requirement; private native current report recorded separately with exact hashes and preservation guards.",
-    "companion_hud": "Both actual source VLTs pass DTD, original XML/payload/compression preservation, native routes, availability gates, full endpoint alpha-mask clearance and10 rejected mutations per scale."
+    "companion_hud": "Both actual source VLTs pass DTD, original XML/payload/compression preservation, native routes, availability gates, full endpoint alpha-mask clearance and10 rejected mutations per scale.",
+    "independent_sound_volume": "Compiled helper pure tests and20actual-original-WAV fullsample/metadata cases pass, source bytes unchanged; default25percent skin-only gain",
+    "screen_snapping": "Original15px preserved;1952native-formula edge samples/3mutations pass; no docking certification"
   },
   "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets. Video omission/true autoresize mutations rejected; visual residual self-checks detect visible-pixel and shifted-layer mutations while ignoring zero-alpha RGB. The old alpha-1 corner bitmap fails the new source-pixel guard and reproduces a black rectangle in the cached-copy model. Temporal gap tests now reject auxiliary main-layout visibility bindings; adapter mutations removing state migration or reintroducing old pane bindings are rejected.",
   "remaining": [
@@ -61,11 +63,11 @@
   ],
   "contact_sheet": "startup-frames.png and visual-*.png are offline asset renders, not native captures.",
   "visual_comparison": "visual-comparison.json plus source/converted/residual sheets; fonts/credits excluded, default-size main/information compositions only",
-  "limited_native_review": "hud-layout-native-review.json:78 private native assertions pass on exact08d4/102b packages, including8alpha255readbacks, embedded children, native tooltip creation and strict exposure/coverage rejection. Four protectedidentities/24guardpaths/inputdesktoppreserved; owned children closed. Shared product source fixture only, helper EXE not launched; no new startup/RSS measurement.",
-  "current_details": "HUD-LAYOUT.md and hud-layout-review.json",
+  "limited_native_review": "sound-drag-native-review.json:82private native assertions pass on unchanged08d4/102b skins with newproductsourcemethods,8alpha255reads/fourrepeatwrites skipped. Fourliveidentities/26guardpaths/inputdesktop preserved. OwnedprivateVLCsclosed; packagedhelpernotlaunched, noaudibility/draglatency/performanceclaim.",
+  "current_details": "SOUND-AND-DRAG.md and sound-drag-review.json; HUD-LAYOUT.md retains current layout",
   "distribution": "Current complete bundle NFS-Current-Offline; private prerelease hud-layout-current-2026-10-16. Installation and running1x adoption are separate hud-layout records.",
   "native_loading_budget_passed": {},
   "native_working_set_after_intro_mib": {},
   "native_loading_details": "Prior loading observations in fast-load-benchmark.json belong to f628/a1bf packages. Current native hover/tooltip test is separately scoped.",
-  "matching_helper_sha256": "9eb268f597236db8217717d075ef1a2e14c46fb903d932aa7504d59925f5fc59"
+  "matching_helper_sha256": "eb7a0bb8f39f627346bcd0ac7d7e57df2b7b5a8f0b4587317f4cf2fd6d195c90"
 }

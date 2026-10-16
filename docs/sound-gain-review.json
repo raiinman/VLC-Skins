@@ -1,0 +1,146 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "sound": "button.wav",
+      "gain_percent": 0,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "349f54cdc179c049f6afbca80b728150d6a6c250e48312a9dd8b18e889010d2b"
+    },
+    {
+      "sound": "button.wav",
+      "gain_percent": 25,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "349f54cdc179c049f6afbca80b728150d6a6c250e48312a9dd8b18e889010d2b"
+    },
+    {
+      "sound": "button.wav",
+      "gain_percent": 50,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "349f54cdc179c049f6afbca80b728150d6a6c250e48312a9dd8b18e889010d2b"
+    },
+    {
+      "sound": "button.wav",
+      "gain_percent": 100,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "349f54cdc179c049f6afbca80b728150d6a6c250e48312a9dd8b18e889010d2b"
+    },
+    {
+      "sound": "shutter.wav",
+      "gain_percent": 0,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "74d16715bd789de8342399d2d583075d063a381a5efeea9d608140a074cd89ed"
+    },
+    {
+      "sound": "shutter.wav",
+      "gain_percent": 25,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "74d16715bd789de8342399d2d583075d063a381a5efeea9d608140a074cd89ed"
+    },
+    {
+      "sound": "shutter.wav",
+      "gain_percent": 50,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "74d16715bd789de8342399d2d583075d063a381a5efeea9d608140a074cd89ed"
+    },
+    {
+      "sound": "shutter.wav",
+      "gain_percent": 100,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "74d16715bd789de8342399d2d583075d063a381a5efeea9d608140a074cd89ed"
+    },
+    {
+      "sound": "intro4.wav",
+      "gain_percent": 0,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "cafd889486c7bdf116d20830816d12a87d4b8d5c26c9b045d7ddd34c87bebfce"
+    },
+    {
+      "sound": "intro4.wav",
+      "gain_percent": 25,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "cafd889486c7bdf116d20830816d12a87d4b8d5c26c9b045d7ddd34c87bebfce"
+    },
+    {
+      "sound": "intro4.wav",
+      "gain_percent": 50,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "cafd889486c7bdf116d20830816d12a87d4b8d5c26c9b045d7ddd34c87bebfce"
+    },
+    {
+      "sound": "intro4.wav",
+      "gain_percent": 100,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "cafd889486c7bdf116d20830816d12a87d4b8d5c26c9b045d7ddd34c87bebfce"
+    },
+    {
+      "sound": "imode.wav",
+      "gain_percent": 0,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "6da1f0f34f7721ad6f769256092d61590527391169016481175c09ed8f508849"
+    },
+    {
+      "sound": "imode.wav",
+      "gain_percent": 25,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "6da1f0f34f7721ad6f769256092d61590527391169016481175c09ed8f508849"
+    },
+    {
+      "sound": "imode.wav",
+      "gain_percent": 50,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "6da1f0f34f7721ad6f769256092d61590527391169016481175c09ed8f508849"
+    },
+    {
+      "sound": "imode.wav",
+      "gain_percent": 100,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "6da1f0f34f7721ad6f769256092d61590527391169016481175c09ed8f508849"
+    },
+    {
+      "sound": "eagames.wav",
+      "gain_percent": 0,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "6eafb551a4782abe737b7a9e5b1db509e50228cb27bbd2137e45e8ca8fad754a"
+    },
+    {
+      "sound": "eagames.wav",
+      "gain_percent": 25,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "6eafb551a4782abe737b7a9e5b1db509e50228cb27bbd2137e45e8ca8fad754a"
+    },
+    {
+      "sound": "eagames.wav",
+      "gain_percent": 50,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "6eafb551a4782abe737b7a9e5b1db509e50228cb27bbd2137e45e8ca8fad754a"
+    },
+    {
+      "sound": "eagames.wav",
+      "gain_percent": 100,
+      "samples_exact": true,
+      "metadata_and_length_unchanged": true,
+      "source_sha256": "6eafb551a4782abe737b7a9e5b1db509e50228cb27bbd2137e45e8ca8fad754a"
+    }
+  ],
+  "scope": "Actual compiled helper Apply method, allfive originalPCM WAVs at0/25/50/100percent. Independent full-sample and non-sample-byte comparison. No playback/settings I/O or speaker audibility claim."
+}

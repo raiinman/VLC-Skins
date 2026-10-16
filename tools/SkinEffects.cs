@@ -141,8 +141,9 @@ namespace NfsSkinSupport
         [DllImport("user32.dll", EntryPoint = "SetWindowLongW")] private static extern int SetWindowLong32(IntPtr hwnd, int index, int value);
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtrW")] private static extern IntPtr SetWindowLong64(IntPtr hwnd, int index, IntPtr value);
         [DllImport("user32.dll")] private static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint key, byte alpha, uint flags);
+        [DllImport("user32.dll")] private static extern bool GetLayeredWindowAttributes(IntPtr hwnd, out uint key, out byte alpha, out uint flags);
         internal static long ReadStyle(IntPtr hwnd, int index) { return IntPtr.Size == 8 ? GetWindowLong64(hwnd, index).ToInt64() : GetWindowLong32(hwnd, index); }
-        internal static void SetBarOpacity(IntPtr hwnd)
+        internal static bool SetBarOpacity(IntPtr hwnd)
         {
             long style = IntPtr.Size == 8 ? GetWindowLong64(hwnd, -20).ToInt64() : GetWindowLong32(hwnd, -20);
             if ((style & 0x80000) == 0)
@@ -150,7 +151,10 @@ namespace NfsSkinSupport
                 if (IntPtr.Size == 8) SetWindowLong64(hwnd, -20, new IntPtr(style | 0x80000));
                 else SetWindowLong32(hwnd, -20, (int)(style | 0x80000));
             }
+            uint key, flags; byte alpha;
+            if ((style & 0x80000) != 0 && GetLayeredWindowAttributes(hwnd, out key, out alpha, out flags) && alpha == 255 && flags == 2) return false;
             SetLayeredWindowAttributes(hwnd, 0, 255, 2);
+            return true;
         }
     }
 
@@ -362,6 +366,93 @@ namespace NfsSkinSupport
         }
     }
 
+    internal static class SkinSoundVolume
+    {
+        internal const int Default = 25;
+        internal static string SettingsPath
+        {
+            get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "NfsSkinEffects", "sound-volume.txt"); }
+        }
+        internal static int Parse(string text)
+        {
+            int value;
+            return text != null && Int32.TryParse(text.Trim(), System.Globalization.NumberStyles.None,
+                System.Globalization.CultureInfo.InvariantCulture, out value) && value >= 0 && value <= 100 ? value : Default;
+        }
+        internal static int Load()
+        {
+            try { return Parse(File.ReadAllText(SettingsPath)); }
+            catch (IOException) { return Default; }
+            catch (UnauthorizedAccessException) { return Default; }
+        }
+        internal static void Save(int value)
+        {
+            Manifest.Require(value >= 0 && value <= 100, "Skin sound volume must be 0..100.");
+            string path = SettingsPath, temporary = path + "." + Guid.NewGuid().ToString("N") + ".tmp";
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            try
+            {
+                File.WriteAllText(temporary, value.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                if (File.Exists(path)) File.Replace(temporary, path, null);
+                else File.Move(temporary, path);
+            }
+            finally { if (File.Exists(temporary)) File.Delete(temporary); }
+        }
+        private static bool Tag(byte[] bytes, int offset, string tag)
+        {
+            return System.Text.Encoding.ASCII.GetString(bytes, offset, 4) == tag;
+        }
+        internal static byte[] Apply(byte[] source, int percent)
+        {
+            Manifest.Require(percent >= 0 && percent <= 100, "Skin sound volume must be 0..100.");
+            Manifest.Require(source != null && source.Length >= 12 && Tag(source, 0, "RIFF") && Tag(source, 8, "WAVE"), "Invalid skin WAV header.");
+            Manifest.Require(BitConverter.ToUInt32(source, 4) == source.Length - 8, "Invalid skin WAV RIFF length.");
+            int format = -1, data = -1, length = 0, bits = 0, channels = 0, block = 0;
+            int position = 12;
+            while (position < source.Length)
+            {
+                Manifest.Require(source.Length - position >= 8, "Truncated WAV chunk header.");
+                uint size = BitConverter.ToUInt32(source, position + 4);
+                long end = (long)position + 8 + size, padded = end + (size & 1);
+                Manifest.Require(padded <= source.Length, "Truncated WAV chunk data or padding.");
+                if (Tag(source, position, "fmt "))
+                {
+                    Manifest.Require(format < 0 && size >= 16, "Missing or duplicate PCM format.");
+                    format = position + 8;
+                    channels = BitConverter.ToUInt16(source, format + 2);
+                    uint rate = BitConverter.ToUInt32(source, format + 4);
+                    block = BitConverter.ToUInt16(source, format + 12);
+                    bits = BitConverter.ToUInt16(source, format + 14);
+                    Manifest.Require(BitConverter.ToUInt16(source, format) == 1 && channels >= 1 && channels <= 2 &&
+                        (bits == 8 || bits == 16) && rate > 0 && block == channels * (bits / 8) &&
+                        BitConverter.ToUInt32(source, format + 8) == (long)rate * block, "Unsupported or inconsistent PCM format.");
+                }
+                else if (Tag(source, position, "data"))
+                {
+                    Manifest.Require(data < 0, "Duplicate WAV data chunk.");
+                    data = position + 8; length = (int)size;
+                }
+                position = (int)padded;
+            }
+            Manifest.Require(format >= 0 && data >= 0 && length % block == 0, "Missing or incomplete WAV PCM frames.");
+            byte[] result = (byte[])source.Clone();
+            if (percent == 100) return result;
+            if (bits == 8)
+            {
+                for (int i = data; i < data + length; i++) result[i] = (byte)(128 + (source[i] - 128) * percent / 100);
+            }
+            else
+            {
+                for (int i = data; i < data + length; i += 2)
+                {
+                    int sample = BitConverter.ToInt16(source, i) * percent / 100;
+                    result[i] = (byte)(sample & 255); result[i + 1] = (byte)((sample >> 8) & 255);
+                }
+            }
+            return result;
+        }
+    }
+
     internal sealed class SoundState
     {
         internal SoundSpec Spec;
@@ -380,6 +471,8 @@ namespace NfsSkinSupport
         private readonly Diagnostics diagnostics;
         private readonly Dictionary<string, SoundPlayer> players = new Dictionary<string, SoundPlayer>();
         private readonly List<MemoryStream> soundStreams = new List<MemoryStream>();
+        private readonly Dictionary<string, byte[]> originalSounds = new Dictionary<string, byte[]>();
+        private int soundVolume;
         private readonly List<SoundState> signals = new List<SoundState>();
         private readonly System.Windows.Forms.Timer timer;
         private readonly NotifyIcon tray;
@@ -397,25 +490,66 @@ namespace NfsSkinSupport
             this.target = target; this.assets = assets;
             this.videoFallback = videoFallback ?? assets.Manifest.video;
             this.diagnostics = diagnostics;
+            soundVolume = SkinSoundVolume.Load();
             foreach (var spec in assets.Manifest.sounds)
             {
-                // Keep original WAV bytes in memory and retain each input stream
-                // until its player is disposed; runtime Play needs no file load.
-                var stream = new MemoryStream(File.ReadAllBytes(assets.Files[spec.id]), false);
-                soundStreams.Add(stream);
-                var player = new SoundPlayer(stream);
-                player.Load();
-                players.Add(spec.id, player);
+                originalSounds.Add(spec.id, File.ReadAllBytes(assets.Files[spec.id]));
                 signals.Add(new SoundState { Spec = spec, Due = -1 });
             }
+            LoadSoundPlayers(soundVolume);
             var menu = new ContextMenuStrip();
             var mute = new ToolStripMenuItem("Mute skin sounds") { CheckOnClick = true };
             mute.CheckedChanged += delegate { muted = mute.Checked; if (muted) foreach (var player in players.Values) player.Stop(); };
+            var volumeMenu = new ToolStripMenuItem("Skin sound volume (" + soundVolume + "%)");
+            foreach (int preset in new[] { 0, 10, 25, 50, 75, 100 })
+            {
+                int value = preset;
+                var item = new ToolStripMenuItem(value == 0 ? "0% (silent)" : value + "%") { Checked = soundVolume == value, Tag = value };
+                item.Click += delegate
+                {
+                    try
+                    {
+                        LoadSoundPlayers(value);
+                        soundVolume = value;
+                        foreach (ToolStripMenuItem option in volumeMenu.DropDownItems) option.Checked = (int)option.Tag == value;
+                        volumeMenu.Text = "Skin sound volume (" + value + "%)";
+                        SkinSoundVolume.Save(value);
+                    }
+                    catch (Exception error) { MessageBox.Show(error.Message, "Skin sound volume", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                };
+                volumeMenu.DropDownItems.Add(item);
+            }
+            menu.Items.Add(volumeMenu);
             menu.Items.Add(mute);
             menu.Items.Add("Exit helper", null, delegate { ExitThread(); });
             tray = new NotifyIcon { Icon = SystemIcons.Application, Text = "NFS Underground skin effects", ContextMenuStrip = menu, Visible = true };
             timer = new System.Windows.Forms.Timer { Interval = 30 };
             timer.Tick += Tick; timer.Start();
+        }
+        private void LoadSoundPlayers(int percent)
+        {
+            var replacement = new Dictionary<string, SoundPlayer>();
+            var streams = new List<MemoryStream>();
+            try
+            {
+                foreach (var pair in originalSounds)
+                {
+                    var stream = new MemoryStream(SkinSoundVolume.Apply(pair.Value, percent), false);
+                    streams.Add(stream);
+                    var player = new SoundPlayer(stream); replacement.Add(pair.Key, player); player.Load();
+                }
+            }
+            catch
+            {
+                foreach (var player in replacement.Values) player.Dispose();
+                foreach (var stream in streams) stream.Dispose();
+                throw;
+            }
+            foreach (var player in players.Values) { player.Stop(); player.Dispose(); }
+            foreach (var stream in soundStreams) stream.Dispose();
+            players.Clear(); soundStreams.Clear();
+            foreach (var pair in replacement) players.Add(pair.Key, pair.Value);
+            soundStreams.AddRange(streams);
         }
         private bool Rect(IntPtr hwnd, out Native.Rect rect)
         {
@@ -500,7 +634,7 @@ namespace NfsSkinSupport
                 if (signal.Due >= 0 && now >= signal.Due)
                 {
                     bool played = false;
-                    if (!muted) try { players[signal.Spec.id].Play(); played = true; } catch (Exception error) { Trace.WriteLine(error.Message); }
+                    if (!muted && soundVolume > 0) try { players[signal.Spec.id].Play(); played = true; } catch (Exception error) { Trace.WriteLine(error.Message); }
                     if (diagnostics != null) diagnostics.Change("sound-" + signal.Spec.id, new { id = signal.Spec.id, played = played, muted = muted, phase = "dispatch" });
                     signal.Due = -1; signal.ResetAfter = now;
                 }
@@ -656,8 +790,65 @@ namespace NfsSkinSupport
         }
         private static void Check(bool value) { if (!value) throw new Exception("Self-test assertion failed."); }
         private static void Invalid(Action action) { try { action(); } catch (InvalidDataException) { return; } throw new Exception("Unsafe manifest accepted."); }
+        private static byte[] SoundFixture(int bits, byte[] samples)
+        {
+            using (var stream = new MemoryStream())
+            using (var writer = new BinaryWriter(stream))
+            {
+                writer.Write(System.Text.Encoding.ASCII.GetBytes("RIFF")); writer.Write(0);
+                writer.Write(System.Text.Encoding.ASCII.GetBytes("WAVEfmt ")); writer.Write(16);
+                writer.Write((short)1); writer.Write((short)1); writer.Write(44100); writer.Write(44100 * (bits / 8));
+                writer.Write((short)(bits / 8)); writer.Write((short)bits);
+                writer.Write(System.Text.Encoding.ASCII.GetBytes("JUNK")); writer.Write(3);
+                writer.Write(new byte[] { 23, 42, 91, 0 }); // Odd-sized unknown chunk and its pad.
+                writer.Write(System.Text.Encoding.ASCII.GetBytes("data")); writer.Write(samples.Length); writer.Write(samples);
+                if (samples.Length % 2 != 0) writer.Write((byte)0);
+                writer.Flush(); byte[] bytes = stream.ToArray();
+                Array.Copy(BitConverter.GetBytes(bytes.Length - 8), 0, bytes, 4, 4); return bytes;
+            }
+        }
+        private static void SoundVolumeTests()
+        {
+            Check(SkinSoundVolume.Parse(null) == 25 && SkinSoundVolume.Parse("") == 25);
+            foreach (string invalid in new[] { "-1", "101", "25.0", "+50", "NaN", "2147483648", "1\n2" })
+                Check(SkinSoundVolume.Parse(invalid) == 25);
+            Check(SkinSoundVolume.Parse("0") == 0 && SkinSoundVolume.Parse("100\r\n") == 100 && SkinSoundVolume.Parse("10") == 10);
+            byte[] original = SoundFixture(8, new byte[] { 0, 1, 127, 128, 129, 254, 255 });
+            byte[] unchanged = (byte[])original.Clone();
+            byte[] scaled = SkinSoundVolume.Apply(original, 25);
+            Check(original.SequenceEqual(unchanged) && !Object.ReferenceEquals(original, scaled));
+            Check(scaled.Take(56).SequenceEqual(original.Take(56)) && scaled.Last() == original.Last());
+            Check(scaled.Skip(56).Take(7).SequenceEqual(new byte[] { 96, 97, 128, 128, 128, 159, 159 }));
+            Check(SkinSoundVolume.Apply(original, 100).SequenceEqual(original));
+            Check(SkinSoundVolume.Apply(original, 0).Skip(56).Take(7).All(value => value == 128));
+            var signed = new MemoryStream();
+            using (var writer = new BinaryWriter(signed))
+                foreach (short sample in new short[] { -32768, -3, -1, 0, 1, 3, 32767 }) writer.Write(sample);
+            original = SoundFixture(16, signed.ToArray()); unchanged = (byte[])original.Clone();
+            scaled = SkinSoundVolume.Apply(original, 50);
+            short[] expected = { -16384, -1, 0, 0, 0, 1, 16383 };
+            for (int index = 0; index < expected.Length; index++) Check(BitConverter.ToInt16(scaled, 56 + index * 2) == expected[index]);
+            Check(original.SequenceEqual(unchanged) && scaled.Take(56).SequenceEqual(original.Take(56)));
+            Check(SkinSoundVolume.Apply(original, 0).Skip(56).All(value => value == 0));
+            Check(SkinSoundVolume.Apply(original, 100).SequenceEqual(original));
+            Invalid(delegate { SkinSoundVolume.Apply(original, -1); });
+            Invalid(delegate { SkinSoundVolume.Apply(original, 101); });
+            Invalid(delegate { SkinSoundVolume.Apply(null, 25); });
+            Invalid(delegate { SkinSoundVolume.Apply(original.Take(original.Length - 1).ToArray(), 25); });
+            byte[] broken = (byte[])original.Clone(); broken[16] = 255; // Oversized fmt chunk.
+            Invalid(delegate { SkinSoundVolume.Apply(broken, 25); });
+            broken = (byte[])original.Clone(); broken[20] = 3; // Float instead of PCM.
+            Invalid(delegate { SkinSoundVolume.Apply(broken, 25); });
+            broken = (byte[])original.Clone(); broken[32] = 1; // Bad block alignment.
+            Invalid(delegate { SkinSoundVolume.Apply(broken, 25); });
+            broken = SoundFixture(16, new byte[] { 1, 2, 3 }); // Partial sample/frame.
+            Invalid(delegate { SkinSoundVolume.Apply(broken, 25); });
+            broken = (byte[])original.Clone(); broken[36] = (byte)'d'; broken[37] = (byte)'a'; broken[38] = (byte)'t'; broken[39] = (byte)'a';
+            Invalid(delegate { SkinSoundVolume.Apply(broken, 25); }); // Duplicate data, not an unknown chunk.
+        }
         private static int SelfTest()
         {
+            SoundVolumeTests();
             Check(TooltipDecision.Identity(true, "SkinWindowClass", "tooltip", 0x88000000L, 0x80L, true));
             Check(!TooltipDecision.Identity(false, "SkinWindowClass", "tooltip", 0x88000000L, 0x80L, true));
             Check(!TooltipDecision.Identity(true, "OtherClass", "tooltip", 0x88000000L, 0x80L, true));

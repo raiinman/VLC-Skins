@@ -22,15 +22,18 @@ DOCS = ('PARITY.md', 'VERIFICATION.md', 'SOURCES.md', 'COMPACT-CONTROLS.md',
         'native-hover-review.json', 'native-hover-before-button-refinement.json', 'native-hover-opacity-first-attempt.json',
         'ui-polish-install.json', 'ui-polish-install-before-button-refinement.json', 'ui-polish-rollout.json',
         'COMPANION-HUD.md', 'companion-hud-review.json', 'HUD-LAYOUT.md',
-        'hud-layout-review.json', 'hud-layout-native-review.json', 'hud-layout-install.json', 'hud-layout-rollout.json')
-NOTICE = """NEED FOR SPEED UNDERGROUND / VLC â€” OFFLINE REVIEW BUNDLE
+        'hud-layout-review.json', 'hud-layout-native-review.json', 'hud-layout-install.json', 'hud-layout-rollout.json',
+        'SOUND-AND-DRAG.md', 'sound-drag-review.json', 'sound-gain-review.json',
+        'sound-drag-native-review.json', 'maintenance-rollout.json')
+NOTICE = """NEED FOR SPEED UNDERGROUND / VLC - OFFLINE REVIEW BUNDLE
 
 These are the current verified offline packages and matching support files.
 Staging does not launch VLC, execute the helper, install a skin, change a profile,
 or reload the running player. Native evidence is scoped by exact package hashes;
 loading checks do not verify visual controls, sound or animation smoothness.
 
-Read docs/HUD-LAYOUT.md and hud-layout-review.json for the latest layout.
+Read docs/SOUND-AND-DRAG.md and sound-drag-review.json for the latest helper.
+HUD-LAYOUT.md and hud-layout-review.json retain the current skin layout.
 UI-POLISH.md and native-hover-review.json retain the preceding UI fixes
 and scoped private native hover/tooltip tests. FAST-LOADING.md and
 fast-load-benchmark.json retain the prior exact hashes' loading measurements. Earlier failed candidates retain their own scoped reports. Native

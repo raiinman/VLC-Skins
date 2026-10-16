@@ -14,6 +14,7 @@ for scale in (1,2):
     assert windows['info'][-1].get('id')=='info_menu'
     assert assets.resources['clock'].get('size')==str(14*scale)
     assert tree.getroot().get('tooltipfont')=='defaultfont', 'VLC constructs tooltips before loading custom fonts'
+    assert tree.getroot().get('magnet', '15') == '15', 'Preserve intended15px magnetic snapping'
     assert 'tooltip' not in assets.resources, 'Do not advertise an unused custom tooltip font'
     for panel in ('tracks','video'):
         handles=windows[panel].findall('.//Image[@action="resizeSE"]')

@@ -89,14 +89,15 @@ namespace NfsSkinSupport
             // or a fixture-only SetLayeredWindowAttributes call.
             for (int pass = 0; pass < 2; pass++)
             {
-                Native.SetBarOpacity(bar);
+                bool wroteAlpha = Native.SetBarOpacity(bar);
                 uint colorKey, flags; byte alpha;
                 bool read = HoverFixtureApi.GetLayeredWindowAttributes(bar, out colorKey, out alpha, out flags);
                 bool layered = (Native.ReadStyle(bar, -20) & 0x80000) != 0;
                 opacityReadbacks.Add(new { scale = scale, bar = prefix, reassert = pass != 0,
-                    readSucceeded = read, alpha = alpha, flags = flags, layered = layered });
+                    readSucceeded = read, alpha = alpha, flags = flags, layered = layered, wroteAlpha = wroteAlpha });
                 Check(scale, prefix + (pass == 0 ? "-opaque-alpha255" : "-opaque-alpha255-reassert"),
                     read && flags == 2 && alpha == 255 && layered);
+                if (pass != 0) Check(scale, prefix + "-unchanged-alpha-not-rewritten", !wroteAlpha);
             }
         }
         private static void Scale(int scale)
