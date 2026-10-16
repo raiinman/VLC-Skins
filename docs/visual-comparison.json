@@ -6,6 +6,7 @@
   "menu_semantics_source": "https://learn.microsoft.com/en-us/previous-versions/windows/desktop/wmp/buttongroup-showbackground",
   "omissions": [
     "Dynamic metadata and clock text/font adaptation, including alpha-1 clock input mask",
+    "Approved metadata_backing Image only (62,117,177,16 source pixels), checked independently by check_readability.py; surrounding retained layers remain compared",
     "Conversion credit footer/button",
     "New video hover controller compositions and offscreen sound/command windows; checked separately by check_hover.py and check_effects.py",
     "Hover/pressed behavior of removed obsolete outbound links; their original idle overlay remains compared"
@@ -20,7 +21,18 @@
       "scale": 1,
       "name": "main palette 1 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -136,7 +148,18 @@
       "scale": 1,
       "name": "main palette 1 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -252,7 +275,18 @@
       "scale": 1,
       "name": "main palette 1 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -368,7 +402,18 @@
       "scale": 1,
       "name": "main palette 2 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -484,7 +529,18 @@
       "scale": 1,
       "name": "main palette 2 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -600,7 +656,18 @@
       "scale": 1,
       "name": "main palette 2 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -716,7 +783,18 @@
       "scale": 1,
       "name": "main palette 3 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -832,7 +910,18 @@
       "scale": 1,
       "name": "main palette 3 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -948,7 +1037,18 @@
       "scale": 1,
       "name": "main palette 3 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -1064,7 +1164,18 @@
       "scale": 1,
       "name": "main palette 4 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -1180,7 +1291,18 @@
       "scale": 1,
       "name": "main palette 4 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -1296,7 +1418,18 @@
       "scale": 1,
       "name": "main palette 4 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -1412,7 +1545,18 @@
       "scale": 1,
       "name": "main palette 5 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -1528,7 +1672,18 @@
       "scale": 1,
       "name": "main palette 5 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -1644,7 +1799,18 @@
       "scale": 1,
       "name": "main palette 5 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -1760,7 +1926,18 @@
       "scale": 1,
       "name": "main palette 6 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -1876,7 +2053,18 @@
       "scale": 1,
       "name": "main palette 6 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -1992,7 +2180,18 @@
       "scale": 1,
       "name": "main palette 6 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -2108,7 +2307,18 @@
       "scale": 1,
       "name": "main palette 7 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -2224,7 +2434,18 @@
       "scale": 1,
       "name": "main palette 7 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -2340,7 +2561,18 @@
       "scale": 1,
       "name": "main palette 7 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 2832,
+        "bounds": [
+          62,
+          117,
+          239,
+          133
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 1,
@@ -2456,7 +2688,18 @@
       "scale": 2,
       "name": "main palette 1 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -2572,7 +2815,18 @@
       "scale": 2,
       "name": "main palette 1 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -2688,7 +2942,18 @@
       "scale": 2,
       "name": "main palette 1 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -2804,7 +3069,18 @@
       "scale": 2,
       "name": "main palette 2 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -2920,7 +3196,18 @@
       "scale": 2,
       "name": "main palette 2 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -3036,7 +3323,18 @@
       "scale": 2,
       "name": "main palette 2 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -3152,7 +3450,18 @@
       "scale": 2,
       "name": "main palette 3 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -3268,7 +3577,18 @@
       "scale": 2,
       "name": "main palette 3 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -3384,7 +3704,18 @@
       "scale": 2,
       "name": "main palette 3 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -3500,7 +3831,18 @@
       "scale": 2,
       "name": "main palette 4 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -3616,7 +3958,18 @@
       "scale": 2,
       "name": "main palette 4 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -3732,7 +4085,18 @@
       "scale": 2,
       "name": "main palette 4 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -3848,7 +4212,18 @@
       "scale": 2,
       "name": "main palette 5 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -3964,7 +4339,18 @@
       "scale": 2,
       "name": "main palette 5 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -4080,7 +4466,18 @@
       "scale": 2,
       "name": "main palette 5 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -4196,7 +4593,18 @@
       "scale": 2,
       "name": "main palette 6 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -4312,7 +4720,18 @@
       "scale": 2,
       "name": "main palette 6 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -4428,7 +4847,18 @@
       "scale": 2,
       "name": "main palette 6 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -4544,7 +4974,18 @@
       "scale": 2,
       "name": "main palette 7 / open / idle",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -4660,7 +5101,18 @@
       "scale": 2,
       "name": "main palette 7 / open / hover",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -4776,7 +5228,18 @@
       "scale": 2,
       "name": "main palette 7 / open / pressed",
       "differing_composite_pixels": 0,
-      "bounds": null
+      "bounds": null,
+      "approved_readability_adaptation": {
+        "resource": "metadata_backing",
+        "differing_pixels": 11328,
+        "bounds": [
+          124,
+          234,
+          478,
+          266
+        ],
+        "classification": "Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask."
+      }
     },
     {
       "scale": 2,
@@ -4890,8 +5353,8 @@
     }
   ],
   "package_sha256": {
-    "1": "f39765f5a97a30a631faeb3c9fa7ef87c93a5196d93c21a8e38521a6392c826b",
-    "2": "56f77cce425a321386c34a9ef79c99ae9c009eb41b0b931fcd2990dd3bb3ac25"
+    "1": "12278fc441665a80657474d81bde1f629bfcfc135a2bd37acba96789e7ec9699",
+    "2": "0ce40f0746c2606f44c49f7250e4d6605d5d48b3ab605598632d90b8bd359412"
   },
   "summary": {
     "cases": 756,

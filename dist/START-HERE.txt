@@ -3,12 +3,17 @@ Need for Speed Underground / VLC parity pass
 Original: The Skins Factory / Electronic Arts (2003).
 VLC conversion: Dead Signal Interactive.
 
-Install VLC, extract this bundle, then run Preview-1x.cmd or Preview-2x.cmd.
-The launchers rewrite only their adjacent separate settings files to reset layouts. 1x matches the source 300x298 size.
+Install VLC, extract the complete bundle, then run Start-1x.cmd or Start-2x.cmd
+for sounds, framed hover and the native dial-volume OSD interface. These use
+private per-scale settings and refuse to replace an already running launch.
+Preview-1x.cmd / Preview-2x.cmd are skin-only intro previews, without the helper
+or volume interface. They rewrite only adjacent separate settings files.
+1x matches the source 300x298 size.
 2x is 600x596 with independently resampled sprite frames. Lossless animation
 bands measured about 3.5 seconds at 1x / 18 seconds at 2x on the prior
-native-tested build. This candidate passes offline checks plus targeted live
-video fullscreen tests at both scales. Native initialization timing remains pending.
+native-tested build. This compact candidate passes offline checks only;
+earlier native fullscreen findings apply to their recorded older hashes.
+Native initialization, compact hover and volume OSD display remain pending.
 The original intro sequence is about 8 seconds.
 
 For your regular VLC profile: Tools > Preferences > Interface > Use custom
@@ -22,6 +27,15 @@ reset it before starting VLC (native recheck pending). Replay selects the blue p
 
 Read PARITY.md, VERIFICATION.md and native-gui-review.json for supported behavior and pending checks.
 This bundle is ready for hands-on review; 100% acceptance is not yet certified.
+
+Compact controls stay 360x64 on both scales, use original small buttons and
+expand volume on hover (speaker click fallback). The framed strip uses 85%
+opacity. Main filenames use larger white text. No running skin was updated
+by preparing this bundle. See COMPACT-CONTROLS.md and compact-review.json.
+
+The original 18-second imode.wav accompanies static Info artwork, not a video
+or slideshow. Original short page/frame fades are still a parity gap;
+see INFO-SOURCE-AUDIT.md. Framed hover mouse-wheel routing also remains open.
 
 Fresh positions fit work areas of 1280x720 at 1x and 1920x1040 at 2x.
 Existing saved VLC positions may override them. The shutter uses static

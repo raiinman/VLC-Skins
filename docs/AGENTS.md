@@ -20,6 +20,8 @@ None.
 
 SOUNDS-AND-HOVER.md and effects-hover-review.json own original sound mappings, optional helper requirements and offline/runtime boundaries. Preserve earlier native report hashes; newly generated sound/hover candidates have no inherited native certification. Record installed files separately from running in-memory skins and never imply a live session was reloaded during background work.
 
+COMPACT-CONTROLS.md and compact-review.json own the approved smaller HUD, filename readability, private native-volume OSD integration and offline-only evidence. Keep prior large-bar native records scoped to their exact hashes. INFO-SOURCE-AUDIT.md and info-source-audit.json distinguish the original18-second audio-only info cue from short page/frame fades and the separate main intro GIF; the missing page fades remain an explicit parity gap.
+
 Separate scratch-helper/preceding-VLT observations from final-package native checks. Sound dispatch and positive target-process/session peaks do not establish speaker audibility or uninterrupted audio when samples are unavailable. Preserve the framed-bar wheel-routing limitation and do not infer 100% parity from targeted click/drag, maximize or fullscreen tests. Runtime checks still in progress must stay marked pending.
 
 

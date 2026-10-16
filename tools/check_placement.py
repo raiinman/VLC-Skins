@@ -16,7 +16,7 @@ def verify(assets, scale):
     count = 0
     windows = assets.tree.findall('Window')
     expected = {'main', 'tracks', 'equalizer', 'info', 'video', 'palette_state',
-                'fullscreenController', 'videoHoverController', 'nfs_hover_command'}
+                'fullscreenController', 'videoHoverController', 'nfs_hover_command','hover_volume_state'}
     expected.update('nfs_fx_'+key for key in EFFECT_KEYS)
     assert {w.get('id') for w in windows} == expected
     for window in windows:
@@ -25,17 +25,21 @@ def verify(assets, scale):
         if key == 'fullscreenController':
             assert (wx, wy, window.get('visible')) == (0, 0, 'false')
             assert len(window) == 1
-            assert (int(window[0].get('width')), int(window[0].get('height'))) == (425*scale, 146*scale)
-        offscreen = key == 'videoHoverController' or key == 'nfs_hover_command' or key.startswith('nfs_fx_')
+            assert (int(window[0].get('width')), int(window[0].get('height'))) == (360,64)
+        offscreen = key in ('videoHoverController','nfs_hover_command','hover_volume_state') or key.startswith('nfs_fx_')
         if offscreen:
             if key == 'videoHoverController':
                 position = (-31000, -30800)
-                layout_sizes = {'video_hover_controls': (426*scale, 146*scale), 'video_hover_closed': (427*scale, scale)}
+                layout_sizes = {'video_hover_controls': (361,64), 'video_hover_closed': (362,1)}
                 default_layout = 'video_hover_closed'
             elif key == 'nfs_hover_command':
                 position = (-31000, -30900)
-                layout_sizes = {'nfs_hover_command_layout': (67, 17)}
+                layout_sizes = {'nfs_hover_command_layout': (133, 17)}
                 default_layout = 'nfs_hover_command_layout'
+            elif key == 'hover_volume_state':
+                position=(-31000,-30700)
+                layout_sizes={'hover_volume_expanded':(72,19),'hover_volume_collapsed':(71,19)}
+                default_layout='hover_volume_collapsed'
             else:
                 effect = key.removeprefix('nfs_fx_')
                 position = (-31000, -31000)

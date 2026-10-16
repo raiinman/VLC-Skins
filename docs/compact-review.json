@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-15",
+  "scope": "Offline candidate only; no VLC launch, desktop input, active installs, profiles or running processes changed.",
+  "native_verified": false,
+  "sha256": {
+    "1x": "12278fc441665a80657474d81bde1f629bfcfc135a2bd37acba96789e7ec9699",
+    "2x": "0ce40f0746c2606f44c49f7250e4d6605d5d48b3ab605598632d90b8bd359412",
+    "helper": "7503f5246012171a726be9edb1b555dcdd9db018398f8f0cf7b0613eace148be",
+    "osd": "9ff2ac594b3c29f20dff8e5026282412e7398d9c2f59810cf7a73412fc8409f1",
+    "launcher": "23462c1efa06140d453714f256cc58a9d2412d23389a42f61158ccc16d8e2a96"
+  },
+  "compact": {
+    "native_size": [
+      360,
+      64
+    ],
+    "framed_size": [
+      361,
+      64
+    ],
+    "framed_opacity": "217/255 window-wide; native fullscreen retains VLC fading",
+    "scales": "same physical dimensions",
+    "original_transport_pixels": true,
+    "duplicate_frame_title_removed": true,
+    "volume": "hover-expanded native slider; speaker click fallback"
+  },
+  "filename": {
+    "source_bounds": [
+      62,
+      117,
+      177,
+      16
+    ],
+    "font_pixels": {
+      "1x": 12,
+      "2x": 24
+    },
+    "color": "white",
+    "scrolling": "auto",
+    "minimum_tested_contrast": "7:1",
+    "layouts_per_scale": 42
+  },
+  "osd": {
+    "runtime": "VLC Lua interface; no Python dependency",
+    "poll_ms": 50,
+    "behavior": "silent baseline; native text and vertical bar on volume changes in windowed/framed/fullscreen video",
+    "volume_changed_by_observer": false,
+    "launcher_args": "--osd --extraintf=luaintf --lua-intf=nfs_volume_osd_v1",
+    "child_only_environment": "VLC_DATA_PATH=<bundle>/skin-support/data",
+    "companion_integration": "not deployed; companion owns portable directory and existing HTTP interface"
+  },
+  "offline_checks": {
+    "conversion_suite": "pass both scales; official DTD, original art, hit access, startup/shutter, panes, palette isolation, sizing and corners",
+    "hover": "8 playback/volume hit states per scale; 16 rejected mutations; actual packaged XML matches",
+    "readability": "42 layouts and 6 rejected mutations per scale; opaque backing/contrast/gauge/logo separation",
+    "effects": "1076 source-derived signals per scale; exact original five WAVs",
+    "visual_comparison": "756 cases:714 exact;42 documented outer-control layer-order residuals;0 unexplained",
+    "helper": "compiled; pure self-test, both actual VLT extraction checks and runtime trust fixtures pass",
+    "launcher": "private fixture migration, schema1/schema2, idempotence and child-only OSD argument/environment tests pass",
+    "osd": "20 actual mocked Lua5.1/5.2 cases +4 rejected mutations; packaged script and launcher bytes checked"
+  },
+  "info_audit": "info-source-audit.json:247 original members verified; imode.wav is18.043s audio only; no Info movie/slideshow",
+  "remaining": [
+    "Native compact opacity, hover expansion, stacking, text scrolling and dial OSD display need coordinated live verification.",
+    "Framed-bar mouse-wheel routing retains stale native origin limitation.",
+    "Original Info page and frame fades remain missing; no missing18-second cinematic exists in supplied archive.",
+    "All earlier native reports retain their own package/helper hashes; no100% acceptance inferred."
+  ],
+  "previews": "compact-preview-*.png and metadata-preview-*-overview.png are offline asset/font reconstructions, not native screenshots."
+}

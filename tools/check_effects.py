@@ -51,6 +51,7 @@ def verify_actions(tree):
     signals = 0
     for node in tree.iter():
         key = node.get('up') or node.get('up1') or ''
+        if key.startswith('compact_'):key=key.removeprefix('compact_')
         for attr in ACTION_KEYS:
             action = node.get(attr)
             if action is None:
@@ -106,12 +107,14 @@ def verify_windows(tree, scale):
     assert window.get('dragdrop') == window.get('playondrop') == 'false'
     assert len(window) == 1
     layout = window[0]
-    assert (layout.get('id'), layout.get('width'), layout.get('height')) == ('nfs_hover_command_layout', '67', '17')
-    assert len(layout) == 2 and all(node.tag == 'Image' for node in layout)
-    for image, x, target in zip(layout, ('0', '33'), ('video_hover_controls', 'video_hover_closed')):
+    assert (layout.get('id'), layout.get('width'), layout.get('height')) == ('nfs_hover_command_layout', '133', '17')
+    assert len(layout) == 4 and all(node.tag == 'Image' for node in layout)
+    for image, x, target, owner in zip(layout, ('0', '33','66','99'),
+            ('video_hover_controls', 'video_hover_closed','hover_volume_expanded','hover_volume_collapsed'),
+            ('videoHoverController','videoHoverController','hover_volume_state','hover_volume_state')):
         assert (image.get('x'), image.get('y'), image.get('width'), image.get('height')) == (x, '0', '33', '17')
         assert image.get('image') == 'nfs_effect_marker' and image.get('resize') == 'scale'
-        assert image.get('action2') == f'videoHoverController.setLayout({target})'
+        assert image.get('action2') == f'{owner}.setLayout({target})'
         assert image.get('action', 'none') == image.get('action1', 'none') == 'none'
     assert len(tree.findall('.//Video')) == 1, 'Effects must not create a second video output'
 
@@ -119,11 +122,11 @@ def verify_windows(tree, scale):
 def verify_manifest(directory, scale, package):
     manifest_bytes = (directory/'nfs-effects.json').read_bytes()
     manifest = json.loads(manifest_bytes)
-    expected = dict(schemaVersion=1, scale=scale,
+    expected = dict(schemaVersion=2, scale=scale,
                     sounds=[dict(id=key, file='sounds/'+filename, width=51+i, readyWidth=41+i, height=17)
                             for i, (key, filename) in enumerate(SOUNDS)],
-                    command=dict(width=67, height=17, showX=2, hideX=35, y=2),
-                    hover=dict(width=426*scale, height=146*scale, closedWidth=427*scale, closedHeight=scale),
+                    command=dict(width=133, height=17, showX=2, hideX=35, y=2,volumeShowX=68,volumeHideX=101),
+                    hover=dict(width=361, height=64, closedWidth=362, closedHeight=1),
                     video=dict(width=708*scale, height=440*scale))
     assert manifest == expected, 'Helper manifest schema, event IDs or geometry changed'
     assert package.read('nfs-effects.json') == manifest_bytes

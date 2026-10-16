@@ -1,5 +1,7 @@
 # Original sounds and video controls
 
+The current offline candidate uses the compact 360 × 64 strip described in COMPACT-CONTROLS.md, with hover-expanded volume and a click fallback. Current exact hashes and offline-only limits are in compact-review.json. Native results later in this document apply to the preceding large-bar versions recorded in effects-hover-review.json, not to this new candidate.
+
 Both VLTs include the five unchanged WAV files recovered from the original
 skin: button.wav, shutter.wav, intro4.wav, imode.wav and eagames.wav. Original
 WMS click bindings select their effects; opening information also signals its

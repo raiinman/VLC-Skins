@@ -12,6 +12,9 @@ $source = Join-Path $PSScriptRoot 'SkinEffects.cs'
 if ($LASTEXITCODE -ne 0) { throw 'Skin effects compilation failed.' }
 $test = Start-Process -FilePath $output -ArgumentList '--self-test' -WindowStyle Hidden -Wait -PassThru
 if ($test.ExitCode -ne 0) { throw 'Skin effects pure self-test failed.' }
+$luaDirectory = Join-Path (Split-Path -Parent $output) 'data/lua/intf'
+$null = New-Item -ItemType Directory -Force -Path $luaDirectory
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'nfs_volume_osd.lua') -Destination (Join-Path $luaDirectory 'nfs_volume_osd_v1.lua') -Force
 $packageDirectory = Split-Path -Parent (Split-Path -Parent $output)
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Start-NFS.ps1') -Destination (Join-Path $packageDirectory 'Start-NFS.ps1') -Force
 foreach ($scale in 1, 2) {

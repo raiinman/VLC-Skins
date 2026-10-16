@@ -2,7 +2,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: sound and video hover support is under offline verification at both scales; live verification and parity acceptance remain pending.** Earlier native reports cover the exact older package hashes recorded there, including framed maximize/restore and borderless double-click. See [verification](docs/VERIFICATION.md).
+**Status: compact hover controls, readable filenames and dial-triggered volume OSD are prepared offline for both scales. Live verification and parity acceptance remain pending.** Earlier native reports cover their recorded older package hashes. See [verification](docs/VERIFICATION.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -20,6 +20,8 @@ The star/visualization button opens the rectangular video window; the list butto
 The fullscreen button and the video pane's plus button fill the monitor **with the skin border**; click again to restore. Double-click the video for native **borderless fullscreen**. The original two-button header is preserved. See [fullscreen behavior and verification limits](docs/FULLSCREEN.md).
 
 The support bundle's `Start-1x.cmd` and `Start-2x.cmd` also run the original skin sounds and framed video hover controls through a small Windows helper. Borderless fullscreen uses VLC's native hover controller. The launchers preserve existing sessions and use private per-scale settings. A VLT loaded alone needs the helper for sounds and framed hover. [Behavior and test limits](docs/SOUNDS-AND-HOVER.md).
+
+The new hover strip stays 360 × 64 pixels on both skins, using original small transport buttons, a thin seek line and expandable volume. The framed strip uses 85% opacity; native fullscreen retains VLC's fade. Main filenames use larger white scrolling text. The bundled Lua interface requests VLC's native volume overlay when the dial changes. These changes have offline checks only and have not been installed into the running session. [Compact controls](docs/COMPACT-CONTROLS.md).
 
 ## Preserved and adapted
 
@@ -54,6 +56,7 @@ python tools/check_corners.py
 python tools/check_palette.py
 python tools/check_effects.py
 python tools/check_hover.py
+python tools/check_readability.py --self-test
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/build_effects.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/Start-NFS.ps1 -SelfTest
 python tools/compare_layers.py
@@ -61,6 +64,8 @@ python tools/preview.py
 # Native initialization check (launches VLC; run when desktop testing is available):
 python tools/benchmark_load.py
 ```
+
+The optional volume-OSD mock test requires test-only `lupa==2.8` and runs with `python tools/check_osd.py` (or `--lua-python-path` for a private dependency directory). Python/Lupa are not required by the Windows review bundle.
 
 To repeat recovery from the supplied package:
 

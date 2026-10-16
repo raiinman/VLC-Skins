@@ -18,7 +18,7 @@ Run python tools/build.py --check, python tools/check_contracts.py, python tools
 ## Child DOX Index
 None.
 
-Both generated archives also carry nfs-effects.json and the five unchanged source WAVs in sounds/. Sound actions switch their own offscreen ready/trigger layouts and retain the original playback action suffix. The default intro trigger follows original startup delay. Original-art fullscreenController and videoHoverController bars share assets without adding another Video. The framed controller's closed layout must be fully transparent and last/default; runtime open/close uses setLayout, never activating show/hide calls. Helper-dependent features remain explicitly labeled and require native review.
+Both generated archives also carry schema2 nfs-effects.json and the five unchanged source WAVs in sounds/. Sound actions switch their own offscreen ready/trigger layouts and retain the original playback action suffix, including compact_* aliases. The default intro trigger follows original startup delay. Compact fullscreenController and videoHoverController bars share original 1x control artwork at fixed physical360x64 /361x64 size in both scales, without another Video or duplicate title. The framed controller's transparent362x1 closed layout is last/default; runtime uses setLayout, never activating show/hide calls. A separate offscreen hover_volume_state selects71x19 collapsed /72x19 expanded layouts, collapsed last. Both XML click fallback and helper hover commands can expand volume. Helper-dependent features remain explicitly labeled and require native review.
 
 
 Original resources are under need-for-speed-underground/original; provenance.json records all 247 members and their CRCs. vlc-1x and vlc-2x are generated.
@@ -27,7 +27,7 @@ Generated themes contain explicit control IDs and lossless atlases. Canonical an
 
 Keep the credit-page intro replay action and reset-layout review launchers: VLC may restore another layout on normal launch and bypass the initial intro.
 
-Preserve source metadata palette colors and the smooth EQ bottom corner. Closing endpoint patches are composed at the output scale, contain no translucent replacement pixels, and leave the source shutter edges intact. The 14-pixel source-scale clock font is an allowed readability adaptation.
+Filename metadata uses white12x-scale FreeSans, scrolling=auto and focus=false over a177x16 dark backing at(62,117) source coordinates. It must not cover the volume sprite's final row116 or logo starting134. Preserve owning-layout text visibility and original closed-shutter interior. The14-pixel source-scale clock font is also an allowed readability adaptation. Preserve the smooth EQ bottom corner and exact native-scale opaque closing endpoint patches, leaving original shutter edges intact.
 
 Keep default desktop positions inside the declared work areas without scaling them blindly with artwork. Existing saved VLC positions are not migrated. Shutter travel uses a separate 500 ms input gate over static original button feedback.
 

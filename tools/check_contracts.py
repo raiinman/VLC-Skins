@@ -71,7 +71,9 @@ for scale in (1,2):
                     assert (layout.find('Image[@image="time_dash_png"]') is not None)==remaining
                     metadata=layout.find('Text[@text="$N"]')
                     assert metadata is not None
-                    assert metadata.get('color')==['#00AEEF','#00AEEF','#C4DF9B','#A864A8','#F26D7D','#F69679','#FFF568'][c-1]
+                    assert metadata.get('color')=='#FFFFFF'
+                    assert metadata.get('font')=='metadata' and metadata.get('focus')=='false'
+                    assert assets.resources['metadata'].get('size')==str(12*scale)
                     if state=='closing':
                         assert layout.find(f'Button[@up="shutter_endpoint_{c}"]') is not None or layout.find(f'Button[@up="shutter_endpoint_{c}_band_0"]') is not None
                 palette=next(n for n in layout if n.get('up')=='m_color_no_png')

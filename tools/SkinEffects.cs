@@ -17,7 +17,7 @@ namespace NfsSkinSupport
 {
     public sealed class Dimensions { public int width; public int height; }
     public sealed class HoverSpec { public int width; public int height; public int closedWidth; public int closedHeight; }
-    public sealed class CommandSpec { public int width; public int height; public int showX; public int hideX; public int y; }
+    public sealed class CommandSpec { public int width; public int height; public int showX; public int hideX; public int y; public int volumeShowX; public int volumeHideX; }
     public sealed class SoundSpec { public string id; public string file; public int width; public int readyWidth; public int height; }
     public sealed class Manifest
     {
@@ -33,7 +33,7 @@ namespace NfsSkinSupport
         };
         public void Validate()
         {
-            Require(schemaVersion == 1 && (scale == 1 || scale == 2), "Unsupported effects manifest version or scale.");
+            Require((schemaVersion == 1 || schemaVersion == 2) && (scale == 1 || scale == 2), "Unsupported effects manifest version or scale.");
             Require(sounds != null && sounds.Length == 5, "Exactly five original sound signals are required.");
             var ids = new HashSet<string>(); var widths = new HashSet<int>();
             foreach (var sound in sounds)
@@ -43,9 +43,10 @@ namespace NfsSkinSupport
                 Require(sound.file == Allowed[sound.id] && ids.Add(sound.id), "Sound files must use the original whitelist once each.");
                 Require(sound.height == 17 && sound.width >= 51 && sound.width <= 55 && sound.readyWidth == sound.width - 10 && widths.Add(sound.width), "Sound ready/trigger geometry must be unique.");
             }
-            Require(command != null && command.width == 67 && command.height == 17 && command.showX == 2 && command.hideX == 35 && command.y == 2, "Invalid hover command geometry.");
-            Require(hover != null && hover.width == 426 * scale && hover.height == 146 * scale, "Invalid framed hover geometry.");
-            Require(hover.closedWidth == 427 * scale && hover.closedHeight == scale, "Invalid transparent closed hover geometry.");
+            Require(command != null && command.width == (schemaVersion == 2 ? 133 : 67) && command.height == 17 && command.showX == 2 && command.hideX == 35 && command.y == 2, "Invalid hover command geometry.");
+            Require(schemaVersion == 1 ? command.volumeShowX == 0 && command.volumeHideX == 0 : command.volumeShowX == 68 && command.volumeHideX == 101, "Invalid volume hover commands.");
+            Require(hover != null && hover.width == (schemaVersion == 2 ? 361 : 426 * scale) && hover.height == (schemaVersion == 2 ? 64 : 146 * scale), "Invalid framed hover geometry.");
+            Require(hover.closedWidth == (schemaVersion == 2 ? 362 : 427 * scale) && hover.closedHeight == (schemaVersion == 2 ? 1 : scale), "Invalid transparent closed hover geometry.");
             Require(video != null && video.width == 708 * scale && video.height == 440 * scale, "Invalid initial video geometry.");
         }
         internal static void Require(bool condition, string message) { if (!condition) throw new InvalidDataException(message); }
@@ -131,6 +132,21 @@ namespace NfsSkinSupport
         [DllImport("user32.dll")] internal static extern bool SetWindowPos(IntPtr hwnd, IntPtr after, int x, int y, int width, int height, uint flags);
         [DllImport("user32.dll")] internal static extern bool PostMessage(IntPtr hwnd, uint message, IntPtr wParam, IntPtr lParam);
         [DllImport("user32.dll")] internal static extern bool SetProcessDPIAware();
+        [DllImport("user32.dll", EntryPoint = "GetWindowLongW")] private static extern int GetWindowLong32(IntPtr hwnd, int index);
+        [DllImport("user32.dll", EntryPoint = "GetWindowLongPtrW")] private static extern IntPtr GetWindowLong64(IntPtr hwnd, int index);
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongW")] private static extern int SetWindowLong32(IntPtr hwnd, int index, int value);
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongPtrW")] private static extern IntPtr SetWindowLong64(IntPtr hwnd, int index, IntPtr value);
+        [DllImport("user32.dll")] private static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint key, byte alpha, uint flags);
+        internal static void SetBarOpacity(IntPtr hwnd)
+        {
+            long style = IntPtr.Size == 8 ? GetWindowLong64(hwnd, -20).ToInt64() : GetWindowLong32(hwnd, -20);
+            if ((style & 0x80000) == 0)
+            {
+                if (IntPtr.Size == 8) SetWindowLong64(hwnd, -20, new IntPtr(style | 0x80000));
+                else SetWindowLong32(hwnd, -20, (int)(style | 0x80000));
+            }
+            SetLayeredWindowAttributes(hwnd, 0, 217, 2);
+        }
     }
 
     internal static class RuntimeTrust
@@ -285,6 +301,7 @@ namespace NfsSkinSupport
     {
         internal static bool BorderlessCandidate(bool visible, bool hasOwner, string windowClass) { return visible && !hasOwner && windowClass == "SkinWindowClass"; }
         internal static uint PositionFlags(bool alreadyPositioned) { return 0x0001u | 0x0010u | 0x0200u | (alreadyPositioned ? 0x0002u : 0u); }
+        internal static bool VolumeRegion(int x, int y) { return x >= 232 && x < 312 && y >= 25 && y < 60; }
         internal static bool IsOpen(int width, int height, HoverSpec spec) { return width == spec.width && height == spec.height; }
         internal static bool Suppress(bool suppressed, bool moved, bool manuallyClosed) { return manuallyClosed || (suppressed && !moved); }
         internal static bool Show(bool videoVisible, bool foregroundVlc, bool nativeFullscreen, bool insideVideo, bool insideVisibleBar, long idleMilliseconds, bool suppressed = false)
@@ -324,11 +341,12 @@ namespace NfsSkinSupport
         private readonly System.Windows.Forms.Timer timer;
         private readonly NotifyIcon tray;
         private readonly Stopwatch clock = Stopwatch.StartNew();
-        private IntPtr video, hover, command;
+        private IntPtr video, hover, command, nativeHover;
         private List<IntPtr> ownedWindows = new List<IntPtr>();
         private Point previousCursor;
         private bool hadCursor, wasInsideVideo, muted, disposed;
         private bool hadBarObservation, previousBarOpen, lastRequestedShow, closeSuppressed;
+        private bool volumeRequested, volumeRequestKnown;
         private long movedAt = -10000, commandAt = -10000, discoveryAt = -10000;
         private long lastButtonTriggered = -10000;
         internal EffectsContext(Target target, Assets assets, Dimensions videoFallback = null, Diagnostics diagnostics = null)
@@ -398,6 +416,7 @@ namespace NfsSkinSupport
             if (foundVideo != IntPtr.Zero) video = foundVideo;
             else if (!target.Owns(video)) video = IntPtr.Zero;
             if (!target.Owns(hover)) hover = UniquePair(windows, assets.Manifest.hover.width, assets.Manifest.hover.height, assets.Manifest.hover.closedWidth, assets.Manifest.hover.closedHeight, false);
+            if (assets.Manifest.schemaVersion == 2 && !target.Owns(nativeHover)) nativeHover = Unique(windows, 360, 64, false);
         }
         private void PollSounds(long now)
         {
@@ -453,11 +472,21 @@ namespace NfsSkinSupport
             if (diagnostics != null) diagnostics.Change("fullscreen-blocker", new { detected = false, windowClass = blockerClass, width = blockerWidth, height = blockerHeight, owned = blockerOwned });
             return false;
         }
-        private void HoverCommand(bool show, long now)
+        private bool SendCommand(int x, long now)
         {
             Native.Rect bounds;
-            if (now - commandAt < 200 || !Rect(command, out bounds) || bounds.Left > -30000 || bounds.Width != 67 || bounds.Height != 17 || !Native.IsWindowVisible(command)) return;
-            if (DoubleClick(command, show ? assets.Manifest.command.showX : assets.Manifest.command.hideX, assets.Manifest.command.y)) { commandAt = now; lastRequestedShow = show; }
+            if (now - commandAt < 200 || !Rect(command, out bounds) || bounds.Left > -30000 || bounds.Width != assets.Manifest.command.width || bounds.Height != assets.Manifest.command.height || !Native.IsWindowVisible(command)) return false;
+            if (!DoubleClick(command, x, assets.Manifest.command.y)) return false;
+            commandAt = now; return true;
+        }
+        private void HoverCommand(bool show, long now)
+        {
+            if (SendCommand(show ? assets.Manifest.command.showX : assets.Manifest.command.hideX, now)) lastRequestedShow = show;
+        }
+        private void VolumeCommand(bool expand, long now)
+        {
+            if (assets.Manifest.schemaVersion != 2 || (volumeRequestKnown && volumeRequested == expand)) return;
+            if (SendCommand(expand ? assets.Manifest.command.volumeShowX : assets.Manifest.command.volumeHideX, now)) { volumeRequestKnown = true; volumeRequested = expand; }
         }
         private void PollHover(long now)
         {
@@ -493,8 +522,16 @@ namespace NfsSkinSupport
                 // Playback can reorder native skin/vout windows without moving
                 // this bar. Reassert stacking even when its position is current.
                 Native.SetWindowPos(hover, new IntPtr(-1), x, y, width, height, HoverDecision.PositionFlags(bar.Left == x && bar.Top == y));
+                if (assets.Manifest.schemaVersion == 2 && target.Owns(hover)) Native.SetBarOpacity(hover);
             }
             if (desired != barVisible) HoverCommand(desired, now);
+            if (assets.Manifest.schemaVersion == 2)
+            {
+                Native.Rect nativeBar;
+                bool framedVolume = desired && barVisible && HoverDecision.VolumeRegion(cursor.X - bar.Left, cursor.Y - bar.Top);
+                bool nativeVolume = Rect(nativeHover, out nativeBar) && Native.IsWindowVisible(nativeHover) && nativeBar.Width == 360 && nativeBar.Height == 64 && HoverDecision.VolumeRegion(cursor.X - nativeBar.Left, cursor.Y - nativeBar.Top);
+                VolumeCommand(foregroundOwn && (framedVolume || nativeVolume), now);
+            }
         }
         private void Tick(object sender, EventArgs arguments)
         {
@@ -509,7 +546,8 @@ namespace NfsSkinSupport
                 disposed = true; timer.Stop();
                 if (target.Alive())
                 {
-                    HoverCommand(false, clock.ElapsedMilliseconds + 200);
+                    VolumeCommand(false, clock.ElapsedMilliseconds + 200);
+                    HoverCommand(false, clock.ElapsedMilliseconds + 400);
                     foreach (var signal in signals)
                     {
                         Native.Rect rect;
@@ -546,6 +584,26 @@ namespace NfsSkinSupport
         private static void Invalid(Action action) { try { action(); } catch (InvalidDataException) { return; } throw new Exception("Unsafe manifest accepted."); }
         private static int SelfTest()
         {
+            Check(HoverDecision.VolumeRegion(232, 25));
+            Check(HoverDecision.VolumeRegion(311, 59));
+            Check(!HoverDecision.VolumeRegion(231, 25));
+            Check(!HoverDecision.VolumeRegion(312, 25));
+            Check(!HoverDecision.VolumeRegion(232, 24));
+            Check(!HoverDecision.VolumeRegion(232, 60));
+            foreach (int assetScale in new[] { 1, 2 })
+            {
+                var compact = Example(); compact.schemaVersion = 2; compact.scale = assetScale;
+                compact.video.width = 708 * assetScale; compact.video.height = 440 * assetScale;
+                compact.hover = new HoverSpec { width = 361, height = 64, closedWidth = 362, closedHeight = 1 };
+                compact.command.width = 133; compact.command.volumeShowX = 68; compact.command.volumeHideX = 101;
+                compact.Validate();
+                Check(HoverDecision.IsOpen(361, 64, compact.hover));
+                compact.hover.width = 722; Invalid(compact.Validate); compact.hover.width = 361;
+                compact.command.volumeShowX = 67; Invalid(compact.Validate); compact.command.volumeShowX = 68;
+                compact.command.width = 67; Invalid(compact.Validate); compact.command.width = 133;
+                compact.hover.closedHeight = 2; Invalid(compact.Validate);
+            }
+            var legacyVolume = Example(); legacyVolume.command.volumeShowX = 68; Invalid(legacyVolume.Validate);
             string hash = new string('a', 64), otherHash = new string('b', 64);
             string runtime = Path.GetFullPath(@"C:\private\VlcRuntime\" + hash + @"\vlc.exe");
             RuntimeTrust.Identity(runtime, runtime.ToUpperInvariant(), 10, 10, hash, hash);

@@ -34,6 +34,7 @@ def add_support(builder):
         if node.tag not in ('Button', 'Checkbox'):
             continue
         key = node.get('up', node.get('up1', ''))
+        if key.startswith('compact_'):key=key.removeprefix('compact_')
         effect = by_image.get(key)
         if key.startswith('shutter_locked'):
             effect = 'shutter'
@@ -72,14 +73,14 @@ def add_support(builder):
         sounds.append(dict(id=key, file=path, width=width, readyWidth=ready_width, height=height))
     command = E.SubElement(root, 'Window', id='nfs_hover_command', x='-31000', y='-30900',
                            visible='true', dragdrop='false', playondrop='false')
-    layout = E.SubElement(command, 'Layout', id='nfs_hover_command_layout', width='67', height='17')
-    for x, target in [(0, 'video_hover_controls'), (33, 'video_hover_closed')]:
+    layout = E.SubElement(command, 'Layout', id='nfs_hover_command_layout', width='133', height='17')
+    for x, target, window in [(0, 'video_hover_controls', 'videoHoverController'), (33, 'video_hover_closed', 'videoHoverController'),
+                              (66, 'hover_volume_expanded', 'hover_volume_state'), (99, 'hover_volume_collapsed', 'hover_volume_state')]:
         E.SubElement(layout, 'Image', image=marker, x=str(x), y='0', width='33', height='17',
-                     resize='scale', action2=f'videoHoverController.setLayout({target})')
-    manifest = dict(schemaVersion=1, scale=builder.scale, sounds=sounds,
-                    command=dict(width=67, height=17, showX=2, hideX=35, y=2),
-                    hover=dict(width=426 * builder.scale, height=146 * builder.scale,
-                               closedWidth=427 * builder.scale, closedHeight=builder.scale),
+                     resize='scale', action2=f'{window}.setLayout({target})')
+    manifest = dict(schemaVersion=2, scale=builder.scale, sounds=sounds,
+                    command=dict(width=133, height=17, showX=2, hideX=35, y=2,volumeShowX=68,volumeHideX=101),
+                    hover=dict(width=361, height=64,closedWidth=362, closedHeight=1),
                     video=dict(width=708 * builder.scale, height=440 * builder.scale))
     (out / 'nfs-effects.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
     return {'nfs-effects.json'} | {s['file'] for s in sounds}

@@ -65,6 +65,7 @@ class Builder:
         E.SubElement(self.theme, 'Font', id='ui', file='assets/FreeSans.ttf', size=str(10 * scale))
         E.SubElement(self.theme, 'Font', id='small', file='assets/FreeSans.ttf', size=str(8 * scale))
         E.SubElement(self.theme, 'Font', id='clock', file='assets/FreeSans.ttf', size=str(14 * scale))
+        E.SubElement(self.theme, 'Font', id='metadata', file='assets/FreeSans.ttf', size=str(12 * scale))
 
     def n(self, v):
         return str(round(v * self.scale))
@@ -201,7 +202,12 @@ class Builder:
                         self.dial(l,c,'volume',81,65,138,0,52,29,0,0,'volume')
                         self.dial(l,c,'seek',71,56,156,108,68,33,0,0,'time')
                         self.image(l,'vol_seek_mat.png',108,102)
-                        self.text(l,'$N',62,117,177,color=['#00AEEF','#00AEEF','#C4DF9B','#A864A8','#F26D7D','#F69679','#FFF568'][c-1],small=True)
+                        backing=Image.new('RGBA',(177,16),(8,13,17,255))
+                        ImageDraw.Draw(backing).line((0,0,176,0),fill=(42,60,70,255))
+                        ImageDraw.Draw(backing).line((0,15,176,15),fill=(3,6,9,255))
+                        E.SubElement(l,'Image',image=self.bitmap('metadata_backing',backing),x=self.n(62),y=self.n(117))
+                        title=self.text(l,'$N',62,117,177,color='#FFFFFF')
+                        title.set('font','metadata');title.set('focus','false');title.set('scrolling','auto')
                         E.SubElement(l,'Button',x=self.n(58),y=self.n(134),up=self.bitmap('m_logo_no.png'),over=self.bitmap('m_logo_hov.png'),down=self.bitmap('m_logo_no.png'),action='info.show()',tooltiptext='Need for Speed information')
                         clocktext=self.text(l,'$l' if remaining else '$t',129,165,60)
                         clocktext.set('font','clock')
@@ -456,63 +462,8 @@ class Builder:
         win.append(win[0])
 
     def hover_controllers(self):
-        # This exact window ID opts into VLC's native borderless-fullscreen
-        # mouse-motion/fade handling. The companion positions the second bar
-        # over framed/windowed video; XML alone has no video-hover variable.
-        width,height=425,146
-        for window_id,layout_id in [('fullscreenController','fullscreen_controls'),
-                                    ('videoHoverController','video_hover_controls')]:
-            companion=window_id=='videoHoverController'
-            win=E.SubElement(self.theme,'Window',id=window_id,x='-31000' if companion else '0',
-                             y='-30800' if companion else '0',
-                             visible='true' if companion else 'false',dragdrop='false',playondrop='false')
-            # One transparent source pixel distinguishes the companion HWND
-            # without changing its artwork or native FSC sizing.
-            layout=self.layout(win,layout_id,width+int(companion),height)
-            self.frame(layout,None,width,height,top='eq_top_right')
-            if companion:
-                # The helper owns placement; native dragging would use VLC's
-                # offscreen internal origin and jump the bar out of view.
-                for frame in layout.findall('Image'):
-                    if frame.get('action')=='move':frame.set('action','none')
-            carbon=self.bitmap('hover_carbon',rgba('eq_back.png').crop((200,90,220,106)))
-            E.SubElement(layout,'Image',image=carbon,x=self.n(34),y=self.n(37),
-                         width=self.n(width-68),height=self.n(height-67),resize='mosaic')
-            # Preserve the opaque source parent/idle composites used by video.
-            self.video_button_backings(layout,'vid_zoom',width,89)
-            self.button(layout,'vid_zoom',width-89,6,'vlc.fullscreen()',
-                        'Enter / leave borderless fullscreen')
-            self.video_button_backings(layout,'m_close',width,68)
-            close_action='videoHoverController.setLayout(video_hover_closed)' if companion else window_id+'.hide()'
-            self.button(layout,'m_close',width-68,6,close_action,'Hide playback controls')
-            text_visible=layout_id+'.isActive' if companion else window_id+'.isVisible'
-            title=self.text(layout,'$N',43,32,280,color='#D1D1D1',small=True)
-            title.set('visible',text_visible);title.set('focus','false')
-            # Reuse the original equalizer rail and thumb as straight controls.
-            # The rail may stretch, but never tile a uniform single-pixel fill.
-            rail=self.bitmap('hover_rail',rgba('eq_back.png').crop((198,18,268,25)))
-            for value,x,y,length,tip in [('time',48,61,329,'Seek: $T / $D'),
-                                       ('volume',283,98,85,'Volume: $V%')]:
-                E.SubElement(layout,'Image',image=rail,x=self.n(x),y=self.n(y-3),
-                             width=self.n(length),height=self.n(7),resize='scale')
-                E.SubElement(layout,'Slider',id=layout_id+'_'+value,x=self.n(x),y=self.n(y),
-                             up=self.bitmap('eq_thumb2.png'),down=self.bitmap('eq_thumb2_do.png'),
-                             points=f'(0,0),({self.n(length)},0)',thickness=self.n(8),
-                             value=value,tooltiptext=tip)
-            self.button(layout,'m_prev',48,83,'playlist.previous()','Previous track')
-            self.check(layout,'m_play',85,83,'vlc.isPlaying','vlc.play()','vlc.pause()',
-                       'Play / pause',prefix2='m_pause')
-            self.button(layout,'m_stop',122,83,'vlc.stop()','Stop')
-            self.button(layout,'m_next',159,83,'playlist.next()','Next track')
-            for text,x,y,w in [('$t / $d',196,83,77),('Volume',283,79,85)]:
-                label=self.text(layout,text,x,y,w,color='#D1D1D1',small=True)
-                label.set('visible',text_visible);label.set('focus','false')
-            if companion:
-                # Stay OS-visible offscreen, switching layouts without SW_SHOW
-                # stealing focus. VLC activates the last declared layout first.
-                closed=self.layout(win,'video_hover_closed',427,1)
-                marker=self.bitmap('hover_closed_marker',Image.new('RGBA',(1,1)),prescaled=True)
-                E.SubElement(closed,'Image',image=marker,x='0',y='0',width='1',height='1')
+        from compact_controls import add_controllers
+        add_controllers(self)
 
     def save(self):
         self.hover_controllers()

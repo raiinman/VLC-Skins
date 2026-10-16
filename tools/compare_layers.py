@@ -1,7 +1,7 @@
 """Offline combined-art comparisons; neither WMP nor VLC is executed.
 
 Source references reconstruct retained WMS layers, including original sibling
-z-order. Fonts, metadata/clock tokens and the added conversion credit are omitted
+z-order. Fonts, metadata/clock tokens, the approved dark metadata backing and conversion credit are omitted
 from both references. Source frame height is trimmed by the documented 72-pixel
 transparent margin. These are pixel-composition checks, not native render proof.
 """
@@ -146,11 +146,15 @@ def source_info(page, palette, state, scale):
     return canvas
 
 
-def converted(assets, layout_id, palette, state):
+def converted(assets, layout_id, palette, state, include_readability=False):
     layout = assets.tree.find(f'.//Layout[@id="{layout_id}"]')
     canvas = Image.new('RGBA', (int(layout.get('width')), int(layout.get('height'))))
     for node in layout:
         if node.tag == 'Text' or not visible(node.get('visible'), active=f'main_{palette}'):
+            continue
+        if not include_readability and node.tag == 'Image' and node.get('image') == 'metadata_backing':
+            # Explicit allowed readability adaptation, independently guarded
+            # by check_readability.py; do not mask neighboring source pixels.
             continue
         if node.get('tooltiptext') == 'About this VLC conversion':
             continue
@@ -231,7 +235,7 @@ def main():
               'self_checks':'Invisible RGB ignored; opaque pixel and one-pixel layer displacement mutations detected.',
               'menu_semantics':'WMP BUTTONGROUP.showBackground defaults false; no source override exists. Only mapped regions are composed.',
               'menu_semantics_source':'https://learn.microsoft.com/en-us/previous-versions/windows/desktop/wmp/buttongroup-showbackground',
-              'omissions':['Dynamic metadata and clock text/font adaptation, including alpha-1 clock input mask', 'Conversion credit footer/button', 'New video hover controller compositions and offscreen sound/command windows; checked separately by check_hover.py and check_effects.py',
+              'omissions':['Dynamic metadata and clock text/font adaptation, including alpha-1 clock input mask', 'Approved metadata_backing Image only (62,117,177,16 source pixels), checked independently by check_readability.py; surrounding retained layers remain compared', 'Conversion credit footer/button', 'New video hover controller compositions and offscreen sound/command windows; checked separately by check_hover.py and check_effects.py',
                            'Hover/pressed behavior of removed obsolete outbound links; their original idle overlay remains compared'],
               'limits':['Source z-order and tiled frame geometry are reconstructed, not executed in WMP.',
                         'All controls use a uniform feedback state for comparison; this does not simulate simultaneous hover.',
@@ -252,6 +256,13 @@ def main():
                     target = converted(assets, f'main_{palette}'+('_closed' if closed else ''), palette, state)
                     count, bounds, diff = residual(source, target)
                     case = dict(scale=scale, name=name, differing_composite_pixels=count, bounds=bounds)
+                    if not closed:
+                        retained_backing = converted(assets, f'main_{palette}', palette, state, include_readability=True)
+                        adaptation_pixels, adaptation_bounds, _ = residual(target, retained_backing)
+                        case['approved_readability_adaptation'] = dict(
+                            resource='metadata_backing', differing_pixels=adaptation_pixels,
+                            bounds=adaptation_bounds,
+                            classification='Approved opaque metadata backing; excluded as a named layer, not a rectangular pixel mask.')
                     if count and closed:
                         case['maximum_raw_channel_delta'] = max(pair[1] for pair in ImageChops.difference(source, target).getextrema())
                         adapted = source_main(palette, closed, state, scale, raise_outer=True)

@@ -82,6 +82,8 @@ Preserve the period appearance: fullscreen buttons fill the monitor with the ori
 
 Preserve the original skin's five sound effects at both scales. Sound and framed-video hover support must preserve the user's running 1x session; coordinate shared helper changes with the YouTube chat. Offline source/build work never authorizes restarting that session. Keep native controls and original artwork in the hover bars.
 
+The user approved replacing the large framed hover panel with a compact smoked-carbon strip: no outer frame or duplicate title, original small transport controls, thin seek line and hover-expanded volume with a click fallback. Keep its physical size independent of main skin scale. Filename readability takes precedence over source palette text colors: use larger white scrolling text on a dark backing without covering gauges or the logo. Prepare dial-triggered native volume OSD offline; no desktop control, live profile change or restart is authorized by this background work.
+
 When the user asks to push a corrected skin into VLC, install both verified VLT scales into the active VLC skin library, back up the previous files, and verify installed hashes. Updating GitHub or the companion copy alone does not satisfy installation. Check the selected skin path and clearly distinguish installed files from an already-running skin that still needs reload/restart.
 
 ## Project contract

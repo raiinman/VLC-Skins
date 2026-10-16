@@ -1,6 +1,6 @@
 # Parity and acceptance
 
-The latest candidate includes original sounds and video hover bars, with targeted native evidence at both scales in `effects-hover-review.json`. Earlier native evidence below retains its recorded version scope. See `offline-review.json` for the complete offline scope.
+The latest candidate replaces the large hover bars with a compact strip, enlarges filenames and adds a native volume-OSD interface. It has offline evidence only in `compact-review.json`. Targeted native evidence in `effects-hover-review.json` applies to the earlier large-bar packages and recorded helper. See `offline-review.json` for the current offline scope.
 
 The current target is complete parity within the user's permitted VLC adaptations. Acceptance belongs to the user. This build is not certified as 100% visually or interactively identical.
 
@@ -25,9 +25,10 @@ The current target is complete parity within the user's permitted VLC adaptation
 - Media dimensions no longer resize the video panel automatically. The frame follows the user's manual size; native playback and aspect-fit behavior still require review. See [video sizing audit](VIDEO-SIZING.md).
 - Original images remain lossless at 1x. Each animation/needle frame is independently resampled with Lanczos at 2x to avoid bleeding from adjacent frames.
 - Equalizer frequencies follow VLC; removed WMP-only controls include preset/reset, SRS/WOW/TruBass, speaker size, balance, crossfade and visualization presets. The removed right-side EQ rails use the original carbon texture and VLC preamp. The optional Windows helper restores original sounds and framed-video hover. Both scales passed targeted controls and audio-output tests; physical speaker audibility and exhaustive parity remain unverified. Framed-bar mouse-wheel routing remains incorrect; click/drag sliders work. See SOUNDS-AND-HOVER.md.
-- Clock/metadata use a TTF font over the original backing. The clock uses 14 source-scale pixels for legibility. Metadata retains the source palette colors.
+- Clock/metadata use a TTF font. The clock uses 14 source-scale pixels. Metadata uses user-approved white 12 source-scale pixels over a dark 177 × 16 backing, preserving the gauge and logo. The approved compact HUD keeps the same physical size on both scales; native display remains pending.
 - The original playlist changes the playing-row background with its palette. VLC Playtree exposes a fixed selection background and playing-text color, without a separate playing-row background binding. The single retained Playtree therefore cannot reproduce that palette-dependent row treatment.
 - Palette switching is immediate. The source JavaScript color crossfade has no direct Skins2 layout-action equivalent.
+- The original Info sound is an 18.043-second audio-only cue over static artwork, with no companion movie or timed slideshow. Original page fades (400/500 ms) and frame palette fades (default 700 ms) remain missing; see INFO-SOURCE-AUDIT.md.
 - Regular VLC launches restore the saved layout, which can bypass the intro after switching away from `main_start`. Skins2 has no source-script on-load timer equivalent. Review launchers clear saved layout state; the conversion credit page provides Replay intro in the blue theme, including when `main_start` is already selected.
 - VLC owns native context/preferences dialogs. Its skin API cannot style those interiors. The skin's own information menu retains its original artwork.
 - Old marketing links remain as source artwork; obsolete outbound actions are omitted.

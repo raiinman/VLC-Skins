@@ -5,6 +5,13 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 
+function Set-OsdSupport($StartInfo, [string]$DataRoot) {
+    $StartInfo.Arguments += ' --osd --extraintf=luaintf --lua-intf=nfs_volume_osd_v1'
+    # Child-process-only data lookup. Installed library/plugin lookup is left
+    # intact; this bundle has no HTTP interface or altered recent-item policy.
+    $StartInfo.EnvironmentVariables['VLC_DATA_PATH'] = [IO.Path]::GetFullPath($DataRoot)
+}
+
 function Set-SkinPath([string]$Text, [string]$SkinPath) {
     $line = 'skins2-last=' + $SkinPath
     if ($Text -match '(?m)^skins2-last=[^\r\n]*') {
@@ -13,14 +20,42 @@ function Set-SkinPath([string]$Text, [string]$SkinPath) {
     return $Text + "`r`n[skins2]`r`n" + $line + "`r`nskins2-config=`r`n"
 }
 
-function Initialize-SupportState([string]$Text, [int]$AssetScale) {
+function Get-EffectsGeometry([int]$AssetScale, $EffectsManifest) {
+    if ($AssetScale -notin @(1,2)) { throw 'Unsupported asset scale.' }
+    $schema = if ($null -eq $EffectsManifest) { 1 } else { [int]$EffectsManifest.schemaVersion }
+    if ($schema -notin @(1,2)) { throw 'Unsupported effects schema.' }
+    $closedWidth = if ($schema -eq 2) { 362 } else { 427*$AssetScale }
+    $closedHeight = if ($schema -eq 2) { 1 } else { $AssetScale }
+    if ($null -ne $EffectsManifest) {
+        $openWidth = if ($schema -eq 2) { 361 } else { 426*$AssetScale }
+        $openHeight = if ($schema -eq 2) { 64 } else { 146*$AssetScale }
+        if ($EffectsManifest.scale -ne $AssetScale -or $EffectsManifest.hover.width -ne $openWidth -or $EffectsManifest.hover.height -ne $openHeight -or $EffectsManifest.hover.closedWidth -ne $closedWidth -or $EffectsManifest.hover.closedHeight -ne $closedHeight) { throw 'Invalid effects geometry for selected scale.' }
+        $closedWidth = [int]$EffectsManifest.hover.closedWidth
+        $closedHeight = [int]$EffectsManifest.hover.closedHeight
+    }
+    return @{Schema=$schema;ClosedWidth=$closedWidth;ClosedHeight=$closedHeight;NativeWidth=$(if ($schema -eq 2) {360} else {425*$AssetScale});NativeHeight=$(if ($schema -eq 2) {64} else {146*$AssetScale})}
+}
+
+function Read-EffectsManifest([string]$SkinPath) {
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $archive = [IO.Compression.ZipFile]::OpenRead($SkinPath)
+    try {
+        $entries = @($archive.Entries | Where-Object { $_.FullName -eq 'nfs-effects.json' })
+        if ($entries.Count -ne 1 -or $entries[0].Length -gt 65536) { throw 'Missing, duplicate or oversized effects manifest.' }
+        $reader = [IO.StreamReader]::new($entries[0].Open())
+        try { return ($reader.ReadToEnd() | ConvertFrom-Json) } finally { $reader.Dispose() }
+    } finally { $archive.Dispose() }
+}
+
+function Initialize-SupportState([string]$Text, [int]$AssetScale, $EffectsManifest = $null) {
+    $geometry = Get-EffectsGeometry $AssetScale $EffectsManifest
     $saved = [regex]::Match($Text, '(?m)^skins2-config=([^\r\n]+)')
     if (-not $saved.Success) { return $Text }
     $pattern = '\["([^"\r\n]+)"\s+"([^"\r\n]+)"\s+(-?\d+)\s+(-?\d+)\s+(\d+)\s+(\d+)\s+([01])\]'
     $entries = [regex]::Matches($saved.Groups[1].Value, $pattern)
     $main = @($entries | Where-Object { $_.Groups[1].Value -eq 'main' })
     if ($main.Count -ne 1 -or ([regex]::Replace($saved.Groups[1].Value, $pattern, '')).Trim()) { return $Text }
-    $owned = @('nfs_fx_button','nfs_fx_shutter','nfs_fx_intro','nfs_fx_info','nfs_fx_logo','nfs_hover_command','videoHoverController','fullscreenController')
+    $owned = @('nfs_fx_button','nfs_fx_shutter','nfs_fx_intro','nfs_fx_info','nfs_fx_logo','nfs_hover_command','videoHoverController','fullscreenController','hover_volume_state')
     $parts = @($entries | Where-Object { $_.Groups[1].Value -notin $owned } | ForEach-Object { $_.Value })
     $keys = @('button','shutter','intro','info','logo')
     for ($index=0; $index -lt $keys.Count; $index++) {
@@ -29,13 +64,21 @@ function Initialize-SupportState([string]$Text, [int]$AssetScale) {
         $width = if ($state -eq 'trigger') { 51+$index } else { 41+$index }
         $parts += '["nfs_fx_' + $key + '" "nfs_fx_' + $key + '_' + $state + '" -31000 -31000 ' + $width + ' 17 1]'
     }
-    $parts += '["nfs_hover_command" "nfs_hover_command_layout" -31000 -30900 67 17 1]'
-    $parts += '["videoHoverController" "video_hover_closed" -31000 -30800 ' + (427*$AssetScale) + ' ' + $AssetScale + ' 1]'
-    $parts += '["fullscreenController" "fullscreen_controls" 0 0 ' + (425*$AssetScale) + ' ' + (146*$AssetScale) + ' 0]'
+    $commandWidth = if ($geometry.Schema -eq 2) { 133 } else { 67 }
+    $parts += '["nfs_hover_command" "nfs_hover_command_layout" -31000 -30900 ' + $commandWidth + ' 17 1]'
+    $parts += '["videoHoverController" "video_hover_closed" -31000 -30800 ' + $geometry.ClosedWidth + ' ' + $geometry.ClosedHeight + ' 1]'
+    $parts += '["fullscreenController" "fullscreen_controls" 0 0 ' + $geometry.NativeWidth + ' ' + $geometry.NativeHeight + ' 0]'
+    if ($geometry.Schema -eq 2) { $parts += '["hover_volume_state" "hover_volume_collapsed" -31000 -30700 71 19 1]' }
     return $Text.Substring(0,$saved.Groups[1].Index) + ($parts -join '') + $Text.Substring($saved.Groups[1].Index+$saved.Groups[1].Length)
 }
 
 if ($SelfTest) {
+    $startFixture = [Diagnostics.ProcessStartInfo]::new()
+    $startFixture.Arguments = '--intf=skins2'
+    $originalDataPath = $env:VLC_DATA_PATH
+    $originalPluginPath = $startFixture.EnvironmentVariables['VLC_PLUGIN_PATH']
+    Set-OsdSupport $startFixture "C:\Unicode-é & O'Brien\skin-support\data"
+    if ($startFixture.Arguments -ne '--intf=skins2 --osd --extraintf=luaintf --lua-intf=nfs_volume_osd_v1' -or $startFixture.EnvironmentVariables['VLC_DATA_PATH'] -ne "C:\Unicode-é & O'Brien\skin-support\data" -or $env:VLC_DATA_PATH -ne $originalDataPath -or $startFixture.EnvironmentVariables['VLC_PLUGIN_PATH'] -ne $originalPluginPath) { throw 'Private OSD launch scope failed.' }
     $fixture = "[core]`r`nvolume=123`r`n[skins2]`r`nskins2-last=old`r`nskins2-config=saved`r`n"
     $result = Set-SkinPath $fixture "C:\Unicode-é & O'Brien\skin.vlt"
     if (-not $result.Contains('volume=123') -or -not $result.Contains('skins2-config=saved') -or $result.Contains('skins2-last=old')) { throw 'Private config preservation failed.' }
@@ -45,6 +88,19 @@ if ($SelfTest) {
         $migrated = Initialize-SupportState ("skins2-config="+$geometry) $assetScale
         if (-not $migrated.Contains($geometry) -or -not $migrated.Contains('"nfs_fx_button" "nfs_fx_button_ready"') -or -not $migrated.Contains('"video_hover_closed"')) { throw 'Support state migration failed.' }
         if ((Initialize-SupportState $migrated $assetScale) -ne $migrated) { throw 'Support state migration must be idempotent.' }
+        if (-not $migrated.Contains(('"video_hover_closed" -31000 -30800 '+(427*$assetScale)+' '+$assetScale+' 1]')) -or $migrated.Contains('hover_volume_state')) { throw 'Legacy geometry changed.' }
+        $legacy = [pscustomobject]@{schemaVersion=1;scale=$assetScale;hover=[pscustomobject]@{width=(426*$assetScale);height=(146*$assetScale);closedWidth=(427*$assetScale);closedHeight=$assetScale}}
+        if ((Initialize-SupportState ("skins2-config="+$geometry) $assetScale $legacy) -ne $migrated) { throw 'Packaged legacy manifest migration changed.' }
+        $manifest = [pscustomobject]@{schemaVersion=2;scale=$assetScale;hover=[pscustomobject]@{width=361;height=64;closedWidth=362;closedHeight=1}}
+        $compact = Initialize-SupportState ("skins2-config="+$geometry+'["hover_volume_state" "hover_volume_expanded" 2 3 72 19 1]') $assetScale $manifest
+        foreach ($expected in @($geometry,'"video_hover_closed" -31000 -30800 362 1 1]','"fullscreen_controls" 0 0 360 64 0]','"nfs_hover_command_layout" -31000 -30900 133 17 1]','"hover_volume_collapsed" -31000 -30700 71 19 1]')) {
+            if (-not $compact.Contains($expected)) { throw 'Compact support state migration failed.' }
+        }
+        if ($compact.Contains('"hover_volume_expanded"') -or (Initialize-SupportState $compact $assetScale $manifest) -ne $compact) { throw 'Compact support reset/idempotence failed.' }
+        $manifest.hover.width = 722
+        $rejected = $false
+        try { $null = Get-EffectsGeometry $assetScale $manifest } catch { $rejected = $true }
+        if (-not $rejected) { throw 'Invalid compact geometry accepted.' }
     }
     Write-Output 'PASS private launcher configuration; no process or user profile accessed.'
     exit 0
@@ -57,9 +113,13 @@ if (-not (Test-Path -LiteralPath (Join-Path $bundle "Need-for-Speed-Underground-
 }
 $skin = Join-Path $bundle "Need-for-Speed-Underground-$($Scale)x.vlt"
 $helper = Join-Path $bundle 'skin-support/SkinEffects.exe'
-foreach ($required in @($skin,$helper)) {
+$osdData = Join-Path $bundle 'skin-support/data'
+$osdScript = Join-Path $osdData 'lua/intf/nfs_volume_osd_v1.lua'
+foreach ($required in @($skin,$helper,$osdScript)) {
     if (-not (Test-Path -LiteralPath $required -PathType Leaf)) { throw "Missing bundle file: $required" }
 }
+$effectsManifest = Read-EffectsManifest $skin
+$effectsGeometry = Get-EffectsGeometry $Scale $effectsManifest
 if (-not $VlcPath) {
     foreach ($candidate in @("$env:ProgramFiles\VideoLAN\VLC\vlc.exe", "${env:ProgramFiles(x86)}\VideoLAN\VLC\vlc.exe")) {
         if (Test-Path -LiteralPath $candidate -PathType Leaf) { $VlcPath = $candidate; break }
@@ -79,13 +139,15 @@ if (Test-Path -LiteralPath $runningFile) {
 }
 $config = Join-Path $profileVlc 'vlcrc'
 $text = if (Test-Path -LiteralPath $config) { [IO.File]::ReadAllText($config) } else { '' }
-$updated = Initialize-SupportState (Set-SkinPath $text $skin) $Scale
+$updated = Initialize-SupportState (Set-SkinPath $text $skin) $Scale $effectsManifest
 [IO.File]::WriteAllText($config, $updated, [Text.UTF8Encoding]::new($false))
 $start = New-Object Diagnostics.ProcessStartInfo
 $start.FileName = $VlcPath
 $start.Arguments = '--no-one-instance --no-one-instance-when-started-from-file --no-media-library --no-metadata-network-access --no-qt-privacy-ask --embedded-video --skinned-video --intf=skins2 --config="' + $config + '"'
+if ($effectsGeometry.Schema -eq 2) { $start.Arguments += ' --qt-fs-opacity=0.85' }
 $start.UseShellExecute = $false
 $start.EnvironmentVariables['APPDATA'] = $profileAppData
+Set-OsdSupport $start $osdData
 $player = [Diagnostics.Process]::Start($start)
 @{pid=$player.Id;startedTicks=$player.StartTime.ToUniversalTime().Ticks} | ConvertTo-Json | Set-Content -LiteralPath $runningFile -Encoding UTF8
 $helperArguments = @('--pid', $player.Id, '--skin', ('"' + $skin + '"'))

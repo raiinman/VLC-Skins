@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "scale": 1,
   "sounds": [
     {
@@ -39,16 +39,18 @@
     }
   ],
   "command": {
-    "width": 67,
+    "width": 133,
     "height": 17,
     "showX": 2,
     "hideX": 35,
-    "y": 2
+    "y": 2,
+    "volumeShowX": 68,
+    "volumeHideX": 101
   },
   "hover": {
-    "width": 426,
-    "height": 146,
-    "closedWidth": 427,
+    "width": 361,
+    "height": 64,
+    "closedWidth": 362,
     "closedHeight": 1
   },
   "video": {
