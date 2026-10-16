@@ -5,4 +5,4 @@ tools/companion_hud_apply.py -text
 dist/skin-support/companion-hud/manifest.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 
 # Keep all audited 1x runtime bytes unchanged on Windows checkouts.
-skins/need-for-speed-underground/vlc-1x/** -text
+skins/need-for-speed-underground/vlc-1x/** -text whitespace=cr-at-eol
