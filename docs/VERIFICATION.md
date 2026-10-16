@@ -12,7 +12,8 @@ writes were denied and those copies remain unchanged. Installation/live rollout
 are separately scoped in fresh-skin-install.json and FAST-LOADING.md. Loading
 proof does not certify all native visual/audio behavior or user acceptance.
 The companion fresh1x restart is complete: matching source/helper/OSD,158-item
-queue/order/selection,paused2sec,volume and geometry retained;720p nativeAVdecode
+queue/order/selection,paused2sec,volume and saved geometry retained (playlist
+adopts the approved440x340 minimum);720p nativeAVdecode
 passed. Exact scoped proof is in fresh-1x-rollout.json; native pointer hover and
 visual OSD appearance remain pending.
 

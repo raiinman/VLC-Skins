@@ -55,7 +55,7 @@ The support bundle's `Start-1x.cmd` and `Start-2x.cmd` also run the original ski
 
 The new hover strip stays 360 × 64 pixels on both skins, using original small transport buttons, a thin seek line and expandable volume. The framed strip uses 85% opacity; native fullscreen retains VLC's fade. Main filenames use larger white scrolling text. The bundled Lua interface requests VLC's native volume overlay when the dial changes. The current packages are installed in the user library; the fresh visible 1x session now uses the matching compact helper. [Compact controls](docs/COMPACT-CONTROLS.md).
 
-Info pages now fade in/out at the original 400/500 ms timings, and Info frame colors fade for 700 ms. Tooltips use larger text; the helper prefers above the pointer. The playlist starts slightly larger with clearer text, keeps its lower-right resize corner, and the bundle's `Playlist-Text-Size.cmd` lets you save a personal text size for the next dedicated launch. The coordinated 1x update preserved all158 queue entries, playback state, volume and pane geometry. [Behavior and limits](docs/INFO-FADES.md).
+Info pages now fade in/out at the original 400/500 ms timings, and Info frame colors fade for 700 ms. Tooltips use larger text; the helper prefers above the pointer. The playlist starts slightly larger with clearer text, keeps its lower-right resize corner, and the bundle's `Playlist-Text-Size.cmd` lets you save a personal text size for the next dedicated launch. The coordinated 1x update preserved all158 queue entries, playback state, volume and saved pane geometry; the playlist adopts its new slightly larger minimum. [Behavior and limits](docs/INFO-FADES.md).
 
 <p align="center"><a href="#readme-index">↑ Back to index</a></p>
 

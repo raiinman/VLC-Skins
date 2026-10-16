@@ -41,7 +41,8 @@
     },
     "other_private_preferences_retained": true,
     "normal_settings_unchanged": true,
-    "volumeOsdChannel": 9
+    "volumeOsdChannel": 9,
+    "actual_geometry_note": "Saved playlist geometry retained in config, but native VLC clamps old420x320 to new440x340 minimum. Playlist position301,74 retained; main/video/YouTube actual geometry unchanged."
   },
   "support": {
     "helperPid": 87540,

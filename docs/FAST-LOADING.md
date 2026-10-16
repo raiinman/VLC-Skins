@@ -54,7 +54,9 @@ is separate from the running player.
 The coordinated companion restart is complete. The running 1x source hash matches
 the tested package, with the matching compact helper and private Lua volume
 observer. All158 queue IDs/order, selected ordinal0, paused2-second position,
-volume243 and main/video/playlist/EQ/Info/YouTube geometry were preserved.
+volume243 and saved pane geometry were preserved. The playlist retains its
+position, while VLC clamps its old420x320 size to the approved440x340 minimum;
+main/video/YouTube actual geometry remains unchanged.
 Native1280x720 audio/video decoding passed; normal settings and other private
 preferences were retained. Source asset bytes and storage methods survived the
 YouTube derivation. Old owned processes closed; no mouse/keyboard input was used.
