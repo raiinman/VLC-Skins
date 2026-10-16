@@ -16,7 +16,9 @@ DOCS = ('PARITY.md', 'VERIFICATION.md', 'SOURCES.md', 'COMPACT-CONTROLS.md',
         'compact-review.json', 'info-fades-review.json', 'info-source-audit.json',
         'info-load-benchmark.json', 'load-benchmark.json', 'effects-hover-review.json',
         'visual-comparison.json', 'STORAGE-OPTIMIZATION.md', 'storage-optimization-review.json',
-        'LOADING-AND-MEMORY.md', 'storage-load-benchmark.json')
+        'LOADING-AND-MEMORY.md', 'storage-load-benchmark.json',
+        'FAST-LOADING.md', 'fast-loading-equivalence.json', 'fast-load-benchmark.json',
+        'fresh-skin-install.json', 'fresh-1x-rollout.json')
 NOTICE = """NEED FOR SPEED UNDERGROUND / VLC — OFFLINE REVIEW BUNDLE
 
 These are the current verified offline packages and matching support files.
@@ -24,15 +26,10 @@ Staging does not launch VLC, execute the helper, install a skin, change a profil
 or reload the running player. Native evidence is scoped by exact package hashes;
 loading checks do not verify visual controls, sound or animation smoothness.
 
-The earlier 8.27s / 29.55s loading observations apply only to the preceding hashes
-recorded in docs/info-load-benchmark.json. They do not certify these new packages.
-Read docs/offline-review.json and the individual reports for exact build scope.
-See docs/LOADING-AND-MEMORY.md and storage-load-benchmark.json for subsequent
-loading/memory measurements, including failed performance gates. Measurements
-apply only when their exact VLT hashes match this bundle.
-This refresh removes large duplicate bitmap buffers and shares static Info
-background caches. Every original pixel and animation setting is preserved;
-allocation estimates do not substitute for new measured startup time or RSS.
+Read docs/FAST-LOADING.md, fast-loading-equivalence.json and fast-load-benchmark.json
+for this candidate's exact pixels/timing/control checks and native loading/memory
+measurements. Earlier failed candidates retain their own scoped reports. Native
+measurements apply only when their exact VLT hashes match this bundle.
 
 For a future MANUAL launch, Start-1x.cmd or Start-2x.cmd starts an isolated review
 instance with optional sound/hover support. Preview-1x.cmd / Preview-2x.cmd are

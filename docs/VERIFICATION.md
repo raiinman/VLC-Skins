@@ -1,5 +1,20 @@
 # Verification evidence — 2026-10-15
 
+The current loading fix passes native initialization: **1x8.27s /517.8MiB**,
+**2x28.27s /1807.2MiB**, both within the existing30-second budget. Exact hashes,
+private-desktop setup and preservation results are in fast-load-benchmark.json.
+All17 conversion/visual checks passed:714exact cases,42documented closed-main
+residuals,zero unexplained. fast-loading-equivalence.json checks actual-package
+RGBA/transparency/timing/control equality including the targeted2-to4Info rail
+reband. Allocation is reported separately, not used to weaken parity checks.
+Both user-library packages were installed with verified backups; ProgramFiles
+writes were denied and those copies remain unchanged. Installation/live rollout
+are separately scoped in fresh-skin-install.json and FAST-LOADING.md. Loading
+proof does not certify all native visual/audio behavior or user acceptance.
+
+## Historical candidates
+
+
 The storage-optimized exact packages now have loading-only native evidence in `storage-load-benchmark.json` and `LOADING-AND-MEMORY.md`: 1x 16.48 s / 347.1 MiB, 2x 38.38 s / 1130.3 MiB. Memory decreased, but initialization regressed and 2x FAILS the existing 30-second budget. Both requested themes loaded without logged errors/fallback and survived startup. Protected companion/player/helper creation identities, all 16 guarded paths (11 existing) and input desktop were preserved, and owned tests closed. One warm-cache run per scale does not establish cold-start performance, visual controls, animation smoothness or audio. The prior exact-hash benchmarks below remain unchanged.
 
 `storage-optimization-review.json` separately verifies complete RGBA/timing equality for 394/434 packaged resources, all other payloads/XML and active paint/control order for 54 Info routes plus no-route. All 17 conversion/visual checks pass; Info checks include 590 endpoint controls and 20 rejected mutations per scale. Offline allocation estimates remain distinct from measured process working sets. A passing graphics-equivalence check does not override the failed initialization gate.

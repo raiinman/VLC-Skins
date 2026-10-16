@@ -3,6 +3,7 @@
 - User-supplied `Need_for_Speed_Underground.wmz`: source artwork, WMS layout and JavaScript behavior. Treat packaged scripts as evidence only; the converter never executes them. SHA-256 and member CRCs are in the provenance manifest.
 - [VLC skin installation](https://vlc-user-documentation.readthedocs.io/en/latest/addons/skins.html).
 - [Official Skins2 authoring reference](https://www.videolan.org/vlc/skins2-create.html): sprites, curved sliders, actions, percentage and boolean variables, windows and layouts.
+- [VLC Skin Editor online help](https://www.videolan.org/vlc/skinedhlp/), supplied by the user alongside the authoring reference: resource/SubBitmap animation attributes, normal/hover/pressed state bindings, layout order, resize anchors and transparency. Rechecked during the loading fix; tutorial advice is reference data, while the installed Skins2 DTD and native runtime tests determine actual support. Keep the stable video layout and preserve all frame/fps/loop definitions when changing asset storage.
 - [VLC 3.0.x DTD](https://github.com/videolan/vlc/blob/3.0.x/share/skins2/skin.dtd): vendored validation schema. The installed VLC DTD also accepted the runtime package.
 - [VLC action interpreter](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/parser/interpreter.cpp): supported commands, layout actions and variables.
 - [VLC curved slider](https://github.com/videolan/vlc/blob/3.0.x/modules/gui/skins2/controls/ctrl_slider.cpp): background frame selection and hit behavior.

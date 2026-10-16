@@ -2,7 +2,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: both offline skins now avoid large duplicate bitmap buffers and share static Info backings without changing their artwork or animations. Info fades, readable tooltips, a roomier playlist, compact hover controls and dial volume OSD are included. Native tests confirm lower memory but slower startup: 1x 16.48 s / 347 MiB; 2x 38.38 s / 1130 MiB. The 2x build fails the 30-second loading budget; visual parity acceptance remains pending.** Earlier native reports cover their recorded older package hashes. See [verification](docs/VERIFICATION.md).
+**Status: both packages pass native loading checks: 8.27 seconds at 1x and 28.27 seconds at 2x. Both user-library skins are updated; the coordinated fresh visible 1x handoff is in progress, with live confirmation pending. Visual parity acceptance remains pending.** Original graphics/animations, Info fades, readable tooltips, a roomier playlist, compact hover controls and dial volume OSD are included. See [loading evidence and limits](docs/FAST-LOADING.md), [installed-file verification](docs/fresh-skin-install.json) and [verification](docs/VERIFICATION.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -10,9 +10,9 @@ This comparison is rendered from the assets and XML, not captured from VLC. [Cor
 
 ## Try it
 
-- [2x skin](https://github.com/raiinman/VLC-Skins/releases/download/storage-optimized-offline-2026-10-15/Need-for-Speed-Underground-2x.vlt): 600 × 596 main player, for modern screens.
-- [1x skin](https://github.com/raiinman/VLC-Skins/releases/download/storage-optimized-offline-2026-10-15/Need-for-Speed-Underground-1x.vlt): original 300 × 298 main player.
-- [Complete matching review bundle](https://github.com/raiinman/VLC-Skins/releases/download/storage-load-review-2026-10-15/NFS-Current-Offline.zip): both skins, helper, OSD script, settings dialog and launchers. This is an offline prerelease with native checks pending.
+- [2x skin](https://github.com/raiinman/VLC-Skins/releases/download/fast-loading-current-2026-10-15/Need-for-Speed-Underground-2x.vlt): 600 × 596 main player, for modern screens.
+- [1x skin](https://github.com/raiinman/VLC-Skins/releases/download/fast-loading-current-2026-10-15/Need-for-Speed-Underground-1x.vlt): original 300 × 298 main player.
+- [Complete matching review bundle](https://github.com/raiinman/VLC-Skins/releases/download/fast-loading-current-2026-10-15/NFS-Current-Offline.zip): both skins, helper, OSD script, settings dialog and launchers. Loading and offline checks pass; native visual/audio review remains separately scoped.
 
 Future verified fixes refresh the complete NFS-Current-Offline bundle and its hash manifest; staging never installs or reloads a running skin.
 
@@ -26,9 +26,9 @@ The fullscreen button and the video pane's plus button fill the monitor **with t
 
 The support bundle's `Start-1x.cmd` and `Start-2x.cmd` also run the original skin sounds and framed video hover controls through a small Windows helper. Borderless fullscreen uses VLC's native hover controller. The launchers preserve existing sessions and use private per-scale settings. A VLT loaded alone needs the helper for sounds and framed hover. [Behavior and test limits](docs/SOUNDS-AND-HOVER.md).
 
-The new hover strip stays 360 × 64 pixels on both skins, using original small transport buttons, a thin seek line and expandable volume. The framed strip uses 85% opacity; native fullscreen retains VLC's fade. Main filenames use larger white scrolling text. The bundled Lua interface requests VLC's native volume overlay when the dial changes. These changes have offline checks only and have not been installed into the running session. [Compact controls](docs/COMPACT-CONTROLS.md).
+The new hover strip stays 360 × 64 pixels on both skins, using original small transport buttons, a thin seek line and expandable volume. The framed strip uses 85% opacity; native fullscreen retains VLC's fade. Main filenames use larger white scrolling text. The bundled Lua interface requests VLC's native volume overlay when the dial changes. The current packages are installed in the user library; confirmation of the fresh visible 1x session is pending. [Compact controls](docs/COMPACT-CONTROLS.md).
 
-Info pages now fade in/out at the original 400/500 ms timings, and Info frame colors fade for 700 ms. Tooltips use larger text; the helper prefers above the pointer. The playlist starts slightly larger with clearer text, keeps its lower-right resize corner, and the bundle's `Playlist-Text-Size.cmd` lets you save a personal text size for the next dedicated launch. Current VLC sessions stay unchanged. [Behavior and limits](docs/INFO-FADES.md).
+Info pages now fade in/out at the original 400/500 ms timings, and Info frame colors fade for 700 ms. Tooltips use larger text; the helper prefers above the pointer. The playlist starts slightly larger with clearer text, keeps its lower-right resize corner, and the bundle's `Playlist-Text-Size.cmd` lets you save a personal text size for the next dedicated launch. The authorized companion handoff must preserve playback and settings; live confirmation remains pending. [Behavior and limits](docs/INFO-FADES.md).
 
 ## Preserved and adapted
 
@@ -40,7 +40,7 @@ The video panel now retains the user-selected size when media dimensions change.
 
 Palette changes preserve the clock mode, shutter state and open panels. The information frame also follows the selected palette. Startup and shutter playback follow the original script timing.
 
-The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. Lossless horizontal animation bands reduced Windows initialization to the times recorded for the earlier native-tested package in [load-benchmark.json](docs/load-benchmark.json), followed by the roughly 8-second original intro. Separate `Preview-1x.cmd` and `Preview-2x.cmd` launchers rewrite their adjacent isolated INI files to select the bundled skin and clear saved layouts before starting the intro. Fresh window positions fit a 1280×720 work area at 1x and 1920×1040 at 2x; existing saved positions can override them. Regular VLC launches may restore another saved layout and skip it; Information → conversion credits → Replay intro runs it again in the blue theme. [Control mapping and review limits](docs/PARITY.md).
+The 2x package uses per-frame Lanczos resampling of the recovered originals. It does not invent higher-resolution detail. Current Windows initialization measured 8.27 seconds at 1x and 28.27 seconds at 2x, separately from the roughly 8-second original intro; see [exact package measurements](docs/fast-load-benchmark.json). Lossless bands preserve every frame; only the 14 tall 2x Info rails now use four bands instead of two. Separate `Preview-1x.cmd` and `Preview-2x.cmd` launchers rewrite their adjacent isolated INI files to select the bundled skin and clear saved layouts before starting the intro. Fresh window positions fit a 1280×720 work area at 1x and 1920×1040 at 2x; existing saved positions can override them. Regular VLC launches may restore another saved layout and skip it; Information → conversion credits → Replay intro runs it again in the blue theme. [Control mapping and review limits](docs/PARITY.md).
 
 ## Build and verify
 
@@ -76,7 +76,7 @@ python tools/benchmark_load.py --output ../work/load-benchmark.json
 
 The optional volume-OSD mock test requires test-only `lupa==2.8` and runs with `python tools/check_osd.py` (or `--lua-python-path` for a private dependency directory). Python/Lupa are not required by the Windows review bundle.
 
-The preceding Info/playlist packages loaded in 8.27 seconds at 1x and 29.55 seconds at 2x in one Windows run per scale; see [exact hashes and preservation checks](docs/info-load-benchmark.json). The 2x result is close to the 30-second budget and used about 1.76 GiB working memory. These are warm-cache measurements under concurrent workload, not cold-start guarantees. The benchmark copies the installed runtime into a private portable directory, uses silent dummy audio and non-input desktops, and never launches the effects helper. Add repeatable `--protect-pid PID` and `--guard-file PATH` options for live-session preservation checks; normal VLC config files are guarded automatically. The subsequent exact-hash native test found memory reductions but loading regressions; see [loading/memory results](docs/LOADING-AND-MEMORY.md). The 2x result fails the existing 30-second budget; see [allocation and equivalence evidence](docs/STORAGE-OPTIMIZATION.md). Native visual controls and animation smoothness require separate review.
+The current exact-hash packages loaded in 8.27 seconds at 1x and 28.27 seconds at 2x, both within 30 seconds. Working sets after the intro were 517.8/1807.2 MiB; private memory was 490.4/1788.1 MiB. These are single warm-cache runs, not cold-start guarantees. The benchmark uses a copied portable runtime, silent audio and private non-input desktops without the effects helper; three protected processes, 16 guarded paths (11 existing files) and the input desktop were preserved. See [exact hashes and observations](docs/fast-load-benchmark.json). The earlier memory-first loading regressions remain [historical results](docs/LOADING-AND-MEMORY.md). All 17 conversion/visual checks pass, including 714 exact layer cases and 42 explained residuals with zero unexplained cases. [Exact frame/pixel equivalence and remaining limits](docs/FAST-LOADING.md) are separate from live visual/audio confirmation.
 
 To repeat recovery from the supplied package:
 

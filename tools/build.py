@@ -504,7 +504,11 @@ class Builder:
         path=dist/f'Need-for-Speed-Underground-{self.scale}x.vlt'
         with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as z:
             files={'theme.xml','skin.dtd','info-fades.json'}|support_files|{n.get('file') for n in self.theme if n.get('file')}
-            for filename in sorted(files):z.write(self.out/filename,filename)
+            for filename in sorted(files):
+                # Runtime PNGs use stored ZIP entries: prioritize initialization
+                # over disk size, without changing pixels or image decoders.
+                method=zipfile.ZIP_STORED if filename.endswith('.png') else zipfile.ZIP_DEFLATED
+                z.write(self.out/filename,filename,compress_type=method)
         return path
 
     def band_animations(self):
@@ -519,7 +523,10 @@ class Builder:
             height=im.height//frames;bands=[]
             # Short shutter strips need only two bands. Excess bands add
             # independent timers and synchronous Win32 paints per frame.
-            count=2 if frames<=15 else 16
+            # Sparse 2x Info rails otherwise build expensive complex Win32
+            # regions. Four horizontal bands retain every frame and position;
+            # main/shutter/page timers keep their existing band policy.
+            count=4 if self.scale==2 and node.get('id').startswith('info_frame_') and frames==15 else 2 if frames<=15 else 16
             for index in range(count):
                 y0=height*index//count;y1=height*(index+1)//count
                 strip=Image.new('RGBA',(im.width,(y1-y0)*frames))
@@ -547,13 +554,13 @@ class Builder:
         (self.out/'animation-bands.json').write_text(json.dumps(manifest,indent=2)+'\n')
 
     def pack_atlases(self):
-        """Batch small sprites; large/animated art must not gain a full RGBA copy."""
+        """Batch bounded art to minimize VLC's per-file image-loader overhead."""
         entries=[]
         for node in list(self.theme.findall('Bitmap')):
             im=Image.open(self.out/node.get('file')).convert('RGBA')
-            # VLC retains the atlas AND a separately allocated SubBitmap.
-            # Large strips outweigh decoder-call savings; keep their exact PNG.
-            if im.width*im.height <= 65536:
+            # Small-only atlases regressed startup despite lower memory.
+            # Preserve the native mask bounds while batching all eligible art.
+            if im.width<=2048 and im.height<=4096:
                 entries.append((node,im))
         entries.sort(key=lambda item:item[1].height,reverse=True)
         pages=[];page=[];x=y=rowh=usedw=0
@@ -570,7 +577,8 @@ class Builder:
                 attrs={k:v for k,v in node.attrib.items() if k not in ('file','alphacolor')}
                 attrs.update(x=str(x),y=str(y),width=str(im.width),height=str(im.height))
                 E.SubElement(container,'SubBitmap',**attrs);self.theme.remove(node)
-            atlas.save(self.out/container.get('file'));self.theme.append(container)
+            atlas.save(self.out/container.get('file'))
+            self.theme.append(container)
 
 
 def validate(out):

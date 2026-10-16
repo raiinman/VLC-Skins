@@ -1,0 +1,34 @@
+{
+  "scope": "Verified library files, distinct from companion live rollout.",
+  "backups": "Local work/fresh-skin-install-backups snapshot; private path manifest retained there.",
+  "results": [
+    {
+      "library": "roaming",
+      "scale": 1,
+      "before_sha256": "f39765f5a97a30a631faeb3c9fa7ef87c93a5196d93c21a8e38521a6392c826b",
+      "installed_sha256": "f628659a9b325b7fa754c4148535ecac0d51e8750d2ed9bfb0893a59ecd20c63",
+      "backup_verified": true,
+      "installed": true
+    },
+    {
+      "library": "roaming",
+      "scale": 2,
+      "before_sha256": "56f77cce425a321386c34a9ef79c99ae9c009eb41b0b931fcd2990dd3bb3ac25",
+      "installed_sha256": "a1bfe1a08a00a28eb66ef30a38a38db1d988f34a918dc2dfc0d5eda76abc1c09",
+      "backup_verified": true,
+      "installed": true
+    },
+    {
+      "library": "installed",
+      "scale": 1,
+      "installed": false,
+      "error": "Permission denied; user library remains available"
+    },
+    {
+      "library": "installed",
+      "scale": 2,
+      "installed": false,
+      "error": "Permission denied; user library remains available"
+    }
+  ]
+}

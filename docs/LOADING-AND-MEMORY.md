@@ -1,5 +1,8 @@
 # Updated skin loading and memory test
 
+Historical memory-first candidate. The subsequent loading fix is documented in
+[FAST-LOADING.md](FAST-LOADING.md); this report retains its original tested hashes.
+
 The storage optimization reduced observed memory use, but loading became slower.
 The updated 2x package fails the existing 30-second initialization budget.
 This is a measured performance regression, despite passing artwork and animation

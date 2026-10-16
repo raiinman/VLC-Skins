@@ -8,402 +8,416 @@
   <Font id="metadata" file="assets/FreeSans.ttf" size="12"/>
   <Font id="tooltip" file="assets/FreeSans.ttf" size="16"/>
   <Font id="playlist" file="assets/FreeSans.ttf" size="12"/>
-  <Bitmap id="main_back_1_png" file="assets/main_back_1_png.png" alphacolor="#FF00FF"/>
-  <Bitmap id="volume_forward" file="assets/volume_forward.png" alphacolor="#FF00FF"/>
-  <Bitmap id="seek_forward" file="assets/seek_forward.png" alphacolor="#FF00FF"/>
-  <Bitmap id="shutter_open_light" file="assets/shutter_open_light.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="shutter_open" file="assets/shutter_open.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="shutter_close_light" file="assets/shutter_close_light.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="shutter_close" file="assets/shutter_close.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="shutter_endpoint_1" file="assets/shutter_endpoint_1.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="main_back_2_png" file="assets/main_back_2_png.png" alphacolor="#FF00FF"/>
-  <Bitmap id="shutter_endpoint_2" file="assets/shutter_endpoint_2.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="main_back_3_png" file="assets/main_back_3_png.png" alphacolor="#FF00FF"/>
-  <Bitmap id="shutter_endpoint_3" file="assets/shutter_endpoint_3.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="main_back_4_png" file="assets/main_back_4_png.png" alphacolor="#FF00FF"/>
-  <Bitmap id="shutter_endpoint_4" file="assets/shutter_endpoint_4.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="main_back_5_png" file="assets/main_back_5_png.png" alphacolor="#FF00FF"/>
-  <Bitmap id="shutter_endpoint_5" file="assets/shutter_endpoint_5.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="main_back_6_png" file="assets/main_back_6_png.png" alphacolor="#FF00FF"/>
-  <Bitmap id="shutter_endpoint_6" file="assets/shutter_endpoint_6.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="main_back_7_png" file="assets/main_back_7_png.png" alphacolor="#FF00FF"/>
-  <Bitmap id="shutter_endpoint_7" file="assets/shutter_endpoint_7.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_0" file="assets/intro_light_sequence_band_0.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_1" file="assets/intro_light_sequence_band_1.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_2" file="assets/intro_light_sequence_band_2.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_3" file="assets/intro_light_sequence_band_3.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_4" file="assets/intro_light_sequence_band_4.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_5" file="assets/intro_light_sequence_band_5.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_6" file="assets/intro_light_sequence_band_6.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_7" file="assets/intro_light_sequence_band_7.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_8" file="assets/intro_light_sequence_band_8.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_9" file="assets/intro_light_sequence_band_9.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_10" file="assets/intro_light_sequence_band_10.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_11" file="assets/intro_light_sequence_band_11.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_12" file="assets/intro_light_sequence_band_12.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_13" file="assets/intro_light_sequence_band_13.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_14" file="assets/intro_light_sequence_band_14.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_light_sequence_band_15" file="assets/intro_light_sequence_band_15.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_0" file="assets/intro_sequence_band_0.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_1" file="assets/intro_sequence_band_1.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_2" file="assets/intro_sequence_band_2.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_3" file="assets/intro_sequence_band_3.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_4" file="assets/intro_sequence_band_4.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_5" file="assets/intro_sequence_band_5.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_6" file="assets/intro_sequence_band_6.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_7" file="assets/intro_sequence_band_7.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_8" file="assets/intro_sequence_band_8.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_9" file="assets/intro_sequence_band_9.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_10" file="assets/intro_sequence_band_10.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_11" file="assets/intro_sequence_band_11.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_12" file="assets/intro_sequence_band_12.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_13" file="assets/intro_sequence_band_13.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_14" file="assets/intro_sequence_band_14.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="intro_sequence_band_15" file="assets/intro_sequence_band_15.png" alphacolor="#FF00FF" nbframes="81" fps="10" loop="1"/>
-  <Bitmap id="c_back_png" file="assets/c_back_png.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_back_jpg" file="assets/c_back_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_1_1_jpg" file="assets/c_sub_1_1_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_2_1_jpg" file="assets/c_sub_2_1_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_2_2_jpg" file="assets/c_sub_2_2_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_2_3_jpg" file="assets/c_sub_2_3_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_2_4_jpg" file="assets/c_sub_2_4_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_3_1_jpg" file="assets/c_sub_3_1_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_3_2_jpg" file="assets/c_sub_3_2_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_3_3_jpg" file="assets/c_sub_3_3_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_3_4_jpg" file="assets/c_sub_3_4_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_3_5_jpg" file="assets/c_sub_3_5_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_3_6_jpg" file="assets/c_sub_3_6_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_3_7_jpg" file="assets/c_sub_3_7_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_3_8_jpg" file="assets/c_sub_3_8_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_3_9_jpg" file="assets/c_sub_3_9_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="c_sub_4_1_jpg" file="assets/c_sub_4_1_jpg.png" alphacolor="#FF00FF"/>
-  <Bitmap id="info_frame_1_2" file="assets/info_frame_1_2.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_1_3" file="assets/info_frame_1_3.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_1_4" file="assets/info_frame_1_4.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_1_5" file="assets/info_frame_1_5.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_1_6" file="assets/info_frame_1_6.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_1_7" file="assets/info_frame_1_7.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_2_2" file="assets/info_frame_2_2.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_2_3" file="assets/info_frame_2_3.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_2_4" file="assets/info_frame_2_4.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_2_5" file="assets/info_frame_2_5.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_2_6" file="assets/info_frame_2_6.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_2_7" file="assets/info_frame_2_7.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_3_2" file="assets/info_frame_3_2.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_3_3" file="assets/info_frame_3_3.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_3_4" file="assets/info_frame_3_4.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_3_5" file="assets/info_frame_3_5.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_3_6" file="assets/info_frame_3_6.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_3_7" file="assets/info_frame_3_7.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_4_2" file="assets/info_frame_4_2.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_4_3" file="assets/info_frame_4_3.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_4_4" file="assets/info_frame_4_4.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_4_5" file="assets/info_frame_4_5.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_4_6" file="assets/info_frame_4_6.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_4_7" file="assets/info_frame_4_7.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_5_2" file="assets/info_frame_5_2.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_5_3" file="assets/info_frame_5_3.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_5_4" file="assets/info_frame_5_4.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_5_5" file="assets/info_frame_5_5.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_5_6" file="assets/info_frame_5_6.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_5_7" file="assets/info_frame_5_7.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_6_2" file="assets/info_frame_6_2.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_6_3" file="assets/info_frame_6_3.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_6_4" file="assets/info_frame_6_4.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_6_5" file="assets/info_frame_6_5.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_6_6" file="assets/info_frame_6_6.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_6_7" file="assets/info_frame_6_7.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_7_2" file="assets/info_frame_7_2.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_7_3" file="assets/info_frame_7_3.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_7_4" file="assets/info_frame_7_4.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_7_5" file="assets/info_frame_7_5.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_7_6" file="assets/info_frame_7_6.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_frame_7_7" file="assets/info_frame_7_7.png" alphacolor="#FF00FF" nbframes="15" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_1_1" file="assets/info_page_in_c_sub_1_1.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_2_1" file="assets/info_page_in_c_sub_2_1.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_2_2" file="assets/info_page_in_c_sub_2_2.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_2_3" file="assets/info_page_in_c_sub_2_3.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_2_4" file="assets/info_page_in_c_sub_2_4.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_3_1" file="assets/info_page_in_c_sub_3_1.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_3_2" file="assets/info_page_in_c_sub_3_2.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_3_3" file="assets/info_page_in_c_sub_3_3.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_3_4" file="assets/info_page_in_c_sub_3_4.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_3_5" file="assets/info_page_in_c_sub_3_5.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_3_6" file="assets/info_page_in_c_sub_3_6.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_3_7" file="assets/info_page_in_c_sub_3_7.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_3_8" file="assets/info_page_in_c_sub_3_8.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_3_9" file="assets/info_page_in_c_sub_3_9.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_in_c_sub_4_1" file="assets/info_page_in_c_sub_4_1.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_1_1" file="assets/info_page_out_c_sub_1_1.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_2_1" file="assets/info_page_out_c_sub_2_1.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_2_2" file="assets/info_page_out_c_sub_2_2.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_2_3" file="assets/info_page_out_c_sub_2_3.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_2_4" file="assets/info_page_out_c_sub_2_4.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_3_1" file="assets/info_page_out_c_sub_3_1.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_3_2" file="assets/info_page_out_c_sub_3_2.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_3_3" file="assets/info_page_out_c_sub_3_3.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_3_4" file="assets/info_page_out_c_sub_3_4.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_3_5" file="assets/info_page_out_c_sub_3_5.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_3_6" file="assets/info_page_out_c_sub_3_6.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_3_7" file="assets/info_page_out_c_sub_3_7.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_3_8" file="assets/info_page_out_c_sub_3_8.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_3_9" file="assets/info_page_out_c_sub_3_9.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_page_out_c_sub_4_1" file="assets/info_page_out_c_sub_4_1.png" alphacolor="#FF00FF" nbframes="11" fps="20" loop="1"/>
-  <Bitmap id="info_link_in" file="assets/info_link_in.png" alphacolor="#FF00FF" nbframes="9" fps="20" loop="1"/>
   <Font id="compactfont" file="assets/FreeSans.ttf" size="11"/>
   <Bitmap id="atlas_0" file="assets/atlas_0.png" alphacolor="#FF00FF">
-    <SubBitmap id="info_frame_1_0" nbframes="15" fps="20" loop="1" x="0" y="0" width="72" height="555"/>
-    <SubBitmap id="info_frame_2_0" nbframes="15" fps="20" loop="1" x="72" y="0" width="72" height="555"/>
-    <SubBitmap id="info_frame_3_0" nbframes="15" fps="20" loop="1" x="144" y="0" width="72" height="555"/>
-    <SubBitmap id="info_frame_4_0" nbframes="15" fps="20" loop="1" x="216" y="0" width="72" height="555"/>
-    <SubBitmap id="info_frame_5_0" nbframes="15" fps="20" loop="1" x="288" y="0" width="72" height="555"/>
-    <SubBitmap id="info_frame_6_0" nbframes="15" fps="20" loop="1" x="360" y="0" width="72" height="555"/>
-    <SubBitmap id="info_frame_7_0" nbframes="15" fps="20" loop="1" x="432" y="0" width="72" height="555"/>
-    <SubBitmap id="info_frame_1_1" nbframes="15" fps="20" loop="1" x="504" y="0" width="72" height="465"/>
-    <SubBitmap id="info_frame_2_1" nbframes="15" fps="20" loop="1" x="576" y="0" width="72" height="465"/>
-    <SubBitmap id="info_frame_3_1" nbframes="15" fps="20" loop="1" x="648" y="0" width="72" height="465"/>
-    <SubBitmap id="info_frame_4_1" nbframes="15" fps="20" loop="1" x="720" y="0" width="72" height="465"/>
-    <SubBitmap id="info_frame_5_1" nbframes="15" fps="20" loop="1" x="792" y="0" width="72" height="465"/>
-    <SubBitmap id="info_frame_6_1" nbframes="15" fps="20" loop="1" x="864" y="0" width="72" height="465"/>
-    <SubBitmap id="info_frame_7_1" nbframes="15" fps="20" loop="1" x="936" y="0" width="72" height="465"/>
-    <SubBitmap id="shutter_light_png" x="1008" y="0" width="258" height="231"/>
-    <SubBitmap id="shutter_f01_png" x="1266" y="0" width="193" height="193"/>
-    <SubBitmap id="eq_vlc_back" x="1459" y="0" width="287" height="136"/>
-    <SubBitmap id="vol_seek_mat_png" x="1746" y="0" width="85" height="93"/>
-    <SubBitmap id="info_menu_hit_2" nbframes="2" fps="2" loop="1" x="1831" y="0" width="201" height="74"/>
-    <SubBitmap id="info_menu_hit_1" nbframes="2" fps="2" loop="1" x="0" y="555" width="201" height="72"/>
-    <SubBitmap id="info_menu_hit_3" nbframes="2" fps="2" loop="1" x="201" y="555" width="201" height="72"/>
-    <SubBitmap id="info_menu_hit_0" nbframes="2" fps="2" loop="1" x="402" y="555" width="202" height="68"/>
-    <SubBitmap id="compact_carbon" x="604" y="555" width="360" height="64"/>
-    <SubBitmap id="f_top_s_1_png" x="964" y="555" width="9" height="61"/>
-    <SubBitmap id="f_top_left_1_png" x="973" y="555" width="177" height="61"/>
-    <SubBitmap id="pl_top_right_1_png" x="1150" y="555" width="164" height="61"/>
-    <SubBitmap id="f_top_s_2_png" x="1314" y="555" width="9" height="61"/>
-    <SubBitmap id="f_top_left_2_png" x="1323" y="555" width="177" height="61"/>
-    <SubBitmap id="pl_top_right_2_png" x="1500" y="555" width="164" height="61"/>
-    <SubBitmap id="f_top_s_3_png" x="1664" y="555" width="9" height="61"/>
-    <SubBitmap id="f_top_left_3_png" x="1673" y="555" width="177" height="61"/>
-    <SubBitmap id="pl_top_right_3_png" x="1850" y="555" width="164" height="61"/>
-    <SubBitmap id="f_top_s_4_png" x="2014" y="555" width="9" height="61"/>
-    <SubBitmap id="f_top_left_4_png" x="0" y="627" width="177" height="61"/>
-    <SubBitmap id="pl_top_right_4_png" x="177" y="627" width="164" height="61"/>
-    <SubBitmap id="f_top_s_5_png" x="341" y="627" width="9" height="61"/>
-    <SubBitmap id="f_top_left_5_png" x="350" y="627" width="177" height="61"/>
-    <SubBitmap id="pl_top_right_5_png" x="527" y="627" width="164" height="61"/>
-    <SubBitmap id="f_top_s_6_png" x="691" y="627" width="9" height="61"/>
-    <SubBitmap id="f_top_left_6_png" x="700" y="627" width="177" height="61"/>
-    <SubBitmap id="pl_top_right_6_png" x="877" y="627" width="164" height="61"/>
-    <SubBitmap id="f_top_s_7_png" x="1041" y="627" width="9" height="61"/>
-    <SubBitmap id="f_top_left_7_png" x="1050" y="627" width="177" height="61"/>
-    <SubBitmap id="pl_top_right_7_png" x="1227" y="627" width="164" height="61"/>
-    <SubBitmap id="eq_top_right_1_png" x="1391" y="627" width="164" height="61"/>
-    <SubBitmap id="eq_top_right_2_png" x="1555" y="627" width="164" height="61"/>
-    <SubBitmap id="eq_top_right_3_png" x="1719" y="627" width="164" height="61"/>
-    <SubBitmap id="eq_top_right_4_png" x="1883" y="627" width="164" height="61"/>
-    <SubBitmap id="eq_top_right_5_png" x="0" y="688" width="164" height="61"/>
-    <SubBitmap id="eq_top_right_6_png" x="164" y="688" width="164" height="61"/>
-    <SubBitmap id="eq_top_right_7_png" x="328" y="688" width="164" height="61"/>
-    <SubBitmap id="f_top_right_1_png" x="492" y="688" width="164" height="61"/>
-    <SubBitmap id="f_top_right_2_png" x="656" y="688" width="164" height="61"/>
-    <SubBitmap id="f_top_right_3_png" x="820" y="688" width="164" height="61"/>
-    <SubBitmap id="f_top_right_4_png" x="984" y="688" width="164" height="61"/>
-    <SubBitmap id="f_top_right_5_png" x="1148" y="688" width="164" height="61"/>
-    <SubBitmap id="f_top_right_6_png" x="1312" y="688" width="164" height="61"/>
-    <SubBitmap id="f_top_right_7_png" x="1476" y="688" width="164" height="61"/>
-    <SubBitmap id="f_bot_s_1_png" x="1640" y="688" width="9" height="60"/>
-    <SubBitmap id="f_bot_s_2_png" x="1649" y="688" width="9" height="60"/>
-    <SubBitmap id="f_bot_s_3_png" x="1658" y="688" width="9" height="60"/>
-    <SubBitmap id="f_bot_s_4_png" x="1667" y="688" width="9" height="60"/>
-    <SubBitmap id="f_bot_s_5_png" x="1676" y="688" width="9" height="60"/>
-    <SubBitmap id="f_bot_s_6_png" x="1685" y="688" width="9" height="60"/>
-    <SubBitmap id="f_bot_s_7_png" x="1694" y="688" width="9" height="60"/>
-    <SubBitmap id="f_bot_left_1_png" x="1703" y="688" width="177" height="57"/>
-    <SubBitmap id="f_bot_right_1_png" x="1880" y="688" width="164" height="57"/>
-    <SubBitmap id="f_bot_left_2_png" x="0" y="749" width="177" height="57"/>
-    <SubBitmap id="f_bot_right_2_png" x="177" y="749" width="164" height="57"/>
-    <SubBitmap id="f_bot_left_3_png" x="341" y="749" width="177" height="57"/>
-    <SubBitmap id="f_bot_right_3_png" x="518" y="749" width="164" height="57"/>
-    <SubBitmap id="f_bot_left_4_png" x="682" y="749" width="177" height="57"/>
-    <SubBitmap id="f_bot_right_4_png" x="859" y="749" width="164" height="57"/>
-    <SubBitmap id="f_bot_left_5_png" x="1023" y="749" width="177" height="57"/>
-    <SubBitmap id="f_bot_right_5_png" x="1200" y="749" width="164" height="57"/>
-    <SubBitmap id="f_bot_left_6_png" x="1364" y="749" width="177" height="57"/>
-    <SubBitmap id="f_bot_right_6_png" x="1541" y="749" width="164" height="57"/>
-    <SubBitmap id="f_bot_left_7_png" x="1705" y="749" width="177" height="57"/>
-    <SubBitmap id="f_bot_right_7_png" x="1882" y="749" width="164" height="57"/>
-    <SubBitmap id="info_bot_right_1_png" x="0" y="806" width="164" height="57"/>
-    <SubBitmap id="info_bot_right_2_png" x="164" y="806" width="164" height="57"/>
-    <SubBitmap id="info_bot_right_3_png" x="328" y="806" width="164" height="57"/>
-    <SubBitmap id="info_bot_right_4_png" x="492" y="806" width="164" height="57"/>
-    <SubBitmap id="info_bot_right_5_png" x="656" y="806" width="164" height="57"/>
-    <SubBitmap id="info_bot_right_6_png" x="820" y="806" width="164" height="57"/>
-    <SubBitmap id="info_bot_right_7_png" x="984" y="806" width="164" height="57"/>
-    <SubBitmap id="c_link_no_jpg" x="1148" y="806" width="163" height="49"/>
-    <SubBitmap id="shutter_transition_blocker" nbframes="2" fps="2" loop="1" x="1311" y="806" width="19" height="38"/>
-    <SubBitmap id="menu_2_no" x="1330" y="806" width="201" height="37"/>
-    <SubBitmap id="menu_2_hov" x="1531" y="806" width="201" height="37"/>
-    <SubBitmap id="menu_2_do" x="1732" y="806" width="201" height="37"/>
-    <SubBitmap id="menu_1_no" x="0" y="863" width="201" height="36"/>
-    <SubBitmap id="menu_1_hov" x="201" y="863" width="201" height="36"/>
-    <SubBitmap id="menu_1_do" x="402" y="863" width="201" height="36"/>
-    <SubBitmap id="menu_3_no" x="603" y="863" width="201" height="36"/>
-    <SubBitmap id="menu_3_hov" x="804" y="863" width="201" height="36"/>
-    <SubBitmap id="menu_3_do" x="1005" y="863" width="201" height="36"/>
-    <SubBitmap id="menu_0_no" x="1206" y="863" width="202" height="34"/>
-    <SubBitmap id="menu_0_hov" x="1408" y="863" width="202" height="34"/>
-    <SubBitmap id="menu_0_do" x="1610" y="863" width="202" height="34"/>
-    <SubBitmap id="m_logo_no_png" x="1812" y="863" width="182" height="31"/>
-    <SubBitmap id="m_logo_hov_png" x="0" y="899" width="182" height="31"/>
-    <SubBitmap id="m_full_no_png" x="182" y="899" width="30" height="30"/>
-    <SubBitmap id="m_full_hov_png" x="212" y="899" width="30" height="30"/>
-    <SubBitmap id="m_full_do_png" x="242" y="899" width="30" height="30"/>
-    <SubBitmap id="m_info_no_png" x="272" y="899" width="30" height="30"/>
-    <SubBitmap id="m_info_hov_png" x="302" y="899" width="30" height="30"/>
-    <SubBitmap id="m_info_do_png" x="332" y="899" width="30" height="30"/>
-    <SubBitmap id="m_open_no_png" x="362" y="899" width="29" height="29"/>
-    <SubBitmap id="m_open_hov_png" x="391" y="899" width="29" height="29"/>
-    <SubBitmap id="m_open_do_png" x="420" y="899" width="29" height="29"/>
-    <SubBitmap id="m_vis_no_png" x="449" y="899" width="29" height="29"/>
-    <SubBitmap id="m_vis_hov_png" x="478" y="899" width="29" height="29"/>
-    <SubBitmap id="m_vis_do_png" x="507" y="899" width="29" height="29"/>
-    <SubBitmap id="m_pl_no_png" x="536" y="899" width="29" height="29"/>
-    <SubBitmap id="m_pl_hov_png" x="565" y="899" width="29" height="29"/>
-    <SubBitmap id="m_pl_do_png" x="594" y="899" width="29" height="29"/>
-    <SubBitmap id="m_eq_no_png" x="623" y="899" width="29" height="29"/>
-    <SubBitmap id="m_eq_hov_png" x="652" y="899" width="29" height="29"/>
-    <SubBitmap id="m_eq_do_png" x="681" y="899" width="29" height="29"/>
-    <SubBitmap id="m_next_no_png" x="710" y="899" width="29" height="29"/>
-    <SubBitmap id="m_next_hov_png" x="739" y="899" width="29" height="29"/>
-    <SubBitmap id="m_next_do_png" x="768" y="899" width="29" height="29"/>
-    <SubBitmap id="m_stop_no_png" x="797" y="899" width="29" height="29"/>
-    <SubBitmap id="m_stop_hov_png" x="826" y="899" width="29" height="29"/>
-    <SubBitmap id="m_stop_do_png" x="855" y="899" width="29" height="29"/>
-    <SubBitmap id="m_play_no_png" x="884" y="899" width="29" height="29"/>
-    <SubBitmap id="m_play_hov_png" x="913" y="899" width="29" height="29"/>
-    <SubBitmap id="m_play_do_png" x="942" y="899" width="29" height="29"/>
-    <SubBitmap id="m_pause_no_png" x="971" y="899" width="29" height="29"/>
-    <SubBitmap id="m_pause_hov_png" x="1000" y="899" width="29" height="29"/>
-    <SubBitmap id="m_pause_do_png" x="1029" y="899" width="29" height="29"/>
-    <SubBitmap id="m_prev_no_png" x="1058" y="899" width="29" height="29"/>
-    <SubBitmap id="m_prev_hov_png" x="1087" y="899" width="29" height="29"/>
-    <SubBitmap id="m_prev_do_png" x="1116" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_prev_no_png" x="1145" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_prev_hov_png" x="1174" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_prev_do_png" x="1203" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_play_no_png" x="1232" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_play_hov_png" x="1261" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_play_do_png" x="1290" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_pause_no_png" x="1319" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_pause_hov_png" x="1348" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_pause_do_png" x="1377" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_stop_no_png" x="1406" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_stop_hov_png" x="1435" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_stop_do_png" x="1464" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_next_no_png" x="1493" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_next_hov_png" x="1522" y="899" width="29" height="29"/>
-    <SubBitmap id="compact_m_next_do_png" x="1551" y="899" width="29" height="29"/>
-    <SubBitmap id="c_menu_return_no_png" x="1580" y="899" width="62" height="28"/>
-    <SubBitmap id="c_menu_return_hov_png" x="1642" y="899" width="62" height="28"/>
-    <SubBitmap id="c_menu_return_do_png" x="1704" y="899" width="62" height="28"/>
-    <SubBitmap id="c_nav_prev_dis_png" x="1766" y="899" width="23" height="28"/>
-    <SubBitmap id="c_nav_next_no_png" x="1789" y="899" width="23" height="28"/>
-    <SubBitmap id="c_nav_next_hov_png" x="1812" y="899" width="23" height="28"/>
-    <SubBitmap id="c_nav_next_do_png" x="1835" y="899" width="23" height="28"/>
-    <SubBitmap id="c_nav_prev_no_png" x="1858" y="899" width="23" height="28"/>
-    <SubBitmap id="c_nav_prev_hov_png" x="1881" y="899" width="23" height="28"/>
-    <SubBitmap id="c_nav_prev_do_png" x="1904" y="899" width="23" height="28"/>
-    <SubBitmap id="c_nav_next_dis_png" x="1927" y="899" width="23" height="28"/>
-    <SubBitmap id="resize_hit" x="1950" y="899" width="23" height="24"/>
-    <SubBitmap id="resize_hit_2" x="1973" y="899" width="23" height="24"/>
-    <SubBitmap id="resize_hit_3" x="1996" y="899" width="23" height="24"/>
-    <SubBitmap id="resize_hit_4" x="2019" y="899" width="23" height="24"/>
-    <SubBitmap id="resize_hit_5" x="0" y="930" width="23" height="24"/>
-    <SubBitmap id="resize_hit_6" x="23" y="930" width="23" height="24"/>
-    <SubBitmap id="resize_hit_7" x="46" y="930" width="23" height="24"/>
-    <SubBitmap id="compact_volume_no_png" x="69" y="930" width="23" height="23"/>
-    <SubBitmap id="compact_volume_hov_png" x="92" y="930" width="23" height="23"/>
-    <SubBitmap id="compact_volume_do_png" x="115" y="930" width="23" height="23"/>
-    <SubBitmap id="m_min_no_png" x="138" y="930" width="19" height="19"/>
-    <SubBitmap id="m_min_hov_png" x="157" y="930" width="19" height="19"/>
-    <SubBitmap id="m_min_do_png" x="176" y="930" width="19" height="19"/>
-    <SubBitmap id="m_close_no_png" x="195" y="930" width="19" height="19"/>
-    <SubBitmap id="m_close_hov_png" x="214" y="930" width="19" height="19"/>
-    <SubBitmap id="m_close_do_png" x="233" y="930" width="19" height="19"/>
-    <SubBitmap id="m_color_no_png" x="252" y="930" width="19" height="19"/>
-    <SubBitmap id="m_color_hov_png" x="271" y="930" width="19" height="19"/>
-    <SubBitmap id="m_color_do_png" x="290" y="930" width="19" height="19"/>
-    <SubBitmap id="m_shutter_no_png" x="309" y="930" width="19" height="19"/>
-    <SubBitmap id="m_shutter_hov_png" x="328" y="930" width="19" height="19"/>
-    <SubBitmap id="m_shutter_do_png" x="347" y="930" width="19" height="19"/>
-    <SubBitmap id="shutter_locked_no_png" x="366" y="930" width="19" height="19"/>
-    <SubBitmap id="shutter_locked_hov_png" x="385" y="930" width="19" height="19"/>
-    <SubBitmap id="shutter_locked_do_png" x="404" y="930" width="19" height="19"/>
-    <SubBitmap id="shutter_locked_closed_no_png" x="423" y="930" width="19" height="19"/>
-    <SubBitmap id="shutter_locked_closed_hov_png" x="442" y="930" width="19" height="19"/>
-    <SubBitmap id="shutter_locked_closed_do_png" x="461" y="930" width="19" height="19"/>
-    <SubBitmap id="pl_shuffle_no_png" x="480" y="930" width="19" height="19"/>
-    <SubBitmap id="pl_shuffle_hov_png" x="499" y="930" width="19" height="19"/>
-    <SubBitmap id="pl_shuffle_do_png" x="518" y="930" width="19" height="19"/>
-    <SubBitmap id="pl_repeat_no_png" x="537" y="930" width="19" height="19"/>
-    <SubBitmap id="pl_repeat_hov_png" x="556" y="930" width="19" height="19"/>
-    <SubBitmap id="pl_repeat_do_png" x="575" y="930" width="19" height="19"/>
-    <SubBitmap id="video_m_close_backing_1" x="594" y="930" width="19" height="19"/>
-    <SubBitmap id="video_m_close_backing_2" x="613" y="930" width="19" height="19"/>
-    <SubBitmap id="video_m_close_backing_3" x="632" y="930" width="19" height="19"/>
-    <SubBitmap id="video_m_close_backing_4" x="651" y="930" width="19" height="19"/>
-    <SubBitmap id="video_m_close_backing_5" x="670" y="930" width="19" height="19"/>
-    <SubBitmap id="video_m_close_backing_6" x="689" y="930" width="19" height="19"/>
-    <SubBitmap id="video_m_close_backing_7" x="708" y="930" width="19" height="19"/>
-    <SubBitmap id="video_vid_zoom_backing_1" x="727" y="930" width="19" height="19"/>
-    <SubBitmap id="video_vid_zoom_backing_2" x="746" y="930" width="19" height="19"/>
-    <SubBitmap id="video_vid_zoom_backing_3" x="765" y="930" width="19" height="19"/>
-    <SubBitmap id="video_vid_zoom_backing_4" x="784" y="930" width="19" height="19"/>
-    <SubBitmap id="video_vid_zoom_backing_5" x="803" y="930" width="19" height="19"/>
-    <SubBitmap id="video_vid_zoom_backing_6" x="822" y="930" width="19" height="19"/>
-    <SubBitmap id="video_vid_zoom_backing_7" x="841" y="930" width="19" height="19"/>
-    <SubBitmap id="vid_zoom_no_png" x="860" y="930" width="19" height="19"/>
-    <SubBitmap id="vid_zoom_hov_png" x="879" y="930" width="19" height="19"/>
-    <SubBitmap id="vid_zoom_do_png" x="898" y="930" width="19" height="19"/>
-    <SubBitmap id="compact_vid_zoom_no_png" x="917" y="930" width="19" height="19"/>
-    <SubBitmap id="compact_vid_zoom_hov_png" x="936" y="930" width="19" height="19"/>
-    <SubBitmap id="compact_vid_zoom_do_png" x="955" y="930" width="19" height="19"/>
-    <SubBitmap id="compact_m_close_no_png" x="974" y="930" width="19" height="19"/>
-    <SubBitmap id="compact_m_close_hov_png" x="993" y="930" width="19" height="19"/>
-    <SubBitmap id="compact_m_close_do_png" x="1012" y="930" width="19" height="19"/>
-    <SubBitmap id="eq_power_no_png" x="1031" y="930" width="30" height="18"/>
-    <SubBitmap id="eq_power_hov_png" x="1061" y="930" width="30" height="18"/>
-    <SubBitmap id="eq_power_do_png" x="1091" y="930" width="30" height="18"/>
-    <SubBitmap id="eq_thumb2_png" x="1121" y="930" width="15" height="17"/>
-    <SubBitmap id="eq_thumb2_do_png" x="1136" y="930" width="15" height="17"/>
-    <SubBitmap id="compact_eq_thumb2_png" x="1151" y="930" width="15" height="17"/>
-    <SubBitmap id="compact_eq_thumb2_do_png" x="1166" y="930" width="15" height="17"/>
-    <SubBitmap id="metadata_backing" x="1181" y="930" width="177" height="16"/>
-    <SubBitmap id="clock_hit" x="1358" y="930" width="69" height="16"/>
-    <SubBitmap id="about_carbon" x="1427" y="930" width="20" height="16"/>
-    <SubBitmap id="eq_thumb_png" x="1447" y="930" width="16" height="15"/>
-    <SubBitmap id="eq_thumb_do_png" x="1463" y="930" width="16" height="15"/>
-    <SubBitmap id="time_dash_png" x="1479" y="930" width="9" height="14"/>
-    <SubBitmap id="f_left_s_1_png" x="1488" y="930" width="177" height="3"/>
-    <SubBitmap id="f_right_s_1_png" x="1665" y="930" width="164" height="3"/>
-    <SubBitmap id="f_left_s_2_png" x="1829" y="930" width="177" height="3"/>
-    <SubBitmap id="f_right_s_2_png" x="0" y="954" width="164" height="3"/>
-    <SubBitmap id="f_left_s_3_png" x="164" y="954" width="177" height="3"/>
-    <SubBitmap id="f_right_s_3_png" x="341" y="954" width="164" height="3"/>
-    <SubBitmap id="f_left_s_4_png" x="505" y="954" width="177" height="3"/>
-    <SubBitmap id="f_right_s_4_png" x="682" y="954" width="164" height="3"/>
-    <SubBitmap id="f_left_s_5_png" x="846" y="954" width="177" height="3"/>
-    <SubBitmap id="f_right_s_5_png" x="1023" y="954" width="164" height="3"/>
-    <SubBitmap id="f_left_s_6_png" x="1187" y="954" width="177" height="3"/>
-    <SubBitmap id="f_right_s_6_png" x="1364" y="954" width="164" height="3"/>
-    <SubBitmap id="f_left_s_7_png" x="1528" y="954" width="177" height="3"/>
-    <SubBitmap id="f_right_s_7_png" x="1705" y="954" width="164" height="3"/>
-    <SubBitmap id="compact_rail" x="1869" y="954" width="1" height="3"/>
-    <SubBitmap id="invisible_cursor" x="1870" y="954" width="1" height="1"/>
-    <SubBitmap id="screen_black" x="1871" y="954" width="1" height="1"/>
-    <SubBitmap id="info_state_marker" x="1872" y="954" width="1" height="1"/>
-    <SubBitmap id="hover_closed_marker" x="1873" y="954" width="1" height="1"/>
-    <SubBitmap id="nfs_effect_marker" x="1874" y="954" width="1" height="1"/>
-    <SubBitmap id="palette_marker" x="1875" y="954" width="1" height="1"/>
+    <SubBitmap id="shutter_open_light" nbframes="11" fps="20" loop="1" x="0" y="0" width="258" height="2541"/>
+    <SubBitmap id="shutter_close_light" nbframes="11" fps="20" loop="1" x="258" y="0" width="258" height="2541"/>
+    <SubBitmap id="info_frame_1_2" nbframes="15" fps="20" loop="1" x="516" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_1_3" nbframes="15" fps="20" loop="1" x="549" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_2_2" nbframes="15" fps="20" loop="1" x="582" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_2_3" nbframes="15" fps="20" loop="1" x="615" y="0" width="32" height="2460"/>
+    <SubBitmap id="info_frame_3_2" nbframes="15" fps="20" loop="1" x="647" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_3_3" nbframes="15" fps="20" loop="1" x="680" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_4_2" nbframes="15" fps="20" loop="1" x="713" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_4_3" nbframes="15" fps="20" loop="1" x="746" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_5_2" nbframes="15" fps="20" loop="1" x="779" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_5_3" nbframes="15" fps="20" loop="1" x="812" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_6_2" nbframes="15" fps="20" loop="1" x="845" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_6_3" nbframes="15" fps="20" loop="1" x="878" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_7_2" nbframes="15" fps="20" loop="1" x="911" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_frame_7_3" nbframes="15" fps="20" loop="1" x="944" y="0" width="33" height="2460"/>
+    <SubBitmap id="info_page_out_c_sub_1_1" nbframes="11" fps="20" loop="1" x="977" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_2_1" nbframes="11" fps="20" loop="1" x="1315" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_2_2" nbframes="11" fps="20" loop="1" x="1653" y="0" width="338" height="2409"/>
+  </Bitmap>
+  <Bitmap id="atlas_1" file="assets/atlas_1.png" alphacolor="#FF00FF">
+    <SubBitmap id="info_page_out_c_sub_2_3" nbframes="11" fps="20" loop="1" x="0" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_2_4" nbframes="11" fps="20" loop="1" x="338" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_3_1" nbframes="11" fps="20" loop="1" x="676" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_3_2" nbframes="11" fps="20" loop="1" x="1014" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_3_3" nbframes="11" fps="20" loop="1" x="1352" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_3_4" nbframes="11" fps="20" loop="1" x="1690" y="0" width="338" height="2409"/>
+  </Bitmap>
+  <Bitmap id="atlas_2" file="assets/atlas_2.png" alphacolor="#FF00FF">
+    <SubBitmap id="info_page_out_c_sub_3_5" nbframes="11" fps="20" loop="1" x="0" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_3_6" nbframes="11" fps="20" loop="1" x="338" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_3_7" nbframes="11" fps="20" loop="1" x="676" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_3_8" nbframes="11" fps="20" loop="1" x="1014" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_3_9" nbframes="11" fps="20" loop="1" x="1352" y="0" width="338" height="2409"/>
+    <SubBitmap id="info_page_out_c_sub_4_1" nbframes="11" fps="20" loop="1" x="1690" y="0" width="338" height="2409"/>
+  </Bitmap>
+  <Bitmap id="atlas_3" file="assets/atlas_3.png" alphacolor="#FF00FF">
+    <SubBitmap id="seek_forward" x="0" y="0" width="156" height="2244"/>
+    <SubBitmap id="shutter_open" nbframes="11" fps="20" loop="1" x="156" y="0" width="193" height="2123"/>
+    <SubBitmap id="shutter_close" nbframes="11" fps="20" loop="1" x="349" y="0" width="193" height="2123"/>
+    <SubBitmap id="shutter_endpoint_1" nbframes="11" fps="20" loop="1" x="542" y="0" width="193" height="2123"/>
+    <SubBitmap id="shutter_endpoint_2" nbframes="11" fps="20" loop="1" x="735" y="0" width="193" height="2123"/>
+    <SubBitmap id="shutter_endpoint_3" nbframes="11" fps="20" loop="1" x="928" y="0" width="193" height="2123"/>
+    <SubBitmap id="shutter_endpoint_4" nbframes="11" fps="20" loop="1" x="1121" y="0" width="193" height="2123"/>
+    <SubBitmap id="shutter_endpoint_5" nbframes="11" fps="20" loop="1" x="1314" y="0" width="193" height="2123"/>
+    <SubBitmap id="shutter_endpoint_6" nbframes="11" fps="20" loop="1" x="1507" y="0" width="193" height="2123"/>
+    <SubBitmap id="shutter_endpoint_7" nbframes="11" fps="20" loop="1" x="1700" y="0" width="193" height="2123"/>
+  </Bitmap>
+  <Bitmap id="atlas_4" file="assets/atlas_4.png" alphacolor="#FF00FF">
+    <SubBitmap id="info_page_in_c_sub_1_1" nbframes="9" fps="20" loop="1" x="0" y="0" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_2_1" nbframes="9" fps="20" loop="1" x="338" y="0" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_2_2" nbframes="9" fps="20" loop="1" x="676" y="0" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_2_3" nbframes="9" fps="20" loop="1" x="1014" y="0" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_2_4" nbframes="9" fps="20" loop="1" x="1352" y="0" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_3_1" nbframes="9" fps="20" loop="1" x="1690" y="0" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_3_2" nbframes="9" fps="20" loop="1" x="0" y="1971" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_3_3" nbframes="9" fps="20" loop="1" x="338" y="1971" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_3_4" nbframes="9" fps="20" loop="1" x="676" y="1971" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_3_5" nbframes="9" fps="20" loop="1" x="1014" y="1971" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_3_6" nbframes="9" fps="20" loop="1" x="1352" y="1971" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_3_7" nbframes="9" fps="20" loop="1" x="1690" y="1971" width="338" height="1971"/>
+  </Bitmap>
+  <Bitmap id="atlas_5" file="assets/atlas_5.png" alphacolor="#FF00FF">
+    <SubBitmap id="info_page_in_c_sub_3_8" nbframes="9" fps="20" loop="1" x="0" y="0" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_3_9" nbframes="9" fps="20" loop="1" x="338" y="0" width="338" height="1971"/>
+    <SubBitmap id="info_page_in_c_sub_4_1" nbframes="9" fps="20" loop="1" x="676" y="0" width="338" height="1971"/>
+    <SubBitmap id="volume_forward" x="1014" y="0" width="138" height="1508"/>
+    <SubBitmap id="intro_light_sequence_band_2" nbframes="81" fps="10" loop="1" x="1152" y="0" width="258" height="1215"/>
+    <SubBitmap id="intro_light_sequence_band_4" nbframes="81" fps="10" loop="1" x="1410" y="0" width="258" height="1215"/>
+    <SubBitmap id="intro_light_sequence_band_6" nbframes="81" fps="10" loop="1" x="1668" y="0" width="258" height="1215"/>
+    <SubBitmap id="intro_light_sequence_band_9" nbframes="81" fps="10" loop="1" x="0" y="1971" width="258" height="1215"/>
+    <SubBitmap id="intro_light_sequence_band_11" nbframes="81" fps="10" loop="1" x="258" y="1971" width="258" height="1215"/>
+    <SubBitmap id="intro_light_sequence_band_13" nbframes="81" fps="10" loop="1" x="516" y="1971" width="258" height="1215"/>
+    <SubBitmap id="intro_light_sequence_band_15" nbframes="81" fps="10" loop="1" x="774" y="1971" width="258" height="1215"/>
+    <SubBitmap id="intro_light_sequence_band_0" nbframes="81" fps="10" loop="1" x="1032" y="1971" width="258" height="1134"/>
+    <SubBitmap id="intro_light_sequence_band_1" nbframes="81" fps="10" loop="1" x="1290" y="1971" width="258" height="1134"/>
+    <SubBitmap id="intro_light_sequence_band_3" nbframes="81" fps="10" loop="1" x="1548" y="1971" width="258" height="1134"/>
+  </Bitmap>
+  <Bitmap id="atlas_6" file="assets/atlas_6.png" alphacolor="#FF00FF">
+    <SubBitmap id="intro_light_sequence_band_5" nbframes="81" fps="10" loop="1" x="0" y="0" width="258" height="1134"/>
+    <SubBitmap id="intro_light_sequence_band_7" nbframes="81" fps="10" loop="1" x="258" y="0" width="258" height="1134"/>
+    <SubBitmap id="intro_light_sequence_band_8" nbframes="81" fps="10" loop="1" x="516" y="0" width="258" height="1134"/>
+    <SubBitmap id="intro_light_sequence_band_10" nbframes="81" fps="10" loop="1" x="774" y="0" width="258" height="1134"/>
+    <SubBitmap id="intro_light_sequence_band_12" nbframes="81" fps="10" loop="1" x="1032" y="0" width="258" height="1134"/>
+    <SubBitmap id="intro_light_sequence_band_14" nbframes="81" fps="10" loop="1" x="1290" y="0" width="258" height="1134"/>
+    <SubBitmap id="intro_sequence_band_7" nbframes="81" fps="10" loop="1" x="1548" y="0" width="194" height="1053"/>
+    <SubBitmap id="intro_sequence_band_15" nbframes="81" fps="10" loop="1" x="1742" y="0" width="194" height="1053"/>
+    <SubBitmap id="intro_sequence_band_0" nbframes="81" fps="10" loop="1" x="0" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_1" nbframes="81" fps="10" loop="1" x="194" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_2" nbframes="81" fps="10" loop="1" x="388" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_3" nbframes="81" fps="10" loop="1" x="582" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_4" nbframes="81" fps="10" loop="1" x="776" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_5" nbframes="81" fps="10" loop="1" x="970" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_6" nbframes="81" fps="10" loop="1" x="1164" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_8" nbframes="81" fps="10" loop="1" x="1358" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_9" nbframes="81" fps="10" loop="1" x="1552" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_10" nbframes="81" fps="10" loop="1" x="1746" y="1134" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_11" nbframes="81" fps="10" loop="1" x="0" y="2106" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_12" nbframes="81" fps="10" loop="1" x="194" y="2106" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_13" nbframes="81" fps="10" loop="1" x="388" y="2106" width="194" height="972"/>
+    <SubBitmap id="intro_sequence_band_14" nbframes="81" fps="10" loop="1" x="582" y="2106" width="194" height="972"/>
+    <SubBitmap id="info_frame_1_4" nbframes="15" fps="20" loop="1" x="776" y="2106" width="176" height="915"/>
+    <SubBitmap id="info_frame_1_5" nbframes="15" fps="20" loop="1" x="952" y="2106" width="163" height="915"/>
+    <SubBitmap id="info_frame_2_4" nbframes="15" fps="20" loop="1" x="1115" y="2106" width="176" height="915"/>
+    <SubBitmap id="info_frame_2_5" nbframes="15" fps="20" loop="1" x="1291" y="2106" width="163" height="915"/>
+    <SubBitmap id="info_frame_3_4" nbframes="15" fps="20" loop="1" x="1454" y="2106" width="176" height="915"/>
+    <SubBitmap id="info_frame_3_5" nbframes="15" fps="20" loop="1" x="1630" y="2106" width="163" height="915"/>
+    <SubBitmap id="info_frame_4_4" nbframes="15" fps="20" loop="1" x="1793" y="2106" width="176" height="915"/>
+    <SubBitmap id="info_frame_4_5" nbframes="15" fps="20" loop="1" x="0" y="3078" width="163" height="915"/>
+    <SubBitmap id="info_frame_5_4" nbframes="15" fps="20" loop="1" x="163" y="3078" width="176" height="915"/>
+    <SubBitmap id="info_frame_5_5" nbframes="15" fps="20" loop="1" x="339" y="3078" width="163" height="915"/>
+    <SubBitmap id="info_frame_6_4" nbframes="15" fps="20" loop="1" x="502" y="3078" width="176" height="915"/>
+    <SubBitmap id="info_frame_6_5" nbframes="15" fps="20" loop="1" x="678" y="3078" width="163" height="915"/>
+    <SubBitmap id="info_frame_7_4" nbframes="15" fps="20" loop="1" x="841" y="3078" width="176" height="915"/>
+    <SubBitmap id="info_frame_7_5" nbframes="15" fps="20" loop="1" x="1017" y="3078" width="163" height="915"/>
+    <SubBitmap id="info_frame_1_6" nbframes="15" fps="20" loop="1" x="1180" y="3078" width="176" height="855"/>
+    <SubBitmap id="info_frame_1_7" nbframes="15" fps="20" loop="1" x="1356" y="3078" width="163" height="855"/>
+    <SubBitmap id="info_frame_2_6" nbframes="15" fps="20" loop="1" x="1519" y="3078" width="176" height="855"/>
+    <SubBitmap id="info_frame_2_7" nbframes="15" fps="20" loop="1" x="1695" y="3078" width="163" height="855"/>
+    <SubBitmap id="info_frame_3_6" nbframes="15" fps="20" loop="1" x="1858" y="3078" width="176" height="855"/>
+  </Bitmap>
+  <Bitmap id="atlas_7" file="assets/atlas_7.png" alphacolor="#FF00FF">
+    <SubBitmap id="info_frame_3_7" nbframes="15" fps="20" loop="1" x="0" y="0" width="163" height="855"/>
+    <SubBitmap id="info_frame_4_6" nbframes="15" fps="20" loop="1" x="163" y="0" width="176" height="855"/>
+    <SubBitmap id="info_frame_4_7" nbframes="15" fps="20" loop="1" x="339" y="0" width="163" height="855"/>
+    <SubBitmap id="info_frame_5_6" nbframes="15" fps="20" loop="1" x="502" y="0" width="176" height="855"/>
+    <SubBitmap id="info_frame_5_7" nbframes="15" fps="20" loop="1" x="678" y="0" width="163" height="855"/>
+    <SubBitmap id="info_frame_6_6" nbframes="15" fps="20" loop="1" x="841" y="0" width="176" height="855"/>
+    <SubBitmap id="info_frame_6_7" nbframes="15" fps="20" loop="1" x="1017" y="0" width="163" height="855"/>
+    <SubBitmap id="info_frame_7_6" nbframes="15" fps="20" loop="1" x="1180" y="0" width="176" height="855"/>
+    <SubBitmap id="info_frame_7_7" nbframes="15" fps="20" loop="1" x="1356" y="0" width="163" height="855"/>
+    <SubBitmap id="info_frame_1_0" nbframes="15" fps="20" loop="1" x="1519" y="0" width="72" height="555"/>
+    <SubBitmap id="info_frame_2_0" nbframes="15" fps="20" loop="1" x="1591" y="0" width="72" height="555"/>
+    <SubBitmap id="info_frame_3_0" nbframes="15" fps="20" loop="1" x="1663" y="0" width="72" height="555"/>
+    <SubBitmap id="info_frame_4_0" nbframes="15" fps="20" loop="1" x="1735" y="0" width="72" height="555"/>
+    <SubBitmap id="info_frame_5_0" nbframes="15" fps="20" loop="1" x="1807" y="0" width="72" height="555"/>
+    <SubBitmap id="info_frame_6_0" nbframes="15" fps="20" loop="1" x="1879" y="0" width="72" height="555"/>
+    <SubBitmap id="info_frame_7_0" nbframes="15" fps="20" loop="1" x="1951" y="0" width="72" height="555"/>
+    <SubBitmap id="info_frame_1_1" nbframes="15" fps="20" loop="1" x="0" y="855" width="72" height="465"/>
+    <SubBitmap id="info_frame_2_1" nbframes="15" fps="20" loop="1" x="72" y="855" width="72" height="465"/>
+    <SubBitmap id="info_frame_3_1" nbframes="15" fps="20" loop="1" x="144" y="855" width="72" height="465"/>
+    <SubBitmap id="info_frame_4_1" nbframes="15" fps="20" loop="1" x="216" y="855" width="72" height="465"/>
+    <SubBitmap id="info_frame_5_1" nbframes="15" fps="20" loop="1" x="288" y="855" width="72" height="465"/>
+    <SubBitmap id="info_frame_6_1" nbframes="15" fps="20" loop="1" x="360" y="855" width="72" height="465"/>
+    <SubBitmap id="info_frame_7_1" nbframes="15" fps="20" loop="1" x="432" y="855" width="72" height="465"/>
+    <SubBitmap id="info_link_in" nbframes="9" fps="20" loop="1" x="504" y="855" width="163" height="441"/>
+    <SubBitmap id="main_back_1_png" x="667" y="855" width="300" height="298"/>
+    <SubBitmap id="main_back_2_png" x="967" y="855" width="300" height="298"/>
+    <SubBitmap id="main_back_3_png" x="1267" y="855" width="300" height="298"/>
+    <SubBitmap id="main_back_4_png" x="1567" y="855" width="300" height="298"/>
+    <SubBitmap id="main_back_5_png" x="0" y="1320" width="300" height="298"/>
+    <SubBitmap id="main_back_6_png" x="300" y="1320" width="300" height="298"/>
+    <SubBitmap id="main_back_7_png" x="600" y="1320" width="300" height="298"/>
+    <SubBitmap id="shutter_light_png" x="900" y="1320" width="258" height="231"/>
+    <SubBitmap id="c_back_png" x="1158" y="1320" width="366" height="226"/>
+    <SubBitmap id="c_back_jpg" x="1524" y="1320" width="338" height="219"/>
+    <SubBitmap id="c_sub_1_1_jpg" x="0" y="1618" width="338" height="219"/>
+    <SubBitmap id="c_sub_2_1_jpg" x="338" y="1618" width="338" height="219"/>
+    <SubBitmap id="c_sub_2_2_jpg" x="676" y="1618" width="338" height="219"/>
+    <SubBitmap id="c_sub_2_3_jpg" x="1014" y="1618" width="338" height="219"/>
+    <SubBitmap id="c_sub_2_4_jpg" x="1352" y="1618" width="338" height="219"/>
+    <SubBitmap id="c_sub_3_1_jpg" x="1690" y="1618" width="338" height="219"/>
+    <SubBitmap id="c_sub_3_2_jpg" x="0" y="1837" width="338" height="219"/>
+    <SubBitmap id="c_sub_3_3_jpg" x="338" y="1837" width="338" height="219"/>
+    <SubBitmap id="c_sub_3_4_jpg" x="676" y="1837" width="338" height="219"/>
+    <SubBitmap id="c_sub_3_5_jpg" x="1014" y="1837" width="338" height="219"/>
+    <SubBitmap id="c_sub_3_6_jpg" x="1352" y="1837" width="338" height="219"/>
+    <SubBitmap id="c_sub_3_7_jpg" x="1690" y="1837" width="338" height="219"/>
+    <SubBitmap id="c_sub_3_8_jpg" x="0" y="2056" width="338" height="219"/>
+    <SubBitmap id="c_sub_3_9_jpg" x="338" y="2056" width="338" height="219"/>
+    <SubBitmap id="c_sub_4_1_jpg" x="676" y="2056" width="338" height="219"/>
+    <SubBitmap id="shutter_f01_png" x="1014" y="2056" width="193" height="193"/>
+    <SubBitmap id="eq_vlc_back" x="1207" y="2056" width="287" height="136"/>
+    <SubBitmap id="vol_seek_mat_png" x="1494" y="2056" width="85" height="93"/>
+    <SubBitmap id="info_menu_hit_2" nbframes="2" fps="2" loop="1" x="1579" y="2056" width="201" height="74"/>
+    <SubBitmap id="info_menu_hit_1" nbframes="2" fps="2" loop="1" x="1780" y="2056" width="201" height="72"/>
+    <SubBitmap id="info_menu_hit_3" nbframes="2" fps="2" loop="1" x="0" y="2275" width="201" height="72"/>
+    <SubBitmap id="info_menu_hit_0" nbframes="2" fps="2" loop="1" x="201" y="2275" width="202" height="68"/>
+    <SubBitmap id="compact_carbon" x="403" y="2275" width="360" height="64"/>
+    <SubBitmap id="f_top_s_1_png" x="763" y="2275" width="9" height="61"/>
+    <SubBitmap id="f_top_left_1_png" x="772" y="2275" width="177" height="61"/>
+    <SubBitmap id="pl_top_right_1_png" x="949" y="2275" width="164" height="61"/>
+    <SubBitmap id="f_top_s_2_png" x="1113" y="2275" width="9" height="61"/>
+    <SubBitmap id="f_top_left_2_png" x="1122" y="2275" width="177" height="61"/>
+    <SubBitmap id="pl_top_right_2_png" x="1299" y="2275" width="164" height="61"/>
+    <SubBitmap id="f_top_s_3_png" x="1463" y="2275" width="9" height="61"/>
+    <SubBitmap id="f_top_left_3_png" x="1472" y="2275" width="177" height="61"/>
+    <SubBitmap id="pl_top_right_3_png" x="1649" y="2275" width="164" height="61"/>
+    <SubBitmap id="f_top_s_4_png" x="1813" y="2275" width="9" height="61"/>
+    <SubBitmap id="f_top_left_4_png" x="1822" y="2275" width="177" height="61"/>
+    <SubBitmap id="pl_top_right_4_png" x="0" y="2347" width="164" height="61"/>
+    <SubBitmap id="f_top_s_5_png" x="164" y="2347" width="9" height="61"/>
+    <SubBitmap id="f_top_left_5_png" x="173" y="2347" width="177" height="61"/>
+    <SubBitmap id="pl_top_right_5_png" x="350" y="2347" width="164" height="61"/>
+    <SubBitmap id="f_top_s_6_png" x="514" y="2347" width="9" height="61"/>
+    <SubBitmap id="f_top_left_6_png" x="523" y="2347" width="177" height="61"/>
+    <SubBitmap id="pl_top_right_6_png" x="700" y="2347" width="164" height="61"/>
+    <SubBitmap id="f_top_s_7_png" x="864" y="2347" width="9" height="61"/>
+    <SubBitmap id="f_top_left_7_png" x="873" y="2347" width="177" height="61"/>
+    <SubBitmap id="pl_top_right_7_png" x="1050" y="2347" width="164" height="61"/>
+    <SubBitmap id="eq_top_right_1_png" x="1214" y="2347" width="164" height="61"/>
+    <SubBitmap id="eq_top_right_2_png" x="1378" y="2347" width="164" height="61"/>
+    <SubBitmap id="eq_top_right_3_png" x="1542" y="2347" width="164" height="61"/>
+    <SubBitmap id="eq_top_right_4_png" x="1706" y="2347" width="164" height="61"/>
+    <SubBitmap id="eq_top_right_5_png" x="1870" y="2347" width="164" height="61"/>
+    <SubBitmap id="eq_top_right_6_png" x="0" y="2408" width="164" height="61"/>
+    <SubBitmap id="eq_top_right_7_png" x="164" y="2408" width="164" height="61"/>
+    <SubBitmap id="f_top_right_1_png" x="328" y="2408" width="164" height="61"/>
+    <SubBitmap id="f_top_right_2_png" x="492" y="2408" width="164" height="61"/>
+    <SubBitmap id="f_top_right_3_png" x="656" y="2408" width="164" height="61"/>
+    <SubBitmap id="f_top_right_4_png" x="820" y="2408" width="164" height="61"/>
+    <SubBitmap id="f_top_right_5_png" x="984" y="2408" width="164" height="61"/>
+    <SubBitmap id="f_top_right_6_png" x="1148" y="2408" width="164" height="61"/>
+    <SubBitmap id="f_top_right_7_png" x="1312" y="2408" width="164" height="61"/>
+    <SubBitmap id="f_bot_s_1_png" x="1476" y="2408" width="9" height="60"/>
+    <SubBitmap id="f_bot_s_2_png" x="1485" y="2408" width="9" height="60"/>
+    <SubBitmap id="f_bot_s_3_png" x="1494" y="2408" width="9" height="60"/>
+    <SubBitmap id="f_bot_s_4_png" x="1503" y="2408" width="9" height="60"/>
+    <SubBitmap id="f_bot_s_5_png" x="1512" y="2408" width="9" height="60"/>
+    <SubBitmap id="f_bot_s_6_png" x="1521" y="2408" width="9" height="60"/>
+    <SubBitmap id="f_bot_s_7_png" x="1530" y="2408" width="9" height="60"/>
+    <SubBitmap id="f_bot_left_1_png" x="1539" y="2408" width="177" height="57"/>
+    <SubBitmap id="f_bot_right_1_png" x="1716" y="2408" width="164" height="57"/>
+    <SubBitmap id="f_bot_left_2_png" x="0" y="2469" width="177" height="57"/>
+    <SubBitmap id="f_bot_right_2_png" x="177" y="2469" width="164" height="57"/>
+    <SubBitmap id="f_bot_left_3_png" x="341" y="2469" width="177" height="57"/>
+    <SubBitmap id="f_bot_right_3_png" x="518" y="2469" width="164" height="57"/>
+    <SubBitmap id="f_bot_left_4_png" x="682" y="2469" width="177" height="57"/>
+    <SubBitmap id="f_bot_right_4_png" x="859" y="2469" width="164" height="57"/>
+    <SubBitmap id="f_bot_left_5_png" x="1023" y="2469" width="177" height="57"/>
+    <SubBitmap id="f_bot_right_5_png" x="1200" y="2469" width="164" height="57"/>
+    <SubBitmap id="f_bot_left_6_png" x="1364" y="2469" width="177" height="57"/>
+    <SubBitmap id="f_bot_right_6_png" x="1541" y="2469" width="164" height="57"/>
+    <SubBitmap id="f_bot_left_7_png" x="1705" y="2469" width="177" height="57"/>
+    <SubBitmap id="f_bot_right_7_png" x="1882" y="2469" width="164" height="57"/>
+    <SubBitmap id="info_bot_right_1_png" x="0" y="2526" width="164" height="57"/>
+    <SubBitmap id="info_bot_right_2_png" x="164" y="2526" width="164" height="57"/>
+    <SubBitmap id="info_bot_right_3_png" x="328" y="2526" width="164" height="57"/>
+    <SubBitmap id="info_bot_right_4_png" x="492" y="2526" width="164" height="57"/>
+    <SubBitmap id="info_bot_right_5_png" x="656" y="2526" width="164" height="57"/>
+    <SubBitmap id="info_bot_right_6_png" x="820" y="2526" width="164" height="57"/>
+    <SubBitmap id="info_bot_right_7_png" x="984" y="2526" width="164" height="57"/>
+    <SubBitmap id="c_link_no_jpg" x="1148" y="2526" width="163" height="49"/>
+    <SubBitmap id="shutter_transition_blocker" nbframes="2" fps="2" loop="1" x="1311" y="2526" width="19" height="38"/>
+    <SubBitmap id="menu_2_no" x="1330" y="2526" width="201" height="37"/>
+    <SubBitmap id="menu_2_hov" x="1531" y="2526" width="201" height="37"/>
+    <SubBitmap id="menu_2_do" x="1732" y="2526" width="201" height="37"/>
+    <SubBitmap id="menu_1_no" x="0" y="2583" width="201" height="36"/>
+    <SubBitmap id="menu_1_hov" x="201" y="2583" width="201" height="36"/>
+    <SubBitmap id="menu_1_do" x="402" y="2583" width="201" height="36"/>
+    <SubBitmap id="menu_3_no" x="603" y="2583" width="201" height="36"/>
+    <SubBitmap id="menu_3_hov" x="804" y="2583" width="201" height="36"/>
+    <SubBitmap id="menu_3_do" x="1005" y="2583" width="201" height="36"/>
+    <SubBitmap id="menu_0_no" x="1206" y="2583" width="202" height="34"/>
+    <SubBitmap id="menu_0_hov" x="1408" y="2583" width="202" height="34"/>
+    <SubBitmap id="menu_0_do" x="1610" y="2583" width="202" height="34"/>
+    <SubBitmap id="m_logo_no_png" x="1812" y="2583" width="182" height="31"/>
+    <SubBitmap id="m_logo_hov_png" x="0" y="2619" width="182" height="31"/>
+    <SubBitmap id="m_full_no_png" x="182" y="2619" width="30" height="30"/>
+    <SubBitmap id="m_full_hov_png" x="212" y="2619" width="30" height="30"/>
+    <SubBitmap id="m_full_do_png" x="242" y="2619" width="30" height="30"/>
+    <SubBitmap id="m_info_no_png" x="272" y="2619" width="30" height="30"/>
+    <SubBitmap id="m_info_hov_png" x="302" y="2619" width="30" height="30"/>
+    <SubBitmap id="m_info_do_png" x="332" y="2619" width="30" height="30"/>
+    <SubBitmap id="m_open_no_png" x="362" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_open_hov_png" x="391" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_open_do_png" x="420" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_vis_no_png" x="449" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_vis_hov_png" x="478" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_vis_do_png" x="507" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_pl_no_png" x="536" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_pl_hov_png" x="565" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_pl_do_png" x="594" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_eq_no_png" x="623" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_eq_hov_png" x="652" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_eq_do_png" x="681" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_next_no_png" x="710" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_next_hov_png" x="739" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_next_do_png" x="768" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_stop_no_png" x="797" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_stop_hov_png" x="826" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_stop_do_png" x="855" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_play_no_png" x="884" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_play_hov_png" x="913" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_play_do_png" x="942" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_pause_no_png" x="971" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_pause_hov_png" x="1000" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_pause_do_png" x="1029" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_prev_no_png" x="1058" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_prev_hov_png" x="1087" y="2619" width="29" height="29"/>
+    <SubBitmap id="m_prev_do_png" x="1116" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_prev_no_png" x="1145" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_prev_hov_png" x="1174" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_prev_do_png" x="1203" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_play_no_png" x="1232" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_play_hov_png" x="1261" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_play_do_png" x="1290" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_pause_no_png" x="1319" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_pause_hov_png" x="1348" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_pause_do_png" x="1377" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_stop_no_png" x="1406" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_stop_hov_png" x="1435" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_stop_do_png" x="1464" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_next_no_png" x="1493" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_next_hov_png" x="1522" y="2619" width="29" height="29"/>
+    <SubBitmap id="compact_m_next_do_png" x="1551" y="2619" width="29" height="29"/>
+    <SubBitmap id="c_menu_return_no_png" x="1580" y="2619" width="62" height="28"/>
+    <SubBitmap id="c_menu_return_hov_png" x="1642" y="2619" width="62" height="28"/>
+    <SubBitmap id="c_menu_return_do_png" x="1704" y="2619" width="62" height="28"/>
+    <SubBitmap id="c_nav_prev_dis_png" x="1766" y="2619" width="23" height="28"/>
+    <SubBitmap id="c_nav_next_no_png" x="1789" y="2619" width="23" height="28"/>
+    <SubBitmap id="c_nav_next_hov_png" x="1812" y="2619" width="23" height="28"/>
+    <SubBitmap id="c_nav_next_do_png" x="1835" y="2619" width="23" height="28"/>
+    <SubBitmap id="c_nav_prev_no_png" x="1858" y="2619" width="23" height="28"/>
+    <SubBitmap id="c_nav_prev_hov_png" x="1881" y="2619" width="23" height="28"/>
+    <SubBitmap id="c_nav_prev_do_png" x="1904" y="2619" width="23" height="28"/>
+    <SubBitmap id="c_nav_next_dis_png" x="1927" y="2619" width="23" height="28"/>
+    <SubBitmap id="resize_hit" x="1950" y="2619" width="23" height="24"/>
+    <SubBitmap id="resize_hit_2" x="1973" y="2619" width="23" height="24"/>
+    <SubBitmap id="resize_hit_3" x="1996" y="2619" width="23" height="24"/>
+    <SubBitmap id="resize_hit_4" x="2019" y="2619" width="23" height="24"/>
+    <SubBitmap id="resize_hit_5" x="0" y="2650" width="23" height="24"/>
+    <SubBitmap id="resize_hit_6" x="23" y="2650" width="23" height="24"/>
+    <SubBitmap id="resize_hit_7" x="46" y="2650" width="23" height="24"/>
+    <SubBitmap id="compact_volume_no_png" x="69" y="2650" width="23" height="23"/>
+    <SubBitmap id="compact_volume_hov_png" x="92" y="2650" width="23" height="23"/>
+    <SubBitmap id="compact_volume_do_png" x="115" y="2650" width="23" height="23"/>
+    <SubBitmap id="m_min_no_png" x="138" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_min_hov_png" x="157" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_min_do_png" x="176" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_close_no_png" x="195" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_close_hov_png" x="214" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_close_do_png" x="233" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_color_no_png" x="252" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_color_hov_png" x="271" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_color_do_png" x="290" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_shutter_no_png" x="309" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_shutter_hov_png" x="328" y="2650" width="19" height="19"/>
+    <SubBitmap id="m_shutter_do_png" x="347" y="2650" width="19" height="19"/>
+    <SubBitmap id="shutter_locked_no_png" x="366" y="2650" width="19" height="19"/>
+    <SubBitmap id="shutter_locked_hov_png" x="385" y="2650" width="19" height="19"/>
+    <SubBitmap id="shutter_locked_do_png" x="404" y="2650" width="19" height="19"/>
+    <SubBitmap id="shutter_locked_closed_no_png" x="423" y="2650" width="19" height="19"/>
+    <SubBitmap id="shutter_locked_closed_hov_png" x="442" y="2650" width="19" height="19"/>
+    <SubBitmap id="shutter_locked_closed_do_png" x="461" y="2650" width="19" height="19"/>
+    <SubBitmap id="pl_shuffle_no_png" x="480" y="2650" width="19" height="19"/>
+    <SubBitmap id="pl_shuffle_hov_png" x="499" y="2650" width="19" height="19"/>
+    <SubBitmap id="pl_shuffle_do_png" x="518" y="2650" width="19" height="19"/>
+    <SubBitmap id="pl_repeat_no_png" x="537" y="2650" width="19" height="19"/>
+    <SubBitmap id="pl_repeat_hov_png" x="556" y="2650" width="19" height="19"/>
+    <SubBitmap id="pl_repeat_do_png" x="575" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_m_close_backing_1" x="594" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_m_close_backing_2" x="613" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_m_close_backing_3" x="632" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_m_close_backing_4" x="651" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_m_close_backing_5" x="670" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_m_close_backing_6" x="689" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_m_close_backing_7" x="708" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_vid_zoom_backing_1" x="727" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_vid_zoom_backing_2" x="746" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_vid_zoom_backing_3" x="765" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_vid_zoom_backing_4" x="784" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_vid_zoom_backing_5" x="803" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_vid_zoom_backing_6" x="822" y="2650" width="19" height="19"/>
+    <SubBitmap id="video_vid_zoom_backing_7" x="841" y="2650" width="19" height="19"/>
+    <SubBitmap id="vid_zoom_no_png" x="860" y="2650" width="19" height="19"/>
+    <SubBitmap id="vid_zoom_hov_png" x="879" y="2650" width="19" height="19"/>
+    <SubBitmap id="vid_zoom_do_png" x="898" y="2650" width="19" height="19"/>
+    <SubBitmap id="compact_vid_zoom_no_png" x="917" y="2650" width="19" height="19"/>
+    <SubBitmap id="compact_vid_zoom_hov_png" x="936" y="2650" width="19" height="19"/>
+    <SubBitmap id="compact_vid_zoom_do_png" x="955" y="2650" width="19" height="19"/>
+    <SubBitmap id="compact_m_close_no_png" x="974" y="2650" width="19" height="19"/>
+    <SubBitmap id="compact_m_close_hov_png" x="993" y="2650" width="19" height="19"/>
+    <SubBitmap id="compact_m_close_do_png" x="1012" y="2650" width="19" height="19"/>
+    <SubBitmap id="eq_power_no_png" x="1031" y="2650" width="30" height="18"/>
+    <SubBitmap id="eq_power_hov_png" x="1061" y="2650" width="30" height="18"/>
+    <SubBitmap id="eq_power_do_png" x="1091" y="2650" width="30" height="18"/>
+    <SubBitmap id="eq_thumb2_png" x="1121" y="2650" width="15" height="17"/>
+    <SubBitmap id="eq_thumb2_do_png" x="1136" y="2650" width="15" height="17"/>
+    <SubBitmap id="compact_eq_thumb2_png" x="1151" y="2650" width="15" height="17"/>
+    <SubBitmap id="compact_eq_thumb2_do_png" x="1166" y="2650" width="15" height="17"/>
+    <SubBitmap id="metadata_backing" x="1181" y="2650" width="177" height="16"/>
+    <SubBitmap id="clock_hit" x="1358" y="2650" width="69" height="16"/>
+    <SubBitmap id="about_carbon" x="1427" y="2650" width="20" height="16"/>
+    <SubBitmap id="eq_thumb_png" x="1447" y="2650" width="16" height="15"/>
+    <SubBitmap id="eq_thumb_do_png" x="1463" y="2650" width="16" height="15"/>
+    <SubBitmap id="time_dash_png" x="1479" y="2650" width="9" height="14"/>
+    <SubBitmap id="f_left_s_1_png" x="1488" y="2650" width="177" height="3"/>
+    <SubBitmap id="f_right_s_1_png" x="1665" y="2650" width="164" height="3"/>
+    <SubBitmap id="f_left_s_2_png" x="1829" y="2650" width="177" height="3"/>
+    <SubBitmap id="f_right_s_2_png" x="0" y="2674" width="164" height="3"/>
+    <SubBitmap id="f_left_s_3_png" x="164" y="2674" width="177" height="3"/>
+    <SubBitmap id="f_right_s_3_png" x="341" y="2674" width="164" height="3"/>
+    <SubBitmap id="f_left_s_4_png" x="505" y="2674" width="177" height="3"/>
+    <SubBitmap id="f_right_s_4_png" x="682" y="2674" width="164" height="3"/>
+    <SubBitmap id="f_left_s_5_png" x="846" y="2674" width="177" height="3"/>
+    <SubBitmap id="f_right_s_5_png" x="1023" y="2674" width="164" height="3"/>
+    <SubBitmap id="f_left_s_6_png" x="1187" y="2674" width="177" height="3"/>
+    <SubBitmap id="f_right_s_6_png" x="1364" y="2674" width="164" height="3"/>
+    <SubBitmap id="f_left_s_7_png" x="1528" y="2674" width="177" height="3"/>
+    <SubBitmap id="f_right_s_7_png" x="1705" y="2674" width="164" height="3"/>
+    <SubBitmap id="compact_rail" x="1869" y="2674" width="1" height="3"/>
+    <SubBitmap id="invisible_cursor" x="1870" y="2674" width="1" height="1"/>
+    <SubBitmap id="screen_black" x="1871" y="2674" width="1" height="1"/>
+    <SubBitmap id="info_state_marker" x="1872" y="2674" width="1" height="1"/>
+    <SubBitmap id="hover_closed_marker" x="1873" y="2674" width="1" height="1"/>
+    <SubBitmap id="nfs_effect_marker" x="1874" y="2674" width="1" height="1"/>
+    <SubBitmap id="palette_marker" x="1875" y="2674" width="1" height="1"/>
   </Bitmap>
   <Window id="main" x="60" y="60" visible="true">
     <Layout id="main_1" width="300" height="298">

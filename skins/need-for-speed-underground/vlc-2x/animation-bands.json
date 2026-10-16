@@ -438,12 +438,22 @@
       {
         "id": "info_frame_1_2_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_1_2_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_1_2_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_1_2_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -460,12 +470,22 @@
       {
         "id": "info_frame_1_3_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_1_3_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_1_3_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_1_3_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -482,12 +502,22 @@
       {
         "id": "info_frame_2_2_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_2_2_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_2_2_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_2_2_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -504,12 +534,22 @@
       {
         "id": "info_frame_2_3_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_2_3_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_2_3_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_2_3_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -526,12 +566,22 @@
       {
         "id": "info_frame_3_2_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_3_2_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_3_2_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_3_2_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -548,12 +598,22 @@
       {
         "id": "info_frame_3_3_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_3_3_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_3_3_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_3_3_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -570,12 +630,22 @@
       {
         "id": "info_frame_4_2_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_4_2_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_4_2_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_4_2_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -592,12 +662,22 @@
       {
         "id": "info_frame_4_3_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_4_3_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_4_3_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_4_3_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -614,12 +694,22 @@
       {
         "id": "info_frame_5_2_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_5_2_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_5_2_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_5_2_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -636,12 +726,22 @@
       {
         "id": "info_frame_5_3_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_5_3_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_5_3_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_5_3_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -658,12 +758,22 @@
       {
         "id": "info_frame_6_2_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_6_2_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_6_2_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_6_2_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -680,12 +790,22 @@
       {
         "id": "info_frame_6_3_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_6_3_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_6_3_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_6_3_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -702,12 +822,22 @@
       {
         "id": "info_frame_7_2_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_7_2_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_7_2_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_7_2_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },
@@ -724,12 +854,22 @@
       {
         "id": "info_frame_7_3_band_0",
         "y": 0,
-        "height": 164
+        "height": 82
       },
       {
         "id": "info_frame_7_3_band_1",
+        "y": 82,
+        "height": 82
+      },
+      {
+        "id": "info_frame_7_3_band_2",
         "y": 164,
-        "height": 164
+        "height": 82
+      },
+      {
+        "id": "info_frame_7_3_band_3",
+        "y": 246,
+        "height": 82
       }
     ]
   },

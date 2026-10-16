@@ -1,5 +1,6 @@
 """Guard Windows startup cost while proving every animation pixel survives."""
 import json
+import re
 from PIL import Image
 from build import SKIN
 from assets import ThemeAssets
@@ -14,7 +15,12 @@ for scale in (1,2):
     for key,item in manifest.items():
         original=Image.open(root/item['bitmap']['file']).convert('RGBA')
         frames=int(item['bitmap']['nbframes']);height=original.height//frames
-        assert len(item['bands'])==(2 if frames<=15 else 16),'Excess animation timers'
+        count = (4 if scale == 2 and re.fullmatch(r'info_frame_[1-7]_[23]', key) and frames == 15 and original.height > 4096
+                 else 2 if frames <= 15 else 16)
+        assert len(item['bands']) == count, 'Unexpected animation timers'
+        assert [(b['y'], b['height']) for b in item['bands']] == [
+            (height*i//count, height*(i+1)//count-height*i//count) for i in range(count)
+        ], ('Exact contiguous animation band boundaries', key)
         rebuilt=Image.new('RGBA',original.size)
         for band in item['bands']:
             node=a.resources[band['id']]

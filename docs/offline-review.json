@@ -1,19 +1,19 @@
 {
   "date": "2026-10-15",
   "prior_native_review_commit": "49a3daee7bb0ac5824f2aaf9bc247f9c4f9ff591",
-  "scope": "Offline source/build/fixture verification only. No VLC/GUI launch, desktop input, installed skin, active profile or companion source changed.",
-  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams. Replace lower-right alpha-1 black resize images with exact native-scale original corner crops for all seven palettes. Isolate pane palettes from shutter/clock main layout transitions using persistent hidden palette state; preserve legacy colors through explicit saved-state migration. Fullscreen entry points now toggle native video maximize/restore with the original border and feedback assets; native video double-click remains borderless. Video maximum bounds are 8192x4320. Scale solid fills rather than tile each output pixel; flatten video idle backings onto palette-matched original header crops before native caching. Restore source WAVs through an optional process-scoped Windows helper and original-art native/fullscreen and framed hover bars; ready/trigger layout protocol avoids routine SW_SHOW activation. Replace large hover bars with approved fixed360x64 compact original-button strip, hover-expanded volume and framed window-wide85% opacity; enlarge filename to white12 source-scale pixels; add private native volume-OSD observer. No live deployment. Restore native Info entry/return and frame-color fades with independent states; readable16px above-pointer native tooltips via matchinghelper; slightlyroomier440x340playlist with12x-scale text and optional future-launch personal text-size copies. Keep large exact PNG resources outside duplicated atlases (65536 total-pixel cap) and share identical static Info backings with exclusive route OR visibility, assigning stable IDs before sharing. No animation control/frame/timer removed.",
+  "scope": "Offline source/build/fixture verification. Native loading and installation/live rollout evidence are separately scoped by exact hashes in fast-load-benchmark.json and FAST-LOADING.md.",
+  "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams. Replace lower-right alpha-1 black resize images with exact native-scale original corner crops for all seven palettes. Isolate pane palettes from shutter/clock main layout transitions using persistent hidden palette state; preserve legacy colors through explicit saved-state migration. Fullscreen entry points now toggle native video maximize/restore with the original border and feedback assets; native video double-click remains borderless. Video maximum bounds are 8192x4320. Scale solid fills rather than tile each output pixel; flatten video idle backings onto palette-matched original header crops before native caching. Restore source WAVs through an optional process-scoped Windows helper and original-art native/fullscreen and framed hover bars; ready/trigger layout protocol avoids routine SW_SHOW activation. Replace large hover bars with approved fixed360x64 compact original-button strip, hover-expanded volume and framed window-wide85% opacity; enlarge filename to white12 source-scale pixels; add private native volume-OSD observer. No live deployment. Restore native Info entry/return and frame-color fades with independent states; readable16px above-pointer native tooltips via matchinghelper; slightlyroomier440x340playlist with12x-scale text and optional future-launch personal text-size copies. Restore bounded2048x4096 atlas batching and standard lossless PNG compression with stored outer ZIP entries; split only fourteen tall2x Info frame rails into four exact animation bands. Share identical static Info backings with exclusive route OR visibility after stable ID assignment. Preserve every logical resource pixel, frame, timing and control.",
   "native_verified": false,
   "native_initialization_seconds": {
-    "1": 16.48,
-    "2": 38.38
+    "1": 8.27,
+    "2": 28.27
   },
   "packages": {
     "1": {
-      "sha256": "53c40a26545e01558650ab33033966ffa301df3247de886450fbe1a18f5ff9bf"
+      "sha256": "f628659a9b325b7fa754c4148535ecac0d51e8750d2ed9bfb0893a59ecd20c63"
     },
     "2": {
-      "sha256": "3faacb28eb26e1c546a9587d9399db77bf56ee823739ac1354165e20035652f7"
+      "sha256": "a1bfe1a08a00a28eb66ef30a38a38db1d988f34a918dc2dfc0d5eda76abc1c09"
     }
   },
   "offline_checks": {
@@ -48,7 +48,7 @@
     "info_fades": "all source pixels/timing and physical bands;54 states,590 endpoint controls,20 rejected mutations per scale; shared backing ownership/draw order/idempotence verified",
     "tooltip": "compiled; pure tests including18tooltipidentity/geometry cases, runtime trust fixtures and actual VLT extraction pass; no native calls",
     "playlist_customization": "both fixture SelfTests pass; actual1x18px/2x26px derivedVLTs alter onlyFontdigits, all other XML/assets/actions exact; stalehash/crossscale/range/invalidfontrejected",
-    "asset_storage": "394/434 actual packaged resources exact RGBA/dimensions/frame/fps/loop;55 Info route/no-route paint-control projections match;all other XML and non-image payloads identical;6 mutation fixtures rejected",
+    "asset_storage": "394/420 logical resources exact RGBA/dimensions/frame/fps/loop;55 Info route/no-route paint-control projections match;other XML and non-image payloads identical; complete2-to4band archive fixture and seven mutations plus six original mutations.",
     "conversion_suite": "all17 conversion and independent visual comparison checks pass both scales"
   },
   "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets. Video omission/true autoresize mutations rejected; visual residual self-checks detect visible-pixel and shifted-layer mutations while ignoring zero-alpha RGB. The old alpha-1 corner bitmap fails the new source-pixel guard and reproduces a black rectangle in the cached-copy model. Temporal gap tests now reject auxiliary main-layout visibility bindings; adapter mutations removing state migration or reintroducing old pane bindings are rejected.",
@@ -62,16 +62,16 @@
   ],
   "contact_sheet": "startup-frames.png and visual-*.png are offline asset renders, not native captures.",
   "visual_comparison": "visual-comparison.json plus source/converted/residual sheets; fonts/credits excluded, default-size main/information compositions only",
-  "limited_native_review": "Current exact packages have loading-only native results:1x16.48s/347.1MiB,2x38.38s/1130.3MiB. Memory decreased and startup regressed;2x fails30s. Both loaded without logged theme errors/fallback and survived startup; running process identities/files/input desktop preserved. This does not certify visual controls or audio. All older GUI/audio reports retain their original hashes.",
-  "current_details": "storage-optimization-review.json and STORAGE-OPTIMIZATION.md",
-  "distribution": "Current offline bundle NFS-Current-Offline; private prerelease storage-optimized-offline-2026-10-15. Historical native reports remain scoped to their own hashes.",
+  "limited_native_review": "Loading-only native tests passed exact current hashes:1x8.27s/517.8MiB,2x28.27s/1807.2MiB; no fallback/theme errors, both survived intro, protected processes/files/input desktop preserved. No visual/audio parity certification.",
+  "current_details": "fast-loading-equivalence.json and FAST-LOADING.md",
+  "distribution": "Current complete bundle NFS-Current-Offline; private prerelease fast-loading-current-2026-10-15. User library installation is separate in fresh-skin-install.json; companion live rollout separately recorded.",
   "native_loading_budget_passed": {
     "1": true,
-    "2": false
+    "2": true
   },
   "native_working_set_after_intro_mib": {
-    "1": 347.1,
-    "2": 1130.3
+    "1": 517.8,
+    "2": 1807.2
   },
-  "native_loading_details": "storage-load-benchmark.json and LOADING-AND-MEMORY.md; one warm-cache loading-only run,2x fails30s, visual/audio tests remain pending"
+  "native_loading_details": "fast-load-benchmark.json and FAST-LOADING.md; one warm-cache loading-only run per scale."
 }
