@@ -27,7 +27,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: both packages pass native loading checks: 8.27 seconds at 1x and 28.27 seconds at 2x. Both user-library skins are updated; the coordinated fresh visible 1x handoff is in progress, with live confirmation pending. Visual parity acceptance remains pending.** Original graphics/animations, Info fades, readable tooltips, a roomier playlist, compact hover controls and dial volume OSD are included. See [loading evidence and limits](docs/FAST-LOADING.md), [installed-file verification](docs/fresh-skin-install.json) and [verification](docs/VERIFICATION.md).
+**Status: both packages pass native loading checks: 8.27 seconds at 1x and 28.27 seconds at 2x. Both user-library skins are updated; the fresh visible 1x setup is running with matching helper/OSD and preserved queue/settings. Visual parity acceptance remains pending.** Original graphics/animations, Info fades, readable tooltips, a roomier playlist, compact hover controls and dial volume OSD are included. See [loading evidence and limits](docs/FAST-LOADING.md), [installed-file verification](docs/fresh-skin-install.json) and [verification](docs/VERIFICATION.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -53,9 +53,9 @@ The fullscreen button and the video pane's plus button fill the monitor **with t
 
 The support bundle's `Start-1x.cmd` and `Start-2x.cmd` also run the original skin sounds and framed video hover controls through a small Windows helper. Borderless fullscreen uses VLC's native hover controller. The launchers preserve existing sessions and use private per-scale settings. A VLT loaded alone needs the helper for sounds and framed hover. [Behavior and test limits](docs/SOUNDS-AND-HOVER.md).
 
-The new hover strip stays 360 × 64 pixels on both skins, using original small transport buttons, a thin seek line and expandable volume. The framed strip uses 85% opacity; native fullscreen retains VLC's fade. Main filenames use larger white scrolling text. The bundled Lua interface requests VLC's native volume overlay when the dial changes. The current packages are installed in the user library; confirmation of the fresh visible 1x session is pending. [Compact controls](docs/COMPACT-CONTROLS.md).
+The new hover strip stays 360 × 64 pixels on both skins, using original small transport buttons, a thin seek line and expandable volume. The framed strip uses 85% opacity; native fullscreen retains VLC's fade. Main filenames use larger white scrolling text. The bundled Lua interface requests VLC's native volume overlay when the dial changes. The current packages are installed in the user library; the fresh visible 1x session now uses the matching compact helper. [Compact controls](docs/COMPACT-CONTROLS.md).
 
-Info pages now fade in/out at the original 400/500 ms timings, and Info frame colors fade for 700 ms. Tooltips use larger text; the helper prefers above the pointer. The playlist starts slightly larger with clearer text, keeps its lower-right resize corner, and the bundle's `Playlist-Text-Size.cmd` lets you save a personal text size for the next dedicated launch. The authorized companion handoff must preserve playback and settings; live confirmation remains pending. [Behavior and limits](docs/INFO-FADES.md).
+Info pages now fade in/out at the original 400/500 ms timings, and Info frame colors fade for 700 ms. Tooltips use larger text; the helper prefers above the pointer. The playlist starts slightly larger with clearer text, keeps its lower-right resize corner, and the bundle's `Playlist-Text-Size.cmd` lets you save a personal text size for the next dedicated launch. The coordinated 1x update preserved all158 queue entries, playback state, volume and pane geometry. [Behavior and limits](docs/INFO-FADES.md).
 
 <p align="center"><a href="#readme-index">↑ Back to index</a></p>
 

@@ -12,9 +12,10 @@
     "Both-scale check_hover and check_effects pass",
     "No VLT pixels, frames, timing or controls changed"
   ],
-  "native_hover_verification": "pending; coordinate exact helper rollout with companion",
+  "native_hover_verification": "pending; no pointer control used",
   "limits": [
     "Existing framed-bar wheel-origin issue remains",
     "No full visual/audio parity certification"
-  ]
+  ],
+  "deployment": "Matching helper active in coordinated fresh1x rollout; see fresh-1x-rollout.json"
 }

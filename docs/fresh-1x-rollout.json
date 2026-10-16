@@ -1,0 +1,59 @@
+{
+  "scope": "Coordinated owned companion restart and read-only native playback/support verification; no mouse or keyboard input.",
+  "owner_thread": "01a14113-4c1a-7343-911c-043dbf6f0337",
+  "live": {
+    "companionPid": 11212,
+    "vlcPid": 9632,
+    "chromePid": 67784,
+    "queueCount": 158,
+    "all_ids_match_saved_order": true,
+    "selected_ordinal_retained": true,
+    "status": {
+      "state": "paused",
+      "time": 2,
+      "length": 928,
+      "currentplid": 3,
+      "resolution": "1280x720",
+      "video": 99,
+      "audio": 143
+    },
+    "volume": 243,
+    "managedQueueCount": 158,
+    "sourceSHA256": "f628659a9b325b7fa754c4148535ecac0d51e8750d2ed9bfb0893a59ecd20c63",
+    "derivedSHA256": "87aeb51198014a1e6e6fc89191e73d93f14f391c1f5cbc07c345168f28ac8451",
+    "helperSHA256": "b08fc98adff5a641db988978a472ab14570d0be0ef3037a16a7a86f1a48cfc1e",
+    "source_asset_bytes_preserved": true,
+    "source_member_storage_preserved": true,
+    "effectsSchema": 2,
+    "hoverGeometry": {
+      "width": 361,
+      "height": 64,
+      "closedWidth": 362,
+      "closedHeight": 1
+    },
+    "saved_geometry_retained": {
+      "main": true,
+      "video": true,
+      "tracks": true,
+      "equalizer": true,
+      "info": true,
+      "youtube": true
+    },
+    "other_private_preferences_retained": true,
+    "normal_settings_unchanged": true,
+    "volumeOsdChannel": 9
+  },
+  "support": {
+    "helperPid": 87540,
+    "helperHash": "b08fc98adff5a641db988978a472ab14570d0be0ef3037a16a7a86f1a48cfc1e",
+    "osdHash": "9ff2ac594b3c29f20dff8e5026282412e7398d9c2f59810cf7a73412fc8409f1",
+    "httpAndLua": true,
+    "nativeOsdEnabled": true,
+    "privateRuntime": true,
+    "oldProcessesClosed": true
+  },
+  "limits": [
+    "Native pointer-triggered hover/OSD appearance remains untested",
+    "No full animation/audio/visual parity certification"
+  ]
+}

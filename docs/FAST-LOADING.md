@@ -1,4 +1,4 @@
-# Loading regression fixed; visible 1x handoff pending
+# Loading regression fixed; fresh 1x running
 
 Both current packages pass the 30-second initialization gate in the authorized
 private-desktop test. [Exact hashes and observations](fast-load-benchmark.json):
@@ -51,12 +51,16 @@ files backed up and installed hashes verified. The Program Files library update
 was denied and its files remain unchanged. [Installation evidence](fresh-skin-install.json)
 is separate from the running player.
 
-The authorized companion handoff covers a fresh visible 1x derivation,
-helper changeover and owned restart, preserving the 158-item queue, selected
-item, playback position/state, volume and settings. Live confirmation is PENDING;
-the existing session remains protected until the coordinated handoff. Record
-actual live source/helper hashes and observations in fresh-1x-rollout.json when
-available. Installation and successful loading do not establish live adoption.
+The coordinated companion restart is complete. The running 1x source hash matches
+the tested package, with the matching compact helper and private Lua volume
+observer. All158 queue IDs/order, selected ordinal0, paused2-second position,
+volume243 and main/video/playlist/EQ/Info/YouTube geometry were preserved.
+Native1280x720 audio/video decoding passed; normal settings and other private
+preferences were retained. Source asset bytes and storage methods survived the
+YouTube derivation. Old owned processes closed; no mouse/keyboard input was used.
+Exact source/derived/helper/OSD hashes and process identities are recorded in
+[fresh-1x-rollout.json](fresh-1x-rollout.json). Native pointer-driven hover and
+visual OSD appearance remain untested; this is not full parity acceptance.
 
 The matching helper also fixes stale-location hover activation: remembered pane
 bounds alone cannot open controls. It now requires a visible, nonminimized video
