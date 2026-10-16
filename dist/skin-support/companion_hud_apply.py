@@ -101,7 +101,7 @@ def _load(addon_folder):
             data = _read(folder, item['file'])
             require(_hash(data) == item['sha256'], 'Addon asset hash mismatch: '+key)
             size = _png_size(data)
-            require(size == (item['width'], item['height']) == ((3, 3) if key == 'yt_hud_command_hit' else (19, 19)), 'Addon asset geometry mismatch')
+            require(size == (item['width'], item['height']) == ((3, 3) if key == 'yt_hud_command_hit' else (25, 25)), 'Addon asset geometry mismatch')
             archive_path = _safe_path(manifest['assetPrefix']+item['file'])
             require(archive_path not in payloads, 'Duplicate addon archive path')
             assets[key] = archive_path
@@ -114,8 +114,8 @@ def _load(addon_folder):
                     and node.get('file') == assets[node.get('id')]
                     and node.get('alphacolor') == '#FF00FF', 'Addon resource declaration differs from manifest')
         require({n.get('id') for n in resources} == set(assets), 'Missing addon resource declaration')
-        require(manifest['seek'] == dict(x=12, y=12, length=288, oldLength=336,
-                                         sliderPoints='(0,0),(288,0)', railWidth=288), 'Unsupported seek adaptation')
+        require(manifest['seek'] == dict(x=12, y=12, length=281, oldLength=336,
+                                         sliderPoints='(0,0),(281,0)', railWidth=281), 'Unsupported seek adaptation')
         return tree, identifiers, payloads
     except (KeyError, TypeError, json.JSONDecodeError) as error:
         raise AddonError('Malformed addon manifest') from error
@@ -147,8 +147,8 @@ def apply_companion_hud(xml_bytes, addon_folder):
         rail = layout[index-1] if index else None
         require(rail is not None and rail.tag == 'Image' and rail.get('image') == 'compact_rail'
                 and all(rail.get(k) == v for k, v in dict(x='12', y='10', width='336', height='3', resize='scale').items()), 'Compact seek rail differs from audited geometry')
-        rail.set('width', '288')
-        slider.set('points', '(0,0),(288,0)')
+        rail.set('width', '281')
+        slider.set('points', '(0,0),(281,0)')
         for node in controller:
             require(node.tag in ('Button', 'Checkbox'), 'Unsupported addon control')
             layout.append(deepcopy(node))

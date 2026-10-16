@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-16",
+  "scope": "Remove redundant framed hover controls and enlarge optional companion Settings/CC. Earlier exact-hash UI/native reports remain historical.",
+  "packages": {
+    "1": {
+      "sha256": "08d4e5c1f972f863e306b30b6e11d9113889a49f05c54b69ee36d1305138552c",
+      "bytes": 52692208
+    },
+    "2": {
+      "sha256": "102b6f1cb0c3a0ecbfdf4a903c069819920c972a9b8a75f73da96b2e49f1fbff",
+      "bytes": 180193015
+    }
+  },
+  "helper_sha256": "9eb268f597236db8217717d075ef1a2e14c46fb903d932aa7504d59925f5fc59",
+  "helper_changed": false,
+  "injector_sha256": "a2dd8695346d965c81e6cec00091e7e9c781aec8023df9e99dc46da2a59c21eb",
+  "manifest_sha256": "238913cf64a65384ca9569baafe46e297fbc9ffd8ee225ada5655961fa42853c",
+  "template_sha256": "46a986060171df58ae21239b34fdba5013bd39df11bdd173ae3bc6000a034b10",
+  "changes": {
+    "framed_hover": "Remove duplicate fullscreen/hide buttons; video header retains its controls.",
+    "native_fullscreen": "Retain original fullscreen/hide controls for borderless playback.",
+    "settings": [
+      300,
+      0,
+      25,
+      25
+    ],
+    "cc": [
+      330,
+      0,
+      25,
+      25
+    ],
+    "seek_length": 281,
+    "seek_endpoint_center": 293,
+    "glyphs": "Gear11x11; CC11-13x7 strong antialiased ink, visibly inset; original speaker unchanged.",
+    "opacity": "Matching flat RGB13,17,21 fill and framed255/255 alpha unchanged. Former85percent whole-window alpha let underlying video show through both background and controls."
+  },
+  "checks": {
+    "memory_hover": "Both scales pass23rejected mutations, including framed duplicates/native escape omissions.",
+    "addon": "Both actual VLTs pass DTD, exact other XML/payload/compression preservation, readable glyphs, alpha-zero margins and10rejected mutations, including alpha1seek collision.",
+    "independent_review": "No actionable findings.",
+    "full_conversion_suite": "All17 checks pass both scales. Packaged hover comparison initially exposed XML indentation tails after node removal; normalizing whitespace-only text fixes the checker without altering product/attributes. Remaining four checks pass after that fixture correction.",
+    "native": "hud-layout-native-review.json:78 private assertions pass on both current exact packages;8alpha255readbacks, native video/tooltip creation and strict exposure gates. Four protectedprocesses/24guardpaths/inputdesktop preserved; owned testchildren closed. Productsourcemethod fixture, helper EXE not launched.",
+    "layers": {
+      "exact": 714,
+      "explained": 42,
+      "unexplained": 0
+    }
+  },
+  "limits": [
+    "No current2x physical visual review",
+    "No new startup/RSS measurements",
+    "Standalone VLTs contain no inactive Settings/CC buttons"
+  ]
+}

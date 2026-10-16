@@ -1,3 +1,5 @@
+Current25px Settings/CC geometry and hashes are in HUD-LAYOUT.md and hud-layout-review.json. The19px/288px geometry below is the preceding recorded revision.
+
 # Settings and CC in the video hover strip
 
 This optional addon belongs to the companion-derived skin. Standalone VLTs receive no inactive Settings/CC buttons. The matching helper

@@ -52,9 +52,18 @@ def validate(original_xml, changed_xml, payloads, frame):
         if key == 'yt_hud_command_hit':
             assert image.size == (3, 3) and set(image.getchannel('A').tobytes()) == {1}
         else:
-            assert image.size == (19, 19)
+            assert image.size == (25, 25)
             bounds = image.getchannel('A').getbbox()
-            assert bounds and bounds[0]+bounds[2] == 19 and bounds[1]+bounds[3] == 19, ('Centered button region', key)
+            assert bounds and bounds[0]+bounds[2] == 25 and bounds[1]+bounds[3] == 25, ('Centered button region', key)
+            ink = [(x,y) for y in range(25) for x in range(25)
+                   if max(image.getpixel((x,y))[:3]) >= 110 and image.getpixel((x,y))[3]]
+            assert ink, ('Missing readable glyph',key)
+            width = max(x for x,y in ink)-min(x for x,y in ink)+1
+            height = max(y for x,y in ink)-min(y for x,y in ink)+1
+            readable = (width,height) == (11,11) if 'settings' in key else 11 <= width <= 13 and height == 7
+            assert readable, ('Readable enlarged glyph',key,width,height)
+            assert all((x-12)**2+(y-12)**2 <= 8**2 for x,y in ink), ('Inset glyph clearance',key)
+
     for family in ('settings', 'cc_off', 'cc_on'):
         assert len({payloads[nodes[f'yt_hud_{family}_{s}'].get('file')] for s in ('no', 'hov', 'do')}) == 3, 'Distinct native feedback states'
     actions = ('yt_playback_actions.setLayout(yt_playback_ready)', 'yt_cc_indicator.setLayout(yt_cc_on)',
@@ -96,8 +105,8 @@ def validate(original_xml, changed_xml, payloads, frame):
         layout = nodes[layout_id]
         new = [nodes[f'yt_{prefix}_{name}'] for name in ('settings', 'cc')]
         assert list(layout)[-2:] == new, 'Addon controls must be above retained controls'
-        for node, name, x in zip(new, ('settings', 'cc'), (307, 332)):
-            assert (node.get('x'), node.get('y')) == (str(x), '2')
+        for node, name, x in zip(new, ('settings', 'cc'), (300, 330)):
+            assert (node.get('x'), node.get('y')) == (str(x), '0')
             assert node.get('visible') == gate+' and yt_controls_available.isActive'
             assert not active(node.get('visible'), {gate: True, 'yt_controls_unavailable.isActive': True}), 'Unavailable controls must be hidden'
             assert active(node.get('visible'), {gate: True, 'yt_controls_available.isActive': True})
@@ -111,13 +120,13 @@ def validate(original_xml, changed_xml, payloads, frame):
                 for state, color in (('1', 'off'), ('2', 'on')):
                     assert [node.get(attr+state) for attr in ('up', 'over', 'down')] == [f'yt_hud_cc_{color}_{s}' for s in ('no', 'hov', 'do')]
         seek = layout.find('Slider[@value="time"]')
-        assert seek.get('points') == '(0,0),(288,0)' and seek.get('x') == seek.get('y') == '12'
+        assert seek.get('points') == '(0,0),(281,0)' and seek.get('x') == seek.get('y') == '12'
         # Native CtrlSlider centers the ORIGINAL thumb with integer half sizes.
         # Test all feedback masks at both endpoints against the added buttons.
         for resource in {seek.get('up'), seek.get('down'), seek.get('over', seek.get('up'))}:
             thumb = frame(resource)
             assert thumb.size == (15, 17), 'Retain full original seek thumb'
-            for endpoint in (12, 300):
+            for endpoint in (12, 293):
                 footprint = Image.new('L', (361, 64))
                 # Win32 regions include every nonzero-alpha pixel, even alpha1.
                 # Raw alpha multiplication would round 1*1/255 down to zero.
@@ -130,8 +139,14 @@ def validate(original_xml, changed_xml, payloads, frame):
                         icon = Image.open(io.BytesIO(payloads[nodes[key].get('file')])).convert('RGBA')
                         mask = Image.new('L', footprint.size)
                         mask.paste(icon.getchannel('A').point(lambda a: 255 if a else 0),
-                                   (int(button.get('x')), 2))
+                                   (int(button.get('x')), int(button.get('y'))))
                         assert ImageChops.multiply(footprint, mask).getbbox() is None, ('Seek thumb overlaps addon', key, endpoint)
+        for button in new:
+            references = [button.get(a) for a in ('up','over','down','up1','over1','down1','up2','over2','down2') if button.get(a)]
+            for key in references:
+                alpha = Image.open(io.BytesIO(payloads[nodes[key].get('file')])).convert('RGBA').getchannel('A')
+                assert all(alpha.getpixel((x,y)) == 0 for x in range(25) for y in range(25)
+                           if x in (0,24) or y in (0,24)), ('Transparent addon margin',key)
         mirror = restored.find(f'.//Layout[@id="{layout_id}"]')
         for node in list(mirror):
             if node.get('id') in CONTROLS: mirror.remove(node)
@@ -152,7 +167,7 @@ def mutations(xml, original, payloads, frame):
             tree.find('Window[@id="yt_playback_actions"]/Layout').set('width', '133')
         elif kind == 'trigger-default':
             window = tree.find('Window[@id="yt_playback_actions"]'); window.append(window[0])
-        elif kind == 'overlap': tree.find('.//Button[@id="yt_hover_settings"]').set('x', '297')
+        elif kind == 'overlap': tree.find('.//Button[@id="yt_hover_settings"]').set('x', '292')
         elif kind == 'native-moved': tree.find('.//Layout[@id="video_hover_controls"]/Button').set('x', '9')
         elif kind == 'availability': tree.find('.//Button[@id="yt_hover_settings"]').set('visible', 'true')
         elif kind == 'cc-boolean': tree.find('.//Checkbox[@id="yt_hover_cc"]').set('state', 'vlc.hasSubtitles')
@@ -161,8 +176,8 @@ def mutations(xml, original, payloads, frame):
             name = tree.find('Bitmap[@id="yt_hud_settings_no"]').get('file')
             icon = Image.open(io.BytesIO(payloads[name])).convert('RGBA')
             # Symmetric edge pixels retain centered bounds. Only the left one
-            # intersects the max-position thumb, at global (307,12).
-            for x in (0, 18): icon.putpixel((x, 10), icon.getpixel((x, 10))[:3]+(1,))
+            # intersects the max-position thumb, at global (300,12).
+            for x in (0, 24): icon.putpixel((x, 12), icon.getpixel((x, 12))[:3]+(1,))
             encoded = io.BytesIO(); icon.save(encoded, format='PNG')
             candidate_payloads[name] = encoded.getvalue()
             def candidate_frame(key):

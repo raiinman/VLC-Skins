@@ -21,15 +21,17 @@ DOCS = ('PARITY.md', 'VERIFICATION.md', 'SOURCES.md', 'COMPACT-CONTROLS.md',
         'fresh-skin-install.json', 'fresh-1x-rollout.json', 'hover-visibility-review.json', 'UI-POLISH.md', 'ui-polish-review.json',
         'native-hover-review.json', 'native-hover-before-button-refinement.json', 'native-hover-opacity-first-attempt.json',
         'ui-polish-install.json', 'ui-polish-install-before-button-refinement.json', 'ui-polish-rollout.json',
-        'COMPANION-HUD.md', 'companion-hud-review.json')
-NOTICE = """NEED FOR SPEED UNDERGROUND / VLC — OFFLINE REVIEW BUNDLE
+        'COMPANION-HUD.md', 'companion-hud-review.json', 'HUD-LAYOUT.md',
+        'hud-layout-review.json', 'hud-layout-native-review.json', 'hud-layout-install.json', 'hud-layout-rollout.json')
+NOTICE = """NEED FOR SPEED UNDERGROUND / VLC â€” OFFLINE REVIEW BUNDLE
 
 These are the current verified offline packages and matching support files.
 Staging does not launch VLC, execute the helper, install a skin, change a profile,
 or reload the running player. Native evidence is scoped by exact package hashes;
 loading checks do not verify visual controls, sound or animation smoothness.
 
-Read docs/UI-POLISH.md and native-hover-review.json for the current UI fixes
+Read docs/HUD-LAYOUT.md and hud-layout-review.json for the latest layout.
+UI-POLISH.md and native-hover-review.json retain the preceding UI fixes
 and scoped private native hover/tooltip tests. FAST-LOADING.md and
 fast-load-benchmark.json retain the prior exact hashes' loading measurements. Earlier failed candidates retain their own scoped reports. Native
 measurements apply only when their exact VLT hashes match this bundle.

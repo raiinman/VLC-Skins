@@ -80,8 +80,9 @@ def add_controllers(builder):
         E.SubElement(layout,'Checkbox',**volume)
         label('$V%',259,34,46,collapsed)
         slider('volume',264,43,40,expanded)
-        button('vid_zoom',312,33,'vlc.fullscreen()','Enter / leave borderless fullscreen')
-        button('m_close',334,33,'videoHoverController.setLayout(video_hover_closed)' if companion else window_id+'.hide()','Hide playback controls')
+        if not companion:
+            button('vid_zoom',312,33,'vlc.fullscreen()','Enter / leave borderless fullscreen')
+            button('m_close',334,33,window_id+'.hide()','Hide playback controls')
         if companion:
             closed = E.SubElement(window,'Layout',id='video_hover_closed',width='362',height='1')
             marker = bitmap('hover_closed_marker',Image.new('RGBA',(1,1)))

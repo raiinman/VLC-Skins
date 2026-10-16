@@ -1,0 +1,555 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "error": null,
+  "cases": [
+    {
+      "scale": 1,
+      "name": "exposed-video-root",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "exposed-video-show",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "child-is-visible",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "child-contains-test-point",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "child-parent-is-video",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "vout-child-hit",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "vout-child-root",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "foreign-pid-rejected",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "synthetic-framed-bar-opaque-alpha255",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "synthetic-framed-bar-opaque-alpha255-reassert",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "open-bar-root",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "stationary-open-bar-retained",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "closed-bar-not-retained",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "occluded-video-root",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "covered-stale-rect-no-show",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "hidden-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "native-minimized-state",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "minimized-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "moved-video-old-rect-rejected",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "exposed-video-idle-expiry",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "exposed-video-root",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "exposed-video-show",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "child-is-visible",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "child-contains-test-point",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "child-parent-is-video",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "vout-child-hit",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "vout-child-root",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "foreign-pid-rejected",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "synthetic-framed-bar-opaque-alpha255",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "synthetic-framed-bar-opaque-alpha255-reassert",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "open-bar-root",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "stationary-open-bar-retained",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "closed-bar-not-retained",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "occluded-video-root",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "covered-stale-rect-no-show",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "hidden-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "native-minimized-state",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "minimized-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "moved-video-old-rect-rejected",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "exposed-video-idle-expiry",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-owned-window-discovery-private-desktop",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-vlc-thread-on-private-desktop",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-native-tooltip-created",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-exposed-video",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-video-show-decision",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-embedded-vout-child",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-occluder-native-coverage-established",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-covered-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-hidden-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-native-minimized-state",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-minimized-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-moved-video-stale-rect-rejected",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-restored-exposed-video",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-bar-open-layout",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-framed-bar-opaque-alpha255",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-framed-bar-opaque-alpha255-reassert",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-open-bar-idle-retention",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-hidden-bar-stale-rect-rejected",
+      "passed": true
+    },
+    {
+      "scale": 1,
+      "name": "actual-no-theme-error-or-fallback",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-owned-window-discovery-private-desktop",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-vlc-thread-on-private-desktop",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-native-tooltip-created",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-exposed-video",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-video-show-decision",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-embedded-vout-child",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-occluder-native-coverage-established",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-covered-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-hidden-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-native-minimized-state",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-minimized-video-no-show",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-moved-video-stale-rect-rejected",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-restored-exposed-video",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-bar-open-layout",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-framed-bar-opaque-alpha255",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-framed-bar-opaque-alpha255-reassert",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-open-bar-idle-retention",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-hidden-bar-stale-rect-rejected",
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "name": "actual-no-theme-error-or-fallback",
+      "passed": true
+    }
+  ],
+  "actualVlc": [
+    {
+      "scale": 1,
+      "initialized": true,
+      "discovery": "child",
+      "realEmbeddedChildObserved": true,
+      "nativeTooltipVisibleAfterMotion": false,
+      "tooltipTimerScope": "Optional private WM_MOUSEMOVE observation; false is an unverified timer/display result, never a creation/exposure pass.",
+      "ownedProcessClosed": true
+    },
+    {
+      "scale": 2,
+      "initialized": true,
+      "discovery": "child",
+      "realEmbeddedChildObserved": true,
+      "nativeTooltipVisibleAfterMotion": false,
+      "tooltipTimerScope": "Optional private WM_MOUSEMOVE observation; false is an unverified timer/display result, never a creation/exposure pass.",
+      "ownedProcessClosed": true
+    }
+  ],
+  "opacityReadbacks": [
+    {
+      "scale": 1,
+      "bar": "synthetic-framed-bar",
+      "reassert": false,
+      "readSucceeded": true,
+      "alpha": 255,
+      "flags": 2,
+      "layered": true
+    },
+    {
+      "scale": 1,
+      "bar": "synthetic-framed-bar",
+      "reassert": true,
+      "readSucceeded": true,
+      "alpha": 255,
+      "flags": 2,
+      "layered": true
+    },
+    {
+      "scale": 2,
+      "bar": "synthetic-framed-bar",
+      "reassert": false,
+      "readSucceeded": true,
+      "alpha": 255,
+      "flags": 2,
+      "layered": true
+    },
+    {
+      "scale": 2,
+      "bar": "synthetic-framed-bar",
+      "reassert": true,
+      "readSucceeded": true,
+      "alpha": 255,
+      "flags": 2,
+      "layered": true
+    },
+    {
+      "scale": 1,
+      "bar": "actual-framed-bar",
+      "reassert": false,
+      "readSucceeded": true,
+      "alpha": 255,
+      "flags": 2,
+      "layered": true
+    },
+    {
+      "scale": 1,
+      "bar": "actual-framed-bar",
+      "reassert": true,
+      "readSucceeded": true,
+      "alpha": 255,
+      "flags": 2,
+      "layered": true
+    },
+    {
+      "scale": 2,
+      "bar": "actual-framed-bar",
+      "reassert": false,
+      "readSucceeded": true,
+      "alpha": 255,
+      "flags": 2,
+      "layered": true
+    },
+    {
+      "scale": 2,
+      "bar": "actual-framed-bar",
+      "reassert": true,
+      "readSucceeded": true,
+      "alpha": 255,
+      "flags": 2,
+      "layered": true
+    }
+  ],
+  "coverageReadbacks": [
+    {
+      "scale": 1,
+      "placements": 1,
+      "nativeCoverageEstablished": true,
+      "productRoot": "fixture-occluder",
+      "exposed": false,
+      "pointerOnVideo": false,
+      "pointerOnBar": false
+    },
+    {
+      "scale": 2,
+      "placements": 1,
+      "nativeCoverageEstablished": true,
+      "productRoot": "fixture-occluder",
+      "exposed": false,
+      "pointerOnVideo": false,
+      "pointerOnBar": false
+    }
+  ],
+  "fixedTestPoint": true,
+  "pointerInputInjected": false,
+  "privateDesktop": true,
+  "scope": "Shared ReadExposure native topology and Show decision; optional actual VLT idle/playing windows, foreground-independent predicate. No complete helper timer/audio or user-input end-to-end certification.",
+  "cleanup": "All fixture windows disposed before report; desktop/process cleanup verified by Python owner.",
+  "fixture_exit_code": 0,
+  "packages": {
+    "1": "08d4e5c1f972f863e306b30b6e11d9113889a49f05c54b69ee36d1305138552c",
+    "2": "102b6f1cb0c3a0ecbfdf4a903c069819920c972a9b8a75f73da96b2e49f1fbff"
+  },
+  "skin_copies_unchanged": true,
+  "cleanup_error": null,
+  "owned_process_closed": true,
+  "input_desktop_unchanged": true,
+  "protected_processes": [
+    {
+      "pid": 9564,
+      "creation_filetime": 134366125070649935,
+      "alive": true
+    },
+    {
+      "pid": 44764,
+      "creation_filetime": 134366125071949202,
+      "alive": true
+    },
+    {
+      "pid": 84216,
+      "creation_filetime": 134366125055426688,
+      "alive": true
+    },
+    {
+      "pid": 30336,
+      "creation_filetime": 134366125072057124,
+      "alive": true
+    }
+  ],
+  "guarded_files_unchanged": true,
+  "guarded_file_count": 24,
+  "source_sha256": "0a9575e436d9e3c6b8495e90f3ff2763b2a05c3b77bf0d3ab7d7d107e14d52e8",
+  "fixture_sha256": "2755aa1c4ccd8a683600ad0b86e3312b718a549dcb5bffd6231c6ea8ca997ce0",
+  "fixture_executable_sha256": "214cdc9a182221080ebff5932f67786f34bc591be7a9fc520166e0cbc17cf1a2",
+  "packaged_helper_sha256_reference_only": "9eb268f597236db8217717d075ef1a2e14c46fb903d932aa7504d59925f5fc59",
+  "deployed_helper_executable_launched": false,
+  "binary_scope": "The private fixture executable compiles immutable copies of product source and fixture source. It calls shared product methods directly. The packaged helper hash is reference only; neither the packaged nor the user-session helper executable is launched by this test."
+}

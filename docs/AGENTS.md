@@ -62,3 +62,5 @@ COMPANION-HUD.md and companion-hud-review.json own the optional derived-skin Set
 Keep native-hover-before-button-refinement.json and ui-polish-install-before-button-refinement.json as exact-hash history. Current button refinements use source-matched beveled faces with inset glyphs, transparent outer margins and an opaque255/255 framed fill; record private native opacity readbacks separately from a deployed helper run.
 
 Retain native-hover-opacity-first-attempt.json as the failed private2x covered-window assertion, including preservation results. A later passing fixture run does not erase failed evidence or justify lowering exposure checks.
+
+HUD-LAYOUT.md and hud-layout-review.json own the later framed duplicate-button removal and25px Settings/CC revision. Keep the preceding UI-polish/native/install/rollout records scoped to their old hashes. hud-layout-native-review.json, hud-layout-install.json and hud-layout-rollout.json record new exact-package test/install/live evidence separately.

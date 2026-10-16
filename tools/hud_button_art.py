@@ -59,18 +59,21 @@ def glyph_mask(kind, size):
     elif kind == 'settings':
         points = []
         for tooth in range(8):
-            for fraction,radius in ((-.5,3.15),(-.26,4.2),(.26,4.2),(.5,3.15)):
+            root, tip = (4.2,5.6) if size == 25 else (3.15,4.2)
+            for fraction,radius in ((-.5,root),(-.26,tip),(.26,tip),(.5,root)):
                 angle = (tooth+fraction)*math.tau/8
                 points.append((coordinate(center+math.cos(angle)*radius),
                                coordinate(center+math.sin(angle)*radius)))
         draw.polygon(points,fill=255)
-        draw.ellipse(box((center-1.45,center-1.45,center+1.45,center+1.45)),fill=0)
+        hole = 1.9 if size == 25 else 1.45
+        draw.ellipse(box((center-hole,center-hole,center+hole,center+hole)),fill=0)
     elif kind in ('cc_off','cc_on'):
-        font = ImageFont.truetype(str(FONT),8*SAMPLE)
+        font = ImageFont.truetype(str(FONT),(10 if size == 25 else 8)*SAMPLE)
         bounds = font.getbbox('CC')
         text = Image.new('L',(bounds[2]-bounds[0],bounds[3]-bounds[1]))
         ImageDraw.Draw(text).text((-bounds[0],-bounds[1]),'CC',font=font,fill=255, stroke_width=3, stroke_fill=255)
-        text = text.resize((9*SAMPLE,5*SAMPLE),Image.Resampling.LANCZOS)
+        text_size = (12,7) if size == 25 else (9,5)
+        text = text.resize(tuple(v*SAMPLE for v in text_size),Image.Resampling.LANCZOS)
         mask.paste(text,((size*SAMPLE-text.width)//2,(size*SAMPLE-text.height)//2))
     else:
         raise ValueError('Unknown glyph: '+kind)
@@ -86,7 +89,7 @@ def glyph_mask(kind, size):
 
 
 def button_icon(kind, state, size):
-    if state not in ('no','hov','do') or (kind == 'speaker' and size != 23) or (kind != 'speaker' and size != 19):
+    if state not in ('no','hov','do') or (kind == 'speaker' and size != 23) or (kind != 'speaker' and size not in (19,25)):
         raise ValueError('Unsupported HUD button state/size')
     image = face(size,state)
     colors = {'no':(210,218,224),'hov':(246,250,252),'do':(167,181,190)}

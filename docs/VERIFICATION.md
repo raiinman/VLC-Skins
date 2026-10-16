@@ -1,3 +1,5 @@
+Latest HUD layout: HUD-LAYOUT.md and hud-layout-review.json identify exact08d4/102b packages. See hud-layout-native-review.json for78 passing private native assertions. The older UI/native records below retain their own hashes.
+
 # Verification evidence, 2026-10-16
 
 Current UI revision: UI-POLISH.md and ui-polish-review.json identify exact479bed/4a8954 packages and matching helper9eb268. All17 offline checks pass;78private native assertions cover real embedded video exposure, stale/covered/hidden/minimized/restored windows, bar retention, all8alpha255opacity readbacks and native tooltip creation on both scales. Four protected processes,23unique guard paths and the input desktop remained unchanged; test children closed. These tests call shared product-source methods compiled into a private fixture, not the deployed helper EXE. First failed cover assertion is retained separately; its precise cause is not proven. Live1x tooltip readability and companion Settings/CC evidence are separately scoped. Physical2x tooltip placement and full parity remain unverified.

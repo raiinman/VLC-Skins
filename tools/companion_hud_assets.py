@@ -35,7 +35,7 @@ def sha256(data):
 def icon(kind, state):
     """Shared beveled face, small inset glyph and exact transparent margin."""
     from hud_button_art import button_icon
-    return button_icon(kind,state,19)
+    return button_icon(kind,state,25)
 
 
 def xml_template():
@@ -51,11 +51,11 @@ def xml_template():
                                   ('video_hover_controls','yt_hover','video_hover_controls.isActive')]:
         parent = E.SubElement(controllers, 'Controller', layout=layout)
         visibility = gate+' and yt_controls_available.isActive'
-        E.SubElement(parent,'Button', id=prefix+'_settings', x='307', y='2',
+        E.SubElement(parent,'Button', id=prefix+'_settings', x='300', y='0',
                      up='yt_hud_settings_no', over='yt_hud_settings_hov', down='yt_hud_settings_do',
                      action='yt_playback_actions.setLayout(yt_playback_settings)',
                      tooltiptext='Playback settings', visible=visibility)
-        attrs = dict(id=prefix+'_cc', x='332', y='2', state='yt_cc_on.isActive',
+        attrs = dict(id=prefix+'_cc', x='330', y='0', state='yt_cc_on.isActive',
                      action1='yt_playback_actions.setLayout(yt_playback_cc)',
                      action2='yt_playback_actions.setLayout(yt_playback_cc)',
                      tooltiptext1='Turn captions on', tooltiptext2='Turn captions off', visible=visibility)
@@ -92,7 +92,7 @@ def generate(output):
             image = icon(kind,state)
             image.save(output/filename)
             assets.append(dict(id=f'yt_hud_{kind}_{state}',file=filename,
-                               sha256=sha256((output/filename).read_bytes()),width=19,height=19))
+                               sha256=sha256((output/filename).read_bytes()),width=25,height=25))
     Image.new('RGBA',(3,3),(0,0,0,1)).save(output/'command_hit.png')
     assets.append(dict(id='yt_hud_command_hit',file='command_hit.png',
                        sha256=sha256((output/'command_hit.png').read_bytes()),width=3,height=3))
@@ -104,9 +104,9 @@ def generate(output):
                     physicalArtwork=dict(width=360,height=64),
                     controllers=[dict(layout='fullscreen_controls',width=360,height=64),
                                  dict(layout='video_hover_controls',width=361,height=64)],
-                    seek=dict(x=12,y=12,length=288,oldLength=336,
-                              sliderPoints='(0,0),(288,0)',railWidth=288),
-                    rectangles=dict(settings=[307,2,19,19],cc=[332,2,19,19]),
+                    seek=dict(x=12,y=12,length=281,oldLength=336,
+                              sliderPoints='(0,0),(281,0)',railWidth=281),
+                    rectangles=dict(settings=[300,0,25,25],cc=[330,0,25,25]),
                     commandWindow=dict(id='yt_playback_actions',x=-31000,y=-30600,visible=True,height=17,
                         layouts=dict(settings=dict(id='yt_playback_settings',width=212),
                                      cc=dict(id='yt_playback_cc',width=213),
@@ -124,7 +124,7 @@ def generate(output):
                                       policy='Enable only for ready managed YouTube entries; hide for unmanaged/no entry.'),
                     integration=['Copy Resources children before Window nodes; copy Windows children as root Windows.',
                                  'Append each Controller child to its matching existing layout without scaling.',
-                                 'Shorten only its existing time Slider points and rail width to288; retain original thumb/resources.',
+                                 'Shorten only its existing time Slider points and rail width to281; retain original thumb/resources.',
                                  'Preserve every lower transport/time/volume/fullscreen/close node and the existing bar bounds.',
                                  'Host scopes HWND discovery and commands to its owned VLC process; poll sentinel widths and reset by command cell.',
                                  'CC actions request a host toggle; only actual native caption observations update yt_cc_indicator.',
@@ -135,31 +135,30 @@ def generate(output):
 
 def preview(directory):
     directory.mkdir(parents=True,exist_ok=True)
-    board = Image.new('RGB',(690,260),(13,17,21))
-    draw = ImageDraw.Draw(board)
     font = ImageFont.truetype(str(FONT),13)
-    draw.text((10,8),'Settings / CC off / CC on, native 19px and 3x asset preview',font=font,fill='white')
+    board = Image.new('RGB',(810,320),'#0D1115')
+    draw = ImageDraw.Draw(board)
+    draw.text((10,8),'Settings / CC off / CC on, native 25px and 3x asset preview',font=font,fill='white')
     for row,kind in enumerate(('settings','cc_off','cc_on')):
-        y = 40+row*72
+        y = 40+row*90
         draw.text((10,y),kind,font=font,fill='white')
         for column,state in enumerate(STATES):
             image = icon(kind,state)
             for light in (False,True):
-                x = 120+column*185+(85 if light else 0)
-                panel = Image.new('RGBA',(80,60),'white' if light else '#0D1115')
-                panel.alpha_composite(image,(0,20))
-                panel.alpha_composite(image.resize((57,57),Image.Resampling.NEAREST),(23,0))
+                x = 120+column*225+(110 if light else 0)
+                panel = Image.new('RGBA',(105,75),'white' if light else '#0D1115')
+                panel.alpha_composite(image,(0,25))
+                panel.alpha_composite(image.resize((75,75),Image.Resampling.NEAREST),(30,0))
                 board.paste(panel.convert('RGB'),(x,y+4))
-    # Exact4x views are separate from the compact overview's native/3x lanes.
     board.save(directory/'companion-hud-overview.png')
     for kind in ('settings','cc_off','cc_on'):
-        sheet = Image.new('RGB',(6*88,100),'#0D1115')
+        sheet = Image.new('RGB',(6*112,125),'#0D1115')
         d = ImageDraw.Draw(sheet)
-        for i,state in enumerate(STATES):
+        for column,state in enumerate(STATES):
             for light in (False,True):
-                x=(i*2+light)*88
-                panel=Image.new('RGBA',(76,76),'white' if light else '#0D1115')
-                panel.alpha_composite(icon(kind,state).resize((76,76),Image.Resampling.NEAREST))
+                x = (column*2+int(light))*112
+                panel=Image.new('RGBA',(100,100),'white' if light else '#0D1115')
+                panel.alpha_composite(icon(kind,state).resize((100,100),Image.Resampling.NEAREST))
                 sheet.paste(panel.convert('RGB'),(x,20))
                 d.text((x,2),state,font=font,fill='white')
         sheet.save(directory/(kind+'-4x.png'))

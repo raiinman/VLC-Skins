@@ -1,3 +1,5 @@
+Current layout: HUD-LAYOUT.md records the later framed duplicate removal and25px Settings/CC. Exact hashes and observations below retain the preceding UI-polish revision.
+
 # Filename, hover strip and tooltip corrections
 
 Both scales now place the main filename two source pixels below its backing's

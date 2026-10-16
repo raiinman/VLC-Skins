@@ -27,7 +27,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: both skins include a flat matching hover strip, centered speaker, lowered filename text, restored native tooltips and hover on inactive exposed video panes. All17 offline checks and78 private native assertions pass. The refined1x setup is running with its159-item queue,1080p,captions and settings preserved. Its solid fill and inset icons were visually confirmed;2x physical visual review remains pending.** See [current fixes and limits](docs/UI-POLISH.md).
+**Status: both skins include a flat matching hover strip, centered speaker, lowered filename text, restored native tooltips and hover on inactive exposed video panes. The framed strip omits duplicate fullscreen/hide controls, and companion Settings/CC are now25px. All17 offline checks and78 private native assertions pass. The refined1x setup is running with its159-item queue,1080p,captions and settings preserved. Its solid fill and inset icons were visually confirmed;2x physical visual review remains pending.** See [current fixes and limits](docs/HUD-LAYOUT.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -39,7 +39,7 @@ This comparison is rendered from the assets and XML, not captured from VLC. [Cor
 
 ## Try it
 
-<table align="center"><tbody><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/ui-polish-current-2026-10-16/Need-for-Speed-Underground-2x.vlt">2x skin</a>: 600 × 596 main player, for modern screens.</td></tr><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/ui-polish-current-2026-10-16/Need-for-Speed-Underground-1x.vlt">1x skin</a>: original 300 × 298 main player.</td></tr><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/ui-polish-current-2026-10-16/NFS-Current-Offline.zip">Complete matching review bundle</a>: both skins, helper, OSD script, settings dialog and launchers. Loading and offline checks pass; native visual/audio review remains separately scoped.</td></tr></tbody></table>
+<table align="center"><tbody><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/hud-layout-current-2026-10-16/Need-for-Speed-Underground-2x.vlt">2x skin</a>: 600 × 596 main player, for modern screens.</td></tr><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/hud-layout-current-2026-10-16/Need-for-Speed-Underground-1x.vlt">1x skin</a>: original 300 × 298 main player.</td></tr><tr><td align="center"><a href="https://github.com/raiinman/VLC-Skins/releases/download/hud-layout-current-2026-10-16/NFS-Current-Offline.zip">Complete matching review bundle</a>: both skins, helper, OSD script, settings dialog and launchers. Loading and offline checks pass; native visual/audio review remains separately scoped.</td></tr></tbody></table>
 
 Future verified fixes refresh the complete NFS-Current-Offline bundle and its hash manifest; staging never installs or reloads a running skin.
 

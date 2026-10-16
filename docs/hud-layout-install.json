@@ -1,0 +1,20 @@
+{
+  "scope": "Both current HUD-layout user-library VLTs installed with verified backups; running companion update is separate.",
+  "results": [
+    {
+      "scale": 1,
+      "library": "APPDATA/vlc/skins",
+      "before_sha256": "479bedabc8ddefb66353116b91ab4aa903756132edc41f6d2ade163c4d52974f",
+      "installed_sha256": "08d4e5c1f972f863e306b30b6e11d9113889a49f05c54b69ee36d1305138552c",
+      "backup_verified": true
+    },
+    {
+      "scale": 2,
+      "library": "APPDATA/vlc/skins",
+      "before_sha256": "4a895449960dfbdab30338ffe2d293890ff5199059995b66c18a63995c7c2577",
+      "installed_sha256": "102b6f1cb0c3a0ecbfdf4a903c069819920c972a9b8a75f73da96b2e49f1fbff",
+      "backup_verified": true
+    }
+  ],
+  "program_files": "Previous denied ProgramFiles library writes were not repeated; those copies remain unchanged."
+}

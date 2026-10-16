@@ -52,3 +52,5 @@ Playlist defaults are440x340sourcepixels with dedicated playlist font12x-scale a
 ## Collection presentation
 
 `skins/README.md` indexes actual skin families and uses its own collection-level `skins/readme-banner.png` with `skins/readme-banner-prompt.txt`. Do not reuse a single skin family's banner as the collection header; each family has a centered README with a linked section index, scale/download links, source attribution and verification links. Need for Speed Underground's generated decorative banner and brief live at `need-for-speed-underground/readme-banner.png` and `readme-banner-prompt.txt`, beside its README. Match banners to each skin's observed materials and palette. Keep these documentation assets outside `original/`, `vlc-1x/`, and `vlc-2x/`; they are not runtime skin artwork or build outputs.
+
+The framed compact hover strip omits duplicate fullscreen/hide buttons, leaving the video header controls available. Native fullscreenController retains original fullscreen/hide controls because borderless playback has no header. Optional companion Settings/CC faces are25px at(300,0)/(330,0), with281px seek rail and preserved original thumb.

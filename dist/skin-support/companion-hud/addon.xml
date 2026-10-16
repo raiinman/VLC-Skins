@@ -14,12 +14,12 @@
   </Resources>
   <Controllers>
     <Controller layout="fullscreen_controls">
-      <Button id="yt_fullscreen_settings" x="307" y="2" up="yt_hud_settings_no" over="yt_hud_settings_hov" down="yt_hud_settings_do" action="yt_playback_actions.setLayout(yt_playback_settings)" tooltiptext="Playback settings" visible="fullscreenController.isVisible and yt_controls_available.isActive" />
-      <Checkbox id="yt_fullscreen_cc" x="332" y="2" state="yt_cc_on.isActive" action1="yt_playback_actions.setLayout(yt_playback_cc)" action2="yt_playback_actions.setLayout(yt_playback_cc)" tooltiptext1="Turn captions on" tooltiptext2="Turn captions off" visible="fullscreenController.isVisible and yt_controls_available.isActive" up1="yt_hud_cc_off_no" over1="yt_hud_cc_off_hov" down1="yt_hud_cc_off_do" up2="yt_hud_cc_on_no" over2="yt_hud_cc_on_hov" down2="yt_hud_cc_on_do" />
+      <Button id="yt_fullscreen_settings" x="300" y="0" up="yt_hud_settings_no" over="yt_hud_settings_hov" down="yt_hud_settings_do" action="yt_playback_actions.setLayout(yt_playback_settings)" tooltiptext="Playback settings" visible="fullscreenController.isVisible and yt_controls_available.isActive" />
+      <Checkbox id="yt_fullscreen_cc" x="330" y="0" state="yt_cc_on.isActive" action1="yt_playback_actions.setLayout(yt_playback_cc)" action2="yt_playback_actions.setLayout(yt_playback_cc)" tooltiptext1="Turn captions on" tooltiptext2="Turn captions off" visible="fullscreenController.isVisible and yt_controls_available.isActive" up1="yt_hud_cc_off_no" over1="yt_hud_cc_off_hov" down1="yt_hud_cc_off_do" up2="yt_hud_cc_on_no" over2="yt_hud_cc_on_hov" down2="yt_hud_cc_on_do" />
     </Controller>
     <Controller layout="video_hover_controls">
-      <Button id="yt_hover_settings" x="307" y="2" up="yt_hud_settings_no" over="yt_hud_settings_hov" down="yt_hud_settings_do" action="yt_playback_actions.setLayout(yt_playback_settings)" tooltiptext="Playback settings" visible="video_hover_controls.isActive and yt_controls_available.isActive" />
-      <Checkbox id="yt_hover_cc" x="332" y="2" state="yt_cc_on.isActive" action1="yt_playback_actions.setLayout(yt_playback_cc)" action2="yt_playback_actions.setLayout(yt_playback_cc)" tooltiptext1="Turn captions on" tooltiptext2="Turn captions off" visible="video_hover_controls.isActive and yt_controls_available.isActive" up1="yt_hud_cc_off_no" over1="yt_hud_cc_off_hov" down1="yt_hud_cc_off_do" up2="yt_hud_cc_on_no" over2="yt_hud_cc_on_hov" down2="yt_hud_cc_on_do" />
+      <Button id="yt_hover_settings" x="300" y="0" up="yt_hud_settings_no" over="yt_hud_settings_hov" down="yt_hud_settings_do" action="yt_playback_actions.setLayout(yt_playback_settings)" tooltiptext="Playback settings" visible="video_hover_controls.isActive and yt_controls_available.isActive" />
+      <Checkbox id="yt_hover_cc" x="330" y="0" state="yt_cc_on.isActive" action1="yt_playback_actions.setLayout(yt_playback_cc)" action2="yt_playback_actions.setLayout(yt_playback_cc)" tooltiptext1="Turn captions on" tooltiptext2="Turn captions off" visible="video_hover_controls.isActive and yt_controls_available.isActive" up1="yt_hud_cc_off_no" over1="yt_hud_cc_off_hov" down1="yt_hud_cc_off_do" up2="yt_hud_cc_on_no" over2="yt_hud_cc_on_hov" down2="yt_hud_cc_on_do" />
     </Controller>
   </Controllers>
   <Windows>

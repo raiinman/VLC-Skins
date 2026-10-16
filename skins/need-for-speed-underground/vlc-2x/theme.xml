@@ -4288,90 +4288,88 @@
       <Text text="$V%" x="259" y="34" width="46" font="compactfont" color="#FFFFFF" alignment="center" scrolling="none" focus="false" visible="video_hover_controls.isActive and not hover_volume_expanded.isActive" id="control_3767"/>
       <Image image="compact_rail" x="264" y="41" width="40" height="3" resize="scale" visible="video_hover_controls.isActive and hover_volume_expanded.isActive" id="control_3768"/>
       <Slider id="video_hover_controls_volume" x="264" y="43" up="compact_eq_thumb2_png" down="compact_eq_thumb2_do_png" points="(0,0),(40,0)" thickness="8" value="volume" visible="video_hover_controls.isActive and hover_volume_expanded.isActive" tooltiptext="Volume: $V%"/>
-      <Button x="312" y="33" up="compact_vid_zoom_no_png" over="compact_vid_zoom_hov_png" down="compact_vid_zoom_do_png" action="nfs_fx_button.setLayout(nfs_fx_button_trigger);vlc.fullscreen()" tooltiptext="Enter / leave borderless fullscreen" id="control_3770"/>
-      <Button x="334" y="33" up="compact_m_close_no_png" over="compact_m_close_hov_png" down="compact_m_close_do_png" action="videoHoverController.setLayout(video_hover_closed)" tooltiptext="Hide playback controls" id="control_3771"/>
     </Layout>
     <Layout id="video_hover_closed" width="362" height="1">
-      <Image image="hover_closed_marker" x="0" y="0" width="1" height="1" id="control_3773"/>
+      <Image image="hover_closed_marker" x="0" y="0" width="1" height="1" id="control_3771"/>
     </Layout>
   </Window>
   <Window id="hover_volume_state" x="-31000" y="-30700" visible="true" dragdrop="false" playondrop="false">
     <Layout id="hover_volume_expanded" width="72" height="19">
-      <Image image="hover_closed_marker" x="0" y="0" width="1" height="1" id="control_3777"/>
+      <Image image="hover_closed_marker" x="0" y="0" width="1" height="1" id="control_3775"/>
     </Layout>
     <Layout id="hover_volume_collapsed" width="71" height="19">
-      <Image image="hover_closed_marker" x="0" y="0" width="1" height="1" id="control_3779"/>
+      <Image image="hover_closed_marker" x="0" y="0" width="1" height="1" id="control_3777"/>
     </Layout>
   </Window>
   <Window id="nfs_fx_button" x="-31000" y="-31000" visible="true" dragdrop="false" playondrop="false">
     <Layout id="nfs_fx_button_trigger" width="51" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="51" height="17" resize="scale" action2="nfs_fx_button.setLayout(nfs_fx_button_ready)" id="control_3783"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="51" height="17" resize="scale" action2="nfs_fx_button.setLayout(nfs_fx_button_ready)" id="control_3781"/>
     </Layout>
     <Layout id="nfs_fx_button_ready" width="41" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="41" height="17" resize="scale" action2="nfs_fx_button.setLayout(nfs_fx_button_ready)" id="control_3785"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="41" height="17" resize="scale" action2="nfs_fx_button.setLayout(nfs_fx_button_ready)" id="control_3783"/>
     </Layout>
   </Window>
   <Window id="nfs_fx_shutter" x="-31000" y="-31000" visible="true" dragdrop="false" playondrop="false">
     <Layout id="nfs_fx_shutter_trigger" width="52" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="52" height="17" resize="scale" action2="nfs_fx_shutter.setLayout(nfs_fx_shutter_ready)" id="control_3788"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="52" height="17" resize="scale" action2="nfs_fx_shutter.setLayout(nfs_fx_shutter_ready)" id="control_3786"/>
     </Layout>
     <Layout id="nfs_fx_shutter_ready" width="42" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="42" height="17" resize="scale" action2="nfs_fx_shutter.setLayout(nfs_fx_shutter_ready)" id="control_3790"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="42" height="17" resize="scale" action2="nfs_fx_shutter.setLayout(nfs_fx_shutter_ready)" id="control_3788"/>
     </Layout>
   </Window>
   <Window id="nfs_fx_intro" x="-31000" y="-31000" visible="true" dragdrop="false" playondrop="false">
     <Layout id="nfs_fx_intro_ready" width="43" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="43" height="17" resize="scale" action2="nfs_fx_intro.setLayout(nfs_fx_intro_ready)" id="control_3793"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="43" height="17" resize="scale" action2="nfs_fx_intro.setLayout(nfs_fx_intro_ready)" id="control_3791"/>
     </Layout>
     <Layout id="nfs_fx_intro_trigger" width="53" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="53" height="17" resize="scale" action2="nfs_fx_intro.setLayout(nfs_fx_intro_ready)" id="control_3795"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="53" height="17" resize="scale" action2="nfs_fx_intro.setLayout(nfs_fx_intro_ready)" id="control_3793"/>
     </Layout>
   </Window>
   <Window id="nfs_fx_info" x="-31000" y="-31000" visible="true" dragdrop="false" playondrop="false">
     <Layout id="nfs_fx_info_trigger" width="54" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="54" height="17" resize="scale" action2="nfs_fx_info.setLayout(nfs_fx_info_ready)" id="control_3798"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="54" height="17" resize="scale" action2="nfs_fx_info.setLayout(nfs_fx_info_ready)" id="control_3796"/>
     </Layout>
     <Layout id="nfs_fx_info_ready" width="44" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="44" height="17" resize="scale" action2="nfs_fx_info.setLayout(nfs_fx_info_ready)" id="control_3800"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="44" height="17" resize="scale" action2="nfs_fx_info.setLayout(nfs_fx_info_ready)" id="control_3798"/>
     </Layout>
   </Window>
   <Window id="nfs_fx_logo" x="-31000" y="-31000" visible="true" dragdrop="false" playondrop="false">
     <Layout id="nfs_fx_logo_trigger" width="55" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="55" height="17" resize="scale" action2="nfs_fx_logo.setLayout(nfs_fx_logo_ready)" id="control_3803"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="55" height="17" resize="scale" action2="nfs_fx_logo.setLayout(nfs_fx_logo_ready)" id="control_3801"/>
     </Layout>
     <Layout id="nfs_fx_logo_ready" width="45" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="45" height="17" resize="scale" action2="nfs_fx_logo.setLayout(nfs_fx_logo_ready)" id="control_3805"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="45" height="17" resize="scale" action2="nfs_fx_logo.setLayout(nfs_fx_logo_ready)" id="control_3803"/>
     </Layout>
   </Window>
   <Window id="nfs_hover_command" x="-31000" y="-30900" visible="true" dragdrop="false" playondrop="false">
     <Layout id="nfs_hover_command_layout" width="133" height="17">
-      <Image image="nfs_effect_marker" x="0" y="0" width="33" height="17" resize="scale" action2="videoHoverController.setLayout(video_hover_controls)" id="control_3808"/>
-      <Image image="nfs_effect_marker" x="33" y="0" width="33" height="17" resize="scale" action2="videoHoverController.setLayout(video_hover_closed)" id="control_3809"/>
-      <Image image="nfs_effect_marker" x="66" y="0" width="33" height="17" resize="scale" action2="hover_volume_state.setLayout(hover_volume_expanded)" id="control_3810"/>
-      <Image image="nfs_effect_marker" x="99" y="0" width="33" height="17" resize="scale" action2="hover_volume_state.setLayout(hover_volume_collapsed)" id="control_3811"/>
+      <Image image="nfs_effect_marker" x="0" y="0" width="33" height="17" resize="scale" action2="videoHoverController.setLayout(video_hover_controls)" id="control_3806"/>
+      <Image image="nfs_effect_marker" x="33" y="0" width="33" height="17" resize="scale" action2="videoHoverController.setLayout(video_hover_closed)" id="control_3807"/>
+      <Image image="nfs_effect_marker" x="66" y="0" width="33" height="17" resize="scale" action2="hover_volume_state.setLayout(hover_volume_expanded)" id="control_3808"/>
+      <Image image="nfs_effect_marker" x="99" y="0" width="33" height="17" resize="scale" action2="hover_volume_state.setLayout(hover_volume_collapsed)" id="control_3809"/>
     </Layout>
   </Window>
   <Window id="palette_state" x="0" y="0" visible="false" dragdrop="false" playondrop="false">
     <Layout id="palette_2" width="1" height="1">
-      <Image image="palette_marker" x="0" y="0" id="control_3814"/>
+      <Image image="palette_marker" x="0" y="0" id="control_3812"/>
     </Layout>
     <Layout id="palette_3" width="1" height="1">
-      <Image image="palette_marker" x="0" y="0" id="control_3816"/>
+      <Image image="palette_marker" x="0" y="0" id="control_3814"/>
     </Layout>
     <Layout id="palette_4" width="1" height="1">
-      <Image image="palette_marker" x="0" y="0" id="control_3818"/>
+      <Image image="palette_marker" x="0" y="0" id="control_3816"/>
     </Layout>
     <Layout id="palette_5" width="1" height="1">
-      <Image image="palette_marker" x="0" y="0" id="control_3820"/>
+      <Image image="palette_marker" x="0" y="0" id="control_3818"/>
     </Layout>
     <Layout id="palette_6" width="1" height="1">
-      <Image image="palette_marker" x="0" y="0" id="control_3822"/>
+      <Image image="palette_marker" x="0" y="0" id="control_3820"/>
     </Layout>
     <Layout id="palette_7" width="1" height="1">
-      <Image image="palette_marker" x="0" y="0" id="control_3824"/>
+      <Image image="palette_marker" x="0" y="0" id="control_3822"/>
     </Layout>
     <Layout id="palette_1" width="1" height="1">
-      <Image image="palette_marker" x="0" y="0" id="control_3826"/>
+      <Image image="palette_marker" x="0" y="0" id="control_3824"/>
     </Layout>
   </Window>
 </Theme>

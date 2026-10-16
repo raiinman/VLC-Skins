@@ -22,8 +22,7 @@ CONTROLLERS = {'fullscreenController': ('fullscreen_controls', 360, 0, 0),
                'videoHoverController': ('video_hover_controls', 361, -31000, -30800)}
 TRANSPORT = {'m_prev': (8, 27, 'playlist.previous()'),
              'm_stop': (76, 27, 'vlc.stop()'),
-             'm_next': (110, 27, 'playlist.next()'),
-             'vid_zoom': (312, 33, 'vlc.fullscreen()')}
+             'm_next': (110, 27, 'playlist.next()')}
 EXPANDED = 'hover_volume_expanded.isActive'
 
 
@@ -107,7 +106,8 @@ def state_hits(assets, layout, playing, expanded):
         node.set('visible', str(visible(node.get('visible'), flags=flags)).lower())
         if node.tag == 'Checkbox' and visible(node.get('state'), flags=flags):
             node.set('up1', node.get('up2'))
-    assert verify_hits(assets, clone, 1, (int(layout.get('width')), 64), False, 1) == 7
+    expected_hits = 5 if layout.get('id') == 'video_hover_controls' else 7
+    assert verify_hits(assets, clone, 1, (int(layout.get('width')), 64), False, 1) == expected_hits
 
 
 def verify(assets, scale):
@@ -152,9 +152,14 @@ def verify(assets, scale):
         if companion:
             assert not window.findall('.//Image[@action="move"]')
         buttons = layout.findall('Button')
-        assert len(buttons) == 5
+        assert len(buttons) == (3 if companion else 5)
         expected_buttons = dict(TRANSPORT)
-        expected_buttons['m_close'] = (334, 33, 'videoHoverController.setLayout(video_hover_closed)' if companion else 'fullscreenController.hide()')
+        if companion:
+            assert not any(node.get('up') in ('compact_vid_zoom_no_png', 'compact_m_close_no_png')
+                           for node in layout), 'Framed bar must not duplicate video-header escape controls'
+        else:
+            expected_buttons['vid_zoom'] = (312, 33, 'vlc.fullscreen()')
+            expected_buttons['m_close'] = (334, 33, 'fullscreenController.hide()')
         for prefix, (bx, by, action) in expected_buttons.items():
             matches = [n for n in buttons if n.get('up') == f'compact_{prefix}_no_png']
             assert len(matches) == 1
@@ -228,10 +233,18 @@ def verify(assets, scale):
     normalized = []
     for layout in layouts:
         clone = deepcopy(layout)
+        # Only the native fullscreen strip retains escape controls. Everything
+        # else must still have identical art, geometry, feedback and behavior.
+        for node in list(clone):
+            if node.tag == 'Button' and node.get('up') in ('compact_vid_zoom_no_png', 'compact_m_close_no_png'):
+                clone.remove(node)
         clone.set('width', '360')
         clone.set('minwidth', '360')
         clone.set('maxwidth', '360')
         for node in clone.iter():
+            # Removing the two native-only nodes leaves different XML indentation.
+            if node.text is not None and not node.text.strip(): node.text = None
+            if node.tail is not None and not node.tail.strip(): node.tail = None
             node.attrib.pop('id', None)
             if node.tag == 'Image' and node.get('image') == 'compact_carbon':
                 node.set('action', 'none')
@@ -249,12 +262,21 @@ def mutations(assets, scale):
     original_image = assets.image
     failures = ('name', 'visible', 'play', 'slider', 'overlap', 'tile', 'signal', 'closed-order',
                 'helper-drag', 'scaled-size', 'volume-state', 'volume-gate', 'text-focus',
-                'closed-paint', 'carbon-pixel', 'thumb-pixel', 'speaker-offset', 'speaker-ring', 'carbon-stripe')
+                'closed-paint', 'carbon-pixel', 'thumb-pixel', 'speaker-offset', 'speaker-ring', 'carbon-stripe',
+                'framed-zoom', 'framed-close', 'native-zoom-missing', 'native-close-missing')
     for failure in failures:
         assets.tree = deepcopy(original)
         window = assets.tree.find('Window[@id="fullscreenController"]')
         layout = window[0]
-        if failure == 'name': window.set('id', 'fullscreen_controller')
+        if failure in ('framed-zoom', 'framed-close'):
+            prefix = 'vid_zoom' if failure == 'framed-zoom' else 'm_close'
+            duplicate = deepcopy(layout.find(f'Button[@up="compact_{prefix}_no_png"]'))
+            if prefix == 'm_close': duplicate.set('action', 'videoHoverController.setLayout(video_hover_closed)')
+            assets.tree.find('.//Layout[@id="video_hover_controls"]').append(duplicate)
+        elif failure in ('native-zoom-missing', 'native-close-missing'):
+            prefix = 'vid_zoom' if failure == 'native-zoom-missing' else 'm_close'
+            layout.remove(layout.find(f'Button[@up="compact_{prefix}_no_png"]'))
+        elif failure == 'name': window.set('id', 'fullscreen_controller')
         elif failure == 'visible': window.set('visible', 'true')
         elif failure == 'play': layout.find('Checkbox').set('action2', 'vlc.stop()')
         elif failure == 'slider': layout.find('Slider').set('points', '(336,0),(0,0)')
