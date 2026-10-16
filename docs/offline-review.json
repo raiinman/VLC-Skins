@@ -4,7 +4,10 @@
   "scope": "Offline source/build/fixture verification only. No VLC/GUI launch, desktop input, installed skin, active profile or companion source changed.",
   "change": "Preserve keyed intro pixels; separate non-restarting shutter input gate from static feedback; fit fresh 1x/2x defaults to declared work areas; reset isolated preview layouts through INI writers. Disable media-driven video panel enlargement; compare independent retained WMS/XML layer compositions. Restore source button backings, two-recess video header and static Web Destinations art; remove 2x menu crop filtering seams. Replace lower-right alpha-1 black resize images with exact native-scale original corner crops for all seven palettes. Isolate pane palettes from shutter/clock main layout transitions using persistent hidden palette state; preserve legacy colors through explicit saved-state migration. Fullscreen entry points now toggle native video maximize/restore with the original border and feedback assets; native video double-click remains borderless. Video maximum bounds are 8192x4320. Scale solid fills rather than tile each output pixel; flatten video idle backings onto palette-matched original header crops before native caching. Restore source WAVs through an optional process-scoped Windows helper and original-art native/fullscreen and framed hover bars; ready/trigger layout protocol avoids routine SW_SHOW activation. Replace large hover bars with approved fixed360x64 compact original-button strip, hover-expanded volume and framed window-wide85% opacity; enlarge filename to white12 source-scale pixels; add private native volume-OSD observer. No live deployment. Restore native Info entry/return and frame-color fades with independent states; readable16px above-pointer native tooltips via matchinghelper; slightlyroomier440x340playlist with12x-scale text and optional future-launch personal text-size copies. Keep large exact PNG resources outside duplicated atlases (65536 total-pixel cap) and share identical static Info backings with exclusive route OR visibility, assigning stable IDs before sharing. No animation control/frame/timer removed.",
   "native_verified": false,
-  "native_initialization_seconds": null,
+  "native_initialization_seconds": {
+    "1": 16.48,
+    "2": 38.38
+  },
   "packages": {
     "1": {
       "sha256": "53c40a26545e01558650ab33033966ffa301df3247de886450fbe1a18f5ff9bf"
@@ -53,13 +56,22 @@
     "Native fade smoothness/timer timing, tooltip placement/stacking/DPI and customization GUI need later coordinated live review.",
     "Exact transient return hover feedback and arbitrary interrupted WMP fades are not reproduced; one-level alpha forwarding may change a transient RGB channel by one step.",
     "Fractional-alpha filtered frame edge pixels switch immediately.",
-    "Storage-optimized package startup/RSS requires later authorized isolated native measurement; offline allocation estimates are not measured process memory.",
+    "Storage-optimized2x startup38.38s FAILS30s;1x16.48s also regresses versus8.27s. Memory is lower at347.1/1130.3MiB. Balanced batching needs a future measured candidate; cold-start/repeated distributions remain unverified.",
     "Framed-hover mouse-wheel routing retains the existing stale-origin limitation.",
     "No100%parity acceptance inferred; prior native reports remain scoped to older exact hashes."
   ],
   "contact_sheet": "startup-frames.png and visual-*.png are offline asset renders, not native captures.",
   "visual_comparison": "visual-comparison.json plus source/converted/residual sheets; fonts/credits excluded, default-size main/information compositions only",
-  "limited_native_review": "Current candidate has no native evidence. effects-hover-review.json and all earlier reports retain their older hashes.",
+  "limited_native_review": "Current exact packages have loading-only native results:1x16.48s/347.1MiB,2x38.38s/1130.3MiB. Memory decreased and startup regressed;2x fails30s. Both loaded without logged theme errors/fallback and survived startup; running process identities/files/input desktop preserved. This does not certify visual controls or audio. All older GUI/audio reports retain their original hashes.",
   "current_details": "storage-optimization-review.json and STORAGE-OPTIMIZATION.md",
-  "distribution": "Current offline bundle NFS-Current-Offline; private prerelease storage-optimized-offline-2026-10-15. Historical native reports remain scoped to their own hashes."
+  "distribution": "Current offline bundle NFS-Current-Offline; private prerelease storage-optimized-offline-2026-10-15. Historical native reports remain scoped to their own hashes.",
+  "native_loading_budget_passed": {
+    "1": true,
+    "2": false
+  },
+  "native_working_set_after_intro_mib": {
+    "1": 347.1,
+    "2": 1130.3
+  },
+  "native_loading_details": "storage-load-benchmark.json and LOADING-AND-MEMORY.md; one warm-cache loading-only run,2x fails30s, visual/audio tests remain pending"
 }

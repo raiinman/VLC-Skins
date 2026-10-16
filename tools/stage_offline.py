@@ -15,16 +15,21 @@ DOCS = ('PARITY.md', 'VERIFICATION.md', 'SOURCES.md', 'COMPACT-CONTROLS.md',
         'VIDEO-REPAINT.md', 'FULLSCREEN.md', 'offline-review.json',
         'compact-review.json', 'info-fades-review.json', 'info-source-audit.json',
         'info-load-benchmark.json', 'load-benchmark.json', 'effects-hover-review.json',
-        'visual-comparison.json', 'STORAGE-OPTIMIZATION.md', 'storage-optimization-review.json')
+        'visual-comparison.json', 'STORAGE-OPTIMIZATION.md', 'storage-optimization-review.json',
+        'LOADING-AND-MEMORY.md', 'storage-load-benchmark.json')
 NOTICE = """NEED FOR SPEED UNDERGROUND / VLC — OFFLINE REVIEW BUNDLE
 
 These are the current verified offline packages and matching support files.
 Staging does not launch VLC, execute the helper, install a skin, change a profile,
-or reload the running player. New-package native load/GUI tests remain pending.
+or reload the running player. Native evidence is scoped by exact package hashes;
+loading checks do not verify visual controls, sound or animation smoothness.
 
 The earlier 8.27s / 29.55s loading observations apply only to the preceding hashes
 recorded in docs/info-load-benchmark.json. They do not certify these new packages.
 Read docs/offline-review.json and the individual reports for exact build scope.
+See docs/LOADING-AND-MEMORY.md and storage-load-benchmark.json for subsequent
+loading/memory measurements, including failed performance gates. Measurements
+apply only when their exact VLT hashes match this bundle.
 This refresh removes large duplicate bitmap buffers and shares static Info
 background caches. Every original pixel and animation setting is preserved;
 allocation estimates do not substitute for new measured startup time or RSS.
@@ -146,8 +151,8 @@ def stage(root, output):
     output.mkdir(parents=True, exist_ok=True)
     for relative in [*payloads, Path('START-HERE.txt'), Path('bundle-manifest.json')]:
         target(output, relative)
-    manifest = {'schemaVersion': 1, 'scope': 'Offline staging only; new-package native tests pending',
-                'native_tests_of_staged_hashes': 'pending', 'files': {}}
+    manifest = {'schemaVersion': 1, 'scope': 'Offline staging only; native evidence separately scoped by exact hashes',
+                'native_visual_controls_and_audio_tests': 'pending', 'files': {}}
     for relative, source in sorted(payloads.items(), key=lambda pair: pair[0].as_posix()):
         manifest['files'][relative.as_posix()] = atomic_write(target(output, relative), source=source, expected=expected[relative])
     manifest['files']['START-HERE.txt'] = atomic_write(target(output, 'START-HERE.txt'), data=NOTICE.encode('utf-8'))

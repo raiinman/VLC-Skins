@@ -86,4 +86,6 @@ Subsequent lossless resource storage and shared static backing changes are scope
 in STORAGE-OPTIMIZATION.md and storage-optimization-review.json. Previous loading
 and memory measurements above remain bound to their original hashes. Every
 fade frame, timing value and active route paint order is independently preserved;
-new native timing/RSS measurements remain pending.
+the subsequent private-desktop timing/RSS test is in LOADING-AND-MEMORY.md and
+storage-load-benchmark.json: lower memory, slower loading, and a failed2x30s
+budget. Visual transition/tooltip/sound checks remain pending.

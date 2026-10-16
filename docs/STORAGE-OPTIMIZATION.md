@@ -2,9 +2,11 @@
 
 The previous 2x package loaded in 29.55 seconds with about 1805 MiB working memory.
 Those native measurements remain bound to its exact hash in info-load-benchmark.json.
-The new packages are prepared offline; no VLC process or helper was launched,
-no input/focus was controlled, and no installed skin, profile or companion file
-was updated. The other chat owns the running pinned 1x session.
+The packages were prepared offline. A subsequent authorized private-desktop test
+measured 1x at 16.48 s / 347.1 MiB and 2x at 38.38 s / 1130.3 MiB: memory fell,
+but startup regressed and 2x fails the 30-second budget. See LOADING-AND-MEMORY.md
+and storage-load-benchmark.json. No input/focus, installed skin, active profile or
+companion asset was changed. The other chat owns the running pinned 1x session.
 
 VLC's Builder::addSubBitmap allocates and copies a separate RGBA buffer from its
 parent FileBitmap. The parent remains resident. The converter previously packed
@@ -38,17 +40,17 @@ These are two distinct allocation categories, not an observed process-memory
 measurement. The 2x package is slightly larger on disk (about 176 MiB versus
 171 MiB), because separate PNGs compress differently; image quality is unchanged.
 Small sprites stay batched to limit decoder-open overhead. Actual startup time
-could depend on that overhead and storage/cache state, so no speedup is claimed
-before the later native test.
+depends on that overhead and storage/cache state. The subsequent native test
+confirmed slower initialization; the memory win does not establish faster loading.
 
 Exact package hashes and allocation savings are in storage-optimization-review.json.
 Retained bitmap counts model FileBitmap RGBA plus separately copied SubBitmap
 RGBA. Initial CtrlImage cache dimensions are counted separately. These exclude
 other graphics, decoder temporaries and general VLC allocations; they are not
-measured RSS or a new startup-time result. More PNG files trade decoder-open
+measured RSS or a startup-time result; the later native measurements are separate. More PNG files trade decoder-open
 overhead against far fewer retained copies and cache constructions. The 30-second
-native gate remains; actual timing and process memory need a later authorized
-isolated native test. Cold starts and native visual behavior remain unverified.
+native gate remains; the later isolated test records its 2x failure explicitly.
+Cold starts, repeated timing distributions and native visual behavior remain unverified.
 
 Both verified packages, matching launchers/helper/scripts and current docs are
 staged together in NFS-Current-Offline with a manifest. Future verified fixes

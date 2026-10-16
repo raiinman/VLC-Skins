@@ -1,0 +1,83 @@
+{
+  "scope": "Exact skins, fresh explicit configs, copied portable VLC and private non-input desktop; no mouse/keyboard/focus APIs or helper launched.",
+  "runtime_sha256": "bfa5740f028a8f310ca01c779bbc5f2f1b435c41539c54de592f715bb0c10389",
+  "runtime_copy_seconds": 3.25,
+  "input_desktop_unchanged": true,
+  "protected_processes": [
+    {
+      "pid": 11216,
+      "creation_filetime": 134366013154270389,
+      "still_alive": true
+    },
+    {
+      "pid": 106100,
+      "creation_filetime": 134366013168166577,
+      "still_alive": true
+    },
+    {
+      "pid": 107928,
+      "creation_filetime": 134366013168366877,
+      "still_alive": true
+    }
+  ],
+  "guarded_files_unchanged": true,
+  "results": [
+    {
+      "scale": 1,
+      "sha256": "53c40a26545e01558650ab33033966ffa301df3247de886450fbe1a18f5ff9bf",
+      "budget_seconds": 30,
+      "autoplay_after_interface_ready_seconds": 16.48,
+      "within_budget": true,
+      "process_alive_after_animation": true,
+      "theme_errors": [],
+      "error": null,
+      "test_pid": 97660,
+      "memory_at_ready_mib": {
+        "WorkingSetSize": 346.3,
+        "PeakWorkingSetSize": 346.3,
+        "PrivateUsage": 319.0
+      },
+      "memory_after_intro_mib": {
+        "WorkingSetSize": 347.1,
+        "PeakWorkingSetSize": 347.2,
+        "PrivateUsage": 319.4
+      },
+      "theme_configuration_logged": true,
+      "requested_exact_skin_logged": true,
+      "skin_copy_unchanged": true,
+      "fallback_logged": false,
+      "passed": true
+    },
+    {
+      "scale": 2,
+      "sha256": "3faacb28eb26e1c546a9587d9399db77bf56ee823739ac1354165e20035652f7",
+      "budget_seconds": 30,
+      "autoplay_after_interface_ready_seconds": 38.38,
+      "within_budget": false,
+      "process_alive_after_animation": true,
+      "theme_errors": [],
+      "error": null,
+      "test_pid": 101308,
+      "memory_at_ready_mib": {
+        "WorkingSetSize": 1130.2,
+        "PeakWorkingSetSize": 1130.3,
+        "PrivateUsage": 1109.3
+      },
+      "memory_after_intro_mib": {
+        "WorkingSetSize": 1130.3,
+        "PeakWorkingSetSize": 1130.4,
+        "PrivateUsage": 1109.3
+      },
+      "theme_configuration_logged": true,
+      "requested_exact_skin_logged": true,
+      "skin_copy_unchanged": true,
+      "fallback_logged": false,
+      "passed": false
+    }
+  ],
+  "limits": "One run per scale; existing OS file caches, not a cold-machine test. Measures CLI autoplay after interface readiness, not visual timing or controls.",
+  "guarded_file_count": 16,
+  "guarded_existing_file_count": 11,
+  "owned_test_processes_closed": true,
+  "timing_context": "One warm-cache run per scale. Other agent held owned runtime restarts and continued offline development. This is not a cold-machine or repeated-run timing distribution."
+}

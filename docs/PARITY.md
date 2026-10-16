@@ -1,6 +1,6 @@
 # Parity and acceptance
 
-Current offline packages include the lossless storage/static-backing optimization recorded in STORAGE-OPTIMIZATION.md. Every packaged bitmap pixel, animation setting and active Info route control/paint order is compared with the preceding build. Native startup/RSS and full visual review of these new hashes remain pending; earlier native timing and GUI evidence retains its original scope.
+Current offline packages include the lossless storage/static-backing optimization recorded in STORAGE-OPTIMIZATION.md. Every packaged bitmap pixel, animation setting and active Info route control/paint order is compared with the preceding build. Native startup/RSS tests show lower memory but slower loading, with2xfailing30s (LOADING-AND-MEMORY.md); full visual review remains pending; earlier native timing and GUI evidence retains its original scope.
 
 The latest candidate also restores Info page/frame fades, enlarges tooltips with helper placement above the pointer, and slightly enlarges the playlist with clearer text and optional text-size customization. It has offline evidence only in `info-fades-review.json`. The preceding compact candidate is recorded in `compact-review.json`; targeted native evidence in `effects-hover-review.json` applies to older large-bar packages/helper. See `offline-review.json` for the current offline scope.
 

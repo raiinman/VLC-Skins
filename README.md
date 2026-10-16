@@ -2,7 +2,7 @@
 
 Need for Speed Underground, converted from the original Windows Media Player 9 skin to native VLC Skins2. Conversion by **Dead Signal Interactive**; original skin by **The Skins Factory**.
 
-**Status: both offline skins now avoid large duplicate bitmap buffers and share static Info backings without changing their artwork or animations. Info fades, readable tooltips, a roomier playlist, compact hover controls and dial volume OSD are included. Native timing/memory remeasurement and visual parity acceptance remain pending.** Earlier native reports cover their recorded older package hashes. See [verification](docs/VERIFICATION.md).
+**Status: both offline skins now avoid large duplicate bitmap buffers and share static Info backings without changing their artwork or animations. Info fades, readable tooltips, a roomier playlist, compact hover controls and dial volume OSD are included. Native tests confirm lower memory but slower startup: 1x 16.48 s / 347 MiB; 2x 38.38 s / 1130 MiB. The 2x build fails the 30-second loading budget; visual parity acceptance remains pending.** Earlier native reports cover their recorded older package hashes. See [verification](docs/VERIFICATION.md).
 
 ![Original artwork and VLC conversion](docs/preview.png)
 
@@ -12,7 +12,7 @@ This comparison is rendered from the assets and XML, not captured from VLC. [Cor
 
 - [2x skin](https://github.com/raiinman/VLC-Skins/releases/download/storage-optimized-offline-2026-10-15/Need-for-Speed-Underground-2x.vlt): 600 × 596 main player, for modern screens.
 - [1x skin](https://github.com/raiinman/VLC-Skins/releases/download/storage-optimized-offline-2026-10-15/Need-for-Speed-Underground-1x.vlt): original 300 × 298 main player.
-- [Complete matching review bundle](https://github.com/raiinman/VLC-Skins/releases/download/storage-optimized-offline-2026-10-15/NFS-Current-Offline.zip): both skins, helper, OSD script, settings dialog and launchers. This is an offline prerelease with native checks pending.
+- [Complete matching review bundle](https://github.com/raiinman/VLC-Skins/releases/download/storage-load-review-2026-10-15/NFS-Current-Offline.zip): both skins, helper, OSD script, settings dialog and launchers. This is an offline prerelease with native checks pending.
 
 Future verified fixes refresh the complete NFS-Current-Offline bundle and its hash manifest; staging never installs or reloads a running skin.
 
@@ -76,7 +76,7 @@ python tools/benchmark_load.py --output ../work/load-benchmark.json
 
 The optional volume-OSD mock test requires test-only `lupa==2.8` and runs with `python tools/check_osd.py` (or `--lua-python-path` for a private dependency directory). Python/Lupa are not required by the Windows review bundle.
 
-The preceding Info/playlist packages loaded in 8.27 seconds at 1x and 29.55 seconds at 2x in one Windows run per scale; see [exact hashes and preservation checks](docs/info-load-benchmark.json). The 2x result is close to the 30-second budget and used about 1.76 GiB working memory. These are warm-cache measurements under concurrent workload, not cold-start guarantees. The benchmark copies the installed runtime into a private portable directory, uses silent dummy audio and non-input desktops, and never launches the effects helper. Add repeatable `--protect-pid PID` and `--guard-file PATH` options for live-session preservation checks; normal VLC config files are guarded automatically. The newer lossless storage optimization has no inherited native timing/RSS result; see [allocation and equivalence evidence](docs/STORAGE-OPTIMIZATION.md). Native visual controls and animation smoothness require separate review.
+The preceding Info/playlist packages loaded in 8.27 seconds at 1x and 29.55 seconds at 2x in one Windows run per scale; see [exact hashes and preservation checks](docs/info-load-benchmark.json). The 2x result is close to the 30-second budget and used about 1.76 GiB working memory. These are warm-cache measurements under concurrent workload, not cold-start guarantees. The benchmark copies the installed runtime into a private portable directory, uses silent dummy audio and non-input desktops, and never launches the effects helper. Add repeatable `--protect-pid PID` and `--guard-file PATH` options for live-session preservation checks; normal VLC config files are guarded automatically. The subsequent exact-hash native test found memory reductions but loading regressions; see [loading/memory results](docs/LOADING-AND-MEMORY.md). The 2x result fails the existing 30-second budget; see [allocation and equivalence evidence](docs/STORAGE-OPTIMIZATION.md). Native visual controls and animation smoothness require separate review.
 
 To repeat recovery from the supplied package:
 
