@@ -11,9 +11,9 @@ The classic Need for Speed Underground skin, made for VLC on Windows.
 
 [Install](#install-the-skin) · [YouTube & extras](#youtube--extras) · [Controls](#controls) · [Help](#help) · [Credits](#credits)
 
-<a href="https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-VLC-1x-Release.mp4"><img src="docs/release-poster.jpg" alt="Watch the 48-second NFS Underground 1x release film" width="720"></a>
+https://github.com/user-attachments/assets/b5e28626-5d25-49d5-91e5-8daf4a282a67
 
-[Watch the release film](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-VLC-1x-Release.mp4) � 48 seconds � 1080p60
+48 seconds · 1080p60 · [Download the video](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-VLC-1x-Release.mp4)
 
 *Original-size 1x release. 2x is still being worked on.*
 
@@ -70,6 +70,6 @@ This release targets **Windows and VLC 3, 64-bit**. Skins are not supported on m
 
 Original skin: **The Skins Factory**. VLC conversion: **Dead Signal Interactive**. Built with AI assistance.
 
-Original copyright: **© 2003 Electronic Arts Inc. All Rights Reserved.** Original artwork and branding belong to their owners. This fan conversion does not claim their ownership or endorsement. [Sources and notices](docs/SOURCES.md) � [Licensing](LICENSE.md).
+Original copyright: **© 2003 Electronic Arts Inc. All Rights Reserved.** Original artwork and branding belong to their owners. This fan conversion does not claim their ownership or endorsement. [Sources and notices](docs/SOURCES.md) · [Licensing](LICENSE.md).
 
 </div>
