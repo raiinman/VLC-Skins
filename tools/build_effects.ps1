@@ -22,6 +22,7 @@ $skinDataDirectory = Split-Path -Parent $fontDirectory
 foreach ($resource in @('skin.dtd', 'skin.catalog')) {
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot ('../vendor/' + $resource)) -Destination (Join-Path $skinDataDirectory $resource) -Force
 }
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'companion_hud_apply.py') -Destination (Join-Path (Split-Path -Parent $output) 'companion_hud_apply.py') -Force
 $packageDirectory = Split-Path -Parent (Split-Path -Parent $output)
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Start-NFS.ps1') -Destination (Join-Path $packageDirectory 'Start-NFS.ps1') -Force
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Playlist-Text-Size.ps1') -Destination (Join-Path $packageDirectory 'Playlist-Text-Size.ps1') -Force

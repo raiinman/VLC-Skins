@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "assetPrefix": "companion-hud/",
+  "scope": "Companion-derived skins only; validated core VLT/helper remain unchanged.",
+  "assets": [
+    {
+      "id": "yt_hud_settings_no",
+      "file": "settings_no.png",
+      "sha256": "a4bab7f215f3c8c1616d27efa680fb192a1502634a6e354adfff743f6b442eed",
+      "width": 19,
+      "height": 19
+    },
+    {
+      "id": "yt_hud_settings_hov",
+      "file": "settings_hov.png",
+      "sha256": "52c02c7d4a5889f850647e29147e5269c4f9ac946b17de8f7e9292c07a0d9a16",
+      "width": 19,
+      "height": 19
+    },
+    {
+      "id": "yt_hud_settings_do",
+      "file": "settings_do.png",
+      "sha256": "6ecbc3dd75cc2da8e9d770f45b561bc26e762753597d9a8c5770c99139f278a0",
+      "width": 19,
+      "height": 19
+    },
+    {
+      "id": "yt_hud_cc_off_no",
+      "file": "cc_off_no.png",
+      "sha256": "ce011c5297e36058df4ce7a041579f519a2dcc496be5b2f1a1112e7de85cf8f9",
+      "width": 19,
+      "height": 19
+    },
+    {
+      "id": "yt_hud_cc_off_hov",
+      "file": "cc_off_hov.png",
+      "sha256": "f1dc73e11d370681e1aba06716909b638596be2ad456a8d2c94080124573da0a",
+      "width": 19,
+      "height": 19
+    },
+    {
+      "id": "yt_hud_cc_off_do",
+      "file": "cc_off_do.png",
+      "sha256": "b900b0c33905601b6dfab4c4ee51a2c0fe65207215c26a262a7c8451beb54770",
+      "width": 19,
+      "height": 19
+    },
+    {
+      "id": "yt_hud_cc_on_no",
+      "file": "cc_on_no.png",
+      "sha256": "25794f5935482d42a6ce9a0d674c038ece95af6a6fddbad37c42322b2227fadf",
+      "width": 19,
+      "height": 19
+    },
+    {
+      "id": "yt_hud_cc_on_hov",
+      "file": "cc_on_hov.png",
+      "sha256": "1ec24e3187113ecf6a1f13e00c56bba3b8d6529944422f875da3e078e9b1719d",
+      "width": 19,
+      "height": 19
+    },
+    {
+      "id": "yt_hud_cc_on_do",
+      "file": "cc_on_do.png",
+      "sha256": "fa3adeef6d0ba0286ecf72055f647a633656f6b842230ae5d39377846fadbace",
+      "width": 19,
+      "height": 19
+    },
+    {
+      "id": "yt_hud_command_hit",
+      "file": "command_hit.png",
+      "sha256": "1466aa7297e06f238aeba92e97baef0beb6c1729b3ecc47b4d6502ead61de1f0",
+      "width": 3,
+      "height": 3
+    }
+  ],
+  "template": {
+    "file": "addon.xml",
+    "sha256": "708b618e92a4133d82fdbd0aaa8897b2fcadf40b91ce002c95c189c1b31fa523"
+  },
+  "physicalArtwork": {
+    "width": 360,
+    "height": 64
+  },
+  "controllers": [
+    {
+      "layout": "fullscreen_controls",
+      "width": 360,
+      "height": 64
+    },
+    {
+      "layout": "video_hover_controls",
+      "width": 361,
+      "height": 64
+    }
+  ],
+  "seek": {
+    "x": 12,
+    "y": 12,
+    "length": 288,
+    "oldLength": 336,
+    "sliderPoints": "(0,0),(288,0)",
+    "railWidth": 288
+  },
+  "rectangles": {
+    "settings": [
+      307,
+      2,
+      19,
+      19
+    ],
+    "cc": [
+      332,
+      2,
+      19,
+      19
+    ]
+  },
+  "commandWindow": {
+    "id": "yt_playback_actions",
+    "x": -31000,
+    "y": -30600,
+    "visible": true,
+    "height": 17,
+    "layouts": {
+      "settings": {
+        "id": "yt_playback_settings",
+        "width": 212
+      },
+      "cc": {
+        "id": "yt_playback_cc",
+        "width": 213
+      },
+      "ready": {
+        "id": "yt_playback_ready",
+        "width": 211
+      }
+    },
+    "default": "yt_playback_ready",
+    "cellSize": [
+      3,
+      3
+    ],
+    "invoke": {
+      "reset": [
+        1,
+        1
+      ],
+      "cc_on": [
+        11,
+        1
+      ],
+      "cc_off": [
+        21,
+        1
+      ],
+      "available": [
+        31,
+        1
+      ],
+      "unavailable": [
+        41,
+        1
+      ]
+    },
+    "actions": {
+      "reset": "yt_playback_actions.setLayout(yt_playback_ready)",
+      "cc_on": "yt_cc_indicator.setLayout(yt_cc_on)",
+      "cc_off": "yt_cc_indicator.setLayout(yt_cc_off)",
+      "available": "yt_hud_availability.setLayout(yt_controls_available)",
+      "unavailable": "yt_hud_availability.setLayout(yt_controls_unavailable)"
+    }
+  },
+  "captionIndicator": {
+    "window": "yt_cc_indicator",
+    "x": -31000,
+    "y": -30500,
+    "visible": false,
+    "on": {
+      "id": "yt_cc_on",
+      "width": 222,
+      "height": 1
+    },
+    "off": {
+      "id": "yt_cc_off",
+      "width": 221,
+      "height": 1
+    },
+    "default": "yt_cc_off",
+    "authority": "Host queries actual native caption state; never infer from an invented subtitle boolean."
+  },
+  "availability": {
+    "window": "yt_hud_availability",
+    "x": -31000,
+    "y": -30400,
+    "visible": false,
+    "available": {
+      "id": "yt_controls_available",
+      "width": 223,
+      "height": 1
+    },
+    "unavailable": {
+      "id": "yt_controls_unavailable",
+      "width": 224,
+      "height": 1
+    },
+    "default": "yt_controls_unavailable",
+    "policy": "Enable only for ready managed YouTube entries; hide for unmanaged/no entry."
+  },
+  "integration": [
+    "Copy Resources children before Window nodes; copy Windows children as root Windows.",
+    "Append each Controller child to its matching existing layout without scaling.",
+    "Shorten only its existing time Slider points and rail width to288; retain original thumb/resources.",
+    "Preserve every lower transport/time/volume/fullscreen/close node and the existing bar bounds.",
+    "Host scopes HWND discovery and commands to its owned VLC process; poll sentinel widths and reset by command cell.",
+    "CC actions request a host toggle; only actual native caption observations update yt_cc_indicator.",
+    "These templates are addon fragments, not a standalone VLC skin or a native test result."
+  ]
+}

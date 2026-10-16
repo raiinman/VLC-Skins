@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-16",
+  "scope": "Companion-only Settings/CC addon; core VLTs and helper remain unchanged.",
+  "injector_sha256": "3e56ed80ca12722fff249d445230502b19ceeffda52829e8d3c4c1a4bbe61830",
+  "manifest_sha256": "9fff00ec18def535efa0daf9ba91e8d9b001592ca1c87e0d2aa655bc5173296e",
+  "template_sha256": "708b618e92a4133d82fdbd0aaa8897b2fcadf40b91ce002c95c189c1b31fa523",
+  "physical_hud": [
+    360,
+    64
+  ],
+  "settings_rect": [
+    307,
+    2,
+    19,
+    19
+  ],
+  "cc_rect": [
+    332,
+    2,
+    19,
+    19
+  ],
+  "source_seek_length": 336,
+  "derived_seek_length": 288,
+  "offline_checks": {
+    "actual_source_scales": [
+      1,
+      2
+    ],
+    "DTD": true,
+    "original_payloads_and_compression_preserved": true,
+    "all_other_XML_unchanged": true,
+    "buttons_gated_by_managed_entry_availability": true,
+    "CC_indicator_authority": "Actual native caption state, supplied by companion host",
+    "nonzero_alpha_hit_masks": true,
+    "rejected_mutations_per_scale": 10
+  },
+  "host_integration": "Pending companion-owned native wiring and coordinated rollout.",
+  "limits": [
+    "No addon buttons are added to standalone VLTs",
+    "Offline templates do not certify host dispatch or native menu behavior"
+  ]
+}
