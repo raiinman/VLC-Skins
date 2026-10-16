@@ -112,3 +112,7 @@ Background audits must not launch VLC, take desktop input, alter installed skins
 Explicitly authorized loading-only tests use benchmark_load.py with a copied portable runtime, per-test config/temp paths and private non-input desktops. Never switch desktops or inject input. Protect the running player/helper by retained process identity and guard active profile/companion file hashes. Termination and RC commands belong only to owned test processes; verify TCP ownership after connecting before writing. Record exact package hashes, preservation checks and single-run/cache limits separately from GUI evidence.
 
 A hidden palette_state window stores pane color independently of main shutter/clock layouts. Keep this state synchronized on explicit color/replay actions and migrate legacy saved color entries without resetting pane positions. Background-only boundaries remain in force unless the user explicitly authorizes native interaction for a specific test.
+
+## README presentation
+
+The root owns `README.md`, original decorative artwork in `readme-banner.png`, and its brief in `readme-banner-prompt.txt`. Keep the README centered with compact Shields.io `label-message-color` logo badges, a linked section index, and verified project-file shortcuts. Center tables and code containers while preserving exact code spacing, source attribution, project status, and evidence limits. Public repository metrics may use live Shields.io or Badgen badges. Decorative art and badges do not establish implementation or acceptance.
