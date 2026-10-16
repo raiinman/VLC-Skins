@@ -1,0 +1,20 @@
+{
+  "scope": "Offline helper bug fix; no mouse/keyboard or native hover test performed here.",
+  "helper_sha256": "b08fc98adff5a641db988978a472ab14570d0be0ef3037a16a7a86f1a48cfc1e",
+  "cause": "Saved video bounds and WS_VISIBLE did not establish that the pointer was on an exposed video surface.",
+  "fix": [
+    "Reject minimized video panes",
+    "Require WindowFromPoint root to match selected-PID video or already-open hover bar",
+    "Require actual native hover root before expanding volume"
+  ],
+  "checks": [
+    "Compiler and pure self-tests pass, including seven new exposure assertions",
+    "Both-scale check_hover and check_effects pass",
+    "No VLT pixels, frames, timing or controls changed"
+  ],
+  "native_hover_verification": "pending; coordinate exact helper rollout with companion",
+  "limits": [
+    "Existing framed-bar wheel-origin issue remains",
+    "No full visual/audio parity certification"
+  ]
+}

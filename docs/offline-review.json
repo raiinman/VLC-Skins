@@ -49,7 +49,8 @@
     "tooltip": "compiled; pure tests including18tooltipidentity/geometry cases, runtime trust fixtures and actual VLT extraction pass; no native calls",
     "playlist_customization": "both fixture SelfTests pass; actual1x18px/2x26px derivedVLTs alter onlyFontdigits, all other XML/assets/actions exact; stalehash/crossscale/range/invalidfontrejected",
     "asset_storage": "394/420 logical resources exact RGBA/dimensions/frame/fps/loop;55 Info route/no-route paint-control projections match;other XML and non-image payloads identical; complete2-to4band archive fixture and seven mutations plus six original mutations.",
-    "conversion_suite": "all17 conversion and independent visual comparison checks pass both scales"
+    "conversion_suite": "all17 conversion and independent visual comparison checks pass both scales",
+    "hover_exposure": "Compiler/pure checks including seven exposure assertions; both-scale hover/effects pass. Actual pointer root required, minimized/covered/hidden panes cannot open framed bar; native pointer test pending."
   },
   "regression_evidence": "Startup source comparison rejected old frame 15 at 1x before the fix; full startup/light source equality passes at 1x and 2x after correction. Source-art and panel checks also rejected in-memory pixel, hover-binding, button-obstruction and resize-anchor mutations. Animated shutter-idle and offscreen information-window mutations were rejected in memory. Isolated writer tests cover stale layout reset, Unicode/shell-metacharacter paths and failing targets. Video omission/true autoresize mutations rejected; visual residual self-checks detect visible-pixel and shifted-layer mutations while ignoring zero-alpha RGB. The old alpha-1 corner bitmap fails the new source-pixel guard and reproduces a black rectangle in the cached-copy model. Temporal gap tests now reject auxiliary main-layout visibility bindings; adapter mutations removing state migration or reintroducing old pane bindings are rejected.",
   "remaining": [
@@ -73,5 +74,6 @@
     "1": 517.8,
     "2": 1807.2
   },
-  "native_loading_details": "fast-load-benchmark.json and FAST-LOADING.md; one warm-cache loading-only run per scale."
+  "native_loading_details": "fast-load-benchmark.json and FAST-LOADING.md; one warm-cache loading-only run per scale.",
+  "matching_helper_sha256": "b08fc98adff5a641db988978a472ab14570d0be0ef3037a16a7a86f1a48cfc1e"
 }

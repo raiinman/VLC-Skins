@@ -52,3 +52,5 @@ CORNER-FIX.md records the source-backed cached-image paint defect and current fi
 SHUTTER-ISOLATION.md and shutter-pane-review.json own the transient-layout defect, migration requirements and limited native retest. Record original reproduction separately from fixed observations, and never imply native 2x/all-color coverage from the 1x blue retest.
 
 FULLSCREEN.md owns framed maximize versus native borderless double-click behavior. fullscreen-review.json records current package hashes and targeted native video verification; do not apply the preceding shutter build's native observations to this candidate. VIDEO-REPAINT.md owns uniform-fill draw complexity, opaque video backing composites and their verification limits.
+
+hover-visibility-review.json records the stale-rectangle hover defect, exact helper hash and offline exposure checks. Distinguish compiled/pure tests from native pointer-driven observation; coordinated deployment is recorded in fresh-1x-rollout.json.

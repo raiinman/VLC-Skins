@@ -123,6 +123,8 @@ namespace NfsSkinSupport
         [DllImport("user32.dll")] internal static extern uint GetWindowThreadProcessId(IntPtr hwnd, out uint pid);
         [DllImport("user32.dll")] internal static extern bool GetWindowRect(IntPtr hwnd, out Rect rect);
         [DllImport("user32.dll")] internal static extern bool IsWindowVisible(IntPtr hwnd);
+        [DllImport("user32.dll")] internal static extern bool IsIconic(IntPtr hwnd);
+        [DllImport("user32.dll")] internal static extern IntPtr WindowFromPoint(Point point);
         [DllImport("user32.dll")] internal static extern bool IsWindow(IntPtr hwnd);
         [DllImport("user32.dll")] internal static extern IntPtr GetForegroundWindow();
         [DllImport("user32.dll")] internal static extern bool GetCursorPos(out Point point);
@@ -328,6 +330,10 @@ namespace NfsSkinSupport
         internal static bool BorderlessCandidate(bool visible, bool hasOwner, string windowClass) { return visible && !hasOwner && windowClass == "SkinWindowClass"; }
         internal static uint PositionFlags(bool alreadyPositioned) { return 0x0001u | 0x0010u | 0x0200u | (alreadyPositioned ? 0x0002u : 0u); }
         internal static bool VolumeRegion(int x, int y) { return x >= 232 && x < 312 && y >= 25 && y < 60; }
+        internal static bool Exposed(bool visible, bool minimized, bool pointerOnVideo, bool pointerOnOpenBar)
+        {
+            return visible && !minimized && (pointerOnVideo || pointerOnOpenBar);
+        }
         internal static bool IsOpen(int width, int height, HoverSpec spec) { return width == spec.width && height == spec.height; }
         internal static bool Suppress(bool suppressed, bool moved, bool manuallyClosed) { return manuallyClosed || (suppressed && !moved); }
         internal static bool Show(bool videoVisible, bool foregroundVlc, bool nativeFullscreen, bool insideVideo, bool insideVisibleBar, long idleMilliseconds, bool suppressed = false)
@@ -532,13 +538,20 @@ namespace NfsSkinSupport
         private void PollHover(long now)
         {
             Native.Rect bounds, bar;
-            bool videoVisible = Rect(video, out bounds) && Native.IsWindowVisible(video);
+            bool videoVisible = Rect(video, out bounds) && Native.IsWindowVisible(video) && !Native.IsIconic(video);
             if (diagnostics != null) diagnostics.Change("video", new { found = target.Owns(video), width = bounds.Width, height = bounds.Height, visible = videoVisible });
             bool barKnown = Rect(hover, out bar) && Native.IsWindowVisible(hover);
             bool barVisible = barKnown && HoverDecision.IsOpen(bar.Width, bar.Height, assets.Manifest.hover);
             Point cursor;
             if (!Native.GetCursorPos(out cursor)) return;
-            bool inside = videoVisible && bounds.Contains(cursor);
+            // Rectangles survive hiding/occlusion. Only the exposed selected video
+            // or its already-open bar may maintain hover, including vout children.
+            IntPtr underPointer = Native.WindowFromPoint(cursor);
+            IntPtr pointerRoot = underPointer == IntPtr.Zero ? IntPtr.Zero : Native.GetAncestor(underPointer, 2);
+            bool pointerOnVideo = target.Owns(pointerRoot) && pointerRoot == video;
+            bool pointerOnBar = barVisible && target.Owns(pointerRoot) && pointerRoot == hover;
+            bool exposed = HoverDecision.Exposed(videoVisible, Native.IsIconic(video), pointerOnVideo, pointerOnBar);
+            bool inside = exposed && pointerOnVideo && bounds.Contains(cursor);
             bool moved = !hadCursor || cursor != previousCursor || (inside && !wasInsideVideo);
             if (moved) movedAt = now;
             // A source close button switches the bar to its closed layout without
@@ -553,7 +566,7 @@ namespace NfsSkinSupport
             previousCursor = cursor; hadCursor = true; wasInsideVideo = inside;
             IntPtr foreground = Native.GetForegroundWindow();
             bool foregroundOwn = target.Owns(foreground), fullscreenDetected = videoVisible && Borderless();
-            bool desired = HoverDecision.Show(videoVisible, foregroundOwn, fullscreenDetected, inside, barVisible && bar.Contains(cursor), now - movedAt, closeSuppressed);
+            bool desired = HoverDecision.Show(exposed, foregroundOwn, fullscreenDetected, inside, pointerOnBar && bar.Contains(cursor), now - movedAt, closeSuppressed);
             if (diagnostics != null) diagnostics.Change("hover", new { open = barVisible, desired = desired, inside = inside, foregroundOwn = foregroundOwn, fullscreenDetected = fullscreenDetected, suppressed = closeSuppressed });
             if (desired && barVisible)
             {
@@ -570,7 +583,7 @@ namespace NfsSkinSupport
             {
                 Native.Rect nativeBar;
                 bool framedVolume = desired && barVisible && HoverDecision.VolumeRegion(cursor.X - bar.Left, cursor.Y - bar.Top);
-                bool nativeVolume = Rect(nativeHover, out nativeBar) && Native.IsWindowVisible(nativeHover) && nativeBar.Width == 360 && nativeBar.Height == 64 && HoverDecision.VolumeRegion(cursor.X - nativeBar.Left, cursor.Y - nativeBar.Top);
+                bool nativeVolume = pointerRoot == nativeHover && target.Owns(nativeHover) && Rect(nativeHover, out nativeBar) && Native.IsWindowVisible(nativeHover) && nativeBar.Width == 360 && nativeBar.Height == 64 && HoverDecision.VolumeRegion(cursor.X - nativeBar.Left, cursor.Y - nativeBar.Top);
                 VolumeCommand(foregroundOwn && (framedVolume || nativeVolume), now);
             }
         }
@@ -736,6 +749,13 @@ namespace NfsSkinSupport
             suppressed = HoverDecision.Suppress(suppressed, true, false);
             Check(!suppressed && HoverDecision.Show(true, true, false, true, false, 0, suppressed));
             Check(!HoverDecision.Suppress(false, false, false)); // Helper hide is not a manual close.
+            Check(HoverDecision.Exposed(true, false, true, false));
+            Check(HoverDecision.Exposed(true, false, false, true));
+            Check(!HoverDecision.Exposed(true, false, false, false)); // Covered/stale rectangle.
+            Check(!HoverDecision.Exposed(false, false, true, true)); // Hidden pane.
+            Check(!HoverDecision.Exposed(true, true, true, true)); // Minimized pane.
+            Check(!HoverDecision.Show(HoverDecision.Exposed(true, false, false, false), true, false, true, true, 0));
+            Check(!HoverDecision.Show(HoverDecision.Exposed(false, false, false, true), true, false, false, true, 0));
             Check(HoverDecision.IsOpen(426, 146, Example().hover));
             Check(!HoverDecision.IsOpen(427, 1, Example().hover));
             Check(SignalDecision.Due(false, "button", 100) == -1);

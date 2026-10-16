@@ -18,7 +18,7 @@ DOCS = ('PARITY.md', 'VERIFICATION.md', 'SOURCES.md', 'COMPACT-CONTROLS.md',
         'visual-comparison.json', 'STORAGE-OPTIMIZATION.md', 'storage-optimization-review.json',
         'LOADING-AND-MEMORY.md', 'storage-load-benchmark.json',
         'FAST-LOADING.md', 'fast-loading-equivalence.json', 'fast-load-benchmark.json',
-        'fresh-skin-install.json', 'fresh-1x-rollout.json')
+        'fresh-skin-install.json', 'fresh-1x-rollout.json', 'hover-visibility-review.json')
 NOTICE = """NEED FOR SPEED UNDERGROUND / VLC — OFFLINE REVIEW BUNDLE
 
 These are the current verified offline packages and matching support files.

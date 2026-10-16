@@ -57,3 +57,9 @@ item, playback position/state, volume and settings. Live confirmation is PENDING
 the existing session remains protected until the coordinated handoff. Record
 actual live source/helper hashes and observations in fresh-1x-rollout.json when
 available. Installation and successful loading do not establish live adoption.
+
+The matching helper also fixes stale-location hover activation: remembered pane
+bounds alone cannot open controls. It now requires a visible, nonminimized video
+pane and its actual exposed window under the pointer, or the already-open bar.
+Compiler/pure exposure and both-scale hover/effects checks pass; native pointer
+verification is pending. See hover-visibility-review.json for the exact helper.
