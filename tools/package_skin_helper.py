@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import re
 import tempfile
-from zipfile import ZIP_DEFLATED, ZipFile
+from zipfile import ZIP_DEFLATED, ZIP_STORED, ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 SKINS = [
@@ -57,13 +57,18 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def package(controller, expected, support, output, version):
+def package(controller, expected, support, output, version, skin=None):
     controller, support, output = map(lambda p: Path(p).resolve(), (controller, support, output))
     if not re.fullmatch(r'[0-9A-Za-z][0-9A-Za-z.-]{0,63}', version):
         raise ValueError('Invalid version')
     if not re.fullmatch(r'[0-9a-f]{64}', expected) or digest(controller) != expected:
         raise ValueError('Controller differs from the verified build')
     files = {'Start NFS.exe': controller}
+    if skin is not None:
+        skin = Path(skin).resolve()
+        if digest(skin) != SKINS[1]:
+            raise ValueError('Bundle requires the unchanged notice-bearing released 1x skin')
+        files['Need-for-Speed-Underground-1x.vlt'] = skin
     for name, pinned in SUPPORT.items():
         source = support / name
         if digest(source) != pinned:
@@ -75,7 +80,16 @@ def package(controller, expected, support, output, version):
     files['nfs_volume_osd_v1.lua'] = lua
     files['LICENSE-CODE.txt'] = ROOT / 'LICENSE-CODE.txt'
     payloads = {name: source.read_bytes() for name, source in files.items()}
-    payloads.update({'START-HERE.txt': START.encode(), 'NOTICES.txt': NOTICES.encode()})
+    start, notices = START, NOTICES
+    if skin is not None:
+        start = start.replace('NFS Underground skin helper for VLC', 'NFS Underground for VLC')
+        start = start.replace('This is the NFS skin helper.', 'This download includes the 1x skin and its sounds/video-controls helper.')
+        start = start.replace('2. Download Need-for-Speed-Underground-1x.vlt separately. Keep it as a VLT.\n3. Unzip this whole folder, then open Start NFS.exe and select the VLT.',
+                              '2. Extract this whole ZIP to a folder you want to keep.\n3. Open Start NFS.exe. The included skin loads automatically.')
+        notices = notices.replace('The separately downloaded skin', 'The included unchanged skin')
+        notices = notices.replace('DLLs, plugins, original sound files, fonts or Python runtime are in this ZIP.\nThe launcher uses the installed VLC runtime and the separately selected skin.',
+                                  'DLLs, plugins or Python runtime are bundled. Original artwork, sounds and\nfonts remain inside the included VLT with their own credits/license notices.\nThe launcher uses the installed VLC runtime and the included skin.')
+    payloads.update({'START-HERE.txt': start.encode(), 'NOTICES.txt': notices.encode()})
     manifest = dict(schemaVersion=1, product='nfs-skin-helper', version=version,
                     architecture='win64', acceptedSkinSha256=SKINS,
                     files={name: hashlib.sha256(data).hexdigest() for name, data in payloads.items()})
@@ -87,7 +101,7 @@ def package(controller, expected, support, output, version):
     output.parent.mkdir(parents=True, exist_ok=True)
     with ZipFile(output, 'x', compression=ZIP_DEFLATED) as archive:
         for name, data in payloads.items():
-            archive.writestr(name, data)
+            archive.writestr(name, data, compress_type=ZIP_STORED if name.endswith('.vlt') else ZIP_DEFLATED)
     with ZipFile(output) as archive:
         if archive.testzip() is not None or set(archive.namelist()) != set(payloads):
             raise ValueError('Final ZIP failed CRC/member verification')
@@ -96,10 +110,11 @@ def package(controller, expected, support, output, version):
                 raise ValueError('Final ZIP changed a payload: ' + name)
     return dict(file=output.name, sha256=digest(output), bytes=output.stat().st_size,
                 controllerSha256=expected, files=manifest['files'],
-                acceptedSkinSha256=SKINS, includesYouTube=False, includesPython=False)
+                acceptedSkinSha256=SKINS, includesSkin=skin is not None,
+                includesYouTube=False, includesPython=False)
 
 
-def self_test():
+def self_test(skin=None):
     with tempfile.TemporaryDirectory(prefix='nfs-package-') as directory:
         root = Path(directory)
         controller = root / 'fixture-controller.exe'
@@ -110,6 +125,24 @@ def self_test():
         with ZipFile(output) as archive:
             assert not any(name.endswith(('.py', '.vlt')) for name in archive.namelist())
             assert 'Start NFS.exe' in archive.namelist()
+        if skin is not None:
+            bundled = root / 'complete.zip'
+            result = package(controller, expected, ROOT / 'dist/skin-support', bundled, 'test', skin)
+            with ZipFile(bundled) as archive:
+                member = 'Need-for-Speed-Underground-1x.vlt'
+                assert digest(skin) == result['files'][member] == SKINS[1]
+                assert archive.read(member) == Path(skin).read_bytes()
+                assert archive.getinfo(member).compress_type == ZIP_STORED
+                assert 'loads automatically' in archive.read('START-HERE.txt').decode()
+                assert not any('youtube' in name.lower() or name.endswith('.py') for name in archive.namelist())
+            bad_skin = root / 'changed.vlt'
+            bad_skin.write_bytes(b'wrong skin')
+            try:
+                package(controller, expected, ROOT / 'dist/skin-support', root / 'bad-skin.zip', 'test', bad_skin)
+            except ValueError:
+                assert not (root / 'bad-skin.zip').exists()
+            else:
+                raise AssertionError('Unverified skin accepted')
         for bad_expected, bad_output, version in [(expected, output, 'test'),
                 ('0' * 64, root / 'wrong.zip', 'test'),
                 (expected, root / 'traversal.zip', '../bad')]:
@@ -128,14 +161,15 @@ def main():
     parser.add_argument('--expected-controller-sha256')
     parser.add_argument('--support', type=Path, default=ROOT / 'dist/skin-support')
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--skin', type=Path, help='Include the unchanged notice-bearing release 1x VLT')
     parser.add_argument('--version', default='1.1.0')
     parser.add_argument('--self-test', action='store_true')
     args = parser.parse_args()
     if args.self_test:
-        self_test()
+        self_test(args.skin)
     elif args.controller and args.expected_controller_sha256 and args.output:
         print(json.dumps(package(args.controller, args.expected_controller_sha256,
-                                 args.support, args.output, args.version), indent=2))
+                                 args.support, args.output, args.version, args.skin), indent=2))
     else:
         parser.error('--controller, --expected-controller-sha256 and --output are required')
 

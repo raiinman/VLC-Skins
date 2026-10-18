@@ -33,7 +33,7 @@ The standalone controller source snapshot is in `tools/nfs-player/`. Build it wi
 
 `python tools/check_nfs_player.py --skin <audited-1x.vlt>` checks source preparation, original payload preservation and manifest rejection without launching VLC. Native checks require an explicit `--actual-vlc` invocation of `tools/check_nfs_player_native.py`, an extracted standalone helper ZIP passed as `--support`, the audited skin passed as `--source`, and the existing private-desktop preservation rules. They never switch desktops or move physical input.
 
-`tools/package_skin_helper.py --controller <compiled.exe> --expected-controller-sha256 <verified-hash> --output <fresh.zip>` packages only the standalone controller, pinned sound/hover helper, native bridge, volume observer and notices. It excludes the VLT, YouTube, Chrome, Python and user data. [Product boundaries and current gates](SOFTWARE-SEPARATION.md) remain authoritative.
+`tools/package_skin_helper.py --controller <compiled.exe> --expected-controller-sha256 <verified-hash> --output <fresh.zip> --skin <notice-bearing-release-1x.vlt> --version 1.1.1` packages the standalone controller, pinned sound/hover helper, native bridge, volume observer, notices and unchanged released 1x VLT. YouTube, Chrome, Python and user data are excluded. Omit --skin only for helper-only builds. Run --self-test --skin <notice-bearing-release-1x.vlt> to check both layouts and skin-hash rejection. [Product boundaries](SOFTWARE-SEPARATION.md) and [bundle verification](SKIN-BUNDLE.md) remain authoritative.
 
 ## Package the release copy
 

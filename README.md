@@ -6,40 +6,35 @@
 
 The classic Need for Speed Underground skin, made for VLC on Windows.
 
-**Choose what you need:** the **skin** changes VLC's appearance. The optional **NFS helper** adds original sounds and controls over framed video. **YouTube is a separate app** that also works without the NFS skin.
+**One NFS download:** the 1x skin, original sounds and video-controls helper together. **YouTube stays a separate app.**
 
-[![Download skin](https://img.shields.io/badge/Download-1x_skin-159DC1?logo=vlcmediaplayer&logoColor=white)](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.1.0/Need-for-Speed-Underground-1x.vlt)
-[![NFS helper](https://img.shields.io/badge/Optional-NFS_sounds_%26_controls-444B54?logo=vlcmediaplayer&logoColor=white)](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.1.0/NFS-Underground-1x-Helper-Windows-x64.zip)
+[![Download NFS](https://img.shields.io/badge/Download-NFS_1x_for_Windows-159DC1?logo=vlcmediaplayer&logoColor=white)](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.1.1/NFS-Underground-1x-Windows-x64.zip)
 [![YouTube app](https://img.shields.io/badge/Separate-YouTube_app-B91C1C?logo=youtube&logoColor=white)](https://github.com/raiinman/VLC-Skins/releases/download/vlc-youtube-v1.1.0/VLC-YouTube-Windows-x64.zip)
 
-[Install](#install-the-skin) · [Skin sounds & controls](#skin-sounds--video-controls) · [YouTube app](#youtube-app) · [Controls](#controls) · [Help](#help) · [Credits](#credits)
+[Install](#install) · [What is included](#what-is-included) · [YouTube app](#youtube-app) · [Controls](#controls) · [Help](#help) · [Credits](#credits)
 
 https://github.com/user-attachments/assets/b5e28626-5d25-49d5-91e5-8daf4a282a67
 
 48 seconds · 1080p60 · [Download the video](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-VLC-1x-Release.mp4)
 
-*The film shows skin-helper features and YouTube integration together. These need the separate downloads below; the VLT alone supplies the theme.*
+*The film shows the NFS bundle with the separate YouTube app. Download YouTube too if you want those features.*
 
 *Original-size 1x release. 2x is on hold.*
 
 
-## Install the skin
+## Install
 
-1. [Download the skin](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.1.0/Need-for-Speed-Underground-1x.vlt). Keep it as a `.vlt` file. Do not unzip it.
-2. In VLC, open **Tools → Preferences → Interface → Use custom skin**. Click **Choose** and select the downloaded file.
-3. Click **Save**, then close and reopen VLC.
+1. Install [64-bit VLC 3 for Windows](https://www.videolan.org/vlc/) if you do not have it.
+2. [Download NFS Underground 1x](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.1.1/NFS-Underground-1x-Windows-x64.zip) and extract the whole ZIP.
+3. Open **Start NFS.exe**. The included skin loads automatically.
 
-That is it. **No compiling. No Python. No extra tools.**
+Keep the extracted files together. **No compiling, Python, Chrome or account needed.** The launcher uses its own player settings and leaves your regular VLC setup alone.
 
-Need VLC? [Get VLC for Windows](https://www.videolan.org/vlc/). [Official skin instructions](https://vlc-user-documentation.readthedocs.io/en/latest/addons/skins.html).
+## What is included
 
-## Skin sounds & video controls
+The original 1x skin, synchronized opening sequence, original skin sounds, their own volume control, and compact controls over framed video. Adjust skin-sound volume from the helper's tray icon.
 
-[Download the NFS helper](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.1.0/NFS-Underground-1x-Helper-Windows-x64.zip) for original skin sounds, their own volume control, the synchronized opening sequence, and compact controls over framed video.
-
-Unzip it, open **Start NFS.exe**, and select your downloaded `.vlt`. It needs **64-bit VLC**, and uses its own private player settings. **No YouTube, Chrome, Python or compiling required.** Adjust skin-sound volume from its tray icon.
-
-The `.vlt` alone still provides the original theme, shutters, colours, playlist, equalizer, and native playback controls. VLC's standard borderless fullscreen controls work without the helper.
+Only want the theme? [Download the skin alone](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.1.0/Need-for-Speed-Underground-1x.vlt) and follow [VLC's custom-skin instructions](https://vlc-user-documentation.readthedocs.io/en/latest/addons/skins.html). The VLT alone supplies the theme and native controls; sounds and framed-video hover controls need the bundled helper.
 
 ## YouTube app
 
@@ -72,7 +67,7 @@ To return to regular VLC, choose **Use native style** in Interface preferences, 
 
 This release targets **Windows and VLC 3, 64-bit**. Skins are not supported on macOS. The original 1x player is small by design (300 × 298). Some original WMP-only controls are omitted; fonts and video sizing are adapted for VLC. YouTube's public-video 4K tests passed, but some seeks needed up to 20 seconds to recover. Private videos, age restrictions and account history are not promised.
 
-[Release notes](https://github.com/raiinman/VLC-Skins/releases/tag/nfs-underground-1x-v1.1.0) · [Detailed behaviour and limits](docs/PARITY.md) · [Verification](docs/VERIFICATION.md) · [Developer notes](docs/DEVELOPMENT.md)
+[Release notes](https://github.com/raiinman/VLC-Skins/releases/tag/nfs-underground-1x-v1.1.1) · [Detailed behaviour and limits](docs/PARITY.md) · [Verification](docs/VERIFICATION.md) · [Developer notes](docs/DEVELOPMENT.md)
 
 ## Credits
 

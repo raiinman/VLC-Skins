@@ -42,6 +42,8 @@ static class NfsPlayer
                 using(var request=new EventWaitHandle(false,EventResetMode.AutoReset,name+"Stop"))
                 {
                     Application.EnableVisualStyles();Application.SetCompatibleTextRenderingDefault(false);
+                    string bundled=Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Need-for-Speed-Underground-1x.vlt");
+                    if(skin==null && File.Exists(bundled)) skin=bundled;
                     if(skin==null)
                     {
                         string remembered=Path.Combine(data,"source-skin.txt");

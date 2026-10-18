@@ -2,6 +2,8 @@
 
 The user requested independent software on 2026-10-17, after publication of the combined 1.0.0 companion. Separate download links alone do not meet this request.
 
+The primary NFS download now bundles the skin and its helper together for simpler installation. YouTube remains separate software and a separate download. See [the NFS bundle](SKIN-BUNDLE.md). The 1.1.0 downloads below remain historical verification records.
+
 ## Product boundaries
 
 | Product | Owns | Required external software |

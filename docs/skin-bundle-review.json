@@ -1,0 +1,26 @@
+{
+  "version": "1.1.1",
+  "file": "NFS-Underground-1x-Windows-x64.zip",
+  "bytes": 52855435,
+  "sha256": "300a146838e05203ca46217c3803922b086262928b9879dc1ffabda85bad702f",
+  "files": {
+    "Start NFS.exe": "da7c23923fc77b14ad528273a8e5540f019679cb21e0244d1050817a3764b1ff",
+    "Need-for-Speed-Underground-1x.vlt": "91ed2e80498b3b6fc3a746a22c54e02b79df8f0f491837eaee674fdd73c87497",
+    "SkinEffects.exe": "56cc00e980f8d387f2f7ce31892a7f98b1c2d9334f0b4ff68d0f26a1c170bb68",
+    "NfsWheelBridge64.dll": "0b88ad21177e214f671360ebb1962f2599012459910d3410de7c6184dc592e5d",
+    "nfs_volume_osd_v1.lua": "9ff2ac594b3c29f20dff8e5026282412e7398d9c2f59810cf7a73412fc8409f1",
+    "LICENSE-CODE.txt": "8a221645cd306c9366450a6dfa0df6d3a23574fa7c2771a7858ba0f56b46bdeb",
+    "START-HERE.txt": "383b747108b86e4e9da6f015582313192278c7462e55918d42b4341c06169ac0",
+    "NOTICES.txt": "b8d62cf622ab1a885185d21de8a68971af04f09f518b7cfe07761610d78bf98e"
+  },
+  "passed": [
+    "ZIP CRC and exact member allowlist",
+    "all manifest hashes",
+    "unchanged release VLT stored without recompression",
+    "extracted shipping EXE auto-selects adjacent skin without --skin",
+    "repeat preparation succeeds",
+    "tampered bundled VLT rejected before data writes",
+    "no YouTube or Python payload"
+  ],
+  "scope": "Offline preparation only; no VLC/browser launched, no desktop input or installed-profile writes. Existing native runtime evidence remains scoped to 1.1.0; only launcher source selection changed."
+}

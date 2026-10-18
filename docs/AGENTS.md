@@ -93,7 +93,7 @@ SNAP-CENTERING.md and snap-centering-review.json own the1x-only native text vert
 
 DEVELOPMENT.md owns developer-only build/recovery instructions moved from the public front page. The user authorized public 1x release; old packaging holds are historical. Keep 2x held and distinguish the one-file VLT from the optional prebuilt companion and replacement release film.
 
-RELEASE-PROMO.md owns the replacement release film direction and verification, separate from historical PROMO-1X.md. RELEASE-1X.md and release-1x-manifest.json retain the original1.0.0 combined release record. SOFTWARE-SEPARATION.md and its review JSON own the independent1.1.0 packages and current feature boundaries.
+RELEASE-PROMO.md owns the replacement release film direction and verification, separate from historical PROMO-1X.md. RELEASE-1X.md and release-1x-manifest.json retain the original1.0.0 combined release record. SOFTWARE-SEPARATION.md and its review JSON own independent1.1.0 verification and feature boundaries. SKIN-BUNDLE.md and skin-bundle-review.json own the1.1.1 single-download NFS skin/helper package and adjacent-skin selection checks. Preserve the unchanged YouTube1.1.0 package and exact contained VLT/sound/hover bytes.
 
 youtube-companion-banner.png is generated promotional artwork for the optional companion, based on the actual native1x deck capture, not an untouched runtime screenshot. youtube-companion-banner-prompt.txt retains its creative brief and provenance. Keep original skin art and upstream rights separate.
 

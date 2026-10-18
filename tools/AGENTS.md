@@ -18,7 +18,7 @@ Run python tools/build.py --check, python tools/check_contracts.py, python tools
 ## Child DOX Index
 - nfs-player/AGENTS.md: minimal standalone controller source snapshot, shared with the VLC add-ons repository.
 
-package_skin_helper.py stages the independent1x NFS helper from an explicitly verified controller and pinned released helper/DLL. Copy only the explicit payload allowlist and notices, include exact file hashes and accepted canonical/release skin hashes, and refuse existing outputs. No YouTube/browser/Python/VLT/user data in this ZIP. Its self-test checks package contents and unsafe/tampered inputs without executing programs. The companion repository owns the minimal controller/shared runtime source and isolated native verification.
+package_skin_helper.py stages the independent1x NFS helper from an explicitly verified controller and pinned released helper/DLL. Copy only the explicit payload allowlist and notices, include exact file hashes and accepted canonical/release skin hashes, and refuse existing outputs. The primary bundle uses --skin to include only the unchanged notice-bearing released1x VLT, stored without recompression, with automatic-launch instructions. Omit --skin only for helper-only builds. No YouTube/browser/Python/user data. Its self-test with --skin checks both layouts and unsafe/tampered inputs without executing programs. The companion repository owns controller/shared runtime source and isolated native verification.
 
 build_nfs_player.ps1 compiles only the seven standalone controller/shared source files with warnings as errors, into an explicitly supplied fresh output directory, then runs only the pure self-test. It never launches VLC, a browser or a packaged session. End users receive the compiled program.
 
