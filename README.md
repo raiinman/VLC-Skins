@@ -6,6 +6,8 @@
 
 The classic Need for Speed Underground skin, made for VLC on Windows.
 
+**Two separate downloads:** the **skin** changes VLC's appearance. The optional **companion** adds YouTube, original skin sounds, and controls over framed video.
+
 [![Download skin](https://img.shields.io/badge/Download-1x_skin-159DC1?logo=vlcmediaplayer&logoColor=white)](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/Need-for-Speed-Underground-1x.vlt)
 [![Optional companion](https://img.shields.io/badge/Optional-YouTube_%26_extras-444B54?logo=youtube&logoColor=white)](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-1x-Companion-Windows-x64.zip)
 
@@ -14,6 +16,8 @@ The classic Need for Speed Underground skin, made for VLC on Windows.
 https://github.com/user-attachments/assets/b5e28626-5d25-49d5-91e5-8daf4a282a67
 
 48 seconds · 1080p60 · [Download the video](https://github.com/raiinman/VLC-Skins/releases/download/nfs-underground-1x-v1.0.0/NFS-Underground-VLC-1x-Release.mp4)
+
+*The video demonstrates the skin and companion together. Sounds, synchronized startup sound, YouTube, and the compact framed-video controls require the companion.*
 
 *Original-size 1x release. 2x is still being worked on.*
 
@@ -43,7 +47,7 @@ Want YouTube in its own matching pane, original skin sounds, and controls that a
 | Resizable video with the original border | YouTube browsing and native VLC playback, up to 4K when available |
 | Clock, seek and volume dials | Highest-first Auto quality with buffering fallback; manual quality and available captions |
 
-The companion is a separate download. Loading the `.vlt` alone does not add YouTube or run the helper programs.
+The companion is a separate Windows application launched alongside VLC. Loading the `.vlt` alone does not add YouTube, play the original skin sounds, or provide the compact framed-video controls. VLC's standard borderless fullscreen controls remain available with the skin alone.
 
 ## Controls
 

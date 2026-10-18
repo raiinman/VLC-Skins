@@ -152,3 +152,5 @@ Release presentation must lead with the one-file VLT download, three plain insta
 The user selected MIT for our original code on2026-10-16. LICENSE-CODE.txt grants only original conversion/helper/tool code and new documentation; LICENSE.md excludes original recovered art/sounds/scripts/branding and preserves font, VLC, DOX and runtime notices. Release VLT notices may be added without changing any runtime member; preserve the canonical/user archive separately and record the release archive hash.
 
 Show the release film in the README using GitHub's native attachment video player. Preserve the full-quality release download as a secondary option; verify that the rendered README contains video controls rather than only a download link.
+
+State the skin/companion feature boundary beside the public downloads and promo: the VLT supplies the theme; the external companion supplies YouTube, original skin sounds, synchronized startup sound and compact framed-video controls. Keep native borderless fullscreen controls distinct. Clarify the intended software separation with the user before changing packaging or runtime ownership.
