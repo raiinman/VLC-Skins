@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-17",
+  "change": "Stock shared-main handoff waits for matching native occurrence and displayedpictures > 0 before existing one-shot show/raise. NFS separate video control-state behavior unchanged.",
+  "cause": "Playing state preceded native vout creation. Native attachment emits a burst of skin-window foreground events and could undo the earlier companion raise.",
+  "updaterDialogCausal": false,
+  "sourceNativeSha256": "f4d828af7b6d07602f2781791762da8276a9cf71b4a092206bdac18deb9547e3",
+  "packageSha256": "f252d91d3caddd15c758af571ba93913f4c14e96c105b0a82443c811ab5e4160",
+  "runs": [
+    {
+      "evidenceDirectory": "work/independent-presentation-regression-20261017-fixed",
+      "hostSha256": "74c2bf138057ad9ff99c923eba89ae10d6d1391f017406a1018ec904e324f2a5",
+      "firstDisplayedSeconds": 6.828,
+      "stackAfterFirstFrameSeconds": {
+        "0": {
+          "sampleSeconds": 6.828,
+          "mainVisibleAboveBrowser": true,
+          "permanentTopmost": false
+        },
+        "5": {
+          "sampleSeconds": 12.078,
+          "mainVisibleAboveBrowser": true,
+          "permanentTopmost": false
+        },
+        "10": {
+          "sampleSeconds": 17.078,
+          "mainVisibleAboveBrowser": true,
+          "permanentTopmost": false
+        }
+      },
+      "allAfterPresentationSamplesAboveBrowser": true,
+      "nativeVideoAndAudioDecodeAdvance": true,
+      "nativeClockAdvances": true,
+      "searchAcceptedScopedCdpText": true,
+      "ownedSettingsPopupVisible": true,
+      "noFixtureRaiseDuringStackPhase": true,
+      "preservation": {
+        "activeProcessesAlive": true,
+        "normalAndActiveFilesUnchanged": true,
+        "inputDesktopUnchanged": true
+      }
+    },
+    {
+      "evidenceDirectory": "work/independent-presentation-regression-20261017-repeat",
+      "hostSha256": "74c2bf138057ad9ff99c923eba89ae10d6d1391f017406a1018ec904e324f2a5",
+      "firstDisplayedSeconds": 6.781,
+      "stackAfterFirstFrameSeconds": {
+        "0": {
+          "sampleSeconds": 6.781,
+          "mainVisibleAboveBrowser": true,
+          "permanentTopmost": false
+        },
+        "5": {
+          "sampleSeconds": 11.797,
+          "mainVisibleAboveBrowser": true,
+          "permanentTopmost": false
+        },
+        "10": {
+          "sampleSeconds": 16.813,
+          "mainVisibleAboveBrowser": true,
+          "permanentTopmost": false
+        }
+      },
+      "allAfterPresentationSamplesAboveBrowser": true,
+      "nativeVideoAndAudioDecodeAdvance": true,
+      "nativeClockAdvances": true,
+      "searchAcceptedScopedCdpText": true,
+      "ownedSettingsPopupVisible": true,
+      "noFixtureRaiseDuringStackPhase": true,
+      "preservation": {
+        "activeProcessesAlive": true,
+        "normalAndActiveFilesUnchanged": true,
+        "inputDesktopUnchanged": true
+      }
+    }
+  ],
+  "limits": [
+    "Private never-selected Windows desktop, Wingdi video and dummy audio output. Physical keyboard/mouse focus and audio audibility unverified.",
+    "Search input is scoped trusted CDP input, Settings uses scoped BM_CLICK on the owned button.",
+    "No arbitrary permanent topmost or repeated foreground timer.",
+    "Existing installed and user sessions unchanged during native verification."
+  ]
+}

@@ -20,6 +20,8 @@ None.
 
 SOFTWARE-SEPARATION.md and software-separation-review.json own the user-requested independent NFS helper and YouTube companion boundaries, package requirements and verification status. Distinguish private source-fixture native checks from extracted product-executable preparation checks, and keep silent PCM/physical-hover limits explicit. Separate links for the existing combined1.0.0 ZIP do not establish software independence. Preserve released artifacts and active user sessions while preparing the split.
 
+youtube-independent-review.json records the final stock-only first-displayed-frame handoff gate and two exact-host private native runs, including five/ten-second order, advancing decode/clock, scoped browser/Settings interactions and preservation. Keep prior composition evidence scoped to its preceding host and unchanged NFS branch; physical input and speaker audibility remain unverified.
+
 PROMO-1X.md and promo-1x-review.json own the privacy, provenance, edit order and verification contract for the authorized1x GitHub/Reddit promo. Generated video, captures, audio and EDL remain local outside Git. Promo creation alone does not authorize posting; the user separately authorized the public 1x release. Keep 2x held.
 
 info-load-benchmark.json records loading-only native evidence for the current Info/playlist candidate, separately from historical load-benchmark.json. Retain exact package/runtime hashes, warm-cache single-run scope, memory costs and process/file/input-desktop preservation results. A passing initialization time never certifies visual controls, tooltip placement, animation smoothness or sound.
@@ -91,7 +93,7 @@ SNAP-CENTERING.md and snap-centering-review.json own the1x-only native text vert
 
 DEVELOPMENT.md owns developer-only build/recovery instructions moved from the public front page. The user authorized public 1x release; old packaging holds are historical. Keep 2x held and distinguish the one-file VLT from the optional prebuilt companion and replacement release film.
 
-RELEASE-PROMO.md owns the replacement release film direction and verification, separate from historical PROMO-1X.md. RELEASE-1X.md and release-1x-manifest.json own current public asset/install scope and known release limits.
+RELEASE-PROMO.md owns the replacement release film direction and verification, separate from historical PROMO-1X.md. RELEASE-1X.md and release-1x-manifest.json retain the original1.0.0 combined release record. SOFTWARE-SEPARATION.md and its review JSON own the independent1.1.0 packages and current feature boundaries.
 
 youtube-companion-banner.png is generated promotional artwork for the optional companion, based on the actual native1x deck capture, not an untouched runtime screenshot. youtube-companion-banner-prompt.txt retains its creative brief and provenance. Keep original skin art and upstream rights separate.
 

@@ -39,5 +39,17 @@
   },
   "nativeMethod": "Private never-selected desktop fixture using the exact seven source files; extracted shipping executable separately checked with --prepare-only.",
   "nativeFullIntroTopmostSnappingHoverPassed": true,
-  "earlierCandidates": "Retained locally. Earlier package hashes are superseded by the visible-main and cached-minimized-main fixes."
+  "earlierCandidates": "Retained locally. Earlier package hashes are superseded by the visible-main and cached-minimized-main fixes.",
+  "youtube": {
+    "file": "VLC-YouTube-Windows-x64.zip",
+    "sha256": "f252d91d3caddd15c758af571ba93913f4c14e96c105b0a82443c811ab5e4160",
+    "bytes": 11608435,
+    "hostSha256": "74c2bf138057ad9ff99c923eba89ae10d6d1391f017406a1018ec904e324f2a5",
+    "defaultProfile": "vlc-stock",
+    "allManifestFilesVerified": true,
+    "noNfsRuntimePayload": true,
+    "nativeIndependentPlaybackPassedTwice": true,
+    "evidence": "youtube-independent-review.json",
+    "optionalNfsComposition": "Prior 73c81 host verified full intro, helper, Chrome and READY; final change is stock-only presentation readiness, NFS path unchanged. No new exact74c2 composition claim."
+  }
 }
