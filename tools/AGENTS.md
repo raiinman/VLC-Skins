@@ -16,7 +16,13 @@ Follow the root visual parity contract.
 Run python tools/build.py --check, python tools/check_contracts.py, python tools/check_hits.py, python tools/check_animation_bands.py, python tools/check_startup.py, python tools/check_source_art.py, python tools/check_panels.py, python tools/check_transitions.py, python tools/check_placement.py, python tools/check_launchers.py, python tools/check_video.py python tools/check_corners.py and python tools/check_palette.py after conversion changes. Run python tools/compare_layers.py for a combined-layer visual audit; residuals are review findings, not an automatic parity certification.
 
 ## Child DOX Index
-None.
+- nfs-player/AGENTS.md: minimal standalone controller source snapshot, shared with the VLC add-ons repository.
+
+package_skin_helper.py stages the independent1x NFS helper from an explicitly verified controller and pinned released helper/DLL. Copy only the explicit payload allowlist and notices, include exact file hashes and accepted canonical/release skin hashes, and refuse existing outputs. No YouTube/browser/Python/VLT/user data in this ZIP. Its self-test checks package contents and unsafe/tampered inputs without executing programs. The companion repository owns the minimal controller/shared runtime source and isolated native verification.
+
+build_nfs_player.ps1 compiles only the seven standalone controller/shared source files with warnings as errors, into an explicitly supplied fresh output directory, then runs only the pure self-test. It never launches VLC, a browser or a packaged session. End users receive the compiled program.
+
+check_nfs_player.py owns standalone preparation/manifest checks without VLC; check_nfs_player_native.py requires --actual-vlc and follows the existing private-desktop/owned-process rules. Its fixture zeroes only private test PCM, checks full startup, topmost restoration, clear No/Yes and graceful preference flush; do not claim speaker audibility or physical hover from these checks.
 
 promo_1x.py owns the local 1x preview edit from original theme animation frames, original effects, an original synthesized backing and three explicitly privacy-reviewed native capture images. It never launches VLC, controls desktop input or reads browser profiles. Require capture provenance, preserve originals and write all generated media/EDL outside Git. Probe and decode the export, inspect cut/overlay frames and distinguish held native captures from actual continuous footage. The old preview does not authorize publication; the user separately authorized the new 1x release. Keep 2x held.
 

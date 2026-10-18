@@ -6,3 +6,6 @@ dist/skin-support/companion-hud/manifest.json whitespace=blank-at-eol,blank-at-e
 
 # Keep all audited 1x runtime bytes unchanged on Windows checkouts.
 skins/need-for-speed-underground/vlc-1x/** -text whitespace=cr-at-eol
+
+# Preserve the standalone controller source snapshot used by native verification.
+tools/nfs-player/*.cs -text whitespace=cr-at-eol
