@@ -8,4 +8,4 @@ The MIT grant does **not** cover recovered Need for Speed Underground artwork, a
 
 FreeSans.ttf, skin.dtd and skin.catalog come from the VLC resources. The retained FreeSans metadata credits the FreeSoftwareFoundation,2002/2003, under the GNU GPL. The applicable retained GPL text is [vendor/GPL-2.0.txt](vendor/GPL-2.0.txt). The standalone releaseVLT includes that notice with its font.
 
-DOX retains its separate [MIT notice](vendor/DOX-LICENSE). The optional companion includes CPython’s own license and bundled third-party notices. VLC and GoogleChrome are separately installed products, not redistributed in the optional ZIP. [Sources and attribution](docs/SOURCES.md).
+DOX retains its separate [MIT notice](vendor/DOX-LICENSE). The independent YouTube app includes CPython’s own license and bundled third-party notices. The NFS helper contains no Python runtime. VLC and Google Chrome are separately installed products, not redistributed in either application ZIP. [Sources and attribution](docs/SOURCES.md).

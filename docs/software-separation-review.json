@@ -1,0 +1,43 @@
+{
+  "normalAndSourceHashesPreserved": true,
+  "inputDesktopUnchanged": true,
+  "physicalInputUsed": false,
+  "sourceSHA256": "91ed2e80498b3b6fc3a746a22c54e02b79df8f0f491837eaee674fdd73c87497",
+  "supportSHA256": "56cc00e980f8d387f2f7ce31892a7f98b1c2d9334f0b4ff68d0f26a1c170bb68",
+  "nativeClearDefaultNo": true,
+  "nativeClearNoPreserved2": true,
+  "nativeClearYesEmptied0": true,
+  "showPlayerRestoresCachedMinimizedMain": true,
+  "gracefulShutdown": true,
+  "savedGeometryFlushed": true,
+  "sourceHashesSHA256": {
+    "NfsPlayer.cs": "37543f1cf227462995cb4826defe9b2637bae50bd20ea582903f9e04ac0e7d20",
+    "NfsSkin.cs": "8d4147e6acf65180caebd5df259901dd0a71dc1e181382469aadaaf7088883a4",
+    "SkinRuntime.cs": "749ae46a4547bf6bde0f12c58d8cf535939c816b05e960f14316caa26f0e8c35",
+    "Native.cs": "f4d828af7b6d07602f2781791762da8276a9cf71b4a092206bdac18deb9547e3",
+    "VlcIsolation.cs": "30bd350a4039ae625f298680643766708d3bb8ba23f733f44d3d288588240eba",
+    "NativeHttp.cs": "f4b0055c8f070cb2658efc90339a3534552ad5c0921d8e5ee685524e8c91ad3d",
+    "HudCommands.cs": "25fa4ea58805cb9a04ddc01d94c3c826ca62db3365dc0a9141a9bda8d1982096"
+  },
+  "limitations": [
+    "PCM dispatch is silent in private fixture; speaker audibility unverified",
+    "Hover channel and native pane observed; physical mouse hover behavior unverified",
+    "Clear No/Yes exercised only on two fixture-owned local rows; NO USER playlist changed"
+  ],
+  "package": {
+    "file": "NFS-Underground-1x-Helper-Windows-x64.zip",
+    "sha256": "64b25b3b29bce0e52aab284dba470f0e1c8b0a0ad7f4878eb8dfffd91bfb9bd5",
+    "bytes": 136686,
+    "controllerSha256": "0b32bc4249219b34e3f6639b6b53efe110eb16510500f4d2defa8a9f70253206",
+    "extractedPrepareBothSkinHashesPassed": true,
+    "allNonThemePayloadBytesUnchanged": true,
+    "repeatPreparationPreservesConfig": true,
+    "unsupportedAndTamperedPayloadRejectedBeforeDataWrites": true,
+    "normalAndSourceFilesPreserved": true,
+    "includesYouTube": false,
+    "includesPython": false
+  },
+  "nativeMethod": "Private never-selected desktop fixture using the exact seven source files; extracted shipping executable separately checked with --prepare-only.",
+  "nativeFullIntroTopmostSnappingHoverPassed": true,
+  "earlierCandidates": "Retained locally. Earlier package hashes are superseded by the visible-main and cached-minimized-main fixes."
+}

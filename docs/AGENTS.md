@@ -18,6 +18,8 @@ Run python tools/build.py --check, python tools/check_contracts.py, python tools
 ## Child DOX Index
 None.
 
+SOFTWARE-SEPARATION.md and software-separation-review.json own the user-requested independent NFS helper and YouTube companion boundaries, package requirements and verification status. Distinguish private source-fixture native checks from extracted product-executable preparation checks, and keep silent PCM/physical-hover limits explicit. Separate links for the existing combined1.0.0 ZIP do not establish software independence. Preserve released artifacts and active user sessions while preparing the split.
+
 PROMO-1X.md and promo-1x-review.json own the privacy, provenance, edit order and verification contract for the authorized1x GitHub/Reddit promo. Generated video, captures, audio and EDL remain local outside Git. Promo creation alone does not authorize posting; the user separately authorized the public 1x release. Keep 2x held.
 
 info-load-benchmark.json records loading-only native evidence for the current Info/playlist candidate, separately from historical load-benchmark.json. Retain exact package/runtime hashes, warm-cache single-run scope, memory costs and process/file/input-desktop preservation results. A passing initialization time never certifies visual controls, tooltip placement, animation smoothness or sound.

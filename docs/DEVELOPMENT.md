@@ -25,7 +25,15 @@ The existing `tools/check_*.py` commands cover artwork, frames, coordinates, con
 
 [Source inventory](../skins/need-for-speed-underground/provenance.json) records member hashes/CRCs. The converter never executes the source WMS/JavaScript. Original art retains its owners’ rights. [Sources](SOURCES.md) and the vendored font/DOX notices remain authoritative.
 
-The optional Windows helper is already compiled in the end-user companion. Its source and developer compiler scripts live in `tools/`. Companion host/runtime packaging is maintained in the separate VLC add-ons repository and distributed as a verified release asset here.
+The Windows sound/hover helper is prebuilt in the independent NFS helper package. Its source and developer compiler scripts live in `tools/`. YouTube app packaging is maintained in the separate VLC add-ons repository and distributed as its own verified release asset here.
+
+## Independent NFS helper
+
+The standalone controller source snapshot is in `tools/nfs-player/`. Build it with `powershell -ExecutionPolicy Bypass -File tools/build_nfs_player.ps1 -Destination <fresh-output-directory>`. This requires the installed .NET Framework compiler and runs only its pure self-test. Users receive the compiled executable and do not compile it themselves.
+
+`python tools/check_nfs_player.py --skin <audited-1x.vlt>` checks source preparation, original payload preservation and manifest rejection without launching VLC. Native checks require an explicit `--actual-vlc` invocation of `tools/check_nfs_player_native.py`, an extracted standalone helper ZIP passed as `--support`, the audited skin passed as `--source`, and the existing private-desktop preservation rules. They never switch desktops or move physical input.
+
+`tools/package_skin_helper.py --controller <compiled.exe> --expected-controller-sha256 <verified-hash> --output <fresh.zip>` packages only the standalone controller, pinned sound/hover helper, native bridge, volume observer and notices. It excludes the VLT, YouTube, Chrome, Python and user data. [Product boundaries and current gates](SOFTWARE-SEPARATION.md) remain authoritative.
 
 ## Package the release copy
 
